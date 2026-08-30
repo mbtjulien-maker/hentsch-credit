@@ -1,13 +1,19 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AlertTriangle, Check, Clock, Copy, ShieldAlert, X } from "lucide-react";
+import { AlertTriangle, Check, Clock, Copy, ShieldAlert, Users, X } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
-import { api, ApiError, type AccountOpeningRequest, type ApproveAccountRequestResult } from "@/lib/api";
+import {
+  api,
+  ApiError,
+  type AccountOpeningRequest,
+  type ApproveAccountRequestResult,
+  type ClientAccountCapacity,
+} from "@/lib/api";
 import { formatDate } from "@/lib/format";
 
 // File de validation des demandes d'ouverture de compte — réservée aux comptes ADMIN,
@@ -18,6 +24,7 @@ import { formatDate } from "@/lib/format";
 export default function AccountRequestsQueuePage() {
   const { selectedUser, authLoading } = useDashboard();
   const [requests, setRequests] = useState<AccountOpeningRequest[] | null>(null);
+  const [capacity, setCapacity] = useState<ClientAccountCapacity | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [actingOn, setActingOn] = useState<string | null>(null);
   const [justApproved, setJustApproved] = useState<ApproveAccountRequestResult | null>(null);
@@ -27,7 +34,12 @@ export default function AccountRequestsQueuePage() {
 
   const refetch = useCallback(async () => {
     try {
-      setRequests(await api.listPendingAccountRequests());
+      const [list, cap] = await Promise.all([
+        api.listPendingAccountRequests(),
+        api.getAccountCapacity(),
+      ]);
+      setRequests(list);
+      setCapacity(cap);
       setError(null);
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
@@ -37,11 +49,11 @@ export default function AccountRequestsQueuePage() {
   useEffect(() => {
     if (!isAdmin) return;
     let ignore = false;
-    api
-      .listPendingAccountRequests()
-      .then((list) => {
+    Promise.all([api.listPendingAccountRequests(), api.getAccountCapacity()])
+      .then(([list, cap]) => {
         if (!ignore) {
           setRequests(list);
+          setCapacity(cap);
           setError(null);
         }
       })
@@ -149,8 +161,29 @@ export default function AccountRequestsQueuePage() {
             Validez ou rejetez les demandes reçues via le formulaire public. Valider crée
             immédiatement le compte du client et génère son mot de passe temporaire.
           </CardDescription>
+          {capacity && (
+            <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
+              <Users className="size-3.5" />
+              <span>
+                <strong className="font-medium text-foreground">{capacity.used}</strong> /{" "}
+                {capacity.max} places clientes occupées
+                {capacity.remaining === 0 && " · plafond atteint, aucune nouvelle validation possible"}
+              </span>
+            </div>
+          )}
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
+          {capacity?.remaining === 0 && (
+            <Alert variant="destructive">
+              <ShieldAlert className="size-4" />
+              <AlertTitle>Plafond de {capacity.max} comptes clients atteint</AlertTitle>
+              <AlertDescription>
+                Aucune nouvelle demande ne peut être validée tant qu&apos;un compte existant
+                n&apos;est pas fermé. Les demandes restent en attente ci-dessous.
+              </AlertDescription>
+            </Alert>
+          )}
+
           {error && (
             <Alert variant="destructive">
               <AlertTriangle className="size-4" />
@@ -210,7 +243,7 @@ export default function AccountRequestsQueuePage() {
                 <Button
                   type="button"
                   size="sm"
-                  disabled={actingOn === request.id}
+                  disabled={actingOn === request.id || capacity?.remaining === 0}
                   onClick={() => handleApprove(request.id)}
                 >
                   <Check className="size-4" />

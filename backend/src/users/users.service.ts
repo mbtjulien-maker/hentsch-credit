@@ -97,7 +97,9 @@ export class UsersService {
         since: a.since,
         verified: a.verified,
       })),
-      employment: user.employment ? this.presentEmployment(user.employment) : null,
+      employment: user.employment
+        ? this.presentEmployment(user.employment)
+        : null,
     };
   }
 

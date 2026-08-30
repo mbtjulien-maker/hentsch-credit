@@ -3,6 +3,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Gestion des risques et garde des avoirs · Hentsch Credit",
+  description:
+    "Comment Hentsch Credit gère la garde des avoirs, la valorisation du gage et le mécanisme de liquidation.",
 };
 
 // Remplace, en toute honnêteté, les documents "Politique d'exécution" et "Rapport de

@@ -16,6 +16,12 @@ import { AssetLogoRow } from "@/components/marketing/asset-logo-row";
 import { YieldAssetGrid } from "@/components/marketing/yield-assets-showcase";
 import { SectionTeaserCard } from "@/components/marketing/section-teaser-card";
 
+export const metadata = {
+  title: "Hentsch Credit · Crédit crypto-collatéralisé",
+  description:
+    "350% du montant mis en gage débloqué en pouvoir d'achat immédiat. Or, argent et ETH génèrent un rendement réel qui rembourse automatiquement une partie de votre crédit.",
+};
+
 const STATS = [
   { icon: Percent, value: "350%", label: "Ratio de crédit sur le gage déposé" },
   { icon: ShieldCheck, value: "Garde via dépositaires agréés", label: "Avoirs déposés auprès d'établissements tiers agréés, jamais en nom propre" },

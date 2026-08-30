@@ -3,6 +3,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Politique de cookies · Hentsch Credit",
+  description:
+    "Pourquoi Hentsch Credit ne dépose qu'un seul cookie strictement nécessaire, et rien d'autre.",
 };
 
 // Politique de cookies dédiée, en complément de la section 8 (courte) de la page

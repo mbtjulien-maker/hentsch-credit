@@ -6,6 +6,8 @@ import { RwaStrategySection } from "@/components/marketing/rwa-strategy-section"
 
 export const metadata = {
   title: "Stratégie d'investissement RWA · Hentsch Credit",
+  description:
+    "La stratégie de trésorerie de Hentsch Credit sur les métaux industriels tokenisés : arbitrage cash and carry, prêt triangulaire et apport de liquidité.",
 };
 
 // Page dédiée à la stratégie de trésorerie sur les métaux industriels/matières premières

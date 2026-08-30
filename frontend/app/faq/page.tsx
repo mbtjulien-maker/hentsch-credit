@@ -3,6 +3,8 @@ import { MarketingPageShell } from "@/components/marketing/marketing-page-shell"
 
 export const metadata = {
   title: "Foire aux questions · Hentsch Credit",
+  description:
+    "Les réponses aux questions les plus fréquentes sur le compte, la sécurité et le fonctionnement de la plateforme Hentsch Credit.",
 };
 
 // FAQ générale et transversale — les questions déjà traitées en détail restent sur leur

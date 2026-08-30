@@ -3,6 +3,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Archives · Hentsch Credit",
+  description:
+    "L'évolution du ratio de crédit, des actifs acceptés et des mécanismes de la plateforme Hentsch Credit depuis son lancement.",
 };
 
 // Archives client-facing de l'évolution des règles métier — adaptation en langage client

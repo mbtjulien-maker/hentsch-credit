@@ -5,6 +5,8 @@ import { AssetLogoRow } from "@/components/marketing/asset-logo-row";
 
 export const metadata = {
   title: "Comment ça marche · Hentsch Credit",
+  description:
+    "De la vérification d'identité à la dépense : les cinq étapes pour obtenir et utiliser un crédit crypto-collatéralisé sur Hentsch Credit.",
 };
 
 const DEPOSIT_ASSETS = [

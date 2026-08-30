@@ -3,6 +3,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Accessibilité numérique · Hentsch Credit",
+  description:
+    "État réel d'avancement de l'accessibilité numérique de la plateforme Hentsch Credit, sans revendiquer un niveau de conformité non vérifié.",
 };
 
 // Déclaration d'accessibilité honnête : le site n'a fait l'objet d'aucun audit RGAA/WCAG

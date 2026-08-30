@@ -156,6 +156,14 @@ model User {
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
+  // Authentification à deux facteurs (TOTP, cf. TwoFactorService) — actuellement proposée
+  // aux comptes ADMIN uniquement (back-office sensible), opt-in : twoFactorSecret est
+  // renseigné dès la génération du QR code (POST /auth/2fa/setup) mais twoFactorEnabled
+  // ne passe à true qu'après confirmation d'un premier code valide (POST
+  // /auth/2fa/enable) — un secret généré puis jamais confirmé ne bloque jamais le login.
+  twoFactorSecret  String?
+  twoFactorEnabled Boolean @default(false)
+
   wallets               Wallet[]
   ledgerBalance         LedgerBalance?
   creditPositions       CreditPosition[]

@@ -50,6 +50,31 @@ export interface UserSummary {
   kycStatus: KycStatus;
   role: UserRole;
   createdAt: string;
+  // Présent uniquement sur la réponse de GET /auth/me (cf. AuthController) — absent sur
+  // les réponses de login/challenge, qui n'ont pas besoin de le renvoyer.
+  twoFactorEnabled?: boolean;
+}
+
+// Réponse de POST /auth/login quand le compte a la 2FA activée — aucun cookie de session
+// n'est posé à ce stade, cf. AuthController.login. Le pendingToken doit être renvoyé à
+// api.twoFactorChallenge() avec le code TOTP pour obtenir une vraie session.
+export interface TwoFactorChallengeRequired {
+  requiresTwoFactor: true;
+  pendingToken: string;
+}
+
+export type LoginResult = UserSummary | TwoFactorChallengeRequired;
+
+export function loginRequiresTwoFactor(
+  result: LoginResult,
+): result is TwoFactorChallengeRequired {
+  return "requiresTwoFactor" in result && result.requiresTwoFactor === true;
+}
+
+export interface TwoFactorSetup {
+  secret: string;
+  otpauthUrl: string;
+  qrCodeDataUrl: string;
 }
 
 export type AccountRequestStatus = "PENDING" | "APPROVED" | "REJECTED";
@@ -71,6 +96,14 @@ export interface ApproveAccountRequestResult {
   request: AccountOpeningRequest;
   // Affiché une seule fois côté back-office — jamais renvoyé par un autre appel.
   temporaryPassword: string;
+}
+
+// Plafond réel de comptes clients (cf. MAX_CLIENT_ACCOUNTS côté backend) — used ne compte
+// que les comptes CLIENT réellement créés, jamais les demandes PENDING.
+export interface ClientAccountCapacity {
+  used: number;
+  max: number;
+  remaining: number;
 }
 
 export interface LedgerBalance {
@@ -441,12 +474,32 @@ export const api = {
   // Authentification — session portée par un cookie httpOnly (pas de token à stocker
   // côté client), cf. AuthController.
   login: (email: string, password: string) =>
-    request<UserSummary>("/auth/login", {
+    request<LoginResult>("/auth/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
     }),
+  // Seconde étape du login pour un compte avec la 2FA activée — cf. LoginResult.
+  twoFactorChallenge: (pendingToken: string, code: string) =>
+    request<UserSummary>("/auth/2fa/challenge", {
+      method: "POST",
+      body: JSON.stringify({ pendingToken, code }),
+    }),
   logout: () => request<{ success: boolean }>("/auth/logout", { method: "POST" }),
   me: () => request<UserSummary>("/auth/me"),
+
+  // Gestion de la 2FA depuis les paramètres du compte (réservé aux comptes ADMIN côté
+  // backend, cf. AdminGuard) — distinct du login lui-même ci-dessus.
+  setupTwoFactor: () => request<TwoFactorSetup>("/auth/2fa/setup", { method: "POST" }),
+  enableTwoFactor: (code: string) =>
+    request<{ success: boolean }>("/auth/2fa/enable", {
+      method: "POST",
+      body: JSON.stringify({ code }),
+    }),
+  disableTwoFactor: (code: string) =>
+    request<{ success: boolean }>("/auth/2fa/disable", {
+      method: "POST",
+      body: JSON.stringify({ code }),
+    }),
 
   listUsers: () => request<UserSummary[]>("/users"),
   getBalance: (userId: string) => request<BalanceSummary>(`/users/${userId}/ledger`),
@@ -523,6 +576,8 @@ export const api = {
   // Back-office (JwtAuthGuard + AdminGuard côté API).
   listPendingAccountRequests: () =>
     request<AccountOpeningRequest[]>("/account-requests/pending"),
+  getAccountCapacity: () =>
+    request<ClientAccountCapacity>("/account-requests/capacity"),
   approveAccountRequest: (id: string) =>
     request<ApproveAccountRequestResult>(`/account-requests/${id}/approve`, {
       method: "POST",

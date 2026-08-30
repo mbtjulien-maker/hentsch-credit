@@ -1,5 +1,6 @@
 import { Info } from "lucide-react";
 import { AdminCard, AdminCardHeader, AdminDivider, AdminField } from "@/components/admin/admin-ui";
+import { TwoFactorSettings } from "@/components/admin/two-factor-settings";
 
 const ROLES = [
   { role: "ADMIN", description: "Accès complet au back-office : dossiers, décisions, paramètres." },
@@ -7,9 +8,10 @@ const ROLES = [
 ];
 
 // Vue "Paramètres" — aperçu des règles métier et des rôles d'accès en vigueur (cf.
-// CLAUDE.md §2 pour les formules de crédit). Volontairement en lecture seule : la
-// modification réelle de ces paramètres n'est pas branchée à une API dans cette
+// CLAUDE.md §2 pour les formules de crédit). Les cartes de règles métier restent en
+// lecture seule : leur modification réelle n'est pas branchée à une API dans cette
 // démonstration, mieux vaut l'afficher honnêtement que simuler une sauvegarde inopérante.
+// La 2FA (TwoFactorSettings) fait exception : entièrement fonctionnelle, cf. AuthController.
 export default function AdminSettingsPage() {
   return (
     <div className="flex flex-col gap-6">
@@ -59,6 +61,8 @@ export default function AdminSettingsPage() {
           (cf. « Dépôts à valider »).
         </p>
       </AdminCard>
+
+      <TwoFactorSettings />
 
       <AdminCard>
         <AdminCardHeader title="Rôles & accès" />

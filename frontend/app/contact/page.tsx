@@ -4,6 +4,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Contact · Hentsch Credit",
+  description:
+    "Les coordonnées de H. Hentsch Asset Management SA pour toute question relative à votre compte ou à la plateforme Hentsch Credit.",
 };
 
 // Page de contact — pas de formulaire web (la plateforme n'accepte aucune inscription

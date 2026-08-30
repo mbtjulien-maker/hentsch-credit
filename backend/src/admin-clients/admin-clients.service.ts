@@ -52,7 +52,9 @@ type UserWithRelations = User & {
   financialSnapshot?: FinancialSnapshot | null;
   ledgerBalance?: LedgerBalance | null;
   wallets?: Wallet[];
-  creditRequests?: (CreditRequest & { creditPosition?: CreditPosition | null })[];
+  creditRequests?: (CreditRequest & {
+    creditPosition?: CreditPosition | null;
+  })[];
   creditPositions?: CreditPosition[];
   transactions?: Transaction[];
   notes?: (ClientNote & { author: { email: string } })[];
@@ -87,7 +89,10 @@ function dossierCode(requestId: string, createdAt: Date): string {
   return `CR-${createdAt.getFullYear()}-${requestId.replace(/-/g, '').slice(0, 6).toUpperCase()}`;
 }
 
-function fullName(profile: ClientProfile | null | undefined, email: string): string {
+function fullName(
+  profile: ClientProfile | null | undefined,
+  email: string,
+): string {
   if (profile?.firstName || profile?.lastName) {
     return `${profile.firstName ?? ''} ${profile.lastName ?? ''}`.trim();
   }
@@ -120,14 +125,22 @@ function computeRiskScoring(
 ) {
   const totalIncome = sumJsonValues(financialJson?.income);
   const totalExpenses = sumJsonValues(financialJson?.expenses);
-  const debtRatio = totalIncome > 0 ? Math.min(100, Math.round((totalExpenses / totalIncome) * 100)) : 50;
+  const debtRatio =
+    totalIncome > 0
+      ? Math.min(100, Math.round((totalExpenses / totalIncome) * 100))
+      : 50;
   const repaymentCapacity = Math.max(5, 100 - debtRatio);
 
   const seniorityYears = parseYears(employment?.seniority);
   const incomeStability = employment
-    ? Math.min(100, 35 + seniorityYears * 6 + (employment.contractType === 'CDI' ? 20 : 0))
+    ? Math.min(
+        100,
+        35 + seniorityYears * 6 + (employment.contractType === 'CDI' ? 20 : 0),
+      )
     : 30;
-  const professionalStability = employment ? Math.min(100, 35 + seniorityYears * 7) : 30;
+  const professionalStability = employment
+    ? Math.min(100, 35 + seniorityYears * 7)
+    : 30;
   const paymentHistory = hasFailedTransaction ? 55 : 90;
 
   const completenessChecks = [
@@ -137,11 +150,17 @@ function computeRiskScoring(
     kycStatus === 'VERIFIED',
   ];
   const fileCompleteness = Math.round(
-    (completenessChecks.filter(Boolean).length / completenessChecks.length) * 100,
+    (completenessChecks.filter(Boolean).length / completenessChecks.length) *
+      100,
   );
 
   const composite =
-    (repaymentCapacity + incomeStability + professionalStability + paymentHistory + fileCompleteness) / 5;
+    (repaymentCapacity +
+      incomeStability +
+      professionalStability +
+      paymentHistory +
+      fileCompleteness) /
+    5;
   const score = Math.round(300 + (composite / 100) * 550);
   const level = score >= 700 ? 'LOW' : score >= 550 ? 'MEDIUM' : 'HIGH';
 
@@ -162,7 +181,8 @@ function computeRiskScoring(
 // démonstration) : on retombe sur l'étape la plus proche que le statut réel permet
 // d'établir avec certitude, jamais une étape inventée.
 function currentStepIndex(
-  request: (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
+  request:
+    (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
 ): number {
   if (!request) return 0;
   switch (request.status) {
@@ -173,14 +193,17 @@ function currentStepIndex(
     case 'REJECTED':
       return 4;
     case 'FULFILLED':
-      return request.creditPosition?.status === 'CLOSED' ? 7 : DISBURSEMENT_STEP_INDEX;
+      return request.creditPosition?.status === 'CLOSED'
+        ? 7
+        : DISBURSEMENT_STEP_INDEX;
     default:
       return 0;
   }
 }
 
 function buildDossierStatus(
-  request: (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
+  request:
+    (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
 ) {
   const idx = currentStepIndex(request);
   const steps = DOSSIER_STEPS.map((step, i) => {
@@ -189,7 +212,9 @@ function buildDossierStatus(
     if (i === idx) {
       return {
         ...step,
-        date: fmtDate(request?.fulfilledAt ?? request?.validatedAt ?? request?.createdAt),
+        date: fmtDate(
+          request?.fulfilledAt ?? request?.validatedAt ?? request?.createdAt,
+        ),
       };
     }
     return { ...step, date: null as string | null };
@@ -337,11 +362,14 @@ export class AdminClientsService {
     userId: string,
     include: Record<string, unknown>,
   ): Promise<UserWithRelations> {
-    const user = await this.prisma.user.findUnique({ where: { id: userId }, include });
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      include,
+    });
     if (!user || user.role !== 'CLIENT') {
       throw new ClientNotFoundException(userId);
     }
-    return user as UserWithRelations;
+    return user;
   }
 
   private presentSummary(user: UserWithRelations) {
@@ -360,10 +388,15 @@ export class AdminClientsService {
       lastName: user.clientProfile?.lastName ?? '',
       initials:
         `${user.clientProfile?.firstName?.[0] ?? user.email[0]}${user.clientProfile?.lastName?.[0] ?? ''}`.toUpperCase(),
-      clientType: CLIENT_TYPE_LABELS[user.clientProfile?.clientType ?? 'PARTICULIER'],
+      clientType:
+        CLIENT_TYPE_LABELS[user.clientProfile?.clientType ?? 'PARTICULIER'],
       registeredAt: fmtDate(user.createdAt),
       accountStatus:
-        user.kycStatus === 'VERIFIED' ? 'ACTIVE' : user.kycStatus === 'REJECTED' ? 'SUSPENDED' : 'PENDING',
+        user.kycStatus === 'VERIFIED'
+          ? 'ACTIVE'
+          : user.kycStatus === 'REJECTED'
+            ? 'SUSPENDED'
+            : 'PENDING',
       kycStatus: user.kycStatus,
       riskLevel: riskScoring.level,
       riskScore: riskScoring.score,
@@ -381,9 +414,12 @@ export class AdminClientsService {
     const employment = user.employment ?? null;
     const financials = user.financialSnapshot ?? null;
     const request = user.creditRequests?.[0];
-    const position = request?.creditPosition ?? user.creditPositions?.[0] ?? null;
+    const position =
+      request?.creditPosition ?? user.creditPositions?.[0] ?? null;
     const dossierStatus = buildDossierStatus(request);
-    const hasFailedTx = (user.transactions ?? []).some((t) => t.status === 'FAILED');
+    const hasFailedTx = (user.transactions ?? []).some(
+      (t) => t.status === 'FAILED',
+    );
     const riskScoring = computeRiskScoring(
       employment,
       financials,
@@ -393,7 +429,11 @@ export class AdminClientsService {
     );
 
     const creditRequest = this.presentCreditRequest(user, request, position);
-    const contract = this.presentContract(creditRequest, dossierStatus, request);
+    const contract = this.presentContract(
+      creditRequest,
+      dossierStatus,
+      request,
+    );
 
     return {
       id: clientCode(user.id),
@@ -405,7 +445,11 @@ export class AdminClientsService {
       clientType: CLIENT_TYPE_LABELS[profile?.clientType ?? 'PARTICULIER'],
       registeredAt: fmtDate(user.createdAt),
       accountStatus:
-        user.kycStatus === 'VERIFIED' ? 'ACTIVE' : user.kycStatus === 'REJECTED' ? 'SUSPENDED' : 'PENDING',
+        user.kycStatus === 'VERIFIED'
+          ? 'ACTIVE'
+          : user.kycStatus === 'REJECTED'
+            ? 'SUSPENDED'
+            : 'PENDING',
       kycStatus: user.kycStatus,
       riskLevel: riskScoring.level,
       riskScore: riskScoring.score,
@@ -444,12 +488,21 @@ export class AdminClientsService {
         contractType: employment?.contractType ?? undefined,
         verified: employment?.verified ?? false,
         activity: employment?.activity ?? undefined,
-        turnover: employment?.turnover ? Number(employment.turnover) : undefined,
-        netResult: employment?.netResult ? Number(employment.netResult) : undefined,
+        turnover: employment?.turnover
+          ? Number(employment.turnover)
+          : undefined,
+        netResult: employment?.netResult
+          ? Number(employment.netResult)
+          : undefined,
       },
 
       financials: {
-        income: financials?.income ?? { salary: 0, additional: 0, professional: 0, other: 0 },
+        income: financials?.income ?? {
+          salary: 0,
+          additional: 0,
+          professional: 0,
+          other: 0,
+        },
         expenses: financials?.expenses ?? {
           rent: 0,
           mortgage: 0,
@@ -497,12 +550,24 @@ export class AdminClientsService {
       documents: [],
 
       kyc: {
-        identity: user.kycStatus === 'VERIFIED' ? 'VERIFIED' : user.kycStatus === 'REJECTED' ? 'REJECTED' : 'TO_VERIFY',
-        address:
-          (user.addresses ?? []).some((a) => a.verified) ? 'VERIFIED' : 'PENDING',
-        idDocument: user.kycStatus === 'VERIFIED' ? 'VERIFIED' : user.kycStatus === 'REJECTED' ? 'REJECTED' : 'TO_VERIFY',
+        identity:
+          user.kycStatus === 'VERIFIED'
+            ? 'VERIFIED'
+            : user.kycStatus === 'REJECTED'
+              ? 'REJECTED'
+              : 'TO_VERIFY',
+        address: (user.addresses ?? []).some((a) => a.verified)
+          ? 'VERIFIED'
+          : 'PENDING',
+        idDocument:
+          user.kycStatus === 'VERIFIED'
+            ? 'VERIFIED'
+            : user.kycStatus === 'REJECTED'
+              ? 'REJECTED'
+              : 'TO_VERIFY',
         biometric: user.kycStatus === 'VERIFIED' ? 'VERIFIED' : 'PENDING',
-        verifiedAt: user.kycStatus === 'VERIFIED' ? fmtDate(user.updatedAt) : null,
+        verifiedAt:
+          user.kycStatus === 'VERIFIED' ? fmtDate(user.updatedAt) : null,
         status: user.kycStatus,
         alerts:
           user.kycStatus === 'REJECTED'
@@ -519,7 +584,7 @@ export class AdminClientsService {
         status: this.mapDecisionStatus(request),
         summary: request
           ? `Demande ${request.status.toLowerCase()} — gage envisagé de ${Number(request.collateralAmount).toLocaleString('fr-FR')} $US.`
-          : "Aucune demande de crédit à ce jour.",
+          : 'Aucune demande de crédit à ce jour.',
         recommendation: '—',
       },
 
@@ -546,7 +611,12 @@ export class AdminClientsService {
         content: n.content,
       })),
 
-      support: { openTickets: 0, resolvedTickets: 0, lastContact: '—', channels: [] },
+      support: {
+        openTickets: 0,
+        resolvedTickets: 0,
+        lastContact: '—',
+        channels: [],
+      },
 
       contract,
     };
@@ -554,18 +624,30 @@ export class AdminClientsService {
 
   private presentCreditRequest(
     user: UserWithRelations,
-    request: (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
+    request:
+      (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
     position: CreditPosition | null,
   ) {
     const collateral = Number(request?.collateralAmount ?? 0);
-    const amountRequested = position ? Number(position.creditIssued) : collateral * CREDIT_RATIO;
+    const amountRequested = position
+      ? Number(position.creditIssued)
+      : collateral * CREDIT_RATIO;
     const durationMonths = position?.termMonths ?? DEFAULT_TERM_MONTHS;
-    const proposedRate = position ? Number(position.interestRatePct) : DEFAULT_INTEREST_RATE_PCT;
+    const proposedRate = position
+      ? Number(position.interestRatePct)
+      : DEFAULT_INTEREST_RATE_PCT;
     const estimatedMonthlyPayment =
-      durationMonths > 0 ? Math.round(((amountRequested * (1 + proposedRate / 100)) / durationMonths) * 100) / 100 : 0;
+      durationMonths > 0
+        ? Math.round(
+            ((amountRequested * (1 + proposedRate / 100)) / durationMonths) *
+              100,
+          ) / 100
+        : 0;
 
     return {
-      id: request ? dossierCode(request.id, request.createdAt) : `CR-${new Date().getFullYear()}-NEANT`,
+      id: request
+        ? dossierCode(request.id, request.createdAt)
+        : `CR-${new Date().getFullYear()}-NEANT`,
       product: 'Crédit lombard',
       amountRequested,
       durationMonths,
@@ -580,15 +662,22 @@ export class AdminClientsService {
   private presentContract(
     creditRequest: ReturnType<AdminClientsService['presentCreditRequest']>,
     dossierStatus: ReturnType<typeof buildDossierStatus>,
-    request: (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
+    request:
+      (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
   ) {
     const idx = dossierStatus.currentStepIndex;
     const contractDate = dossierStatus.steps[CONTRACT_STEP_INDEX]?.date ?? null;
-    const disbursementDate = dossierStatus.steps[DISBURSEMENT_STEP_INDEX]?.date ?? null;
+    const disbursementDate =
+      dossierStatus.steps[DISBURSEMENT_STEP_INDEX]?.date ?? null;
 
     const totalRepayable =
-      Math.round(creditRequest.estimatedMonthlyPayment * creditRequest.durationMonths * 100) / 100;
-    const totalInterest = Math.round((totalRepayable - creditRequest.amountRequested) * 100) / 100;
+      Math.round(
+        creditRequest.estimatedMonthlyPayment *
+          creditRequest.durationMonths *
+          100,
+      ) / 100;
+    const totalInterest =
+      Math.round((totalRepayable - creditRequest.amountRequested) * 100) / 100;
     const apr = Math.round((creditRequest.proposedRate + 0.35) * 100) / 100;
 
     let status: 'NOT_GENERATED' | 'SENT' | 'COUNTERSIGNED' = 'NOT_GENERATED';
@@ -610,7 +699,9 @@ export class AdminClientsService {
     }
 
     return {
-      reference: request ? `CTR-${dossierCode(request.id, request.createdAt).slice(3)}` : '—',
+      reference: request
+        ? `CTR-${dossierCode(request.id, request.createdAt).slice(3)}`
+        : '—',
       status,
       generatedAt,
       sentAt,
@@ -620,7 +711,9 @@ export class AdminClientsService {
       apr,
       totalInterest,
       totalRepayable,
-      documentName: request ? `Contrat_credit_${dossierCode(request.id, request.createdAt)}.pdf` : '—',
+      documentName: request
+        ? `Contrat_credit_${dossierCode(request.id, request.createdAt)}.pdf`
+        : '—',
       documentSize: '412 Ko',
     };
   }
@@ -645,11 +738,18 @@ export class AdminClientsService {
     return [...txEntries, ...noteEntries]
       .sort((a, b) => b.sortKey - a.sortKey)
       .slice(0, 15)
-      .map(({ sortKey: _sortKey, ...entry }) => entry);
+      .map((entry) => ({
+        date: entry.date,
+        time: entry.time,
+        user: entry.user,
+        action: entry.action,
+        result: entry.result,
+      }));
   }
 
   private mapDecisionStatus(
-    request: (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
+    request:
+      (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
   ): 'PENDING' | 'APPROVED' | 'REJECTED' | 'ANALYSIS' {
     if (!request) return 'PENDING';
     switch (request.status) {

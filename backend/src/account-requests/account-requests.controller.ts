@@ -31,6 +31,14 @@ export class AccountRequestsController {
     return this.accountRequestsService.listPending();
   }
 
+  // Places clientes occupées/restantes (cf. MAX_CLIENT_ACCOUNTS) — affiché côté admin
+  // avant d'approuver une demande, pour que le plafond ne soit pas une surprise.
+  @UseGuards(JwtAuthGuard, AdminGuard)
+  @Get('capacity')
+  getCapacity() {
+    return this.accountRequestsService.getCapacity();
+  }
+
   @UseGuards(JwtAuthGuard, AdminGuard)
   @Post(':id/approve')
   approve(@Param('id', ParseUUIDPipe) id: string) {

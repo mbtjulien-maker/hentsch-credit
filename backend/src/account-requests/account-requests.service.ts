@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { AccountOpeningRequest } from '@prisma/client';
 import {
   AccountAlreadyExistsException,
+  AccountCapacityReachedException,
   AccountRequestNotFoundException,
   AccountRequestNotPendingException,
   ActiveAccountRequestExistsException,
@@ -12,6 +13,13 @@ import {
 } from '../common/password.util';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateAccountRequestDto } from './dto/create-account-request.dto';
+import { MAX_CLIENT_ACCOUNTS } from './account-requests.constants';
+
+export interface ClientAccountCapacity {
+  used: number;
+  max: number;
+  remaining: number;
+}
 
 export interface ApproveAccountRequestResult {
   request: AccountOpeningRequest;
@@ -61,6 +69,17 @@ export class AccountRequestsService {
     });
   }
 
+  // Places occupées/restantes — affiché côté admin (cf. AccountRequestsController) pour
+  // que la limite ne soit pas une surprise découverte au moment d'un rejet forcé.
+  async getCapacity(): Promise<ClientAccountCapacity> {
+    const used = await this.prisma.user.count({ where: { role: 'CLIENT' } });
+    return {
+      used,
+      max: MAX_CLIENT_ACCOUNTS,
+      remaining: Math.max(MAX_CLIENT_ACCOUNTS - used, 0),
+    };
+  }
+
   // Crée réellement le compte (User + LedgerBalance vide, statut KYC PENDING — la
   // vérification d'identité reste un chantier séparé, cf. §5) et génère un mot de passe
   // temporaire à usage unique. Toute la création est atomique : pas de demande marquée
@@ -87,6 +106,14 @@ export class AccountRequestsService {
     const passwordHash = await hashPassword(temporaryPassword);
 
     const updatedRequest = await this.prisma.$transaction(async (tx) => {
+      // Vérifié à l'intérieur de la transaction, juste avant la création : le compte le
+      // plus proche possible du moment réel d'écriture, pas au début de approve() où deux
+      // approbations concurrentes pourraient toutes les deux lire une place encore libre.
+      const clientCount = await tx.user.count({ where: { role: 'CLIENT' } });
+      if (clientCount >= MAX_CLIENT_ACCOUNTS) {
+        throw new AccountCapacityReachedException(MAX_CLIENT_ACCOUNTS);
+      }
+
       const user = await tx.user.create({
         data: {
           email: request.email,

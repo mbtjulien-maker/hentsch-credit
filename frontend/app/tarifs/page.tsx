@@ -3,6 +3,8 @@ import { MarketingPageShell } from "@/components/marketing/marketing-page-shell"
 
 export const metadata = {
   title: "Tarifs · Hentsch Credit",
+  description:
+    "Les taux et frais réels appliqués par Hentsch Credit : ratio de crédit, intérêts, frais d'origination et seuils de liquidation, sans surprise.",
 };
 
 // Grille tarifaire réelle — miroir des valeurs effectivement appliquées par le moteur de

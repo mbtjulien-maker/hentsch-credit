@@ -3,6 +3,7 @@ import * as passwordUtil from '../common/password.util';
 import { AuthService } from './auth.service';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
+import { PENDING_TWO_FACTOR_TOKEN_TTL_SECONDS } from './auth.constants';
 
 function buildUser(overrides: Partial<User> = {}): User {
   return {
@@ -13,18 +14,20 @@ function buildUser(overrides: Partial<User> = {}): User {
     role: 'CLIENT',
     createdAt: new Date(),
     updatedAt: new Date(),
+    twoFactorSecret: null,
+    twoFactorEnabled: false,
     ...overrides,
   };
 }
 
 describe('AuthService', () => {
   let prisma: { user: { findUnique: jest.Mock } };
-  let jwtService: { signAsync: jest.Mock };
+  let jwtService: { signAsync: jest.Mock; verifyAsync: jest.Mock };
   let service: AuthService;
 
   beforeEach(() => {
     prisma = { user: { findUnique: jest.fn() } };
-    jwtService = { signAsync: jest.fn() };
+    jwtService = { signAsync: jest.fn(), verifyAsync: jest.fn() };
     service = new AuthService(
       prisma as unknown as PrismaService,
       jwtService as unknown as JwtService,
@@ -96,6 +99,56 @@ describe('AuthService', () => {
         role: 'ADMIN',
       });
       expect(token).toBe('signed.jwt.token');
+    });
+  });
+
+  describe('signPendingTwoFactorToken', () => {
+    it('signs a distinctly-shaped payload (pending2fa: true, no role) with a short TTL', async () => {
+      jwtService.signAsync.mockResolvedValue('pending.jwt.token');
+
+      const token = await service.signPendingTwoFactorToken('user-1');
+
+      expect(jwtService.signAsync).toHaveBeenCalledWith(
+        { sub: 'user-1', pending2fa: true },
+        { expiresIn: PENDING_TWO_FACTOR_TOKEN_TTL_SECONDS },
+      );
+      expect(token).toBe('pending.jwt.token');
+    });
+  });
+
+  describe('verifyPendingTwoFactorToken', () => {
+    it('returns the user id when the payload has the expected pending2fa shape', async () => {
+      jwtService.verifyAsync.mockResolvedValue({
+        sub: 'user-1',
+        pending2fa: true,
+      });
+
+      const userId = await service.verifyPendingTwoFactorToken('valid.token');
+
+      expect(userId).toBe('user-1');
+    });
+
+    it('rejects a token that fails signature/expiry verification', async () => {
+      jwtService.verifyAsync.mockRejectedValue(new Error('jwt expired'));
+
+      await expect(
+        service.verifyPendingTwoFactorToken('expired.token'),
+      ).rejects.toThrow('Jeton de vérification invalide ou expiré');
+    });
+
+    // Un JWT de session normale (JwtPayload : { sub, role }) est signé avec le même
+    // secret que le jeton intermédiaire — la vérification cryptographique seule ne suffit
+    // donc pas à les distinguer. C'est le test le plus important de ce fichier : un jeton
+    // de session valide ne doit JAMAIS pouvoir servir à franchir l'étape 2FA.
+    it('rejects a well-formed, validly-signed session token (missing pending2fa: true)', async () => {
+      jwtService.verifyAsync.mockResolvedValue({
+        sub: 'user-1',
+        role: 'ADMIN',
+      });
+
+      await expect(
+        service.verifyPendingTwoFactorToken('session.token'),
+      ).rejects.toThrow('Jeton de vérification invalide ou expiré');
     });
   });
 });

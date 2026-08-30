@@ -11,6 +11,8 @@ import { MarketingPageShell } from "@/components/marketing/marketing-page-shell"
 
 export const metadata = {
   title: "Plan du site · Hentsch Credit",
+  description:
+    "L'ensemble des pages accessibles publiquement sur Hentsch Credit, sans connexion à un compte.",
 };
 
 // Plan du site PUBLIC — distinct de l'artefact interne "Plan du Site Hentsch Credit" (qui

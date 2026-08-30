@@ -3,6 +3,8 @@ import { MarketView } from "@/components/dashboard/market-view";
 
 export const metadata = {
   title: "Marché en direct · Hentsch Credit",
+  description:
+    "Les cours en temps réel des actifs acceptés en garantie sur Hentsch Credit : stablecoins, or, argent, ETH et métaux industriels tokenisés.",
 };
 
 // Page dédiée au marché en direct — contenu déplacé depuis la page d'accueil (cf.

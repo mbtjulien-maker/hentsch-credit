@@ -1,0 +1,154 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+# Un nouveau push sur la même branche annule les runs précédents en cours — évite de
+# consommer des minutes CI sur du code déjà obsolète.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "24"
+
+jobs:
+  backend:
+    name: Backend (lint · build · tests)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - run: npm ci
+
+      # Ne nécessite pas de connexion DB réelle (lit uniquement schema.prisma) — les
+      # tests unitaires mockent PrismaService (cf. ledger.service.spec.ts et consorts),
+      # seul le job e2e ci-dessous a besoin d'une vraie base.
+      - run: npx prisma generate
+
+      - run: npm run lint
+
+      - run: npx tsc --noEmit
+
+      - run: npm run build
+
+      - run: npm test
+
+  frontend:
+    name: Frontend (lint · types · build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npx tsc --noEmit
+
+      - run: npm run build
+
+  e2e:
+    name: E2E (Playwright)
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: crypto_credit_bank
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/crypto_credit_bank?schema=public
+      JWT_SECRET: ci-only-jwt-secret-never-used-in-prod
+      FRONTEND_ORIGIN: http://localhost:3001
+      NEXT_PUBLIC_API_URL: http://localhost:3000
+      PORT: 3000
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Installer les dépendances backend
+        working-directory: backend
+        run: npm ci
+
+      - name: Générer le client Prisma et migrer
+        working-directory: backend
+        run: |
+          npx prisma generate
+          npx prisma migrate deploy
+
+      - name: Seeder la base (comptes de test)
+        working-directory: backend
+        run: npx prisma db seed
+
+      - name: Démarrer le backend
+        working-directory: backend
+        run: |
+          npm run build
+          nohup node dist/main.js > backend.log 2>&1 &
+          npx wait-on http://localhost:3000/auth/me -t 30000
+
+      - name: Installer les dépendances frontend
+        working-directory: frontend
+        run: npm ci
+
+      - name: Installer Chromium (Playwright)
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+
+      - name: Démarrer le frontend
+        working-directory: frontend
+        run: |
+          npm run build
+          nohup npm run start -- -p 3001 > frontend.log 2>&1 &
+          npx wait-on http://localhost:3001 -t 30000
+
+      - name: Lancer les tests e2e
+        working-directory: frontend
+        run: npm run test:e2e
+
+      - name: Logs backend/frontend (en cas d'échec)
+        if: failure()
+        run: |
+          echo "── backend.log ──"; cat backend/backend.log || true
+          echo "── frontend.log ──"; cat frontend/frontend.log || true
+
+      - name: Publier le rapport Playwright
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: frontend/playwright-report/
+          retention-days: 14

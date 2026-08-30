@@ -3,6 +3,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Conditions générales · Hentsch Credit",
+  description:
+    "Les conditions générales d'utilisation de la plateforme Hentsch Credit : crédit, garantie, remboursement, liquidation et frais.",
 };
 
 // Conditions générales d'utilisation (CGU) du service de crédit crypto-collatéralisé.

@@ -58,9 +58,30 @@ function buildUser(overrides: Record<string, unknown> = {}) {
     financialSnapshot: {
       userId: 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
       income: { salary: 4900, additional: 0, professional: 0, other: 150 },
-      expenses: { rent: 0, mortgage: 1120, autoLoan: 285, otherLoans: 0, pension: 0, recurring: 340, other: 120 },
-      assets: { bankAccounts: 22400, savings: 38500, realEstate: 320000, vehicles: 18000, investments: 12400, other: 0 },
-      liabilities: { mortgage: 187000, autoLoan: 8200, personalLoan: 0, debts: 0, other: 0 },
+      expenses: {
+        rent: 0,
+        mortgage: 1120,
+        autoLoan: 285,
+        otherLoans: 0,
+        pension: 0,
+        recurring: 340,
+        other: 120,
+      },
+      assets: {
+        bankAccounts: 22400,
+        savings: 38500,
+        realEstate: 320000,
+        vehicles: 18000,
+        investments: 12400,
+        other: 0,
+      },
+      liabilities: {
+        mortgage: 187000,
+        autoLoan: 8200,
+        personalLoan: 0,
+        debts: 0,
+        other: 0,
+      },
       updatedAt: new Date(),
     },
     ledgerBalance: {
@@ -344,10 +365,9 @@ describe('AdminClientsService', () => {
         .mockResolvedValueOnce(buildUser());
       prisma.employment.upsert.mockResolvedValue({});
 
-      await service.updateEmployment(
-        'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
-        { employer: 'Nouvelle Entreprise SA' },
-      );
+      await service.updateEmployment('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee', {
+        employer: 'Nouvelle Entreprise SA',
+      });
 
       expect(prisma.employment.upsert).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -362,13 +382,16 @@ describe('AdminClientsService', () => {
         .mockResolvedValueOnce(buildUser());
       prisma.financialSnapshot.upsert.mockResolvedValue({});
 
-      await service.updateFinancials(
-        'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
-        { income: { salary: 5000, additional: 0, professional: 0, other: 0 } },
-      );
+      await service.updateFinancials('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee', {
+        income: { salary: 5000, additional: 0, professional: 0, other: 0 },
+      });
 
+      // prisma.financialSnapshot.upsert est un jest.Mock non générique (pré-existant,
+      // hors périmètre de ce changement) : son type d'argument résout en `any`, ce que
+      // `expect.objectContaining` hérite ici.
       expect(prisma.financialSnapshot.upsert).toHaveBeenCalledWith(
         expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
           update: expect.objectContaining({
             income: { salary: 5000, additional: 0, professional: 0, other: 0 },
           }),

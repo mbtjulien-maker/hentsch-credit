@@ -3,6 +3,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Confidentialité · Hentsch Credit",
+  description:
+    "Comment H. Hentsch Asset Management SA collecte, utilise et protège vos données personnelles, conformément à la loi fédérale suisse sur la protection des données.",
 };
 
 // Politique de confidentialité — traitement des données personnelles au sens de la loi

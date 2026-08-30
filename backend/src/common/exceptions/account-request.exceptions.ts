@@ -38,3 +38,14 @@ export class AccountAlreadyExistsException extends ConflictException {
     super(`Un compte existe déjà pour l'adresse ${email}`);
   }
 }
+
+// Plafond de places clientes atteint (cf. account-requests.constants.ts,
+// MAX_CLIENT_ACCOUNTS) — la demande reste PENDING, ni approuvée ni rejetée
+// automatiquement : à l'admin de décider (attendre une place libérée, ou rejeter).
+export class AccountCapacityReachedException extends ConflictException {
+  constructor(maxAccounts: number) {
+    super(
+      `Le nombre maximal de comptes clients (${maxAccounts}) est atteint : impossible d'approuver de nouvelle demande tant qu'une place ne se libère pas`,
+    );
+  }
+}

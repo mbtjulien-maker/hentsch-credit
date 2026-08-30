@@ -3,6 +3,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Réglementation · Hentsch Credit",
+  description:
+    "Le cadre légal et réglementaire suisse applicable à Hentsch Credit : LEFin, LSFin, LBA, garde des avoirs et supervision.",
 };
 
 // Page dédiée au cadre réglementaire — complète les mentions légales (qui restent la

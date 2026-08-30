@@ -13,9 +13,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// URL publique du site — utilisée pour résoudre les images Open Graph/Twitter et les URLs
+// canoniques en absolu. Pas de domaine de production fixé en dur : NEXT_PUBLIC_SITE_URL
+// doit être défini au déploiement (cf. .env.example), localhost par défaut en dev.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001";
+
+// Métadonnées par défaut, héritées par toute page qui ne les redéfinit pas explicitement
+// (cf. app/page.tsx et les autres pages publiques pour des title/description spécifiques).
+// `template` préfixe automatiquement le nom du site à chaque titre de page enfant qui
+// suit la convention "X · Hentsch Credit" — évite la répétition à chaque export.
 export const metadata: Metadata = {
-  title: "Hentsch Credit · Dashboard",
-  description: "Solde, gage, crédit et historique du compte de crédit crypto-collatéralisé.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Hentsch Credit · Crédit crypto-collatéralisé",
+    template: "%s",
+  },
+  description:
+    "Déposez des stablecoins, de l'or ou de l'argent tokenisés en garantie pour débloquer une ligne de crédit, sans jamais vendre vos actifs.",
+  openGraph: {
+    siteName: "Hentsch Credit",
+    locale: "fr_CH",
+    type: "website",
+    images: [{ url: "/brand/hentsch-logo-full.png", width: 1200, height: 630, alt: "Hentsch Credit" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/brand/hentsch-logo-full.png"],
+  },
 };
 
 // Script anti-flash : pose la classe .dark sur <html> avant l'hydratation React, à partir

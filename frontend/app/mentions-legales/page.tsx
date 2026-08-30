@@ -3,6 +3,8 @@ import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 
 export const metadata = {
   title: "Mentions légales · Hentsch Credit",
+  description:
+    "Informations légales relatives à l'éditeur et à l'exploitant de la plateforme Hentsch Credit.",
 };
 
 // Page de mentions légales (impressum) — identité de l'éditeur, statut réglementaire réel

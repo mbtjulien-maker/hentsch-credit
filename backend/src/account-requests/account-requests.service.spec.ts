@@ -2,11 +2,13 @@ import { AccountOpeningRequest, User } from '@prisma/client';
 import * as passwordUtil from '../common/password.util';
 import {
   AccountAlreadyExistsException,
+  AccountCapacityReachedException,
   AccountRequestNotFoundException,
   AccountRequestNotPendingException,
   ActiveAccountRequestExistsException,
 } from '../common/exceptions/account-request.exceptions';
 import { AccountRequestsService } from './account-requests.service';
+import { MAX_CLIENT_ACCOUNTS } from './account-requests.constants';
 
 function buildRequest(
   overrides: Partial<AccountOpeningRequest> = {},
@@ -35,13 +37,15 @@ function buildUser(overrides: Partial<User> = {}): User {
     role: 'CLIENT',
     createdAt: new Date(),
     updatedAt: new Date(),
+    twoFactorSecret: null,
+    twoFactorEnabled: false,
     ...overrides,
   };
 }
 
 describe('AccountRequestsService', () => {
   let prisma: {
-    user: { findUnique: jest.Mock };
+    user: { findUnique: jest.Mock; count: jest.Mock };
     accountOpeningRequest: {
       findFirst: jest.Mock;
       findUnique: jest.Mock;
@@ -54,18 +58,18 @@ describe('AccountRequestsService', () => {
     $transaction: jest.Mock;
   };
   let tx: {
-    user: { create: jest.Mock };
+    user: { create: jest.Mock; count: jest.Mock };
     accountOpeningRequest: { update: jest.Mock };
   };
   let service: AccountRequestsService;
 
   beforeEach(() => {
     tx = {
-      user: { create: jest.fn() },
+      user: { create: jest.fn(), count: jest.fn().mockResolvedValue(0) },
       accountOpeningRequest: { update: jest.fn() },
     };
     prisma = {
-      user: { findUnique: jest.fn() },
+      user: { findUnique: jest.fn(), count: jest.fn() },
       accountOpeningRequest: {
         findFirst: jest.fn(),
         findUnique: jest.fn(),
@@ -225,6 +229,62 @@ describe('AccountRequestsService', () => {
         AccountAlreadyExistsException,
       );
       expect(tx.user.create).not.toHaveBeenCalled();
+    });
+
+    it('throws AccountCapacityReachedException when the client-account cap is already reached, without creating the User', async () => {
+      prisma.accountOpeningRequest.findUnique.mockResolvedValue(buildRequest());
+      prisma.user.findUnique.mockResolvedValue(null);
+      tx.user.count.mockResolvedValue(MAX_CLIENT_ACCOUNTS);
+
+      await expect(service.approve('request-1')).rejects.toBeInstanceOf(
+        AccountCapacityReachedException,
+      );
+      expect(tx.user.create).not.toHaveBeenCalled();
+      expect(tx.accountOpeningRequest.update).not.toHaveBeenCalled();
+    });
+
+    it('still approves when exactly one place remains (count = max - 1)', async () => {
+      prisma.accountOpeningRequest.findUnique.mockResolvedValue(buildRequest());
+      prisma.user.findUnique.mockResolvedValue(null);
+      tx.user.count.mockResolvedValue(MAX_CLIENT_ACCOUNTS - 1);
+      jest
+        .spyOn(passwordUtil, 'generateTemporaryPassword')
+        .mockReturnValue('temp-pass-123');
+      jest
+        .spyOn(passwordUtil, 'hashPassword')
+        .mockResolvedValue('hashed-temp-pass');
+      tx.user.create.mockResolvedValue(buildUser({ id: 'user-42' }));
+      tx.accountOpeningRequest.update.mockResolvedValue(
+        buildRequest({ status: 'APPROVED', userId: 'user-42' }),
+      );
+
+      await expect(service.approve('request-1')).resolves.toBeDefined();
+      expect(tx.user.create).toHaveBeenCalled();
+    });
+  });
+
+  describe('getCapacity', () => {
+    it('reports used/max/remaining based on the current CLIENT count', async () => {
+      prisma.user.count.mockResolvedValue(4998);
+
+      const result = await service.getCapacity();
+
+      expect(prisma.user.count).toHaveBeenCalledWith({
+        where: { role: 'CLIENT' },
+      });
+      expect(result).toEqual({
+        used: 4998,
+        max: MAX_CLIENT_ACCOUNTS,
+        remaining: 2,
+      });
+    });
+
+    it('never reports negative remaining places if the count somehow exceeds the cap', async () => {
+      prisma.user.count.mockResolvedValue(MAX_CLIENT_ACCOUNTS + 1);
+
+      const result = await service.getCapacity();
+
+      expect(result.remaining).toBe(0);
     });
   });
 

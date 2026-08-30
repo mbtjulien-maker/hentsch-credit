@@ -5,6 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { SESSION_DURATION_SECONDS } from './auth.constants';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { TwoFactorService } from './two-factor.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
@@ -20,7 +21,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, TwoFactorService, JwtStrategy],
   exports: [AuthService],
 })
 export class AuthModule {}

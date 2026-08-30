@@ -4,6 +4,8 @@ import { AccountRequestForm } from "@/components/marketing/account-request-form"
 
 export const metadata = {
   title: "Demander l'ouverture d'un compte · Hentsch Credit",
+  description:
+    "Demandez l'ouverture d'un compte Hentsch Credit, plateforme de crédit crypto-collatéralisé réservée à une clientèle restreinte, sur invitation.",
 };
 
 // Page dédiée à la demande d'ouverture de compte — contenu déplacé depuis la page

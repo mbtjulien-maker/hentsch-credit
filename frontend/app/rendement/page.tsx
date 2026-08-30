@@ -4,6 +4,8 @@ import { YieldPerformanceHistory } from "@/components/marketing/yield-performanc
 
 export const metadata = {
   title: "Rendement du gage · Hentsch Credit",
+  description:
+    "Comment l'or, l'argent et l'ETH déposés en garantie remboursent automatiquement jusqu'à 60% de votre crédit, et le risque de liquidation en cas de forte baisse.",
 };
 
 // Page dédiée au mécanisme de rendement, contenu déplacé depuis la colonne droite du

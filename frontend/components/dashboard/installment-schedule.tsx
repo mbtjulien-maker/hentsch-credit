@@ -1,8 +1,7 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { Info } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { formatUsd } from "@/lib/format";
 import { computeAmortizedPayment } from "@/lib/amortization";
@@ -70,17 +69,13 @@ export function InstallmentSchedule({
   creditIssued: number;
   annualInterestRatePct: number | null;
   // Calculé par le calculateur (cf. useEstimatedYield, moyenne réelle sur 12 mois des
-  // actifs générateurs de rendement) — pré-rempli automatiquement, jamais laissé à zéro
-  // en attendant que le client devine un chiffre. Reste modifiable ci-dessous.
+  // actifs générateurs de rendement) — c'est l'algorithme qui détermine cette hypothèse,
+  // jamais le client : affiché en lecture seule, pas un champ de formulaire (cf. décision
+  // produit du 30 août 2026, revenant sur le champ modifiable introduit précédemment).
   estimatedYieldPct: number | null;
 }) {
-  const yieldInputId = useId();
   const [durationMonths, setDurationMonths] = useState<(typeof DURATION_OPTIONS)[number]>(12);
-  // null = pas encore modifié par le client : affiche alors la valeur calculée
-  // automatiquement (cf. estimatedYieldPct), dérivée directement au rendu plutôt que
-  // synchronisée via un effet.
-  const [manualYieldPct, setManualYieldPct] = useState<string | null>(null);
-  const yieldPct = manualYieldPct ?? (estimatedYieldPct !== null ? estimatedYieldPct.toFixed(1) : "0");
+  const yieldPct = estimatedYieldPct !== null ? estimatedYieldPct.toFixed(1) : "0";
 
   const schedule = useMemo(
     () =>
@@ -102,7 +97,7 @@ export function InstallmentSchedule({
         Calculée automatiquement à partir du rendement réel estimé : intérêts générés, mensualité
         à votre charge et date du premier remboursement. Le rendement réduit la mensualité,
         plafonné à {YIELD_REPAYMENT_CAP_PCT}% (le même plafond que le remboursement automatique
-        réel) ; ajustable ci-dessous si vous visez une hypothèse différente.
+        réel).
       </p>
 
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -126,20 +121,13 @@ export function InstallmentSchedule({
           </div>
         </div>
         <div className="grid gap-1.5">
-          <Label htmlFor={yieldInputId} className="text-xs">
-            Rendement annuel estimé (%)
-          </Label>
-          <Input
-            id={yieldInputId}
-            inputMode="decimal"
-            placeholder="0"
-            value={yieldPct}
-            onChange={(e) => setManualYieldPct(e.target.value)}
-            className="h-8 text-sm"
-          />
+          <Label className="text-xs">Rendement annuel estimé (%)</Label>
+          <div className="flex h-8 items-center rounded-md border border-input bg-background px-3 text-sm font-medium tabular-nums">
+            {yieldPct}%
+          </div>
           <p className="text-[11px] text-muted-foreground">
             {estimatedYieldPct !== null
-              ? "Calculé à partir de la performance réelle sur 12 mois, modifiable."
+              ? "Calculé automatiquement à partir de la performance réelle sur 12 mois."
               : "Calcul en cours…"}
           </p>
         </div>

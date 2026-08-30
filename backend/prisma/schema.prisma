@@ -1,0 +1,589 @@
+// Prisma schema — Plateforme Bancaire Crypto-Crédit
+// Voir CLAUDE.md chapitre 4 pour le modèle de données de référence.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// ENUMS
+// ---------------------------------------------------------------------------
+
+enum KycStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+// CLIENT = usage courant du compte (dashboard, dépôt, crédit). ADMIN = accès aux routes
+// back-office (validation des demandes de crédit, déclenchement manuel des jobs) — cf.
+// AdminGuard. Pas encore adossé à une vraie session (aucun login n'existe dans l'app,
+// cf. TODO(Step 5 - Auth) sur UsersController) : sert de base au contrôle d'accès par
+// rôle, à brancher sur une authentification réelle plus tard.
+enum UserRole {
+  CLIENT
+  ADMIN
+}
+
+enum Chain {
+  ETHEREUM
+  POLYGON
+  ARBITRUM
+  TRON
+  SOLANA
+}
+
+// Actifs acceptés en garantie. USDS/DAI/USDE/PYUSD/USDT/USDC sont des stablecoins
+// indexés ~1 USD (valorisés 1:1 dans le ledger). PAXG/XAUT/KAG sont indexés sur l'once
+// d'or ou d'argent (cf. PRECIOUS_METAL_CURRENCIES), DEURO sur l'euro, et ETH/SHIB sont
+// des cryptomonnaies natives (aucun ancrage) : leur valeur en USD est recalculée au prix
+// spot en direct au moment du dépôt (cf. MarketDataService), pas fixée à 1:1.
+// USDS/USDE/PYUSD/PAXG restent définis pour ne pas invalider les données existantes
+// (comptes de démo, positions déjà créées) mais ne sont plus proposés au choix depuis
+// l'écran de dépôt/retrait (cf. frontend lib/format.ts — CURRENCY_GROUPS ne montre plus
+// que ETH/DAI/USDC/DEURO/USDT/XAUT/KAG/SHIB, tous sur Ethereum).
+// XPT/XPD/XCU/WTI — métaux industriels et matières premières tokenisés (Platine,
+// Palladium, Cuivre, Pétrole synthétique), issus de la feuille de route "Stratégie
+// d'Investissement & Rendements RWA Métaux" : valorisés au cours spot en direct comme
+// les métaux précieux (cf. INDUSTRIAL_RWA_CURRENCIES), éligibles au même mécanisme de
+// remboursement automatique par plus-value (cf. YIELD_ELIGIBLE_CURRENCIES), et associés
+// en plus à un objectif de rendement indicatif propre à la stratégie de trésorerie de la
+// banque sur ces actifs (cf. INDICATIVE_TARGET_APY_PCT) — un objectif affiché au client à
+// titre indicatif, jamais une garantie ni un taux appliqué au calcul du crédit.
+enum AcceptedCurrency {
+  USDS
+  DAI
+  USDE
+  PYUSD
+  PAXG
+  XAUT
+  USDT
+  USDC
+  DEURO
+  ETH
+  SHIB
+  KAG
+  XPT
+  XPD
+  XCU
+  WTI
+}
+
+enum CreditPositionStatus {
+  ACTIVE
+  CLOSED
+  // Dépréciation sévère du gage constatée par LiquidationService (cf.
+  // LIQUIDATION_TRIGGER_DEPRECIATION_PCT) — état terminal comme CLOSED (jamais réactivé),
+  // mais distinct : le crédit déjà utilisé sur cette position n'est PAS remboursé, il
+  // devient une exposition non garantie pour la banque (le gage qui la couvrait a perdu
+  // l'essentiel de sa valeur). Jamais déclenché rétroactivement sur une position déjà
+  // CLOSED.
+  LIQUIDATED
+}
+
+// Devise de la ligne de crédit, choisie par le client au verrouillage (CLAUDE.md §2 —
+// structure de taux). Le ledger interne reste en USD ; EUR n'affecte que le taux
+// appliqué et l'affichage (conversion au cours en direct, cf. MarketDataService).
+enum AccountCurrency {
+  USD
+  EUR
+}
+
+enum CardStatus {
+  PENDING
+  ACTIVE
+  BLOCKED
+  CLOSED
+}
+
+enum TransactionType {
+  DEPOSIT
+  COLLATERAL_LOCK
+  CREDIT_ISSUED
+  CARD_PAYMENT
+  REPAYMENT
+  WITHDRAWAL
+  ORIGINATION_FEE
+  INTEREST_PAYMENT
+  // Recharge du solde disponible par carte bancaire (Mollie) — distinct de DEPOSIT
+  // (dépôt crypto on-chain) : pas de `currency`/`chain`/`tokenAmount`, référence
+  // `referenceTx` = identifiant de paiement Mollie.
+  CARD_TOPUP
+  // Remboursement automatique généré par la plus-value réelle du gage (PAXG/XAUT),
+  // appliqué périodiquement par CollateralYieldService — distinct de REPAYMENT (geste
+  // explicite du client) pour rester auditable séparément.
+  YIELD_REPAYMENT
+  // Dépréciation sévère du gage constatée par LiquidationService : le montant du gage
+  // (au prix d'entrée) est retiré du bilan (lockedCollateral/grantedCredit), sans effet
+  // sur le crédit déjà utilisé (cf. CreditPositionStatus.LIQUIDATED).
+  LIQUIDATION
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum ClientType {
+  PARTICULIER
+  INDEPENDANT
+  ENTREPRISE
+}
+
+enum AddressLabel {
+  DOMICILE
+  FISCALE
+  POSTALE
+  PROFESSIONNELLE
+}
+
+// ---------------------------------------------------------------------------
+// MODELS
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  kycStatus    KycStatus @default(PENDING)
+  role         UserRole  @default(CLIENT)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  wallets               Wallet[]
+  ledgerBalance         LedgerBalance?
+  creditPositions       CreditPosition[]
+  cards                 Card[]
+  transactions          Transaction[]
+  creditRequests        CreditRequest[]
+  // Renseigné uniquement si ce compte a été créé via une demande d'ouverture approuvée
+  // (cf. AccountOpeningRequest) — traçabilité, jamais réutilisé pour recalculer quoi que
+  // ce soit. Les comptes de seed n'en ont pas.
+  accountOpeningRequest AccountOpeningRequest?
+
+  // Fiche client back-office (cf. AdminClientsModule) — "noyau essentiel" de la fiche
+  // client 360 admin, en base réelle plutôt que fictive (lib/admin-mock-data.ts côté
+  // frontend). Tout nullable/optionnel : un User fraîchement créé (cf.
+  // AccountRequestsService.approve) n'a aucune de ces informations tant qu'un client ou
+  // un admin ne les a pas complétées.
+  clientProfile     ClientProfile?
+  addresses         Address[]
+  employment        Employment?
+  financialSnapshot FinancialSnapshot?
+  notes             ClientNote[]       @relation("ClientNotes")
+  authoredNotes     ClientNote[]       @relation("AuthoredNotes")
+
+  // Wallet interne "personnel" de suivi (cf. ClientManagedWallet ci-dessous) — pas une
+  // adresse blockchain, une identité de compte stable côté back-office.
+  managedWallet ClientManagedWallet?
+
+  @@map("users")
+}
+
+enum AccountRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+// Formulaire public "Demander l'ouverture d'un compte / être contacté" (cf. app/page.tsx)
+// — aucune auto-inscription : le compte (User) n'est créé qu'à l'approbation back-office
+// (cf. AccountRequestsService.approve), avec un mot de passe temporaire communiqué au
+// client hors-bande (pas de service d'e-mail branché à ce stade).
+model AccountOpeningRequest {
+  id         String               @id @default(uuid())
+  firstName  String
+  lastName   String
+  email      String
+  phone      String?
+  message    String?
+  status     AccountRequestStatus @default(PENDING)
+  createdAt  DateTime             @default(now())
+  reviewedAt DateTime?
+
+  // Renseigné uniquement une fois APPROVED (le User créé à l'approbation).
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id])
+
+  @@index([status])
+  @@index([email])
+  @@map("account_opening_requests")
+}
+
+// Adresse de dépôt on-chain générée via le custodian (Circle / DFNS / Fireblocks)
+model Wallet {
+  id        String           @id @default(uuid())
+  userId    String
+  chain     Chain
+  address   String
+  currency  AcceptedCurrency
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Une même adresse EVM reçoit couramment plusieurs stablecoins (ex: USDT et USDC sur la
+  // même adresse Ethereum) : l'unicité porte donc sur le triplet, pas sur (chain, address) seul.
+  @@unique([chain, address, currency], name: "chainAddressCurrency")
+  @@index([userId])
+  @@map("wallets")
+}
+
+// Adresse de dépôt "pool" gérée par la banque — PAS propre à un client (contrairement à
+// Wallet ci-dessus). Une seule adresse par (chain, currency), administrée manuellement
+// côté infrastructure (pas de génération automatique). Utilisée par le flux
+// "déclaration d'intention de dépôt" (cf. DepositIntentsModule) : le client la consulte
+// juste avant d'envoyer ses fonds, jamais affichée par défaut. Comme plusieurs clients
+// partagent la même adresse, l'attribution du dépôt au bon client ne peut pas reposer sur
+// l'adresse seule (contrairement au webhook blockchain existant pour les Wallet
+// individuels) — elle passe par une déclaration du client puis une validation manuelle
+// d'un admin (cf. DepositIntentsService.confirm).
+model ManagedDepositAddress {
+  id        String           @id @default(uuid())
+  chain     Chain
+  currency  AcceptedCurrency
+  address   String
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@unique([chain, currency])
+  @@map("managed_deposit_addresses")
+}
+
+// Wallet "personnel" d'un client, adossé à son compte mais géré par la banque (le
+// "gestionnaire de dépôt d'actifs") — PAS une adresse blockchain distincte : les dépôts
+// sur les actifs mutualisés (USDT/USDC/XAUT/DEURO, cf. ManagedDepositAddress) continuent
+// de transiter par l'adresse unique partagée. Cette entité sert uniquement de référence
+// interne stable (façon numéro de compte) pour le suivi/reporting du gestionnaire —
+// distincte de l'UUID technique du User. Provisionnée à la volée (cf.
+// ClientWalletsService.getOrCreate), au premier accès au profil ou à la première
+// déclaration de dépôt : "chaque client en aura un" au fil de l'usage, pas rétroactivement.
+model ClientManagedWallet {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  reference String   @unique
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("client_managed_wallets")
+}
+
+// Registre maître (Master Ledger) : un seul solde consolidé par utilisateur.
+// Toute mutation doit passer par le LedgerService sous verrou distribué Redis.
+model LedgerBalance {
+  id               String   @id @default(uuid())
+  userId           String   @unique
+  availableBalance Decimal  @default(0) @db.Decimal(18, 6)
+  lockedCollateral Decimal  @default(0) @db.Decimal(18, 6)
+  grantedCredit    Decimal  @default(0) @db.Decimal(18, 6)
+  usedCredit       Decimal  @default(0) @db.Decimal(18, 6)
+  updatedAt        DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("ledger_balances")
+}
+
+// Historique des mises en gage / octrois de crédit (une ligne par cycle de gage).
+// Porte aussi la structure de taux figée au moment du verrouillage : un changement
+// ultérieur du taux de référence ou de la prime de risque n'affecte pas les positions
+// déjà ouvertes (même principe que CREDIT_RATIO — pas de recalcul rétroactif).
+model CreditPosition {
+  id               String               @id @default(uuid())
+  userId           String
+  collateralAmount Decimal              @db.Decimal(18, 6)
+  creditIssued     Decimal              @db.Decimal(18, 6)
+  status           CreditPositionStatus @default(ACTIVE)
+
+  // Devise choisie par le client pour cette ligne de crédit (montant/taux affichés
+  // dans cette devise) ; le ledger reste comptabilisé en USD (`creditIssued`).
+  currency               AccountCurrency @default(USD)
+  // Cours EUR/USD appliqué au verrouillage (1.0 si USD) — figé, pas recalculé plus tard.
+  exchangeRateAtLock     Decimal         @default(1) @db.Decimal(18, 8)
+  // Crédit émis exprimé dans `currency` (= creditIssued si USD, converti au cours
+  // figé ci-dessus si EUR) — pour l'affichage, jamais pour la comptabilité du ledger.
+  creditIssuedInCurrency Decimal         @default(0) @db.Decimal(18, 6)
+
+  // Structure de taux figée à l'ouverture (SOFR/EURIBOR + prime de risque, cf. §2).
+  // Défaut 0 réservé aux positions antérieures à cette fonctionnalité (aucun intérêt
+  // ni frais applicable rétroactivement) ; toute nouvelle position fournit ces valeurs explicitement.
+  interestRatePct      Decimal  @default(0) @db.Decimal(5, 2)
+  originationFeePct    Decimal  @default(0) @db.Decimal(5, 2)
+  originationFeeAmount Decimal  @default(0) @db.Decimal(18, 6)
+  custodyFeePct        Decimal  @default(0) @db.Decimal(5, 2)
+  termMonths           Int      @default(12)
+  maturityDate         DateTime @default(now())
+
+  // Actif réellement mis en gage pour cette position (capturé depuis CreditRequest au
+  // moment du verrouillage) — nullable : les positions antérieures à cette fonctionnalité
+  // n'ont pas cette information et n'accrueront jamais de rendement rétroactivement (même
+  // principe de non-rétroactivité que le taux de gage, cf. §2A).
+  collateralCurrency             AcceptedCurrency?
+  // Quantité de tokens implicite (collateralAmount USD / prix spot au verrouillage) — ne
+  // sert qu'au calcul de plus-value ci-dessous, jamais renseignée pour les stablecoins
+  // (toujours 1:1, aucune plus-value possible).
+  collateralTokenAmount          Decimal?          @db.Decimal(28, 8)
+  // Prix spot (USD) au moment du verrouillage — le "prix d'entrée" servant de référence
+  // à la plus-value. Uniquement pour PAXG/XAUT (cf. GOLD_CURRENCIES).
+  collateralEntryPriceUsd        Decimal?          @db.Decimal(18, 8)
+  // Cliquet (high-water mark) du prix déjà "encaissé" via un remboursement automatique
+  // par le rendement — ne recule jamais, même si le cours baisse ensuite : une plus-value
+  // déjà appliquée au crédit utilisé n'est jamais reprise. Initialisé = collateralEntryPriceUsd.
+  collateralYieldAppliedPriceUsd Decimal?          @db.Decimal(18, 8)
+  // Cumul du crédit déjà remboursé par le rendement du gage sur CETTE position (cf.
+  // YIELD_REPAYMENT_CAP_PCT) — le remboursement automatique s'arrête dès que ce cumul
+  // atteint 60% de `creditIssued` ; le reste doit être remboursé manuellement (apport
+  // personnel, cf. CreditEngineService.repayCreditAndUnlockCollateral).
+  yieldRepaidAmount              Decimal           @default(0) @db.Decimal(18, 6)
+  // Alerte précoce de LiquidationService (cf. LIQUIDATION_WARNING_DEPRECIATION_PCT) : le
+  // gage a perdu une part significative de sa valeur d'entrée sans avoir encore atteint le
+  // seuil de déclenchement (LIQUIDATION_TRIGGER_DEPRECIATION_PCT). Purement informatif —
+  // ne bloque rien — et repasse à false si le cours se redresse avant le seuil critique.
+  liquidationWarning             Boolean           @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  creditRequest CreditRequest?
+
+  @@index([userId])
+  @@index([status])
+  @@index([collateralCurrency])
+  @@map("credit_positions")
+}
+
+enum CreditRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  // Le dépôt attendu est arrivé et le crédit a été émis automatiquement pour ce montant.
+  FULFILLED
+}
+
+// Demande de crédit du client (CLAUDE.md — accès au crédit régulé par une demande) :
+// le client indique le gage qu'il souhaite constituer, un tiers valide la demande, puis
+// seulement à ce moment le client obtient une adresse de dépôt dédiée à cette demande.
+// Le crédit n'est jamais émis manuellement : dès qu'un dépôt (crypto ou carte) porte le
+// solde disponible au niveau demandé, il est émis automatiquement (cf. CreditRequestsService.tryAutoFulfill),
+// remplaçant l'ancien verrouillage instantané en self-service.
+model CreditRequest {
+  id               String              @id @default(uuid())
+  userId           String
+  collateralAmount Decimal             @db.Decimal(18, 6)
+  currency         AccountCurrency     @default(USD)
+  status           CreditRequestStatus @default(PENDING)
+  createdAt        DateTime            @default(now())
+  validatedAt      DateTime?
+  fulfilledAt      DateTime?
+
+  // Actif choisi par le client au moment de générer l'adresse de dépôt dédiée
+  // (generateDepositAddress) — fige l'actif de cette demande : un appel ultérieur avec un
+  // actif différent est refusé (CollateralCurrencyMismatchException) plutôt que d'accepter
+  // silencieusement plusieurs actifs pour une même demande. Propagé à CreditPosition lors
+  // de l'émission automatique du crédit (cf. CreditRequestsService.tryAutoFulfill).
+  collateralCurrency AcceptedCurrency?
+
+  // Position de crédit résultant de l'auto-fulfillment (renseignée uniquement une fois
+  // FULFILLED) — traçabilité, jamais réutilisée pour recalculer quoi que ce soit.
+  creditPositionId String?         @unique
+  creditPosition   CreditPosition? @relation(fields: [creditPositionId], references: [id])
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("credit_requests")
+}
+
+// Carte Visa/Mastercard émise via Stripe Issuing / Marqeta
+model Card {
+  id             String     @id @default(uuid())
+  userId         String
+  externalCardId String     @unique
+  status         CardStatus @default(PENDING)
+  creditLimit    Decimal    @db.Decimal(18, 6)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("cards")
+}
+
+// Journal append-only de tous les mouvements financiers (source de vérité pour l'audit).
+model Transaction {
+  id                 String            @id @default(uuid())
+  userId             String
+  type               TransactionType
+  // Montant en USD, tel qu'appliqué au ledger (après conversion au prix spot pour PAXG/XAUT).
+  amount             Decimal           @db.Decimal(18, 6)
+  status             TransactionStatus @default(PENDING)
+  // Renseignés pour les DEPOSIT : l'actif on-chain réellement envoyé et sa quantité brute,
+  // pour l'audit — distincts de `amount` (USD) dès qu'un actif n'est pas indexé 1:1 (or).
+  currency           AcceptedCurrency?
+  tokenAmount        Decimal?          @db.Decimal(28, 8)
+  // Renseignés pour les WITHDRAWAL (réseau + adresse externe destinataire) ET pour les
+  // DEPOSIT déclarés via le flux d'adresse "pool" (réseau + adresse ManagedDepositAddress
+  // affichée au client au moment de la déclaration, cf. DepositIntentsService).
+  chain              Chain?
+  destinationAddress String?
+  // Idempotence des webhooks blockchain (Alchemy/QuickNode redélivrent parfois le même
+  // événement) : un hash de tx on-chain ne doit créditer le solde qu'une seule fois.
+  referenceTx        String?           @unique
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type])
+  @@index([status])
+  @@map("transactions")
+}
+
+// ---------------------------------------------------------------------------
+// FICHE CLIENT BACK-OFFICE — "noyau essentiel" (cf. AdminClientsModule)
+// ---------------------------------------------------------------------------
+
+// Profil KYC/personnel du client — distinct de User (identité d'authentification only :
+// email + mot de passe). Nullable par défaut : AccountRequestsService.approve ne crée
+// qu'un User nu, ce profil se complète ensuite (client ou admin).
+model ClientProfile {
+  id            String     @id @default(uuid())
+  userId        String     @unique
+  firstName     String?
+  lastName      String?
+  dateOfBirth   DateTime?
+  placeOfBirth  String?
+  nationality   String?
+  maritalStatus String?
+  dependents    Int?
+  phone         String?
+  clientType    ClientType @default(PARTICULIER)
+  updatedAt     DateTime   @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("client_profiles")
+}
+
+// Une adresse par label (domicile/fiscale/postale/professionnelle) — au plus une ligne
+// par (userId, label), mise à jour en place plutôt que ré-empilée.
+model Address {
+  id            String       @id @default(uuid())
+  userId        String
+  label         AddressLabel
+  street        String
+  city          String
+  postalCode    String
+  country       String
+  residenceType String?
+  since         String?
+  verified      Boolean      @default(false)
+  verifiedAt    DateTime?
+  updatedAt     DateTime     @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, label])
+  @@index([userId])
+  @@map("addresses")
+}
+
+model Employment {
+  id            String   @id @default(uuid())
+  userId        String   @unique
+  isIndependent Boolean  @default(false)
+  status        String?
+  employer      String?
+  sector        String?
+  role          String?
+  seniority     String?
+  annualIncome  Decimal? @db.Decimal(18, 2)
+  monthlyIncome Decimal? @db.Decimal(18, 2)
+  contractType  String?
+  verified      Boolean  @default(false)
+  // Champs spécifiques à un client indépendant (isIndependent = true) — nuls sinon.
+  activity      String?
+  turnover      Decimal? @db.Decimal(18, 2)
+  netResult     Decimal? @db.Decimal(18, 2)
+  updatedAt     DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("employments")
+}
+
+// Déclaration financière — revenus/charges/patrimoine/passifs stockés en JSON structuré
+// plutôt qu'en une vingtaine de colonnes Decimal séparées : ce sont des blocs
+// déclaratifs toujours lus/écrits ensemble (jamais interrogés champ par champ en base),
+// le typage réel vit côté DTO (cf. admin-clients/dto/update-financials.dto.ts).
+model FinancialSnapshot {
+  id          String   @id @default(uuid())
+  userId      String   @unique
+  income      Json?
+  expenses    Json?
+  assets      Json?
+  liabilities Json?
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("financial_snapshots")
+}
+
+// Note interne back-office sur un dossier client — jamais exposée côté client (cf.
+// AdminClientsController, entièrement réservé au rôle ADMIN).
+model ClientNote {
+  id           String   @id @default(uuid())
+  userId       String
+  authorUserId String
+  content      String
+  createdAt    DateTime @default(now())
+
+  user   User @relation("ClientNotes", fields: [userId], references: [id], onDelete: Cascade)
+  author User @relation("AuthoredNotes", fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("client_notes")
+}
+
+// Une ligne par jour de simulation de la stratégie de trésorerie décrite dans la feuille
+// de route "Stratégie d'Investissement & Rendements RWA Métaux" (cf. TreasuryBotService,
+// components/marketing/rwa-strategy-section.tsx) — SIMULATION UNIQUEMENT : aucun ordre
+// n'est passé, aucun fonds réel ne bouge, aucune connexion à un exchange ou wallet réel.
+// Le rendement journalier de chaque pilier est calculé à partir de vraies données de
+// marché (variation moyenne du panier de métaux industriels/matières premières
+// tokenisés), pas d'un tirage aléatoire, mais reste un calcul de démonstration : cette
+// table n'a aucun effet sur le ledger, le crédit ou tout compte client.
+model TreasuryBotRun {
+  id                 String   @id @default(uuid())
+  // Tronqué au jour (UTC) — une ligne par jour, réécrite si le job est redéclenché le même
+  // jour (cf. upsert dans TreasuryBotService), jamais dupliquée.
+  runDate            DateTime @db.Date
+  pillarAReturnPct   Decimal  @db.Decimal(9, 6)
+  pillarBReturnPct   Decimal  @db.Decimal(9, 6)
+  pillarCReturnPct   Decimal  @db.Decimal(9, 6)
+  // Moyenne simple des 3 piliers (pondération égale, choix documenté dans le service).
+  blendedReturnPct   Decimal  @db.Decimal(9, 6)
+  // Variation moyenne du panier d'actifs RWA industriels ce jour-là — le signal de marché
+  // réel dont dérive le rendement de chaque pilier (cf. PILLAR_MARKET_SENSITIVITY).
+  marketSignalPct    Decimal  @db.Decimal(9, 6)
+  notionalCapitalUsd Decimal  @db.Decimal(18, 2)
+  dailyPnlUsd        Decimal  @db.Decimal(18, 2)
+  // Capital simulé cumulé (composé jour après jour depuis NOTIONAL_CAPITAL_USD) — c'est la
+  // courbe de performance affichée sur /admin/algorithme.
+  cumulativeNavUsd   Decimal  @db.Decimal(18, 2)
+  createdAt          DateTime @default(now())
+
+  @@unique([runDate])
+  @@map("treasury_bot_runs")
+}

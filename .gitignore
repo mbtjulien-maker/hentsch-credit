@@ -1,0 +1,22 @@
+# Root-level .gitignore — chaque sous-projet (backend/, frontend/) a aussi le sien, qui
+# reste prioritaire pour son propre contenu. Celui-ci couvre ce qui peut atterrir n'importe
+# où à la racine (OS, éditeurs, secrets échappés par erreur), en filet de sécurité.
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+
+# Secrets — au cas où un .env se retrouverait par erreur à la racine du repo plutôt que
+# dans backend/ ou frontend/ (qui l'excluent déjà chacun explicitement).
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs
+*.log
+npm-debug.log*

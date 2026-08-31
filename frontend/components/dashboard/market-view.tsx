@@ -12,7 +12,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Sparkline } from "@/components/dashboard/sparkline";
 import { api, ApiError, type MarketOverviewEntry } from "@/lib/api";
 import { formatCompactUsd, formatPercent, formatPrice, formatTime } from "@/lib/format";
 
@@ -35,29 +34,18 @@ function ChangeBadge({ pct }: { pct: number | null }) {
   );
 }
 
-// Attribution de la source de données (obligatoire pour l'usage de l'API publique
-// CoinGecko) — logo en SVG pur (inline, aucune dépendance à une image externe),
-// couleur de marque CoinGecko (#8dc63f), lien vers coingecko.com.
-function CoinGeckoAttribution() {
+// Attribution de la source de données (obligatoire, cf. conditions d'usage de l'API
+// gratuite CoinMarketCap) — texte seul avec lien, sans logo imposé : plus sobre que le
+// badge logo obligatoire de l'ancienne intégration CoinGecko (décision produit).
+function DataProviderAttribution() {
   return (
     <a
-      href="https://www.coingecko.com"
+      href="https://coinmarketcap.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white px-2.5 py-1 text-xs font-medium text-slate-600 shadow-sm transition-colors hover:border-slate-300 hover:text-slate-900 dark:border-border dark:bg-transparent dark:text-muted-foreground dark:shadow-none dark:hover:border-primary/30 dark:hover:text-foreground"
+      className="text-xs font-medium text-muted-foreground/80 underline underline-offset-2 hover:text-foreground"
     >
-      <svg viewBox="0 0 24 24" className="size-3.5" aria-hidden>
-        <circle cx="12" cy="12" r="11" fill="#8dc63f" />
-        <circle cx="8.7" cy="10.2" r="1.5" fill="#0d1a0a" />
-        <path
-          d="M6 15c1.9 1.6 3.9 2.1 6 2.1s4.1-.5 6-2.1"
-          stroke="#0d1a0a"
-          strokeWidth="1.4"
-          fill="none"
-          strokeLinecap="round"
-        />
-      </svg>
-      Données via CoinGecko
+      Données fournies par CoinMarketCap
     </a>
   );
 }
@@ -105,7 +93,7 @@ export function MarketView() {
           </CardDescription>
         </div>
         <div className="flex flex-col items-end gap-1.5">
-          <CoinGeckoAttribution />
+          <DataProviderAttribution />
           {refreshedAt && (
             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <RefreshCw className="size-3" />
@@ -119,23 +107,20 @@ export function MarketView() {
         {!error && !entries && <p className="text-sm text-muted-foreground">Chargement…</p>}
         {entries && (
           <div className="overflow-x-auto">
-            <Table className="min-w-[720px]">
+            <Table className="min-w-[560px]">
               <TableHeader>
                 <TableRow>
                   <TableHead>Actif</TableHead>
                   <TableHead className="text-right">Prix</TableHead>
                   <TableHead className="text-right">Var. 24h</TableHead>
-                  <TableHead className="text-right">Plus haut 24h</TableHead>
-                  <TableHead className="text-right">Plus bas 24h</TableHead>
                   <TableHead className="text-right">Volume 24h</TableHead>
                   <TableHead className="text-right">Cap. marché</TableHead>
-                  <TableHead className="text-right">7 jours</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {accepted.length > 0 && (
                   <TableRow key="section-accepted" className="hover:bg-transparent">
-                    <TableCell colSpan={8} className="py-1.5 text-xs font-medium text-muted-foreground">
+                    <TableCell colSpan={5} className="py-1.5 text-xs font-medium text-muted-foreground">
                       <span className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
                         Acceptés en garantie
                         <span className="inline-flex items-center gap-1 font-normal normal-case text-muted-foreground/80">
@@ -154,7 +139,7 @@ export function MarketView() {
 
                 {others.length > 0 && (
                   <TableRow key="section-others" className="hover:bg-transparent">
-                    <TableCell colSpan={8} className="py-1.5 text-xs font-medium text-muted-foreground">
+                    <TableCell colSpan={5} className="py-1.5 text-xs font-medium text-muted-foreground">
                       Autres cryptos (information seulement)
                     </TableCell>
                   </TableRow>
@@ -221,21 +206,10 @@ function MarketRow({ entry }: { entry: MarketOverviewEntry }) {
         <ChangeBadge pct={entry.change24hPct} />
       </TableCell>
       <TableCell className="text-right tabular-nums text-muted-foreground">
-        {entry.high24h ? formatPrice(entry.high24h) : "—"}
-      </TableCell>
-      <TableCell className="text-right tabular-nums text-muted-foreground">
-        {entry.low24h ? formatPrice(entry.low24h) : "—"}
-      </TableCell>
-      <TableCell className="text-right tabular-nums text-muted-foreground">
         {formatCompactUsd(entry.volume24h)}
       </TableCell>
       <TableCell className="text-right tabular-nums text-muted-foreground">
         {formatCompactUsd(entry.marketCap)}
-      </TableCell>
-      <TableCell className="text-right">
-        <div className="flex justify-end">
-          <Sparkline data={entry.sparkline7d} />
-        </div>
       </TableCell>
     </TableRow>
   );

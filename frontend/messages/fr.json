@@ -1,0 +1,1007 @@
+{
+  "Common": {
+    "backToHome": "Retour à l'accueil",
+    "lastUpdated": "Dernière mise à jour :",
+    "legalTranslationDisclaimer": "Cette page a été traduite pour votre confort. En cas de divergence d'interprétation, seule la version française fait foi.",
+    "learnMore": "En savoir plus"
+  },
+  "Nav": {
+    "tagline": "Crédit crypto-collatéralisé",
+    "links": {
+      "commentCaMarche": "Comment ça marche",
+      "rendement": "Rendement",
+      "strategieRwa": "Stratégie RWA",
+      "marche": "Marché",
+      "tarifs": "Tarifs"
+    },
+    "connexionShort": "Connexion",
+    "connexionLong": "Accéder à mon compte"
+  },
+  "Footer": {
+    "columns": {
+      "platform": {
+        "title": "La plateforme",
+        "howItWorks": "Comment ça marche",
+        "yield": "Rendement",
+        "rwaStrategy": "Stratégie RWA",
+        "market": "Marché",
+        "pricing": "Tarifs",
+        "requestAccount": "Demander un compte"
+      },
+      "help": {
+        "title": "Aide & Contact",
+        "contact": "Contactez-nous",
+        "faq": "Foire aux questions",
+        "sitemap": "Plan du site",
+        "accessibility": "Accessibilité numérique",
+        "archives": "Archives"
+      },
+      "contractual": {
+        "title": "Documentation contractuelle",
+        "terms": "Conditions générales",
+        "legalNotice": "Mentions légales",
+        "regulation": "Réglementation",
+        "riskManagement": "Gestion des risques et garde des avoirs"
+      },
+      "privacy": {
+        "title": "Données personnelles",
+        "privacyPolicy": "Politique de confidentialité",
+        "cookiePolicy": "Politique de cookies"
+      }
+    },
+    "disclaimer": "{tradingName} est une offre de {legalName}, gestionnaire de fortune indépendant de droit suisse, supervisé par {supervisionBodyName}, organisme de surveillance agréé par l''{supervisoryAuthority}. Accès réservé à une clientèle restreinte, sur invitation. Cette plateforme n'est pas ouverte au public.",
+    "rightsReserved": "Tous droits réservés."
+  },
+  "Home": {
+    "meta": {
+      "title": "Hentsch Credit · Crédit crypto-collatéralisé",
+      "description": "350% du montant mis en gage débloqué en pouvoir d'achat immédiat. Or, argent et ETH génèrent un rendement réel qui rembourse automatiquement une partie de votre crédit."
+    },
+    "badge": "Gestion de fortune régulée · Accès réservé, sur invitation",
+    "titleLine1": "Votre or et votre argent",
+    "titleHighlight": "ne dorment plus",
+    "subtitle": "Déposez-les en garantie, sans jamais les vendre. Débloquez du pouvoir d'achat immédiat, remboursé automatiquement grâce à leur performance.",
+    "statCardCaption": "de pouvoir d'achat, dès le dépôt",
+    "statCardAssets": "Or & argent tokenisés",
+    "ctaLogin": "Accéder à mon compte",
+    "ctaHowItWorks": "Comment ça marche",
+    "ctaNoAccount": "Pas encore de compte ? Demander l'ouverture d'un compte",
+    "discoverTitle": "Découvrir la plateforme",
+    "discoverDescription": "Le détail de chaque mécanisme, sur sa propre page.",
+    "teasers": {
+      "howItWorks": {
+        "title": "Comment ça marche",
+        "description": "Du dépôt de garantie à la dépense, en quatre étapes."
+      },
+      "yield": {
+        "title": "Rendement du gage",
+        "description": "Or, argent et ETH remboursent jusqu'à 60% de votre crédit, automatiquement."
+      },
+      "rwa": {
+        "title": "Stratégie d'investissement RWA",
+        "description": "Métaux industriels tokenisés : notre stratégie de trésorerie, en toute transparence."
+      },
+      "market": {
+        "title": "Le marché en direct",
+        "description": "Les cours des actifs acceptés en garantie, en temps réel."
+      }
+    },
+    "stats": {
+      "ratio": "Ratio de crédit sur le gage déposé",
+      "custodyValue": "Garde via dépositaires agréés",
+      "custodyLabel": "Avoirs déposés auprès d'établissements tiers agréés, jamais en nom propre",
+      "kycValue": "KYC vérifié",
+      "kycLabel": "Accès au crédit réservé aux clients vérifiés"
+    },
+    "closingTitle": "Prêt à débloquer votre pouvoir d'achat ?",
+    "closingDescription": "Plateforme réservée à une clientèle restreinte. Notre équipe étudie chaque dossier avant d'accorder l'accès.",
+    "closingCta": "Demander l'ouverture d'un compte"
+  },
+  "HowItWorks": {
+    "meta": {
+      "title": "Comment ça marche · Hentsch Credit",
+      "description": "De la vérification d'identité à la dépense : les cinq étapes pour obtenir et utiliser un crédit crypto-collatéralisé sur Hentsch Credit."
+    },
+    "eyebrow": "Le parcours client",
+    "title": "Comment ça marche",
+    "description": "De la vérification d'identité à la dépense, en cinq étapes.",
+    "steps": {
+      "kyc": {
+        "title": "1. Vérification d'identité (KYC)",
+        "description": "Sur invitation uniquement : votre identité est vérifiée avant tout accès au dépôt ou au crédit, sans aucune exception."
+      },
+      "deposit": {
+        "title": "2. Déposez votre garantie",
+        "description": "Stablecoins, métaux précieux ou industriels tokenisés, ou ETH, sur le réseau Ethereum."
+      },
+      "credit": {
+        "title": "3. Crédit accordé automatiquement",
+        "description": "350% du montant déposé, débloqué dès que votre demande est validée (moins 2% de frais d'origination, prélevés une fois)."
+      },
+      "spend": {
+        "title": "4. Dépensez sur votre carte",
+        "description": "Utilisez votre ligne de crédit en interne ou directement sur votre carte bancaire."
+      },
+      "repay": {
+        "title": "5. Remboursez pour libérer le gage",
+        "description": "Jusqu'à 60% remboursé automatiquement par le rendement du gage ; le reste par apport personnel. À l'inverse, une forte baisse du gage peut entraîner sa liquidation."
+      }
+    },
+    "feesNote": "Le détail des taux et frais réels vit sur la page <pricing>Tarifs</pricing>, et le détail du remboursement automatique, y compris le risque de liquidation en cas de forte baisse du gage, sur la page <yield>Rendement</yield>.",
+    "detailTitle": "Le détail de chaque étape",
+    "detail": {
+      "kyc": {
+        "title": "1. Vérification d'identité",
+        "body": "L'accès n'est ouvert que sur invitation. Une fois votre demande de compte acceptée, un compte et un mot de passe temporaire vous sont communiqués hors-ligne, puis votre identité est vérifiée avant toute autre opération. Tant que ce statut n'est pas confirmé, la génération d'adresse de dépôt et toute demande de crédit sont techniquement bloquées, pas seulement déconseillées."
+      },
+      "deposit": {
+        "title": "2. Dépôt de la garantie",
+        "body": "Selon l'actif choisi, l'adresse de dépôt communiquée est soit individuelle (créditée automatiquement dès confirmation on-chain), soit mutualisée entre clients (vous déclarez votre dépôt, un conseiller le valide manuellement après réception effective des fonds). Le crédit correspondant est émis automatiquement dès que le solde disponible atteint le montant de la demande, sans intervention manuelle supplémentaire de notre part."
+      },
+      "credit": {
+        "title": "3. Émission du crédit",
+        "body": "350 % du montant déposé, au taux en vigueur au moment du verrouillage : une position déjà verrouillée conserve toujours ce taux, même si le ratio change ensuite pour les nouveaux clients. Les frais d'origination (2 %) sont prélevés une seule fois, sur le crédit émis, pas sur votre gage."
+      },
+      "usage": {
+        "title": "4. Utilisation du crédit",
+        "body": "Le crédit accordé n'est qu'un plafond : aucun intérêt ni remboursement n'est dû tant que vous ne l'utilisez pas réellement (paiement carte, utilisation interne). C'est une ligne de crédit renouvelable, pas un prêt versé en une fois sur votre solde disponible."
+      },
+      "repayment": {
+        "title": "5. Remboursement",
+        "body": "Deux canaux, quotidiens et automatiques pour le premier : la plus-value réelle de votre gage (jusqu'à 60 % du crédit émis), et votre apport personnel pour le reste. Le remboursement intégral libère votre gage, qui redevient retirable. À l'inverse, une dépréciation sévère du gage (50 % depuis son entrée) entraîne sa liquidation, sans effacer le crédit déjà utilisé."
+      }
+    },
+    "faqTitle": "Questions fréquentes",
+    "faq": {
+      "kycRejected": {
+        "question": "Que se passe-t-il si mon KYC est rejeté ?",
+        "answer": "Aucune opération financière n'est possible tant que le statut n'est pas vérifié. En cas de rejet, la société peut refuser, suspendre ou clôturer le compte concerné, notamment en cas de doute sur l'identité déclarée."
+      },
+      "approvalDelay": {
+        "question": "Combien de temps prend l'approbation d'une demande de crédit ?",
+        "answer": "Variable selon la charge du back-office : une demande passe par une file de validation manuelle avant de pouvoir recevoir un dépôt. Le crédit lui-même est émis automatiquement dès réception des fonds, sans délai supplémentaire une fois la demande approuvée."
+      },
+      "earlyWithdrawal": {
+        "question": "Puis-je retirer mon gage avant d'avoir tout remboursé ?",
+        "answer": "Non. Le gage verrouillé reste bloqué tant que le crédit utilisé correspondant n'est pas intégralement remboursé. Seul le solde disponible, hors gage bloqué, est librement retirable à tout moment."
+      }
+    },
+    "ctaLogin": "Accéder à mon compte",
+    "ctaNoAccount": "Demander l'ouverture d'un compte"
+  },
+  "Accessibility": {
+    "meta": {
+      "title": "Accessibilité numérique · Hentsch Credit",
+      "description": "État réel d'avancement de l'accessibilité numérique de la plateforme Hentsch Credit, sans revendiquer un niveau de conformité non vérifié."
+    },
+    "title": "Déclaration d'accessibilité",
+    "intro": "H. Hentsch Asset Management SA s'efforce de rendre la plateforme Hentsch Credit utilisable par le plus grand nombre. Cette déclaration décrit l'état réel d'avancement, sans revendiquer un niveau de conformité qui n'a pas été vérifié par un audit formel.",
+    "s1": {
+      "title": "1. État de conformité",
+      "body": "Le site n'a pas encore fait l'objet d'un audit d'accessibilité formel (de type RGAA ou WCAG). Il ne peut donc pas être déclaré conforme à un niveau précis. Des efforts sont néanmoins déjà appliqués dans la conception : structure sémantique des pages, hiérarchie de titres, contrastes de couleur pensés pour la lisibilité, et navigation possible au clavier sur les principaux parcours (connexion, demande de compte, consultation du compte)."
+    },
+    "s2": {
+      "title": "2. Limites connues",
+      "item1": "Certains graphiques et tableaux de données de marché n'offrent pas encore d'équivalent textuel complet pour les lecteurs d'écran ;",
+      "item2": "Aucun audit contradictoire n'a été mené par un organisme tiers spécialisé en accessibilité numérique ;",
+      "item3": "Certains contenus tiers (par exemple les webhooks et interfaces de prestataires externes intégrées à la plateforme) ne sont pas sous le contrôle direct de {legalName}."
+    },
+    "s3": {
+      "title": "3. Signaler un problème",
+      "body": "Si vous rencontrez une difficulté d'accès à un contenu ou une fonctionnalité de la plateforme, merci de le signaler au contact ci-dessous, en précisant la page concernée et, si possible, le logiciel d'assistance utilisé.",
+      "email": "E-mail",
+      "phone": "Téléphone"
+    },
+    "s4": {
+      "title": "4. Voies de recours",
+      "body": "À défaut de réponse satisfaisante dans un délai raisonnable, vous pouvez adresser une réclamation dans les conditions décrites sur la page <link>Réglementation</link>, section 6."
+    }
+  },
+  "Archives": {
+    "meta": {
+      "title": "Archives · Hentsch Credit",
+      "description": "L'évolution du ratio de crédit, des actifs acceptés et des mécanismes de la plateforme Hentsch Credit depuis son lancement."
+    },
+    "eyebrow": "Historique",
+    "title": "Archives",
+    "description": "L'évolution des principales règles de la plateforme depuis son lancement, dans l'ordre chronologique.",
+    "entries": {
+      "nonRetroactivity": {
+        "period": "Depuis l'origine",
+        "title": "Non-rétroactivité des changements de conditions",
+        "detail": "Un changement de ratio de crédit, de taux ou de seuil ne s'applique jamais à une position déjà verrouillée : elle conserve les conditions qui lui ont été accordées au moment de sa création, jusqu'à son remboursement ou son échéance. Ce principe n'a jamais changé depuis le lancement de la plateforme."
+      },
+      "step1": {
+        "period": "Étape 1",
+        "title": "Ratio de crédit initial",
+        "detail": "75 % du montant mis en gage."
+      },
+      "step2": {
+        "period": "Étape 2",
+        "title": "Premier relèvement du ratio",
+        "detail": "75 % → 150 % du montant mis en gage, pour les nouveaux verrouillages."
+      },
+      "step3": {
+        "period": "Étape 3",
+        "title": "Second relèvement du ratio",
+        "detail": "150 % → 200 % du montant mis en gage, pour les nouveaux verrouillages."
+      },
+      "step4": {
+        "period": "Étape 4 (valeur actuelle)",
+        "title": "Ratio de crédit en vigueur",
+        "detail": "200 % → 350 % du montant mis en gage, pour les nouveaux verrouillages."
+      },
+      "step5": {
+        "period": "Étape 5",
+        "title": "Extension des actifs acceptés en garantie",
+        "detail": "Ajout de l'ETH et du SHIB, puis de l'argent tokenisé (KAG), en complément des stablecoins."
+      },
+      "step6": {
+        "period": "Étape 6",
+        "title": "Extension aux métaux et matières premières industriels",
+        "detail": "Ajout du platine (XPT), du palladium (XPD), du cuivre (XCU) et du pétrole synthétique (WTI), dans le cadre de la stratégie RWA."
+      },
+      "step7": {
+        "period": "Étape 7",
+        "title": "Remboursement automatique par rendement du gage",
+        "detail": "Introduction du remboursement automatique par la plus-value réelle du gage, plafonné à 60 % du crédit émis ; le reste demeure à la charge du client."
+      },
+      "step8": {
+        "period": "Étape 8",
+        "title": "Objectif de rendement indicatif sur les actifs RWA industriels",
+        "detail": "Ajout d'un objectif indicatif de 8 à 14 % annualisé sur le platine, le palladium, le cuivre et le pétrole synthétique uniquement. Cet objectif reste indicatif : il n'est ni garanti, ni utilisé dans le calcul du crédit accordé."
+      },
+      "step9": {
+        "period": "Étape 9",
+        "title": "Introduction du mécanisme de liquidation",
+        "detail": "Mise en place d'un seuil d'alerte (30 % de dépréciation du gage depuis son entrée) et d'un seuil de liquidation (50 %). Le détail figure sur la page Rendement et dans les conditions générales, section 7."
+      },
+      "step10": {
+        "period": "Étape 10",
+        "title": "Passage à un rendement estimé calculé automatiquement",
+        "detail": "Les simulateurs de crédit client calculent désormais le rendement estimé, la mensualité et la date de premier remboursement à partir de la performance réelle sur 12 mois, plutôt que de demander au client de saisir une estimation."
+      }
+    },
+    "note": "Les valeurs actuellement en vigueur (ratio, taux, frais, plafond de rendement, seuils de liquidation) sont détaillées avec leurs chiffres exacts sur la page <link>Tarifs</link>. Cette page d'archives ne retrace que l'historique des changements, pas les conditions applicables à votre position actuelle.",
+    "lastUpdated": "Dernière mise à jour :"
+  },
+  "Contact": {
+    "meta": {
+      "title": "Contact · Hentsch Credit",
+      "description": "Les coordonnées de H. Hentsch Asset Management SA pour toute question relative à votre compte ou à la plateforme Hentsch Credit."
+    },
+    "eyebrow": "Nous contacter",
+    "title": "Contactez-nous",
+    "description": "Les coordonnées réelles de H. Hentsch Asset Management SA, pour toute question relative à votre compte ou à la plateforme.",
+    "channels": {
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "postalAddress": "Adresse postale",
+      "registeredOffice": "Siège social"
+    },
+    "hours": "Les demandes sont traitées durant les jours ouvrés. Pour toute question relative à une opération en cours (dépôt, demande de crédit, carte), merci de préciser votre nom et, si possible, la référence de l'opération concernée.",
+    "noAccount": "Vous n'avez pas encore de compte ? La plateforme est réservée à une clientèle restreinte, sur invitation. Vous pouvez néanmoins déposer une <link>demande d'ouverture de compte</link>, qui sera examinée par nos équipes.",
+    "complaint": "Pour une réclamation formelle et, à défaut de résolution amiable, les voies de médiation disponibles, voir la page <link>Réglementation</link>, section 6."
+  },
+  "Cookies": {
+    "meta": {
+      "title": "Politique de cookies · Hentsch Credit",
+      "description": "Pourquoi Hentsch Credit ne dépose qu'un seul cookie strictement nécessaire, et rien d'autre."
+    },
+    "title": "Politique de cookies",
+    "intro": "Cette page décrit les cookies réellement déposés par la plateforme Hentsch Credit et pourquoi aucun centre de préférences n'est proposé.",
+    "s1": {
+      "title": "1. Ce que la plateforme dépose",
+      "body": "Un seul cookie est utilisé, de session, strictement nécessaire au fonctionnement du service : il maintient votre connexion authentifiée pendant votre navigation sur l'espace client. Il est supprimé à la fermeture de votre session ou de votre navigateur."
+    },
+    "s2": {
+      "title": "2. Ce que la plateforme ne dépose pas",
+      "item1": "Aucun cookie publicitaire ou de ciblage ;",
+      "item2": "Aucun cookie de mesure d'audience tiers (analytics, statistiques) ;",
+      "item3": "Aucun traceur de réseau social ;",
+      "item4": "Aucun cookie de suivi entre sites (cross-site tracking)."
+    },
+    "s3": {
+      "title": "3. Pourquoi il n'y a pas de « gérer mes cookies »",
+      "body": "Un centre de préférences a du sens lorsqu'un site dépose des cookies non essentiels (publicité, mesure d'audience) qui nécessitent votre consentement préalable et un moyen de le retirer. La plateforme n'en dépose aucun : il n'existe donc aucune préférence à activer ou désactiver au-delà du réglage de votre propre navigateur. Si cela change un jour, cette page sera mise à jour et un véritable centre de préférences sera proposé, plutôt qu'un bouton sans effet réel."
+    },
+    "s4": {
+      "title": "4. Contrôle depuis votre navigateur",
+      "body": "Vous pouvez à tout moment bloquer ou supprimer le cookie de session depuis les réglages de votre navigateur. Le blocage de ce cookie particulier vous déconnectera de l'espace client : c'est un cookie fonctionnel, pas un traceur, et il n'a pas d'autre rôle."
+    },
+    "s5": {
+      "title": "5. Contact",
+      "body": "Pour toute question relative à cette politique, contactez le délégué à la protection des données à l'adresse {dpo}. Le traitement des autres données personnelles est décrit dans la <link>politique de confidentialité</link>."
+    }
+  },
+  "Terms": {
+    "meta": {
+      "title": "Conditions générales · Hentsch Credit",
+      "description": "Les conditions générales d'utilisation de la plateforme Hentsch Credit : crédit, garantie, remboursement, liquidation et frais."
+    },
+    "title": "Conditions générales",
+    "intro": "Les présentes conditions générales régissent l'accès et l'utilisation de la plateforme Hentsch Credit, service de crédit garanti par des actifs numériques, proposé par un nombre restreint de clients de la société sur invitation. En ouvrant un compte, le client déclare les avoir lues et acceptées.",
+    "s1": {
+      "title": "1. Objet",
+      "body": "{tradingName} permet à un client vérifié et préalablement invité de déposer, en garantie (« gage »), des stablecoins ou de l'or tokenisé, et d'obtenir en contrepartie une ligne de crédit, utilisable en interne et sur une carte bancaire associée. Le service est fourni par {legalName}, gestionnaire de fortune indépendant (GFI) au sens de la LEFin, en collaboration avec des établissements dépositaires et prestataires de garde tiers agréés (cf. section 5)."
+    },
+    "s2": {
+      "title": "2. Accès restreint et éligibilité",
+      "body": "La plateforme n'est pas ouverte au public. Son accès est réservé à une liste de clients déterminée par {legalName}, sur invitation, dans le cadre d'une relation de gestion de fortune existante. L'ouverture d'un compte, la génération d'une adresse de dépôt, tout dépôt de garantie et tout octroi de crédit sont en outre subordonnés à la vérification préalable de l'identité du client (« KYC »). Tant que le statut de vérification du client n'est pas confirmé, ces opérations sont refusées. La société se réserve le droit de refuser, suspendre ou clôturer un compte en cas d'échec ou de doute sur cette vérification, ou de soupçon de fraude, de blanchiment d'argent ou de financement du terrorisme."
+    },
+    "s3": {
+      "title": "3. Actifs acceptés en garantie",
+      "body": "Sont acceptés en garantie les stablecoins suivants, valorisés au pair (1:1 USD) : DAI, USDT, USDC ; le stablecoin indexé sur l'euro suivant, valorisé au cours spot en direct : dEURO ; les métaux précieux tokenisés suivants, également valorisés au cours spot en direct : XAUT (or), KAG (argent) ; les métaux industriels et matières premières tokenisés suivants, valorisés au cours spot en direct : XPT (platine), XPD (palladium), XCU (cuivre), WTI (pétrole synthétique) ; ainsi que les cryptomonnaies natives suivantes, valorisées au cours spot en direct et à la volatilité propre à chacune : ETH, SHIB. Ces actifs sont acceptés exclusivement sur le réseau Ethereum. Pour certains actifs, l'adresse de dépôt communiquée est individuelle à chaque client ; pour d'autres, elle est mutualisée entre clients et le dépôt déclaré fait l'objet d'une validation manuelle avant d'être crédité. La liste des actifs acceptés, des réseaux pris en charge ou du mécanisme d'adresse applicable à chaque actif peut être modifiée à tout moment, sans effet rétroactif sur les positions déjà constituées."
+    },
+    "s4": {
+      "title": "4. Mécanisme de crédit et taux de gage",
+      "body1": "Lors du verrouillage d'une garantie, un crédit est accordé égal à <b>350 % du montant mis en gage</b>, au taux en vigueur au moment de ce verrouillage. Le pouvoir d'achat total du compte se calcule comme suit :",
+      "formula": "Pouvoir d'achat total = Solde disponible + Gage verrouillé + Crédit accordé − Crédit utilisé",
+      "body2": "Le taux de gage applicable est celui en vigueur au moment de chaque nouveau verrouillage. Toute modification ultérieure de ce taux n'affecte pas rétroactivement le crédit déjà accordé au titre d'une garantie verrouillée antérieurement : ce crédit reste acquis aux conditions de l'époque.",
+      "body3": "Le crédit émis sur une garantie éligible (métaux précieux tokenisés, métaux industriels et matières premières tokenisés, ETH) peut être remboursé à hauteur de 60 % au maximum par la plus-value réelle constatée sur cette garantie, appliquée automatiquement au crédit utilisé. Les 40 % restants doivent être remboursés par apport personnel du client (dépôt ou virement explicite). Ce plafond porte sur le montant de crédit émis à l'ouverture de la position et n'est pas recalculé en cas de changement ultérieur du ratio de crédit.",
+      "body4": "Un objectif de rendement indicatif (actuellement 8 à 14 % par an) est communiqué à titre d'information sur les métaux industriels et matières premières tokenisés (platine, palladium, cuivre, pétrole synthétique) : il reflète l'objectif de la stratégie de trésorerie propre de la société sur ces actifs (arbitrage, prêt collatéralisé, apport de liquidité), et non un taux garanti ou contractuel. Cet objectif n'a aucun effet sur le calcul du crédit du client, qui reste exclusivement régi par le mécanisme décrit au paragraphe précédent."
+    },
+    "s5": {
+      "title": "5. Garde des avoirs"
+    },
+    "s6": {
+      "title": "6. Blocage de la garantie et retrait",
+      "body": "Le montant mis en gage et verrouillé ne peut pas être retiré tant que le crédit utilisé correspondant n'a pas été intégralement remboursé. Seul le solde disponible, hors garantie bloquée, est librement retirable à tout moment, sous réserve des contrôles de conformité applicables."
+    },
+    "s7": {
+      "title": "7. Liquidation de la garantie",
+      "intro": "Les garanties dont la valeur évolue en fonction du marché (métaux précieux tokenisés, métaux industriels et matières premières tokenisés, ETH) font l'objet d'une surveillance quotidienne de leur valeur, par comparaison avec leur valeur au moment du verrouillage :",
+      "item1": "en cas de dépréciation d'au moins <b>30 %</b> par rapport à cette valeur d'entrée, une alerte est enregistrée sur le compte, sans autre effet ;",
+      "item2": "en cas de dépréciation d'au moins <b>50 %</b>, la garantie est automatiquement retirée du compte (liquidée) à sa valeur d'entrée.",
+      "body": "La liquidation d'une garantie n'éteint pas le crédit déjà utilisé au titre de cette garantie : ce crédit reste intégralement dû par le client, sans plus être couvert par la garantie initialement constituée. Une garantie liquidée ne peut plus être restituée, y compris si le cours de l'actif concerné se redresse ultérieurement. Les seuils mentionnés ci-dessus peuvent être modifiés à tout moment, sans effet rétroactif sur l'appréciation d'une dépréciation déjà constatée."
+    },
+    "s8": {
+      "title": "8. Carte bancaire et utilisation du crédit",
+      "body": "Une carte bancaire, émise par un partenaire tiers agréé, peut être associée au compte pour utiliser la ligne de crédit accordée, dans la limite du crédit disponible (crédit accordé moins crédit déjà utilisé). Toute transaction excédant cette limite est refusée. Les conditions spécifiques d'émission, d'utilisation et de blocage de la carte sont précisées dans les conditions particulières associées à celle-ci."
+    },
+    "s9": {
+      "title": "9. Remboursement",
+      "body": "Le client peut rembourser tout ou partie du crédit utilisé à tout moment. Le remboursement intégral du crédit utilisé au titre d'une garantie donnée libère cette garantie, qui redevient retirable. Les simulateurs de remboursement mis à disposition sur la plateforme (projection flexible, échéances fixes) sont fournis à titre indicatif uniquement : ils reposent sur un rendement estimé à partir de performances passées, qui ne préjuge pas des performances futures, et ne constituent ni un engagement contractuel ni un calendrier de paiement opposable."
+    },
+    "s10": {
+      "title": "10. Frais",
+      "body": "Les frais et taux actuellement appliqués sont : des frais d'origination de <b>2,0 %</b>, prélevés une fois sur le crédit émis au moment du verrouillage du gage ; des frais de garde du collatéral de <b>0,5 % par an</b>, sur le montant du gage verrouillé ; et des intérêts sur le crédit utilisé de <b>13,5 % par an en USD</b> (<b>12,0 % par an en EUR</b>), composés d'un taux de référence monétaire (SOFR pour l'USD, EURIBOR pour l'EUR) et d'une prime de risque de 8,5 points, justifiée par le ratio de crédit élevé (350 %) offert par la plateforme. Le détail à jour de ces tarifs figure sur la page <link>Tarifs</link> de la plateforme. Ces taux peuvent être mis à jour à tout moment, sans effet rétroactif sur les positions déjà constituées : la structure de taux figée au moment du verrouillage d'une position reste acquise jusqu'à son remboursement ou son échéance."
+    },
+    "s11": {
+      "title": "11. Risques",
+      "intro": "Le client reconnaît et accepte les risques inhérents aux actifs numériques, notamment :",
+      "item1": "la volatilité du cours des actifs valorisés au prix spot (or tokenisé), qui peut affecter la valeur de la garantie et du pouvoir d'achat total du compte ;",
+      "item2": "le risque de liquidation de la garantie en cas de forte dépréciation (cf. section 7), qui n'éteint pas le crédit déjà utilisé ;",
+      "item3": "le risque de contrepartie et le risque opérationnel liés aux établissements dépositaires et prestataires de garde tiers mentionnés en section 5 ;",
+      "item4": "le risque réglementaire lié à l'évolution du cadre juridique applicable aux actifs numériques et aux stablecoins.",
+      "body": "Les présentes conditions ne constituent ni un conseil en investissement, ni une recommandation d'achat, de vente ou de détention d'un quelconque actif numérique."
+    },
+    "s12": {
+      "title": "12. Résiliation",
+      "body": "Le client peut clôturer son compte à tout moment, sous réserve du remboursement intégral de tout crédit utilisé. La société peut suspendre ou résilier l'accès au service en cas de manquement aux présentes conditions, de soupçon de fraude ou de blanchiment, ou pour tout motif légal ou réglementaire."
+    },
+    "s13": {
+      "title": "13. Responsabilité",
+      "body": "La société met en œuvre les moyens raisonnables pour assurer la disponibilité et la sécurité de la plateforme, sans garantie d'absence totale d'interruption. Sa responsabilité ne saurait être engagée en cas de force majeure, de dysfonctionnement d'un réseau blockchain ou d'un prestataire tiers indépendant de sa volonté, dans les limites permises par le droit suisse applicable."
+    },
+    "s14": {
+      "title": "14. Modification des conditions générales",
+      "body": "La société peut modifier les présentes conditions générales à tout moment, moyennant une information préalable du client par les moyens de communication habituels. Les modifications n'ont pas d'effet rétroactif sur les positions de crédit déjà constituées, sauf disposition légale contraire."
+    },
+    "s15": {
+      "title": "15. Droit applicable et for",
+      "body": "Les présentes conditions générales sont soumises au droit suisse. Tout litige relatif à leur validité, leur interprétation ou leur exécution relève de la compétence exclusive du for de {jurisdiction}, sous réserve des dispositions légales impératives applicables."
+    }
+  },
+  "Privacy": {
+    "meta": {
+      "title": "Confidentialité · Hentsch Credit",
+      "description": "Comment H. Hentsch Asset Management SA collecte, utilise et protège vos données personnelles, conformément à la loi fédérale suisse sur la protection des données."
+    },
+    "title": "Politique de confidentialité",
+    "intro": "La présente politique décrit comment H. Hentsch Asset Management SA collecte, utilise et protège les données personnelles des clients de Hentsch Credit, plateforme réservée à une clientèle restreinte, conformément à la loi fédérale suisse sur la protection des données (nLPD) et, le cas échéant, au règlement général sur la protection des données (RGPD).",
+    "s1": {
+      "title": "1. Responsable du traitement",
+      "controller": "Responsable",
+      "address": "Adresse",
+      "dpoContact": "Contact protection des données",
+      "compliance": "Conforme LPD suisse et RGPD."
+    },
+    "s2": {
+      "title": "2. Données collectées",
+      "item1": "Données d'identification et de contact (nom, e-mail, coordonnées) ;",
+      "item2": "Documents et données de vérification d'identité (KYC) transmis lors de l'ouverture de compte ;",
+      "item3": "Données relatives aux adresses de dépôt, aux transactions on-chain et aux opérations effectuées sur la plateforme (dépôts, verrouillages de garantie, octrois de crédit, remboursements, paiements par carte) ;",
+      "item4": "Données techniques de connexion à la plateforme (journaux, identifiants de session)."
+    },
+    "s3": {
+      "title": "3. Finalités et base légale",
+      "item1": "Exécution de la relation contractuelle : ouverture et gestion du compte, octroi et suivi du crédit, émission et gestion de la carte bancaire associée ;",
+      "item2": "Respect des obligations légales et réglementaires : vérification d'identité (KYC), lutte contre le blanchiment d'argent et le financement du terrorisme (LBA), conservation des pièces comptables ;",
+      "item3": "Sécurité de la plateforme et prévention de la fraude ;",
+      "item4": "Communication avec le client relative à son compte et à ses opérations."
+    },
+    "s4": {
+      "title": "4. Partenaires et sous-traitants",
+      "intro": "Pour exécuter le service, {legalName} fait appel à des prestataires spécialisés, qui traitent certaines données pour son compte et sous ses instructions, ou qui interviennent en tant que responsables distincts pour la garde des avoirs :",
+      "item1Label": "Banques dépositaires tierces",
+      "item1Body": "conservation des liquidités et titres des clients (cf. mentions légales, section 3) ;",
+      "item2Label": "Garde des actifs numériques ({custodians})",
+      "item2Body": "conservation sécurisée des stablecoins et de l'or tokenisé déposés en garantie ;",
+      "item3Label": "Émission de cartes bancaires",
+      "item3Body": "traitement des autorisations de paiement en temps réel ;",
+      "item4Label": "Vérification d'identité (KYC)",
+      "item4Body": "contrôle de l'identité et du statut de conformité du client ;",
+      "item5Label": "Données de marché blockchain",
+      "item5Body": "détection des dépôts on-chain et cours des actifs en temps réel.",
+      "outro": "Le nom, le rôle exact et le pays d'implantation de chaque prestataire retenu en production sont communiqués au client sur demande auprès du service indiqué en section 1."
+    },
+    "s5": {
+      "title": "5. Durée de conservation",
+      "body": "Les données relatives aux clients et à leurs opérations sont conservées pendant la durée de la relation de gestion, puis pendant la durée requise par les obligations légales de conservation applicables (documents comptables et pièces justificatives des transactions notamment)."
+    },
+    "s6": {
+      "title": "6. Transferts internationaux",
+      "body": "Certains prestataires mentionnés en section 4 peuvent traiter des données en dehors de la Suisse. Dans ce cas, {legalName} met en place les garanties appropriées requises par la législation suisse sur la protection des données (clauses contractuelles, décision d'adéquation ou mécanisme équivalent)."
+    },
+    "s7": {
+      "title": "7. Vos droits",
+      "body": "Sous réserve des restrictions prévues par la loi (notamment les obligations légales de conservation applicables), le client dispose d'un droit d'accès, de rectification, d'effacement et d'opposition sur ses données personnelles. Ces droits peuvent être exercés en écrivant à l'adresse indiquée en section 1."
+    },
+    "s8": {
+      "title": "8. Cookies et traceurs",
+      "body": "La plateforme utilise uniquement les cookies strictement nécessaires à son fonctionnement (authentification de session, préférences d'affichage). Aucun cookie publicitaire ou de mesure d'audience tiers n'est déposé sans consentement préalable du client. Le détail figure dans la <link>politique de cookies</link>."
+    },
+    "s9": {
+      "title": "9. Cas particulier des prospects (demande d'ouverture de compte)",
+      "body": "Les personnes qui déposent une demande d'ouverture de compte sans être encore clientes (via la page Demander un compte) transmettent des données d'identification et de contact ainsi que des informations sur leur projet d'investissement. Ces données sont traitées dans le seul but d'examiner la demande. Si la demande n'aboutit pas à une relation de gestion de fortune, elles sont conservées pendant une durée limitée, nécessaire au suivi du dossier, puis supprimées ; en cas d'acceptation, elles sont intégrées au dossier client et suivent les règles de conservation décrites en section 5."
+    },
+    "s10": {
+      "title": "10. Sécurité",
+      "body": "{legalName} met en œuvre des mesures techniques et organisationnelles appropriées (chiffrement, contrôle d'accès, verrous distribués sur les opérations financières) pour protéger les données personnelles contre l'accès non autorisé, la perte ou l'altération."
+    },
+    "s11": {
+      "title": "11. Contact",
+      "dpo": "Délégué à la protection des données",
+      "email": "E-mail général"
+    }
+  },
+  "AccountRequest": {
+    "meta": {
+      "title": "Demander l'ouverture d'un compte · Hentsch Credit",
+      "description": "Demandez l'ouverture d'un compte Hentsch Credit, plateforme de crédit crypto-collatéralisé réservée à une clientèle restreinte, sur invitation."
+    },
+    "eyebrow": "Accès sur invitation",
+    "title": "Demander l'ouverture d'un compte",
+    "description": "Plateforme réservée à une clientèle restreinte. Laissez-nous vos coordonnées : notre équipe étudie chaque dossier avant d'accorder l'accès.",
+    "alreadyHaveAccount": "Vous avez déjà un compte ? <link>Se connecter</link>"
+  },
+  "AccountRequestForm": {
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail",
+    "phone": "Téléphone (optionnel)",
+    "message": "Votre projet (optionnel)",
+    "messagePlaceholder": "Montant envisagé, actifs concernés, questions particulières…",
+    "disclaimer": "En soumettant ce formulaire, vous acceptez que vos informations soient traitées conformément à notre <link>politique de confidentialité</link>. Aucun compte n'est créé automatiquement : l'accès est accordé après étude et validation de votre dossier par notre équipe.",
+    "submit": "Envoyer ma demande",
+    "successTitle": "Votre demande a bien été transmise",
+    "successBody": "Notre équipe étudie votre dossier et reviendra vers vous par e-mail. L'accès à votre espace client n'est accordé qu'une fois cette validation faite.",
+    "genericError": "Une erreur est survenue."
+  },
+  "Faq": {
+    "meta": {
+      "title": "Foire aux questions · Hentsch Credit",
+      "description": "Les réponses aux questions les plus fréquentes sur le compte, la sécurité et le fonctionnement de la plateforme Hentsch Credit."
+    },
+    "eyebrow": "Foire aux questions",
+    "title": "Questions fréquentes",
+    "description": "Les réponses aux questions générales sur le compte, la sécurité et le fonctionnement de la plateforme.",
+    "items": {
+      "openAccount": {
+        "question": "Comment ouvrir un compte Hentsch Credit ?",
+        "answer": "La plateforme est réservée à une clientèle restreinte, sur invitation, dans le cadre d'une relation de gestion de fortune existante avec H. Hentsch Asset Management SA. Vous pouvez déposer une demande d'ouverture de compte depuis la page Demander un compte ; elle sera examinée par nos équipes avant toute ouverture effective."
+      },
+      "forgotPassword": {
+        "question": "J'ai oublié mon mot de passe, que faire ?",
+        "answer": "Contactez le service indiqué sur la page Contact avec votre nom et l'adresse e-mail associée à votre compte. Pour des raisons de sécurité, aucune réinitialisation n'est effectuée par un autre canal."
+      },
+      "assetsSafe": {
+        "question": "Mes actifs numériques sont-ils en sécurité ?",
+        "answer": "Les stablecoins et l'or tokenisé déposés en garantie sont conservés par un prestataire de garde d'actifs numériques agréé, distinct de H. Hentsch Asset Management SA, spécialisé dans la conservation sécurisée de crypto-actifs pour le compte d'établissements financiers suisses. Le détail figure sur la page Réglementation, section 3."
+      },
+      "networksAssets": {
+        "question": "Quels réseaux et actifs sont acceptés en garantie ?",
+        "answer": "Réseau Ethereum uniquement pour l'instant. Le détail des actifs acceptés (stablecoins, or tokenisé, ETH, métaux industriels tokenisés) et de leur valorisation figure sur la page Comment ça marche."
+      },
+      "ratioFees": {
+        "question": "Quel est le ratio de crédit et quels sont les frais réels ?",
+        "answer": "350 % du montant mis en gage au taux en vigueur au moment du verrouillage, avec des frais d'origination de 2 % et un taux d'intérêt annuel sur le crédit réellement utilisé. Le détail chiffré, y compris un exemple de coût total, figure sur la page Tarifs."
+      },
+      "yieldLiquidation": {
+        "question": "Comment fonctionne le remboursement automatique et le risque de liquidation ?",
+        "answer": "Une partie du crédit utilisé peut être remboursée automatiquement par la plus-value réelle de votre gage, plafonnée à 60 %. À l'inverse, une forte dépréciation du gage peut entraîner sa liquidation. Le mécanisme complet, avec des exemples chiffrés, figure sur la page Rendement."
+      },
+      "kycDoubt": {
+        "question": "Que se passe-t-il en cas de doute sur mon identité (KYC) ?",
+        "answer": "Aucune opération financière (génération d'adresse de dépôt, dépôt, octroi de crédit) n'est possible tant que votre statut de vérification d'identité n'est pas confirmé. Le détail figure sur la page Comment ça marche."
+      },
+      "complaint": {
+        "question": "Comment déposer une réclamation ?",
+        "answer": "Adressez votre réclamation au contact indiqué sur la page Contact. À défaut de résolution amiable, vous pouvez saisir l'organe de médiation compétent, indiqué sur la page Réglementation, section 6."
+      }
+    },
+    "moreQuestionsTitle": "Une question plus précise ?",
+    "moreQuestionsBody": "Chaque grand sujet a sa propre page détaillée, avec sa propre foire aux questions : <howItWorks>Comment ça marche</howItWorks>, <yield>Rendement</yield>, <rwa>Stratégie RWA</rwa> et <pricing>Tarifs</pricing>. Pour toute autre question, la page <contact>Contact</contact> reste le point d'entrée le plus direct."
+  },
+  "Login": {
+    "meta": {
+      "title": "Connexion · Hentsch Credit",
+      "description": "Connectez-vous à votre compte Hentsch Credit."
+    }
+  },
+  "LoginForm": {
+    "twoFactorTitle": "Vérification en deux étapes",
+    "twoFactorDescription": "Entrez le code à 6 chiffres généré par votre application d'authentification.",
+    "verificationCode": "Code de vérification",
+    "verify": "Vérifier",
+    "backToLogin": "← Revenir à la connexion",
+    "restrictedAccess": "Accès réservé aux clients invités.",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "backToHome": "← Retour à l'accueil",
+    "genericError": "Une erreur est survenue."
+  },
+  "RiskManagement": {
+    "meta": {
+      "title": "Gestion des risques et garde des avoirs · Hentsch Credit",
+      "description": "Comment Hentsch Credit gère la garde des avoirs, la valorisation du gage et le mécanisme de liquidation."
+    },
+    "title": "Gestion des risques et garde des avoirs",
+    "intro": "H. Hentsch Asset Management SA n'exécute pas d'ordres de bourse pour compte de tiers et ne publie donc pas de politique d'exécution ni de rapport de meilleure sélection au sens de la réglementation sur les marchés financiers. Cette page décrit, à la place, les pratiques réelles de gestion des risques appliquées à la plateforme Hentsch Credit.",
+    "s1": {
+      "title": "1. Nature de l'activité",
+      "body": "{legalName} agit comme gestionnaire de fortune indépendant (GFI) : elle octroie du crédit crypto-collatéralisé à ses clients, contre une garantie déposée par eux, et gère une stratégie de trésorerie sur métaux et matières premières industriels tokenisés avec son propre capital. Elle n'exécute aucun ordre de bourse pour le compte de ses clients et ne gère aucun portefeuille de titres discrétionnaire en leur nom."
+    },
+    "s2": {
+      "title": "2. Garde et séparation des avoirs",
+      "body": "Les avoirs déposés en garantie par les clients ne sont jamais utilisés dans la stratégie de trésorerie de la société : les deux flux sont distincts et ne se rencontrent à aucun moment. Le détail de la stratégie de trésorerie figure sur la page <link>Stratégie RWA</link>, section « Gouvernance & séparation des fonds »."
+    },
+    "s3": {
+      "title": "3. Valorisation du gage",
+      "body": "La valeur du gage déposé est déterminée à partir de cours de marché en temps réel (cours spot pour l'or tokenisé, les métaux industriels tokenisés, l'ETH ; parité 1:1 avec le dollar pour les stablecoins USD ; cours spot pour le stablecoin indexé sur l'euro), sans marge ni ajustement discrétionnaire appliqué par la société. Cette valorisation sert à la fois au calcul du crédit accordé lors du verrouillage et au suivi quotidien de dépréciation décrit ci-dessous."
+    },
+    "s4": {
+      "title": "4. Mécanisme de liquidation du gage",
+      "body": "Un contrôle automatique quotidien compare la valeur actuelle du gage à sa valeur d'entrée (au moment du verrouillage). Une dépréciation de 30 % déclenche une alerte visible sur le compte du client ; une dépréciation de 50 % entraîne la liquidation du gage. Le crédit déjà utilisé n'est pas effacé par la liquidation : il devient une créance non garantie. Le détail complet, avec un exemple chiffré, figure sur la page <yieldLink>Rendement</yieldLink> et dans les <termsLink>conditions générales</termsLink>, section 7."
+    },
+    "s5": {
+      "title": "5. Conflits d'intérêts",
+      "body": "La société ne prend jamais de position contraire à celle de ses clients sur les actifs qu'ils déposent en garantie : elle ne fait que recevoir ce gage, calculer le crédit correspondant et, le cas échéant, le liquider selon les seuils fixés à l'avance et appliqués de manière automatique et identique à tous les clients. La stratégie de trésorerie de la société (métaux et matières premières industriels) est financée par son capital propre, jamais par les avoirs déposés par les clients."
+    },
+    "s6": {
+      "title": "6. Contrôle et audit",
+      "body": "Les paramètres de risque en vigueur (ratio de crédit, taux, seuils de liquidation) sont centralisés dans le moteur de crédit de la plateforme et font l'objet d'une suite de tests automatisés à chaque évolution. Tout changement de ces paramètres est consigné et ne s'applique jamais rétroactivement à une position déjà verrouillée. Le détail de l'historique de ces évolutions figure sur la page <link>Archives</link>."
+    }
+  },
+  "LegalNotice": {
+    "meta": {
+      "title": "Mentions légales · Hentsch Credit",
+      "description": "Informations légales relatives à l'éditeur et à l'exploitant de la plateforme Hentsch Credit."
+    },
+    "title": "Mentions légales",
+    "intro": "Informations légales relatives à l'éditeur et à l'exploitant du site et de la plateforme Hentsch Credit, conformément à la législation suisse applicable. Plateforme réservée à une clientèle restreinte, sur invitation : elle n'est pas ouverte au public et ne constitue pas une offre publique.",
+    "s1": {
+      "title": "1. Éditeur du site",
+      "companyName": "Raison sociale",
+      "legalForm": "Forme juridique",
+      "tradingName": "Nom commercial de la plateforme",
+      "registeredOffice": "Siège social",
+      "postalAddress": "Adresse postale",
+      "canton": "Canton",
+      "country": "Pays",
+      "registerNumber": "N° IDE / registre du commerce",
+      "vatNumber": "N° TVA",
+      "publicationDirector": "Responsable de la publication"
+    },
+    "s2": {
+      "title": "2. Statut réglementaire et supervision",
+      "body": "{legalName} est un <b>gestionnaire de fortune indépendant (GFI)</b> au sens de la loi fédérale sur les établissements financiers (LEFin), <b>et non un établissement bancaire</b>. À ce titre, elle n'est pas titulaire d'une autorisation bancaire délivrée directement par la FINMA, mais est soumise à la surveillance d'un organisme de surveillance (OS) agréé par l''{supervisoryAuthority}.",
+      "supervisionBody": "Organisme de surveillance (OS)",
+      "amlBody": "Organisme d'autorégulation LBA",
+      "footer": "Le détail du cadre légal applicable (LEFin, LSFin, LBA) est présenté sur la page <link>Réglementation</link>."
+    },
+    "s3": {
+      "title": "3. Garde des avoirs"
+    },
+    "s4": {
+      "title": "4. Accès restreint",
+      "body": "La plateforme {tradingName} n'est pas destinée au grand public. Son accès est réservé à une liste de clients déterminée, sur invitation de {legalName}, à l'issue d'une relation de gestion de fortune existante et d'une vérification d'identité préalable. Aucun élément du présent site ne constitue une offre, une sollicitation ou une publicité destinée au public."
+    },
+    "s5": {
+      "title": "5. Contact",
+      "email": "E-mail",
+      "phone": "Téléphone"
+    },
+    "s6": {
+      "title": "6. Hébergement",
+      "body": "Le site et la plateforme sont hébergés par :"
+    },
+    "s7": {
+      "title": "7. Propriété intellectuelle",
+      "body": "L'ensemble des éléments composant le site et la plateforme (textes, logos, graphismes, icônes, structure, code source) est la propriété de {legalName} ou de ses concédants, et protégé à ce titre par le droit suisse et les conventions internationales relatives à la propriété intellectuelle. Toute reproduction, représentation, modification ou exploitation, totale ou partielle, sans autorisation écrite préalable, est interdite."
+    },
+    "s8": {
+      "title": "8. Partenaires techniques",
+      "body": "La plateforme s'appuie sur des prestataires tiers pour certaines fonctions techniques (garde des actifs numériques et gestion des clés, émission de cartes bancaires, vérification d'identité, données de marché). La liste de ces prestataires et leur rôle sont détaillés dans la <link>politique de confidentialité</link>."
+    }
+  },
+  "Sitemap": {
+    "meta": {
+      "title": "Plan du site · Hentsch Credit",
+      "description": "L'ensemble des pages accessibles publiquement sur Hentsch Credit, sans connexion à un compte."
+    },
+    "eyebrow": "Navigation",
+    "title": "Plan du site",
+    "description": "L'ensemble des pages accessibles publiquement, sans connexion à un compte.",
+    "groups": {
+      "discover": { "title": "Découvrir la plateforme" },
+      "account": { "title": "Accès au compte" },
+      "help": { "title": "Aide & contact" },
+      "contractual": { "title": "Documentation contractuelle" },
+      "privacy": { "title": "Données personnelles" }
+    },
+    "links": {
+      "home": "Accueil",
+      "howItWorks": "Comment ça marche",
+      "yield": "Rendement",
+      "rwaStrategy": "Stratégie RWA",
+      "market": "Marché",
+      "pricing": "Tarifs",
+      "requestAccount": "Demander un compte",
+      "login": "Connexion",
+      "contact": "Contactez-nous",
+      "faq": "Foire aux questions",
+      "accessibility": "Accessibilité numérique",
+      "archives": "Archives",
+      "sitemap": "Plan du site",
+      "terms": "Conditions générales",
+      "legalNotice": "Mentions légales",
+      "regulation": "Réglementation",
+      "riskManagement": "Gestion des risques et garde des avoirs",
+      "privacyPolicy": "Politique de confidentialité",
+      "cookiePolicy": "Politique de cookies"
+    },
+    "clientAreaNote": "L'espace client connecté et l'espace de gestion interne ne figurent pas ci-dessus : leur contenu dépend de votre statut de vérification d'identité et de votre rôle sur le compte, et n'est accessible qu'après connexion."
+  },
+  "Market": {
+    "meta": {
+      "title": "Marché en direct · Hentsch Credit",
+      "description": "Les cours en temps réel des actifs acceptés en garantie sur Hentsch Credit : stablecoins, or, argent, ETH et métaux industriels tokenisés."
+    },
+    "eyebrow": "Données en direct",
+    "title": "Le marché en direct",
+    "description": "Les cours des actifs acceptés en garantie, en temps réel."
+  },
+  "Regulation": {
+    "meta": {
+      "title": "Réglementation · Hentsch Credit",
+      "description": "Le cadre légal et réglementaire suisse applicable à Hentsch Credit : LEFin, LSFin, LBA, garde des avoirs et supervision."
+    },
+    "title": "Cadre réglementaire",
+    "intro": "Cette page détaille le cadre légal et réglementaire suisse applicable à Hentsch Credit, en complément des mentions légales.",
+    "s1": {
+      "title": "1. Cadre légal applicable",
+      "intro": "L'activité de {legalName} est notamment régie par :",
+      "item1": "la loi fédérale sur les établissements financiers (LEFin) et son ordonnance (OEFin), applicables aux gestionnaires de fortune indépendants ;",
+      "item2": "la loi fédérale sur les services financiers (LSFin) et son ordonnance (OSFin), relatives à la fourniture de services financiers et à la classification de la clientèle ;",
+      "item3": "la loi fédérale sur le blanchiment d'argent (LBA), relative aux obligations de diligence et de vigilance ;",
+      "item4": "la loi fédérale sur la protection des données (nLPD) et, le cas échéant, le règlement général sur la protection des données (RGPD)."
+    },
+    "s2": {
+      "title": "2. Statut de l'exploitant",
+      "body1": "{legalName} est un <b>gestionnaire de fortune indépendant (GFI)</b> au sens de la LEFin : elle n'est titulaire d'aucune autorisation bancaire et n'accepte aucun dépôt de fonds du public en son nom propre.",
+      "supervisionBody": "Organisme de surveillance (OS)",
+      "supervisoryAuthority": "Autorité de surveillance suprême",
+      "amlBody": "Organisme d'autorégulation LBA",
+      "body2": "L'OS agrée et surveille l'activité de gestion de fortune, contrôle le respect des obligations légales (dont la LBA) et peut prononcer des mesures en cas de manquement. Le détail de l'identité de l'éditeur figure dans les <link>mentions légales</link>."
+    },
+    "s3": {
+      "title": "3. Protection des avoirs des clients"
+    },
+    "s4": {
+      "title": "4. Classification de la clientèle (LSFin)",
+      "body": "La LSFin distingue trois catégories de clients (privés, professionnels et institutionnels), auxquelles correspondent des niveaux différents d'information et de protection. La clientèle de {tradingName} est classée en <b>{classification}</b> au sens de la LSFin, la catégorie offrant le niveau de protection et d'information le plus élevé. L'accès reste néanmoins réservé à une liste de clients restreinte, sur invitation, dans le cadre d'une relation de gestion de fortune existante avec {legalName}."
+    },
+    "s5": {
+      "title": "5. Lutte contre le blanchiment d'argent (LBA)",
+      "body": "Conformément à la LBA, l'accès à la plateforme, la génération d'une adresse de dépôt et tout octroi de crédit sont subordonnés à la vérification préalable de l'identité du client et de l'origine économique des valeurs patrimoniales concernées. {legalName} applique des mesures de vigilance accrue en présence d'indices de blanchiment d'argent ou de financement du terrorisme, et respecte les obligations de communication prévues par la loi le cas échéant."
+    },
+    "s6": {
+      "title": "6. Réclamations et médiation",
+      "body": "Toute réclamation relative au service peut être adressée au contact indiqué ci-dessous. À défaut de résolution amiable, le client peut, dans les conditions prévues par la LSFin, saisir l'organe de médiation dont dépend {legalName} : <b>{mediationBody}</b>."
+    },
+    "s7": {
+      "title": "7. Contact conformité",
+      "email": "E-mail",
+      "phone": "Téléphone"
+    }
+  },
+  "YieldShowcase": {
+    "pricesUnavailable": "Cours indisponibles pour l'instant.",
+    "yieldBadge": "Rendement",
+    "h24": "24h",
+    "badge": "Notre différence",
+    "title": "Les seuls gages qui remboursent une partie de votre crédit à votre place",
+    "subtitle": "Or, argent et ETH génèrent un rendement réel, réinjecté automatiquement dans votre crédit.",
+    "steps": {
+      "deposit": {
+        "title": "1. Vous déposez de l'or, de l'argent ou de l'ETH",
+        "description": "Ces actifs sont mis en garantie exactement comme un stablecoin, au même ratio de crédit."
+      },
+      "appreciation": {
+        "title": "2. Leur cours évolue, la plus-value travaille pour vous",
+        "description": "Chaque hausse réelle constatée depuis le dépôt réduit automatiquement le crédit utilisé."
+      },
+      "repaid": {
+        "title": "3. Jusqu'à 60% du crédit remboursé sans y penser",
+        "description": "Le reste (40% minimum) se rembourse par apport personnel, comme pour tout autre actif."
+      }
+    },
+    "stablecoinsReminder": "Les stablecoins (USDT, USDC, DAI…) restent 1:1 USD : leur crédit se rembourse entièrement par apport personnel, sans rendement automatique."
+  },
+  "YieldPerformanceHistory": {
+    "unavailable": "Historique indisponible pour l'instant.",
+    "low12m": "Plus bas (12 mois)",
+    "high12m": "Plus haut (12 mois)",
+    "unavailableValue": "indisponible"
+  },
+  "Yield": {
+    "meta": {
+      "title": "Rendement du gage · Hentsch Credit",
+      "description": "Comment l'or, l'argent et l'ETH déposés en garantie remboursent automatiquement jusqu'à 60% de votre crédit, et le risque de liquidation en cas de forte baisse."
+    },
+    "eyebrow": "Notre différence",
+    "title": "Les seuls gages qui remboursent une partie de votre crédit à votre place",
+    "description": "Or, argent et ETH génèrent un rendement réel, réinjecté automatiquement dans votre crédit, jusqu'à 60% remboursé sans y penser.",
+    "eligibleAssetsTitle": "Tous les actifs éligibles",
+    "eligibleAssetsIntro": "Huit actifs bénéficient du même mécanisme réel de remboursement automatique par plus-value, pas seulement l'or, l'argent et l'ETH mis en avant plus haut.",
+    "table": {
+      "category": "Catégorie",
+      "assets": "Actifs",
+      "indicativeTarget": "Objectif indicatif additionnel",
+      "preciousMetals": "Métaux précieux",
+      "nativeCrypto": "Cryptomonnaie native",
+      "industrialMetals": "Métaux industriels & matières premières",
+      "stablecoins": "Stablecoins",
+      "none": "Aucun",
+      "notEligible": "Non éligibles (valeur fixe ou trop volatile*)",
+      "rwaTarget": "8 à 14% APY (<link>détail sur Stratégie RWA</link>)"
+    },
+    "shibNote": "* SHIB n'est pas un stablecoin mais reste exclu du mécanisme : sa volatilité est jugée trop importante pour asseoir un remboursement récurrent fiable.",
+    "dualMechanismNote": "Les métaux industriels et matières premières cumulent donc deux mécanismes distincts : le remboursement automatique réel décrit sur cette page (identique à l'or, l'argent et l'ETH), et un objectif de rendement indicatif propre à la stratégie de trésorerie de la banque sur ces actifs, présenté séparément et jamais garanti.",
+    "performanceTitle": "Performance sur 12 mois",
+    "performanceIntro": "Les cours réels des actifs générateurs de rendement, sur les 365 derniers jours (le maximum disponible via notre fournisseur de données de marché, sans engagement sur leur performance future).",
+    "exampleTitle": "Un exemple concret",
+    "example": {
+      "p1": "Vous déposez <b>2 000 $</b> d'or tokenisé (XAUT), au cours de <b>2 400 $ l'once</b> : votre gage représente environ 0,833 once. Au ratio de 350 %, un crédit de <b>7 000 $</b> vous est accordé, et le plafond de remboursement automatique par rendement est donc de <b>4 200 $</b> (60 % de 7 000 $).",
+      "p2": "Le cours de l'or monte à <b>2 500 $</b> l'once : la plus-value constatée (100 $ × 0,833 once ≈ 83 $) est automatiquement appliquée à votre crédit utilisé, le jour même où elle est constatée. Ce mécanisme se répète à chaque hausse ultérieure du cours, jusqu'à atteindre le plafond de 4 200 $.",
+      "p3": "Si le cours baisse ensuite, rien ne vous est repris : la plus-value déjà appliquée reste acquise à votre crédit (un « cliquet » qui n'avance que vers le haut). En revanche, aucun nouveau remboursement automatique n'a lieu tant que le cours n'a pas dépassé le niveau déjà atteint.",
+      "p4": "Une fois le plafond de 60 % épuisé, le solde de crédit restant (au minimum 40 %, ici <b>2 800 $</b>) doit être remboursé par un versement explicite de votre part (dépôt ou virement), comme pour n'importe quel autre crédit."
+    },
+    "timelineTitle": "Chronologie sur plusieurs mois",
+    "timelineIntro": "Le même exemple, prolongé : le cours de l'or poursuit sa hausse sur plusieurs mois, jusqu'à atteindre le plafond de 60 %.",
+    "timelineTable": {
+      "month": "Mois",
+      "goldPrice": "Cours de l'or",
+      "repaidThisMonth": "Remboursé ce mois",
+      "cumulativeRepaid": "Cumul remboursé",
+      "row0": "0 (verrouillage)",
+      "row2Price": "2 470 $ (baisse)",
+      "row11Cumulative": "4 200 $ (plafond atteint)"
+    },
+    "timelineNote": "Au mois 2, le cours baisse : aucun remboursement n'a lieu ce mois-là, mais les 83 $ déjà appliqués au mois 1 restent acquis (cliquet). Une fois le plafond de 4 200 $ atteint au mois 11, plus aucun remboursement automatique n'a lieu sur cette position, même si le cours continue de monter.",
+    "liquidationTitle": "Le risque inverse : la liquidation",
+    "liquidation": {
+      "p1": "Le mécanisme ci-dessus profite d'une hausse du cours. Une baisse est traitée séparément, par un mécanisme distinct : la valeur de votre gage est comparée quotidiennement à sa <b>valeur d'entrée</b> (celle constatée au moment du verrouillage), pas au dernier cours ayant déclenché un remboursement.",
+      "p2": "En cas de dépréciation d'au moins <b>30 %</b> depuis l'entrée, une alerte apparaît sur votre compte, sans autre effet. À <b>50 %</b> de dépréciation, votre gage est automatiquement retiré du compte (liquidé) à sa valeur d'entrée. Le crédit que vous aviez déjà utilisé n'est <b>pas effacé</b> pour autant : il reste intégralement dû, désormais sans garantie derrière lui. Une garantie liquidée ne peut pas être restituée, même si le cours se redresse ensuite.",
+      "p3": "Le détail contractuel de ce mécanisme figure dans nos <link>conditions générales, section 7</link>."
+    },
+    "liquidationExampleTitle": "Exemple chiffré",
+    "liquidationExample": {
+      "intro": "Reprenons le dépôt de <b>2 000 $</b> d'or à 2 400 $ l'once (7 000 $ de crédit accordé), mais cette fois le cours de l'or chute au lieu de monter :",
+      "item1": "à 1 680 $ l'once (-30 %) : une alerte apparaît sur le compte, sans autre effet ;",
+      "item2": "à 1 200 $ l'once (-50 %) : le gage est liquidé. Les 2 000 $ de gage et les 7 000 $ de crédit accordé sont retirés du compte. Si vous aviez déjà utilisé <b>1 500 $</b> de ce crédit (carte, dépenses internes), ces 1 500 $ restent dus, sans plus aucune garantie derrière eux."
+    },
+    "faqTitle": "Questions fréquentes",
+    "faq": {
+      "guaranteed": {
+        "question": "Le rendement est-il garanti ?",
+        "answer": "Non. Il dépend entièrement de l'évolution réelle du cours de votre gage. Si le cours ne monte jamais au-dessus de votre prix d'entrée, aucun remboursement automatique n'a lieu : vous remboursez alors l'intégralité par apport personnel, exactement comme pour un stablecoin."
+      },
+      "stablecoins": {
+        "question": "Pourquoi les stablecoins (USDT, USDC, DAI…) n'en génèrent-ils pas ?",
+        "answer": "Un stablecoin reste par construction indexé 1:1 sur le dollar : il n'a, par définition, aucune plus-value à réaliser. Le rembourser reste néanmoins tout aussi simple, par apport personnel."
+      },
+      "frequency": {
+        "question": "À quelle fréquence le remboursement automatique est-il calculé ?",
+        "answer": "Quotidiennement, sur la base du cours spot en direct de votre actif, sans action de votre part, et visible dans votre historique de transactions sous le libellé « Remboursement par rendement du gage »."
+      },
+      "ratchet": {
+        "question": "Le « cliquet » me protège-t-il si le cours baisse ?",
+        "answer": "Il protège uniquement les remboursements déjà appliqués : ils restent acquis, quoi qu'il arrive ensuite. Il ne protège pas contre la liquidation, qui se déclenche par rapport à la valeur d'entrée de votre gage, pas par rapport au cliquet (cf. « Le risque inverse » ci-dessus)."
+      },
+      "multipleAssets": {
+        "question": "Si je dépose plusieurs actifs différents, comment ça se passe ?",
+        "answer": "Chaque demande de crédit s'engage sur un seul actif de gage, fixé au moment de la génération de l'adresse de dépôt. Pour déposer un second actif, vous soumettez une nouvelle demande : chaque position suit alors sa propre plus-value, son propre plafond de 60 %, et son propre risque de liquidation, indépendamment des autres."
+      },
+      "history": {
+        "question": "Puis-je voir l'historique de mes remboursements automatiques ?",
+        "answer": "Oui, dans l'historique des transactions de votre compte, sous le libellé « Remboursement par rendement du gage » (un mouvement distinct d'un remboursement manuel, pour rester auditable séparément)."
+      }
+    }
+  },
+  "RwaStrategy": {
+    "meta": {
+      "title": "Stratégie d'investissement RWA · Hentsch Credit",
+      "description": "La stratégie de trésorerie de Hentsch Credit sur les métaux industriels tokenisés : arbitrage cash and carry, prêt triangulaire et apport de liquidité."
+    },
+    "eyebrow": "Transparence · Stratégie de trésorerie",
+    "title": "Notre stratégie d'investissement sur les métaux industriels",
+    "intro": "Au-delà des métaux précieux, la banque accepte désormais en garantie des métaux industriels et matières premières tokenisés, et déploie sur ces actifs sa propre stratégie de trésorerie. Voici, en toute transparence, comment elle fonctionne et le plan d'action suivi.",
+    "apyTargetLabel": "APY, objectif indicatif de la banque",
+    "apyTargetNote": "Objectif de la stratégie de trésorerie propre de la banque sur ces actifs, pas une garantie, et sans aucun effet sur le calcul de votre crédit. Le remboursement automatique de votre crédit reste celui décrit plus haut : la plus-value réelle de votre gage, plafonnée à 60%.",
+    "apyObjective": "APY objectif",
+    "pillars": {
+      "cashCarry": {
+        "title": "Arbitrage Cash & Carry",
+        "range": "4 à 7%",
+        "description": "Achat du métal tokenisé sur le marché spot, vente simultanée d'un contrat à terme équivalent : la position est neutre au risque de prix et capture l'écart de financement (contango)."
+      },
+      "triangular": {
+        "title": "Collatéralisation & prêt triangulaire",
+        "range": "6,5 à 10%",
+        "description": "Le métal tokenisé est déposé en collatéral (LTV prudent, 50% maximum) auprès d'un protocole institutionnel, pour emprunter des stablecoins réinvestis dans des fonds de trésorerie à faible risque."
+      },
+      "liquidity": {
+        "title": "Apport de liquidité sélectionné",
+        "range": "9 à 15%",
+        "description": "Une part minoritaire du capital alimente des pools de liquidité ciblés, rémunérée par une fraction des frais de transaction des intervenants du marché."
+      }
+    },
+    "caseStudy": {
+      "title": "Comment ces chiffres sont obtenus",
+      "intro": "Exemple illustratif d'un déploiement de trésorerie de 10 M$ sur le Platine, à l'échelle de la banque, pas de votre gage individuel.",
+      "flow": "Flux",
+      "basis": "Base de calcul",
+      "annualAmount": "Montant annuel",
+      "impact": "Impact",
+      "netTotal": "Rendement net total",
+      "capital": "Capital de 10 M$",
+      "reallocationNote": "En réallouant une part de la trésorerie vers l'apport de liquidité (Pilier C), ce rendement net peut monter jusqu'à l'objectif de 10,2%, dans le haut de la fourchette indicative de 8 à 14% affichée plus haut, sans effet de levier supplémentaire ni garantie de résultat.",
+      "rows": {
+        "native": { "label": "Rendement natif du Platine (plus-value physique)", "basis": "1,5% sur 10 M$" },
+        "basis": { "label": "Basis trade / contango sur futures", "basis": "3,5% sur 10 M$" },
+        "stablecoinYield": { "label": "Rendement des stablecoins empruntés placés (BUIDL)", "basis": "5,0% sur 5 M$" },
+        "borrowCost": { "label": "Coût de l'emprunt de stablecoins", "basis": "-3,2% sur 5 M$" },
+        "operational": { "label": "Coûts opérationnels, garde & assurance", "basis": "0,4% sur 10 M$" }
+      }
+    },
+    "roadmapTitle": "Feuille de route sur 12 mois",
+    "roadmap": {
+      "phase1": { "window": "Mois 1 à 3", "title": "Structuration & conformité", "detail": "Cadre juridique, sélection des dépositaires agréés, audit des émetteurs." },
+      "phase2": { "window": "Mois 4 à 6", "title": "Projet pilote", "detail": "Enveloppe pilote de 5 M$ sur le Platine, premiers circuits d'arbitrage." },
+      "phase3": { "window": "Mois 7 à 9", "title": "Montée en charge", "detail": "Capital étendu à 25 M$, extension au Palladium et au Cuivre." },
+      "phase4": { "window": "Mois 10 à 12", "title": "Industrialisation", "detail": "Reporting temps réel et intégration comptable de bout en bout." }
+    },
+    "risksTitle": "Risques identifiés & mesures de protection",
+    "risks": {
+      "counterparty": { "risk": "Contrepartie & audit", "mitigation": "Audits bimensuels de la réserve (Proof of Reserve) par des cabinets indépendants." },
+      "smartContract": { "risk": "Smart contract", "mitigation": "Protocoles exclusivement audités à multiples reprises, couverts par une assurance institutionnelle." },
+      "liquidity": { "risk": "Liquidité", "mitigation": "Convention de rachat direct avec les émetteurs physiques, préavis maximum de 48h." },
+      "liquidation": { "risk": "Liquidation du collatéral", "mitigation": "Ratio de sur-collatéralisation strict (LTV ≤ 50%) avec rééquilibrage automatisé." }
+    },
+    "governanceTitle": "Gouvernance & séparation des fonds",
+    "governance": {
+      "capital": {
+        "title": "Capital engagé",
+        "body": "Cette stratégie est pilotée sur la trésorerie propre de la banque, jamais sur les actifs déposés en garantie par les clients. Un gage client sert exclusivement à garantir son propre crédit (cf. Rendement) ; il n'est ni prêté, ni engagé dans l'arbitrage ou le market making décrits ci-dessus."
+      },
+      "supervision": {
+        "title": "Supervision",
+        "body": "Pilotée par la Direction des Marchés Financiers, rapportée au Comité d'Investissement et à la Direction Générale à chaque changement de phase (cf. feuille de route ci-dessus), avec un suivi quotidien interne de la performance réalisée par rapport à l'objectif indicatif affiché."
+      }
+    },
+    "faqTitle": "Questions fréquentes",
+    "faq": {
+      "usedForStrategy": {
+        "question": "Mon gage est-il utilisé pour cette stratégie ?",
+        "answer": "Non. Votre gage reste exclusivement affecté à votre propre crédit. Cette stratégie porte sur la trésorerie propre de la banque, un capital distinct."
+      },
+      "loss": {
+        "question": "Que se passe-t-il si la stratégie perd de l'argent ?",
+        "answer": "La perte est absorbée par la trésorerie de la banque, sans aucun effet sur les comptes clients ni sur le crédit déjà accordé : ce risque n'est jamais transféré au client."
+      },
+      "targetReached": {
+        "question": "L'objectif de 8 à 14 % est-il déjà atteint ?",
+        "answer": "C'est un objectif de moyen terme, pas un résultat garanti mois par mois : voir l'étude de cas ci-dessus pour un exemple de calcul détaillé du rendement net."
+      },
+      "whyIndustrialOnly": {
+        "question": "Pourquoi seuls les métaux industriels ont cet objectif ?",
+        "answer": "L'or, l'argent et l'ETH bénéficient déjà du remboursement automatique réel décrit sur la page Rendement. Cet objectif indicatif est propre à la stratégie de trésorerie sur les actifs industriels, un mécanisme distinct et additionnel."
+      }
+    }
+  },
+  "Pricing": {
+    "meta": {
+      "title": "Tarifs · Hentsch Credit",
+      "description": "Les taux et frais réels appliqués par Hentsch Credit : ratio de crédit, intérêts, frais d'origination et seuils de liquidation, sans surprise."
+    },
+    "eyebrow": "Transparence tarifaire",
+    "title": "Nos tarifs, sans surprise",
+    "description": "Les taux et frais réellement appliqués par la plateforme, figés au moment du verrouillage de votre gage.",
+    "items": {
+      "ratio": {
+        "label": "Ratio de crédit",
+        "detail": "Du montant mis en gage, au taux en vigueur au moment du verrouillage."
+      },
+      "interestRate": {
+        "label": "Taux d'intérêt annuel",
+        "detail": "Taux de référence (SOFR/EURIBOR) + prime de risque de 8,5 points, sur le crédit utilisé."
+      },
+      "originationFees": {
+        "label": "Frais d'origination",
+        "detail": "Prélevés une fois, sur le crédit émis, au moment du verrouillage du gage."
+      },
+      "custodyFees": {
+        "label": "Frais de garde du collatéral",
+        "detail": "Sur le montant du gage verrouillé, tant que la position reste active."
+      },
+      "positionDuration": {
+        "label": "Durée de la position",
+        "detail": "Renouvelable ; le gage reste bloqué tant que le crédit utilisé n'est pas remboursé."
+      },
+      "automaticRepayment": {
+        "label": "Remboursement automatique",
+        "value": "jusqu'à 60%",
+        "detail": "Par la plus-value réelle du gage (or, argent, ETH, métaux industriels). Les 40% restants se remboursent par apport personnel."
+      },
+      "liquidationThresholds": {
+        "label": "Seuils de liquidation du gage",
+        "detail": "Dépréciation depuis la valeur d'entrée : 30% déclenche une alerte, 50% liquide le gage (le crédit déjà utilisé reste dû). Détail sur la page Rendement."
+      }
+    },
+    "nonRetroactivityNote": "Un changement ultérieur de l'un de ces taux ne s'applique qu'aux nouveaux verrouillages : une position déjà ouverte conserve la structure de taux qui lui a été appliquée au moment de sa création, jusqu'à son remboursement ou son échéance.",
+    "contractualDetail": "Le détail contractuel complet de ces tarifs figure dans nos <link>conditions générales</link>.",
+    "exampleTitle": "Exemple de coût total sur 12 mois",
+    "exampleIntro": "Pour un dépôt de 2 000 $ (7 000 $ de crédit accordé), intégralement utilisé pendant 12 mois puis remboursé, scénario le plus prudent (sans aucune réduction par rendement).",
+    "exampleTable": {
+      "item": "Poste",
+      "calculation": "Calcul",
+      "amount": "Montant",
+      "origination": "Frais d'origination",
+      "originationCalc": "2,0 % × 7 000 $, prélevé une fois",
+      "interest": "Intérêts sur 12 mois",
+      "interestCalc": "13,5 % × 7 000 $ utilisés toute l'année",
+      "totalBeforeYield": "Total avant rendement",
+      "totalBeforeYieldNote": "Hors réduction éventuelle par plus-value du gage"
+    },
+    "exampleFooter": "Les frais de garde du collatéral (0,5 %/an) sont affichés et figés au verrouillage, mais leur prélèvement automatique périodique n'est pas encore en service à ce stade ; ils ne sont donc pas inclus dans ce total. Si votre gage génère un rendement (or, argent, ETH, métaux industriels), une partie de ces 1 085 $ peut être couverte automatiquement, dans la limite de 60 % du crédit utilisé (cf. <link>Rendement</link>).",
+    "faqTitle": "Questions fréquentes",
+    "faq": {
+      "earlyRepayment": {
+        "question": "Y a-t-il des frais de remboursement anticipé ?",
+        "answer": "Non. Vous pouvez rembourser tout ou partie du crédit utilisé à tout moment, sans pénalité. Les intérêts ne courent que sur la durée et le montant réellement utilisés."
+      },
+      "negotiable": {
+        "question": "Ces tarifs sont-ils négociables ?",
+        "answer": "Non, ils s'appliquent uniformément à tous les clients au taux en vigueur au moment du verrouillage. Un futur changement de taux ne s'applique qu'aux nouveaux verrouillages."
+      },
+      "currencyDifference": {
+        "question": "Pourquoi le taux diffère-t-il entre USD et EUR ?",
+        "answer": "Chaque devise applique son propre taux de référence monétaire (SOFR pour l'USD, EURIBOR pour l'EUR) avant d'y ajouter la même prime de risque de 8,5 points, d'où l'écart de 1,5 point entre les deux."
+      }
+    }
+  }
+}

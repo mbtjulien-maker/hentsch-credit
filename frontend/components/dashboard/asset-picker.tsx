@@ -66,7 +66,7 @@ export function ChainIcon({ chain, className = "size-5 shrink-0" }: { chain: str
 function AssetLogo({ currency, src }: { currency: string; src?: string }) {
   if (src) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinGecko, pas un asset local Next/Image
+      // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinMarketCap, pas un asset local Next/Image
       <img src={src} alt="" className="size-6 shrink-0 rounded-full" />
     );
   }
@@ -78,7 +78,7 @@ function AssetLogo({ currency, src }: { currency: string; src?: string }) {
 }
 
 // Logos réels des actifs — même source que la vue Marché (cf. market-view.tsx) : le
-// champ `image` de MarketOverviewEntry (CoinGecko), pour ne jamais afficher un logo
+// champ `image` de MarketOverviewEntry (CoinMarketCap), pour ne jamais afficher un logo
 // approximatif quand la vraie image est disponible. Un échec réseau retombe
 // silencieusement sur le repli monogramme (AssetLogo) : purement décoratif, jamais
 // bloquant pour choisir un actif.

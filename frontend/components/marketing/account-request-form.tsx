@@ -2,6 +2,8 @@
 
 import { useId, useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +17,7 @@ import { api, ApiError } from "@/lib/api";
 // de validation manuelle du dossier par le back-office (cf. AccountRequestsService) —
 // l'accès n'est accordé qu'une fois cette validation faite.
 export function AccountRequestForm() {
+  const t = useTranslations("AccountRequestForm");
   const firstNameId = useId();
   const lastNameId = useId();
   const emailId = useId();
@@ -47,7 +50,7 @@ export function AccountRequestForm() {
       });
       setSubmitted(true);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
       setSubmitting(false);
     }
@@ -57,11 +60,8 @@ export function AccountRequestForm() {
     return (
       <div className="flex flex-col items-center gap-3 rounded-2xl border border-border/80 bg-card p-8 text-center shadow-sm">
         <CheckCircle2 className="size-8 text-[#1baf7a]" />
-        <p className="font-medium text-foreground">Votre demande a bien été transmise</p>
-        <p className="max-w-sm text-sm text-muted-foreground">
-          Notre équipe étudie votre dossier et reviendra vers vous par e-mail. L&apos;accès
-          à votre espace client n&apos;est accordé qu&apos;une fois cette validation faite.
-        </p>
+        <p className="font-medium text-foreground">{t("successTitle")}</p>
+        <p className="max-w-sm text-sm text-muted-foreground">{t("successBody")}</p>
       </div>
     );
   }
@@ -73,7 +73,7 @@ export function AccountRequestForm() {
     >
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="grid gap-2">
-          <Label htmlFor={firstNameId}>Prénom</Label>
+          <Label htmlFor={firstNameId}>{t("firstName")}</Label>
           <Input
             id={firstNameId}
             required
@@ -82,7 +82,7 @@ export function AccountRequestForm() {
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor={lastNameId}>Nom</Label>
+          <Label htmlFor={lastNameId}>{t("lastName")}</Label>
           <Input
             id={lastNameId}
             required
@@ -94,7 +94,7 @@ export function AccountRequestForm() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="grid gap-2">
-          <Label htmlFor={emailId}>E-mail</Label>
+          <Label htmlFor={emailId}>{t("email")}</Label>
           <Input
             id={emailId}
             type="email"
@@ -104,7 +104,7 @@ export function AccountRequestForm() {
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor={phoneId}>Téléphone (optionnel)</Label>
+          <Label htmlFor={phoneId}>{t("phone")}</Label>
           <Input
             id={phoneId}
             type="tel"
@@ -115,10 +115,10 @@ export function AccountRequestForm() {
       </div>
 
       <div className="grid gap-2">
-        <Label htmlFor={messageId}>Votre projet (optionnel)</Label>
+        <Label htmlFor={messageId}>{t("message")}</Label>
         <Textarea
           id={messageId}
-          placeholder="Montant envisagé, actifs concernés, questions particulières…"
+          placeholder={t("messagePlaceholder")}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
@@ -131,18 +131,18 @@ export function AccountRequestForm() {
       )}
 
       <p className="text-xs text-muted-foreground/80">
-        En soumettant ce formulaire, vous acceptez que vos informations soient traitées
-        conformément à notre{" "}
-        <a href="/confidentialite" className="underline underline-offset-2 hover:text-foreground/80">
-          politique de confidentialité
-        </a>
-        . Aucun compte n&apos;est créé automatiquement : l&apos;accès est accordé après
-        étude et validation de votre dossier par notre équipe.
+        {t.rich("disclaimer", {
+          link: (chunks) => (
+            <Link href="/confidentialite" className="underline underline-offset-2 hover:text-foreground/80">
+              {chunks}
+            </Link>
+          ),
+        })}
       </p>
 
       <Button type="submit" disabled={!isValid || submitting} className="mt-1 self-start">
         {submitting && <Loader2 className="size-4 animate-spin" />}
-        Envoyer ma demande
+        {t("submit")}
       </Button>
     </form>
   );

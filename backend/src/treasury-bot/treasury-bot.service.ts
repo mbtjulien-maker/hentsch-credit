@@ -64,7 +64,7 @@ export class TreasuryBotService {
     }
 
     // Chaque série est indexée depuis SON PROPRE début (elles peuvent différer légèrement
-    // en longueur selon la réponse de CoinGecko) — on lit toujours "i jours avant
+    // en longueur selon la réponse de CoinMarketCap) — on lit toujours "i jours avant
     // aujourd'hui" en comptant depuis la fin de chaque série, jamais depuis un index absolu
     // partagé, pour rester aligné même si les longueurs diffèrent.
     const availableDays = Math.min(days, ...series.map((s) => s.length));

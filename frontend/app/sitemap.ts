@@ -1,9 +1,13 @@
 import type { MetadataRoute } from "next";
+import { routing } from "@/i18n/routing";
+import { getPathname } from "@/i18n/navigation";
 
 // Liste maintenue à la main plutôt que générée par scan du système de fichiers : garde
-// une trace explicite de ce qui est volontairement public (cf. app/plan-du-site/page.tsx,
+// une trace explicite de ce qui est volontairement public (cf. app/[locale]/plan-du-site,
 // qui liste exactement ces mêmes routes pour les visiteurs). /dashboard/* et /admin/*
 // sont exclus (cf. robots.ts) : pages authentifiées, aucun intérêt à les faire indexer.
+// /login est volontairement absent : page fonctionnelle, pas un contenu à faire remonter
+// dans une recherche.
 const PUBLIC_ROUTES = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
   { path: "/comment-ca-marche", priority: 0.8, changeFrequency: "monthly" },
@@ -27,11 +31,27 @@ const PUBLIC_ROUTES = [
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001";
 
+// Une entrée par route × par langue, avec les 7 versions linguistiques croisées en
+// hreflang (alternates.languages) sur chaque entrée — le français reste sans préfixe
+// (localePrefix: "as-needed", cf. i18n/routing.ts), les 6 autres langues sous /en, /es...
+// getPathname() résout ce préfixage à la place d'une concaténation manuelle.
 export default function sitemap(): MetadataRoute.Sitemap {
-  return PUBLIC_ROUTES.map((route) => ({
-    url: `${SITE_URL}${route.path}`,
-    lastModified: new Date(),
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+  const lastModified = new Date();
+
+  return PUBLIC_ROUTES.flatMap((route) =>
+    routing.locales.map((locale) => ({
+      url: `${SITE_URL}${getPathname({ locale, href: route.path })}`,
+      lastModified,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+      alternates: {
+        languages: Object.fromEntries(
+          routing.locales.map((altLocale) => [
+            altLocale,
+            `${SITE_URL}${getPathname({ locale: altLocale, href: route.path })}`,
+          ]),
+        ),
+      },
+    })),
+  );
 }

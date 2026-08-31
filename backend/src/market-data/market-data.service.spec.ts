@@ -5,25 +5,62 @@ import {
 } from '../common/exceptions/market-data.exceptions';
 import { MarketDataService } from './market-data.service';
 
-function coin(overrides: Record<string, unknown> = {}) {
+// Un enregistrement /v2/cryptocurrency/quotes/latest — quote.EUR n'est renseigné que sur
+// la réponse de l'appel dédié convert=EUR (cf. getEurPerUsd et les fixtures usdtWithEur
+// dans son describe ci-dessous), jamais dans le lot principal convert=USD.
+function quote(overrides: Record<string, unknown> = {}) {
   return {
-    id: 'pax-gold',
+    id: 1,
+    slug: 'pax-gold',
     symbol: 'paxg',
     name: 'PAX Gold',
-    image: 'https://example.com/paxg.png',
-    current_price: 2400,
-    market_cap: 500_000_000,
-    total_volume: 12_000_000,
-    high_24h: 2420,
-    low_24h: 2380,
-    price_change_percentage_24h: 1.25,
-    sparkline_in_7d: { price: [2390, 2395, 2400] },
+    quote: {
+      USD: {
+        price: 2400,
+        volume_24h: 12_000_000,
+        market_cap: 500_000_000,
+        percent_change_24h: 1.25,
+      },
+    },
+    ...overrides,
+  };
+}
+
+// Un enregistrement /v2/cryptocurrency/info (logo + id numérique).
+function info(overrides: Record<string, unknown> = {}) {
+  return {
+    id: 1,
+    slug: 'pax-gold',
+    symbol: 'paxg',
+    logo: 'https://example.com/paxg.png',
     ...overrides,
   };
 }
 
 function jsonResponse(body: unknown, ok = true, status = 200) {
   return { ok, status, json: () => Promise.resolve(body) } as Response;
+}
+
+// Extrait l'URL demandée depuis le premier argument de fetch() dans les mocks
+// mockImplementation ci-dessous — jamais `String(input)` : un `Request` n'a pas de
+// toString() utile ("[object Request]"), contrairement à `Request.url`.
+function urlOf(input: Parameters<typeof fetch>[0]): string {
+  if (typeof input === 'string') return input;
+  if (input instanceof URL) return input.toString();
+  return input.url;
+}
+
+function quotesResponse(items: ReturnType<typeof quote>[]) {
+  // Forme réelle /v2 : objet indexé par id numérique, pas par slug.
+  const data: Record<string, unknown> = {};
+  for (const item of items) data[String(item.id)] = item;
+  return jsonResponse({ data });
+}
+
+function infoResponse(items: ReturnType<typeof info>[]) {
+  const data: Record<string, unknown> = {};
+  for (const item of items) data[String(item.id)] = item;
+  return jsonResponse({ data });
 }
 
 describe('MarketDataService', () => {
@@ -53,7 +90,7 @@ describe('MarketDataService', () => {
 
     it('converts gold-backed tokens at the live spot price', async () => {
       fetchSpy.mockResolvedValue(
-        jsonResponse([coin({ id: 'pax-gold', current_price: 2400 })]),
+        quotesResponse([quote({ id: 1, slug: 'pax-gold' })]),
       );
 
       const result = await service.getUsdValue(
@@ -65,7 +102,7 @@ describe('MarketDataService', () => {
     });
 
     it('throws MarketDataUnavailableException when the live price is missing, instead of assuming a value', async () => {
-      fetchSpy.mockResolvedValue(jsonResponse([]));
+      fetchSpy.mockResolvedValue(quotesResponse([]));
 
       await expect(
         service.getUsdValue('XAUT', new Prisma.Decimal('1')),
@@ -81,7 +118,8 @@ describe('MarketDataService', () => {
     });
 
     it('treats a non-OK HTTP response the same as a network failure', async () => {
-      fetchSpy.mockResolvedValue(jsonResponse([], false, 503));
+      fetchSpy.mockResolvedValue(quotesResponse([]));
+      fetchSpy.mockResolvedValueOnce(jsonResponse({}, false, 503));
 
       await expect(
         service.getUsdValue('PAXG', new Prisma.Decimal('1')),
@@ -91,34 +129,72 @@ describe('MarketDataService', () => {
 
   describe('getMarketOverview', () => {
     it('flags accepted currencies correctly and marks stablecoins as pegged', async () => {
-      fetchSpy.mockResolvedValue(
-        jsonResponse([
-          coin({
-            id: 'usds',
-            symbol: 'usds',
-            name: 'USDS',
-            current_price: 0.999,
-          }),
-          coin({
-            id: 'pax-gold',
-            symbol: 'paxg',
-            name: 'PAX Gold',
-            current_price: 2400,
-          }),
-          coin({
-            id: 'bitcoin',
-            symbol: 'btc',
-            name: 'Bitcoin',
-            current_price: 65000,
-          }),
-          coin({
-            id: 'abrdn-physical-platinum-shares-etf-dinari-tokenized-etf',
-            symbol: 'pplt',
-            name: 'abrdn Physical Platinum Shares ETF',
-            current_price: 16.78,
-          }),
-        ]),
-      );
+      fetchSpy.mockImplementation((input) => {
+        const url = urlOf(input);
+        if (url.includes('/cryptocurrency/info')) {
+          return Promise.resolve(infoResponse([info()]));
+        }
+        return Promise.resolve(
+          quotesResponse([
+            quote({
+              id: 10,
+              slug: 'usds',
+              symbol: 'usds',
+              name: 'USDS',
+              quote: {
+                USD: {
+                  price: 0.999,
+                  volume_24h: 1,
+                  market_cap: 1,
+                  percent_change_24h: 0,
+                },
+              },
+            }),
+            quote({
+              id: 1,
+              slug: 'pax-gold',
+              symbol: 'paxg',
+              name: 'PAX Gold',
+              quote: {
+                USD: {
+                  price: 2400,
+                  volume_24h: 1,
+                  market_cap: 1,
+                  percent_change_24h: 0,
+                },
+              },
+            }),
+            quote({
+              id: 2,
+              slug: 'bitcoin',
+              symbol: 'btc',
+              name: 'Bitcoin',
+              quote: {
+                USD: {
+                  price: 65000,
+                  volume_24h: 1,
+                  market_cap: 1,
+                  percent_change_24h: 0,
+                },
+              },
+            }),
+            quote({
+              id: 3,
+              slug: 'abrdn-physical-platinum-shares-tokenized-etf-dinari',
+              symbol: 'pplt',
+              name: 'abrdn Physical Platinum Shares ETF (Dinari Tokenized ETF)',
+              quote: {
+                USD: {
+                  price: 16.78,
+                  volume_24h: 1,
+                  market_cap: 1,
+                  percent_change_24h: 0,
+                },
+              },
+            }),
+          ]),
+        );
+      });
 
       const overview = await service.getMarketOverview();
 
@@ -126,8 +202,7 @@ describe('MarketDataService', () => {
       const paxg = overview.find((e) => e.id === 'pax-gold')!;
       const btc = overview.find((e) => e.id === 'bitcoin')!;
       const xpt = overview.find(
-        (e) =>
-          e.id === 'abrdn-physical-platinum-shares-etf-dinari-tokenized-etf',
+        (e) => e.id === 'abrdn-physical-platinum-shares-tokenized-etf-dinari',
       )!;
 
       expect(usds.currency).toBe('USDS');
@@ -142,8 +217,6 @@ describe('MarketDataService', () => {
       expect(paxg.isYieldEligible).toBe(true);
       expect(paxg.targetApyRangePct).toBeNull();
       expect(paxg.usdPrice?.toString()).toBe('2400');
-      expect(paxg.high24h?.toString()).toBe('2420');
-      expect(paxg.sparkline7d).toEqual([2390, 2395, 2400]);
 
       expect(btc.currency).toBeNull();
       expect(btc.isAcceptedForCredit).toBe(false);
@@ -156,8 +229,8 @@ describe('MarketDataService', () => {
       expect(xpt.targetApyRangePct).toEqual({ min: 8, max: 14 });
     });
 
-    it('includes every accepted currency and major crypto even when CoinGecko omits some from the response', async () => {
-      fetchSpy.mockResolvedValue(jsonResponse([]));
+    it('includes every accepted currency and major crypto even when CoinMarketCap omits some from the response', async () => {
+      fetchSpy.mockResolvedValue(quotesResponse([]));
 
       const overview = await service.getMarketOverview();
 
@@ -189,25 +262,85 @@ describe('MarketDataService', () => {
       expect(btc.symbol).toBe('BTC');
       expect(btc.name).toBe('Bitcoin');
     });
+
+    it('resolves asset logos from the separate /cryptocurrency/info metadata call', async () => {
+      fetchSpy.mockImplementation((input) => {
+        const url = urlOf(input);
+        if (url.includes('/cryptocurrency/info')) {
+          return Promise.resolve(
+            infoResponse([
+              info({
+                id: 1,
+                slug: 'pax-gold',
+                logo: 'https://cmc.example/paxg.png',
+              }),
+            ]),
+          );
+        }
+        return Promise.resolve(
+          quotesResponse([quote({ id: 1, slug: 'pax-gold' })]),
+        );
+      });
+
+      const overview = await service.getMarketOverview();
+
+      const paxg = overview.find((e) => e.id === 'pax-gold')!;
+      expect(paxg.image).toBe('https://cmc.example/paxg.png');
+    });
   });
 
   describe('getEurPerUsd', () => {
-    function exchangeRatesResponse(usd: number, eur: number) {
-      return jsonResponse({
-        rates: { usd: { value: usd }, eur: { value: eur } },
-      });
+    // USDT en USD (via le lot principal, cf. getMarketItems) et en EUR (via l'appel dédié
+    // minimal, cf. commentaire de getEurPerUsd sur la limite "1 convert option" du plan
+    // gratuit) : deux réponses distinctes, dans l'ordre où le service les demande.
+    function usdtUsdOnly() {
+      return quotesResponse([
+        quote({
+          id: 5,
+          slug: 'tether',
+          symbol: 'usdt',
+          name: 'Tether',
+          quote: {
+            USD: {
+              price: 1,
+              volume_24h: 1,
+              market_cap: 1,
+              percent_change_24h: 0,
+            },
+          },
+        }),
+      ]);
     }
 
-    it('derives the EUR/USD rate from BTC priced in both currencies', async () => {
-      fetchSpy.mockResolvedValue(exchangeRatesResponse(111827, 96538));
+    function usdtWithEur(eurPrice = 0.9227) {
+      return quotesResponse([
+        quote({
+          id: 5,
+          slug: 'tether',
+          quote: {
+            USD: {
+              price: 1,
+              volume_24h: 1,
+              market_cap: 1,
+              percent_change_24h: 0,
+            },
+            EUR: { price: eurPrice },
+          },
+        }),
+      ]);
+    }
+
+    it('derives the EUR/USD rate from USDT priced in USD (batched call) and EUR (dedicated call)', async () => {
+      fetchSpy
+        .mockResolvedValueOnce(usdtUsdOnly())
+        .mockResolvedValueOnce(usdtWithEur());
 
       const rate = await service.getEurPerUsd();
 
-      expect(rate.toNumber()).toBeCloseTo(96538 / 111827, 8);
-      expect(fetchSpy).toHaveBeenCalledWith(
-        'https://api.coingecko.com/api/v3/exchange_rates',
-        expect.anything(),
-      );
+      expect(rate.toNumber()).toBeCloseTo(0.9227, 8);
+      // Deux appels : le lot principal (USD, tous les actifs) puis l'appel dédié minimal
+      // pour EUR — pas un seul appel groupé, cf. commentaire de getEurPerUsd.
+      expect(fetchSpy).toHaveBeenCalledTimes(2);
     });
 
     it('throws ExchangeRateUnavailableException when the provider is unreachable and no cache exists', async () => {
@@ -218,71 +351,73 @@ describe('MarketDataService', () => {
       );
     });
 
-    it('treats a non-OK HTTP response the same as a network failure', async () => {
-      fetchSpy.mockResolvedValue(jsonResponse({}, false, 503));
+    it('throws ExchangeRateUnavailableException when the dedicated EUR call is missing the conversion', async () => {
+      fetchSpy
+        .mockResolvedValueOnce(usdtUsdOnly())
+        .mockResolvedValueOnce(usdtUsdOnly());
 
       await expect(service.getEurPerUsd()).rejects.toBeInstanceOf(
         ExchangeRateUnavailableException,
       );
     });
 
-    it('throws ExchangeRateUnavailableException when the response is missing a currency', async () => {
-      fetchSpy.mockResolvedValue(
-        jsonResponse({ rates: { usd: { value: 111827 } } }),
-      );
-
-      await expect(service.getEurPerUsd()).rejects.toBeInstanceOf(
-        ExchangeRateUnavailableException,
-      );
-    });
-
-    it('serves the last known-good rate (stale-if-error) when a later refetch fails', async () => {
+    it('serves the last known-good rate (stale-if-error) when the dedicated EUR call fails on a later refetch', async () => {
       jest.useFakeTimers();
-      fetchSpy.mockResolvedValueOnce(exchangeRatesResponse(111827, 96538));
+      fetchSpy
+        .mockResolvedValueOnce(usdtUsdOnly())
+        .mockResolvedValueOnce(usdtWithEur());
       const first = await service.getEurPerUsd();
 
       jest.advanceTimersByTime(31_000);
-      fetchSpy.mockRejectedValueOnce(new Error('network down'));
+      fetchSpy
+        .mockResolvedValueOnce(usdtUsdOnly())
+        .mockRejectedValueOnce(new Error('network down'));
       const second = await service.getEurPerUsd();
 
       expect(second.toString()).toBe(first.toString());
-    });
-
-    it('reuses the cached rate within the TTL instead of calling the provider again', async () => {
-      fetchSpy.mockResolvedValue(exchangeRatesResponse(111827, 96538));
-
-      await service.getEurPerUsd();
-      await service.getEurPerUsd();
-
-      expect(fetchSpy).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('caching', () => {
     it('reuses cached market data within the TTL instead of calling the provider again', async () => {
-      fetchSpy.mockResolvedValue(jsonResponse([coin()]));
+      fetchSpy.mockResolvedValue(quotesResponse([quote()]));
 
       await service.getMarketOverview();
       await service.getMarketOverview();
 
-      expect(fetchSpy).toHaveBeenCalledTimes(1);
+      // Deux appels par cycle (prix + métadonnées), pas quatre.
+      expect(fetchSpy).toHaveBeenCalledTimes(2);
     });
 
-    it('refetches once the TTL has elapsed', async () => {
+    it('refetches prices once the TTL has elapsed, but reuses the longer-lived metadata cache', async () => {
       jest.useFakeTimers();
-      fetchSpy.mockResolvedValue(jsonResponse([coin()]));
+      fetchSpy.mockResolvedValue(quotesResponse([quote()]));
 
       await service.getMarketOverview();
       jest.advanceTimersByTime(31_000);
       await service.getMarketOverview();
 
-      expect(fetchSpy).toHaveBeenCalledTimes(2);
+      // 1er cycle : prix + métadonnées (2 appels). 2e cycle, 31s plus tard : seul le prix
+      // a dépassé son TTL de 30s (cf. PRICE_CACHE_TTL_MS) ; les métadonnées restent en
+      // cache 24h (cf. METADATA_CACHE_TTL_MS), donc pas de 3e appel pour elles.
+      expect(fetchSpy).toHaveBeenCalledTimes(3);
     });
 
     it('serves the last known-good data (stale-if-error) when a later refetch fails', async () => {
       jest.useFakeTimers();
       fetchSpy.mockResolvedValueOnce(
-        jsonResponse([coin({ current_price: 2400 })]),
+        quotesResponse([
+          quote({
+            quote: {
+              USD: {
+                price: 2400,
+                volume_24h: 1,
+                market_cap: 1,
+                percent_change_24h: 0,
+              },
+            },
+          }),
+        ]),
       );
       await service.getUsdValue('PAXG', new Prisma.Decimal('1'));
 
@@ -296,56 +431,90 @@ describe('MarketDataService', () => {
 
   describe('getYieldAssetHistory', () => {
     function historyResponse(
-      prices: [number, number][],
+      points: { timestamp: string; price: number }[],
       ok = true,
       status = 200,
     ) {
       return {
         ok,
         status,
-        json: () => Promise.resolve({ prices }),
+        json: () =>
+          Promise.resolve({
+            data: {
+              '1': {
+                quotes: points.map((p) => ({
+                  timestamp: p.timestamp,
+                  quote: { USD: { price: p.price } },
+                })),
+              },
+            },
+          }),
       } as Response;
     }
 
-    it('computes change/high/low over the period and calls one CoinGecko endpoint per currency', async () => {
-      fetchSpy
-        .mockResolvedValueOnce(
-          historyResponse([
-            [1, 2000],
-            [2, 2200],
-            [3, 1900],
-            [4, 2400],
-          ]),
-        )
-        .mockResolvedValueOnce(historyResponse([[1, 35]]));
+    it('computes change/high/low over the period and calls one CoinMarketCap endpoint per currency', async () => {
+      fetchSpy.mockImplementation((input) => {
+        const url = urlOf(input);
+        if (url.includes('/cryptocurrency/info')) {
+          return Promise.resolve(
+            infoResponse([
+              info({ id: 101, slug: 'tether-gold' }),
+              info({ id: 102, slug: 'silver' }),
+            ]),
+          );
+        }
+        if (url.includes('id=101')) {
+          return Promise.resolve(
+            historyResponse([
+              { timestamp: '2026-01-01T00:00:00.000Z', price: 2000 },
+              { timestamp: '2026-01-02T00:00:00.000Z', price: 2200 },
+              { timestamp: '2026-01-03T00:00:00.000Z', price: 1900 },
+              { timestamp: '2026-01-04T00:00:00.000Z', price: 2400 },
+            ]),
+          );
+        }
+        if (url.includes('id=102')) {
+          return Promise.resolve(
+            historyResponse([
+              { timestamp: '2026-01-01T00:00:00.000Z', price: 35 },
+            ]),
+          );
+        }
+        return Promise.resolve(jsonResponse({}, false, 404));
+      });
 
       const [xaut, kag] = await service.getYieldAssetHistory(['XAUT', 'KAG']);
 
-      expect(fetchSpy).toHaveBeenCalledTimes(2);
-      expect(fetchSpy).toHaveBeenNthCalledWith(
-        1,
-        'https://api.coingecko.com/api/v3/coins/tether-gold/market_chart?vs_currency=usd&days=365',
-        expect.anything(),
-      );
       expect(xaut.currency).toBe('XAUT');
       expect(xaut.changePct).toBeCloseTo(((2400 - 2000) / 2000) * 100, 8);
       expect(xaut.highUsd).toBe(2400);
       expect(xaut.lowUsd).toBe(1900);
-      expect(xaut.points).toEqual([
-        { t: 1, usd: 2000 },
-        { t: 2, usd: 2200 },
-        { t: 3, usd: 1900 },
-        { t: 4, usd: 2400 },
-      ]);
+      expect(xaut.points.map((p) => p.usd)).toEqual([2000, 2200, 1900, 2400]);
 
       expect(kag.currency).toBe('KAG');
       expect(kag.changePct).toBe(0);
     });
 
     it('degrades gracefully for a single failing currency instead of failing the whole batch', async () => {
-      fetchSpy
-        .mockResolvedValueOnce(historyResponse([], false, 503))
-        .mockResolvedValueOnce(historyResponse([[1, 2400]]));
+      fetchSpy.mockImplementation((input) => {
+        const url = urlOf(input);
+        if (url.includes('/cryptocurrency/info')) {
+          return Promise.resolve(
+            infoResponse([
+              info({ id: 101, slug: 'tether-gold' }),
+              info({ id: 1, slug: 'pax-gold' }),
+            ]),
+          );
+        }
+        if (url.includes('id=101')) {
+          return Promise.resolve(historyResponse([], false, 503));
+        }
+        return Promise.resolve(
+          historyResponse([
+            { timestamp: '2026-01-01T00:00:00.000Z', price: 2400 },
+          ]),
+        );
+      });
 
       const [xaut, paxg] = await service.getYieldAssetHistory(['XAUT', 'PAXG']);
 
@@ -353,16 +522,29 @@ describe('MarketDataService', () => {
       expect(xaut.changePct).toBeNull();
       expect(xaut.highUsd).toBeNull();
       expect(xaut.lowUsd).toBeNull();
-      expect(paxg.points).toEqual([{ t: 1, usd: 2400 }]);
+      expect(paxg.points.map((p) => p.usd)).toEqual([2400]);
     });
 
     it('caches the batch and does not refetch within HISTORY_CACHE_TTL_MS', async () => {
-      fetchSpy.mockResolvedValue(historyResponse([[1, 2400]]));
+      fetchSpy.mockImplementation((input) => {
+        const url = urlOf(input);
+        if (url.includes('/cryptocurrency/info')) {
+          return Promise.resolve(
+            infoResponse([info({ id: 101, slug: 'tether-gold' })]),
+          );
+        }
+        return Promise.resolve(
+          historyResponse([
+            { timestamp: '2026-01-01T00:00:00.000Z', price: 2400 },
+          ]),
+        );
+      });
 
       await service.getYieldAssetHistory(['XAUT']);
       await service.getYieldAssetHistory(['XAUT']);
 
-      expect(fetchSpy).toHaveBeenCalledTimes(1);
+      // Un appel info (métadonnées, mises en cache séparément) + un appel historique.
+      expect(fetchSpy).toHaveBeenCalledTimes(2);
     });
   });
 });

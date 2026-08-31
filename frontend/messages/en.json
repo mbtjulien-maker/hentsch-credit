@@ -1,0 +1,1007 @@
+{
+  "Common": {
+    "backToHome": "Back to home",
+    "lastUpdated": "Last updated:",
+    "legalTranslationDisclaimer": "This page has been translated for your convenience. In case of any discrepancy in interpretation, only the French version is authoritative.",
+    "learnMore": "Learn more"
+  },
+  "Nav": {
+    "tagline": "Crypto-collateralized credit",
+    "links": {
+      "commentCaMarche": "How it works",
+      "rendement": "Yield",
+      "strategieRwa": "RWA Strategy",
+      "marche": "Market",
+      "tarifs": "Pricing"
+    },
+    "connexionShort": "Log in",
+    "connexionLong": "Access my account"
+  },
+  "Footer": {
+    "columns": {
+      "platform": {
+        "title": "The platform",
+        "howItWorks": "How it works",
+        "yield": "Yield",
+        "rwaStrategy": "RWA Strategy",
+        "market": "Market",
+        "pricing": "Pricing",
+        "requestAccount": "Request an account"
+      },
+      "help": {
+        "title": "Help & Contact",
+        "contact": "Contact us",
+        "faq": "Frequently asked questions",
+        "sitemap": "Sitemap",
+        "accessibility": "Digital accessibility",
+        "archives": "Archives"
+      },
+      "contractual": {
+        "title": "Contractual documentation",
+        "terms": "Terms and conditions",
+        "legalNotice": "Legal notice",
+        "regulation": "Regulation",
+        "riskManagement": "Risk management and asset custody"
+      },
+      "privacy": {
+        "title": "Personal data",
+        "privacyPolicy": "Privacy policy",
+        "cookiePolicy": "Cookie policy"
+      }
+    },
+    "disclaimer": "{tradingName} is an offering by {legalName}, an independent Swiss asset manager, supervised by {supervisionBodyName}, a supervisory organization licensed by the {supervisoryAuthority}. Access is reserved for a restricted clientele, by invitation only. This platform is not open to the public.",
+    "rightsReserved": "All rights reserved."
+  },
+  "Home": {
+    "meta": {
+      "title": "Hentsch Credit · Crypto-collateralized credit",
+      "description": "350% of the amount pledged unlocked as immediate purchasing power. Gold, silver, and ETH generate a real yield that automatically repays part of your credit."
+    },
+    "badge": "Regulated wealth management · Access by invitation only",
+    "titleLine1": "Your gold and silver",
+    "titleHighlight": "no longer sit idle",
+    "subtitle": "Pledge them as collateral, without ever selling them. Unlock immediate purchasing power, automatically repaid through their performance.",
+    "statCardCaption": "of purchasing power, from the moment you deposit",
+    "statCardAssets": "Tokenized gold & silver",
+    "ctaLogin": "Access my account",
+    "ctaHowItWorks": "How it works",
+    "ctaNoAccount": "Don't have an account yet? Request an account opening",
+    "discoverTitle": "Discover the platform",
+    "discoverDescription": "The detail of each mechanism, on its own page.",
+    "teasers": {
+      "howItWorks": {
+        "title": "How it works",
+        "description": "From collateral deposit to spending, in four steps."
+      },
+      "yield": {
+        "title": "Collateral yield",
+        "description": "Gold, silver and ETH automatically repay up to 60% of your credit."
+      },
+      "rwa": {
+        "title": "RWA investment strategy",
+        "description": "Tokenized industrial metals: our treasury strategy, in full transparency."
+      },
+      "market": {
+        "title": "The live market",
+        "description": "Real-time prices of the assets accepted as collateral."
+      }
+    },
+    "stats": {
+      "ratio": "Credit ratio on the deposited collateral",
+      "custodyValue": "Custody via licensed depositaries",
+      "custodyLabel": "Assets held with licensed third-party institutions, never in the company's own name",
+      "kycValue": "KYC verified",
+      "kycLabel": "Credit access reserved for verified clients"
+    },
+    "closingTitle": "Ready to unlock your purchasing power?",
+    "closingDescription": "Platform reserved for a restricted clientele. Our team reviews every application before granting access.",
+    "closingCta": "Request an account opening"
+  },
+  "HowItWorks": {
+    "meta": {
+      "title": "How it works · Hentsch Credit",
+      "description": "From identity verification to spending: the five steps to obtaining and using crypto-collateralized credit on Hentsch Credit."
+    },
+    "eyebrow": "The client journey",
+    "title": "How it works",
+    "description": "From identity verification to spending, in five steps.",
+    "steps": {
+      "kyc": {
+        "title": "1. Identity verification (KYC)",
+        "description": "By invitation only: your identity is verified before any access to deposits or credit, with no exceptions."
+      },
+      "deposit": {
+        "title": "2. Deposit your collateral",
+        "description": "Stablecoins, tokenized precious or industrial metals, or ETH, on the Ethereum network."
+      },
+      "credit": {
+        "title": "3. Credit granted automatically",
+        "description": "350% of the deposited amount, unlocked as soon as your request is approved (minus a one-time 2% origination fee)."
+      },
+      "spend": {
+        "title": "4. Spend with your card",
+        "description": "Use your credit line internally or directly on your bank card."
+      },
+      "repay": {
+        "title": "5. Repay to unlock your collateral",
+        "description": "Up to 60% automatically repaid by your collateral's yield; the rest through your own contribution. Conversely, a sharp drop in your collateral's value may trigger its liquidation."
+      }
+    },
+    "feesNote": "The detail of actual rates and fees lives on the <pricing>Pricing</pricing> page, and the detail of automatic repayment, including the liquidation risk in the event of a sharp drop in your collateral, on the <yield>Yield</yield> page.",
+    "detailTitle": "The detail of each step",
+    "detail": {
+      "kyc": {
+        "title": "1. Identity verification",
+        "body": "Access is granted by invitation only. Once your account opening request is accepted, an account and a temporary password are communicated to you offline, then your identity is verified before any other operation. Until this status is confirmed, generating a deposit address and any credit request are technically blocked, not merely discouraged."
+      },
+      "deposit": {
+        "title": "2. Depositing the collateral",
+        "body": "Depending on the asset chosen, the deposit address provided is either individual (credited automatically upon on-chain confirmation) or shared among clients (you declare your deposit, and an advisor validates it manually once the funds are actually received). The corresponding credit is issued automatically as soon as the available balance reaches the requested amount, with no further manual action on our part."
+      },
+      "credit": {
+        "title": "3. Credit issuance",
+        "body": "350% of the deposited amount, at the rate in effect at the time of the lock: a position already locked always keeps that rate, even if the ratio subsequently changes for new clients. Origination fees (2%) are charged once, on the credit issued, not on your collateral."
+      },
+      "usage": {
+        "title": "4. Using the credit",
+        "body": "The credit granted is only a ceiling: no interest or repayment is due until you actually use it (card payment, internal use). It is a revolving credit line, not a loan paid out all at once into your available balance."
+      },
+      "repayment": {
+        "title": "5. Repayment",
+        "body": "Two channels, daily and automatic for the first: the real appreciation of your collateral (up to 60% of the credit issued), and your own contribution for the rest. Full repayment releases your collateral, which becomes withdrawable again. Conversely, a severe depreciation of the collateral (50% since entry) triggers its liquidation, without erasing the credit already used."
+      }
+    },
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "kycRejected": {
+        "question": "What happens if my KYC is rejected?",
+        "answer": "No financial operation is possible until the status is verified. In the event of rejection, the company may refuse, suspend, or close the account concerned, particularly in case of doubt about the declared identity."
+      },
+      "approvalDelay": {
+        "question": "How long does approval of a credit request take?",
+        "answer": "It varies depending on back-office workload: a request goes through a manual validation queue before it can receive a deposit. The credit itself is issued automatically upon receipt of funds, with no additional delay once the request is approved."
+      },
+      "earlyWithdrawal": {
+        "question": "Can I withdraw my collateral before repaying everything?",
+        "answer": "No. Locked collateral remains blocked until the corresponding credit used has been fully repaid. Only the available balance, excluding locked collateral, can be freely withdrawn at any time."
+      }
+    },
+    "ctaLogin": "Access my account",
+    "ctaNoAccount": "Request an account opening"
+  },
+  "Accessibility": {
+    "meta": {
+      "title": "Digital accessibility · Hentsch Credit",
+      "description": "The actual state of progress of Hentsch Credit's digital accessibility, without claiming an unverified compliance level."
+    },
+    "title": "Accessibility statement",
+    "intro": "H. Hentsch Asset Management SA strives to make the Hentsch Credit platform usable by as many people as possible. This statement describes the actual state of progress, without claiming a compliance level that has not been verified by a formal audit.",
+    "s1": {
+      "title": "1. Compliance status",
+      "body": "The site has not yet undergone a formal accessibility audit (of the RGAA or WCAG type). It cannot therefore be declared compliant with a specific level. Efforts are nonetheless already applied in the design: semantic page structure, heading hierarchy, color contrasts designed for readability, and keyboard navigation possible on the main journeys (login, account request, account consultation)."
+    },
+    "s2": {
+      "title": "2. Known limitations",
+      "item1": "Certain charts and market data tables do not yet offer a complete text equivalent for screen readers;",
+      "item2": "No adversarial audit has been conducted by a third-party organization specializing in digital accessibility;",
+      "item3": "Certain third-party content (for example webhooks and external provider interfaces integrated into the platform) is not under the direct control of {legalName}."
+    },
+    "s3": {
+      "title": "3. Reporting an issue",
+      "body": "If you encounter a difficulty accessing content or a feature of the platform, please report it to the contact below, specifying the page concerned and, if possible, the assistive technology used.",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "s4": {
+      "title": "4. Recourse",
+      "body": "In the absence of a satisfactory response within a reasonable time, you can file a complaint under the conditions described on the <link>Regulation</link> page, section 6."
+    }
+  },
+  "Archives": {
+    "meta": {
+      "title": "Archives · Hentsch Credit",
+      "description": "The evolution of the credit ratio, accepted assets, and mechanisms of the Hentsch Credit platform since its launch."
+    },
+    "eyebrow": "History",
+    "title": "Archives",
+    "description": "The evolution of the platform's main rules since its launch, in chronological order.",
+    "entries": {
+      "nonRetroactivity": {
+        "period": "Since inception",
+        "title": "Non-retroactivity of changes to terms",
+        "detail": "A change to the credit ratio, rate, or threshold never applies to a position already locked: it retains the conditions granted to it at the time of its creation, until repayment or maturity. This principle has never changed since the platform's launch."
+      },
+      "step1": {
+        "period": "Stage 1",
+        "title": "Initial credit ratio",
+        "detail": "75% of the amount pledged."
+      },
+      "step2": {
+        "period": "Stage 2",
+        "title": "First increase in the ratio",
+        "detail": "75% → 150% of the amount pledged, for new locks."
+      },
+      "step3": {
+        "period": "Stage 3",
+        "title": "Second increase in the ratio",
+        "detail": "150% → 200% of the amount pledged, for new locks."
+      },
+      "step4": {
+        "period": "Stage 4 (current value)",
+        "title": "Current credit ratio",
+        "detail": "200% → 350% of the amount pledged, for new locks."
+      },
+      "step5": {
+        "period": "Stage 5",
+        "title": "Extension of accepted assets",
+        "detail": "Addition of ETH and SHIB, then of tokenized silver (KAG), in addition to stablecoins."
+      },
+      "step6": {
+        "period": "Stage 6",
+        "title": "Extension to industrial metals and commodities",
+        "detail": "Addition of platinum (XPT), palladium (XPD), copper (XCU), and synthetic oil (WTI), as part of the RWA strategy."
+      },
+      "step7": {
+        "period": "Stage 7",
+        "title": "Automatic repayment through collateral yield",
+        "detail": "Introduction of automatic repayment through the collateral's real appreciation, capped at 60% of the credit issued; the remainder is still the client's responsibility."
+      },
+      "step8": {
+        "period": "Stage 8",
+        "title": "Indicative yield target on industrial RWA assets",
+        "detail": "Addition of an indicative annualized target of 8 to 14% on platinum, palladium, copper, and synthetic oil only. This target remains indicative: it is neither guaranteed nor used in the calculation of the credit granted."
+      },
+      "step9": {
+        "period": "Stage 9",
+        "title": "Introduction of the liquidation mechanism",
+        "detail": "Introduction of an alert threshold (30% depreciation of the collateral since entry) and a liquidation threshold (50%). Details are on the Yield page and in the terms and conditions, section 7."
+      },
+      "step10": {
+        "period": "Stage 10",
+        "title": "Move to an automatically calculated estimated yield",
+        "detail": "The client credit simulators now calculate the estimated yield, monthly payment, and first repayment date based on actual performance over 12 months, rather than asking the client to enter an estimate."
+      }
+    },
+    "note": "The values currently in effect (ratio, rates, fees, yield cap, liquidation thresholds) are detailed with their exact figures on the <link>Pricing</link> page. This archives page only traces the history of changes, not the terms applicable to your current position.",
+    "lastUpdated": "Last updated:"
+  },
+  "Contact": {
+    "meta": {
+      "title": "Contact · Hentsch Credit",
+      "description": "H. Hentsch Asset Management SA's contact details for any question regarding your account or the Hentsch Credit platform."
+    },
+    "eyebrow": "Contact us",
+    "title": "Contact us",
+    "description": "The actual contact details of H. Hentsch Asset Management SA, for any question regarding your account or the platform.",
+    "channels": {
+      "email": "Email",
+      "phone": "Phone",
+      "postalAddress": "Postal address",
+      "registeredOffice": "Registered office"
+    },
+    "hours": "Requests are processed on business days. For any question about an ongoing operation (deposit, credit request, card), please specify your name and, if possible, the reference of the operation concerned.",
+    "noAccount": "Don't have an account yet? The platform is reserved for a restricted clientele, by invitation only. You may nonetheless submit an <link>account opening request</link>, which will be reviewed by our teams.",
+    "complaint": "For a formal complaint and, failing an amicable resolution, the available mediation channels, see the <link>Regulation</link> page, section 6."
+  },
+  "Cookies": {
+    "meta": {
+      "title": "Cookie policy · Hentsch Credit",
+      "description": "Why Hentsch Credit only sets a single, strictly necessary cookie, and nothing else."
+    },
+    "title": "Cookie policy",
+    "intro": "This page describes the cookies actually set by the Hentsch Credit platform and why no preference center is offered.",
+    "s1": {
+      "title": "1. What the platform sets",
+      "body": "Only one cookie is used, a session cookie, strictly necessary for the service to function: it keeps you authenticated while you browse the client area. It is deleted when your session or browser is closed."
+    },
+    "s2": {
+      "title": "2. What the platform does not set",
+      "item1": "No advertising or targeting cookie;",
+      "item2": "No third-party audience measurement cookie (analytics, statistics);",
+      "item3": "No social network tracker;",
+      "item4": "No cross-site tracking cookie."
+    },
+    "s3": {
+      "title": "3. Why there is no \"manage my cookies\"",
+      "body": "A preference center makes sense when a site sets non-essential cookies (advertising, audience measurement) that require your prior consent and a way to withdraw it. The platform sets none of these: there is therefore no preference to enable or disable beyond your own browser's settings. Should this change one day, this page will be updated and a genuine preference center will be offered, rather than a button with no real effect."
+    },
+    "s4": {
+      "title": "4. Control from your browser",
+      "body": "You can block or delete the session cookie at any time from your browser settings. Blocking this particular cookie will log you out of the client area: it is a functional cookie, not a tracker, and it has no other role."
+    },
+    "s5": {
+      "title": "5. Contact",
+      "body": "For any question regarding this policy, contact the data protection officer at {dpo}. The processing of other personal data is described in the <link>privacy policy</link>."
+    }
+  },
+  "Terms": {
+    "meta": {
+      "title": "Terms and conditions · Hentsch Credit",
+      "description": "Hentsch Credit's terms and conditions of use: credit, collateral, repayment, liquidation, and fees."
+    },
+    "title": "Terms and conditions",
+    "intro": "These terms and conditions govern access to and use of the Hentsch Credit platform, a credit service secured by digital assets, offered to a restricted number of the company's clients by invitation. By opening an account, the client declares having read and accepted them.",
+    "s1": {
+      "title": "1. Purpose",
+      "body": "{tradingName} allows a verified, previously invited client to deposit stablecoins or tokenized gold as collateral (a \"pledge\") and, in return, obtain a credit line usable internally and on an associated bank card. The service is provided by {legalName}, an independent asset manager (IAM) within the meaning of FinIA, in collaboration with licensed third-party depositary and custody institutions (see section 5)."
+    },
+    "s2": {
+      "title": "2. Restricted access and eligibility",
+      "body": "The platform is not open to the public. Access is reserved for a list of clients determined by {legalName}, by invitation, as part of an existing wealth management relationship. Opening an account, generating a deposit address, any collateral deposit, and any credit grant are further subject to prior verification of the client's identity (\"KYC\"). Until the client's verification status is confirmed, these operations are refused. The company reserves the right to refuse, suspend, or close an account in the event of failure or doubt regarding this verification, or suspicion of fraud, money laundering, or terrorist financing."
+    },
+    "s3": {
+      "title": "3. Assets accepted as collateral",
+      "body": "The following stablecoins are accepted as collateral, valued at par (1:1 USD): DAI, USDT, USDC; the following euro-pegged stablecoin, valued at the live spot price: dEURO; the following tokenized precious metals, also valued at the live spot price: XAUT (gold), KAG (silver); the following tokenized industrial metals and commodities, valued at the live spot price: XPT (platinum), XPD (palladium), XCU (copper), WTI (synthetic oil); as well as the following native cryptocurrencies, valued at the live spot price and subject to their own volatility: ETH, SHIB. These assets are accepted exclusively on the Ethereum network. For certain assets, the deposit address provided is individual to each client; for others, it is shared among clients and the declared deposit is subject to manual validation before being credited. The list of accepted assets, supported networks, or the address mechanism applicable to each asset may be changed at any time, without retroactive effect on positions already established."
+    },
+    "s4": {
+      "title": "4. Credit mechanism and collateral ratio",
+      "body1": "When collateral is locked, credit is granted equal to <b>350% of the amount pledged</b>, at the rate in effect at the time of that lock. The account's total purchasing power is calculated as follows:",
+      "formula": "Total purchasing power = Available balance + Locked collateral + Credit granted − Credit used",
+      "body2": "The applicable collateral ratio is the one in effect at the time of each new lock. Any subsequent change to this ratio does not retroactively affect credit already granted for collateral locked earlier: that credit remains vested under the conditions of its time.",
+      "body3": "Credit issued on eligible collateral (tokenized precious metals, tokenized industrial metals and commodities, ETH) may be repaid up to a maximum of 60% through the real appreciation observed on that collateral, applied automatically to the credit used. The remaining 40% must be repaid through the client's own contribution (an explicit deposit or transfer). This cap applies to the amount of credit issued when the position was opened and is not recalculated in the event of a subsequent change to the credit ratio.",
+      "body4": "An indicative yield target (currently 8 to 14% per year) is communicated for information purposes on tokenized industrial metals and commodities (platinum, palladium, copper, synthetic oil): it reflects the target of the company's own treasury strategy on these assets (arbitrage, collateralized lending, liquidity provision), and not a guaranteed or contractual rate. This target has no effect whatsoever on the calculation of the client's credit, which remains governed exclusively by the mechanism described in the preceding paragraph."
+    },
+    "s5": {
+      "title": "5. Custody of assets"
+    },
+    "s6": {
+      "title": "6. Collateral lock and withdrawal",
+      "body": "The amount pledged and locked cannot be withdrawn until the corresponding credit used has been fully repaid. Only the available balance, excluding locked collateral, may be freely withdrawn at any time, subject to applicable compliance controls."
+    },
+    "s7": {
+      "title": "7. Liquidation of collateral",
+      "intro": "Collateral whose value fluctuates with the market (tokenized precious metals, tokenized industrial metals and commodities, ETH) is subject to daily monitoring of its value, compared against its value at the time of the lock:",
+      "item1": "in the event of a depreciation of at least <b>30%</b> from this entry value, an alert is recorded on the account, with no other effect;",
+      "item2": "in the event of a depreciation of at least <b>50%</b>, the collateral is automatically removed from the account (liquidated) at its entry value.",
+      "body": "Liquidation of collateral does not extinguish credit already used under that collateral: that credit remains fully owed by the client, no longer covered by the collateral originally constituted. Liquidated collateral cannot be restored, even if the price of the asset concerned subsequently recovers. The thresholds mentioned above may be changed at any time, without retroactive effect on the assessment of a depreciation already recorded."
+    },
+    "s8": {
+      "title": "8. Bank card and use of credit",
+      "body": "A bank card, issued by a licensed third-party partner, may be linked to the account to use the credit line granted, within the limit of available credit (credit granted minus credit already used). Any transaction exceeding this limit is declined. The specific conditions for issuing, using, and blocking the card are set out in the special conditions associated with it."
+    },
+    "s9": {
+      "title": "9. Repayment",
+      "body": "The client may repay all or part of the credit used at any time. Full repayment of the credit used under a given collateral releases that collateral, which becomes withdrawable again. The repayment simulators made available on the platform (flexible projection, fixed installments) are provided for indicative purposes only: they rely on an estimated yield based on past performance, which does not predict future performance, and constitute neither a contractual commitment nor an enforceable payment schedule."
+    },
+    "s10": {
+      "title": "10. Fees",
+      "body": "The fees and rates currently applied are: origination fees of <b>2.0%</b>, charged once on the credit issued at the time the collateral is locked; collateral custody fees of <b>0.5% per year</b>, on the amount of locked collateral; and interest on the credit used of <b>13.5% per year in USD</b> (<b>12.0% per year in EUR</b>), made up of a monetary reference rate (SOFR for USD, EURIBOR for EUR) and a risk premium of 8.5 points, justified by the platform's high credit ratio (350%). Up-to-date details of these fees are on the platform's <link>Pricing</link> page. These rates may be updated at any time, without retroactive effect on positions already established: the rate structure fixed at the time a position is locked remains vested until its repayment or maturity."
+    },
+    "s11": {
+      "title": "11. Risks",
+      "intro": "The client acknowledges and accepts the risks inherent to digital assets, notably:",
+      "item1": "the volatility of assets valued at spot price (tokenized gold), which may affect the value of the collateral and the account's total purchasing power;",
+      "item2": "the risk of collateral liquidation in the event of severe depreciation (see section 7), which does not extinguish credit already used;",
+      "item3": "counterparty risk and operational risk related to the depositary institutions and third-party custody providers mentioned in section 5;",
+      "item4": "regulatory risk related to the evolution of the legal framework applicable to digital assets and stablecoins.",
+      "body": "These terms constitute neither investment advice nor a recommendation to buy, sell, or hold any digital asset whatsoever."
+    },
+    "s12": {
+      "title": "12. Termination",
+      "body": "The client may close their account at any time, subject to full repayment of any credit used. The company may suspend or terminate access to the service in the event of a breach of these terms, suspicion of fraud or money laundering, or for any legal or regulatory reason."
+    },
+    "s13": {
+      "title": "13. Liability",
+      "body": "The company implements reasonable means to ensure the availability and security of the platform, without guaranteeing a total absence of interruption. Its liability cannot be engaged in the event of force majeure, a malfunction of a blockchain network, or a third-party provider beyond its control, within the limits permitted by applicable Swiss law."
+    },
+    "s14": {
+      "title": "14. Amendment of the terms and conditions",
+      "body": "The company may amend these terms and conditions at any time, subject to prior notice to the client through the usual means of communication. Amendments have no retroactive effect on credit positions already established, unless otherwise required by law."
+    },
+    "s15": {
+      "title": "15. Governing law and jurisdiction",
+      "body": "These terms and conditions are governed by Swiss law. Any dispute relating to their validity, interpretation, or performance falls under the exclusive jurisdiction of the courts of {jurisdiction}, subject to applicable mandatory legal provisions."
+    }
+  },
+  "Privacy": {
+    "meta": {
+      "title": "Privacy · Hentsch Credit",
+      "description": "How H. Hentsch Asset Management SA collects, uses, and protects your personal data, in accordance with the Swiss federal data protection act."
+    },
+    "title": "Privacy policy",
+    "intro": "This policy describes how H. Hentsch Asset Management SA collects, uses, and protects the personal data of Hentsch Credit clients, a platform reserved for a restricted clientele, in accordance with the Swiss federal act on data protection (nFADP) and, where applicable, the General Data Protection Regulation (GDPR).",
+    "s1": {
+      "title": "1. Data controller",
+      "controller": "Controller",
+      "address": "Address",
+      "dpoContact": "Data protection contact",
+      "compliance": "Compliant with the Swiss FADP and GDPR."
+    },
+    "s2": {
+      "title": "2. Data collected",
+      "item1": "Identification and contact data (name, email, contact details);",
+      "item2": "Identity verification (KYC) documents and data submitted when opening an account;",
+      "item3": "Data relating to deposit addresses, on-chain transactions, and operations carried out on the platform (deposits, collateral locks, credit grants, repayments, card payments);",
+      "item4": "Technical connection data for the platform (logs, session identifiers)."
+    },
+    "s3": {
+      "title": "3. Purposes and legal basis",
+      "item1": "Performance of the contractual relationship: opening and managing the account, granting and monitoring credit, issuing and managing the associated bank card;",
+      "item2": "Compliance with legal and regulatory obligations: identity verification (KYC), anti-money laundering and counter-terrorist financing (AMLA), retention of accounting records;",
+      "item3": "Platform security and fraud prevention;",
+      "item4": "Communication with the client regarding their account and operations."
+    },
+    "s4": {
+      "title": "4. Partners and subcontractors",
+      "intro": "To perform the service, {legalName} uses specialized providers, which process certain data on its behalf and under its instructions, or which act as separate controllers for asset custody:",
+      "item1Label": "Third-party depositary banks",
+      "item1Body": "custody of clients' cash and securities (see legal notice, section 3);",
+      "item2Label": "Digital asset custody ({custodians})",
+      "item2Body": "secure custody of stablecoins and tokenized gold deposited as collateral;",
+      "item3Label": "Bank card issuance",
+      "item3Body": "processing of real-time payment authorizations;",
+      "item4Label": "Identity verification (KYC)",
+      "item4Body": "checking the client's identity and compliance status;",
+      "item5Label": "Blockchain market data",
+      "item5Body": "detection of on-chain deposits and real-time asset prices.",
+      "outro": "The name, exact role, and country of establishment of each provider used in production are communicated to the client upon request to the service indicated in section 1."
+    },
+    "s5": {
+      "title": "5. Retention period",
+      "body": "Data relating to clients and their operations is retained for the duration of the management relationship, then for the period required by the applicable legal retention obligations (accounting documents and supporting evidence of transactions in particular)."
+    },
+    "s6": {
+      "title": "6. International transfers",
+      "body": "Some providers mentioned in section 4 may process data outside Switzerland. In that case, {legalName} implements the appropriate safeguards required by Swiss data protection legislation (contractual clauses, an adequacy decision, or an equivalent mechanism)."
+    },
+    "s7": {
+      "title": "7. Your rights",
+      "body": "Subject to the restrictions provided for by law (in particular the applicable legal retention obligations), the client has a right of access, rectification, erasure, and objection with respect to their personal data. These rights may be exercised by writing to the address indicated in section 1."
+    },
+    "s8": {
+      "title": "8. Cookies and trackers",
+      "body": "The platform uses only cookies strictly necessary for its operation (session authentication, display preferences). No advertising or third-party audience measurement cookie is set without the client's prior consent. Details are given in the <link>cookie policy</link>."
+    },
+    "s9": {
+      "title": "9. Special case of prospects (account opening requests)",
+      "body": "Individuals who submit an account opening request without yet being clients (via the Request an account page) provide identification and contact data as well as information about their investment project. This data is processed for the sole purpose of reviewing the request. If the request does not result in a wealth management relationship, it is retained for a limited period, necessary for follow-up of the file, then deleted; if accepted, it is incorporated into the client file and follows the retention rules described in section 5."
+    },
+    "s10": {
+      "title": "10. Security",
+      "body": "{legalName} implements appropriate technical and organizational measures (encryption, access control, distributed locks on financial operations) to protect personal data against unauthorized access, loss, or alteration."
+    },
+    "s11": {
+      "title": "11. Contact",
+      "dpo": "Data protection officer",
+      "email": "General email"
+    }
+  },
+  "AccountRequest": {
+    "meta": {
+      "title": "Request an account opening · Hentsch Credit",
+      "description": "Request the opening of a Hentsch Credit account, a crypto-collateralized credit platform reserved for a restricted clientele, by invitation only."
+    },
+    "eyebrow": "Access by invitation",
+    "title": "Request an account opening",
+    "description": "Platform reserved for a restricted clientele. Leave us your details: our team reviews every application before granting access.",
+    "alreadyHaveAccount": "Already have an account? <link>Log in</link>"
+  },
+  "AccountRequestForm": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "Your project (optional)",
+    "messagePlaceholder": "Amount envisaged, assets concerned, specific questions…",
+    "disclaimer": "By submitting this form, you agree that your information will be processed in accordance with our <link>privacy policy</link>. No account is created automatically: access is granted after our team has reviewed and approved your application.",
+    "submit": "Send my request",
+    "successTitle": "Your request has been successfully submitted",
+    "successBody": "Our team is reviewing your application and will get back to you by email. Access to your client area is only granted once this review is complete.",
+    "genericError": "An error occurred."
+  },
+  "Faq": {
+    "meta": {
+      "title": "Frequently asked questions · Hentsch Credit",
+      "description": "Answers to the most frequently asked questions about the account, security, and the operation of the Hentsch Credit platform."
+    },
+    "eyebrow": "Frequently asked questions",
+    "title": "Frequently asked questions",
+    "description": "Answers to general questions about the account, security, and the operation of the platform.",
+    "items": {
+      "openAccount": {
+        "question": "How do I open a Hentsch Credit account?",
+        "answer": "The platform is reserved for a restricted clientele, by invitation, as part of an existing wealth management relationship with H. Hentsch Asset Management SA. You can submit an account opening request from the Request an account page; it will be reviewed by our teams before any account is actually opened."
+      },
+      "forgotPassword": {
+        "question": "I forgot my password, what should I do?",
+        "answer": "Contact the service indicated on the Contact page with your name and the email address associated with your account. For security reasons, no reset is performed through any other channel."
+      },
+      "assetsSafe": {
+        "question": "Are my digital assets safe?",
+        "answer": "Stablecoins and tokenized gold deposited as collateral are held by a licensed digital asset custody provider, separate from H. Hentsch Asset Management SA, specializing in the secure custody of crypto-assets on behalf of Swiss financial institutions. Details are on the Regulation page, section 3."
+      },
+      "networksAssets": {
+        "question": "Which networks and assets are accepted as collateral?",
+        "answer": "The Ethereum network only, for now. Details of the accepted assets (stablecoins, tokenized gold, ETH, tokenized industrial metals) and their valuation are on the How it works page."
+      },
+      "ratioFees": {
+        "question": "What is the credit ratio and what are the actual fees?",
+        "answer": "350% of the amount pledged at the rate in effect at the time of the lock, with origination fees of 2% and an annual interest rate on the credit actually used. The detailed figures, including a total cost example, are on the Pricing page."
+      },
+      "yieldLiquidation": {
+        "question": "How does automatic repayment and the liquidation risk work?",
+        "answer": "Part of the credit used can be automatically repaid through the real appreciation of your collateral, capped at 60%. Conversely, a sharp depreciation of the collateral may trigger its liquidation. The full mechanism, with worked examples, is on the Yield page."
+      },
+      "kycDoubt": {
+        "question": "What happens if there is doubt about my identity (KYC)?",
+        "answer": "No financial operation (deposit address generation, deposit, credit grant) is possible until your identity verification status is confirmed. Details are on the How it works page."
+      },
+      "complaint": {
+        "question": "How do I file a complaint?",
+        "answer": "Send your complaint to the contact indicated on the Contact page. Failing an amicable resolution, you may refer the matter to the competent mediation body, indicated on the Regulation page, section 6."
+      }
+    },
+    "moreQuestionsTitle": "A more specific question?",
+    "moreQuestionsBody": "Every major topic has its own detailed page, with its own frequently asked questions: <howItWorks>How it works</howItWorks>, <yield>Yield</yield>, <rwa>RWA Strategy</rwa>, and <pricing>Pricing</pricing>. For any other question, the <contact>Contact</contact> page remains the most direct point of entry."
+  },
+  "Login": {
+    "meta": {
+      "title": "Log in · Hentsch Credit",
+      "description": "Log in to your Hentsch Credit account."
+    }
+  },
+  "LoginForm": {
+    "twoFactorTitle": "Two-step verification",
+    "twoFactorDescription": "Enter the 6-digit code generated by your authenticator app.",
+    "verificationCode": "Verification code",
+    "verify": "Verify",
+    "backToLogin": "← Back to login",
+    "restrictedAccess": "Access reserved for invited clients.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Log in",
+    "backToHome": "← Back to home",
+    "genericError": "An error occurred."
+  },
+  "RiskManagement": {
+    "meta": {
+      "title": "Risk management and asset custody · Hentsch Credit",
+      "description": "How Hentsch Credit manages asset custody, collateral valuation, and the liquidation mechanism."
+    },
+    "title": "Risk management and asset custody",
+    "intro": "H. Hentsch Asset Management SA does not execute stock exchange orders on behalf of third parties and therefore does not publish an execution policy or best selection report within the meaning of financial markets regulation. This page describes instead the actual risk management practices applied to the Hentsch Credit platform.",
+    "s1": {
+      "title": "1. Nature of the activity",
+      "body": "{legalName} acts as an independent asset manager (IAM): it grants crypto-collateralized credit to its clients, against collateral deposited by them, and manages a treasury strategy on tokenized industrial metals and commodities with its own capital. It does not execute any stock exchange order on behalf of its clients and manages no discretionary securities portfolio in their name."
+    },
+    "s2": {
+      "title": "2. Custody and segregation of assets",
+      "body": "Assets deposited as collateral by clients are never used in the company's treasury strategy: the two flows are distinct and never meet at any point. Details of the treasury strategy are on the <link>RWA Strategy</link> page, section \"Governance & fund segregation\"."
+    },
+    "s3": {
+      "title": "3. Collateral valuation",
+      "body": "The value of the deposited collateral is determined from real-time market prices (spot price for tokenized gold, tokenized industrial metals, ETH; 1:1 parity with the dollar for USD stablecoins; spot price for the euro-pegged stablecoin), with no margin or discretionary adjustment applied by the company. This valuation is used both to calculate the credit granted at the time of the lock and for the daily depreciation monitoring described below."
+    },
+    "s4": {
+      "title": "4. Collateral liquidation mechanism",
+      "body": "An automatic daily check compares the current value of the collateral to its entry value (at the time of the lock). A 30% depreciation triggers an alert visible on the client's account; a 50% depreciation triggers liquidation of the collateral. Credit already used is not erased by liquidation: it becomes an unsecured claim. Full details, with a worked example, are on the <yieldLink>Yield</yieldLink> page and in the <termsLink>terms and conditions</termsLink>, section 7."
+    },
+    "s5": {
+      "title": "5. Conflicts of interest",
+      "body": "The company never takes a position contrary to that of its clients on the assets they deposit as collateral: it only receives that collateral, calculates the corresponding credit, and, where applicable, liquidates it according to thresholds set in advance and applied automatically and identically to all clients. The company's treasury strategy (industrial metals and commodities) is funded by its own capital, never by assets deposited by clients."
+    },
+    "s6": {
+      "title": "6. Oversight and audit",
+      "body": "The risk parameters in effect (credit ratio, rates, liquidation thresholds) are centralized in the platform's credit engine and are subject to an automated test suite with every change. Any change to these parameters is logged and never applies retroactively to a position already locked. Details of the history of these changes are on the <link>Archives</link> page."
+    }
+  },
+  "LegalNotice": {
+    "meta": {
+      "title": "Legal notice · Hentsch Credit",
+      "description": "Legal information relating to the publisher and operator of the Hentsch Credit platform."
+    },
+    "title": "Legal notice",
+    "intro": "Legal information relating to the publisher and operator of the Hentsch Credit site and platform, in accordance with applicable Swiss law. Platform reserved for a restricted clientele, by invitation only: it is not open to the public and does not constitute a public offering.",
+    "s1": {
+      "title": "1. Publisher of the site",
+      "companyName": "Company name",
+      "legalForm": "Legal form",
+      "tradingName": "Trading name of the platform",
+      "registeredOffice": "Registered office",
+      "postalAddress": "Postal address",
+      "canton": "Canton",
+      "country": "Country",
+      "registerNumber": "Company ID / commercial register no.",
+      "vatNumber": "VAT number",
+      "publicationDirector": "Publication director"
+    },
+    "s2": {
+      "title": "2. Regulatory status and supervision",
+      "body": "{legalName} is an <b>independent asset manager (IAM)</b> within the meaning of the Federal Act on Financial Institutions (FinIA), <b>and not a banking institution</b>. As such, it does not hold a banking license issued directly by FINMA, but is subject to the supervision of a supervisory organization (SO) licensed by the {supervisoryAuthority}.",
+      "supervisionBody": "Supervisory organization (SO)",
+      "amlBody": "AMLA self-regulatory organization",
+      "footer": "Details of the applicable legal framework (FinIA, FinSA, AMLA) are presented on the <link>Regulation</link> page."
+    },
+    "s3": {
+      "title": "3. Custody of assets"
+    },
+    "s4": {
+      "title": "4. Restricted access",
+      "body": "The {tradingName} platform is not intended for the general public. Access is reserved for a determined list of clients, by invitation of {legalName}, following an existing wealth management relationship and prior identity verification. Nothing on this site constitutes an offer, solicitation, or advertisement aimed at the public."
+    },
+    "s5": {
+      "title": "5. Contact",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "s6": {
+      "title": "6. Hosting",
+      "body": "The site and platform are hosted by:"
+    },
+    "s7": {
+      "title": "7. Intellectual property",
+      "body": "All elements making up the site and platform (text, logos, graphics, icons, structure, source code) are the property of {legalName} or its licensors, and are protected as such by Swiss law and international intellectual property conventions. Any reproduction, representation, modification, or exploitation, in whole or in part, without prior written authorization, is prohibited."
+    },
+    "s8": {
+      "title": "8. Technical partners",
+      "body": "The platform relies on third-party providers for certain technical functions (digital asset custody and key management, bank card issuance, identity verification, market data). The list of these providers and their role are detailed in the <link>privacy policy</link>."
+    }
+  },
+  "Sitemap": {
+    "meta": {
+      "title": "Sitemap · Hentsch Credit",
+      "description": "All the pages publicly accessible on Hentsch Credit, without logging into an account."
+    },
+    "eyebrow": "Navigation",
+    "title": "Sitemap",
+    "description": "All the pages publicly accessible, without logging into an account.",
+    "groups": {
+      "discover": { "title": "Discover the platform" },
+      "account": { "title": "Account access" },
+      "help": { "title": "Help & contact" },
+      "contractual": { "title": "Contractual documentation" },
+      "privacy": { "title": "Personal data" }
+    },
+    "links": {
+      "home": "Home",
+      "howItWorks": "How it works",
+      "yield": "Yield",
+      "rwaStrategy": "RWA Strategy",
+      "market": "Market",
+      "pricing": "Pricing",
+      "requestAccount": "Request an account",
+      "login": "Log in",
+      "contact": "Contact us",
+      "faq": "Frequently asked questions",
+      "accessibility": "Digital accessibility",
+      "archives": "Archives",
+      "sitemap": "Sitemap",
+      "terms": "Terms and conditions",
+      "legalNotice": "Legal notice",
+      "regulation": "Regulation",
+      "riskManagement": "Risk management and asset custody",
+      "privacyPolicy": "Privacy policy",
+      "cookiePolicy": "Cookie policy"
+    },
+    "clientAreaNote": "The logged-in client area and the internal management area are not listed above: their content depends on your identity verification status and your role on the account, and is only accessible after logging in."
+  },
+  "Market": {
+    "meta": {
+      "title": "Live market · Hentsch Credit",
+      "description": "Real-time prices of the assets accepted as collateral on Hentsch Credit: stablecoins, gold, silver, ETH, and tokenized industrial metals."
+    },
+    "eyebrow": "Live data",
+    "title": "The live market",
+    "description": "Real-time prices of the assets accepted as collateral."
+  },
+  "Regulation": {
+    "meta": {
+      "title": "Regulation · Hentsch Credit",
+      "description": "The Swiss legal and regulatory framework applicable to Hentsch Credit: FinIA, FinSA, AMLA, asset custody, and supervision."
+    },
+    "title": "Regulatory framework",
+    "intro": "This page details the Swiss legal and regulatory framework applicable to Hentsch Credit, in addition to the legal notice.",
+    "s1": {
+      "title": "1. Applicable legal framework",
+      "intro": "The activity of {legalName} is notably governed by:",
+      "item1": "the Federal Act on Financial Institutions (FinIA) and its ordinance (FinIO), applicable to independent asset managers;",
+      "item2": "the Federal Act on Financial Services (FinSA) and its ordinance (FinSO), relating to the provision of financial services and client classification;",
+      "item3": "the Anti-Money Laundering Act (AMLA), relating to due diligence and vigilance obligations;",
+      "item4": "the Federal Act on Data Protection (nFADP) and, where applicable, the General Data Protection Regulation (GDPR)."
+    },
+    "s2": {
+      "title": "2. Status of the operator",
+      "body1": "{legalName} is an <b>independent asset manager (IAM)</b> within the meaning of FinIA: it holds no banking license and accepts no public deposit of funds in its own name.",
+      "supervisionBody": "Supervisory organization (SO)",
+      "supervisoryAuthority": "Supreme supervisory authority",
+      "amlBody": "AMLA self-regulatory organization",
+      "body2": "The SO licenses and supervises the wealth management activity, monitors compliance with legal obligations (including AMLA), and may impose measures in the event of a breach. Details of the publisher's identity are in the <link>legal notice</link>."
+    },
+    "s3": {
+      "title": "3. Protection of client assets"
+    },
+    "s4": {
+      "title": "4. Client classification (FinSA)",
+      "body": "FinSA distinguishes three categories of clients (retail, professional, and institutional), to which correspond different levels of information and protection. {tradingName}'s clientele is classified as <b>{classification}</b> within the meaning of FinSA, the category offering the highest level of protection and information. Access nonetheless remains reserved for a restricted list of clients, by invitation, as part of an existing wealth management relationship with {legalName}."
+    },
+    "s5": {
+      "title": "5. Anti-money laundering (AMLA)",
+      "body": "In accordance with AMLA, access to the platform, the generation of a deposit address, and any credit grant are subject to prior verification of the client's identity and the economic origin of the assets concerned. {legalName} applies enhanced due diligence measures in the presence of indications of money laundering or terrorist financing, and complies with reporting obligations provided for by law where applicable."
+    },
+    "s6": {
+      "title": "6. Complaints and mediation",
+      "body": "Any complaint relating to the service may be addressed to the contact indicated below. Failing an amicable resolution, the client may, under the conditions provided for by FinSA, refer the matter to the mediation body under which {legalName} falls: <b>{mediationBody}</b>."
+    },
+    "s7": {
+      "title": "7. Compliance contact",
+      "email": "Email",
+      "phone": "Phone"
+    }
+  },
+  "YieldShowcase": {
+    "pricesUnavailable": "Prices are currently unavailable.",
+    "yieldBadge": "Yield",
+    "h24": "24h",
+    "badge": "Our difference",
+    "title": "The only collateral that repays part of your credit for you",
+    "subtitle": "Gold, silver, and ETH generate a real yield, automatically reinjected into your credit.",
+    "steps": {
+      "deposit": {
+        "title": "1. You deposit gold, silver, or ETH",
+        "description": "These assets are pledged exactly like a stablecoin, at the same credit ratio."
+      },
+      "appreciation": {
+        "title": "2. Their price evolves, the appreciation works for you",
+        "description": "Every real increase observed since the deposit automatically reduces the credit used."
+      },
+      "repaid": {
+        "title": "3. Up to 60% of the credit repaid without a second thought",
+        "description": "The rest (40% minimum) is repaid through your own contribution, as with any other asset."
+      }
+    },
+    "stablecoinsReminder": "Stablecoins (USDT, USDC, DAI…) remain 1:1 USD: their credit is repaid entirely through your own contribution, with no automatic yield."
+  },
+  "YieldPerformanceHistory": {
+    "unavailable": "History is currently unavailable.",
+    "low12m": "12-month low",
+    "high12m": "12-month high",
+    "unavailableValue": "unavailable"
+  },
+  "Yield": {
+    "meta": {
+      "title": "Collateral yield · Hentsch Credit",
+      "description": "How gold, silver, and ETH deposited as collateral automatically repay up to 60% of your credit, and the liquidation risk in the event of a sharp drop."
+    },
+    "eyebrow": "Our difference",
+    "title": "The only collateral that repays part of your credit for you",
+    "description": "Gold, silver, and ETH generate a real yield, automatically reinjected into your credit, up to 60% repaid without a second thought.",
+    "eligibleAssetsTitle": "All eligible assets",
+    "eligibleAssetsIntro": "Eight assets benefit from the same real automatic repayment-by-appreciation mechanism, not just the gold, silver, and ETH highlighted above.",
+    "table": {
+      "category": "Category",
+      "assets": "Assets",
+      "indicativeTarget": "Additional indicative target",
+      "preciousMetals": "Precious metals",
+      "nativeCrypto": "Native cryptocurrency",
+      "industrialMetals": "Industrial metals & commodities",
+      "stablecoins": "Stablecoins",
+      "none": "None",
+      "notEligible": "Not eligible (fixed value or too volatile*)",
+      "rwaTarget": "8 to 14% APY (<link>details on RWA Strategy</link>)"
+    },
+    "shibNote": "* SHIB is not a stablecoin but remains excluded from the mechanism: its volatility is considered too high to support a reliable recurring repayment.",
+    "dualMechanismNote": "Industrial metals and commodities therefore combine two distinct mechanisms: the real automatic repayment described on this page (identical to gold, silver, and ETH), and an indicative yield target specific to the bank's treasury strategy on these assets, presented separately and never guaranteed.",
+    "performanceTitle": "12-month performance",
+    "performanceIntro": "The real prices of the yield-generating assets, over the last 365 days (the maximum available via our market data provider, with no commitment as to their future performance).",
+    "exampleTitle": "A concrete example",
+    "example": {
+      "p1": "You deposit <b>$2,000</b> of tokenized gold (XAUT), at a price of <b>$2,400 per ounce</b>: your collateral represents about 0.833 ounces. At the 350% ratio, credit of <b>$7,000</b> is granted to you, and the automatic repayment-by-yield cap is therefore <b>$4,200</b> (60% of $7,000).",
+      "p2": "The gold price rises to <b>$2,500</b> per ounce: the observed appreciation ($100 × 0.833 ounces ≈ $83) is automatically applied to your credit used, the very day it is recorded. This mechanism repeats with every subsequent price increase, until the $4,200 cap is reached.",
+      "p3": "If the price then falls, nothing is taken back from you: the appreciation already applied remains vested in your credit (a \"ratchet\" that only ever moves upward). However, no new automatic repayment occurs until the price exceeds the level already reached.",
+      "p4": "Once the 60% cap is exhausted, the remaining credit balance (at least 40%, here <b>$2,800</b>) must be repaid through an explicit payment on your part (deposit or transfer), as with any other credit."
+    },
+    "timelineTitle": "Timeline over several months",
+    "timelineIntro": "The same example, extended: the gold price continues to rise over several months, until it reaches the 60% cap.",
+    "timelineTable": {
+      "month": "Month",
+      "goldPrice": "Gold price",
+      "repaidThisMonth": "Repaid this month",
+      "cumulativeRepaid": "Cumulative repaid",
+      "row0": "0 (lock)",
+      "row2Price": "$2,470 (decrease)",
+      "row11Cumulative": "$4,200 (cap reached)"
+    },
+    "timelineNote": "In month 2, the price falls: no repayment occurs that month, but the $83 already applied in month 1 remains vested (ratchet). Once the $4,200 cap is reached in month 11, no further automatic repayment occurs on this position, even if the price continues to rise.",
+    "liquidationTitle": "The reverse risk: liquidation",
+    "liquidation": {
+      "p1": "The mechanism above benefits from a rising price. A decline is handled separately, through a distinct mechanism: the value of your collateral is compared daily to its <b>entry value</b> (the one recorded at the time of the lock), not to the last price that triggered a repayment.",
+      "p2": "In the event of a depreciation of at least <b>30%</b> since entry, an alert appears on your account, with no other effect. At <b>50%</b> depreciation, your collateral is automatically removed from the account (liquidated) at its entry value. The credit you had already used is <b>not erased</b> as a result: it remains fully owed, no longer secured by any collateral. Liquidated collateral cannot be restored, even if the price subsequently recovers.",
+      "p3": "The contractual details of this mechanism are in our <link>terms and conditions, section 7</link>."
+    },
+    "liquidationExampleTitle": "Worked example",
+    "liquidationExample": {
+      "intro": "Let's take the same $2,000 gold deposit at $2,400 per ounce ($7,000 of credit granted), but this time the gold price falls instead of rising:",
+      "item1": "at $1,680 per ounce (-30%): an alert appears on the account, with no other effect;",
+      "item2": "at $1,200 per ounce (-50%): the collateral is liquidated. The $2,000 of collateral and the $7,000 of credit granted are removed from the account. If you had already used <b>$1,500</b> of that credit (card, internal spending), that $1,500 remains owed, with no collateral behind it anymore."
+    },
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "guaranteed": {
+        "question": "Is the yield guaranteed?",
+        "answer": "No. It depends entirely on the actual movement of your collateral's price. If the price never rises above your entry price, no automatic repayment occurs: you then repay the full amount through your own contribution, exactly as with a stablecoin."
+      },
+      "stablecoins": {
+        "question": "Why don't stablecoins (USDT, USDC, DAI…) generate any?",
+        "answer": "A stablecoin remains, by design, pegged 1:1 to the dollar: by definition, it has no appreciation to realize. Repaying it nonetheless remains just as simple, through your own contribution."
+      },
+      "frequency": {
+        "question": "How often is the automatic repayment calculated?",
+        "answer": "Daily, based on the live spot price of your asset, with no action on your part, and visible in your transaction history under the label \"Repayment by collateral yield.\""
+      },
+      "ratchet": {
+        "question": "Does the \"ratchet\" protect me if the price falls?",
+        "answer": "It only protects repayments already applied: they remain vested, whatever happens afterward. It does not protect against liquidation, which is triggered relative to your collateral's entry value, not relative to the ratchet (see \"The reverse risk\" above)."
+      },
+      "multipleAssets": {
+        "question": "If I deposit several different assets, how does it work?",
+        "answer": "Each credit request commits to a single collateral asset, fixed at the time the deposit address is generated. To deposit a second asset, you submit a new request: each position then follows its own appreciation, its own 60% cap, and its own liquidation risk, independently of the others."
+      },
+      "history": {
+        "question": "Can I see the history of my automatic repayments?",
+        "answer": "Yes, in your account's transaction history, under the label \"Repayment by collateral yield\" (a movement distinct from a manual repayment, to remain separately auditable)."
+      }
+    }
+  },
+  "RwaStrategy": {
+    "meta": {
+      "title": "RWA investment strategy · Hentsch Credit",
+      "description": "Hentsch Credit's treasury strategy on tokenized industrial metals: cash and carry arbitrage, triangular lending, and liquidity provision."
+    },
+    "eyebrow": "Transparency · Treasury strategy",
+    "title": "Our investment strategy on industrial metals",
+    "intro": "Beyond precious metals, the bank now accepts tokenized industrial metals and commodities as collateral, and deploys its own treasury strategy on these assets. Here, in full transparency, is how it works and the action plan followed.",
+    "apyTargetLabel": "APY, the bank's indicative target",
+    "apyTargetNote": "Target of the bank's own treasury strategy on these assets, not a guarantee, and with no effect whatsoever on the calculation of your credit. The automatic repayment of your credit remains the one described above: the real appreciation of your collateral, capped at 60%.",
+    "apyObjective": "target APY",
+    "pillars": {
+      "cashCarry": {
+        "title": "Cash & Carry Arbitrage",
+        "range": "4 to 7%",
+        "description": "Purchase of the tokenized metal on the spot market, simultaneous sale of an equivalent futures contract: the position is price-risk neutral and captures the financing spread (contango)."
+      },
+      "triangular": {
+        "title": "Collateralization & triangular lending",
+        "range": "6.5 to 10%",
+        "description": "The tokenized metal is deposited as collateral (prudent LTV, 50% maximum) with an institutional protocol, to borrow stablecoins reinvested in low-risk treasury funds."
+      },
+      "liquidity": {
+        "title": "Selected liquidity provision",
+        "range": "9 to 15%",
+        "description": "A minority share of the capital feeds targeted liquidity pools, remunerated by a fraction of the transaction fees paid by market participants."
+      }
+    },
+    "caseStudy": {
+      "title": "How these figures are obtained",
+      "intro": "An illustrative example of a $10M treasury deployment on Platinum, at the bank's scale, not at the scale of your individual collateral.",
+      "flow": "Flow",
+      "basis": "Basis of calculation",
+      "annualAmount": "Annual amount",
+      "impact": "Impact",
+      "netTotal": "Total net yield",
+      "capital": "$10M capital",
+      "reallocationNote": "By reallocating part of the treasury toward liquidity provision (Pillar C), this net yield can rise to a target of 10.2%, at the top end of the indicative 8 to 14% range shown above, with no additional leverage or guarantee of results.",
+      "rows": {
+        "native": { "label": "Native yield on Platinum (physical appreciation)", "basis": "1.5% on $10M" },
+        "basis": { "label": "Basis trade / futures contango", "basis": "3.5% on $10M" },
+        "stablecoinYield": { "label": "Yield on borrowed stablecoins invested (BUIDL)", "basis": "5.0% on $5M" },
+        "borrowCost": { "label": "Cost of borrowing stablecoins", "basis": "-3.2% on $5M" },
+        "operational": { "label": "Operational costs, custody & insurance", "basis": "0.4% on $10M" }
+      }
+    },
+    "roadmapTitle": "12-month roadmap",
+    "roadmap": {
+      "phase1": { "window": "Months 1 to 3", "title": "Structuring & compliance", "detail": "Legal framework, selection of licensed depositaries, issuer audits." },
+      "phase2": { "window": "Months 4 to 6", "title": "Pilot project", "detail": "A $5M pilot allocation on Platinum, first arbitrage circuits." },
+      "phase3": { "window": "Months 7 to 9", "title": "Scale-up", "detail": "Capital extended to $25M, expansion to Palladium and Copper." },
+      "phase4": { "window": "Months 10 to 12", "title": "Industrialization", "detail": "Real-time reporting and end-to-end accounting integration." }
+    },
+    "risksTitle": "Identified risks & protective measures",
+    "risks": {
+      "counterparty": { "risk": "Counterparty & audit", "mitigation": "Bimonthly reserve audits (Proof of Reserve) by independent firms." },
+      "smartContract": { "risk": "Smart contract", "mitigation": "Protocols audited multiple times exclusively, covered by institutional insurance." },
+      "liquidity": { "risk": "Liquidity", "mitigation": "Direct buyback agreement with physical issuers, maximum 48-hour notice." },
+      "liquidation": { "risk": "Collateral liquidation", "mitigation": "Strict over-collateralization ratio (LTV ≤ 50%) with automated rebalancing." }
+    },
+    "governanceTitle": "Governance & fund segregation",
+    "governance": {
+      "capital": {
+        "title": "Capital deployed",
+        "body": "This strategy is run on the bank's own treasury, never on assets deposited as collateral by clients. A client's collateral is used exclusively to secure their own credit (see Yield); it is never lent out or committed to the arbitrage or market making described above."
+      },
+      "supervision": {
+        "title": "Supervision",
+        "body": "Overseen by the Financial Markets Division, reported to the Investment Committee and Executive Management at each phase change (see roadmap above), with daily internal monitoring of performance against the indicative target shown."
+      }
+    },
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "usedForStrategy": {
+        "question": "Is my collateral used for this strategy?",
+        "answer": "No. Your collateral remains exclusively allocated to your own credit. This strategy relates to the bank's own treasury, a separate pool of capital."
+      },
+      "loss": {
+        "question": "What happens if the strategy loses money?",
+        "answer": "The loss is absorbed by the bank's treasury, with no effect whatsoever on client accounts or on credit already granted: this risk is never transferred to the client."
+      },
+      "targetReached": {
+        "question": "Has the 8 to 14% target already been reached?",
+        "answer": "It is a medium-term target, not a result guaranteed month by month: see the case study above for a detailed example of the net yield calculation."
+      },
+      "whyIndustrialOnly": {
+        "question": "Why do only industrial metals have this target?",
+        "answer": "Gold, silver, and ETH already benefit from the real automatic repayment described on the Yield page. This indicative target is specific to the treasury strategy on industrial assets, a distinct and additional mechanism."
+      }
+    }
+  },
+  "Pricing": {
+    "meta": {
+      "title": "Pricing · Hentsch Credit",
+      "description": "The actual rates and fees applied by Hentsch Credit: credit ratio, interest, origination fees, and liquidation thresholds, with no surprises."
+    },
+    "eyebrow": "Pricing transparency",
+    "title": "Our pricing, no surprises",
+    "description": "The rates and fees actually applied by the platform, fixed at the time your collateral is locked.",
+    "items": {
+      "ratio": {
+        "label": "Credit ratio",
+        "detail": "Of the amount pledged, at the rate in effect at the time of the lock."
+      },
+      "interestRate": {
+        "label": "Annual interest rate",
+        "detail": "Reference rate (SOFR/EURIBOR) plus a risk premium of 8.5 points, on the credit used."
+      },
+      "originationFees": {
+        "label": "Origination fees",
+        "detail": "Charged once, on the credit issued, at the time the collateral is locked."
+      },
+      "custodyFees": {
+        "label": "Collateral custody fees",
+        "detail": "On the amount of locked collateral, for as long as the position remains active."
+      },
+      "positionDuration": {
+        "label": "Position term",
+        "detail": "Renewable; the collateral remains locked until the credit used is repaid."
+      },
+      "automaticRepayment": {
+        "label": "Automatic repayment",
+        "value": "up to 60%",
+        "detail": "Through the real appreciation of the collateral (gold, silver, ETH, industrial metals). The remaining 40% is repaid through your own contribution."
+      },
+      "liquidationThresholds": {
+        "label": "Collateral liquidation thresholds",
+        "detail": "Depreciation from the entry value: 30% triggers an alert, 50% liquidates the collateral (credit already used remains owed). Details on the Yield page."
+      }
+    },
+    "nonRetroactivityNote": "Any subsequent change to one of these rates applies only to new locks: a position already open retains the rate structure applied to it at the time of its creation, until its repayment or maturity.",
+    "contractualDetail": "The full contractual details of these fees are in our <link>terms and conditions</link>.",
+    "exampleTitle": "Example of total cost over 12 months",
+    "exampleIntro": "For a deposit of $2,000 ($7,000 of credit granted), fully used for 12 months then repaid, the most conservative scenario (with no reduction from yield).",
+    "exampleTable": {
+      "item": "Item",
+      "calculation": "Calculation",
+      "amount": "Amount",
+      "origination": "Origination fees",
+      "originationCalc": "2.0% × $7,000, charged once",
+      "interest": "Interest over 12 months",
+      "interestCalc": "13.5% × $7,000 used all year",
+      "totalBeforeYield": "Total before yield",
+      "totalBeforeYieldNote": "Excluding any potential reduction from collateral appreciation"
+    },
+    "exampleFooter": "Collateral custody fees (0.5%/year) are shown and fixed at the lock, but their periodic automatic collection is not yet in service at this stage; they are therefore not included in this total. If your collateral generates a yield (gold, silver, ETH, industrial metals), part of these $1,085 may be covered automatically, within the 60% limit of the credit used (see <link>Yield</link>).",
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "earlyRepayment": {
+        "question": "Are there any early repayment fees?",
+        "answer": "No. You can repay all or part of the credit used at any time, with no penalty. Interest only accrues on the duration and amount actually used."
+      },
+      "negotiable": {
+        "question": "Are these fees negotiable?",
+        "answer": "No, they apply uniformly to all clients at the rate in effect at the time of the lock. A future rate change only applies to new locks."
+      },
+      "currencyDifference": {
+        "question": "Why does the rate differ between USD and EUR?",
+        "answer": "Each currency applies its own monetary reference rate (SOFR for USD, EURIBOR for EUR) before adding the same 8.5-point risk premium, hence the 1.5-point gap between the two."
+      }
+    }
+  }
+}

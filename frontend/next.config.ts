@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 // En-têtes de sécurité de base, appliqués à toutes les routes de la vitrine/dashboard
 // Next.js (le back-office NestJS a les siens via helmet, cf. backend/src/main.ts).
 // Pas de Content-Security-Policy ici : la CSP dépend fortement des sources externes
-// réellement utilisées (CoinGecko pour les logos d'actifs, cf. market-view.tsx) et une
+// réellement utilisées (CoinMarketCap pour les logos d'actifs, cf. market-view.tsx) et une
 // CSP mal calibrée casse silencieusement des fonctionnalités — à composer et tester
 // explicitement plutôt qu'ajoutée à l'aveugle.
 const SECURITY_HEADERS = [
@@ -32,4 +33,10 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Vitrine publique multilingue (/[locale]/...) — cf. i18n/routing.ts pour la liste des
+// langues et i18n/request.ts pour le chargement des messages. L'espace client (/dashboard)
+// et le back-office (/admin) restent hors de ce plugin, donc uniquement en français : ce
+// sont des routes internes à un compte déjà ouvert, pas la "vitrine visiteur".
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+export default withNextIntl(nextConfig);

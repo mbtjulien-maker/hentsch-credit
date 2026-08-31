@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Layers, ShieldCheck, Sparkles, TrendingDown, TrendingUp, Wallet } from "lucide-react";
-import { Sparkline } from "@/components/dashboard/sparkline";
+import { useTranslations } from "next-intl";
 import { api, ApiError, type MarketOverviewEntry } from "@/lib/api";
 import { formatPercent, formatPrice } from "@/lib/format";
 
@@ -13,27 +13,10 @@ import { formatPercent, formatPrice } from "@/lib/format";
 // une section marketing, cf. filter ci-dessous).
 const YIELD_CURRENCIES = ["XAUT", "PAXG", "KAG", "ETH"] as const;
 
-const MECHANISM_STEPS = [
-  {
-    icon: Layers,
-    title: "1. Vous déposez de l'or, de l'argent ou de l'ETH",
-    description: "Ces actifs sont mis en garantie exactement comme un stablecoin, au même ratio de crédit.",
-  },
-  {
-    icon: TrendingUp,
-    title: "2. Leur cours évolue, la plus-value travaille pour vous",
-    description: "Chaque hausse réelle constatée depuis le dépôt réduit automatiquement le crédit utilisé.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "3. Jusqu'à 60% du crédit remboursé sans y penser",
-    description: "Le reste (40% minimum) se rembourse par apport personnel, comme pour tout autre actif.",
-  },
-] as const;
-
 // Récupère et filtre les actifs générateurs de rendement — partagé par YieldAssetGrid
 // (vitrine compacte, colonne hero) et par toute future consommation de ces cours.
 function useYieldAssets() {
+  const t = useTranslations("YieldShowcase");
   const [entries, setEntries] = useState<MarketOverviewEntry[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -45,11 +28,12 @@ function useYieldAssets() {
         if (!ignore) setEntries(data);
       })
       .catch((err: unknown) => {
-        if (!ignore) setError(err instanceof ApiError ? err.message : "Cours indisponibles pour l'instant.");
+        if (!ignore) setError(err instanceof ApiError ? err.message : t("pricesUnavailable"));
       });
     return () => {
       ignore = true;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- t est stable pour la durée du composant
   }, []);
 
   const yieldEntries = YIELD_CURRENCIES.map((currency) =>
@@ -60,6 +44,7 @@ function useYieldAssets() {
 }
 
 function AssetYieldCard({ entry, compact = false }: { entry: MarketOverviewEntry; compact?: boolean }) {
+  const t = useTranslations("YieldShowcase");
   const isUp = (entry.change24hPct ?? 0) >= 0;
   return (
     <div
@@ -70,7 +55,7 @@ function AssetYieldCard({ entry, compact = false }: { entry: MarketOverviewEntry
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           {entry.image ? (
-            // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinGecko
+            // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinMarketCap
             <img src={entry.image} alt="" className={compact ? "size-6 shrink-0 rounded-full" : "size-8 shrink-0 rounded-full"} />
           ) : (
             <div className={compact ? "size-6 shrink-0 rounded-full bg-muted" : "size-8 shrink-0 rounded-full bg-muted"} />
@@ -83,7 +68,7 @@ function AssetYieldCard({ entry, compact = false }: { entry: MarketOverviewEntry
         {!compact && (
           <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-100 px-2 py-1 text-[10px] font-medium text-amber-800">
             <Sparkles className="size-2.5" />
-            Rendement
+            {t("yieldBadge")}
           </span>
         )}
       </div>
@@ -101,35 +86,34 @@ function AssetYieldCard({ entry, compact = false }: { entry: MarketOverviewEntry
             >
               {isUp ? <TrendingUp className="size-3" /> : <TrendingDown className="size-3" />}
               {formatPercent(entry.change24hPct)}
-              {!compact && <span className="font-normal text-slate-400">24h</span>}
+              {!compact && <span className="font-normal text-slate-400">{t("h24")}</span>}
             </div>
           )}
         </div>
-        {!compact && entry.sparkline7d.length > 1 && <Sparkline data={entry.sparkline7d} width={64} height={22} />}
       </div>
     </div>
   );
 }
 
 // Panneau compact "actifs générateurs de rendement" — pensé pour vivre à côté du hero
-// (colonne droite, cf. app/page.tsx), pas en pleine largeur : titre resserré, grille 2x2,
-// cartes allégées (pas de sparkline ni de nom complet). Le détail du mécanisme et la
-// mention des stablecoins vivent dans YieldMechanismStrip, juste en dessous du hero.
+// (colonne droite, cf. app/[locale]/page.tsx), pas en pleine largeur : titre resserré,
+// grille 2x2, cartes allégées (pas de sparkline ni de nom complet). Le détail du
+// mécanisme et la mention des stablecoins vivent dans YieldMechanismStrip, juste en
+// dessous du hero. Toujours en thème clair fixe (bg-white, text-slate-900…), quel que
+// soit le thème choisi par le visiteur — identité visuelle volontairement invariante,
+// cf. leçon du sed de conversion de thème plus tôt dans le projet.
 export function YieldAssetGrid() {
+  const t = useTranslations("YieldShowcase");
   const { entries, yieldEntries, error } = useYieldAssets();
 
   return (
     <div className="flex h-full flex-col rounded-3xl bg-gradient-to-br from-amber-50/90 via-orange-50/50 to-white p-6 shadow-[0_8px_30px_-12px_rgba(217,119,6,0.25)] sm:p-7">
       <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-medium text-amber-800">
         <Sparkles className="size-3.5" />
-        Notre différence
+        {t("badge")}
       </span>
-      <h2 className="mt-3 text-xl font-semibold text-slate-900 sm:text-2xl">
-        Les seuls gages qui remboursent une partie de votre crédit à votre place
-      </h2>
-      <p className="mt-2 text-sm text-slate-600">
-        Or, argent et ETH génèrent un rendement réel, réinjecté automatiquement dans votre crédit.
-      </p>
+      <h2 className="mt-3 text-xl font-semibold text-slate-900 sm:text-2xl">{t("title")}</h2>
+      <p className="mt-2 text-sm text-slate-600">{t("subtitle")}</p>
 
       {error && <p className="mt-4 text-sm text-destructive">{error}</p>}
 
@@ -153,10 +137,18 @@ export function YieldAssetGrid() {
 }
 
 // Bandeau "comment ça marche" du rendement + rappel honnête sur les stablecoins — pleine
-// largeur, placé juste sous la rangée hero/YieldAssetGrid (cf. app/page.tsx). Séparé de
-// YieldAssetGrid pour que la partie "preuve visuelle" (logos + cours) reste compacte à
-// côté du hero, sans sacrifier l'explication détaillée du mécanisme.
+// largeur, placé juste sous la rangée hero/YieldAssetGrid (cf. app/[locale]/page.tsx).
+// Séparé de YieldAssetGrid pour que la partie "preuve visuelle" (logos + cours) reste
+// compacte à côté du hero, sans sacrifier l'explication détaillée du mécanisme.
 export function YieldMechanismStrip() {
+  const t = useTranslations("YieldShowcase");
+
+  const MECHANISM_STEPS = [
+    { icon: Layers, title: t("steps.deposit.title"), description: t("steps.deposit.description") },
+    { icon: TrendingUp, title: t("steps.appreciation.title"), description: t("steps.appreciation.description") },
+    { icon: ShieldCheck, title: t("steps.repaid.title"), description: t("steps.repaid.description") },
+  ] as const;
+
   return (
     <section className="bg-gradient-to-b from-amber-50/60 to-transparent py-12">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
@@ -176,8 +168,7 @@ export function YieldMechanismStrip() {
 
         <div className="mt-6 flex items-center justify-center gap-2 text-xs text-slate-500">
           <Wallet className="size-3.5" />
-          Les stablecoins (USDT, USDC, DAI…) restent 1:1 USD : leur crédit se rembourse entièrement par
-          apport personnel, sans rendement automatique.
+          {t("stablecoinsReminder")}
         </div>
       </div>
     </section>

@@ -252,7 +252,7 @@ describe('LiquidationService', () => {
       const positionB = buildPosition({ id: 'position-b' });
       prisma.creditPosition.findMany.mockResolvedValue([positionA, positionB]);
       marketDataService.getSpotPriceUsd
-        .mockRejectedValueOnce(new Error('CoinGecko down'))
+        .mockRejectedValueOnce(new Error('CoinMarketCap down'))
         .mockResolvedValueOnce(new Prisma.Decimal('2600'));
 
       const results = await service.runDailyLiquidationCheck();

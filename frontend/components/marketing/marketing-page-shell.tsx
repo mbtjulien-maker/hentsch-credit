@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { SiteNav } from "@/components/marketing/site-nav";
 import { SiteFooter } from "@/components/marketing/site-footer";
 
@@ -9,8 +10,9 @@ import { SiteFooter } from "@/components/marketing/site-footer";
 // RWA, Marché, Demande de compte) — même chrome (SiteNav/SiteFooter) que la page
 // d'accueil, avec un fil d'Ariane de retour et un en-tête cohérent. Le contenu propre à
 // chaque page (souvent déjà un <section> autonome, ex. RwaStrategySection) est passé en
-// children, généralement en pleine largeur sous l'en-tête.
-export function MarketingPageShell({
+// children, généralement en pleine largeur sous l'en-tête. eyebrow/title/description
+// viennent déjà traduits de la page appelante (chacune a son propre namespace).
+export async function MarketingPageShell({
   eyebrow,
   title,
   description,
@@ -21,6 +23,8 @@ export function MarketingPageShell({
   description: string;
   children: ReactNode;
 }) {
+  const t = await getTranslations("Common");
+
   return (
     <div className="flex min-h-screen flex-col">
       <SiteNav />
@@ -31,7 +35,7 @@ export function MarketingPageShell({
             className="mb-6 inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground/80 hover:text-foreground"
           >
             <ArrowLeft className="size-3.5" />
-            Retour à l&apos;accueil
+            {t("backToHome")}
           </Link>
           <span className="mx-auto flex w-fit items-center gap-1.5 rounded-full border border-border/80 bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
             {eyebrow}

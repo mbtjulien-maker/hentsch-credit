@@ -1,0 +1,1007 @@
+{
+  "Common": {
+    "backToHome": "Terug naar de homepage",
+    "lastUpdated": "Laatst bijgewerkt:",
+    "legalTranslationDisclaimer": "Deze pagina is voor uw gemak vertaald. Bij interpretatieverschillen is uitsluitend de Franse versie doorslaggevend.",
+    "learnMore": "Meer weten"
+  },
+  "Nav": {
+    "tagline": "Crypto-gedekt krediet",
+    "links": {
+      "commentCaMarche": "Hoe het werkt",
+      "rendement": "Rendement",
+      "strategieRwa": "RWA-strategie",
+      "marche": "Markt",
+      "tarifs": "Tarieven"
+    },
+    "connexionShort": "Inloggen",
+    "connexionLong": "Naar mijn account"
+  },
+  "Footer": {
+    "columns": {
+      "platform": {
+        "title": "Het platform",
+        "howItWorks": "Hoe het werkt",
+        "yield": "Rendement",
+        "rwaStrategy": "RWA-strategie",
+        "market": "Markt",
+        "pricing": "Tarieven",
+        "requestAccount": "Account aanvragen"
+      },
+      "help": {
+        "title": "Hulp & contact",
+        "contact": "Contact opnemen",
+        "faq": "Veelgestelde vragen",
+        "sitemap": "Sitemap",
+        "accessibility": "Digitale toegankelijkheid",
+        "archives": "Archief"
+      },
+      "contractual": {
+        "title": "Contractuele documentatie",
+        "terms": "Algemene voorwaarden",
+        "legalNotice": "Wettelijke vermeldingen",
+        "regulation": "Regelgeving",
+        "riskManagement": "Risicobeheer en bewaring van activa"
+      },
+      "privacy": {
+        "title": "Persoonsgegevens",
+        "privacyPolicy": "Privacybeleid",
+        "cookiePolicy": "Cookiebeleid"
+      }
+    },
+    "disclaimer": "{tradingName} is een aanbod van {legalName}, een onafhankelijke vermogensbeheerder naar Zwitsers recht, onder toezicht van {supervisionBodyName}, een toezichtsorganisatie erkend door de {supervisoryAuthority}. Toegang is voorbehouden aan een beperkte kring klanten, uitsluitend op uitnodiging. Dit platform is niet toegankelijk voor het publiek.",
+    "rightsReserved": "Alle rechten voorbehouden."
+  },
+  "Home": {
+    "meta": {
+      "title": "Hentsch Credit · Crypto-gedekt krediet",
+      "description": "350% van het verpande bedrag vrijgemaakt als directe koopkracht. Goud, zilver en ETH genereren een reëel rendement dat automatisch een deel van uw krediet aflost."
+    },
+    "badge": "Gereguleerd vermogensbeheer · Toegang uitsluitend op uitnodiging",
+    "titleLine1": "Uw goud en uw zilver",
+    "titleHighlight": "liggen niet langer stil",
+    "subtitle": "Zet ze in als onderpand, zonder ze ooit te verkopen. Maak direct koopkracht vrij, automatisch afgelost dankzij hun prestaties.",
+    "statCardCaption": "koopkracht, vanaf de storting",
+    "statCardAssets": "Getokeniseerd goud & zilver",
+    "ctaLogin": "Naar mijn account",
+    "ctaHowItWorks": "Hoe het werkt",
+    "ctaNoAccount": "Nog geen account? Vraag een accountopening aan",
+    "discoverTitle": "Ontdek het platform",
+    "discoverDescription": "De details van elk mechanisme, op een eigen pagina.",
+    "teasers": {
+      "howItWorks": {
+        "title": "Hoe het werkt",
+        "description": "Van het storten van onderpand tot het uitgeven, in vier stappen."
+      },
+      "yield": {
+        "title": "Rendement op onderpand",
+        "description": "Goud, zilver en ETH lossen automatisch tot 60% van uw krediet af."
+      },
+      "rwa": {
+        "title": "RWA-investeringsstrategie",
+        "description": "Getokeniseerde industriële metalen: onze treasurystrategie, volledig transparant."
+      },
+      "market": {
+        "title": "De markt live",
+        "description": "De koersen van de als onderpand geaccepteerde activa, in real time."
+      }
+    },
+    "stats": {
+      "ratio": "Kredietratio op het gestorte onderpand",
+      "custodyValue": "Bewaring via erkende bewaarnemers",
+      "custodyLabel": "Activa ondergebracht bij erkende derde instellingen, nooit op eigen naam",
+      "kycValue": "KYC geverifieerd",
+      "kycLabel": "Toegang tot krediet voorbehouden aan geverifieerde klanten"
+    },
+    "closingTitle": "Klaar om uw koopkracht vrij te maken?",
+    "closingDescription": "Platform voorbehouden aan een beperkte kring klanten. Ons team beoordeelt elke aanvraag voordat toegang wordt verleend.",
+    "closingCta": "Accountopening aanvragen"
+  },
+  "HowItWorks": {
+    "meta": {
+      "title": "Hoe het werkt · Hentsch Credit",
+      "description": "Van identiteitsverificatie tot uitgaven: de vijf stappen om crypto-gedekt krediet bij Hentsch Credit te verkrijgen en te gebruiken."
+    },
+    "eyebrow": "Het klanttraject",
+    "title": "Hoe het werkt",
+    "description": "Van identiteitsverificatie tot uitgaven, in vijf stappen.",
+    "steps": {
+      "kyc": {
+        "title": "1. Identiteitsverificatie (KYC)",
+        "description": "Uitsluitend op uitnodiging: uw identiteit wordt zonder uitzondering geverifieerd vóór elke toegang tot storting of krediet."
+      },
+      "deposit": {
+        "title": "2. Stort uw onderpand",
+        "description": "Stablecoins, getokeniseerde edelmetalen of industriële metalen, of ETH, op het Ethereum-netwerk."
+      },
+      "credit": {
+        "title": "3. Krediet automatisch toegekend",
+        "description": "350% van het gestorte bedrag, vrijgemaakt zodra uw aanvraag is goedgekeurd (min een eenmalige oprichtingsvergoeding van 2%)."
+      },
+      "spend": {
+        "title": "4. Geef uit met uw kaart",
+        "description": "Gebruik uw kredietlijn intern of rechtstreeks met uw bankkaart."
+      },
+      "repay": {
+        "title": "5. Los af om uw onderpand vrij te geven",
+        "description": "Tot 60% wordt automatisch afgelost door het rendement op het onderpand; de rest via uw eigen bijdrage. Omgekeerd kan een sterke daling van het onderpand tot liquidatie leiden."
+      }
+    },
+    "feesNote": "De details van de werkelijke tarieven en kosten staan op de pagina <pricing>Tarieven</pricing>, en de details van automatische aflossing, inclusief het liquidatierisico bij een sterke daling van het onderpand, op de pagina <yield>Rendement</yield>.",
+    "detailTitle": "De details van elke stap",
+    "detail": {
+      "kyc": {
+        "title": "1. Identiteitsverificatie",
+        "body": "Toegang wordt uitsluitend op uitnodiging verleend. Zodra uw accountaanvraag is geaccepteerd, ontvangt u offline een account en een tijdelijk wachtwoord, waarna uw identiteit wordt geverifieerd voordat u iets anders kunt doen. Zolang deze status niet is bevestigd, zijn het genereren van een stortingsadres en elke kredietaanvraag technisch geblokkeerd, niet alleen afgeraden."
+      },
+      "deposit": {
+        "title": "2. Storting van het onderpand",
+        "body": "Afhankelijk van het gekozen actief is het meegedeelde stortingsadres ofwel individueel (automatisch gecrediteerd na on-chain bevestiging), ofwel gedeeld tussen klanten (u meldt uw storting, en een adviseur valideert deze handmatig na daadwerkelijke ontvangst van de middelen). Het bijbehorende krediet wordt automatisch uitgegeven zodra het beschikbare saldo het aangevraagde bedrag bereikt, zonder verdere handmatige tussenkomst onzerzijds."
+      },
+      "credit": {
+        "title": "3. Uitgifte van het krediet",
+        "body": "350% van het gestorte bedrag, tegen het tarief dat geldt op het moment van vergrendeling: een reeds vergrendelde positie behoudt dit tarief altijd, ook als de ratio later voor nieuwe klanten verandert. De oprichtingsvergoeding (2%) wordt eenmalig geheven over het uitgegeven krediet, niet over uw onderpand."
+      },
+      "usage": {
+        "title": "4. Gebruik van het krediet",
+        "body": "Het toegekende krediet is slechts een plafond: er zijn geen rente of aflossingen verschuldigd zolang u het niet daadwerkelijk gebruikt (kaartbetaling, intern gebruik). Het is een doorlopende kredietlijn, geen lening die in één keer op uw beschikbaar saldo wordt uitgekeerd."
+      },
+      "repayment": {
+        "title": "5. Aflossing",
+        "body": "Twee kanalen, het eerste dagelijks en automatisch: de reële waardestijging van uw onderpand (tot 60% van het uitgegeven krediet), en uw eigen bijdrage voor de rest. Volledige aflossing maakt uw onderpand vrij, dat weer opneembaar wordt. Omgekeerd leidt een ernstige waardedaling van het onderpand (50% sinds instap) tot liquidatie ervan, zonder het reeds gebruikte krediet te wissen."
+      }
+    },
+    "faqTitle": "Veelgestelde vragen",
+    "faq": {
+      "kycRejected": {
+        "question": "Wat gebeurt er als mijn KYC wordt afgewezen?",
+        "answer": "Zolang de status niet is geverifieerd, is geen enkele financiële transactie mogelijk. Bij afwijzing kan het bedrijf de betreffende rekening weigeren, opschorten of sluiten, met name bij twijfel over de opgegeven identiteit."
+      },
+      "approvalDelay": {
+        "question": "Hoe lang duurt de goedkeuring van een kredietaanvraag?",
+        "answer": "Dit varieert afhankelijk van de werklast van de backoffice: een aanvraag doorloopt een handmatige validatiewachtrij voordat er een storting kan worden ontvangen. Het krediet zelf wordt automatisch uitgegeven zodra de middelen zijn ontvangen, zonder extra vertraging na goedkeuring van de aanvraag."
+      },
+      "earlyWithdrawal": {
+        "question": "Kan ik mijn onderpand opnemen voordat ik alles heb afgelost?",
+        "answer": "Nee. Vergrendeld onderpand blijft geblokkeerd zolang het bijbehorende gebruikte krediet niet volledig is afgelost. Alleen het beschikbare saldo, exclusief het geblokkeerde onderpand, kan te allen tijde vrij worden opgenomen."
+      }
+    },
+    "ctaLogin": "Naar mijn account",
+    "ctaNoAccount": "Accountopening aanvragen"
+  },
+  "Accessibility": {
+    "meta": {
+      "title": "Digitale toegankelijkheid · Hentsch Credit",
+      "description": "De werkelijke stand van zaken van de digitale toegankelijkheid van het Hentsch Credit-platform, zonder een niet-geverifieerd conformiteitsniveau te claimen."
+    },
+    "title": "Toegankelijkheidsverklaring",
+    "intro": "H. Hentsch Asset Management SA streeft ernaar het Hentsch Credit-platform voor zoveel mogelijk mensen bruikbaar te maken. Deze verklaring beschrijft de werkelijke stand van zaken, zonder een conformiteitsniveau te claimen dat niet door een formele audit is geverifieerd.",
+    "s1": {
+      "title": "1. Conformiteitsstatus",
+      "body": "De website heeft nog geen formele toegankelijkheidsaudit ondergaan (van het type RGAA of WCAG). Er kan daarom geen conformiteit met een specifiek niveau worden verklaard. Er worden echter al inspanningen geleverd in het ontwerp: semantische paginastructuur, koppenhiërarchie, kleurcontrasten die zijn ontworpen met het oog op leesbaarheid, en toetsenbordnavigatie mogelijk op de belangrijkste trajecten (inloggen, accountaanvraag, accountoverzicht)."
+    },
+    "s2": {
+      "title": "2. Bekende beperkingen",
+      "item1": "Bepaalde grafieken en markttabellen bieden nog geen volledig tekstequivalent voor schermlezers;",
+      "item2": "Er is geen tegenaudit uitgevoerd door een externe organisatie die gespecialiseerd is in digitale toegankelijkheid;",
+      "item3": "Bepaalde content van derden (bijvoorbeeld webhooks en interfaces van externe leveranciers die in het platform zijn geïntegreerd) valt niet onder de directe controle van {legalName}."
+    },
+    "s3": {
+      "title": "3. Een probleem melden",
+      "body": "Als u een toegankelijkheidsprobleem ondervindt bij content of een functie van het platform, meld dit dan bij onderstaand contact, met vermelding van de betreffende pagina en, indien mogelijk, de gebruikte hulptechnologie.",
+      "email": "E-mail",
+      "phone": "Telefoon"
+    },
+    "s4": {
+      "title": "4. Beroepsmogelijkheden",
+      "body": "Bij het uitblijven van een bevredigend antwoord binnen een redelijke termijn kunt u een klacht indienen onder de voorwaarden beschreven op de pagina <link>Regelgeving</link>, sectie 6."
+    }
+  },
+  "Archives": {
+    "meta": {
+      "title": "Archief · Hentsch Credit",
+      "description": "De evolutie van de kredietratio, de geaccepteerde activa en de mechanismen van het Hentsch Credit-platform sinds de lancering."
+    },
+    "eyebrow": "Geschiedenis",
+    "title": "Archief",
+    "description": "De evolutie van de belangrijkste regels van het platform sinds de lancering, in chronologische volgorde.",
+    "entries": {
+      "nonRetroactivity": {
+        "period": "Sinds de start",
+        "title": "Geen terugwerkende kracht van wijzigingen in voorwaarden",
+        "detail": "Een wijziging van de kredietratio, het tarief of een drempel geldt nooit voor een reeds vergrendelde positie: deze behoudt de voorwaarden die op het moment van ontstaan zijn toegekend, tot aflossing of vervaldatum. Dit principe is sinds de lancering van het platform nooit veranderd."
+      },
+      "step1": {
+        "period": "Fase 1",
+        "title": "Aanvankelijke kredietratio",
+        "detail": "75% van het verpande bedrag."
+      },
+      "step2": {
+        "period": "Fase 2",
+        "title": "Eerste verhoging van de ratio",
+        "detail": "75% → 150% van het verpande bedrag, voor nieuwe vergrendelingen."
+      },
+      "step3": {
+        "period": "Fase 3",
+        "title": "Tweede verhoging van de ratio",
+        "detail": "150% → 200% van het verpande bedrag, voor nieuwe vergrendelingen."
+      },
+      "step4": {
+        "period": "Fase 4 (huidige waarde)",
+        "title": "Geldende kredietratio",
+        "detail": "200% → 350% van het verpande bedrag, voor nieuwe vergrendelingen."
+      },
+      "step5": {
+        "period": "Fase 5",
+        "title": "Uitbreiding van de geaccepteerde activa",
+        "detail": "Toevoeging van ETH en SHIB, daarna van getokeniseerd zilver (KAG), naast stablecoins."
+      },
+      "step6": {
+        "period": "Fase 6",
+        "title": "Uitbreiding naar industriële metalen en grondstoffen",
+        "detail": "Toevoeging van platina (XPT), palladium (XPD), koper (XCU) en synthetische olie (WTI), in het kader van de RWA-strategie."
+      },
+      "step7": {
+        "period": "Fase 7",
+        "title": "Automatische aflossing door rendement op onderpand",
+        "detail": "Invoering van automatische aflossing via de reële waardestijging van het onderpand, beperkt tot 60% van het uitgegeven krediet; de rest blijft voor rekening van de klant."
+      },
+      "step8": {
+        "period": "Fase 8",
+        "title": "Indicatief rendementsdoel voor industriële RWA-activa",
+        "detail": "Toevoeging van een indicatief, geannualiseerd doel van 8 tot 14% uitsluitend voor platina, palladium, koper en synthetische olie. Dit doel blijft indicatief: het is noch gegarandeerd, noch gebruikt bij de berekening van het toegekende krediet."
+      },
+      "step9": {
+        "period": "Fase 9",
+        "title": "Invoering van het liquidatiemechanisme",
+        "detail": "Invoering van een waarschuwingsdrempel (30% waardedaling van het onderpand sinds instap) en een liquidatiedrempel (50%). Details staan op de pagina Rendement en in de algemene voorwaarden, sectie 7."
+      },
+      "step10": {
+        "period": "Fase 10",
+        "title": "Overgang naar een automatisch berekend geschat rendement",
+        "detail": "De kredietsimulatoren voor klanten berekenen nu het geschatte rendement, de maandelijkse termijn en de datum van de eerste aflossing op basis van de werkelijke prestaties over de afgelopen 12 maanden, in plaats van de klant een schatting te laten invoeren."
+      }
+    },
+    "note": "De momenteel geldende waarden (ratio, tarieven, kosten, rendementsplafond, liquidatiedrempels) staan met hun exacte cijfers vermeld op de pagina <link>Tarieven</link>. Deze archiefpagina geeft alleen de geschiedenis van de wijzigingen weer, niet de voorwaarden die van toepassing zijn op uw huidige positie.",
+    "lastUpdated": "Laatst bijgewerkt:"
+  },
+  "Contact": {
+    "meta": {
+      "title": "Contact · Hentsch Credit",
+      "description": "De contactgegevens van H. Hentsch Asset Management SA voor elke vraag over uw account of het Hentsch Credit-platform."
+    },
+    "eyebrow": "Contact opnemen",
+    "title": "Contact opnemen",
+    "description": "De werkelijke contactgegevens van H. Hentsch Asset Management SA, voor elke vraag over uw account of het platform.",
+    "channels": {
+      "email": "E-mail",
+      "phone": "Telefoon",
+      "postalAddress": "Postadres",
+      "registeredOffice": "Maatschappelijke zetel"
+    },
+    "hours": "Aanvragen worden op werkdagen behandeld. Voor elke vraag over een lopende transactie (storting, kredietaanvraag, kaart), vermeld a.u.b. uw naam en, indien mogelijk, de referentie van de betreffende transactie.",
+    "noAccount": "Heeft u nog geen account? Het platform is voorbehouden aan een beperkte kring klanten, uitsluitend op uitnodiging. U kunt echter een <link>accountaanvraag</link> indienen, die door onze teams zal worden beoordeeld.",
+    "complaint": "Voor een formele klacht en, bij het uitblijven van een minnelijke oplossing, de beschikbare bemiddelingskanalen, zie de pagina <link>Regelgeving</link>, sectie 6."
+  },
+  "Cookies": {
+    "meta": {
+      "title": "Cookiebeleid · Hentsch Credit",
+      "description": "Waarom Hentsch Credit slechts één, strikt noodzakelijke cookie plaatst, en verder niets."
+    },
+    "title": "Cookiebeleid",
+    "intro": "Deze pagina beschrijft de cookies die het Hentsch Credit-platform daadwerkelijk plaatst en waarom er geen voorkeurscentrum wordt aangeboden.",
+    "s1": {
+      "title": "1. Wat het platform plaatst",
+      "body": "Er wordt slechts één cookie gebruikt, een sessiecookie, strikt noodzakelijk voor de werking van de dienst: deze houdt u aangemeld terwijl u door het klantengedeelte navigeert. Hij wordt verwijderd wanneer u uw sessie of browser sluit."
+    },
+    "s2": {
+      "title": "2. Wat het platform niet plaatst",
+      "item1": "Geen reclame- of targetingcookie;",
+      "item2": "Geen cookie voor bezoekersmeting door derden (analytics, statistieken);",
+      "item3": "Geen tracker van sociale netwerken;",
+      "item4": "Geen cross-site trackingcookie."
+    },
+    "s3": {
+      "title": "3. Waarom er geen \"mijn cookies beheren\" is",
+      "body": "Een voorkeurscentrum heeft zin wanneer een site niet-essentiële cookies plaatst (reclame, bezoekersmeting) die uw voorafgaande toestemming en een manier om deze in te trekken vereisen. Het platform plaatst er geen enkele: er is dus geen enkele voorkeur te activeren of deactiveren buiten de instellingen van uw eigen browser. Mocht dit ooit veranderen, dan wordt deze pagina bijgewerkt en wordt een echt voorkeurscentrum aangeboden, in plaats van een knop zonder werkelijk effect."
+    },
+    "s4": {
+      "title": "4. Controle vanaf uw browser",
+      "body": "U kunt de sessiecookie te allen tijde blokkeren of verwijderen via de instellingen van uw browser. Het blokkeren van deze specifieke cookie zal u afmelden bij het klantengedeelte: het is een functionele cookie, geen tracker, en heeft geen andere rol."
+    },
+    "s5": {
+      "title": "5. Contact",
+      "body": "Voor elke vraag over dit beleid kunt u contact opnemen met de functionaris voor gegevensbescherming op {dpo}. De verwerking van de overige persoonsgegevens wordt beschreven in het <link>privacybeleid</link>."
+    }
+  },
+  "Terms": {
+    "meta": {
+      "title": "Algemene voorwaarden · Hentsch Credit",
+      "description": "De algemene gebruiksvoorwaarden van het Hentsch Credit-platform: krediet, onderpand, aflossing, liquidatie en kosten."
+    },
+    "title": "Algemene voorwaarden",
+    "intro": "Deze algemene voorwaarden regelen de toegang tot en het gebruik van het Hentsch Credit-platform, een kredietdienst gedekt door digitale activa, aangeboden aan een beperkt aantal klanten van het bedrijf op uitnodiging. Door een account te openen verklaart de klant deze te hebben gelezen en aanvaard.",
+    "s1": {
+      "title": "1. Doel",
+      "body": "{tradingName} stelt een geverifieerde, vooraf uitgenodigde klant in staat om stablecoins of getokeniseerd goud als onderpand te storten (een \"pand\") en in ruil daarvoor een kredietlijn te verkrijgen die intern en op een bijbehorende bankkaart bruikbaar is. De dienst wordt verleend door {legalName}, een onafhankelijke vermogensbeheerder (OVB) in de zin van de FinIG, in samenwerking met erkende derde bewaarnemers en custody-dienstverleners (zie sectie 5)."
+    },
+    "s2": {
+      "title": "2. Beperkte toegang en geschiktheid",
+      "body": "Het platform is niet toegankelijk voor het publiek. De toegang is voorbehouden aan een door {legalName} bepaalde lijst van klanten, op uitnodiging, in het kader van een bestaande vermogensbeheerrelatie. Het openen van een account, het genereren van een stortingsadres, elke onderpandstorting en elke kredietverlening zijn bovendien onderworpen aan voorafgaande verificatie van de identiteit van de klant (\"KYC\"). Zolang de verificatiestatus van de klant niet is bevestigd, worden deze handelingen geweigerd. Het bedrijf behoudt zich het recht voor om een account te weigeren, op te schorten of te sluiten in geval van mislukking van of twijfel over deze verificatie, of bij vermoeden van fraude, witwassen of financiering van terrorisme."
+    },
+    "s3": {
+      "title": "3. Als onderpand geaccepteerde activa",
+      "body": "Als onderpand worden de volgende stablecoins geaccepteerd, gewaardeerd tegen pariteit (1:1 USD): DAI, USDT, USDC; de volgende aan de euro gekoppelde stablecoin, gewaardeerd tegen de actuele spotkoers: dEURO; de volgende getokeniseerde edelmetalen, eveneens gewaardeerd tegen de actuele spotkoers: XAUT (goud), KAG (zilver); de volgende getokeniseerde industriële metalen en grondstoffen, gewaardeerd tegen de actuele spotkoers: XPT (platina), XPD (palladium), XCU (koper), WTI (synthetische olie); alsook de volgende native cryptovaluta, gewaardeerd tegen de actuele spotkoers en onderworpen aan hun eigen volatiliteit: ETH, SHIB. Deze activa worden uitsluitend geaccepteerd op het Ethereum-netwerk. Voor bepaalde activa is het meegedeelde stortingsadres individueel per klant; voor andere wordt het gedeeld tussen klanten en wordt de gemelde storting handmatig gevalideerd voordat deze wordt gecrediteerd. De lijst van geaccepteerde activa, ondersteunde netwerken of het adresmechanisme dat op elk actief van toepassing is, kan te allen tijde worden gewijzigd, zonder terugwerkende kracht op reeds bestaande posities."
+    },
+    "s4": {
+      "title": "4. Kredietmechanisme en onderpandratio",
+      "body1": "Bij het vergrendelen van onderpand wordt een krediet toegekend gelijk aan <b>350% van het verpande bedrag</b>, tegen het tarief dat op het moment van deze vergrendeling geldt. De totale koopkracht van de rekening wordt als volgt berekend:",
+      "formula": "Totale koopkracht = Beschikbaar saldo + Vergrendeld onderpand + Toegekend krediet − Gebruikt krediet",
+      "body2": "De geldende onderpandratio is die welke geldt op het moment van elke nieuwe vergrendeling. Elke latere wijziging van deze ratio heeft geen terugwerkende invloed op krediet dat al is toegekend voor onderpand dat eerder is vergrendeld: dat krediet blijft behouden onder de destijds geldende voorwaarden.",
+      "body3": "Krediet uitgegeven op grond van een geschikt onderpand (getokeniseerde edelmetalen, getokeniseerde industriële metalen en grondstoffen, ETH) kan voor maximaal 60% worden afgelost via de reële waardestijging die op dat onderpand wordt vastgesteld, automatisch toegepast op het gebruikte krediet. De resterende 40% moet worden afgelost via een eigen bijdrage van de klant (een expliciete storting of overschrijving). Dit plafond geldt voor het kredietbedrag dat is uitgegeven bij de opening van de positie en wordt niet herberekend bij een latere wijziging van de kredietratio.",
+      "body4": "Ter informatie wordt een indicatief rendementsdoel (momenteel 8 tot 14% per jaar) meegedeeld voor getokeniseerde industriële metalen en grondstoffen (platina, palladium, koper, synthetische olie): dit weerspiegelt het doel van de eigen treasurystrategie van het bedrijf voor deze activa (arbitrage, gedekte kredietverlening, liquiditeitsverschaffing), en geen gegarandeerd of contractueel tarief. Dit doel heeft geen enkele invloed op de berekening van het krediet van de klant, dat uitsluitend blijft geregeld door het in de voorgaande alinea beschreven mechanisme."
+    },
+    "s5": {
+      "title": "5. Bewaring van de activa"
+    },
+    "s6": {
+      "title": "6. Vergrendeling van het onderpand en opname",
+      "body": "Het verpande en vergrendelde bedrag kan niet worden opgenomen zolang het bijbehorende gebruikte krediet niet volledig is afgelost. Alleen het beschikbare saldo, exclusief het geblokkeerde onderpand, kan te allen tijde vrij worden opgenomen, onder voorbehoud van de geldende compliancecontroles."
+    },
+    "s7": {
+      "title": "7. Liquidatie van het onderpand",
+      "intro": "Onderpand waarvan de waarde met de markt meebeweegt (getokeniseerde edelmetalen, getokeniseerde industriële metalen en grondstoffen, ETH) wordt dagelijks gecontroleerd op waarde, vergeleken met de waarde op het moment van vergrendeling:",
+      "item1": "bij een waardedaling van ten minste <b>30%</b> ten opzichte van deze instapwaarde wordt een waarschuwing geregistreerd op de rekening, zonder verder effect;",
+      "item2": "bij een waardedaling van ten minste <b>50%</b> wordt het onderpand automatisch tegen zijn instapwaarde van de rekening verwijderd (geliquideerd).",
+      "body": "Liquidatie van onderpand doet het reeds op grond van dat onderpand gebruikte krediet niet vervallen: dat krediet blijft volledig verschuldigd door de klant, niet langer gedekt door het oorspronkelijk gevormde onderpand. Geliquideerd onderpand kan niet worden teruggegeven, zelfs niet als de koers van het betreffende actief zich later herstelt. Bovengenoemde drempels kunnen te allen tijde worden gewijzigd, zonder terugwerkende kracht op de beoordeling van een reeds vastgestelde waardedaling."
+    },
+    "s8": {
+      "title": "8. Bankkaart en gebruik van het krediet",
+      "body": "Een door een erkende derde partner uitgegeven bankkaart kan aan de rekening worden gekoppeld om de toegekende kredietlijn te gebruiken, binnen de grens van het beschikbare krediet (toegekend krediet minus reeds gebruikt krediet). Elke transactie die deze grens overschrijdt, wordt geweigerd. De specifieke voorwaarden voor uitgifte, gebruik en blokkering van de kaart zijn vastgelegd in de bijzondere voorwaarden die daaraan verbonden zijn."
+    },
+    "s9": {
+      "title": "9. Aflossing",
+      "body": "De klant kan het gebruikte krediet te allen tijde geheel of gedeeltelijk aflossen. Volledige aflossing van het krediet dat is gebruikt op grond van een bepaald onderpand maakt dat onderpand vrij, dat weer opneembaar wordt. De op het platform beschikbare aflossingssimulatoren (flexibele prognose, vaste termijnen) worden uitsluitend ter indicatie verstrekt: ze zijn gebaseerd op een geschat rendement op basis van eerdere prestaties, wat geen garantie biedt voor toekomstige prestaties, en vormen noch een contractuele verplichting, noch een afdwingbaar betalingsschema."
+    },
+    "s10": {
+      "title": "10. Kosten",
+      "body": "De momenteel toegepaste kosten en tarieven zijn: een eenmalige oprichtingsvergoeding van <b>2,0%</b>, geheven over het uitgegeven krediet op het moment van vergrendeling van het onderpand; een bewaarvergoeding voor het onderpand van <b>0,5% per jaar</b>, over het bedrag van het vergrendelde onderpand; en rente op het gebruikte krediet van <b>13,5% per jaar in USD</b> (<b>12,0% per jaar in EUR</b>), samengesteld uit een monetair referentietarief (SOFR voor USD, EURIBOR voor EUR) en een risicopremie van 8,5 punten, gerechtvaardigd door de hoge kredietratio (350%) van het platform. De actuele details van deze tarieven staan op de pagina <link>Tarieven</link> van het platform. Deze tarieven kunnen te allen tijde worden bijgewerkt, zonder terugwerkende kracht op reeds bestaande posities: de renteopbouw die is vastgelegd op het moment van vergrendeling van een positie blijft behouden tot aflossing of vervaldatum."
+    },
+    "s11": {
+      "title": "11. Risico's",
+      "intro": "De klant erkent en aanvaardt de risico's die inherent zijn aan digitale activa, met name:",
+      "item1": "de volatiliteit van de koers van tegen de spotprijs gewaardeerde activa (getokeniseerd goud), die de waarde van het onderpand en de totale koopkracht van de rekening kan beïnvloeden;",
+      "item2": "het risico van liquidatie van het onderpand bij ernstige waardedaling (zie sectie 7), wat het reeds gebruikte krediet niet doet vervallen;",
+      "item3": "het tegenpartijrisico en het operationele risico verbonden aan de in sectie 5 genoemde bewaarnemers en externe custody-dienstverleners;",
+      "item4": "het regelgevingsrisico verbonden aan de ontwikkeling van het juridisch kader dat van toepassing is op digitale activa en stablecoins.",
+      "body": "Deze voorwaarden vormen noch beleggingsadvies, noch een aanbeveling om digitale activa te kopen, verkopen of aan te houden."
+    },
+    "s12": {
+      "title": "12. Beëindiging",
+      "body": "De klant kan zijn rekening te allen tijde sluiten, onder voorbehoud van volledige aflossing van al het gebruikte krediet. Het bedrijf kan de toegang tot de dienst opschorten of beëindigen bij niet-naleving van deze voorwaarden, vermoeden van fraude of witwassen, of om elke wettelijke of regelgevende reden."
+    },
+    "s13": {
+      "title": "13. Aansprakelijkheid",
+      "body": "Het bedrijf zet redelijke middelen in om de beschikbaarheid en veiligheid van het platform te waarborgen, zonder een volledige afwezigheid van onderbrekingen te garanderen. Zijn aansprakelijkheid kan niet worden ingeroepen in geval van overmacht, een storing van een blockchainnetwerk of een externe leverancier buiten zijn wil, binnen de grenzen die het toepasselijke Zwitserse recht toestaat."
+    },
+    "s14": {
+      "title": "14. Wijziging van de algemene voorwaarden",
+      "body": "Het bedrijf kan deze algemene voorwaarden te allen tijde wijzigen, mits voorafgaande kennisgeving aan de klant via de gebruikelijke communicatiemiddelen. Wijzigingen hebben geen terugwerkende kracht op reeds bestaande kredietposities, tenzij wettelijk anders bepaald."
+    },
+    "s15": {
+      "title": "15. Toepasselijk recht en bevoegde rechtbank",
+      "body": "Deze algemene voorwaarden zijn onderworpen aan Zwitsers recht. Elk geschil met betrekking tot de geldigheid, interpretatie of uitvoering ervan valt onder de exclusieve bevoegdheid van de rechtbanken van {jurisdiction}, onder voorbehoud van de toepasselijke dwingende wettelijke bepalingen."
+    }
+  },
+  "Privacy": {
+    "meta": {
+      "title": "Privacy · Hentsch Credit",
+      "description": "Hoe H. Hentsch Asset Management SA uw persoonsgegevens verzamelt, gebruikt en beschermt, in overeenstemming met de Zwitserse federale wet op gegevensbescherming."
+    },
+    "title": "Privacybeleid",
+    "intro": "Dit beleid beschrijft hoe H. Hentsch Asset Management SA de persoonsgegevens van klanten van Hentsch Credit, een platform voorbehouden aan een beperkte kring klanten, verzamelt, gebruikt en beschermt, in overeenstemming met de Zwitserse federale wet op gegevensbescherming (nFADP) en, indien van toepassing, de Algemene Verordening Gegevensbescherming (AVG).",
+    "s1": {
+      "title": "1. Verwerkingsverantwoordelijke",
+      "controller": "Verantwoordelijke",
+      "address": "Adres",
+      "dpoContact": "Contact gegevensbescherming",
+      "compliance": "Conform de Zwitserse DSG en de AVG."
+    },
+    "s2": {
+      "title": "2. Verzamelde gegevens",
+      "item1": "Identificatie- en contactgegevens (naam, e-mail, contactgegevens);",
+      "item2": "Documenten en gegevens voor identiteitsverificatie (KYC) verstrekt bij het openen van de rekening;",
+      "item3": "Gegevens met betrekking tot stortingsadressen, on-chain transacties en op het platform uitgevoerde verrichtingen (stortingen, onderpandvergrendelingen, kredietverleningen, aflossingen, kaartbetalingen);",
+      "item4": "Technische verbindingsgegevens met het platform (logboeken, sessie-identificatoren)."
+    },
+    "s3": {
+      "title": "3. Doeleinden en rechtsgrondslag",
+      "item1": "Uitvoering van de contractuele relatie: opening en beheer van de rekening, toekenning en opvolging van het krediet, uitgifte en beheer van de bijbehorende bankkaart;",
+      "item2": "Naleving van wettelijke en regelgevende verplichtingen: identiteitsverificatie (KYC), bestrijding van witwassen en financiering van terrorisme (AML), bewaring van boekhoudkundige stukken;",
+      "item3": "Veiligheid van het platform en fraudepreventie;",
+      "item4": "Communicatie met de klant over zijn rekening en zijn verrichtingen."
+    },
+    "s4": {
+      "title": "4. Partners en onderaannemers",
+      "intro": "Om de dienst uit te voeren, doet {legalName} een beroep op gespecialiseerde dienstverleners, die bepaalde gegevens namens en volgens de instructies van {legalName} verwerken, of die optreden als afzonderlijke verantwoordelijken voor de bewaring van activa:",
+      "item1Label": "Externe bewaarbanken",
+      "item1Body": "bewaring van de liquide middelen en effecten van klanten (zie wettelijke vermeldingen, sectie 3);",
+      "item2Label": "Bewaring van digitale activa ({custodians})",
+      "item2Body": "veilige bewaring van de als onderpand gestorte stablecoins en getokeniseerd goud;",
+      "item3Label": "Uitgifte van bankkaarten",
+      "item3Body": "verwerking van betalingsautorisaties in real time;",
+      "item4Label": "Identiteitsverificatie (KYC)",
+      "item4Body": "controle van de identiteit en compliancestatus van de klant;",
+      "item5Label": "Blockchain-marktgegevens",
+      "item5Body": "detectie van on-chain stortingen en realtime koersen van activa.",
+      "outro": "De naam, exacte rol en het vestigingsland van elke in productie gebruikte dienstverlener worden op verzoek aan de klant meegedeeld via de in sectie 1 vermelde dienst."
+    },
+    "s5": {
+      "title": "5. Bewaartermijn",
+      "body": "Gegevens met betrekking tot klanten en hun verrichtingen worden bewaard gedurende de duur van de beheerrelatie, en vervolgens gedurende de door de toepasselijke wettelijke bewaarplichten vereiste periode (met name boekhoudkundige documenten en bewijsstukken van transacties)."
+    },
+    "s6": {
+      "title": "6. Internationale doorgiften",
+      "body": "Sommige in sectie 4 genoemde dienstverleners kunnen gegevens buiten Zwitserland verwerken. In dat geval treft {legalName} de passende waarborgen die de Zwitserse wetgeving inzake gegevensbescherming vereist (contractuele clausules, adequaatheidsbesluit of gelijkwaardig mechanisme)."
+    },
+    "s7": {
+      "title": "7. Uw rechten",
+      "body": "Onder voorbehoud van de wettelijk voorziene beperkingen (met name de toepasselijke wettelijke bewaarplichten), heeft de klant recht op inzage, rectificatie, verwijdering en verzet met betrekking tot zijn persoonsgegevens. Deze rechten kunnen worden uitgeoefend door te schrijven naar het in sectie 1 vermelde adres."
+    },
+    "s8": {
+      "title": "8. Cookies en trackers",
+      "body": "Het platform gebruikt uitsluitend cookies die strikt noodzakelijk zijn voor de werking ervan (sessieauthenticatie, weergavevoorkeuren). Er wordt geen reclame- of bezoekersmetingscookie van derden geplaatst zonder voorafgaande toestemming van de klant. Details staan in het <link>cookiebeleid</link>."
+    },
+    "s9": {
+      "title": "9. Bijzonder geval van prospects (accountaanvraag)",
+      "body": "Personen die een accountaanvraag indienen zonder nog klant te zijn (via de pagina Account aanvragen) verstrekken identificatie- en contactgegevens, evenals informatie over hun investeringsproject. Deze gegevens worden uitsluitend verwerkt met het oog op de beoordeling van de aanvraag. Als de aanvraag niet leidt tot een vermogensbeheerrelatie, worden ze gedurende een beperkte periode bewaard, noodzakelijk voor de opvolging van het dossier, en vervolgens verwijderd; bij aanvaarding worden ze opgenomen in het klantdossier en volgen ze de in sectie 5 beschreven bewaarregels."
+    },
+    "s10": {
+      "title": "10. Beveiliging",
+      "body": "{legalName} implementeert passende technische en organisatorische maatregelen (versleuteling, toegangscontrole, gedistribueerde vergrendelingen bij financiële transacties) om persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies of wijziging."
+    },
+    "s11": {
+      "title": "11. Contact",
+      "dpo": "Functionaris voor gegevensbescherming",
+      "email": "Algemene e-mail"
+    }
+  },
+  "AccountRequest": {
+    "meta": {
+      "title": "Accountopening aanvragen · Hentsch Credit",
+      "description": "Vraag de opening van een Hentsch Credit-account aan, een platform voor crypto-gedekt krediet voorbehouden aan een beperkte kring klanten, uitsluitend op uitnodiging."
+    },
+    "eyebrow": "Toegang op uitnodiging",
+    "title": "Accountopening aanvragen",
+    "description": "Platform voorbehouden aan een beperkte kring klanten. Laat ons uw gegevens achter: ons team beoordeelt elke aanvraag voordat toegang wordt verleend.",
+    "alreadyHaveAccount": "Heeft u al een account? <link>Inloggen</link>"
+  },
+  "AccountRequestForm": {
+    "firstName": "Voornaam",
+    "lastName": "Achternaam",
+    "email": "E-mail",
+    "phone": "Telefoon (optioneel)",
+    "message": "Uw project (optioneel)",
+    "messagePlaceholder": "Beoogd bedrag, betrokken activa, specifieke vragen…",
+    "disclaimer": "Door dit formulier in te dienen, aanvaardt u dat uw gegevens worden verwerkt in overeenstemming met ons <link>privacybeleid</link>. Er wordt geen account automatisch aangemaakt: toegang wordt pas verleend na beoordeling en goedkeuring van uw dossier door ons team.",
+    "submit": "Mijn aanvraag verzenden",
+    "successTitle": "Uw aanvraag is succesvol verzonden",
+    "successBody": "Ons team beoordeelt uw dossier en neemt per e-mail contact met u op. Toegang tot uw klantengedeelte wordt pas verleend zodra deze beoordeling is afgerond.",
+    "genericError": "Er is een fout opgetreden."
+  },
+  "Faq": {
+    "meta": {
+      "title": "Veelgestelde vragen · Hentsch Credit",
+      "description": "Antwoorden op de meest gestelde vragen over de rekening, de veiligheid en de werking van het Hentsch Credit-platform."
+    },
+    "eyebrow": "Veelgestelde vragen",
+    "title": "Veelgestelde vragen",
+    "description": "Antwoorden op algemene vragen over de rekening, de veiligheid en de werking van het platform.",
+    "items": {
+      "openAccount": {
+        "question": "Hoe open ik een Hentsch Credit-account?",
+        "answer": "Het platform is voorbehouden aan een beperkte kring klanten, op uitnodiging, in het kader van een bestaande vermogensbeheerrelatie met H. Hentsch Asset Management SA. U kunt vanaf de pagina Account aanvragen een accountaanvraag indienen; deze wordt door onze teams beoordeeld voordat een rekening daadwerkelijk wordt geopend."
+      },
+      "forgotPassword": {
+        "question": "Ik ben mijn wachtwoord vergeten, wat moet ik doen?",
+        "answer": "Neem contact op met de op de pagina Contact vermelde dienst met uw naam en het aan uw rekening gekoppelde e-mailadres. Om veiligheidsredenen wordt geen enkele reset via een ander kanaal uitgevoerd."
+      },
+      "assetsSafe": {
+        "question": "Zijn mijn digitale activa veilig?",
+        "answer": "De als onderpand gestorte stablecoins en getokeniseerd goud worden bewaard door een erkende dienstverlener voor de bewaring van digitale activa, los van H. Hentsch Asset Management SA, gespecialiseerd in de veilige bewaring van crypto-activa namens Zwitserse financiële instellingen. Details staan op de pagina Regelgeving, sectie 3."
+      },
+      "networksAssets": {
+        "question": "Welke netwerken en activa worden als onderpand geaccepteerd?",
+        "answer": "Voorlopig uitsluitend het Ethereum-netwerk. Details van de geaccepteerde activa (stablecoins, getokeniseerd goud, ETH, getokeniseerde industriële metalen) en hun waardering staan op de pagina Hoe het werkt."
+      },
+      "ratioFees": {
+        "question": "Wat is de kredietratio en wat zijn de werkelijke kosten?",
+        "answer": "350% van het verpande bedrag tegen het tarief dat geldt op het moment van vergrendeling, met een oprichtingsvergoeding van 2% en een jaarlijkse rentevoet op het daadwerkelijk gebruikte krediet. De precieze cijfers, inclusief een voorbeeld van de totale kosten, staan op de pagina Tarieven."
+      },
+      "yieldLiquidation": {
+        "question": "Hoe werken de automatische aflossing en het liquidatierisico?",
+        "answer": "Een deel van het gebruikte krediet kan automatisch worden afgelost door de reële waardestijging van uw onderpand, beperkt tot 60%. Omgekeerd kan een sterke waardedaling van het onderpand tot liquidatie leiden. Het volledige mechanisme, met uitgewerkte voorbeelden, staat op de pagina Rendement."
+      },
+      "kycDoubt": {
+        "question": "Wat gebeurt er bij twijfel over mijn identiteit (KYC)?",
+        "answer": "Geen enkele financiële transactie (genereren van een stortingsadres, storting, kredietverlening) is mogelijk zolang uw identiteitsverificatiestatus niet is bevestigd. Details staan op de pagina Hoe het werkt."
+      },
+      "complaint": {
+        "question": "Hoe dien ik een klacht in?",
+        "answer": "Richt uw klacht aan het op de pagina Contact vermelde contact. Bij het uitblijven van een minnelijke oplossing kunt u zich wenden tot de bevoegde bemiddelingsinstantie, vermeld op de pagina Regelgeving, sectie 6."
+      }
+    },
+    "moreQuestionsTitle": "Een specifiekere vraag?",
+    "moreQuestionsBody": "Elk groot onderwerp heeft zijn eigen uitgebreide pagina, met eigen veelgestelde vragen: <howItWorks>Hoe het werkt</howItWorks>, <yield>Rendement</yield>, <rwa>RWA-strategie</rwa> en <pricing>Tarieven</pricing>. Voor alle andere vragen blijft de pagina <contact>Contact</contact> het meest directe toegangspunt."
+  },
+  "Login": {
+    "meta": {
+      "title": "Inloggen · Hentsch Credit",
+      "description": "Log in op uw Hentsch Credit-account."
+    }
+  },
+  "LoginForm": {
+    "twoFactorTitle": "Tweestapsverificatie",
+    "twoFactorDescription": "Voer de 6-cijferige code in die door uw authenticatie-app is gegenereerd.",
+    "verificationCode": "Verificatiecode",
+    "verify": "Verifiëren",
+    "backToLogin": "← Terug naar inloggen",
+    "restrictedAccess": "Toegang voorbehouden aan uitgenodigde klanten.",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "submit": "Inloggen",
+    "backToHome": "← Terug naar de homepage",
+    "genericError": "Er is een fout opgetreden."
+  },
+  "RiskManagement": {
+    "meta": {
+      "title": "Risicobeheer en bewaring van activa · Hentsch Credit",
+      "description": "Hoe Hentsch Credit de bewaring van activa, de waardering van het onderpand en het liquidatiemechanisme beheert."
+    },
+    "title": "Risicobeheer en bewaring van activa",
+    "intro": "H. Hentsch Asset Management SA voert geen beursorders uit namens derden en publiceert daarom geen uitvoeringsbeleid of best-selectionrapport in de zin van de financiëlemarktenregelgeving. Deze pagina beschrijft in plaats daarvan de werkelijke risicobeheerpraktijken die op het Hentsch Credit-platform worden toegepast.",
+    "s1": {
+      "title": "1. Aard van de activiteit",
+      "body": "{legalName} treedt op als onafhankelijke vermogensbeheerder (OVB): het bedrijf verleent crypto-gedekt krediet aan zijn klanten, tegen door hen gestort onderpand, en beheert met eigen kapitaal een treasurystrategie op getokeniseerde industriële metalen en grondstoffen. Het voert geen enkele beursorder uit namens zijn klanten en beheert geen discretionaire effectenportefeuille in hun naam."
+    },
+    "s2": {
+      "title": "2. Bewaring en scheiding van activa",
+      "body": "Door klanten als onderpand gestorte activa worden nooit gebruikt in de treasurystrategie van het bedrijf: de twee stromen zijn gescheiden en komen op geen enkel moment samen. Details van de treasurystrategie staan op de pagina <link>RWA-strategie</link>, sectie \"Governance & scheiding van middelen\"."
+    },
+    "s3": {
+      "title": "3. Waardering van het onderpand",
+      "body": "De waarde van het gestorte onderpand wordt bepaald op basis van realtime marktkoersen (spotprijs voor getokeniseerd goud, getokeniseerde industriële metalen, ETH; 1:1-pariteit met de dollar voor USD-stablecoins; spotprijs voor de aan de euro gekoppelde stablecoin), zonder marge of discretionaire aanpassing door het bedrijf. Deze waardering dient zowel voor de berekening van het bij vergrendeling toegekende krediet als voor de hieronder beschreven dagelijkse monitoring van waardedaling."
+    },
+    "s4": {
+      "title": "4. Mechanisme voor liquidatie van het onderpand",
+      "body": "Een automatische dagelijkse controle vergelijkt de huidige waarde van het onderpand met zijn instapwaarde (op het moment van vergrendeling). Een waardedaling van 30% activeert een op de rekening van de klant zichtbare waarschuwing; een waardedaling van 50% leidt tot liquidatie van het onderpand. Reeds gebruikt krediet wordt door de liquidatie niet gewist: het wordt een ongedekte vordering. Volledige details, met een uitgewerkt voorbeeld, staan op de pagina <yieldLink>Rendement</yieldLink> en in de <termsLink>algemene voorwaarden</termsLink>, sectie 7."
+    },
+    "s5": {
+      "title": "5. Belangenconflicten",
+      "body": "Het bedrijf neemt nooit een positie in die tegengesteld is aan die van zijn klanten met betrekking tot de activa die zij als onderpand storten: het ontvangt uitsluitend dat onderpand, berekent het overeenkomstige krediet en liquideert het, indien nodig, volgens vooraf vastgestelde drempels die automatisch en identiek voor alle klanten worden toegepast. De treasurystrategie van het bedrijf (industriële metalen en grondstoffen) wordt gefinancierd met eigen kapitaal, nooit met door klanten gestorte activa."
+    },
+    "s6": {
+      "title": "6. Controle en audit",
+      "body": "De geldende risicoparameters (kredietratio, tarieven, liquidatiedrempels) zijn gecentraliseerd in de kredietmotor van het platform en worden bij elke wijziging onderworpen aan een geautomatiseerde testsuite. Elke wijziging van deze parameters wordt geregistreerd en geldt nooit met terugwerkende kracht voor een reeds vergrendelde positie. Details van de geschiedenis van deze wijzigingen staan op de pagina <link>Archief</link>."
+    }
+  },
+  "LegalNotice": {
+    "meta": {
+      "title": "Wettelijke vermeldingen · Hentsch Credit",
+      "description": "Juridische informatie met betrekking tot de uitgever en de exploitant van het Hentsch Credit-platform."
+    },
+    "title": "Wettelijke vermeldingen",
+    "intro": "Juridische informatie met betrekking tot de uitgever en de exploitant van de Hentsch Credit-site en het platform, in overeenstemming met het toepasselijke Zwitserse recht. Platform voorbehouden aan een beperkte kring klanten, uitsluitend op uitnodiging: het is niet toegankelijk voor het publiek en vormt geen openbaar aanbod.",
+    "s1": {
+      "title": "1. Uitgever van de site",
+      "companyName": "Bedrijfsnaam",
+      "legalForm": "Rechtsvorm",
+      "tradingName": "Handelsnaam van het platform",
+      "registeredOffice": "Maatschappelijke zetel",
+      "postalAddress": "Postadres",
+      "canton": "Kanton",
+      "country": "Land",
+      "registerNumber": "UID-nr. / handelsregisternummer",
+      "vatNumber": "Btw-nummer",
+      "publicationDirector": "Verantwoordelijke voor de publicatie"
+    },
+    "s2": {
+      "title": "2. Regelgevende status en toezicht",
+      "body": "{legalName} is een <b>onafhankelijke vermogensbeheerder (OVB)</b> in de zin van de federale wet op de financiële instellingen (FinIG), <b>en geen bankinstelling</b>. Als zodanig beschikt het niet over een rechtstreeks door de FINMA verleende banklicentie, maar staat het onder toezicht van een toezichtsorganisatie (TO) erkend door de {supervisoryAuthority}.",
+      "supervisionBody": "Toezichtsorganisatie (TO)",
+      "amlBody": "Zelfreguleringsorganisatie AML",
+      "footer": "Details van het toepasselijke wettelijke kader (FinIG, FinSA, AML) worden gepresenteerd op de pagina <link>Regelgeving</link>."
+    },
+    "s3": {
+      "title": "3. Bewaring van de activa"
+    },
+    "s4": {
+      "title": "4. Beperkte toegang",
+      "body": "Het platform {tradingName} is niet bestemd voor het grote publiek. De toegang is voorbehouden aan een bepaalde lijst van klanten, op uitnodiging van {legalName}, na een bestaande vermogensbeheerrelatie en voorafgaande identiteitsverificatie. Geen enkel element van deze site vormt een aanbod, een verzoek of een reclame gericht aan het publiek."
+    },
+    "s5": {
+      "title": "5. Contact",
+      "email": "E-mail",
+      "phone": "Telefoon"
+    },
+    "s6": {
+      "title": "6. Hosting",
+      "body": "De site en het platform worden gehost door:"
+    },
+    "s7": {
+      "title": "7. Intellectuele eigendom",
+      "body": "Alle elementen waaruit de site en het platform bestaan (teksten, logo's, grafieken, iconen, structuur, broncode) zijn eigendom van {legalName} of zijn licentiegevers, en zijn als zodanig beschermd door Zwitsers recht en internationale verdragen inzake intellectuele eigendom. Elke reproductie, weergave, wijziging of exploitatie, geheel of gedeeltelijk, zonder voorafgaande schriftelijke toestemming, is verboden."
+    },
+    "s8": {
+      "title": "8. Technische partners",
+      "body": "Het platform doet voor bepaalde technische functies een beroep op externe dienstverleners (bewaring van digitale activa en sleutelbeheer, uitgifte van bankkaarten, identiteitsverificatie, marktgegevens). De lijst van deze dienstverleners en hun rol worden beschreven in het <link>privacybeleid</link>."
+    }
+  },
+  "Sitemap": {
+    "meta": {
+      "title": "Sitemap · Hentsch Credit",
+      "description": "Alle openbaar toegankelijke pagina's op Hentsch Credit, zonder in te loggen op een account."
+    },
+    "eyebrow": "Navigatie",
+    "title": "Sitemap",
+    "description": "Alle openbaar toegankelijke pagina's, zonder in te loggen op een account.",
+    "groups": {
+      "discover": { "title": "Het platform ontdekken" },
+      "account": { "title": "Toegang tot de rekening" },
+      "help": { "title": "Hulp & contact" },
+      "contractual": { "title": "Contractuele documentatie" },
+      "privacy": { "title": "Persoonsgegevens" }
+    },
+    "links": {
+      "home": "Home",
+      "howItWorks": "Hoe het werkt",
+      "yield": "Rendement",
+      "rwaStrategy": "RWA-strategie",
+      "market": "Markt",
+      "pricing": "Tarieven",
+      "requestAccount": "Account aanvragen",
+      "login": "Inloggen",
+      "contact": "Contact opnemen",
+      "faq": "Veelgestelde vragen",
+      "accessibility": "Digitale toegankelijkheid",
+      "archives": "Archief",
+      "sitemap": "Sitemap",
+      "terms": "Algemene voorwaarden",
+      "legalNotice": "Wettelijke vermeldingen",
+      "regulation": "Regelgeving",
+      "riskManagement": "Risicobeheer en bewaring van activa",
+      "privacyPolicy": "Privacybeleid",
+      "cookiePolicy": "Cookiebeleid"
+    },
+    "clientAreaNote": "Het ingelogde klantengedeelte en het interne beheergedeelte staan hierboven niet vermeld: de inhoud ervan hangt af van uw identiteitsverificatiestatus en uw rol op de rekening, en is alleen toegankelijk na inloggen."
+  },
+  "Market": {
+    "meta": {
+      "title": "Markt live · Hentsch Credit",
+      "description": "De realtime koersen van de op Hentsch Credit als onderpand geaccepteerde activa: stablecoins, goud, zilver, ETH en getokeniseerde industriële metalen."
+    },
+    "eyebrow": "Livegegevens",
+    "title": "De markt live",
+    "description": "De koersen van de als onderpand geaccepteerde activa, in real time."
+  },
+  "Regulation": {
+    "meta": {
+      "title": "Regelgeving · Hentsch Credit",
+      "description": "Het Zwitserse wettelijke en regelgevende kader dat van toepassing is op Hentsch Credit: FinIG, FinSA, AML, bewaring van activa en toezicht."
+    },
+    "title": "Regelgevend kader",
+    "intro": "Deze pagina beschrijft het Zwitserse wettelijke en regelgevende kader dat van toepassing is op Hentsch Credit, ter aanvulling van de wettelijke vermeldingen.",
+    "s1": {
+      "title": "1. Toepasselijk wettelijk kader",
+      "intro": "De activiteit van {legalName} wordt met name geregeld door:",
+      "item1": "de federale wet op de financiële instellingen (FinIG) en de bijbehorende verordening (FinIV), van toepassing op onafhankelijke vermogensbeheerders;",
+      "item2": "de federale wet op de financiële diensten (FinSA) en de bijbehorende verordening (FinSO), met betrekking tot het verlenen van financiële diensten en de klantclassificatie;",
+      "item3": "de federale wet ter bestrijding van witwassen (AML), met betrekking tot de zorgvuldigheids- en waakzaamheidsverplichtingen;",
+      "item4": "de federale wet op gegevensbescherming (nFADP) en, indien van toepassing, de Algemene Verordening Gegevensbescherming (AVG)."
+    },
+    "s2": {
+      "title": "2. Status van de exploitant",
+      "body1": "{legalName} is een <b>onafhankelijke vermogensbeheerder (OVB)</b> in de zin van de FinIG: het bedrijf beschikt over geen enkele banklicentie en aanvaardt geen enkele openbare deposito van gelden op eigen naam.",
+      "supervisionBody": "Toezichtsorganisatie (TO)",
+      "supervisoryAuthority": "Hoogste toezichthoudende autoriteit",
+      "amlBody": "Zelfreguleringsorganisatie AML",
+      "body2": "De TO licentieert en houdt toezicht op de vermogensbeheeractiviteit, controleert de naleving van de wettelijke verplichtingen (inclusief AML) en kan maatregelen opleggen bij een inbreuk. Details van de identiteit van de uitgever staan in de <link>wettelijke vermeldingen</link>."
+    },
+    "s3": {
+      "title": "3. Bescherming van de activa van de klanten"
+    },
+    "s4": {
+      "title": "4. Klantclassificatie (FinSA)",
+      "body": "De FinSA onderscheidt drie categorieën klanten (particuliere, professionele en institutionele klanten), waaraan verschillende niveaus van informatie en bescherming zijn verbonden. Het klantenbestand van {tradingName} wordt in de zin van de FinSA geclassificeerd als <b>{classification}</b>, de categorie die het hoogste niveau van bescherming en informatie biedt. De toegang blijft niettemin voorbehouden aan een beperkte lijst van klanten, op uitnodiging, in het kader van een bestaande vermogensbeheerrelatie met {legalName}."
+    },
+    "s5": {
+      "title": "5. Bestrijding van witwassen (AML)",
+      "body": "Overeenkomstig de AML zijn de toegang tot het platform, het genereren van een stortingsadres en elke kredietverlening onderworpen aan voorafgaande verificatie van de identiteit van de klant en de economische herkomst van de betrokken vermogenswaarden. {legalName} past verscherpte zorgvuldigheidsmaatregelen toe bij aanwijzingen van witwassen of financiering van terrorisme, en voldoet, indien van toepassing, aan de wettelijk voorziene meldingsverplichtingen."
+    },
+    "s6": {
+      "title": "6. Klachten en bemiddeling",
+      "body": "Elke klacht met betrekking tot de dienst kan worden gericht aan het hieronder vermelde contact. Bij het uitblijven van een minnelijke oplossing kan de klant, onder de door de FinSA voorziene voorwaarden, zich wenden tot de bemiddelingsinstantie waaronder {legalName} valt: <b>{mediationBody}</b>."
+    },
+    "s7": {
+      "title": "7. Compliancecontact",
+      "email": "E-mail",
+      "phone": "Telefoon"
+    }
+  },
+  "YieldShowcase": {
+    "pricesUnavailable": "Koersen momenteel niet beschikbaar.",
+    "yieldBadge": "Rendement",
+    "h24": "24u",
+    "badge": "Ons verschil",
+    "title": "Het enige onderpand dat een deel van uw krediet voor u aflost",
+    "subtitle": "Goud, zilver en ETH genereren een reëel rendement, automatisch opnieuw geïnjecteerd in uw krediet.",
+    "steps": {
+      "deposit": {
+        "title": "1. U stort goud, zilver of ETH",
+        "description": "Deze activa worden precies als een stablecoin verpand, tegen dezelfde kredietratio."
+      },
+      "appreciation": {
+        "title": "2. Hun koers evolueert, de waardestijging werkt voor u",
+        "description": "Elke sinds de storting vastgestelde reële stijging vermindert automatisch het gebruikte krediet."
+      },
+      "repaid": {
+        "title": "3. Tot 60% van het krediet zonder moeite afgelost",
+        "description": "De rest (minimaal 40%) wordt afgelost via uw eigen bijdrage, zoals bij elk ander actief."
+      }
+    },
+    "stablecoinsReminder": "Stablecoins (USDT, USDC, DAI…) blijven 1:1 USD: hun krediet wordt volledig afgelost via uw eigen bijdrage, zonder automatisch rendement."
+  },
+  "YieldPerformanceHistory": {
+    "unavailable": "Geschiedenis momenteel niet beschikbaar.",
+    "low12m": "Laagste (12 maanden)",
+    "high12m": "Hoogste (12 maanden)",
+    "unavailableValue": "niet beschikbaar"
+  },
+  "Yield": {
+    "meta": {
+      "title": "Rendement op onderpand · Hentsch Credit",
+      "description": "Hoe als onderpand gestort goud, zilver en ETH automatisch tot 60% van uw krediet aflossen, en het liquidatierisico bij een sterke daling."
+    },
+    "eyebrow": "Ons verschil",
+    "title": "Het enige onderpand dat een deel van uw krediet voor u aflost",
+    "description": "Goud, zilver en ETH genereren een reëel rendement, automatisch opnieuw geïnjecteerd in uw krediet, tot 60% zonder moeite afgelost.",
+    "eligibleAssetsTitle": "Alle in aanmerking komende activa",
+    "eligibleAssetsIntro": "Acht activa profiteren van hetzelfde reële mechanisme van automatische aflossing door waardestijging, niet alleen het hierboven uitgelichte goud, zilver en ETH.",
+    "table": {
+      "category": "Categorie",
+      "assets": "Activa",
+      "indicativeTarget": "Aanvullend indicatief doel",
+      "preciousMetals": "Edelmetalen",
+      "nativeCrypto": "Native cryptovaluta",
+      "industrialMetals": "Industriële metalen & grondstoffen",
+      "stablecoins": "Stablecoins",
+      "none": "Geen",
+      "notEligible": "Niet in aanmerking komend (vaste waarde of te volatiel*)",
+      "rwaTarget": "8 tot 14% APY (<link>details bij RWA-strategie</link>)"
+    },
+    "shibNote": "* SHIB is geen stablecoin, maar blijft uitgesloten van het mechanisme: de volatiliteit ervan wordt als te hoog beschouwd om een betrouwbare terugkerende aflossing te ondersteunen.",
+    "dualMechanismNote": "Industriële metalen en grondstoffen combineren dus twee verschillende mechanismen: de op deze pagina beschreven reële automatische aflossing (identiek aan goud, zilver en ETH), en een indicatief rendementsdoel dat eigen is aan de treasurystrategie van de bank voor deze activa, apart gepresenteerd en nooit gegarandeerd.",
+    "performanceTitle": "Prestaties over 12 maanden",
+    "performanceIntro": "De werkelijke koersen van de rendementsgenererende activa, over de afgelopen 365 dagen (het maximum dat beschikbaar is via onze marktgegevensleverancier, zonder enige toezegging over hun toekomstige prestaties).",
+    "exampleTitle": "Een concreet voorbeeld",
+    "example": {
+      "p1": "U stort <b>$2.000</b> getokeniseerd goud (XAUT), tegen een koers van <b>$2.400 per ounce</b>: uw onderpand vertegenwoordigt ongeveer 0,833 ounce. Bij de ratio van 350% wordt u een krediet van <b>$7.000</b> toegekend, en het plafond voor automatische aflossing door rendement bedraagt dus <b>$4.200</b> (60% van $7.000).",
+      "p2": "De goudkoers stijgt naar <b>$2.500</b> per ounce: de vastgestelde waardestijging ($100 × 0,833 ounce ≈ $83) wordt op dezelfde dag automatisch toegepast op uw gebruikte krediet. Dit mechanisme herhaalt zich bij elke volgende koersstijging, tot het plafond van $4.200 is bereikt.",
+      "p3": "Als de koers daarna daalt, wordt u niets afgenomen: de reeds toegepaste waardestijging blijft behouden in uw krediet (een \"ratel\" die alleen omhoog beweegt). Er vindt echter geen nieuwe automatische aflossing plaats zolang de koers het reeds bereikte niveau niet overschrijdt.",
+      "p4": "Zodra het plafond van 60% is bereikt, moet het resterende kredietsaldo (minimaal 40%, hier <b>$2.800</b>) worden afgelost via een expliciete betaling uwerzijds (storting of overschrijving), zoals bij elk ander krediet."
+    },
+    "timelineTitle": "Tijdlijn over meerdere maanden",
+    "timelineIntro": "Hetzelfde voorbeeld, uitgebreid: de goudkoers blijft meerdere maanden stijgen, tot het plafond van 60% is bereikt.",
+    "timelineTable": {
+      "month": "Maand",
+      "goldPrice": "Goudkoers",
+      "repaidThisMonth": "Deze maand afgelost",
+      "cumulativeRepaid": "Cumulatief afgelost",
+      "row0": "0 (vergrendeling)",
+      "row2Price": "$2.470 (daling)",
+      "row11Cumulative": "$4.200 (plafond bereikt)"
+    },
+    "timelineNote": "In maand 2 daalt de koers: er vindt die maand geen aflossing plaats, maar de reeds in maand 1 toegepaste $83 blijft behouden (ratel). Zodra in maand 11 het plafond van $4.200 is bereikt, vindt op deze positie geen verdere automatische aflossing meer plaats, zelfs als de koers blijft stijgen.",
+    "liquidationTitle": "Het omgekeerde risico: liquidatie",
+    "liquidation": {
+      "p1": "Het bovenstaande mechanisme profiteert van een stijgende koers. Een daling wordt apart behandeld, via een afzonderlijk mechanisme: de waarde van uw onderpand wordt dagelijks vergeleken met de <b>instapwaarde</b> ervan (de waarde vastgesteld op het moment van vergrendeling), niet met de laatste koers die een aflossing heeft veroorzaakt.",
+      "p2": "Bij een waardedaling van ten minste <b>30%</b> sinds instap verschijnt een waarschuwing op uw rekening, zonder verder effect. Bij <b>50%</b> waardedaling wordt uw onderpand automatisch tegen zijn instapwaarde van de rekening verwijderd (geliquideerd). Het krediet dat u al had gebruikt wordt daardoor <b>niet gewist</b>: het blijft volledig verschuldigd, nu zonder enig onderpand erachter. Geliquideerd onderpand kan niet worden teruggegeven, zelfs niet als de koers zich later herstelt.",
+      "p3": "De contractuele details van dit mechanisme staan in onze <link>algemene voorwaarden, sectie 7</link>."
+    },
+    "liquidationExampleTitle": "Uitgewerkt voorbeeld",
+    "liquidationExample": {
+      "intro": "Laten we dezelfde storting van $2.000 goud tegen $2.400 per ounce nemen ($7.000 toegekend krediet), maar deze keer daalt de goudkoers in plaats van te stijgen:",
+      "item1": "bij $1.680 per ounce (-30%): er verschijnt een waarschuwing op de rekening, zonder verder effect;",
+      "item2": "bij $1.200 per ounce (-50%): het onderpand wordt geliquideerd. De $2.000 onderpand en de $7.000 toegekend krediet worden van de rekening verwijderd. Als u al <b>$1.500</b> van dat krediet had gebruikt (kaart, interne uitgaven), blijft die $1.500 verschuldigd, zonder dat er nog onderpand achter staat."
+    },
+    "faqTitle": "Veelgestelde vragen",
+    "faq": {
+      "guaranteed": {
+        "question": "Is het rendement gegarandeerd?",
+        "answer": "Nee. Het hangt volledig af van de werkelijke koersontwikkeling van uw onderpand. Als de koers nooit boven uw instapprijs stijgt, vindt er geen automatische aflossing plaats: u lost dan het volledige bedrag af via uw eigen bijdrage, precies zoals bij een stablecoin."
+      },
+      "stablecoins": {
+        "question": "Waarom genereren stablecoins (USDT, USDC, DAI…) er geen?",
+        "answer": "Een stablecoin blijft per constructie 1:1 aan de dollar gekoppeld: per definitie heeft hij geen waardestijging te realiseren. Hem aflossen blijft niettemin even eenvoudig, via uw eigen bijdrage."
+      },
+      "frequency": {
+        "question": "Hoe vaak wordt de automatische aflossing berekend?",
+        "answer": "Dagelijks, op basis van de actuele spotkoers van uw actief, zonder actie uwerzijds, en zichtbaar in uw transactiegeschiedenis onder de vermelding \"Aflossing door rendement op onderpand\"."
+      },
+      "ratchet": {
+        "question": "Beschermt de \"ratel\" mij als de koers daalt?",
+        "answer": "Deze beschermt alleen de reeds toegepaste aflossingen: die blijven behouden, wat er daarna ook gebeurt. Hij beschermt niet tegen liquidatie, die wordt geactiveerd ten opzichte van de instapwaarde van uw onderpand, niet ten opzichte van de ratel (zie \"Het omgekeerde risico\" hierboven)."
+      },
+      "multipleAssets": {
+        "question": "Als ik meerdere verschillende activa stort, hoe werkt dat dan?",
+        "answer": "Elke kredietaanvraag verbindt zich aan één enkel onderpandactief, vastgesteld op het moment van het genereren van het stortingsadres. Om een tweede actief te storten, dient u een nieuwe aanvraag in: elke positie volgt dan zijn eigen waardestijging, zijn eigen plafond van 60% en zijn eigen liquidatierisico, onafhankelijk van de andere."
+      },
+      "history": {
+        "question": "Kan ik de geschiedenis van mijn automatische aflossingen bekijken?",
+        "answer": "Ja, in de transactiegeschiedenis van uw rekening, onder de vermelding \"Aflossing door rendement op onderpand\" (een beweging die losstaat van een handmatige aflossing, om apart controleerbaar te blijven)."
+      }
+    }
+  },
+  "RwaStrategy": {
+    "meta": {
+      "title": "RWA-investeringsstrategie · Hentsch Credit",
+      "description": "De treasurystrategie van Hentsch Credit op getokeniseerde industriële metalen: cash-and-carry-arbitrage, driehoeksleningen en liquiditeitsverschaffing."
+    },
+    "eyebrow": "Transparantie · Treasurystrategie",
+    "title": "Onze investeringsstrategie in industriële metalen",
+    "intro": "Naast edelmetalen accepteert de bank nu ook getokeniseerde industriële metalen en grondstoffen als onderpand, en zet zij op deze activa haar eigen treasurystrategie in. Hier leest u, volledig transparant, hoe dit werkt en welk actieplan wordt gevolgd.",
+    "apyTargetLabel": "APY, indicatief doel van de bank",
+    "apyTargetNote": "Doel van de eigen treasurystrategie van de bank voor deze activa, geen garantie, en zonder enige invloed op de berekening van uw krediet. De automatische aflossing van uw krediet blijft de hierboven beschreven regeling: de reële waardestijging van uw onderpand, beperkt tot 60%.",
+    "apyObjective": "APY-doel",
+    "pillars": {
+      "cashCarry": {
+        "title": "Cash & carry-arbitrage",
+        "range": "4 tot 7%",
+        "description": "Aankoop van het getokeniseerde metaal op de spotmarkt, gelijktijdige verkoop van een gelijkwaardig termijncontract: de positie is prijsrisiconeutraal en vangt de financieringsspread (contango) op."
+      },
+      "triangular": {
+        "title": "Onderpandstelling & driehoeksleningen",
+        "range": "6,5 tot 10%",
+        "description": "Het getokeniseerde metaal wordt als onderpand (voorzichtige LTV, maximaal 50%) gestort bij een institutioneel protocol, om stablecoins te lenen die worden herbelegd in laagrisico treasuryfondsen."
+      },
+      "liquidity": {
+        "title": "Geselecteerde liquiditeitsverschaffing",
+        "range": "9 tot 15%",
+        "description": "Een minderheidsaandeel van het kapitaal voedt gerichte liquiditeitspools, vergoed met een fractie van de transactiekosten van de marktdeelnemers."
+      }
+    },
+    "caseStudy": {
+      "title": "Hoe deze cijfers tot stand komen",
+      "intro": "Een illustratief voorbeeld van een treasury-inzet van $10M in platina, op de schaal van de bank, niet op de schaal van uw individuele onderpand.",
+      "flow": "Stroom",
+      "basis": "Berekeningsgrondslag",
+      "annualAmount": "Jaarlijks bedrag",
+      "impact": "Impact",
+      "netTotal": "Totaal nettorendement",
+      "capital": "Kapitaal van $10M",
+      "reallocationNote": "Door een deel van de treasury te herverdelen naar liquiditeitsverschaffing (Pijler C) kan dit nettorendement stijgen tot een doel van 10,2%, aan de bovenkant van de hierboven getoonde indicatieve bandbreedte van 8 tot 14%, zonder extra hefboomwerking of resultaatgarantie.",
+      "rows": {
+        "native": { "label": "Natief rendement op platina (fysieke waardestijging)", "basis": "1,5% op $10M" },
+        "basis": { "label": "Basis-trade / contango op futures", "basis": "3,5% op $10M" },
+        "stablecoinYield": { "label": "Rendement op geleende, belegde stablecoins (BUIDL)", "basis": "5,0% op $5M" },
+        "borrowCost": { "label": "Kosten van het lenen van stablecoins", "basis": "-3,2% op $5M" },
+        "operational": { "label": "Operationele kosten, bewaring & verzekering", "basis": "0,4% op $10M" }
+      }
+    },
+    "roadmapTitle": "Routekaart voor 12 maanden",
+    "roadmap": {
+      "phase1": { "window": "Maanden 1 tot 3", "title": "Structurering & compliance", "detail": "Juridisch kader, selectie van erkende bewaarnemers, audits van uitgevers." },
+      "phase2": { "window": "Maanden 4 tot 6", "title": "Pilootproject", "detail": "Pilottoewijzing van $5M in platina, eerste arbitragecircuits." },
+      "phase3": { "window": "Maanden 7 tot 9", "title": "Opschaling", "detail": "Kapitaal uitgebreid tot $25M, uitbreiding naar palladium en koper." },
+      "phase4": { "window": "Maanden 10 tot 12", "title": "Industrialisering", "detail": "Realtime rapportage en end-to-end boekhoudkundige integratie." }
+    },
+    "risksTitle": "Geïdentificeerde risico's & beschermende maatregelen",
+    "risks": {
+      "counterparty": { "risk": "Tegenpartij & audit", "mitigation": "Tweemaandelijkse reserveaudits (Proof of Reserve) door onafhankelijke kantoren." },
+      "smartContract": { "risk": "Smart contract", "mitigation": "Uitsluitend meermaals geauditeerde protocollen, gedekt door een institutionele verzekering." },
+      "liquidity": { "risk": "Liquiditeit", "mitigation": "Directe terugkoopovereenkomst met de fysieke uitgevers, maximale opzegtermijn van 48 uur." },
+      "liquidation": { "risk": "Liquidatie van het onderpand", "mitigation": "Strikte overonderpandratio (LTV ≤ 50%) met geautomatiseerde herbalancering." }
+    },
+    "governanceTitle": "Governance & scheiding van middelen",
+    "governance": {
+      "capital": {
+        "title": "Ingezet kapitaal",
+        "body": "Deze strategie wordt uitgevoerd met de eigen treasury van de bank, nooit met de door klanten als onderpand gestorte activa. Het onderpand van een klant dient uitsluitend om zijn eigen krediet te dekken (zie Rendement); het wordt niet uitgeleend of ingezet in de hierboven beschreven arbitrage of market making."
+      },
+      "supervision": {
+        "title": "Toezicht",
+        "body": "Geleid door de afdeling Financiële Markten, gerapporteerd aan het Beleggingscomité en de Algemene Directie bij elke fasewisseling (zie routekaart hierboven), met dagelijkse interne monitoring van de behaalde prestaties ten opzichte van het getoonde indicatieve doel."
+      }
+    },
+    "faqTitle": "Veelgestelde vragen",
+    "faq": {
+      "usedForStrategy": {
+        "question": "Wordt mijn onderpand gebruikt voor deze strategie?",
+        "answer": "Nee. Uw onderpand blijft uitsluitend bestemd voor uw eigen krediet. Deze strategie heeft betrekking op de eigen treasury van de bank, een afzonderlijk kapitaal."
+      },
+      "loss": {
+        "question": "Wat gebeurt er als de strategie geld verliest?",
+        "answer": "Het verlies wordt gedragen door de treasury van de bank, zonder enig effect op klantrekeningen of op reeds toegekend krediet: dit risico wordt nooit doorgegeven aan de klant."
+      },
+      "targetReached": {
+        "question": "Is het doel van 8 tot 14% al bereikt?",
+        "answer": "Het is een middellangetermijndoel, geen maandelijks gegarandeerd resultaat: zie de bovenstaande casestudy voor een gedetailleerd voorbeeld van de berekening van het nettorendement."
+      },
+      "whyIndustrialOnly": {
+        "question": "Waarom hebben alleen industriële metalen dit doel?",
+        "answer": "Goud, zilver en ETH profiteren al van de op de pagina Rendement beschreven reële automatische aflossing. Dit indicatieve doel is eigen aan de treasurystrategie voor industriële activa, een afzonderlijk en aanvullend mechanisme."
+      }
+    }
+  },
+  "Pricing": {
+    "meta": {
+      "title": "Tarieven · Hentsch Credit",
+      "description": "De werkelijke tarieven en kosten die Hentsch Credit toepast: kredietratio, rente, oprichtingsvergoeding en liquidatiedrempels, zonder verrassingen."
+    },
+    "eyebrow": "Transparante tarifering",
+    "title": "Onze tarieven, zonder verrassingen",
+    "description": "De tarieven en kosten die het platform daadwerkelijk toepast, vastgesteld op het moment van vergrendeling van uw onderpand.",
+    "items": {
+      "ratio": {
+        "label": "Kredietratio",
+        "detail": "Van het verpande bedrag, tegen het tarief dat geldt op het moment van vergrendeling."
+      },
+      "interestRate": {
+        "label": "Jaarlijkse rentevoet",
+        "detail": "Referentietarief (SOFR/EURIBOR) plus een risicopremie van 8,5 punten, op het gebruikte krediet."
+      },
+      "originationFees": {
+        "label": "Oprichtingsvergoeding",
+        "detail": "Eenmalig geheven, over het uitgegeven krediet, op het moment van vergrendeling van het onderpand."
+      },
+      "custodyFees": {
+        "label": "Bewaarvergoeding voor het onderpand",
+        "detail": "Over het bedrag van het vergrendelde onderpand, zolang de positie actief blijft."
+      },
+      "positionDuration": {
+        "label": "Looptijd van de positie",
+        "detail": "Verlengbaar; het onderpand blijft vergrendeld zolang het gebruikte krediet niet is afgelost."
+      },
+      "automaticRepayment": {
+        "label": "Automatische aflossing",
+        "value": "tot 60%",
+        "detail": "Via de reële waardestijging van het onderpand (goud, zilver, ETH, industriële metalen). De resterende 40% wordt afgelost via uw eigen bijdrage."
+      },
+      "liquidationThresholds": {
+        "label": "Liquidatiedrempels van het onderpand",
+        "detail": "Waardedaling vanaf de instapwaarde: 30% activeert een waarschuwing, 50% liquideert het onderpand (reeds gebruikt krediet blijft verschuldigd). Details op de pagina Rendement."
+      }
+    },
+    "nonRetroactivityNote": "Elke latere wijziging van een van deze tarieven geldt alleen voor nieuwe vergrendelingen: een reeds geopende positie behoudt de tariefstructuur die op het moment van ontstaan is toegepast, tot aflossing of vervaldatum.",
+    "contractualDetail": "De volledige contractuele details van deze tarieven staan in onze <link>algemene voorwaarden</link>.",
+    "exampleTitle": "Voorbeeld van totale kosten over 12 maanden",
+    "exampleIntro": "Voor een storting van $2.000 ($7.000 toegekend krediet), volledig 12 maanden gebruikt en vervolgens afgelost, in het meest voorzichtige scenario (zonder enige vermindering door rendement).",
+    "exampleTable": {
+      "item": "Post",
+      "calculation": "Berekening",
+      "amount": "Bedrag",
+      "origination": "Oprichtingsvergoeding",
+      "originationCalc": "2,0% × $7.000, eenmalig geheven",
+      "interest": "Rente over 12 maanden",
+      "interestCalc": "13,5% × $7.000 het hele jaar gebruikt",
+      "totalBeforeYield": "Totaal vóór rendement",
+      "totalBeforeYieldNote": "Exclusief een eventuele vermindering door waardestijging van het onderpand"
+    },
+    "exampleFooter": "De bewaarvergoedingen voor het onderpand (0,5%/jaar) worden weergegeven en vastgesteld bij vergrendeling, maar de periodieke automatische inning hiervan is in dit stadium nog niet operationeel; ze zijn daarom niet in dit totaal opgenomen. Als uw onderpand een rendement genereert (goud, zilver, ETH, industriële metalen), kan een deel van deze $1.085 automatisch worden gedekt, binnen de grens van 60% van het gebruikte krediet (zie <link>Rendement</link>).",
+    "faqTitle": "Veelgestelde vragen",
+    "faq": {
+      "earlyRepayment": {
+        "question": "Zijn er kosten voor vervroegde aflossing?",
+        "answer": "Nee. U kunt het gebruikte krediet te allen tijde geheel of gedeeltelijk aflossen, zonder boete. Rente loopt alleen op over de daadwerkelijk gebruikte duur en het daadwerkelijk gebruikte bedrag."
+      },
+      "negotiable": {
+        "question": "Zijn deze tarieven onderhandelbaar?",
+        "answer": "Nee, ze gelden uniform voor alle klanten tegen het tarief dat geldt op het moment van vergrendeling. Een toekomstige tariefwijziging geldt alleen voor nieuwe vergrendelingen."
+      },
+      "currencyDifference": {
+        "question": "Waarom verschilt het tarief tussen USD en EUR?",
+        "answer": "Elke valuta hanteert zijn eigen monetair referentietarief (SOFR voor USD, EURIBOR voor EUR) voordat dezelfde risicopremie van 8,5 punten wordt toegevoegd, vandaar het verschil van 1,5 punten tussen beide."
+      }
+    }
+  }
+}

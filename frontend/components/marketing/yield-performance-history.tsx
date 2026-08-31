@@ -2,17 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { TrendingDown, TrendingUp } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { PerformanceChart } from "@/components/marketing/performance-chart";
 import { api, ApiError, type AssetHistoryEntry, type MarketOverviewEntry } from "@/lib/api";
 import { formatPercent, formatPrice } from "@/lib/format";
 
 // Historique réel sur 12 mois des actifs générateurs de rendement (cf.
 // MarketDataService.getYieldAssetHistory côté backend) — 365 jours est le maximum
-// disponible sans clé API sur le plan public CoinGecko (days > 365 répond 401) : affiché
-// honnêtement comme "performance sur 12 mois", jamais "depuis le lancement", quel que
-// soit l'âge réel de chaque actif. Les logos/noms viennent de /market/prices (même appel
-// que le reste de la vitrine) plutôt que d'être dupliqués ici.
+// disponible sur le plan gratuit CoinMarketCap : affiché honnêtement comme "performance
+// sur 12 mois", jamais "depuis le lancement", quel que soit l'âge réel de chaque actif.
+// Les logos/noms viennent de /market/prices (même appel que le reste de la vitrine)
+// plutôt que d'être dupliqués ici.
 export function YieldPerformanceHistory() {
+  const t = useTranslations("YieldPerformanceHistory");
   const [history, setHistory] = useState<AssetHistoryEntry[] | null>(null);
   const [entries, setEntries] = useState<MarketOverviewEntry[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -26,11 +28,12 @@ export function YieldPerformanceHistory() {
         setEntries(priceData);
       })
       .catch((err: unknown) => {
-        if (!ignore) setError(err instanceof ApiError ? err.message : "Historique indisponible pour l'instant.");
+        if (!ignore) setError(err instanceof ApiError ? err.message : t("unavailable"));
       });
     return () => {
       ignore = true;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- t est stable pour la durée du composant
   }, []);
 
   if (error) return <p className="text-sm text-destructive">{error}</p>;
@@ -55,7 +58,7 @@ export function YieldPerformanceHistory() {
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
                 {entry?.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinGecko
+                  // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinMarketCap
                   <img src={entry.image} alt="" className="size-7 rounded-full" />
                 ) : (
                   <div className="size-7 rounded-full bg-muted" />
@@ -82,8 +85,8 @@ export function YieldPerformanceHistory() {
             </div>
 
             <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground/80">
-              <span>Plus bas (12 mois) : {asset.lowUsd !== null ? formatPrice(asset.lowUsd) : "indisponible"}</span>
-              <span>Plus haut (12 mois) : {asset.highUsd !== null ? formatPrice(asset.highUsd) : "indisponible"}</span>
+              <span>{t("low12m")} : {asset.lowUsd !== null ? formatPrice(asset.lowUsd) : t("unavailableValue")}</span>
+              <span>{t("high12m")} : {asset.highUsd !== null ? formatPrice(asset.highUsd) : t("unavailableValue")}</span>
             </div>
           </div>
         );

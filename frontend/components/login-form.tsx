@@ -2,9 +2,10 @@
 
 import { useId, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Loader2, ShieldCheck } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,13 +18,16 @@ import { api, ApiError, loginRequiresTwoFactor } from "@/lib/api";
 // démo, incompatible avec une vraie authentification). Après succès, le cookie de
 // session httpOnly est posé par le serveur (cf. AuthController.login) ; la redirection
 // vers /dashboard déclenche DashboardProvider, qui relit /auth/me pour charger le compte.
-// Composant client séparé de app/login/page.tsx (server component) pour que la page
-// puisse exporter des métadonnées SEO spécifiques — un "use client" ne peut pas le faire.
+// Composant client séparé de app/[locale]/login/page.tsx (server component) pour que la
+// page puisse exporter des métadonnées SEO spécifiques — un "use client" ne peut pas le
+// faire. /dashboard reste hors du routage par locale (cf. proxy.ts) : router.push garde
+// next/navigation plutôt que le Link localisé de @/i18n/navigation.
 //
 // Deux étapes possibles : email/mot de passe, puis un code TOTP si le compte (réservé aux
 // ADMIN, cf. AuthController) a activé la 2FA — pendingToken prouve que la première étape a
 // déjà réussi sans jamais poser de cookie de session avant la seconde, cf. lib/api.ts.
 export function LoginForm() {
+  const t = useTranslations("LoginForm");
   const router = useRouter();
   const emailId = useId();
   const passwordId = useId();
@@ -48,7 +52,7 @@ export function LoginForm() {
       }
       router.push("/dashboard");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
       setSubmitting(false);
     }
   }
@@ -62,7 +66,7 @@ export function LoginForm() {
       await api.twoFactorChallenge(pendingToken, code);
       router.push("/dashboard");
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
       setSubmitting(false);
     }
   }
@@ -80,15 +84,13 @@ export function LoginForm() {
               <div className="mb-2 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <ShieldCheck className="size-6" />
               </div>
-              <CardTitle className="text-lg">Vérification en deux étapes</CardTitle>
-              <CardDescription>
-                Entrez le code à 6 chiffres généré par votre application d&apos;authentification.
-              </CardDescription>
+              <CardTitle className="text-lg">{t("twoFactorTitle")}</CardTitle>
+              <CardDescription>{t("twoFactorDescription")}</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleTwoFactorSubmit} className="flex flex-col gap-4">
                 <div className="grid gap-2">
-                  <Label htmlFor={codeId}>Code de vérification</Label>
+                  <Label htmlFor={codeId}>{t("verificationCode")}</Label>
                   <Input
                     id={codeId}
                     type="text"
@@ -111,7 +113,7 @@ export function LoginForm() {
 
                 <Button type="submit" disabled={submitting || code.length !== 6} className="mt-1">
                   {submitting && <Loader2 className="size-4 animate-spin" />}
-                  Vérifier
+                  {t("verify")}
                 </Button>
                 <button
                   type="button"
@@ -122,7 +124,7 @@ export function LoginForm() {
                   }}
                   className="text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground"
                 >
-                  ← Revenir à la connexion
+                  {t("backToLogin")}
                 </button>
               </form>
             </CardContent>
@@ -138,12 +140,12 @@ export function LoginForm() {
                 className="mb-2 size-12 rounded-xl"
               />
               <CardTitle className="text-lg">Hentsch Credit</CardTitle>
-              <CardDescription>Accès réservé aux clients invités.</CardDescription>
+              <CardDescription>{t("restrictedAccess")}</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="grid gap-2">
-                  <Label htmlFor={emailId}>E-mail</Label>
+                  <Label htmlFor={emailId}>{t("email")}</Label>
                   <Input
                     id={emailId}
                     type="email"
@@ -154,7 +156,7 @@ export function LoginForm() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor={passwordId}>Mot de passe</Label>
+                  <Label htmlFor={passwordId}>{t("password")}</Label>
                   <Input
                     id={passwordId}
                     type="password"
@@ -173,7 +175,7 @@ export function LoginForm() {
 
                 <Button type="submit" disabled={submitting} className="mt-1">
                   {submitting && <Loader2 className="size-4 animate-spin" />}
-                  Se connecter
+                  {t("submit")}
                 </Button>
               </form>
             </CardContent>
@@ -185,7 +187,7 @@ export function LoginForm() {
         href="/"
         className="absolute bottom-6 z-10 text-xs text-muted-foreground/80 underline underline-offset-2 hover:text-foreground/80"
       >
-        ← Retour à l&apos;accueil
+        {t("backToHome")}
       </Link>
     </div>
   );

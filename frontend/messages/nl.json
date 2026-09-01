@@ -1165,6 +1165,19 @@
         "trigger": "Opnemen",
         "dialogTitle": "Geld opnemen",
         "dialogDescription": "Beschikbaar saldo: {balance}. Geblokkeerd onderpand kan pas worden opgenomen na volledige terugbetaling van het krediet.",
+        "methodCrypto": "Crypto",
+        "methodSepa": "SEPA-overschrijving",
+        "methodSwift": "SWIFT-overschrijving",
+        "sepaEurOnlyNote": "Een SEPA-overschrijving kan alleen in euro's, naar een rekening binnen de SEPA-zone.",
+        "currencyLabel": "Valuta van de overschrijving",
+        "accountHolderLabel": "Rekeninghouder",
+        "ibanLabel": "IBAN",
+        "ibanInvalid": "Ongeldige IBAN.",
+        "ibanNotSepa": "Deze IBAN behoort niet tot een land in de SEPA-zone — gebruik een SWIFT-overschrijving.",
+        "bicLabel": "BIC / SWIFT-code",
+        "bicOptionalNote": "Optioneel bij een SEPA-overschrijving: de IBAN volstaat.",
+        "bicRequiredNote": "Verplicht bij een SWIFT-overschrijving.",
+        "bicInvalid": "Ongeldige BIC/SWIFT-code.",
         "amountLabel": "Bedrag",
         "destinationLabel": "Bestemmingsadres",
         "submit": "Opname bevestigen",
@@ -1172,7 +1185,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Gegevens verstrekt door CoinMarketCap",
+      "dataProvider": "Gegevens verstrekt door CoinGecko",
       "pricesUnavailable": "Prijzen niet beschikbaar.",
       "title": "Markt in real time",
       "description": "Koersen, 24u-verandering, volumes en marktkapitalisatie van de als onderpand geaccepteerde activa.",
@@ -1181,9 +1194,11 @@
         "asset": "Activum",
         "price": "Prijs",
         "change24h": "Wijz. 24u",
+        "high24h": "Hoogste 24u",
+        "low24h": "Laagste 24u",
         "volume24h": "Volume 24u",
         "marketCap": "Marktkap.",
-        "trend12m": "Trend 12 mnd"
+        "sevenDays": "7 dagen"
       },
       "acceptedSection": {
         "title": "Geaccepteerd als onderpand",

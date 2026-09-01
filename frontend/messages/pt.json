@@ -1165,6 +1165,19 @@
         "trigger": "Levantar",
         "dialogTitle": "Levantar fundos",
         "dialogDescription": "Saldo disponível: {balance}. A garantia bloqueada só pode ser levantada após o reembolso integral do crédito.",
+        "methodCrypto": "Cripto",
+        "methodSepa": "Transferência SEPA",
+        "methodSwift": "Transferência SWIFT",
+        "sepaEurOnlyNote": "Uma transferência SEPA só é possível em euros, para uma conta na zona SEPA.",
+        "currencyLabel": "Moeda da transferência",
+        "accountHolderLabel": "Titular da conta",
+        "ibanLabel": "IBAN",
+        "ibanInvalid": "IBAN inválido.",
+        "ibanNotSepa": "Este IBAN não pertence a um país da zona SEPA — utilize uma transferência SWIFT.",
+        "bicLabel": "Código BIC / SWIFT",
+        "bicOptionalNote": "Opcional para uma transferência SEPA: o IBAN é suficiente.",
+        "bicRequiredNote": "Obrigatório para uma transferência SWIFT.",
+        "bicInvalid": "Código BIC/SWIFT inválido.",
         "amountLabel": "Montante",
         "destinationLabel": "Endereço de destino",
         "submit": "Confirmar o levantamento",
@@ -1172,7 +1185,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Dados fornecidos pela CoinMarketCap",
+      "dataProvider": "Dados fornecidos pela CoinGecko",
       "pricesUnavailable": "Preços indisponíveis.",
       "title": "Mercado em tempo real",
       "description": "Cotações, variação 24h, volumes e capitalização dos ativos aceites como garantia.",
@@ -1181,9 +1194,11 @@
         "asset": "Ativo",
         "price": "Preço",
         "change24h": "Var. 24h",
+        "high24h": "Máx. 24h",
+        "low24h": "Mín. 24h",
         "volume24h": "Volume 24h",
         "marketCap": "Cap. de mercado",
-        "trend12m": "Tendência 12 meses"
+        "sevenDays": "7 dias"
       },
       "acceptedSection": {
         "title": "Aceites como garantia",

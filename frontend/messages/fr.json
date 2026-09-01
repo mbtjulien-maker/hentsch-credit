@@ -1165,6 +1165,19 @@
         "trigger": "Retirer",
         "dialogTitle": "Retirer des fonds",
         "dialogDescription": "Solde disponible : {balance}. Le gage verrouillé n'est retirable qu'après remboursement intégral du crédit.",
+        "methodCrypto": "Crypto",
+        "methodSepa": "Virement SEPA",
+        "methodSwift": "Virement SWIFT",
+        "sepaEurOnlyNote": "Un virement SEPA n'est possible qu'en euros, vers un compte de la zone SEPA.",
+        "currencyLabel": "Devise du virement",
+        "accountHolderLabel": "Titulaire du compte",
+        "ibanLabel": "IBAN",
+        "ibanInvalid": "IBAN invalide.",
+        "ibanNotSepa": "Cet IBAN n'appartient pas à un pays de la zone SEPA — utilisez un virement SWIFT.",
+        "bicLabel": "BIC / SWIFT",
+        "bicOptionalNote": "Facultatif pour un virement SEPA : l'IBAN suffit.",
+        "bicRequiredNote": "Obligatoire pour un virement SWIFT.",
+        "bicInvalid": "Code BIC/SWIFT invalide.",
         "amountLabel": "Montant",
         "destinationLabel": "Adresse destinataire",
         "submit": "Confirmer le retrait",
@@ -1172,7 +1185,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Données fournies par CoinMarketCap",
+      "dataProvider": "Données fournies par CoinGecko",
       "pricesUnavailable": "Prix indisponibles.",
       "title": "Marché en temps réel",
       "description": "Cours, variation 24h, volumes et capitalisation des actifs acceptés en garantie.",
@@ -1181,9 +1194,11 @@
         "asset": "Actif",
         "price": "Prix",
         "change24h": "Var. 24h",
+        "high24h": "Plus haut 24h",
+        "low24h": "Plus bas 24h",
         "volume24h": "Volume 24h",
         "marketCap": "Cap. marché",
-        "trend12m": "Tendance 12 mois"
+        "sevenDays": "7 jours"
       },
       "acceptedSection": {
         "title": "Acceptés en garantie",

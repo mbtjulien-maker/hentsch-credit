@@ -1,6 +1,13 @@
 {
   "modules": [
     {
+      "source": "src/account-requests/account-requests.constants.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "src/account-requests/account-requests.controller.ts",
       "dependencies": [],
       "dependents": [],
@@ -148,6 +155,20 @@
       "valid": true
     },
     {
+      "source": "src/auth/dto/two-factor-challenge.dto.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/auth/dto/two-factor-code.dto.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "src/auth/guards/jwt-auth.guard.ts",
       "dependencies": [],
       "dependents": [],
@@ -163,6 +184,13 @@
     },
     {
       "source": "src/auth/strategies/jwt.strategy.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/auth/two-factor.service.ts",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -282,6 +310,13 @@
     },
     {
       "source": "src/common/guards/kyc-verified.guard.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/common/iban.util.ts",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -714,7 +749,7 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 101,
+    "totalCruised": 106,
     "totalDependenciesCruised": 0,
     "optionsUsed": {
       "baseDir": "/Users/macbookpro/crypto-credit-bank/backend",

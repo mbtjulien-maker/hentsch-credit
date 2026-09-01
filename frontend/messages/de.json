@@ -1165,6 +1165,19 @@
         "trigger": "Abheben",
         "dialogTitle": "Geld abheben",
         "dialogDescription": "Verfügbares Guthaben: {balance}. Hinterlegte Sicherheiten können erst nach vollständiger Rückzahlung des Kredits abgehoben werden.",
+        "methodCrypto": "Krypto",
+        "methodSepa": "SEPA-Überweisung",
+        "methodSwift": "SWIFT-Überweisung",
+        "sepaEurOnlyNote": "Eine SEPA-Überweisung ist nur in Euro möglich, auf ein Konto im SEPA-Raum.",
+        "currencyLabel": "Überweisungswährung",
+        "accountHolderLabel": "Kontoinhaber",
+        "ibanLabel": "IBAN",
+        "ibanInvalid": "Ungültige IBAN.",
+        "ibanNotSepa": "Diese IBAN gehört zu keinem Land des SEPA-Raums — nutzen Sie stattdessen eine SWIFT-Überweisung.",
+        "bicLabel": "BIC / SWIFT-Code",
+        "bicOptionalNote": "Optional bei einer SEPA-Überweisung: die IBAN genügt.",
+        "bicRequiredNote": "Erforderlich bei einer SWIFT-Überweisung.",
+        "bicInvalid": "Ungültiger BIC/SWIFT-Code.",
         "amountLabel": "Betrag",
         "destinationLabel": "Zieladresse",
         "submit": "Abhebung bestätigen",
@@ -1172,7 +1185,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Daten bereitgestellt von CoinMarketCap",
+      "dataProvider": "Daten bereitgestellt von CoinGecko",
       "pricesUnavailable": "Kurse nicht verfügbar.",
       "title": "Markt in Echtzeit",
       "description": "Kurse, 24h-Veränderung, Volumen und Marktkapitalisierung der als Sicherheit akzeptierten Vermögenswerte.",
@@ -1181,9 +1194,11 @@
         "asset": "Vermögenswert",
         "price": "Kurs",
         "change24h": "24h-Änd.",
+        "high24h": "24h-Hoch",
+        "low24h": "24h-Tief",
         "volume24h": "24h-Volumen",
         "marketCap": "Marktkap.",
-        "trend12m": "12-Monats-Trend"
+        "sevenDays": "7 Tage"
       },
       "acceptedSection": {
         "title": "Als Sicherheit akzeptiert",

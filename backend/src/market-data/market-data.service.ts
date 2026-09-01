@@ -1,68 +1,33 @@
-import { Injectable, Logger, Optional } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Injectable, Logger } from '@nestjs/common';
 import { AcceptedCurrency, Prisma } from '@prisma/client';
 import {
   ExchangeRateUnavailableException,
   MarketDataUnavailableException,
 } from '../common/exceptions/market-data.exceptions';
 import {
-  COINMARKETCAP_SLUGS,
+  COINGECKO_IDS,
   HISTORY_CACHE_TTL_MS,
   HISTORY_PERIOD_DAYS,
   INDICATIVE_TARGET_APY_PCT,
   INDUSTRIAL_RWA_CURRENCIES,
-  MARKET_OVERVIEW_SLUGS,
-  METADATA_CACHE_TTL_MS,
+  MARKET_OVERVIEW_IDS,
   PEGGED_CURRENCIES,
   PRICE_CACHE_TTL_MS,
   YIELD_ELIGIBLE_CURRENCIES,
 } from './market-data.constants';
 
-const CMC_API_BASE = 'https://pro-api.coinmarketcap.com';
-
-// Forme (partielle) d'un élément de /v2/cryptocurrency/quotes/latest — un objet par
-// actif, avec un sous-objet par devise de conversion demandée. Le plan gratuit
-// CoinMarketCap ("Basic") limite chaque appel à UNE SEULE devise de conversion
-// (`error_code 400 "Your plan is limited to 1 convert options"` si on en demande deux) :
-// contrairement à l'idée initiale, EUR ne peut donc pas être demandé dans le même appel
-// que USD pour tous les actifs — cf. getEurPerUsd, qui fait un second appel dédié, minimal
-// (un seul actif), plutôt que d'élargir cet appel groupé à tous les actifs.
-interface CoinMarketCapQuote {
-  id: number;
-  name: string;
+interface CoinGeckoMarketItem {
+  id: string;
   symbol: string;
-  slug: string;
-  quote: {
-    USD: {
-      price: number | null;
-      volume_24h: number | null;
-      market_cap: number | null;
-      percent_change_24h: number | null;
-    };
-    EUR?: {
-      price: number | null;
-    };
-  };
-}
-
-// Forme (partielle) d'un élément de /v2/cryptocurrency/info — métadonnées statiques
-// (id numérique, logo) qui ne changent essentiellement jamais, résolues séparément des
-// prix (cf. METADATA_CACHE_TTL_MS) car cet endpoint ne renvoie pas de cours.
-interface CoinMarketCapInfo {
-  id: number;
-  slug: string;
-  logo: string;
-}
-
-interface AssetMetadata {
-  id: number;
-  logo: string;
-}
-
-// Forme (partielle) d'un point de /v3/cryptocurrency/quotes/historical.
-interface CoinMarketCapHistoricalQuote {
-  timestamp: string;
-  quote: { USD: { price: number | null } };
+  name: string;
+  image: string;
+  current_price: number | null;
+  market_cap: number | null;
+  total_volume: number | null;
+  high_24h: number | null;
+  low_24h: number | null;
+  price_change_percentage_24h: number | null;
+  sparkline_in_7d?: { price: number[] };
 }
 
 export interface MarketOverviewEntry {
@@ -87,22 +52,15 @@ export interface MarketOverviewEntry {
   targetApyRangePct: { min: number; max: number } | null;
   usdPrice: Prisma.Decimal | null;
   change24hPct: number | null;
+  high24h: Prisma.Decimal | null;
+  low24h: Prisma.Decimal | null;
   volume24h: Prisma.Decimal | null;
   marketCap: Prisma.Decimal | null;
+  sparkline7d: number[];
 }
 
 interface MarketCache {
-  items: Map<string, CoinMarketCapQuote>;
-  fetchedAt: number;
-}
-
-interface MetadataCache {
-  bySlug: Map<string, AssetMetadata>;
-  fetchedAt: number;
-}
-
-interface FxCache {
-  eurPerUsd: Prisma.Decimal;
+  items: Map<string, CoinGeckoMarketItem>;
   fetchedAt: number;
 }
 
@@ -143,63 +101,44 @@ function downsample<T>(series: T[], target: number): T[] {
   return result;
 }
 
-const ALL_SLUGS = [
-  ...Object.values(COINMARKETCAP_SLUGS),
-  ...Object.keys(MARKET_OVERVIEW_SLUGS),
+interface FxCache {
+  eurPerUsd: Prisma.Decimal;
+  fetchedAt: number;
+}
+
+const ALL_IDS = [
+  ...Object.values(COINGECKO_IDS),
+  ...Object.keys(MARKET_OVERVIEW_IDS),
 ];
 
-// Données de marché en direct (API CoinMarketCap, clé Basic gratuite requise — cf.
-// COINMARKETCAP_API_KEY dans .env.example) : actifs acceptés en garantie + cryptos
-// majeures, avec les statistiques usuelles d'une plateforme d'échange (variation 24h,
-// volume, capitalisation). Remplace l'ancienne intégration CoinGecko (décision produit :
-// rendu plus sobre, attribution texte seule au lieu d'un badge logo obligatoire) — deux
-// champs perdus dans l'échange, documentés et acceptés au moment de la migration :
-// pas de plus haut/bas 24h (absent de /quotes/latest côté CoinMarketCap, seulement
-// disponible via un endpoint OHLCV séparé) et pas de mini-graphique 7 jours (aucun champ
-// sparkline documenté dans l'API publique CoinMarketCap).
+// Données de marché en direct (API publique CoinGecko, sans clé) : actifs acceptés en
+// garantie + cryptos majeures, avec les statistiques usuelles d'une plateforme d'échange
+// (variation 24h, plus haut/bas, volume, capitalisation, tendance 7 jours). Deuxième
+// passage sur ce fournisseur : un essai de CoinMarketCap (rendu jugé plus professionnel)
+// a été abandonné — décision produit de revenir à CoinGecko, notamment parce qu'il ne
+// nécessite aucune clé API (contrairement au plan gratuit CoinMarketCap) et fournit
+// nativement le plus haut/bas 24h et le mini-graphique 7 jours, perdus pendant l'essai
+// (cf. journal des modifications).
 @Injectable()
 export class MarketDataService {
   private readonly logger = new Logger(MarketDataService.name);
   private cache: MarketCache | null = null;
-  private metadataCache: MetadataCache | null = null;
-  private historyCache = new Map<AcceptedCurrency, HistoryCacheEntry>();
   private fxCache: FxCache | null = null;
-
-  // configService optionnel uniquement pour permettre `new MarketDataService()` dans les
-  // tests unitaires (cf. market-data.service.spec.ts) sans mock complet de la DI Nest ;
-  // en usage réel, Nest l'injecte toujours (cf. MarketDataModule).
-  constructor(@Optional() private readonly configService?: ConfigService) {}
-
-  private get apiKey(): string | undefined {
-    return (
-      this.configService?.get<string>('COINMARKETCAP_API_KEY') || undefined
-    );
-  }
-
-  private authHeaders(): Record<string, string> {
-    return this.apiKey ? { 'X-CMC_PRO_API_KEY': this.apiKey } : {};
-  }
+  // Mis en cache PAR ACTIF (Map), pas par lot — un cache à tableau unique partagé entre
+  // tous les appelants a déjà causé un bug réel (deux appelants avec des listes de devises
+  // différentes se volaient mutuellement le cache jusqu'à expiration, cf. historique de ce
+  // fichier) : conservé sous cette forme même après le retour à CoinGecko, ce correctif est
+  // indépendant du fournisseur de données.
+  private historyCache = new Map<AcceptedCurrency, HistoryCacheEntry>();
 
   // Historique de prix sur 12 mois pour les actifs générateurs de rendement (cf.
-  // AssetHistoryEntry) — un appel CoinMarketCap par actif (pas de endpoint multi-actifs
-  // pour quotes/historical). Mis en cache PAR ACTIF (Map), pas par lot : ce point vient
-  // d'un bug corrigé — l'ancien cache stockait un seul tableau `entries` pour le dernier
-  // appel reçu, partagé entre TOUS les appelants. Deux appelants avec des listes
-  // différentes (ex. la vitrine "/rendement" avec 4 actifs vs le simulateur de crédit
-  // client avec les 8 actifs éligibles au rendement, cf. YIELD_ELIGIBLE_CURRENCIES) se
-  // volaient mutuellement le cache : le second appelant à écrire imposait sa liste à
-  // l'autre jusqu'à expiration (6h), qui recevait alors soit des actifs manquants, soit
-  // des actifs en trop, sans qu'aucune erreur ne le signale. Le cache par actif élimine
-  // ce risque par construction et, en prime, mutualise les actifs communs aux deux appels
-  // plutôt que de les refetcher deux fois.
-  //
-  // Une panne sur un actif ne bloque pas les autres : il revient simplement avec des
-  // points vides plutôt que de faire échouer tout l'appel (même logique de dégradation
-  // gracieuse que getMarketItems).
+  // AssetHistoryEntry) — un appel CoinGecko par actif (pas de endpoint multi-actifs pour
+  // /market_chart). Une panne sur un actif ne bloque pas les autres : il revient
+  // simplement avec des points vides plutôt que de faire échouer tout l'appel (même
+  // logique de dégradation gracieuse que getMarketItems).
   async getYieldAssetHistory(
     currencies: AcceptedCurrency[],
   ): Promise<AssetHistoryEntry[]> {
-    const metadata = await this.getAssetMetadata();
     const now = Date.now();
     const entries: AssetHistoryEntry[] = [];
 
@@ -212,7 +151,7 @@ export class MarketDataService {
 
       let entry: AssetHistoryEntry;
       try {
-        const series = await this.fetchDailyHistory(currency, metadata);
+        const series = await this.fetchDailyHistory(currency);
         const values = series.map((p) => p.usd);
         const first = values[0];
         const last = values[values.length - 1];
@@ -258,8 +197,7 @@ export class MarketDataService {
   // service) plutôt que de faire échouer tout le backfill pour un seul actif indisponible.
   async getDailyReturnSeries(currency: AcceptedCurrency): Promise<number[]> {
     try {
-      const metadata = await this.getAssetMetadata();
-      const series = await this.fetchDailyHistory(currency, metadata);
+      const series = await this.fetchDailyHistory(currency);
       const values = series.map((p) => p.usd);
       const returns: number[] = [];
       for (let i = 1; i < values.length; i++) {
@@ -276,25 +214,18 @@ export class MarketDataService {
   }
 
   async getMarketOverview(): Promise<MarketOverviewEntry[]> {
-    const [items, metadata] = await Promise.all([
-      this.getMarketItems(),
-      this.getAssetMetadata(),
-    ]);
+    const items = await this.getMarketItems();
     const entries: MarketOverviewEntry[] = [];
 
-    // Actifs acceptés d'abord (ordre stable, indépendant du classement CoinMarketCap).
-    for (const [currency, slug] of Object.entries(COINMARKETCAP_SLUGS) as [
+    // Actifs acceptés d'abord (ordre stable, indépendant du classement CoinGecko).
+    for (const [currency, id] of Object.entries(COINGECKO_IDS) as [
       AcceptedCurrency,
       string,
     ][]) {
-      entries.push(
-        this.toEntry(slug, items.get(slug), metadata.get(slug), currency),
-      );
+      entries.push(this.toEntry(id, items.get(id), currency));
     }
-    for (const slug of Object.keys(MARKET_OVERVIEW_SLUGS)) {
-      entries.push(
-        this.toEntry(slug, items.get(slug), metadata.get(slug), null),
-      );
+    for (const id of Object.keys(MARKET_OVERVIEW_IDS)) {
+      entries.push(this.toEntry(id, items.get(id), null));
     }
 
     return entries;
@@ -322,22 +253,18 @@ export class MarketDataService {
     }
 
     const items = await this.getMarketItems();
-    const price = items.get(COINMARKETCAP_SLUGS[currency])?.quote.USD.price;
+    const price = items.get(COINGECKO_IDS[currency])?.current_price;
     if (typeof price !== 'number') {
       throw new MarketDataUnavailableException(currency);
     }
     return new Prisma.Decimal(price);
   }
 
-  // Taux de change EUR/USD en direct — dérivé du prix du Tether (USDT) exprimé en USD
-  // (déjà disponible via le cache principal, cf. getMarketItems) et en EUR (un second
-  // appel minimal, un seul actif). Idée initiale abandonnée : demander USD et EUR en un
-  // seul appel `convert=USD,EUR` pour tous les actifs — le plan gratuit CoinMarketCap
-  // limite chaque appel à une seule devise de conversion (error_code 400 "Your plan is
-  // limited to 1 convert options" sinon), cf. commentaire sur CoinMarketCapQuote. Mis en
-  // cache séparément (cf. FxCache) avec la même dégradation gracieuse (stale-if-error) que
-  // le reste du service. Utilisé pour convertir le crédit émis (USD) dans la devise
-  // choisie par le client (§ structure de taux).
+  // Taux de change EUR/USD en direct (API publique CoinGecko /exchange_rates — même
+  // source que le reste du service, "au pire les mêmes taux qu'une plateforme d'échange
+  // comme OKX" : dérivé du prix du Bitcoin dans chaque devise, technique standard pour
+  // obtenir un taux fiat/fiat sans dépendre d'une API forex dédiée). Utilisé pour
+  // convertir le crédit émis (USD) dans la devise choisie par le client (§ structure de taux).
   async getEurPerUsd(): Promise<Prisma.Decimal> {
     if (
       this.fxCache &&
@@ -347,31 +274,26 @@ export class MarketDataService {
     }
 
     try {
-      const items = await this.getMarketItems();
-      const usdValue = items.get(COINMARKETCAP_SLUGS.USDT)?.quote.USD.price;
-
-      const url = `${CMC_API_BASE}/v2/cryptocurrency/quotes/latest?slug=${COINMARKETCAP_SLUGS.USDT}&convert=EUR`;
-      const response = await fetch(url, {
-        headers: this.authHeaders(),
-        signal: AbortSignal.timeout(8000),
-      });
+      const response = await fetch(
+        'https://api.coingecko.com/api/v3/exchange_rates',
+        {
+          signal: AbortSignal.timeout(8000),
+        },
+      );
       if (!response.ok) {
-        throw new Error(`CoinMarketCap a répondu ${response.status}`);
+        throw new Error(`CoinGecko a répondu ${response.status}`);
       }
-      const payload = (await response.json()) as { data: unknown };
-      const records = (
-        Array.isArray(payload.data)
-          ? payload.data
-          : Object.values(payload.data ?? {})
-      ) as CoinMarketCapQuote[];
-      const eurValue = records[0]?.quote.EUR?.price;
-
+      const payload = (await response.json()) as {
+        rates: Record<string, { value: number }>;
+      };
+      const usdValue = payload.rates.usd?.value;
+      const eurValue = payload.rates.eur?.value;
       if (
         typeof usdValue !== 'number' ||
         typeof eurValue !== 'number' ||
         usdValue === 0
       ) {
-        throw new Error('taux de change incomplet');
+        throw new Error('réponse CoinGecko incomplète');
       }
 
       const eurPerUsd = new Prisma.Decimal(eurValue).dividedBy(usdValue);
@@ -390,22 +312,20 @@ export class MarketDataService {
   }
 
   private toEntry(
-    slug: string,
-    item: CoinMarketCapQuote | undefined,
-    meta: AssetMetadata | undefined,
+    id: string,
+    item: CoinGeckoMarketItem | undefined,
     currency: AcceptedCurrency | null,
   ): MarketOverviewEntry {
-    const fallback = MARKET_OVERVIEW_SLUGS[slug];
+    const fallback = MARKET_OVERVIEW_IDS[id];
     const decimal = (n: number | null | undefined) =>
       typeof n === 'number' ? new Prisma.Decimal(n) : null;
-    const usd = item?.quote.USD;
 
     return {
-      id: slug,
+      id,
       symbol:
-        item?.symbol?.toUpperCase() ?? fallback?.symbol ?? slug.toUpperCase(),
-      name: item?.name ?? fallback?.name ?? slug,
-      image: meta?.logo ?? '',
+        item?.symbol?.toUpperCase() ?? fallback?.symbol ?? id.toUpperCase(),
+      name: item?.name ?? fallback?.name ?? id,
+      image: item?.image ?? '',
       currency,
       isAcceptedForCredit: currency !== null,
       isPegged: currency !== null && PEGGED_CURRENCIES.has(currency),
@@ -415,150 +335,64 @@ export class MarketDataService {
         currency !== null && INDUSTRIAL_RWA_CURRENCIES.has(currency)
           ? INDICATIVE_TARGET_APY_PCT
           : null,
-      usdPrice: decimal(usd?.price ?? null),
-      change24hPct: usd?.percent_change_24h ?? null,
-      volume24h: decimal(usd?.volume_24h ?? null),
-      marketCap: decimal(usd?.market_cap ?? null),
+      usdPrice: decimal(item?.current_price ?? null),
+      change24hPct: item?.price_change_percentage_24h ?? null,
+      high24h: decimal(item?.high_24h ?? null),
+      low24h: decimal(item?.low_24h ?? null),
+      volume24h: decimal(item?.total_volume ?? null),
+      marketCap: decimal(item?.market_cap ?? null),
+      sparkline7d: item?.sparkline_in_7d?.price ?? [],
     };
   }
 
-  private async getMarketItems(): Promise<Map<string, CoinMarketCapQuote>> {
+  private async getMarketItems(): Promise<Map<string, CoinGeckoMarketItem>> {
     if (this.cache && Date.now() - this.cache.fetchedAt < PRICE_CACHE_TTL_MS) {
       return this.cache.items;
     }
 
-    const url = `${CMC_API_BASE}/v2/cryptocurrency/quotes/latest?slug=${ALL_SLUGS.join(',')}&convert=USD`;
+    const url =
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ALL_IDS.join(',')}` +
+      `&sparkline=true&price_change_percentage=24h`;
 
-    let payload: { data: unknown };
+    let payload: CoinGeckoMarketItem[];
     try {
-      const response = await fetch(url, {
-        headers: this.authHeaders(),
-        signal: AbortSignal.timeout(8000),
-      });
+      const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
       if (!response.ok) {
-        throw new Error(`CoinMarketCap a répondu ${response.status}`);
+        throw new Error(`CoinGecko a répondu ${response.status}`);
       }
-      payload = (await response.json()) as { data: unknown };
+      payload = (await response.json()) as CoinGeckoMarketItem[];
     } catch (error) {
       this.logger.warn(
-        `Échec de récupération des données de marché CoinMarketCap : ${(error as Error).message}`,
+        `Échec de récupération des données de marché CoinGecko : ${(error as Error).message}`,
       );
       // Stale-if-error : on préfère des données légèrement périmées à une panne totale.
       return this.cache?.items ?? new Map();
     }
 
-    // La réponse /v2 est un objet indexé par id numérique (pas par slug) ; Object.values
-    // s'en affranchit et fonctionne aussi si l'API renvoyait un tableau, sans code
-    // séparé selon la forme exacte.
-    const records = (
-      Array.isArray(payload.data)
-        ? payload.data
-        : Object.values(payload.data ?? {})
-    ) as CoinMarketCapQuote[];
-
-    const items = new Map<string, CoinMarketCapQuote>(
-      records.map((item) => [item.slug, item]),
+    const items = new Map<string, CoinGeckoMarketItem>(
+      payload.map((item) => [item.id, item]),
     );
     this.cache = { items, fetchedAt: Date.now() };
     return items;
   }
 
-  // Métadonnées statiques (id numérique + logo) par actif — résolues via
-  // /v2/cryptocurrency/info (le seul endpoint acceptant un slug pour cette information ;
-  // /quotes/historical n'accepte qu'un id ou un symbole, cf. fetchDailyHistory) et mises
-  // en cache beaucoup plus longtemps que les prix (cf. METADATA_CACHE_TTL_MS) : un logo ou
-  // un id CoinMarketCap ne change essentiellement jamais.
-  private async getAssetMetadata(): Promise<Map<string, AssetMetadata>> {
-    if (
-      this.metadataCache &&
-      Date.now() - this.metadataCache.fetchedAt < METADATA_CACHE_TTL_MS
-    ) {
-      return this.metadataCache.bySlug;
-    }
-
-    const url = `${CMC_API_BASE}/v2/cryptocurrency/info?slug=${ALL_SLUGS.join(',')}`;
-
-    let payload: { data: unknown };
-    try {
-      const response = await fetch(url, {
-        headers: this.authHeaders(),
-        signal: AbortSignal.timeout(8000),
-      });
-      if (!response.ok) {
-        throw new Error(`CoinMarketCap a répondu ${response.status}`);
-      }
-      payload = (await response.json()) as { data: unknown };
-    } catch (error) {
-      this.logger.warn(
-        `Échec de récupération des métadonnées CoinMarketCap (logos) : ${(error as Error).message}`,
-      );
-      return this.metadataCache?.bySlug ?? new Map();
-    }
-
-    const records = (
-      Array.isArray(payload.data)
-        ? payload.data
-        : Object.values(payload.data ?? {})
-    ) as CoinMarketCapInfo[];
-
-    const bySlug = new Map<string, AssetMetadata>(
-      records.map((info) => [info.slug, { id: info.id, logo: info.logo }]),
-    );
-    this.metadataCache = { bySlug, fetchedAt: Date.now() };
-    return bySlug;
-  }
-
   // Appel + parsing partagés entre getYieldAssetHistory (365 points sous-échantillonnés)
   // et getDailyReturnSeries (365 variations journalières, sans sous-échantillonnage) —
-  // seule la mise en forme du résultat diffère entre les deux appelants. Nécessite l'id
-  // numérique CoinMarketCap de l'actif (résolu via `metadata`, cf. getAssetMetadata) :
-  // contrairement à /quotes/latest et /info, /quotes/historical n'accepte pas de slug.
+  // seule la mise en forme du résultat diffère entre les deux appelants.
   private async fetchDailyHistory(
     currency: AcceptedCurrency,
-    metadata: Map<string, AssetMetadata>,
   ): Promise<AssetHistoryPoint[]> {
-    const slug = COINMARKETCAP_SLUGS[currency];
-    const id = metadata.get(slug)?.id;
-    if (!id) {
-      throw new Error(`id CoinMarketCap introuvable pour le slug "${slug}"`);
-    }
-
-    const timeEnd = new Date();
-    const timeStart = new Date(
-      timeEnd.getTime() - HISTORY_PERIOD_DAYS * 24 * 60 * 60 * 1000,
-    );
-    const params = new URLSearchParams({
-      id: String(id),
-      time_start: timeStart.toISOString().slice(0, 10),
-      time_end: timeEnd.toISOString().slice(0, 10),
-      interval: 'daily',
-      convert: 'USD',
-    });
-
+    const id = COINGECKO_IDS[currency];
     const response = await fetch(
-      `${CMC_API_BASE}/v3/cryptocurrency/quotes/historical?${params.toString()}`,
-      { headers: this.authHeaders(), signal: AbortSignal.timeout(8000) },
+      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${HISTORY_PERIOD_DAYS}`,
+      { signal: AbortSignal.timeout(8000) },
     );
     if (!response.ok) {
-      throw new Error(`CoinMarketCap a répondu ${response.status}`);
+      throw new Error(`CoinGecko a répondu ${response.status}`);
     }
-    const payload = (await response.json()) as { data: unknown };
-
-    // Même précaution défensive que getMarketItems/getAssetMetadata : un seul actif
-    // demandé par appel, donc un seul enregistrement quelle que soit sa forme exacte
-    // (objet indexé par id ou tableau).
-    const records = (
-      Array.isArray(payload.data)
-        ? payload.data
-        : Object.values(payload.data ?? {})
-    ) as { quotes: CoinMarketCapHistoricalQuote[] }[];
-
-    const quotes = records[0]?.quotes ?? [];
-    return quotes
-      .filter((q) => typeof q.quote.USD.price === 'number')
-      .map((q) => ({
-        t: new Date(q.timestamp).getTime(),
-        usd: q.quote.USD.price as number,
-      }));
+    const payload = (await response.json()) as {
+      prices: [number, number][];
+    };
+    return payload.prices.map(([t, usd]) => ({ t, usd }));
   }
 }

@@ -1165,6 +1165,19 @@
         "trigger": "Ta ut",
         "dialogTitle": "Ta ut medel",
         "dialogDescription": "Tillgängligt saldo: {balance}. Låst säkerhet kan endast tas ut efter fullständig återbetalning av krediten.",
+        "methodCrypto": "Krypto",
+        "methodSepa": "SEPA-överföring",
+        "methodSwift": "SWIFT-överföring",
+        "sepaEurOnlyNote": "En SEPA-överföring är bara möjlig i euro, till ett konto inom SEPA-området.",
+        "currencyLabel": "Överföringsvaluta",
+        "accountHolderLabel": "Kontoinnehavare",
+        "ibanLabel": "IBAN",
+        "ibanInvalid": "Ogiltigt IBAN.",
+        "ibanNotSepa": "Detta IBAN tillhör inte ett land inom SEPA-området — använd en SWIFT-överföring istället.",
+        "bicLabel": "BIC-/SWIFT-kod",
+        "bicOptionalNote": "Valfritt för en SEPA-överföring: IBAN räcker.",
+        "bicRequiredNote": "Obligatoriskt för en SWIFT-överföring.",
+        "bicInvalid": "Ogiltig BIC-/SWIFT-kod.",
         "amountLabel": "Belopp",
         "destinationLabel": "Mottagaradress",
         "submit": "Bekräfta uttaget",
@@ -1172,7 +1185,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Data tillhandahålls av CoinMarketCap",
+      "dataProvider": "Data tillhandahålls av CoinGecko",
       "pricesUnavailable": "Priser ej tillgängliga.",
       "title": "Marknad i realtid",
       "description": "Kurser, 24h-förändring, volym och marknadsvärde för de tillgångar som accepteras som säkerhet.",
@@ -1181,9 +1194,11 @@
         "asset": "Tillgång",
         "price": "Pris",
         "change24h": "Förändr. 24h",
+        "high24h": "Högsta 24h",
+        "low24h": "Lägsta 24h",
         "volume24h": "Volym 24h",
         "marketCap": "Marknadsvärde",
-        "trend12m": "Trend 12 mån"
+        "sevenDays": "7 dagar"
       },
       "acceptedSection": {
         "title": "Accepteras som säkerhet",

@@ -4,7 +4,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 // En-têtes de sécurité de base, appliqués à toutes les routes de la vitrine/dashboard
 // Next.js (le back-office NestJS a les siens via helmet, cf. backend/src/main.ts).
 // Pas de Content-Security-Policy ici : la CSP dépend fortement des sources externes
-// réellement utilisées (CoinMarketCap pour les logos d'actifs, cf. market-view.tsx) et une
+// réellement utilisées (CoinGecko pour les logos d'actifs, cf. market-view.tsx) et une
 // CSP mal calibrée casse silencieusement des fonctionnalités — à composer et tester
 // explicitement plutôt qu'ajoutée à l'aveugle.
 const SECURITY_HEADERS = [

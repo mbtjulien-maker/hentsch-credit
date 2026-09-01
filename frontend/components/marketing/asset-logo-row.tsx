@@ -6,7 +6,7 @@ import { useCurrencyLabel } from "@/lib/use-currency-label";
 
 // Rangée de logos pour une liste d'actifs — réutilisée à plusieurs endroits de la
 // vitrine publique pour ne jamais lister des tickers en texte brut quand le vrai logo
-// (CoinMarketCap, même source que MarketView) est disponible. Chaque usage fait son propre
+// (CoinGecko, même source que MarketView) est disponible. Chaque usage fait son propre
 // appel : /market/prices est public et mis en cache côté serveur (30s, cf.
 // MarketDataService), le coût de plusieurs appels sur une même page est négligeable
 // face à la simplicité de ne pas faire remonter l'état.
@@ -44,7 +44,7 @@ export function AssetLogoRow({
   function logoFor(currency: string) {
     const entry = entries?.find((e) => e.currency === currency);
     return entry?.image ? (
-      // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinMarketCap
+      // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinGecko
       <img src={entry.image} alt="" className="size-full rounded-full object-cover" />
     ) : (
       <span className="flex size-full items-center justify-center rounded-full bg-slate-200 text-[8px] font-semibold text-muted-foreground/80">

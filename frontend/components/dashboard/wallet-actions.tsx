@@ -24,17 +24,21 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AssetList, ChainList, useAssetSelection } from "@/components/dashboard/asset-picker";
 import {
   api,
   ApiError,
   type AcceptedCurrency,
+  type AccountCurrency,
   type BalanceSummary,
   type Chain,
   type ManagedDepositAddress,
+  type WithdrawalRequest,
 } from "@/lib/api";
 import { CHAIN_LABELS, formatUsd } from "@/lib/format";
 import { useCurrencyLabel } from "@/lib/use-currency-label";
+import { isSepaEligibleIban, isValidBic, isValidIban } from "@/lib/iban";
 
 export function WalletActions({
   summary,
@@ -369,6 +373,8 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
   );
 }
 
+type WithdrawMethodTab = "CRYPTO" | "SEPA" | "SWIFT";
+
 function WithdrawDialog({
   summary,
   onSuccess,
@@ -378,23 +384,51 @@ function WithdrawDialog({
 }) {
   const t = useTranslations("Dashboard.walletActions");
   const [open, setOpen] = useState(false);
+  const [method, setMethod] = useState<WithdrawMethodTab>("CRYPTO");
+
+  // --- CRYPTO ---
   const { currency, chain, setCurrency, setChain } = useAssetSelection();
-  const [amount, setAmount] = useState("");
   const [destination, setDestination] = useState("");
+
+  // --- SEPA / SWIFT ---
+  const [bankCurrency, setBankCurrency] = useState<AccountCurrency>("EUR");
+  const [accountHolder, setAccountHolder] = useState("");
+  const [iban, setIban] = useState("");
+  const [bic, setBic] = useState("");
+
+  const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const availableBalance = Number(summary.balance.availableBalance);
   const parsedAmount = Number(amount);
+  const amountValid =
+    amount.trim() !== "" && parsedAmount > 0 && parsedAmount <= availableBalance;
+
+  const ibanTrimmed = iban.trim();
+  const bicTrimmed = bic.trim();
+  const ibanValid = isValidIban(ibanTrimmed);
+  const sepaEligible = isSepaEligibleIban(ibanTrimmed);
+  const bicValid = bicTrimmed === "" || isValidBic(bicTrimmed);
+
   const isValid =
-    amount.trim() !== "" &&
-    parsedAmount > 0 &&
-    parsedAmount <= availableBalance &&
-    destination.trim().length >= 6;
+    amountValid &&
+    (method === "CRYPTO"
+      ? destination.trim().length >= 6
+      : accountHolder.trim().length >= 2 &&
+        ibanValid &&
+        bicValid &&
+        (method === "SWIFT" ? isValidBic(bicTrimmed) : true) &&
+        (method === "SEPA" ? sepaEligible && bankCurrency === "EUR" : true));
 
   function reset() {
+    setMethod("CRYPTO");
     setAmount("");
     setDestination("");
+    setBankCurrency("EUR");
+    setAccountHolder("");
+    setIban("");
+    setBic("");
     setError(null);
   }
 
@@ -404,12 +438,24 @@ function WithdrawDialog({
     setLoading(true);
     setError(null);
     try {
-      await api.requestWithdrawal(
-        parsedAmount.toFixed(6),
-        chain as Chain,
-        currency as AcceptedCurrency,
-        destination.trim(),
-      );
+      const payload: WithdrawalRequest =
+        method === "CRYPTO"
+          ? {
+              method: "CRYPTO",
+              amount: parsedAmount.toFixed(6),
+              chain: chain as Chain,
+              currency: currency as AcceptedCurrency,
+              destinationAddress: destination.trim(),
+            }
+          : {
+              method,
+              amount: parsedAmount.toFixed(6),
+              withdrawalCurrency: bankCurrency,
+              bankAccountHolder: accountHolder.trim(),
+              destinationIban: ibanTrimmed,
+              bankBic: bicTrimmed || undefined,
+            };
+      await api.requestWithdrawal(payload);
       setOpen(false);
       reset();
       onSuccess();
@@ -440,7 +486,7 @@ function WithdrawDialog({
           </Button>
         }
       />
-      <DialogContent>
+      <DialogContent className="sm:max-w-md">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>{t("withdraw.dialogTitle")}</DialogTitle>
@@ -450,32 +496,147 @@ function WithdrawDialog({
           </DialogHeader>
 
           <div className="flex flex-col gap-4 py-2">
+            <Tabs value={method} onValueChange={(v) => v && setMethod(v as WithdrawMethodTab)}>
+              <TabsList className="grid w-full grid-cols-3">
+                <TabsTrigger value="CRYPTO">{t("withdraw.methodCrypto")}</TabsTrigger>
+                <TabsTrigger value="SEPA">{t("withdraw.methodSepa")}</TabsTrigger>
+                <TabsTrigger value="SWIFT">{t("withdraw.methodSwift")}</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="CRYPTO" className="grid gap-4 pt-4">
+                <div className="grid gap-2">
+                  <Label>{t("deposit.assetLabel")}</Label>
+                  <AssetList value={currency} onChange={setCurrency} />
+                </div>
+                <div className="grid gap-2">
+                  <Label>{t("deposit.networkLabel")}</Label>
+                  <ChainList currency={currency} value={chain} onChange={setChain} />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="withdraw-destination">{t("withdraw.destinationLabel")}</Label>
+                  <Input
+                    id="withdraw-destination"
+                    placeholder="0x…"
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                    className="font-mono text-xs"
+                  />
+                </div>
+              </TabsContent>
+
+              <TabsContent value="SEPA" className="grid gap-4 pt-4">
+                <p className="text-xs text-muted-foreground">{t("withdraw.sepaEurOnlyNote")}</p>
+                <div className="grid gap-2">
+                  <Label htmlFor="withdraw-holder-sepa">{t("withdraw.accountHolderLabel")}</Label>
+                  <Input
+                    id="withdraw-holder-sepa"
+                    placeholder="Jean Dupont"
+                    value={accountHolder}
+                    onChange={(e) => setAccountHolder(e.target.value)}
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="withdraw-iban-sepa">{t("withdraw.ibanLabel")}</Label>
+                  <Input
+                    id="withdraw-iban-sepa"
+                    placeholder="FR76 XXXX XXXX XXXX XXXX XXXX XXX"
+                    value={iban}
+                    onChange={(e) => setIban(e.target.value)}
+                    className="font-mono text-xs"
+                  />
+                  {ibanTrimmed !== "" && !ibanValid && (
+                    <p className="text-xs text-destructive">{t("withdraw.ibanInvalid")}</p>
+                  )}
+                  {ibanTrimmed !== "" && ibanValid && !sepaEligible && (
+                    <p className="text-xs text-destructive">{t("withdraw.ibanNotSepa")}</p>
+                  )}
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="withdraw-bic-sepa">{t("withdraw.bicLabel")}</Label>
+                  <Input
+                    id="withdraw-bic-sepa"
+                    placeholder="BNPAFRPP"
+                    value={bic}
+                    onChange={(e) => setBic(e.target.value)}
+                    className="font-mono text-xs uppercase"
+                  />
+                  <p className="text-xs text-muted-foreground">{t("withdraw.bicOptionalNote")}</p>
+                  {bicTrimmed !== "" && !bicValid && (
+                    <p className="text-xs text-destructive">{t("withdraw.bicInvalid")}</p>
+                  )}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="SWIFT" className="grid gap-4 pt-4">
+                <div className="grid gap-2">
+                  <Label>{t("withdraw.currencyLabel")}</Label>
+                  <div className="flex gap-1.5">
+                    {(["USD", "EUR"] as const).map((c) => (
+                      <button
+                        key={c}
+                        type="button"
+                        onClick={() => setBankCurrency(c)}
+                        className={`rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
+                          bankCurrency === c
+                            ? "border-primary bg-primary/10 text-primary"
+                            : "border-border text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        {c}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="withdraw-holder-swift">{t("withdraw.accountHolderLabel")}</Label>
+                  <Input
+                    id="withdraw-holder-swift"
+                    placeholder="Jean Dupont"
+                    value={accountHolder}
+                    onChange={(e) => setAccountHolder(e.target.value)}
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="withdraw-iban-swift">{t("withdraw.ibanLabel")}</Label>
+                  <Input
+                    id="withdraw-iban-swift"
+                    placeholder="IBAN ou numéro de compte"
+                    value={iban}
+                    onChange={(e) => setIban(e.target.value)}
+                    className="font-mono text-xs"
+                  />
+                  {ibanTrimmed !== "" && !ibanValid && (
+                    <p className="text-xs text-destructive">{t("withdraw.ibanInvalid")}</p>
+                  )}
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="withdraw-bic-swift">{t("withdraw.bicLabel")}</Label>
+                  <Input
+                    id="withdraw-bic-swift"
+                    placeholder="BNPAFRPP"
+                    value={bic}
+                    onChange={(e) => setBic(e.target.value)}
+                    className="font-mono text-xs uppercase"
+                  />
+                  <p className="text-xs text-muted-foreground">{t("withdraw.bicRequiredNote")}</p>
+                  {bicTrimmed !== "" && !bicValid && (
+                    <p className="text-xs text-destructive">{t("withdraw.bicInvalid")}</p>
+                  )}
+                </div>
+              </TabsContent>
+            </Tabs>
+
             <div className="grid gap-2">
-              <Label>{t("deposit.assetLabel")}</Label>
-              <AssetList value={currency} onChange={setCurrency} />
-            </div>
-            <div className="grid gap-2">
-              <Label>{t("deposit.networkLabel")}</Label>
-              <ChainList currency={currency} value={chain} onChange={setChain} />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="withdraw-amount">{t("withdraw.amountLabel")}</Label>
+              <Label htmlFor="withdraw-amount">
+                {t("withdraw.amountLabel")}
+                {method !== "CRYPTO" ? ` (${bankCurrency})` : ""}
+              </Label>
               <Input
                 id="withdraw-amount"
                 inputMode="decimal"
                 placeholder="0.00"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="withdraw-destination">{t("withdraw.destinationLabel")}</Label>
-              <Input
-                id="withdraw-destination"
-                placeholder="0x…"
-                value={destination}
-                onChange={(e) => setDestination(e.target.value)}
-                className="font-mono text-xs"
               />
             </div>
 

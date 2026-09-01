@@ -130,6 +130,20 @@ enum TransactionStatus {
   FAILED
 }
 
+// Méthode d'un retrait (Transaction.type = WITHDRAWAL uniquement) — CRYPTO existait déjà
+// (adresse on-chain, cf. Transaction.chain/destinationAddress) ; SEPA/SWIFT sont des
+// virements bancaires classiques. Comme pour CRYPTO (aucune custody réelle branchée,
+// cf. WithdrawalService), aucun rail bancaire réel n'est branché ici non plus : la demande
+// est journalisée au ledger (débit immédiat du solde disponible), pas réellement exécutée
+// vers une banque — cohérent avec le reste du retrait, jamais un virement réellement
+// envoyé. SEPA est réservé à l'espace unique de paiement en euros (zone SEPA, EUR
+// uniquement) ; SWIFT couvre tout le reste (autre devise ou pays hors zone SEPA).
+enum WithdrawalMethod {
+  CRYPTO
+  SEPA
+  SWIFT
+}
+
 enum ClientType {
   PARTICULIER
   INDEPENDANT
@@ -442,7 +456,20 @@ model Transaction {
   // DEPOSIT déclarés via le flux d'adresse "pool" (réseau + adresse ManagedDepositAddress
   // affichée au client au moment de la déclaration, cf. DepositIntentsService).
   chain              Chain?
+  // Adresse on-chain (CRYPTO) OU IBAN/numéro de compte (SEPA/SWIFT) selon
+  // `withdrawalMethod` — un seul champ générique "destination du retrait", pas dupliqué
+  // par méthode.
   destinationAddress String?
+  // Renseignés uniquement pour un WITHDRAWAL bancaire (SEPA/SWIFT) — `null` pour un
+  // retrait CRYPTO (cf. WithdrawalMethod). `withdrawalCurrency` est la devise fiat réelle
+  // du virement (USD/EUR), distincte de `currency` (jeton crypto) qui reste `null` ici.
+  // `bankBic` est obligatoire pour SWIFT, optionnel pour SEPA (la règle IBAN-only rend le
+  // BIC facultatif pour un virement SEPA depuis 2016, mais utile pour l'affichage/l'audit
+  // s'il est fourni).
+  withdrawalMethod   WithdrawalMethod?
+  withdrawalCurrency AccountCurrency?
+  bankAccountHolder  String?
+  bankBic            String?
   // Idempotence des webhooks blockchain (Alchemy/QuickNode redélivrent parfois le même
   // événement) : un hash de tx on-chain ne doit créditer le solde qu'une seule fois.
   referenceTx        String?           @unique

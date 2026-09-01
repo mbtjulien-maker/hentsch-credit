@@ -436,7 +436,7 @@ describe('CollateralYieldService', () => {
       const positionB = buildPosition({ id: 'position-b' });
       prisma.creditPosition.findMany.mockResolvedValue([positionA, positionB]);
       marketDataService.getSpotPriceUsd
-        .mockRejectedValueOnce(new Error('CoinMarketCap down'))
+        .mockRejectedValueOnce(new Error('CoinGecko down'))
         .mockResolvedValueOnce(new Prisma.Decimal('2500'));
 
       const results = await service.runDailyAccrual();

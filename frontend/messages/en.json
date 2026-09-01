@@ -1165,6 +1165,19 @@
         "trigger": "Withdraw",
         "dialogTitle": "Withdraw funds",
         "dialogDescription": "Available balance: {balance}. Locked collateral can only be withdrawn once the credit is fully repaid.",
+        "methodCrypto": "Crypto",
+        "methodSepa": "SEPA transfer",
+        "methodSwift": "SWIFT transfer",
+        "sepaEurOnlyNote": "A SEPA transfer is only possible in euros, to an account within the SEPA zone.",
+        "currencyLabel": "Transfer currency",
+        "accountHolderLabel": "Account holder",
+        "ibanLabel": "IBAN",
+        "ibanInvalid": "Invalid IBAN.",
+        "ibanNotSepa": "This IBAN isn't from a SEPA-zone country — use a SWIFT transfer instead.",
+        "bicLabel": "BIC / SWIFT code",
+        "bicOptionalNote": "Optional for a SEPA transfer: the IBAN is enough.",
+        "bicRequiredNote": "Required for a SWIFT transfer.",
+        "bicInvalid": "Invalid BIC/SWIFT code.",
         "amountLabel": "Amount",
         "destinationLabel": "Destination address",
         "submit": "Confirm withdrawal",
@@ -1172,7 +1185,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Data provided by CoinMarketCap",
+      "dataProvider": "Data provided by CoinGecko",
       "pricesUnavailable": "Prices unavailable.",
       "title": "Live market",
       "description": "Prices, 24h change, volume and market cap of the assets accepted as collateral.",
@@ -1181,9 +1194,11 @@
         "asset": "Asset",
         "price": "Price",
         "change24h": "24h chg.",
+        "high24h": "24h high",
+        "low24h": "24h low",
         "volume24h": "24h volume",
         "marketCap": "Market cap",
-        "trend12m": "12-month trend"
+        "sevenDays": "7 days"
       },
       "acceptedSection": {
         "title": "Accepted as collateral",

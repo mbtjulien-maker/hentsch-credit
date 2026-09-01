@@ -183,6 +183,8 @@ export interface CardRecord {
   createdAt: string;
 }
 
+export type WithdrawalMethod = "CRYPTO" | "SEPA" | "SWIFT";
+
 export interface TransactionRecord {
   id: string;
   userId: string;
@@ -192,9 +194,17 @@ export interface TransactionRecord {
   currency: AcceptedCurrency | null;
   tokenAmount: string | null;
   chain: Chain | null;
+  // Adresse on-chain (retrait CRYPTO) ou IBAN (retrait SEPA/SWIFT) selon
+  // `withdrawalMethod` — cf. WithdrawalService côté backend.
   destinationAddress: string | null;
   referenceTx: string | null;
   createdAt: string;
+  // Renseignés uniquement pour un WITHDRAWAL bancaire (SEPA/SWIFT) — `null` pour CRYPTO
+  // ou tout autre type de transaction.
+  withdrawalMethod: WithdrawalMethod | null;
+  withdrawalCurrency: AccountCurrency | null;
+  bankAccountHolder: string | null;
+  bankBic: string | null;
 }
 
 export interface WalletRecord {
@@ -232,12 +242,15 @@ export interface MarketOverviewEntry {
   targetApyRangePct: { min: number; max: number } | null;
   usdPrice: string | null;
   change24hPct: number | null;
+  high24h: string | null;
+  low24h: string | null;
   volume24h: string | null;
   marketCap: string | null;
+  sparkline7d: number[];
 }
 
 // Performance sur 12 mois d'un actif générateur de rendement (page /rendement) — 365
-// jours est le maximum disponible sur le plan gratuit CoinMarketCap, affiché honnêtement
+// jours est le maximum disponible sur le plan gratuit CoinGecko, affiché honnêtement
 // comme "sur 12 mois", jamais "depuis le lancement" quel que soit l'âge réel de l'actif.
 export interface AssetHistoryEntry {
   currency: AcceptedCurrency;
@@ -283,6 +296,28 @@ export interface WithdrawalResult {
   balance: LedgerBalance;
   transaction: TransactionRecord;
 }
+
+// Trois méthodes de retrait (cf. WithdrawalMethod côté backend) : CRYPTO (adresse
+// on-chain, inchangé) et deux virements bancaires classiques — SEPA (EUR, zone SEPA
+// uniquement) et SWIFT (toute devise, tout pays, BIC obligatoire). Comme pour CRYPTO,
+// aucun rail bancaire réel n'exécute le virement (cf. WithdrawalService) : la demande ne
+// fait que journaliser le ledger.
+export type WithdrawalRequest =
+  | {
+      method: "CRYPTO";
+      amount: string;
+      chain: Chain;
+      currency: AcceptedCurrency;
+      destinationAddress: string;
+    }
+  | {
+      method: "SEPA" | "SWIFT";
+      amount: string;
+      withdrawalCurrency: AccountCurrency;
+      bankAccountHolder: string;
+      destinationIban: string;
+      bankBic?: string;
+    };
 
 export interface CardTopupResult {
   paymentId: string;
@@ -621,15 +656,10 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ chain, currency, tokenAmount }),
     }),
-  requestWithdrawal: (
-    amount: string,
-    chain: Chain,
-    currency: AcceptedCurrency,
-    destinationAddress: string,
-  ) =>
+  requestWithdrawal: (payload: WithdrawalRequest) =>
     request<WithdrawalResult>("/withdrawals", {
       method: "POST",
-      body: JSON.stringify({ amount, chain, currency, destinationAddress }),
+      body: JSON.stringify(payload),
     }),
   createCardTopup: (amount: string) =>
     request<CardTopupResult>("/payments/card-topup", {

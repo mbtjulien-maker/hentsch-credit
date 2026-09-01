@@ -1,7 +1,224 @@
 {
   "modules": [
     {
-      "source": "app/accessibilite/page.tsx",
+      "source": "app/[locale]/accessibilite/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/archives/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/comment-ca-marche/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/conditions-generales/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/confidentialite/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/contact/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/cookies/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/cartes/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/credit/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/demandes-comptes/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/demandes-credit/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/historique/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/layout.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/marche/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/paiement-simule/[paymentId]/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/profil/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/solde/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/dashboard/support/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/demande-de-compte/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/faq/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/gestion-des-risques/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/layout.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/login/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/marche/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/mentions-legales/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/plan-du-site/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/reglementation/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/rendement/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/strategie-rwa/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "app/[locale]/tarifs/page.tsx",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -134,153 +351,6 @@
       "valid": true
     },
     {
-      "source": "app/archives/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/comment-ca-marche/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/conditions-generales/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/confidentialite/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/contact/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/cookies/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/cartes/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/credit/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/demandes-comptes/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/demandes-credit/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/historique/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/layout.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/marche/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/paiement-simule/[paymentId]/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/profil/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/solde/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/dashboard/support/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/demande-de-compte/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/faq/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/gestion-des-risques/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
       "source": "app/layout.tsx",
       "dependencies": [
         {
@@ -323,63 +393,14 @@
       "valid": true
     },
     {
-      "source": "app/login/page.tsx",
+      "source": "app/robots.ts",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
       "valid": true
     },
     {
-      "source": "app/marche/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/mentions-legales/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/plan-du-site/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/reglementation/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/rendement/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/strategie-rwa/page.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/tarifs/page.tsx",
+      "source": "app/sitemap.ts",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -568,6 +589,13 @@
       "valid": true
     },
     {
+      "source": "components/admin/two-factor-settings.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "components/dashboard/account-menu.tsx",
       "dependencies": [],
       "dependents": [],
@@ -729,6 +757,20 @@
       "valid": true
     },
     {
+      "source": "components/locale-html-lang-sync.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "components/login-form.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "components/marketing/account-request-form.tsx",
       "dependencies": [],
       "dependents": [],
@@ -737,6 +779,13 @@
     },
     {
       "source": "components/marketing/asset-logo-row.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "components/marketing/language-switcher.tsx",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -848,6 +897,13 @@
       "valid": true
     },
     {
+      "source": "components/ui/dropdown-menu.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "components/ui/input.tsx",
       "dependencies": [],
       "dependents": [],
@@ -884,6 +940,13 @@
     },
     {
       "source": "components/ui/slider.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "components/ui/sonner.tsx",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -967,6 +1030,20 @@
       "valid": true
     },
     {
+      "source": "lib/iban.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "lib/seo.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "lib/theme-provider.tsx",
       "dependencies": [],
       "dependents": [],
@@ -995,6 +1072,13 @@
       "valid": true
     },
     {
+      "source": "lib/use-currency-label.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "lib/use-estimated-yield.ts",
       "dependencies": [],
       "dependents": [],
@@ -1015,7 +1099,7 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 140,
+    "totalCruised": 152,
     "totalDependenciesCruised": 1,
     "optionsUsed": {
       "baseDir": "/Users/macbookpro/crypto-credit-bank/frontend",

@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { MarketingPageShell } from "@/components/marketing/marketing-page-shell";
 import { ENTITY_IDENTITY } from "@/lib/entity-identity";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -12,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Contact.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/contact", title: t("title"), description: t("description") });
 }
 
 // Page de contact — pas de formulaire web (la plateforme n'accepte aucune inscription

@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { MarketingPageShell } from "@/components/marketing/marketing-page-shell";
 import { AssetLogoRow } from "@/components/marketing/asset-logo-row";
+import { JsonLd, buildPageMetadata, faqPageJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -12,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "HowItWorks.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/comment-ca-marche", title: t("title"), description: t("description") });
 }
 
 const DEPOSIT_ASSETS = [
@@ -48,8 +49,17 @@ export default async function CommentCaMarchePage({ params }: { params: Promise<
     { icon: ShieldCheck, title: t("steps.repay.title"), description: t("steps.repay.description") },
   ] as const;
 
+  const FAQ_ITEMS = (["kycRejected", "approvalDelay", "earlyWithdrawal"] as const).map((key) => ({
+    key,
+    question: t(`faq.${key}.question`),
+    answer: t(`faq.${key}.answer`),
+  }));
+
   return (
     <MarketingPageShell eyebrow={t("eyebrow")} title={t("title")} description={t("description")}>
+      {/* Balisage FAQPage — construit à partir des MÊMES questions/réponses affichées
+          plus bas (cf. FAQ_ITEMS), jamais un contenu parallèle (cf. lib/seo.ts). */}
+      <JsonLd id="faq-jsonld" data={faqPageJsonLd(FAQ_ITEMS)} />
       <div className="mx-auto w-full max-w-6xl px-4 pb-10 sm:px-6">
         <div className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {STEPS.map((step) => (
@@ -94,10 +104,10 @@ export default async function CommentCaMarchePage({ params }: { params: Promise<
 
         <h2 className="mt-14 text-xl font-semibold text-foreground">{t("faqTitle")}</h2>
         <div className="mt-4 space-y-4">
-          {(["kycRejected", "approvalDelay", "earlyWithdrawal"] as const).map((key) => (
-            <div key={key} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
-              <h3 className="text-sm font-semibold text-foreground">{t(`faq.${key}.question`)}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">{t(`faq.${key}.answer`)}</p>
+          {FAQ_ITEMS.map((item) => (
+            <div key={item.key} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
+              <h3 className="text-sm font-semibold text-foreground">{item.question}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{item.answer}</p>
             </div>
           ))}
         </div>

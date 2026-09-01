@@ -125,8 +125,8 @@ export interface AssetHistoryEntry {
   lowUsd: number | null;
 }
 
-interface HistoryCache {
-  entries: AssetHistoryEntry[];
+interface HistoryCacheEntry {
+  entry: AssetHistoryEntry;
   fetchedAt: number;
 }
 
@@ -162,7 +162,7 @@ export class MarketDataService {
   private readonly logger = new Logger(MarketDataService.name);
   private cache: MarketCache | null = null;
   private metadataCache: MetadataCache | null = null;
-  private historyCache: HistoryCache | null = null;
+  private historyCache = new Map<AcceptedCurrency, HistoryCacheEntry>();
   private fxCache: FxCache | null = null;
 
   // configService optionnel uniquement pour permettre `new MarketDataService()` dans les
@@ -180,31 +180,43 @@ export class MarketDataService {
     return this.apiKey ? { 'X-CMC_PRO_API_KEY': this.apiKey } : {};
   }
 
-  // Historique de prix sur 12 mois pour les actifs générateurs de rendement affichés sur
-  // la page /rendement (cf. AssetHistoryEntry) — un appel CoinMarketCap par actif (pas de
-  // endpoint multi-actifs pour quotes/historical), donc mis en cache plus longtemps que le
-  // reste du service (cf. HISTORY_CACHE_TTL_MS). Une panne sur un actif ne bloque pas les
-  // autres : il revient simplement avec des points vides plutôt que de faire échouer tout
-  // l'appel (même logique de dégradation gracieuse que getMarketItems).
+  // Historique de prix sur 12 mois pour les actifs générateurs de rendement (cf.
+  // AssetHistoryEntry) — un appel CoinMarketCap par actif (pas de endpoint multi-actifs
+  // pour quotes/historical). Mis en cache PAR ACTIF (Map), pas par lot : ce point vient
+  // d'un bug corrigé — l'ancien cache stockait un seul tableau `entries` pour le dernier
+  // appel reçu, partagé entre TOUS les appelants. Deux appelants avec des listes
+  // différentes (ex. la vitrine "/rendement" avec 4 actifs vs le simulateur de crédit
+  // client avec les 8 actifs éligibles au rendement, cf. YIELD_ELIGIBLE_CURRENCIES) se
+  // volaient mutuellement le cache : le second appelant à écrire imposait sa liste à
+  // l'autre jusqu'à expiration (6h), qui recevait alors soit des actifs manquants, soit
+  // des actifs en trop, sans qu'aucune erreur ne le signale. Le cache par actif élimine
+  // ce risque par construction et, en prime, mutualise les actifs communs aux deux appels
+  // plutôt que de les refetcher deux fois.
+  //
+  // Une panne sur un actif ne bloque pas les autres : il revient simplement avec des
+  // points vides plutôt que de faire échouer tout l'appel (même logique de dégradation
+  // gracieuse que getMarketItems).
   async getYieldAssetHistory(
     currencies: AcceptedCurrency[],
   ): Promise<AssetHistoryEntry[]> {
-    if (
-      this.historyCache &&
-      Date.now() - this.historyCache.fetchedAt < HISTORY_CACHE_TTL_MS
-    ) {
-      return this.historyCache.entries;
-    }
-
     const metadata = await this.getAssetMetadata();
+    const now = Date.now();
     const entries: AssetHistoryEntry[] = [];
+
     for (const currency of currencies) {
+      const cached = this.historyCache.get(currency);
+      if (cached && now - cached.fetchedAt < HISTORY_CACHE_TTL_MS) {
+        entries.push(cached.entry);
+        continue;
+      }
+
+      let entry: AssetHistoryEntry;
       try {
         const series = await this.fetchDailyHistory(currency, metadata);
         const values = series.map((p) => p.usd);
         const first = values[0];
         const last = values[values.length - 1];
-        entries.push({
+        entry = {
           currency,
           periodDays: HISTORY_PERIOD_DAYS,
           points: downsample(series, 60),
@@ -214,23 +226,25 @@ export class MarketDataService {
               : null,
           highUsd: values.length ? Math.max(...values) : null,
           lowUsd: values.length ? Math.min(...values) : null,
-        });
+        };
       } catch (error) {
         this.logger.warn(
           `Échec de récupération de l'historique pour ${currency} : ${(error as Error).message}`,
         );
-        entries.push({
+        entry = {
           currency,
           periodDays: HISTORY_PERIOD_DAYS,
           points: [],
           changePct: null,
           highUsd: null,
           lowUsd: null,
-        });
+        };
       }
+
+      this.historyCache.set(currency, { entry, fetchedAt: now });
+      entries.push(entry);
     }
 
-    this.historyCache = { entries, fetchedAt: Date.now() };
     return entries;
   }
 

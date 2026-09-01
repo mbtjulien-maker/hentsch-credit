@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { api, type MarketOverviewEntry } from "@/lib/api";
-import { CHAIN_LABELS, CURRENCY_CHAINS, CURRENCY_GROUPS, CURRENCY_LABELS, EVM_CHAINS } from "@/lib/format";
+import { CHAIN_LABELS, CURRENCY_CHAINS, CURRENCY_GROUPS, EVM_CHAINS } from "@/lib/format";
+import { useCurrencyLabel } from "@/lib/use-currency-label";
 import { cn } from "@/lib/utils";
 
 // Sélection actif + réseau, dans cet ordre : l'actif choisi détermine les réseaux
@@ -113,6 +115,7 @@ function useAssetLogos(): Record<string, string> {
 // c'est le premier choix du flux de dépôt/retrait, celui qui détermine les réseaux
 // ensuite proposés (cf. ChainList).
 export function AssetList({ value, onChange }: { value: string; onChange: (value: string) => void }) {
+  const currencyLabel = useCurrencyLabel();
   const logos = useAssetLogos();
 
   return (
@@ -135,7 +138,7 @@ export function AssetList({ value, onChange }: { value: string; onChange: (value
                 )}
               >
                 <AssetLogo currency={c} src={logos[c]} />
-                <span className="flex-1 font-medium">{CURRENCY_LABELS[c]}</span>
+                <span className="flex-1 font-medium">{currencyLabel(c)}</span>
                 {value === c && <Check className="size-4 shrink-0 text-primary" />}
               </button>
             ))}
@@ -157,6 +160,7 @@ export function ChainList({
   value: string;
   onChange: (value: string) => void;
 }) {
+  const t = useTranslations("Dashboard.assetPicker");
   const chains = CURRENCY_CHAINS[currency] ?? EVM_CHAINS;
 
   if (chains.length <= 1) {
@@ -165,7 +169,7 @@ export function ChainList({
       <div className="flex items-center gap-3 rounded-lg border bg-muted/30 px-3 py-2 text-sm">
         <ChainIcon chain={only} />
         <span className="flex-1 font-medium">{CHAIN_LABELS[only]}</span>
-        <span className="text-xs text-muted-foreground">Seul réseau disponible pour cet actif</span>
+        <span className="text-xs text-muted-foreground">{t("onlyNetworkAvailable")}</span>
       </div>
     );
   }

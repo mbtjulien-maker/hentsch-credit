@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { MarketingPageShell } from "@/components/marketing/marketing-page-shell";
 import { YieldAssetGrid, YieldMechanismStrip } from "@/components/marketing/yield-assets-showcase";
 import { YieldPerformanceHistory } from "@/components/marketing/yield-performance-history";
+import { JsonLd, buildPageMetadata, faqPageJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -13,7 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Yield.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/rendement", title: t("title"), description: t("description") });
 }
 
 // Page dédiée au mécanisme de rendement, contenu déplacé depuis la colonne droite du
@@ -24,8 +25,15 @@ export default async function RendementPage({ params }: { params: Promise<{ loca
   setRequestLocale(locale);
   const t = await getTranslations("Yield");
 
+  const FAQ_ITEMS = (["guaranteed", "stablecoins", "frequency", "ratchet", "multipleAssets", "history"] as const).map(
+    (key) => ({ key, question: t(`faq.${key}.question`), answer: t(`faq.${key}.answer`) }),
+  );
+
   return (
     <MarketingPageShell eyebrow={t("eyebrow")} title={t("title")} description={t("description")}>
+      {/* Balisage FAQPage — construit à partir des MÊMES questions/réponses affichées
+          plus bas (cf. FAQ_ITEMS), jamais un contenu parallèle (cf. lib/seo.ts). */}
+      <JsonLd id="faq-jsonld" data={faqPageJsonLd(FAQ_ITEMS)} />
       <div className="mx-auto w-full max-w-2xl px-4 pb-6 sm:px-6">
         <YieldAssetGrid />
       </div>
@@ -170,10 +178,10 @@ export default async function RendementPage({ params }: { params: Promise<{ loca
 
         <h2 className="mt-10 text-xl font-semibold text-foreground">{t("faqTitle")}</h2>
         <div className="mt-4 space-y-4">
-          {(["guaranteed", "stablecoins", "frequency", "ratchet", "multipleAssets", "history"] as const).map((key) => (
-            <div key={key} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
-              <h3 className="text-sm font-semibold text-foreground">{t(`faq.${key}.question`)}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">{t(`faq.${key}.answer`)}</p>
+          {FAQ_ITEMS.map((item) => (
+            <div key={item.key} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
+              <h3 className="text-sm font-semibold text-foreground">{item.question}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{item.answer}</p>
             </div>
           ))}
         </div>

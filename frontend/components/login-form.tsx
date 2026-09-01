@@ -2,10 +2,9 @@
 
 import { useId, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { Loader2, ShieldCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,8 +19,8 @@ import { api, ApiError, loginRequiresTwoFactor } from "@/lib/api";
 // vers /dashboard déclenche DashboardProvider, qui relit /auth/me pour charger le compte.
 // Composant client séparé de app/[locale]/login/page.tsx (server component) pour que la
 // page puisse exporter des métadonnées SEO spécifiques — un "use client" ne peut pas le
-// faire. /dashboard reste hors du routage par locale (cf. proxy.ts) : router.push garde
-// next/navigation plutôt que le Link localisé de @/i18n/navigation.
+// faire. /dashboard fait désormais partie du routage par locale (cf. proxy.ts) : router
+// et Link viennent tous les deux de @/i18n/navigation, pas de next/navigation.
 //
 // Deux étapes possibles : email/mot de passe, puis un code TOTP si le compte (réservé aux
 // ADMIN, cf. AuthController) a activé la 2FA — pendingToken prouve que la première étape a

@@ -2,6 +2,7 @@ import {
   BookText,
   Compass,
   FileText,
+  LayoutDashboard,
   LifeBuoy,
   LockKeyhole,
   UserPlus,
@@ -10,6 +11,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { MarketingPageShell } from "@/components/marketing/marketing-page-shell";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -18,14 +20,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Sitemap.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/plan-du-site", title: t("title"), description: t("description") });
 }
 
 // Plan du site PUBLIC — distinct de l'artefact interne "Plan du Site Hentsch Credit" (qui
-// couvre aussi l'espace client connecté et le back-office admin, à usage interne/audit).
-// Celui-ci ne liste que les pages réellement accessibles sans authentification, dans le
-// même esprit que le principe déjà appliqué à la sidebar cliente (isAdmin && ...) : ne
-// montrer que ce qui est réellement disponible au visiteur.
+// couvre en plus le back-office admin, à usage interne/audit). Celui-ci liste les pages
+// visiteur (accessibles sans connexion) et les pages de l'espace client (cf.
+// CLIENT_SECTIONS dans components/dashboard/sidebar.tsx), mais jamais le back-office
+// (BACKOFFICE_SECTIONS dans ce même fichier : demandes-crédit, demandes-comptes, /admin)
+// — même principe déjà appliqué à la sidebar cliente (isAdmin && ...) : ne montrer que ce
+// qui concerne un visiteur ou un client, jamais la gestion interne.
 export default async function PlanDuSitePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -81,12 +85,30 @@ export default async function PlanDuSitePage({ params }: { params: Promise<{ loc
         { href: "/cookies", label: t("links.cookiePolicy") },
       ],
     },
+    // Espace client (cf. CLIENT_SECTIONS dans sidebar.tsx) — /dashboard fait désormais
+    // partie du routage par locale (proxy.ts ne l'exclut plus), donc même Link localisé
+    // que les autres groupes ci-dessus ; jamais le back-office (BACKOFFICE_SECTIONS :
+    // demandes-crédit, demandes-comptes, /admin), qui reste hors de ce plan public.
+    {
+      icon: LayoutDashboard,
+      title: t("groups.client.title"),
+      links: [
+        { href: "/dashboard", label: t("clientLinks.home") },
+        { href: "/dashboard/solde", label: t("clientLinks.balance") },
+        { href: "/dashboard/marche", label: t("clientLinks.market") },
+        { href: "/dashboard/credit", label: t("clientLinks.credit") },
+        { href: "/dashboard/cartes", label: t("clientLinks.cards") },
+        { href: "/dashboard/historique", label: t("clientLinks.history") },
+        { href: "/dashboard/profil", label: t("clientLinks.profile") },
+        { href: "/dashboard/support", label: t("clientLinks.support") },
+      ],
+    },
   ] as const;
 
   return (
     <MarketingPageShell eyebrow={t("eyebrow")} title={t("title")} description={t("description")}>
       <div className="mx-auto w-full max-w-4xl px-4 pb-10 sm:px-6">
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {GROUPS.map((group) => (
             <div key={group.title} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
               <div className="flex items-center gap-2.5">

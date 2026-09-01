@@ -1,6 +1,7 @@
 "use client";
 
 import { AlertTriangle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CreditForm } from "@/components/dashboard/credit-form";
@@ -21,6 +22,7 @@ import { api } from "@/lib/api";
 // demandes (CreditRequestsHistory) à côté du formulaire, pas seulement dans l'Historique
 // général des transactions.
 export default function CreditPage() {
+  const t = useTranslations("Dashboard.creditPage");
   const { triggerRefresh } = useDashboard();
   const { data: summary, loading, error, selectedUserId } = useSectionData((userId) =>
     api.getBalance(userId),
@@ -33,7 +35,7 @@ export default function CreditPage() {
     return (
       <Alert variant="destructive">
         <AlertTriangle className="size-4" />
-        <AlertTitle>Impossible de charger la ligne de crédit</AlertTitle>
+        <AlertTitle>{t("loadError")}</AlertTitle>
         <AlertDescription>{error}</AlertDescription>
       </Alert>
     );

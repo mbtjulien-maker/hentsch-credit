@@ -2,23 +2,23 @@
 
 import { useMemo, useState } from "react";
 import { Info } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Label } from "@/components/ui/label";
 import { formatUsd } from "@/lib/format";
 import { computeAmortizedPayment } from "@/lib/amortization";
 import { CREDIT_RATIO, YIELD_REPAYMENT_CAP_PCT } from "@/components/dashboard/credit-simulator";
+import type { AcceptedCurrency } from "@/lib/api";
 
 const DURATION_OPTIONS = [6, 12, 24, 36] as const;
-
-const monthYearFormatter = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric" });
 
 // Premier versement — dès le mois suivant l'émission du crédit (convention standard d'un
 // prêt à échéances fixes : le décaissement a lieu au verrouillage du gage, le premier
 // remboursement un mois plus tard). Calculé ici plutôt que laissé à deviner par le
 // client, comme le reste de cette simulation.
-function firstPaymentLabel(): string {
+function firstPaymentLabel(locale: string): string {
   const date = new Date();
   date.setMonth(date.getMonth() + 1);
-  return monthYearFormatter.format(date);
+  return new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(date);
 }
 
 // Amortissement classique (mensualité fixe) — l'alternative "échéances fixes" au
@@ -65,15 +65,22 @@ export function InstallmentSchedule({
   creditIssued,
   annualInterestRatePct,
   estimatedYieldPct,
+  yieldAssetTicker,
 }: {
   creditIssued: number;
   annualInterestRatePct: number | null;
-  // Calculé par le calculateur (cf. useEstimatedYield, moyenne réelle sur 12 mois des
-  // actifs générateurs de rendement) — c'est l'algorithme qui détermine cette hypothèse,
-  // jamais le client : affiché en lecture seule, pas un champ de formulaire (cf. décision
-  // produit du 30 août 2026, revenant sur le champ modifiable introduit précédemment).
+  // Calculé par le calculateur (cf. useEstimatedYield) — c'est l'algorithme qui détermine
+  // cette hypothèse, jamais le client : affiché en lecture seule, pas un champ de
+  // formulaire (cf. décision produit du 30 août 2026, revenant sur le champ modifiable
+  // introduit précédemment).
   estimatedYieldPct: number | null;
+  // Actif de gage sur lequel estimatedYieldPct est basé (cf. YieldAssetPicker,
+  // credit-simulator.tsx) — `null` = moyenne des 8 actifs éligibles (cf.
+  // resolveEstimatedYield). Uniquement pour affichage.
+  yieldAssetTicker: AcceptedCurrency | null;
 }) {
+  const t = useTranslations("Dashboard.installmentSchedule");
+  const locale = useLocale();
   const [durationMonths, setDurationMonths] = useState<(typeof DURATION_OPTIONS)[number]>(12);
   const yieldPct = estimatedYieldPct !== null ? estimatedYieldPct.toFixed(1) : "0";
 
@@ -92,17 +99,14 @@ export function InstallmentSchedule({
 
   return (
     <div className="rounded-lg border border-dashed bg-muted/30 px-4 py-3.5">
-      <h4 className="text-sm font-medium">Simulation à échéances fixes</h4>
+      <h4 className="text-sm font-medium">{t("title")}</h4>
       <p className="mt-1 text-xs text-muted-foreground">
-        Calculée automatiquement à partir du rendement réel estimé : intérêts générés, mensualité
-        à votre charge et date du premier remboursement. Le rendement réduit la mensualité,
-        plafonné à {YIELD_REPAYMENT_CAP_PCT}% (le même plafond que le remboursement automatique
-        réel).
+        {t("intro", { cap: YIELD_REPAYMENT_CAP_PCT })}
       </p>
 
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
         <div className="grid gap-1.5">
-          <Label className="text-xs">Durée</Label>
+          <Label className="text-xs">{t("durationLabel")}</Label>
           <div className="flex flex-wrap gap-1.5">
             {DURATION_OPTIONS.map((months) => (
               <button
@@ -115,57 +119,54 @@ export function InstallmentSchedule({
                     : "border-border text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {months} mois
+                {t("monthsCount", { months })}
               </button>
             ))}
           </div>
         </div>
         <div className="grid gap-1.5">
-          <Label className="text-xs">Rendement annuel estimé (%)</Label>
+          <Label className="text-xs">{t("estimatedYieldLabel")}</Label>
           <div className="flex h-8 items-center rounded-md border border-input bg-background px-3 text-sm font-medium tabular-nums">
             {yieldPct}%
           </div>
           <p className="text-[11px] text-muted-foreground">
-            {estimatedYieldPct !== null
-              ? "Calculé automatiquement à partir de la performance réelle sur 12 mois."
-              : "Calcul en cours…"}
+            {estimatedYieldPct === null
+              ? t("yieldComputing")
+              : yieldAssetTicker
+                ? t("yieldComputedNoteAsset", { asset: yieldAssetTicker })
+                : t("yieldComputedNote")}
           </p>
         </div>
       </div>
 
       <div className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
         <div className="rounded-md bg-background px-3 py-2">
-          <div className="text-[11px] text-muted-foreground">Mensualité brute</div>
+          <div className="text-[11px] text-muted-foreground">{t("grossPayment")}</div>
           <div className="font-semibold tabular-nums">{formatUsd(schedule.grossMonthlyPayment)}</div>
         </div>
         <div className="rounded-md bg-background px-3 py-2">
-          <div className="text-[11px] text-muted-foreground">Réduction estimée</div>
+          <div className="text-[11px] text-muted-foreground">{t("estimatedReduction")}</div>
           <div className="font-semibold tabular-nums text-emerald-600 dark:text-primary">
             − {formatUsd(schedule.yieldReductionUsd)}
           </div>
         </div>
         <div className="rounded-md bg-background px-3 py-2">
-          <div className="text-[11px] text-muted-foreground">Mensualité nette estimée</div>
+          <div className="text-[11px] text-muted-foreground">{t("netPayment")}</div>
           <div className="font-semibold tabular-nums">{formatUsd(schedule.netMonthlyPayment)}</div>
         </div>
         <div className="rounded-md bg-background px-3 py-2">
-          <div className="text-[11px] text-muted-foreground">1er remboursement</div>
-          <div className="font-semibold tabular-nums capitalize">{firstPaymentLabel()}</div>
+          <div className="text-[11px] text-muted-foreground">{t("firstPayment")}</div>
+          <div className="font-semibold tabular-nums capitalize">{firstPaymentLabel(locale)}</div>
         </div>
       </div>
 
       <p className="mt-2.5 flex items-start gap-1.5 text-xs text-muted-foreground">
         <Info className="mt-0.5 size-3.5 shrink-0" />
-        Intérêts totaux sur {durationMonths} mois (avant réduction) :{" "}
-        {formatUsd(schedule.totalInterest)}. Estimation non garantie, à titre indicatif
-        uniquement : le remboursement réel reste flexible (cf. simulation ci-dessus).
+        {t("totalInterestNote", { months: durationMonths, amount: formatUsd(schedule.totalInterest) })}
       </p>
       <p className="mt-1.5 flex items-start gap-1.5 text-xs text-muted-foreground">
         <Info className="mt-0.5 size-3.5 shrink-0" />
-        Cette simulation suppose que vous utilisez l&apos;intégralité du crédit dès son émission
-        (scénario prudent, servant de base au calcul ci-dessus). En pratique, tant que vous
-        n&apos;utilisez pas votre crédit (carte), aucun remboursement ni intérêt n&apos;est dû :
-        c&apos;est une ligne de crédit, pas un prêt versé en une fois.
+        {t("creditLineNote")}
       </p>
     </div>
   );

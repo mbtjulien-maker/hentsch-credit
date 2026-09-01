@@ -1,11 +1,11 @@
 "use client";
 
 import { LogOut } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
 import type { KycStatus } from "@/lib/api";
-import { KYC_STATUS_LABELS } from "@/lib/format";
 
 function kycVariant(status: KycStatus): "default" | "secondary" | "destructive" {
   if (status === "VERIFIED") return "default";
@@ -17,6 +17,8 @@ function kycVariant(status: KycStatus): "default" | "secondary" | "destructive" 
 // est celui de la session réelle (cf. DashboardProvider/AuthController.me), plus une
 // simple sélection. Seule action possible : se déconnecter.
 export function AccountMenu() {
+  const t = useTranslations("Dashboard.labels");
+  const tMenu = useTranslations("Dashboard.accountMenu");
   const { selectedUser, logout } = useDashboard();
   if (!selectedUser) return null;
 
@@ -26,15 +28,15 @@ export function AccountMenu() {
         {selectedUser.email}
       </span>
       <Badge variant={kycVariant(selectedUser.kycStatus)}>
-        {KYC_STATUS_LABELS[selectedUser.kycStatus]}
+        {t(`kycStatus.${selectedUser.kycStatus}`)}
       </Badge>
-      {selectedUser.role === "ADMIN" && <Badge variant="outline">Admin</Badge>}
+      {selectedUser.role === "ADMIN" && <Badge variant="outline">{tMenu("admin")}</Badge>}
       <Button
         type="button"
         variant="ghost"
         size="icon-sm"
         onClick={() => void logout()}
-        aria-label="Se déconnecter"
+        aria-label={tMenu("logout")}
       >
         <LogOut className="size-4" />
       </Button>

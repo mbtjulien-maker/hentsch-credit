@@ -640,17 +640,30 @@
   "Sitemap": {
     "meta": {
       "title": "Plan du site · Hentsch Credit",
-      "description": "L'ensemble des pages accessibles publiquement sur Hentsch Credit, sans connexion à un compte."
+      "description": "L'ensemble des pages de Hentsch Credit, côté visiteur et côté espace client."
     },
     "eyebrow": "Navigation",
     "title": "Plan du site",
-    "description": "L'ensemble des pages accessibles publiquement, sans connexion à un compte.",
+    "description": "L'ensemble des pages du site, côté visiteur et côté espace client.",
     "groups": {
-      "discover": { "title": "Découvrir la plateforme" },
-      "account": { "title": "Accès au compte" },
-      "help": { "title": "Aide & contact" },
-      "contractual": { "title": "Documentation contractuelle" },
-      "privacy": { "title": "Données personnelles" }
+      "discover": {
+        "title": "Découvrir la plateforme"
+      },
+      "account": {
+        "title": "Accès au compte"
+      },
+      "help": {
+        "title": "Aide & contact"
+      },
+      "contractual": {
+        "title": "Documentation contractuelle"
+      },
+      "privacy": {
+        "title": "Données personnelles"
+      },
+      "client": {
+        "title": "Espace client (connexion requise)"
+      }
     },
     "links": {
       "home": "Accueil",
@@ -673,7 +686,17 @@
       "privacyPolicy": "Politique de confidentialité",
       "cookiePolicy": "Politique de cookies"
     },
-    "clientAreaNote": "L'espace client connecté et l'espace de gestion interne ne figurent pas ci-dessus : leur contenu dépend de votre statut de vérification d'identité et de votre rôle sur le compte, et n'est accessible qu'après connexion."
+    "clientLinks": {
+      "home": "Accueil",
+      "balance": "Solde",
+      "market": "Marché",
+      "credit": "Crédit",
+      "cards": "Cartes",
+      "history": "Historique",
+      "profile": "Profil",
+      "support": "Support"
+    },
+    "clientAreaNote": "Le back-office de gestion interne ne figure pas ci-dessus : son contenu dépend de votre rôle sur le compte et n'est accessible qu'aux comptes autorisés. Les pages de l'espace client listées ci-dessus nécessitent une connexion avec un compte vérifié — leur contenu réel (soldes, crédit, historique) est propre à chaque client."
   },
   "Market": {
     "meta": {
@@ -851,6 +874,7 @@
     "title": "Notre stratégie d'investissement sur les métaux industriels",
     "intro": "Au-delà des métaux précieux, la banque accepte désormais en garantie des métaux industriels et matières premières tokenisés, et déploie sur ces actifs sa propre stratégie de trésorerie. Voici, en toute transparence, comment elle fonctionne et le plan d'action suivi.",
     "apyTargetLabel": "APY, objectif indicatif de la banque",
+    "apyTargetValue": "8 à 14%",
     "apyTargetNote": "Objectif de la stratégie de trésorerie propre de la banque sur ces actifs, pas une garantie, et sans aucun effet sur le calcul de votre crédit. Le remboursement automatique de votre crédit reste celui décrit plus haut : la plus-value réelle de votre gage, plafonnée à 60%.",
     "apyObjective": "APY objectif",
     "pillars": {
@@ -881,26 +905,69 @@
       "capital": "Capital de 10 M$",
       "reallocationNote": "En réallouant une part de la trésorerie vers l'apport de liquidité (Pilier C), ce rendement net peut monter jusqu'à l'objectif de 10,2%, dans le haut de la fourchette indicative de 8 à 14% affichée plus haut, sans effet de levier supplémentaire ni garantie de résultat.",
       "rows": {
-        "native": { "label": "Rendement natif du Platine (plus-value physique)", "basis": "1,5% sur 10 M$" },
-        "basis": { "label": "Basis trade / contango sur futures", "basis": "3,5% sur 10 M$" },
-        "stablecoinYield": { "label": "Rendement des stablecoins empruntés placés (BUIDL)", "basis": "5,0% sur 5 M$" },
-        "borrowCost": { "label": "Coût de l'emprunt de stablecoins", "basis": "-3,2% sur 5 M$" },
-        "operational": { "label": "Coûts opérationnels, garde & assurance", "basis": "0,4% sur 10 M$" }
+        "native": {
+          "label": "Rendement natif du Platine (plus-value physique)",
+          "basis": "1,5% sur 10 M$"
+        },
+        "basis": {
+          "label": "Basis trade / contango sur futures",
+          "basis": "3,5% sur 10 M$"
+        },
+        "stablecoinYield": {
+          "label": "Rendement des stablecoins empruntés placés (BUIDL)",
+          "basis": "5,0% sur 5 M$"
+        },
+        "borrowCost": {
+          "label": "Coût de l'emprunt de stablecoins",
+          "basis": "-3,2% sur 5 M$"
+        },
+        "operational": {
+          "label": "Coûts opérationnels, garde & assurance",
+          "basis": "0,4% sur 10 M$"
+        }
       }
     },
     "roadmapTitle": "Feuille de route sur 12 mois",
     "roadmap": {
-      "phase1": { "window": "Mois 1 à 3", "title": "Structuration & conformité", "detail": "Cadre juridique, sélection des dépositaires agréés, audit des émetteurs." },
-      "phase2": { "window": "Mois 4 à 6", "title": "Projet pilote", "detail": "Enveloppe pilote de 5 M$ sur le Platine, premiers circuits d'arbitrage." },
-      "phase3": { "window": "Mois 7 à 9", "title": "Montée en charge", "detail": "Capital étendu à 25 M$, extension au Palladium et au Cuivre." },
-      "phase4": { "window": "Mois 10 à 12", "title": "Industrialisation", "detail": "Reporting temps réel et intégration comptable de bout en bout." }
+      "phase1": {
+        "window": "Mois 1 à 3",
+        "title": "Structuration & conformité",
+        "detail": "Cadre juridique, sélection des dépositaires agréés, audit des émetteurs."
+      },
+      "phase2": {
+        "window": "Mois 4 à 6",
+        "title": "Projet pilote",
+        "detail": "Enveloppe pilote de 5 M$ sur le Platine, premiers circuits d'arbitrage."
+      },
+      "phase3": {
+        "window": "Mois 7 à 9",
+        "title": "Montée en charge",
+        "detail": "Capital étendu à 25 M$, extension au Palladium et au Cuivre."
+      },
+      "phase4": {
+        "window": "Mois 10 à 12",
+        "title": "Industrialisation",
+        "detail": "Reporting temps réel et intégration comptable de bout en bout."
+      }
     },
     "risksTitle": "Risques identifiés & mesures de protection",
     "risks": {
-      "counterparty": { "risk": "Contrepartie & audit", "mitigation": "Audits bimensuels de la réserve (Proof of Reserve) par des cabinets indépendants." },
-      "smartContract": { "risk": "Smart contract", "mitigation": "Protocoles exclusivement audités à multiples reprises, couverts par une assurance institutionnelle." },
-      "liquidity": { "risk": "Liquidité", "mitigation": "Convention de rachat direct avec les émetteurs physiques, préavis maximum de 48h." },
-      "liquidation": { "risk": "Liquidation du collatéral", "mitigation": "Ratio de sur-collatéralisation strict (LTV ≤ 50%) avec rééquilibrage automatisé." }
+      "counterparty": {
+        "risk": "Contrepartie & audit",
+        "mitigation": "Audits bimensuels de la réserve (Proof of Reserve) par des cabinets indépendants."
+      },
+      "smartContract": {
+        "risk": "Smart contract",
+        "mitigation": "Protocoles exclusivement audités à multiples reprises, couverts par une assurance institutionnelle."
+      },
+      "liquidity": {
+        "risk": "Liquidité",
+        "mitigation": "Convention de rachat direct avec les émetteurs physiques, préavis maximum de 48h."
+      },
+      "liquidation": {
+        "risk": "Liquidation du collatéral",
+        "mitigation": "Ratio de sur-collatéralisation strict (LTV ≤ 50%) avec rééquilibrage automatisé."
+      }
     },
     "governanceTitle": "Gouvernance & séparation des fonds",
     "governance": {
@@ -956,10 +1023,12 @@
       },
       "custodyFees": {
         "label": "Frais de garde du collatéral",
+        "value": "0,5% / an",
         "detail": "Sur le montant du gage verrouillé, tant que la position reste active."
       },
       "positionDuration": {
         "label": "Durée de la position",
+        "value": "12 mois",
         "detail": "Renouvelable ; le gage reste bloqué tant que le crédit utilisé n'est pas remboursé."
       },
       "automaticRepayment": {
@@ -1003,5 +1072,394 @@
         "answer": "Chaque devise applique son propre taux de référence monétaire (SOFR pour l'USD, EURIBOR pour l'EUR) avant d'y ajouter la même prime de risque de 8,5 points, d'où l'écart de 1,5 point entre les deux."
       }
     }
+  },
+  "DashboardShell": {
+    "sidebar": {
+      "subtitle": "Tableau de bord",
+      "clientNavAriaLabel": "Navigation du compte",
+      "backofficeNavAriaLabel": "Navigation back-office",
+      "mobileNavAriaLabel": "Navigation entre les sections du tableau de bord",
+      "client": {
+        "home": "Accueil",
+        "balance": "Solde",
+        "market": "Marché",
+        "credit": "Crédit",
+        "cards": "Cartes",
+        "history": "Historique",
+        "profile": "Profil",
+        "support": "Support"
+      },
+      "backoffice": {
+        "label": "Back-office",
+        "creditRequests": "Demandes de crédit",
+        "accountRequests": "Demandes de compte",
+        "adminArea": "Espace Admin"
+      }
+    },
+    "legalFooter": {
+      "ariaLabel": "Liens légaux",
+      "legalNotice": "Mentions légales",
+      "terms": "CGU",
+      "privacy": "Confidentialité",
+      "regulation": "Réglementation"
+    }
+  },
+  "Dashboard": {
+    "home": {
+      "loadError": "Impossible de charger le tableau de bord"
+    },
+    "balanceCards": {
+      "depositBalance": {
+        "title": "Solde de dépôt",
+        "description": "Montant disponible dans votre wallet, aucune ligne de crédit active pour l'instant."
+      },
+      "purchasingPower": {
+        "title": "Pouvoir d'achat",
+        "descriptionNoCredit": "Identique au solde de dépôt tant qu'aucun crédit n'est accordé."
+      },
+      "availableCredit": {
+        "title": "Crédit disponible",
+        "description": "Aucune ligne active, soumettez une demande depuis Crédit."
+      },
+      "globalBalance": {
+        "title": "Solde global",
+        "description": "Disponible + gage verrouillé + crédit accordé − crédit utilisé"
+      },
+      "lockedCollateral": {
+        "title": "Gage verrouillé",
+        "description": "Retirable seulement après remboursement intégral"
+      },
+      "creditLine": {
+        "title": "Ligne de crédit",
+        "description": "{available} restant · {used} utilisé"
+      }
+    },
+    "walletActions": {
+      "genericError": "Une erreur est survenue.",
+      "buyByCard": {
+        "trigger": "Acheter par carte",
+        "dialogTitle": "Recharger par carte bancaire",
+        "dialogDescription": "Paiement sécurisé géré par Mollie. Le solde disponible est crédité dès confirmation du paiement.",
+        "amountLabel": "Montant (USD)",
+        "submit": "Continuer vers le paiement"
+      },
+      "deposit": {
+        "trigger": "Déposer",
+        "dialogTitle": "Déposer des fonds",
+        "descriptionSelect": "Choisissez l'actif et le réseau, puis consultez l'adresse de dépôt correspondante.",
+        "descriptionPool": "Adresse de dépôt de la banque pour cet actif : déclarez votre dépôt une fois l'envoi effectué.",
+        "descriptionLegacy": "Adresse de dépôt individuelle générée pour votre compte, créditée automatiquement dès confirmation on-chain.",
+        "assetLabel": "Actif",
+        "networkLabel": "Réseau",
+        "continue": "Continuer",
+        "addressLabel": "Adresse de dépôt ({currency} sur {chain})",
+        "poolAddressNote": "Adresse de gestion des actifs de la banque, commune à tous les clients. N'y envoyez que du {currency} sur {chain}.",
+        "declaredAlert": "Dépôt déclaré, visible dans votre historique, en attente de validation après réception des fonds.",
+        "sentAmountLabel": "Montant envoyé ({currency})",
+        "sentAmountNote": "Une fois l'envoi effectué, déclarez-le ci-dessous pour qu'il apparaisse dans votre historique : un conseiller le valide dès réception.",
+        "declareButton": "J'ai envoyé les fonds",
+        "legacyAddressLabel": "Votre adresse de dépôt",
+        "legacyNote": "N'envoyez que du {currency} sur {chain} à cette adresse. Le solde est crédité après confirmation on-chain."
+      },
+      "withdraw": {
+        "trigger": "Retirer",
+        "dialogTitle": "Retirer des fonds",
+        "dialogDescription": "Solde disponible : {balance}. Le gage verrouillé n'est retirable qu'après remboursement intégral du crédit.",
+        "amountLabel": "Montant",
+        "destinationLabel": "Adresse destinataire",
+        "submit": "Confirmer le retrait",
+        "successToast": "Retrait demandé avec succès."
+      }
+    },
+    "marketView": {
+      "dataProvider": "Données fournies par CoinMarketCap",
+      "pricesUnavailable": "Prix indisponibles.",
+      "title": "Marché en temps réel",
+      "description": "Cours, variation 24h, volumes et capitalisation des actifs acceptés en garantie.",
+      "loading": "Chargement…",
+      "columns": {
+        "asset": "Actif",
+        "price": "Prix",
+        "change24h": "Var. 24h",
+        "volume24h": "Volume 24h",
+        "marketCap": "Cap. marché",
+        "trend12m": "Tendance 12 mois"
+      },
+      "acceptedSection": {
+        "title": "Acceptés en garantie",
+        "yieldNote": "Rendement = plus-value du gage remboursant automatiquement jusqu'à 60% du crédit (métaux précieux, métaux industriels, ETH)"
+      },
+      "othersSection": {
+        "title": "Autres cryptos (information seulement)"
+      },
+      "badges": {
+        "acceptedPegged": "Accepté · 1:1",
+        "acceptedSpot": "Accepté · spot",
+        "yieldTitle": "Sa plus-value rembourse automatiquement jusqu'à 60% du crédit émis",
+        "yield": "Rendement",
+        "targetApyTitle": "Objectif indicatif de la stratégie de trésorerie de la banque sur cet actif, pas une garantie, sans effet sur le calcul de votre crédit",
+        "targetApy": "Objectif {min}-{max}% APY"
+      }
+    },
+    "cardsSection": {
+      "title": "Cartes virtuelles",
+      "description": "Émission Visa/Mastercard (intégration Étape 4)",
+      "noCards": "Aucune carte émise pour ce compte.",
+      "limit": "Plafond {amount}",
+      "step4Note": "Disponible à l'Étape 4 (intégration Stripe Issuing / Marqeta)",
+      "issueCard": "Émettre une carte"
+    },
+    "labels": {
+      "cardStatus": {
+        "PENDING": "En attente",
+        "ACTIVE": "Active",
+        "BLOCKED": "Bloquée",
+        "CLOSED": "Clôturée"
+      },
+      "kycStatus": {
+        "PENDING": "KYC en attente",
+        "VERIFIED": "KYC vérifié",
+        "REJECTED": "KYC rejeté"
+      },
+      "transactionType": {
+        "DEPOSIT": "Dépôt",
+        "COLLATERAL_LOCK": "Mise en gage",
+        "CREDIT_ISSUED": "Crédit émis",
+        "CARD_PAYMENT": "Paiement carte",
+        "REPAYMENT": "Remboursement",
+        "WITHDRAWAL": "Retrait",
+        "ORIGINATION_FEE": "Frais d'origination",
+        "INTEREST_PAYMENT": "Intérêts payés",
+        "CARD_TOPUP": "Recharge par carte",
+        "YIELD_REPAYMENT": "Remboursement par rendement du gage",
+        "LIQUIDATION": "Liquidation"
+      },
+      "transactionStatus": {
+        "PENDING": "En attente",
+        "COMPLETED": "Complétée",
+        "FAILED": "Échouée"
+      },
+      "creditRequestStatus": {
+        "PENDING": "En attente de validation",
+        "APPROVED": "Approuvée",
+        "REJECTED": "Rejetée",
+        "FULFILLED": "Crédit émis"
+      },
+      "addressLabel": {
+        "DOMICILE": "Domicile",
+        "FISCALE": "Fiscale",
+        "POSTALE": "Postale",
+        "PROFESSIONNELLE": "Professionnelle"
+      }
+    },
+    "profileSection": {
+      "genericError": "Une erreur est survenue.",
+      "fullName": "Nom complet",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "noAddress": "Aucune adresse renseignée pour l'instant.",
+      "employmentTitle": "Situation professionnelle",
+      "activity": "Activité",
+      "employer": "Employeur",
+      "notProvided": "Non renseigné",
+      "notProvidedFeminine": "Non renseignée",
+      "role": "Fonction",
+      "annualIncome": "Revenu annuel",
+      "noEmployment": "Aucune situation professionnelle renseignée pour l'instant.",
+      "managedWallet": "Wallet personnel",
+      "managedWalletNote": "Identifiant interne utilisé par la banque pour le suivi de vos dépôts sur les actifs mutualisés (USDT, USDC, XAUT, dEURO).",
+      "title": "Profil",
+      "description": "Informations du compte",
+      "email": "Email",
+      "kycStatus": "Statut KYC",
+      "memberSince": "Client depuis",
+      "depositAddresses": "Adresses de dépôt (crypto)",
+      "noWallets": "Aucune adresse générée pour l'instant."
+    },
+    "supportSection": {
+      "title": "Contacter le support",
+      "description": "Une question sur votre compte, votre gage ou un dépôt ?",
+      "liveChat": "Chat en direct (bientôt disponible)"
+    },
+    "transactionHistory": {
+      "title": "Historique des transactions",
+      "description": "Journal complet des mouvements du compte",
+      "noTransactions": "Aucune transaction pour ce compte.",
+      "columns": {
+        "type": "Type",
+        "amount": "Montant",
+        "status": "Statut",
+        "onChainReference": "Référence on-chain",
+        "date": "Date"
+      }
+    },
+    "accountMenu": {
+      "admin": "Admin",
+      "logout": "Se déconnecter"
+    },
+    "creditOverview": {
+      "availableBalance": "Solde disponible",
+      "lockedCollateral": "Gage verrouillé",
+      "availableCredit": "Crédit disponible",
+      "totalPurchasingPower": "Pouvoir d'achat total",
+      "currentRates": "Taux actuels",
+      "interestRateLine": "{rate}%/an d'intérêt",
+      "feesLine": "{origination}% d'origination · {custody}% de garde",
+      "ratioNote": "Ratio de crédit : 350 % du gage verrouillé, au taux en vigueur lors du verrouillage.",
+      "repaymentNote": "Remboursement : jusqu'à 60 % du crédit peut être couvert automatiquement par le rendement du gage (or, argent, ETH, platine, palladium, cuivre, pétrole synthétique) ; les 40 % restants sont à rembourser par apport personnel.",
+      "myRequests": "Mes demandes",
+      "noRequests": "Aucune demande pour l'instant."
+    },
+    "creditForm": {
+      "title": "Gérer ma ligne de crédit",
+      "description": "Le crédit s'obtient sur demande : soumettez le gage envisagé, puis déposez les fonds depuis <balance>Solde</balance> une fois la demande approuvée.",
+      "tabRequest": "Demander un crédit",
+      "tabManage": "Gérer / rembourser",
+      "loading": "Chargement…",
+      "pendingNote": "Votre demande de crédit est en attente de validation. Une fois approuvée, direction <balance>Solde</balance> pour générer l'adresse de dépôt et débloquer le crédit.",
+      "approvedNote": "Rendez-vous dans <balance>Solde</balance> pour choisir l'actif et le réseau, puis générer l'adresse de dépôt dédiée à cette demande : le crédit sera émis automatiquement dès réception des fonds.",
+      "goToBalance": "Aller à Solde",
+      "genericError": "Une erreur est survenue.",
+      "submitRequest": "Soumettre une demande de crédit",
+      "simulationOnlyNote": "Simulation uniquement : une demande est déjà en cours (voir ci-dessus).",
+      "usedCredit": "Crédit utilisé",
+      "needMoreCredit": "Besoin de plus de crédit ?",
+      "newRequestLink": "Faire une nouvelle demande",
+      "nothingToRepay": "Aucun crédit utilisé actuellement : rien à rembourser.",
+      "repayAmountLabel": "Montant à rembourser",
+      "repayButton": "Rembourser",
+      "repayFullNote": "Remboursement intégral : le gage sera libéré vers le solde disponible.",
+      "repayRemainingNote": "Crédit utilisé restant après remboursement : {amount}",
+      "repaymentHistory": "Évolution du remboursement",
+      "yieldRepaymentTag": "rendement du gage",
+      "repaySuccessToast": "Remboursement effectué avec succès.",
+      "repayFullToast": "Remboursement intégral effectué : le gage est libéré."
+    },
+    "creditSimulator": {
+      "amountLabel": "Montant de gage envisagé (USD)",
+      "currentBalance": "Solde actuel {amount}",
+      "amountAriaLabel": "Montant simulé",
+      "segments": {
+        "available": "Disponible restant",
+        "locked": "Gage envisagé",
+        "credit": "Crédit accordé (total)"
+      },
+      "creditForAmount": "Crédit accordé pour ce montant",
+      "annualInterestRate": "Taux d'intérêt annuel ({currency})",
+      "perYear": "{rate}%/an",
+      "originationFee": "Frais d'origination (prélevés à l'émission)",
+      "custodyFee": "Frais de garde du collatéral",
+      "fxRateMissing": "Cours EUR/USD indisponible pour l'instant, montants affichés en USD.",
+      "depositShortfall": "Il vous manque {amount} par rapport à votre solde actuel pour atteindre ce montant, à déposer une fois la demande approuvée.",
+      "usedCredit": "Crédit utilisé",
+      "simulatedPurchasingPower": "Pouvoir d'achat simulé",
+      "currentPurchasingPower": "Pouvoir d'achat actuel",
+      "noAmountSimulatedNote": "Aucun montant simulé pour l'instant : ceci est votre pouvoir d'achat actuel (disponible + gage + crédit accordé − crédit utilisé). Tapez un montant ci-dessus, même sans solde disponible, pour voir ce qu'une demande de crédit vous permettrait d'obtenir.",
+      "yieldAssetLabel": "Actif de gage envisagé (base de l'estimation)",
+      "yieldAssetBlended": "Moyenne tous actifs"
+    },
+    "repaymentProjection": {
+      "title": "Projection de remboursement à long terme",
+      "intro": "Remboursement combiné : rendement moyen réel des actifs générateurs de rendement (calculé automatiquement) + apport externe suggéré pour rester dans la durée contractuelle (celui-ci modifiable). Estimation non garantie, à titre indicatif uniquement.",
+      "estimatedYieldLabel": "Rendement annuel estimé (%)",
+      "yieldComputedNote": "Calculé automatiquement à partir de la performance réelle sur 12 mois.",
+      "yieldComputing": "Calcul en cours…",
+      "externalRepaymentLabel": "Remboursement externe mensuel ($)",
+      "externalRepaymentNote": "Suggéré pour rembourser en {months} mois, modifiable (réduisez-le pour explorer un remboursement plus lent, porté par le seul rendement).",
+      "fillInPrompt": "Renseignez un rendement estimé ou un remboursement mensuel pour projeter une durée de remboursement.",
+      "estimatedDuration": "Durée estimée",
+      "durationMonths": "{months} mois",
+      "durationMonthsWithYears": "{months} mois (≈ {years} ans)",
+      "durationOverflow": "> {months} mois",
+      "estimatedTotalInterest": "Intérêts totaux estimés",
+      "overContractualTerm": "Cette projection dépasse la durée contractuelle habituelle de {months} mois. Augmentez le rendement estimé ou le remboursement mensuel pour rester dans les temps.",
+      "columns": {
+        "month": "Mois",
+        "payment": "Versement",
+        "remainingBalance": "Solde restant"
+      },
+      "yieldComputedNoteAsset": "Calculé automatiquement à partir de la performance réelle de {asset} sur 12 mois."
+    },
+    "installmentSchedule": {
+      "title": "Simulation à échéances fixes",
+      "intro": "Calculée automatiquement à partir du rendement réel estimé : intérêts générés, mensualité à votre charge et date du premier remboursement. Le rendement réduit la mensualité, plafonné à {cap}% (le même plafond que le remboursement automatique réel).",
+      "durationLabel": "Durée",
+      "monthsCount": "{months} mois",
+      "estimatedYieldLabel": "Rendement annuel estimé (%)",
+      "yieldComputedNote": "Calculé automatiquement à partir de la performance réelle sur 12 mois.",
+      "yieldComputing": "Calcul en cours…",
+      "grossPayment": "Mensualité brute",
+      "estimatedReduction": "Réduction estimée",
+      "netPayment": "Mensualité nette estimée",
+      "firstPayment": "1er remboursement",
+      "totalInterestNote": "Intérêts totaux sur {months} mois (avant réduction) : {amount}. Estimation non garantie, à titre indicatif uniquement : le remboursement réel reste flexible (cf. simulation ci-dessus).",
+      "creditLineNote": "Cette simulation suppose que vous utilisez l'intégralité du crédit dès son émission (scénario prudent, servant de base au calcul ci-dessus). En pratique, tant que vous n'utilisez pas votre crédit (carte), aucun remboursement ni intérêt n'est dû : c'est une ligne de crédit, pas un prêt versé en une fois.",
+      "yieldComputedNoteAsset": "Calculé automatiquement à partir de la performance réelle de {asset} sur 12 mois."
+    },
+    "assetPicker": {
+      "onlyNetworkAvailable": "Seul réseau disponible pour cet actif"
+    },
+    "creditRequestDeposit": {
+      "genericError": "Une erreur est survenue.",
+      "title": "Demande de crédit approuvée, dépôt en attente",
+      "description": "{amount} ({currency}) à déposer pour que le crédit soit émis automatiquement.",
+      "yourDepositAddress": "Votre adresse de dépôt",
+      "addressNote": "N'envoyez que du {currency} sur {chain} à cette adresse. Déposez au moins {amount} : le crédit est émis automatiquement dès réception.",
+      "assetLabel": "Actif",
+      "networkLabel": "Réseau",
+      "generateButton": "Générer l'adresse de dépôt"
+    },
+    "authLoadError": {
+      "title": "Impossible de vérifier votre session"
+    },
+    "soldePage": {
+      "topupConfirmedTitle": "Recharge par carte confirmée",
+      "topupConfirmedDescription": "Le solde disponible ci-dessous reflète la recharge.",
+      "loadError": "Impossible de charger le solde"
+    },
+    "creditPage": {
+      "loadError": "Impossible de charger la ligne de crédit"
+    },
+    "cardsPage": {
+      "loadError": "Impossible de charger les cartes"
+    },
+    "historyPage": {
+      "loadError": "Impossible de charger l'historique"
+    },
+    "profilePage": {
+      "loadError": "Impossible de charger le profil"
+    },
+    "simulatedCheckout": {
+      "genericError": "Une erreur est survenue.",
+      "sandboxNotice": "Paiement simulé (mode sandbox Mollie)",
+      "title": "Confirmer le paiement par carte",
+      "description": "Cette page remplace le checkout Mollie hébergé tant qu'aucune clé API n'est configurée côté banque. Aucune donnée de carte réelle n'est demandée ici.",
+      "notFoundTitle": "Paiement introuvable",
+      "amountToDebit": "Montant à débiter",
+      "confirmButton": "Confirmer le paiement",
+      "cancelButton": "Annuler",
+      "alreadyConfirmedTitle": "Paiement déjà confirmé",
+      "alreadyConfirmedDescription": "Le solde a déjà été crédité pour ce paiement.",
+      "failedTitle": "Paiement échoué",
+      "failedDescription": "Ce paiement n'a pas abouti et le solde n'a pas été crédité."
+    }
+  },
+  "CurrencyLabels": {
+    "USDS": "USDS",
+    "DAI": "DAI",
+    "USDE": "USDe",
+    "PYUSD": "PYUSD",
+    "PAXG": "PAXG (or)",
+    "XAUT": "XAUT (or)",
+    "USDT": "USDT",
+    "USDC": "USDC",
+    "DEURO": "dEURO",
+    "ETH": "ETH",
+    "SHIB": "SHIB",
+    "KAG": "KAG (argent)",
+    "XPT": "Platine tokenisé",
+    "XPD": "Palladium tokenisé",
+    "XCU": "Cuivre tokenisé",
+    "WTI": "Pétrole synthétique (WTI)"
   }
 }

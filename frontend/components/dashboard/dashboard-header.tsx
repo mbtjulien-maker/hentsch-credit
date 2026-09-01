@@ -1,16 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import { Landmark } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { AccountMenu } from "@/components/dashboard/account-menu";
 import { MobileNav } from "@/components/dashboard/sidebar";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
+import { LanguageSwitcher } from "@/components/marketing/language-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 // Barre supérieure : contexte de session (compte connecté + statut KYC), pas de la
 // navigation — celle-ci vit désormais dans la sidebar (cf. sidebar.tsx). La marque ne
 // réapparaît ici qu'en dessous de `lg`, quand la sidebar est masquée.
 export function DashboardHeader() {
+  const t = useTranslations("DashboardShell.sidebar");
   const { selectedUser } = useDashboard();
 
   return (
@@ -22,10 +25,11 @@ export function DashboardHeader() {
           </div>
           <div>
             <h1 className="text-lg font-semibold leading-none">Hentsch Credit</h1>
-            <p className="text-sm text-muted-foreground">Tableau de bord du compte</p>
+            <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
           </div>
         </Link>
         <div className="flex items-center gap-2">
+          <LanguageSwitcher />
           <ThemeToggle />
           <AccountMenu />
         </div>

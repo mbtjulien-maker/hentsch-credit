@@ -3,6 +3,7 @@
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { AlertTriangle, CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BalanceCards } from "@/components/dashboard/balance-cards";
@@ -17,15 +18,14 @@ import { useCreditRequests } from "@/lib/use-credit-requests";
 // Suspense pour ne pas empêcher le prerendering du reste de la page (cf. doc Next.js
 // "missing-suspense-with-csr-bailout").
 function TopupCompleteBanner() {
+  const t = useTranslations("Dashboard.soldePage");
   const searchParams = useSearchParams();
   if (searchParams.get("topup") !== "complete") return null;
   return (
     <Alert>
       <CheckCircle2 className="size-4" />
-      <AlertTitle>Recharge par carte confirmée</AlertTitle>
-      <AlertDescription>
-        Le solde disponible ci-dessous reflète la recharge.
-      </AlertDescription>
+      <AlertTitle>{t("topupConfirmedTitle")}</AlertTitle>
+      <AlertDescription>{t("topupConfirmedDescription")}</AlertDescription>
     </Alert>
   );
 }
@@ -35,6 +35,7 @@ function TopupCompleteBanner() {
 // (simuler/demander/rembourser) vit exclusivement dans /dashboard/credit ; ici, on ne fait
 // que déposer et voir son solde, y compris les adresses de dépôt de chaque crypto.
 export default function SoldePage() {
+  const t = useTranslations("Dashboard.soldePage");
   const { triggerRefresh } = useDashboard();
   const { data: summary, loading, error, selectedUserId } = useSectionData((userId) =>
     api.getBalance(userId),
@@ -45,7 +46,7 @@ export default function SoldePage() {
     return (
       <Alert variant="destructive">
         <AlertTriangle className="size-4" />
-        <AlertTitle>Impossible de charger le solde</AlertTitle>
+        <AlertTitle>{t("loadError")}</AlertTitle>
         <AlertDescription>{error}</AlertDescription>
       </Alert>
     );

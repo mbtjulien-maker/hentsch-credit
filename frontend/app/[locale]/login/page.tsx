@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { LoginForm } from "@/components/login-form";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -9,7 +10,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Login.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/login", title: t("title"), description: t("description") });
 }
 
 export default function LoginPage() {

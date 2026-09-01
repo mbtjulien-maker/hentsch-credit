@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { RefreshCw, Sparkles, TrendingDown, TrendingUp } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -12,7 +13,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { api, ApiError, type MarketOverviewEntry } from "@/lib/api";
+import { MiniSparkline } from "@/components/marketing/performance-chart";
+import { api, ApiError, type AcceptedCurrency, type AssetHistoryEntry, type MarketOverviewEntry } from "@/lib/api";
 import { formatCompactUsd, formatPercent, formatPrice, formatTime } from "@/lib/format";
 
 const REFRESH_INTERVAL_MS = 45_000;
@@ -38,6 +40,7 @@ function ChangeBadge({ pct }: { pct: number | null }) {
 // gratuite CoinMarketCap) — texte seul avec lien, sans logo imposé : plus sobre que le
 // badge logo obligatoire de l'ancienne intégration CoinGecko (décision produit).
 function DataProviderAttribution() {
+  const t = useTranslations("Dashboard.marketView");
   return (
     <a
       href="https://coinmarketcap.com"
@@ -45,15 +48,17 @@ function DataProviderAttribution() {
       rel="noopener noreferrer"
       className="text-xs font-medium text-muted-foreground/80 underline underline-offset-2 hover:text-foreground"
     >
-      Données fournies par CoinMarketCap
+      {t("dataProvider")}
     </a>
   );
 }
 
 export function MarketView() {
+  const t = useTranslations("Dashboard.marketView");
   const [entries, setEntries] = useState<MarketOverviewEntry[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [refreshedAt, setRefreshedAt] = useState<Date | null>(null);
+  const [trends, setTrends] = useState<Map<AcceptedCurrency, AssetHistoryEntry["points"]>>(new Map());
 
   useEffect(() => {
     let ignore = false;
@@ -68,7 +73,7 @@ export function MarketView() {
           setError(null);
         })
         .catch((err) => {
-          if (!ignore) setError(err instanceof ApiError ? err.message : "Prix indisponibles.");
+          if (!ignore) setError(err instanceof ApiError ? err.message : t("pricesUnavailable"));
         });
     }
 
@@ -77,6 +82,29 @@ export function MarketView() {
     return () => {
       ignore = true;
       clearInterval(interval);
+    };
+  }, [t]);
+
+  // Tendance 12 mois — chargée une seule fois (pas à chaque cycle de 45s comme les prix
+  // en direct ci-dessus : un historique annuel n'a pas besoin de cette fraîcheur, et
+  // l'endpoint est déjà mis en cache 6h côté backend, cf. HISTORY_CACHE_TTL_MS). Même
+  // source que useEstimatedYield (simulateurs de crédit) : de vrais points de cours, pas
+  // un sparkline fabriqué — l'API CoinMarketCap gratuite n'en fournit pas nativement,
+  // contrairement à l'ancienne intégration CoinGecko (cf. journal des modifications).
+  useEffect(() => {
+    let ignore = false;
+    api
+      .getYieldHistoryFull()
+      .then((history) => {
+        if (ignore) return;
+        setTrends(new Map(history.map((h) => [h.currency, h.points])));
+      })
+      .catch(() => {
+        // Purement décoratif — la colonne Tendance retombe sur "—" pour ces lignes,
+        // le reste du tableau (prix, variation, volumes) reste pleinement utilisable.
+      });
+    return () => {
+      ignore = true;
     };
   }, []);
 
@@ -87,10 +115,8 @@ export function MarketView() {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Marché en temps réel</CardTitle>
-          <CardDescription>
-            Cours, variation 24h, volumes et capitalisation, comme sur une plateforme d&apos;échange
-          </CardDescription>
+          <CardTitle>{t("title")}</CardTitle>
+          <CardDescription>{t("description")}</CardDescription>
         </div>
         <div className="flex flex-col items-end gap-1.5">
           <DataProviderAttribution />
@@ -104,48 +130,56 @@ export function MarketView() {
       </CardHeader>
       <CardContent>
         {error && <p className="text-sm text-destructive">{error}</p>}
-        {!error && !entries && <p className="text-sm text-muted-foreground">Chargement…</p>}
+        {!error && !entries && <p className="text-sm text-muted-foreground">{t("loading")}</p>}
         {entries && (
           <div className="overflow-x-auto">
             <Table className="min-w-[560px]">
               <TableHeader>
                 <TableRow>
-                  <TableHead>Actif</TableHead>
-                  <TableHead className="text-right">Prix</TableHead>
-                  <TableHead className="text-right">Var. 24h</TableHead>
-                  <TableHead className="text-right">Volume 24h</TableHead>
-                  <TableHead className="text-right">Cap. marché</TableHead>
+                  <TableHead>{t("columns.asset")}</TableHead>
+                  <TableHead className="text-right">{t("columns.price")}</TableHead>
+                  <TableHead className="text-right">{t("columns.change24h")}</TableHead>
+                  <TableHead className="text-right">{t("columns.volume24h")}</TableHead>
+                  <TableHead className="text-right">{t("columns.marketCap")}</TableHead>
+                  <TableHead className="text-right">{t("columns.trend12m")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {accepted.length > 0 && (
                   <TableRow key="section-accepted" className="hover:bg-transparent">
-                    <TableCell colSpan={5} className="py-1.5 text-xs font-medium text-muted-foreground">
+                    <TableCell colSpan={6} className="py-1.5 text-xs font-medium text-muted-foreground">
                       <span className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
-                        Acceptés en garantie
+                        {t("acceptedSection.title")}
                         <span className="inline-flex items-center gap-1 font-normal normal-case text-muted-foreground/80">
                           ·{" "}
                           <Sparkles className="size-2.5 text-primary" />
-                          Rendement = plus-value du gage remboursant automatiquement jusqu&apos;à 60% du
-                          crédit (métaux précieux, métaux industriels, ETH)
+                          {t("acceptedSection.yieldNote")}
                         </span>
                       </span>
                     </TableCell>
                   </TableRow>
                 )}
                 {accepted.map((entry) => (
-                  <MarketRow key={entry.id} entry={entry} />
+                  <MarketRow
+                    key={entry.id}
+                    entry={entry}
+                    trendPoints={entry.currency ? trends.get(entry.currency) : undefined}
+                  />
                 ))}
 
                 {others.length > 0 && (
                   <TableRow key="section-others" className="hover:bg-transparent">
-                    <TableCell colSpan={5} className="py-1.5 text-xs font-medium text-muted-foreground">
-                      Autres cryptos (information seulement)
+                    <TableCell colSpan={6} className="py-1.5 text-xs font-medium text-muted-foreground">
+                      {t("othersSection.title")}
                     </TableCell>
                   </TableRow>
                 )}
                 {others.map((entry) => (
-                  <MarketRow key={entry.id} entry={entry} />
+                  <MarketRow
+                    key={entry.id}
+                    entry={entry}
+                    trendPoints={entry.currency ? trends.get(entry.currency) : undefined}
+                  />
                 ))}
               </TableBody>
             </Table>
@@ -156,9 +190,19 @@ export function MarketView() {
   );
 }
 
-function MarketRow({ entry }: { entry: MarketOverviewEntry }) {
+function MarketRow({
+  entry,
+  trendPoints,
+}: {
+  entry: MarketOverviewEntry;
+  trendPoints?: AssetHistoryEntry["points"];
+}) {
+  const t = useTranslations("Dashboard.marketView");
   return (
-    <TableRow className="transition-shadow duration-300 hover:shadow-[inset_0_0_16px_-4px_rgba(34,211,238,0.16),inset_0_0_24px_-6px_rgba(232,60,220,0.2)] dark:hover:shadow-[inset_0_0_0_1px_rgba(201,168,118,0.16)]">
+    // Survol neutre — commun au dashboard/admin (gold/obsidian) et à la vitrine
+    // (cyan/fuchsia) : ce composant est partagé, il ne doit porter l'identité visuelle
+    // d'aucun des deux (cf. décision produit : langages visuels gardés séparés).
+    <TableRow className="transition-colors duration-200 hover:bg-muted/40">
       <TableCell>
         <div className="flex items-center gap-2.5">
           {entry.image ? (
@@ -172,26 +216,29 @@ function MarketRow({ entry }: { entry: MarketOverviewEntry }) {
               <span className="font-medium">{entry.symbol}</span>
               {entry.isAcceptedForCredit && (
                 <Badge variant="secondary" className="h-4 px-1.5 text-[10px]">
-                  {entry.isPegged ? "Accepté · 1:1" : "Accepté · spot"}
+                  {entry.isPegged ? t("badges.acceptedPegged") : t("badges.acceptedSpot")}
                 </Badge>
               )}
               {entry.isYieldEligible && (
                 <Badge
                   variant="secondary"
                   className="h-4 gap-0.5 bg-primary/10 px-1.5 text-[10px] text-primary"
-                  title="Sa plus-value rembourse automatiquement jusqu'à 60% du crédit émis"
+                  title={t("badges.yieldTitle")}
                 >
                   <Sparkles className="size-2.5" />
-                  Rendement
+                  {t("badges.yield")}
                 </Badge>
               )}
               {entry.targetApyRangePct && (
                 <Badge
                   variant="secondary"
                   className="h-4 px-1.5 text-[10px]"
-                  title="Objectif indicatif de la stratégie de trésorerie de la banque sur cet actif, pas une garantie, sans effet sur le calcul de votre crédit"
+                  title={t("badges.targetApyTitle")}
                 >
-                  Objectif {entry.targetApyRangePct.min}-{entry.targetApyRangePct.max}% APY
+                  {t("badges.targetApy", {
+                    min: entry.targetApyRangePct.min,
+                    max: entry.targetApyRangePct.max,
+                  })}
                 </Badge>
               )}
             </div>
@@ -210,6 +257,15 @@ function MarketRow({ entry }: { entry: MarketOverviewEntry }) {
       </TableCell>
       <TableCell className="text-right tabular-nums text-muted-foreground">
         {formatCompactUsd(entry.marketCap)}
+      </TableCell>
+      <TableCell className="text-right">
+        {entry.isYieldEligible ? (
+          <div className="flex justify-end">
+            <MiniSparkline points={trendPoints ?? []} />
+          </div>
+        ) : (
+          <span className="text-xs text-muted-foreground/50">—</span>
+        )}
       </TableCell>
     </TableRow>
   );

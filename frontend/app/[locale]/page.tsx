@@ -17,6 +17,7 @@ import { SiteFooter } from "@/components/marketing/site-footer";
 import { AssetLogoRow } from "@/components/marketing/asset-logo-row";
 import { YieldAssetGrid } from "@/components/marketing/yield-assets-showcase";
 import { SectionTeaserCard } from "@/components/marketing/section-teaser-card";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -25,7 +26,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Home.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/", title: t("title"), description: t("description") });
 }
 
 // Vitrine publique de la plateforme — "/" ; distincte de l'espace client connecté qui vit

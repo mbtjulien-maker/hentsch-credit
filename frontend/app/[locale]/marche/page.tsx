@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { MarketingPageShell } from "@/components/marketing/marketing-page-shell";
 import { MarketView } from "@/components/dashboard/market-view";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -10,14 +11,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Market.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/marche", title: t("title"), description: t("description") });
 }
 
 // Page dédiée au marché en direct — contenu déplacé depuis la page d'accueil (cf.
 // app/page.tsx, désormais une simple carte de renvoi). MarketView est partagé avec
-// /dashboard/marche (espace client connecté, hors routage par locale, cf. proxy.ts) : il
-// reste volontairement en français en dur plutôt que d'utiliser useTranslations(), qui
-// plaquerait sans NextIntlClientProvider côté dashboard.
+// /dashboard/marche (espace client connecté, hors routage par locale, cf. proxy.ts) :
+// les deux espaces montent leur propre NextIntlClientProvider, donc le composant utilise
+// useTranslations() normalement (cf. namespace Dashboard.marketView, commun aux deux).
 export default async function MarchePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);

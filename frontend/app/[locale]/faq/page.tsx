@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { MarketingPageShell } from "@/components/marketing/marketing-page-shell";
+import { JsonLd, buildPageMetadata, faqPageJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -10,7 +11,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Faq.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/faq", title: t("title"), description: t("description") });
 }
 
 const FAQ_KEYS = [
@@ -42,6 +43,9 @@ export default async function FaqPage({ params }: { params: Promise<{ locale: st
 
   return (
     <MarketingPageShell eyebrow={t("eyebrow")} title={t("title")} description={t("description")}>
+      {/* Balisage FAQPage — construit à partir des MÊMES questions/réponses affichées
+          ci-dessous (cf. FAQ_ITEMS), jamais un contenu parallèle (cf. lib/seo.ts). */}
+      <JsonLd id="faq-jsonld" data={faqPageJsonLd(FAQ_ITEMS)} />
       <div className="mx-auto w-full max-w-3xl px-4 pb-10 sm:px-6">
         <div className="space-y-4">
           {FAQ_ITEMS.map((item) => (

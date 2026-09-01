@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { MarketingPageShell } from "@/components/marketing/marketing-page-shell";
+import { JsonLd, buildPageMetadata, faqPageJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -11,7 +12,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Pricing.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/tarifs", title: t("title"), description: t("description") });
 }
 
 // Grille tarifaire réelle — miroir des valeurs effectivement appliquées par le moteur de
@@ -30,14 +31,23 @@ export default async function TarifsPage({ params }: { params: Promise<{ locale:
     { key: "ratio", icon: Percent, label: t("items.ratio.label"), value: "350%", detail: t("items.ratio.detail") },
     { key: "interestRate", icon: Landmark, label: t("items.interestRate.label"), value: "13,5% USD · 12,0% EUR", detail: t("items.interestRate.detail") },
     { key: "originationFees", icon: Coins, label: t("items.originationFees.label"), value: "2,0%", detail: t("items.originationFees.detail") },
-    { key: "custodyFees", icon: Lock, label: t("items.custodyFees.label"), value: "0,5% / an", detail: t("items.custodyFees.detail") },
-    { key: "positionDuration", icon: Timer, label: t("items.positionDuration.label"), value: "12 mois", detail: t("items.positionDuration.detail") },
+    { key: "custodyFees", icon: Lock, label: t("items.custodyFees.label"), value: t("items.custodyFees.value"), detail: t("items.custodyFees.detail") },
+    { key: "positionDuration", icon: Timer, label: t("items.positionDuration.label"), value: t("items.positionDuration.value"), detail: t("items.positionDuration.detail") },
     { key: "automaticRepayment", icon: ShieldCheck, label: t("items.automaticRepayment.label"), value: t("items.automaticRepayment.value"), detail: t("items.automaticRepayment.detail") },
     { key: "liquidationThresholds", icon: ShieldAlert, label: t("items.liquidationThresholds.label"), value: "30% · 50%", detail: t("items.liquidationThresholds.detail") },
   ];
 
+  const FAQ_ITEMS = (["earlyRepayment", "negotiable", "currencyDifference"] as const).map((key) => ({
+    key,
+    question: t(`faq.${key}.question`),
+    answer: t(`faq.${key}.answer`),
+  }));
+
   return (
     <MarketingPageShell eyebrow={t("eyebrow")} title={t("title")} description={t("description")}>
+      {/* Balisage FAQPage — construit à partir des MÊMES questions/réponses affichées
+          plus bas (cf. FAQ_ITEMS), jamais un contenu parallèle (cf. lib/seo.ts). */}
+      <JsonLd id="faq-jsonld" data={faqPageJsonLd(FAQ_ITEMS)} />
       <div className="mx-auto w-full max-w-5xl px-4 pb-6 sm:px-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {PRICING.map((item) => (
@@ -107,10 +117,10 @@ export default async function TarifsPage({ params }: { params: Promise<{ locale:
 
         <h2 className="mt-10 text-xl font-semibold text-foreground">{t("faqTitle")}</h2>
         <div className="mt-4 space-y-4">
-          {(["earlyRepayment", "negotiable", "currencyDifference"] as const).map((key) => (
-            <div key={key} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
-              <h3 className="text-sm font-semibold text-foreground">{t(`faq.${key}.question`)}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">{t(`faq.${key}.answer`)}</p>
+          {FAQ_ITEMS.map((item) => (
+            <div key={item.key} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
+              <h3 className="text-sm font-semibold text-foreground">{item.question}</h3>
+              <p className="mt-1.5 text-sm text-muted-foreground">{item.answer}</p>
             </div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { AlertTriangle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
 
@@ -8,13 +9,14 @@ import { useDashboard } from "@/components/dashboard/dashboard-context";
 // (panne réseau/serveur — pas un simple "non connecté", cf. DashboardProvider), aucune
 // section ne pourra fonctionner peu importe la route affichée.
 export function AuthLoadError() {
+  const t = useTranslations("Dashboard.authLoadError");
   const { authError } = useDashboard();
   if (!authError) return null;
 
   return (
     <Alert variant="destructive">
       <AlertTriangle className="size-4" />
-      <AlertTitle>Impossible de vérifier votre session</AlertTitle>
+      <AlertTitle>{t("title")}</AlertTitle>
       <AlertDescription>{authError}</AlertDescription>
     </Alert>
   );

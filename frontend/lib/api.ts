@@ -509,6 +509,13 @@ export const api = {
     request<ClientManagedWalletView>(`/users/${userId}/managed-wallet`),
   getMarketPrices: () => request<MarketOverviewEntry[]>("/market/prices"),
   getYieldHistory: () => request<AssetHistoryEntry[]>("/market/yield-history"),
+  // Historique complet des 8 actifs réellement éligibles au rendement (cf.
+  // YIELD_ELIGIBLE_CURRENCIES côté backend) — distinct de getYieldHistory ci-dessus, qui
+  // ne couvre que les 4 actifs mis en avant sur la vitrine "/rendement". Utilisé par
+  // useEstimatedYield (simulateurs client) : un client qui gage du platine doit voir une
+  // estimation basée sur le platine, pas sur une moyenne or/argent/ETH qui l'exclut.
+  getYieldHistoryFull: () =>
+    request<AssetHistoryEntry[]>("/market/yield-history-full"),
   getCreditRates: () => request<CreditRatesResponse>("/credit/rates"),
   // userId n'est plus envoyé : dérivé côté serveur du cookie de session (JwtAuthGuard).
   createCreditRequest: (collateralAmount: string, currency: AccountCurrency) =>

@@ -1,4 +1,5 @@
 import { LifeBuoy, Mail, MessageCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -6,14 +7,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 const SUPPORT_EMAIL = "support@cryptocreditbank.example";
 
 export function SupportSection() {
+  const t = useTranslations("Dashboard.supportSection");
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <LifeBuoy className="size-4 text-muted-foreground" />
-          Contacter le support
+          {t("title")}
         </CardTitle>
-        <CardDescription>Une question sur votre compte, votre gage ou un dépôt ?</CardDescription>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
         <Button
@@ -27,7 +29,7 @@ export function SupportSection() {
         </Button>
         <Button variant="outline" className="justify-start" disabled>
           <MessageCircle className="size-4" />
-          Chat en direct (bientôt disponible)
+          {t("liveChat")}
         </Button>
       </CardContent>
     </Card>

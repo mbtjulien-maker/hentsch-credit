@@ -1,12 +1,14 @@
 "use client";
 
 import { useId, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { formatAccountCurrency, formatUsd } from "@/lib/format";
+import { formatAccountCurrency, formatPercent, formatUsd } from "@/lib/format";
 import { useCountUp } from "@/lib/use-count-up";
-import type { AccountCurrency, CreditRatesResponse, LedgerBalance } from "@/lib/api";
+import type { AcceptedCurrency, AccountCurrency, CreditRatesResponse, LedgerBalance } from "@/lib/api";
+import type { AssetYieldEstimate } from "@/lib/use-estimated-yield";
 
 // Exporté pour rester la seule source de vérité du taux de gage côté frontend — réutilisé
 // par RepaymentProjection et InstallmentSchedule (cf. credit-form.tsx) pour dériver le
@@ -51,6 +53,7 @@ export function CreditSimulator({
   onCurrencyChange: (currency: AccountCurrency) => void;
   rates: CreditRatesResponse | null;
 }) {
+  const t = useTranslations("Dashboard.creditSimulator");
   const inputId = useId();
   const availableBalance = Number(balance.availableBalance);
   const lockedCollateral = Number(balance.lockedCollateral);
@@ -112,26 +115,26 @@ export function CreditSimulator({
   const segments = [
     {
       key: "available",
-      label: "Disponible restant",
+      label: t("segments.available"),
       value: Math.max(simulated.newAvailable, 0),
       displayValue: displayedAvailable,
       color: "var(--series-available)",
     },
     {
       key: "locked",
-      label: "Gage envisagé",
+      label: t("segments.locked"),
       value: simulated.newLocked,
       displayValue: displayedLocked,
       color: "var(--series-locked)",
     },
     {
       key: "credit",
-      label: "Crédit accordé (total)",
+      label: t("segments.credit"),
       value: simulated.newGrantedCredit,
       displayValue: displayedGrantedTotal,
       color: "var(--series-credit)",
     },
-  ] as const;
+  ];
 
   return (
     <div className="credit-sim flex flex-col gap-4 rounded-lg border bg-muted/30 p-4">
@@ -139,7 +142,7 @@ export function CreditSimulator({
 
       <div className="flex flex-wrap items-center justify-between gap-2">
         <Label htmlFor={inputId} className="text-sm font-medium">
-          Montant de gage envisagé (USD)
+          {t("amountLabel")}
         </Label>
         <div className="flex items-center gap-2">
           <div className="flex rounded-md border p-0.5">
@@ -160,7 +163,7 @@ export function CreditSimulator({
             ))}
           </div>
           <span className="text-xs text-muted-foreground">
-            Solde actuel {formatUsd(availableBalance)}
+            {t("currentBalance", { amount: formatUsd(availableBalance) })}
           </span>
         </div>
       </div>
@@ -172,7 +175,7 @@ export function CreditSimulator({
         value={amount}
         onChange={(e) => onAmountChange(e.target.value)}
         className="tabular-nums"
-        aria-label="Montant simulé"
+        aria-label={t("amountAriaLabel")}
       />
 
       {/* Réponse directe et immédiate à "combien de crédit pour ce montant ?" —
@@ -180,9 +183,7 @@ export function CreditSimulator({
           produit), seul le résultat chiffré est montré. Pas le total cumulé (détaillé
           dans la barre plus bas). */}
       <div className="flex items-center justify-between rounded-lg bg-[color-mix(in_srgb,var(--series-credit)_12%,transparent)] px-3 py-2.5">
-        <span className="text-sm text-muted-foreground">
-          Crédit accordé pour ce montant
-        </span>
+        <span className="text-sm text-muted-foreground">{t("creditForAmount")}</span>
         <span
           className="text-lg font-semibold tabular-nums"
           style={{ color: "var(--series-credit)" }}
@@ -194,29 +195,24 @@ export function CreditSimulator({
       {rateInfo && (
         <div className="flex flex-col gap-1.5 rounded-lg border border-dashed px-3 py-2.5 text-xs text-muted-foreground">
           <div className="flex items-center justify-between">
-            <span>Taux d&apos;intérêt annuel ({currency})</span>
+            <span>{t("annualInterestRate", { currency })}</span>
             <span className="font-medium tabular-nums text-foreground">
-              {rateInfo.interestRatePct}%/an
+              {t("perYear", { rate: rateInfo.interestRatePct })}
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span>Frais d&apos;origination (prélevés à l&apos;émission)</span>
+            <span>{t("originationFee")}</span>
             <span className="font-medium tabular-nums text-foreground">
               {originationFee !== null ? formatCredit(originationFee) : "—"}
             </span>
           </div>
           <div className="flex items-center justify-between">
-            <span>Frais de garde du collatéral</span>
+            <span>{t("custodyFee")}</span>
             <span className="font-medium tabular-nums text-foreground">
-              {rateInfo.custodyFeePct}%/an
+              {t("perYear", { rate: rateInfo.custodyFeePct })}
             </span>
           </div>
-          {fxRateMissing && (
-            <p className="pt-1 text-[11px] italic">
-              Cours EUR/USD indisponible pour l&apos;instant, montants affichés en
-              USD.
-            </p>
-          )}
+          {fxRateMissing && <p className="pt-1 text-[11px] italic">{t("fxRateMissing")}</p>}
         </div>
       )}
 
@@ -268,22 +264,21 @@ export function CreditSimulator({
 
         {depositShortfall > 0 && (
           <p className="mt-2.5 text-xs text-muted-foreground">
-            Il vous manque {formatUsd(depositShortfall)} par rapport à votre solde actuel
-            pour atteindre ce montant, à déposer une fois la demande approuvée.
+            {t("depositShortfall", { amount: formatUsd(depositShortfall) })}
           </p>
         )}
       </div>
 
       {usedCredit > 0 && (
         <div className="flex items-center justify-between border-t pt-3 text-sm text-muted-foreground">
-          <span>− Crédit utilisé</span>
+          <span>− {t("usedCredit")}</span>
           <span className="tabular-nums">{formatUsd(usedCredit)}</span>
         </div>
       )}
 
       <div className="flex items-center justify-between border-t pt-3">
         <span className="text-sm font-medium">
-          {simulatedAmount > 0 ? "Pouvoir d'achat simulé" : "Pouvoir d'achat actuel"}
+          {simulatedAmount > 0 ? t("simulatedPurchasingPower") : t("currentPurchasingPower")}
         </span>
         <div className="flex items-baseline gap-2">
           {simulated.delta > 0 && (
@@ -297,13 +292,61 @@ export function CreditSimulator({
         </div>
       </div>
       {simulatedAmount === 0 && (
-        <p className="-mt-2 text-xs text-muted-foreground">
-          Aucun montant simulé pour l&apos;instant : ceci est votre pouvoir d&apos;achat
-          actuel (disponible + gage + crédit accordé − crédit utilisé). Tapez un montant
-          ci-dessus, même sans solde disponible, pour voir ce qu&apos;une demande de
-          crédit vous permettrait d&apos;obtenir.
-        </p>
+        <p className="-mt-2 text-xs text-muted-foreground">{t("noAmountSimulatedNote")}</p>
       )}
+    </div>
+  );
+}
+
+// Sélecteur de l'actif de gage utilisé pour l'estimation de rendement (RepaymentProjection
+// / InstallmentSchedule) — distinct du choix USD/EUR ci-dessus (devise de règlement du
+// crédit, pas l'actif physiquement déposé). L'actif réel n'est choisi qu'au moment du
+// dépôt (cf. wallet-actions.tsx), après l'approbation de la demande ; ce sélecteur ne sert
+// qu'à affiner la simulation en amont, sur la base de la performance réelle sur 12 mois de
+// CET actif précis plutôt qu'une moyenne opaque des 8 actifs éligibles (cf.
+// useEstimatedYield). Chaque option affiche son propre pourcentage : c'est exactement le
+// "rendement calculé sur l'actif mis en gage" qui manquait — plus une boîte noire.
+export function YieldAssetPicker({
+  perAsset,
+  value,
+  onChange,
+}: {
+  perAsset: AssetYieldEstimate[];
+  value: AcceptedCurrency | null;
+  onChange: (value: AcceptedCurrency | null) => void;
+}) {
+  const t = useTranslations("Dashboard.creditSimulator");
+
+  function pillClass(active: boolean, disabled: boolean) {
+    return cn(
+      "rounded-md border px-2.5 py-1 text-xs font-medium tabular-nums transition-colors",
+      disabled
+        ? "cursor-not-allowed border-border/60 text-muted-foreground/50"
+        : active
+          ? "border-primary bg-primary/10 text-primary"
+          : "border-border text-muted-foreground hover:text-foreground",
+    );
+  }
+
+  return (
+    <div className="grid gap-1.5">
+      <Label className="text-xs">{t("yieldAssetLabel")}</Label>
+      <div className="flex flex-wrap gap-1.5">
+        <button type="button" onClick={() => onChange(null)} className={pillClass(value === null, false)}>
+          {t("yieldAssetBlended")}
+        </button>
+        {perAsset.map((asset) => (
+          <button
+            key={asset.currency}
+            type="button"
+            onClick={() => onChange(asset.currency)}
+            disabled={asset.changePct === null}
+            className={pillClass(value === asset.currency, asset.changePct === null)}
+          >
+            {asset.currency} {formatPercent(asset.changePct)}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

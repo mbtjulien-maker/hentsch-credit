@@ -2,7 +2,7 @@
   "Common": {
     "backToHome": "Tillbaka till startsidan",
     "lastUpdated": "Senast uppdaterad:",
-    "legalTranslationDisclaimer": "Den här sidan har översatts för din bekvämlighet. Vid tolkningsskillnader är det endast den franska versionen som gäller.",
+    "legalTranslationDisclaimer": "Denna sida har översatts för din bekvämlighet. Vid tolkningsskillnader är endast den franska versionen giltig.",
     "learnMore": "Läs mer"
   },
   "Nav": {
@@ -29,7 +29,7 @@
         "requestAccount": "Ansök om konto"
       },
       "help": {
-        "title": "Hjälp & kontakt",
+        "title": "Hjälp och kontakt",
         "contact": "Kontakta oss",
         "faq": "Vanliga frågor",
         "sitemap": "Webbplatskarta",
@@ -49,158 +49,158 @@
         "cookiePolicy": "Cookiepolicy"
       }
     },
-    "disclaimer": "{tradingName} är ett erbjudande från {legalName}, en oberoende kapitalförvaltare enligt schweizisk rätt, under tillsyn av {supervisionBodyName}, en tillsynsorganisation godkänd av {supervisoryAuthority}. Tillgången är förbehållen en begränsad kundkrets, endast på inbjudan. Denna plattform är inte öppen för allmänheten.",
+    "disclaimer": "{tradingName} är ett erbjudande från {legalName}, en oberoende kapitalförvaltare enligt schweizisk rätt, under tillsyn av {supervisionBodyName}, ett tillsynsorgan godkänt av {supervisoryAuthority}. Tillgång endast för en begränsad kundkrets, på inbjudan. Denna plattform är inte öppen för allmänheten.",
     "rightsReserved": "Alla rättigheter förbehållna."
   },
   "Home": {
     "meta": {
       "title": "Hentsch Credit · Kryptosäkrad kredit",
-      "description": "350% av det pantsatta beloppet frigörs som omedelbar köpkraft. Guld, silver och ETH genererar en verklig avkastning som automatiskt amorterar en del av din kredit."
+      "description": "350% av det pantsatta beloppet frigjort som omedelbar köpkraft. Guld, silver och ETH genererar en verklig avkastning som automatiskt betalar av en del av din kredit."
     },
     "badge": "Reglerad kapitalförvaltning · Tillgång endast på inbjudan",
     "titleLine1": "Ditt guld och ditt silver",
-    "titleHighlight": "sover inte längre",
-    "subtitle": "Sätt dem som säkerhet, utan att någonsin sälja dem. Frigör omedelbar köpkraft, automatiskt amorterad tack vare deras avkastning.",
+    "titleHighlight": "ligger inte längre stilla",
+    "subtitle": "Sätt in dem som säkerhet, utan att någonsin sälja dem. Frigör omedelbar köpkraft, automatiskt återbetald tack vare deras utveckling.",
     "statCardCaption": "köpkraft, redan från insättningen",
-    "statCardAssets": "Tokeniserat guld & silver",
+    "statCardAssets": "Tokeniserat guld och silver",
     "ctaLogin": "Till mitt konto",
     "ctaHowItWorks": "Så fungerar det",
-    "ctaNoAccount": "Har du inget konto ännu? Ansök om att öppna ett konto",
+    "ctaNoAccount": "Har du inget konto än? Ansök om ett konto",
     "discoverTitle": "Upptäck plattformen",
-    "discoverDescription": "Detaljerna kring varje mekanism, på sin egen sida.",
+    "discoverDescription": "Detaljerna för varje mekanism, på sin egen sida.",
     "teasers": {
       "howItWorks": {
         "title": "Så fungerar det",
-        "description": "Från insättning av säkerhet till utgifter, i fyra steg."
+        "description": "Från insättning av säkerhet till spendering, i fyra steg."
       },
       "yield": {
         "title": "Avkastning på säkerheten",
-        "description": "Guld, silver och ETH amorterar automatiskt upp till 60% av din kredit."
+        "description": "Guld, silver och ETH betalar automatiskt av upp till 60% av din kredit."
       },
       "rwa": {
         "title": "RWA-investeringsstrategi",
-        "description": "Tokeniserade industrimetaller: vår treasurystrategi, i full transparens."
+        "description": "Tokeniserade industrimetaller: vår treasurystrategi, med full transparens."
       },
       "market": {
-        "title": "Marknaden direkt",
+        "title": "Marknaden i realtid",
         "description": "Kurserna för de tillgångar som accepteras som säkerhet, i realtid."
       }
     },
     "stats": {
       "ratio": "Kreditkvot på den insatta säkerheten",
-      "custodyValue": "Förvaring via godkända depåinstitut",
-      "custodyLabel": "Tillgångar deponerade hos godkända tredjepartsinstitut, aldrig i eget namn",
+      "custodyValue": "Förvaring via auktoriserade förvaringsinstitut",
+      "custodyLabel": "Tillgångar deponerade hos auktoriserade tredjepartsinstitut, aldrig i eget namn",
       "kycValue": "KYC verifierad",
-      "kycLabel": "Kredittillgång förbehållen verifierade kunder"
+      "kycLabel": "Tillgång till kredit endast för verifierade kunder"
     },
     "closingTitle": "Redo att frigöra din köpkraft?",
-    "closingDescription": "Plattformen är förbehållen en begränsad kundkrets. Vårt team granskar varje ansökan innan tillgång beviljas.",
-    "closingCta": "Ansök om att öppna ett konto"
+    "closingDescription": "Plattform förbehållen en begränsad kundkrets. Vårt team granskar varje ansökan innan tillgång beviljas.",
+    "closingCta": "Ansök om ett konto"
   },
   "HowItWorks": {
     "meta": {
       "title": "Så fungerar det · Hentsch Credit",
-      "description": "Från identitetskontroll till utgifter: de fem stegen för att få och använda kryptosäkrad kredit hos Hentsch Credit."
+      "description": "Från identitetskontroll till spendering: de fem stegen för att erhålla och använda kryptosäkrad kredit hos Hentsch Credit."
     },
     "eyebrow": "Kundresan",
     "title": "Så fungerar det",
-    "description": "Från identitetskontroll till utgifter, i fem steg.",
+    "description": "Från identitetskontroll till spendering, i fem steg.",
     "steps": {
       "kyc": {
         "title": "1. Identitetskontroll (KYC)",
-        "description": "Endast på inbjudan: din identitet kontrolleras utan undantag innan du får tillgång till insättning eller kredit."
+        "description": "Endast på inbjudan: din identitet kontrolleras innan du får någon tillgång till insättning eller kredit, utan undantag."
       },
       "deposit": {
         "title": "2. Sätt in din säkerhet",
         "description": "Stablecoins, tokeniserade ädel- eller industrimetaller, eller ETH, på Ethereum-nätverket."
       },
       "credit": {
-        "title": "3. Krediten beviljas automatiskt",
-        "description": "350% av det insatta beloppet, frigörs så snart din ansökan godkänts (minus en engångsavgift på 2% för uppläggning)."
+        "title": "3. Kredit beviljas automatiskt",
+        "description": "350% av det insatta beloppet, frigörs så snart din ansökan har godkänts (minus 2% uppläggningsavgift, som tas ut en gång)."
       },
       "spend": {
         "title": "4. Spendera med ditt kort",
-        "description": "Använd din kreditlina internt eller direkt med ditt bankkort."
+        "description": "Använd din kreditlinje internt eller direkt med ditt bankkort."
       },
       "repay": {
-        "title": "5. Amortera för att frigöra din säkerhet",
-        "description": "Upp till 60% amorteras automatiskt genom avkastningen på säkerheten; resten genom eget tillskott. Omvänt kan ett kraftigt värdefall på säkerheten leda till att den likvideras."
+        "title": "5. Betala tillbaka för att frigöra säkerheten",
+        "description": "Upp till 60% återbetalas automatiskt genom säkerhetens avkastning; resten genom eget tillskott. Omvänt kan ett kraftigt fall i säkerhetens värde leda till att den likvideras."
       }
     },
-    "feesNote": "Detaljerna kring de faktiska räntorna och avgifterna finns på sidan <pricing>Priser</pricing>, och detaljerna kring den automatiska amorteringen, inklusive likvidationsrisken vid ett kraftigt värdefall på säkerheten, på sidan <yield>Avkastning</yield>.",
-    "detailTitle": "Detaljerna kring varje steg",
+    "feesNote": "Detaljerna om de verkliga räntorna och avgifterna finns på sidan <pricing>Priser</pricing>, och detaljerna om automatisk återbetalning, inklusive likvidationsrisken vid ett kraftigt fall i säkerhetens värde, på sidan <yield>Avkastning</yield>.",
+    "detailTitle": "Detaljerna för varje steg",
     "detail": {
       "kyc": {
         "title": "1. Identitetskontroll",
-        "body": "Tillgången ges endast på inbjudan. Så snart din kontoansökan har godkänts meddelas du offline om ett konto och ett tillfälligt lösenord, varefter din identitet kontrolleras innan någon annan åtgärd kan vidtas. Så länge denna status inte är bekräftad är generering av insättningsadress och alla kreditansökningar tekniskt blockerade, inte bara avrådda."
+        "body": "Tillgång ges endast på inbjudan. När din kontoansökan har godkänts meddelas du offline om ett konto och ett tillfälligt lösenord, varefter din identitet kontrolleras innan någon annan åtgärd. Så länge denna status inte är bekräftad är generering av insättningsadress och alla kreditansökningar tekniskt spärrade, inte bara avrådda."
       },
       "deposit": {
         "title": "2. Insättning av säkerheten",
-        "body": "Beroende på vald tillgång är den meddelade insättningsadressen antingen individuell (krediteras automatiskt efter on-chain-bekräftelse) eller delad mellan kunder (du anmäler din insättning, och en rådgivare validerar den manuellt efter att medlen faktiskt mottagits). Motsvarande kredit utfärdas automatiskt så snart det tillgängliga saldot når det ansökta beloppet, utan ytterligare manuell åtgärd från vår sida."
+        "body": "Beroende på vald tillgång är den angivna insättningsadressen antingen individuell (krediteras automatiskt vid on-chain-bekräftelse) eller delad mellan kunder (du anmäler din insättning, en rådgivare validerar den manuellt efter faktisk mottagning av medlen). Motsvarande kredit utfärdas automatiskt så snart det tillgängliga saldot når det ansökta beloppet, utan ytterligare manuell inblandning från vår sida."
       },
       "credit": {
-        "title": "3. Kreditutfärdande",
-        "body": "350% av det insatta beloppet, till den ränta som gäller vid tidpunkten för låsningen: en redan låst position behåller alltid den räntan, även om kvoten senare ändras för nya kunder. Uppläggningsavgiften (2%) tas ut en gång, på den utfärdade krediten, inte på din säkerhet."
+        "title": "3. Utfärdande av krediten",
+        "body": "350% av det insatta beloppet, till den ränta som gäller vid tidpunkten för låsningen: en redan låst position behåller alltid denna ränta, även om kvoten senare ändras för nya kunder. Uppläggningsavgiften (2%) tas ut endast en gång, på den utfärdade krediten, inte på din säkerhet."
       },
       "usage": {
         "title": "4. Användning av krediten",
-        "body": "Den beviljade krediten är endast ett tak: ingen ränta eller amortering förfaller så länge du inte faktiskt använder den (kortbetalning, intern användning). Det är en revolverande kreditlina, inte ett lån som betalas ut på en gång till ditt tillgängliga saldo."
+        "body": "Den beviljade krediten är bara ett tak: ingen ränta eller återbetalning förfaller så länge du inte faktiskt använder den (kortbetalning, intern användning). Det är en förnybar kreditlinje, inte ett lån som betalas ut på en gång till ditt tillgängliga saldo."
       },
       "repayment": {
-        "title": "5. Amortering",
-        "body": "Två kanaler, den första daglig och automatisk: den verkliga värdeökningen på din säkerhet (upp till 60% av den utfärdade krediten), och ditt eget tillskott för resten. Full amortering frigör din säkerhet, som återigen blir uttagbar. Omvänt leder en allvarlig värdeminskning av säkerheten (50% sedan ingången) till att den likvideras, utan att den redan använda krediten raderas."
+        "title": "5. Återbetalning",
+        "body": "Två kanaler, dagliga och automatiska för den första: den verkliga värdeökningen på din säkerhet (upp till 60% av den utfärdade krediten), och ditt eget tillskott för resten. Fullständig återbetalning frigör din säkerhet, som återigen blir uttagbar. Omvänt leder en allvarlig värdeminskning av säkerheten (50% sedan insättningen) till att den likvideras, utan att den redan använda krediten raderas."
       }
     },
     "faqTitle": "Vanliga frågor",
     "faq": {
       "kycRejected": {
-        "question": "Vad händer om min KYC avslås?",
-        "answer": "Ingen finansiell transaktion är möjlig så länge statusen inte är verifierad. Vid avslag kan bolaget neka, spärra eller stänga det berörda kontot, särskilt vid tvivel om den angivna identiteten."
+        "question": "Vad händer om mitt KYC avslås?",
+        "answer": "Ingen finansiell transaktion är möjlig så länge statusen inte är verifierad. Vid avslag kan bolaget vägra, spärra eller stänga det berörda kontot, i synnerhet vid tvivel om den uppgivna identiteten."
       },
       "approvalDelay": {
-        "question": "Hur lång tid tar godkännandet av en kreditansökan?",
-        "answer": "Det varierar beroende på back office-belastningen: en ansökan går igenom en manuell valideringskö innan den kan ta emot en insättning. Själva krediten utfärdas automatiskt när medlen mottagits, utan ytterligare fördröjning efter att ansökan godkänts."
+        "question": "Hur lång tid tar det att godkänna en kreditansökan?",
+        "answer": "Varierar beroende på belastningen på back office: en ansökan går igenom en manuell valideringskö innan den kan ta emot en insättning. Själva krediten utfärdas automatiskt så snart medlen tas emot, utan ytterligare fördröjning när ansökan väl godkänts."
       },
       "earlyWithdrawal": {
-        "question": "Kan jag ta ut min säkerhet innan jag har amorterat allt?",
-        "answer": "Nej. Den låsta säkerheten förblir spärrad så länge motsvarande använda kredit inte är fullständigt amorterad. Endast det tillgängliga saldot, exklusive den spärrade säkerheten, kan tas ut fritt när som helst."
+        "question": "Kan jag ta ut min säkerhet innan jag har betalat tillbaka allt?",
+        "answer": "Nej. Den låsta säkerheten förblir spärrad så länge motsvarande använda kredit inte har återbetalats fullt ut. Endast det tillgängliga saldot, exklusive låst säkerhet, kan fritt tas ut när som helst."
       }
     },
     "ctaLogin": "Till mitt konto",
-    "ctaNoAccount": "Ansök om att öppna ett konto"
+    "ctaNoAccount": "Ansök om ett konto"
   },
   "Accessibility": {
     "meta": {
       "title": "Digital tillgänglighet · Hentsch Credit",
-      "description": "Den faktiska statusen för Hentsch Credit-plattformens digitala tillgänglighet, utan att hävda en overifierad efterlevnadsnivå."
+      "description": "Det verkliga läget för plattformen Hentsch Credits digitala tillgänglighet, utan att hävda en overifierad efterlevnadsnivå."
     },
     "title": "Tillgänglighetsredogörelse",
-    "intro": "H. Hentsch Asset Management SA strävar efter att göra Hentsch Credit-plattformen användbar för så många som möjligt. Denna redogörelse beskriver den faktiska statusen, utan att hävda en efterlevnadsnivå som inte har verifierats genom en formell granskning.",
+    "intro": "H. Hentsch Asset Management SA strävar efter att göra plattformen Hentsch Credit användbar för så många som möjligt. Denna redogörelse beskriver det verkliga läget, utan att hävda en efterlevnadsnivå som inte har verifierats genom en formell granskning.",
     "s1": {
       "title": "1. Efterlevnadsstatus",
-      "body": "Webbplatsen har ännu inte genomgått en formell tillgänglighetsgranskning (av typen RGAA eller WCAG). Den kan därför inte förklaras uppfylla en specifik nivå. Ansträngningar görs dock redan i utformningen: semantisk sidstruktur, rubrikhierarki, färgkontraster utformade för läsbarhet, och tangentbordsnavigering möjlig i de viktigaste flödena (inloggning, kontoansökan, kontogranskning)."
+      "body": "Webbplatsen har ännu inte genomgått en formell tillgänglighetsgranskning (av typen RGAA eller WCAG). Den kan därför inte förklaras uppfylla en exakt nivå. Ansträngningar görs dock redan i utformningen: semantisk sidstruktur, rubrikhierarki, färgkontraster utformade för läsbarhet, och tangentbordsnavigering möjlig på de viktigaste flödena (inloggning, kontoansökan, kontogranskning)."
     },
     "s2": {
       "title": "2. Kända begränsningar",
-      "item1": "Vissa diagram och marknadsdatatabeller erbjuder ännu inte en fullständig textmotsvarighet för skärmläsare;",
-      "item2": "Ingen kontrollerande granskning har genomförts av en tredjepartsorganisation specialiserad på digital tillgänglighet;",
-      "item3": "Visst tredjepartsinnehåll (till exempel webhooks och gränssnitt från externa leverantörer som integrerats i plattformen) står inte under {legalName}s direkta kontroll."
+      "item1": "Vissa marknadsdatadiagram och -tabeller erbjuder ännu inte en fullständig textmotsvarighet för skärmläsare;",
+      "item2": "Ingen motstridig granskning har genomförts av ett tredjepartsorgan specialiserat på digital tillgänglighet;",
+      "item3": "Visst tredjepartsinnehåll (till exempel webhooks och gränssnitt från externa leverantörer integrerade i plattformen) står inte under {legalName}s direkta kontroll."
     },
     "s3": {
       "title": "3. Rapportera ett problem",
-      "body": "Om du stöter på ett tillgänglighetsproblem med innehåll eller en funktion på plattformen, meddela det till kontakten nedan, med angivande av vilken sida det gäller och, om möjligt, vilken hjälpteknik som använts.",
+      "body": "Om du stöter på svårigheter att komma åt innehåll eller en funktion på plattformen, vänligen rapportera det till kontakten nedan, med angivande av vilken sida det gäller och, om möjligt, vilken hjälpprogramvara som används.",
       "email": "E-post",
       "phone": "Telefon"
     },
     "s4": {
-      "title": "4. Klagomål",
-      "body": "Om du inte får ett tillfredsställande svar inom rimlig tid kan du lämna in ett klagomål enligt villkoren som beskrivs på sidan <link>Reglering</link>, avsnitt 6."
+      "title": "4. Möjligheter till åtgärd",
+      "body": "Om du inte får ett tillfredsställande svar inom rimlig tid kan du lämna in ett klagomål på de villkor som beskrivs på sidan <link>Reglering</link>, avsnitt 6."
     }
   },
   "Archives": {
     "meta": {
       "title": "Arkiv · Hentsch Credit",
-      "description": "Utvecklingen av kreditkvoten, de accepterade tillgångarna och mekanismerna på Hentsch Credit-plattformen sedan lanseringen."
+      "description": "Utvecklingen av kreditkvoten, de accepterade tillgångarna och mekanismerna hos plattformen Hentsch Credit sedan lanseringen."
     },
     "eyebrow": "Historik",
     "title": "Arkiv",
@@ -208,8 +208,8 @@
     "entries": {
       "nonRetroactivity": {
         "period": "Sedan starten",
-        "title": "Ingen retroaktivitet vid villkorsändringar",
-        "detail": "En ändring av kreditkvoten, räntan eller en tröskel gäller aldrig för en redan låst position: den behåller de villkor som beviljades vid dess tillkomst, fram till amortering eller förfall. Denna princip har aldrig ändrats sedan plattformen lanserades."
+        "title": "Ingen retroaktivitet vid ändrade villkor",
+        "detail": "En ändring av kreditkvot, ränta eller tröskel gäller aldrig en redan låst position: den behåller de villkor som beviljades den vid skapandet, tills den återbetalas eller förfaller. Denna princip har aldrig ändrats sedan plattformen lanserades."
       },
       "step1": {
         "period": "Steg 1",
@@ -233,8 +233,8 @@
       },
       "step5": {
         "period": "Steg 5",
-        "title": "Utökning av accepterade tillgångar",
-        "detail": "Tillägg av ETH och SHIB, och därefter tokeniserat silver (KAG), utöver stablecoins."
+        "title": "Utökning av de tillgångar som accepteras som säkerhet",
+        "detail": "Tillägg av ETH och SHIB, sedan av tokeniserat silver (KAG), utöver stablecoins."
       },
       "step6": {
         "period": "Steg 6",
@@ -243,154 +243,154 @@
       },
       "step7": {
         "period": "Steg 7",
-        "title": "Automatisk amortering genom avkastning på säkerheten",
-        "detail": "Införande av automatisk amortering genom säkerhetens verkliga värdeökning, begränsad till 60% av den utfärdade krediten; resten förblir kundens ansvar."
+        "title": "Automatisk återbetalning genom avkastning på säkerheten",
+        "detail": "Införande av automatisk återbetalning genom säkerhetens verkliga värdeökning, begränsad till 60% av den utfärdade krediten; resten förblir kundens ansvar."
       },
       "step8": {
         "period": "Steg 8",
-        "title": "Vägledande avkastningsmål för industriella RWA-tillgångar",
-        "detail": "Tillägg av ett vägledande, årligt mål på 8 till 14% enbart för platina, palladium, koppar och syntetisk olja. Detta mål förblir vägledande: det är varken garanterat eller används vid beräkningen av den beviljade krediten."
+        "title": "Indikativt avkastningsmål på industriella RWA-tillgångar",
+        "detail": "Tillägg av ett indikativt mål på 8 till 14% på årsbasis uteslutande för platina, palladium, koppar och syntetisk olja. Detta mål förblir indikativt: det är varken garanterat eller använt vid beräkningen av den beviljade krediten."
       },
       "step9": {
         "period": "Steg 9",
         "title": "Införande av likvidationsmekanismen",
-        "detail": "Införande av en varningströskel (30% värdeminskning av säkerheten sedan ingången) och en likvidationströskel (50%). Detaljer finns på sidan Avkastning och i de allmänna villkoren, avsnitt 7."
+        "detail": "Införande av en varningströskel (30% värdeminskning av säkerheten sedan insättningen) och en likvidationströskel (50%). Detaljer finns på sidan Avkastning och i de allmänna villkoren, avsnitt 7."
       },
       "step10": {
         "period": "Steg 10",
         "title": "Övergång till en automatiskt beräknad uppskattad avkastning",
-        "detail": "Kundens kreditsimulatorer beräknar nu den uppskattade avkastningen, månadsbetalningen och datumet för första amorteringen utifrån den faktiska avkastningen de senaste 12 månaderna, istället för att be kunden ange en uppskattning."
+        "detail": "Kundens kreditsimulatorer beräknar nu den uppskattade avkastningen, månadsbetalningen och datumet för den första återbetalningen utifrån den verkliga utvecklingen under de senaste 12 månaderna, istället för att be kunden ange en uppskattning."
       }
     },
-    "note": "De värden som för närvarande gäller (kvot, räntor, avgifter, avkastningstak, likvidationströsklar) redovisas med exakta siffror på sidan <link>Priser</link>. Denna arkivsida redogör endast för ändringshistoriken, inte för de villkor som gäller för din nuvarande position.",
+    "note": "De för närvarande gällande värdena (kvot, räntor, avgifter, avkastningstak, likvidationströsklar) beskrivs med sina exakta siffror på sidan <link>Priser</link>. Denna arkivsida redogör endast för historiken över ändringar, inte för de villkor som gäller för din nuvarande position.",
     "lastUpdated": "Senast uppdaterad:"
   },
   "Contact": {
     "meta": {
       "title": "Kontakt · Hentsch Credit",
-      "description": "Kontaktuppgifter till H. Hentsch Asset Management SA för alla frågor om ditt konto eller Hentsch Credit-plattformen."
+      "description": "Kontaktuppgifterna till H. Hentsch Asset Management SA för alla frågor om ditt konto eller plattformen Hentsch Credit."
     },
     "eyebrow": "Kontakta oss",
     "title": "Kontakta oss",
-    "description": "De faktiska kontaktuppgifterna till H. Hentsch Asset Management SA, för alla frågor om ditt konto eller plattformen.",
+    "description": "De verkliga kontaktuppgifterna till H. Hentsch Asset Management SA, för alla frågor om ditt konto eller plattformen.",
     "channels": {
       "email": "E-post",
       "phone": "Telefon",
       "postalAddress": "Postadress",
       "registeredOffice": "Säte"
     },
-    "hours": "Förfrågningar behandlas på vardagar. För frågor om en pågående transaktion (insättning, kreditansökan, kort), ange gärna ditt namn och, om möjligt, referensen till den aktuella transaktionen.",
-    "noAccount": "Har du inget konto ännu? Plattformen är förbehållen en begränsad kundkrets, endast på inbjudan. Du kan ändå lämna in en <link>kontoansökan</link>, som kommer att granskas av våra team.",
-    "complaint": "För ett formellt klagomål och, om ingen samförståndslösning uppnås, de tillgängliga medlingsvägarna, se sidan <link>Reglering</link>, avsnitt 6."
+    "hours": "Förfrågningar hanteras på vardagar. Vid frågor om en pågående transaktion (insättning, kreditansökan, kort), ange ditt namn och, om möjligt, referensen för den berörda transaktionen.",
+    "noAccount": "Har du inget konto än? Plattformen är förbehållen en begränsad kundkrets, på inbjudan. Du kan ändå lämna en <link>kontoansökan</link>, som kommer att granskas av våra team.",
+    "complaint": "För ett formellt klagomål och, om ingen uppgörelse i godo nås, tillgängliga medlingsvägar, se sidan <link>Reglering</link>, avsnitt 6."
   },
   "Cookies": {
     "meta": {
       "title": "Cookiepolicy · Hentsch Credit",
-      "description": "Varför Hentsch Credit endast använder en enda, strikt nödvändig cookie, och inget annat."
+      "description": "Varför Hentsch Credit endast placerar en enda absolut nödvändig cookie, och inget annat."
     },
     "title": "Cookiepolicy",
-    "intro": "Den här sidan beskriver de cookies som Hentsch Credit-plattformen faktiskt använder och varför inget preferenscenter erbjuds.",
+    "intro": "Denna sida beskriver de cookies som plattformen Hentsch Credit faktiskt placerar och varför inget preferenscenter erbjuds.",
     "s1": {
-      "title": "1. Vad plattformen använder",
-      "body": "Endast en cookie används, en sessionscookie, strikt nödvändig för tjänstens funktion: den håller dig inloggad medan du navigerar i kundområdet. Den raderas när du stänger din session eller din webbläsare."
+      "title": "1. Vad plattformen placerar",
+      "body": "Endast en cookie används, en sessionscookie, absolut nödvändig för tjänstens funktion: den håller din autentiserade anslutning under din navigering i kundområdet. Den raderas när du stänger din session eller din webbläsare."
     },
     "s2": {
-      "title": "2. Vad plattformen inte använder",
+      "title": "2. Vad plattformen inte placerar",
       "item1": "Ingen reklam- eller riktningscookie;",
-      "item2": "Ingen cookie för tredjeparts besöksmätning (analys, statistik);",
-      "item3": "Ingen spårare från sociala nätverk;",
-      "item4": "Ingen sajtövergripande spårningscookie (cross-site tracking)."
+      "item2": "Ingen tredjeparts cookie för publikmätning (analys, statistik);",
+      "item3": "Ingen spårare från sociala medier;",
+      "item4": "Ingen cookie för spårning mellan webbplatser (cross-site tracking)."
     },
     "s3": {
-      "title": "3. Varför det inte finns någon \"hantera mina cookies\"",
-      "body": "Ett preferenscenter är meningsfullt när en webbplats använder icke-nödvändiga cookies (reklam, besöksmätning) som kräver ditt förhandssamtycke och ett sätt att återkalla det. Plattformen använder inga sådana: det finns därför ingen preferens att aktivera eller inaktivera utöver inställningarna i din egen webbläsare. Om detta ändras en dag kommer den här sidan att uppdateras och ett verkligt preferenscenter erbjudas, i stället för en knapp utan verklig effekt."
+      "title": "3. Varför det inte finns någon „hantera mina cookies”",
+      "body": "Ett preferenscenter är meningsfullt när en webbplats placerar icke-nödvändiga cookies (reklam, publikmätning) som kräver ditt föregående samtycke och ett sätt att återkalla det. Plattformen placerar inga sådana: det finns därför ingen preferens att aktivera eller inaktivera utöver inställningarna i din egen webbläsare. Skulle detta ändras en dag kommer denna sida att uppdateras och ett riktigt preferenscenter erbjudas, istället för en knapp utan verklig effekt."
     },
     "s4": {
       "title": "4. Kontroll från din webbläsare",
-      "body": "Du kan när som helst blockera eller radera sessionscookien från din webbläsares inställningar. Att blockera just denna cookie loggar ut dig från kundområdet: det är en funktionell cookie, ingen spårare, och den har ingen annan roll."
+      "body": "Du kan när som helst blockera eller radera sessionscookien från din webbläsares inställningar. Att blockera just denna cookie kommer att logga ut dig från kundområdet: det är en funktionell cookie, ingen spårare, och den har ingen annan roll."
     },
     "s5": {
       "title": "5. Kontakt",
-      "body": "För frågor om denna policy, kontakta dataskyddsombudet på {dpo}. Behandlingen av övriga personuppgifter beskrivs i <link>integritetspolicyn</link>."
+      "body": "För alla frågor om denna policy, kontakta dataskyddsombudet på {dpo}. Behandlingen av övriga personuppgifter beskrivs i <link>integritetspolicyn</link>."
     }
   },
   "Terms": {
     "meta": {
       "title": "Allmänna villkor · Hentsch Credit",
-      "description": "De allmänna användarvillkoren för Hentsch Credit-plattformen: kredit, säkerhet, amortering, likvidation och avgifter."
+      "description": "De allmänna användarvillkoren för plattformen Hentsch Credit: kredit, säkerhet, återbetalning, likvidation och avgifter."
     },
     "title": "Allmänna villkor",
-    "intro": "Dessa allmänna villkor reglerar tillgång till och användning av Hentsch Credit-plattformen, en kredittjänst säkrad av digitala tillgångar, som erbjuds ett begränsat antal av bolagets kunder på inbjudan. Genom att öppna ett konto förklarar kunden sig ha läst och godkänt dem.",
+    "intro": "Dessa allmänna villkor reglerar tillgång till och användning av plattformen Hentsch Credit, en kredittjänst säkrad med digitala tillgångar, som erbjuds ett begränsat antal av bolagets kunder på inbjudan. Genom att öppna ett konto förklarar kunden sig ha läst och godkänt dem.",
     "s1": {
       "title": "1. Syfte",
-      "body": "{tradingName} gör det möjligt för en verifierad, tidigare inbjuden kund att sätta in stablecoins eller tokeniserat guld som säkerhet (en \"pant\") och i gengäld få en kreditlina som kan användas internt och på ett tillhörande bankkort. Tjänsten tillhandahålls av {legalName}, en oberoende kapitalförvaltare (OKF) i den mening som avses i FinIG, i samarbete med godkända tredjeparts depå- och förvaringsinstitut (se avsnitt 5)."
+      "body": "{tradingName} gör det möjligt för en verifierad och tidigare inbjuden kund att sätta in stablecoins eller tokeniserat guld som säkerhet („pant”), och i gengäld erhålla en kreditlinje, som kan användas internt och med ett tillhörande bankkort. Tjänsten tillhandahålls av {legalName}, en oberoende kapitalförvaltare (OKF) enligt FinIA, i samarbete med auktoriserade tredjeparts förvaringsinstitut och förvaringsleverantörer (se avsnitt 5)."
     },
     "s2": {
       "title": "2. Begränsad tillgång och behörighet",
-      "body": "Plattformen är inte öppen för allmänheten. Tillgången är förbehållen en kundlista som fastställs av {legalName}, på inbjudan, inom ramen för en befintlig kapitalförvaltningsrelation. Att öppna ett konto, generera en insättningsadress, all insättning av säkerhet och all kreditbeviljning förutsätter dessutom en förhandsverifiering av kundens identitet (\"KYC\"). Så länge kundens verifieringsstatus inte är bekräftad nekas dessa åtgärder. Bolaget förbehåller sig rätten att neka, spärra eller stänga ett konto vid misslyckad eller tveksam verifiering, eller vid misstanke om bedrägeri, penningtvätt eller finansiering av terrorism."
+      "body": "Plattformen är inte öppen för allmänheten. Tillgången är förbehållen en kundlista fastställd av {legalName}, på inbjudan, inom ramen för en befintlig kapitalförvaltningsrelation. Att öppna ett konto, generera en insättningsadress, göra en insättning av säkerhet och bevilja kredit är dessutom underställt en föregående kontroll av kundens identitet („KYC”). Så länge kundens verifieringsstatus inte är bekräftad avvisas dessa transaktioner. Bolaget förbehåller sig rätten att vägra, spärra eller stänga ett konto vid misslyckande med eller tvivel om denna kontroll, eller vid misstanke om bedrägeri, penningtvätt eller finansiering av terrorism."
     },
     "s3": {
       "title": "3. Tillgångar som accepteras som säkerhet",
-      "body": "Som säkerhet accepteras följande stablecoins, värderade till pari (1:1 USD): DAI, USDT, USDC; följande eurokopplade stablecoin, värderad till den löpande spotkursen: dEURO; följande tokeniserade ädelmetaller, även de värderade till den löpande spotkursen: XAUT (guld), KAG (silver); följande tokeniserade industrimetaller och råvaror, värderade till den löpande spotkursen: XPT (platina), XPD (palladium), XCU (koppar), WTI (syntetisk olja); samt följande native kryptovalutor, värderade till den löpande spotkursen och underkastade sin egen volatilitet: ETH, SHIB. Dessa tillgångar accepteras uteslutande på Ethereum-nätverket. För vissa tillgångar är den meddelade insättningsadressen individuell för varje kund; för andra delas den mellan kunder och den deklarerade insättningen genomgår en manuell validering innan den krediteras. Listan över accepterade tillgångar, understödda nätverk eller den adressmekanism som gäller för varje tillgång kan när som helst ändras, utan retroaktiv effekt på redan etablerade positioner."
+      "body": "Följande stablecoins accepteras som säkerhet, värderade till pari (1:1 USD): DAI, USDT, USDC; följande stablecoin knuten till euron, värderad till den direkta spotkursen: dEURO; följande tokeniserade ädelmetaller, även de värderade till den direkta spotkursen: XAUT (guld), KAG (silver); följande tokeniserade industrimetaller och råvaror, värderade till den direkta spotkursen: XPT (platina), XPD (palladium), XCU (koppar), WTI (syntetisk olja); samt följande nativa kryptovalutor, värderade till den direkta spotkursen och med sin egen volatilitet: ETH, SHIB. Dessa tillgångar accepteras uteslutande på Ethereum-nätverket. För vissa tillgångar är den angivna insättningsadressen individuell för varje kund; för andra delas den mellan kunder och den anmälda insättningen valideras manuellt innan den krediteras. Listan över accepterade tillgångar, stödda nätverk eller den adressmekanism som gäller för varje tillgång kan ändras när som helst, utan retroaktiv effekt på redan etablerade positioner."
     },
     "s4": {
-      "title": "4. Kreditmekanism och säkerhetskvot",
+      "title": "4. Kreditmekanism och säkerhetsränta",
       "body1": "Vid låsning av en säkerhet beviljas en kredit motsvarande <b>350% av det pantsatta beloppet</b>, till den ränta som gäller vid tidpunkten för denna låsning. Kontots totala köpkraft beräknas enligt följande:",
       "formula": "Total köpkraft = Tillgängligt saldo + Låst säkerhet + Beviljad kredit − Använd kredit",
-      "body2": "Den gällande säkerhetskvoten är den som gäller vid tidpunkten för varje ny låsning. En senare ändring av denna kvot påverkar inte retroaktivt kredit som redan beviljats för en tidigare låst säkerhet: den krediten förblir vid de villkor som gällde då.",
-      "body3": "Kredit som utfärdats mot en godkänd säkerhet (tokeniserade ädelmetaller, tokeniserade industrimetaller och råvaror, ETH) kan amorteras med upp till 60% genom den verkliga värdeökning som konstateras på den säkerheten, automatiskt tillämpad på den använda krediten. De återstående 40% måste amorteras genom kundens eget tillskott (en uttrycklig insättning eller överföring). Detta tak gäller för det kreditbelopp som utfärdades vid positionens öppnande och räknas inte om vid en senare ändring av kreditkvoten.",
-      "body4": "Ett vägledande avkastningsmål (för närvarande 8 till 14% per år) meddelas i informationssyfte för tokeniserade industrimetaller och råvaror (platina, palladium, koppar, syntetisk olja): det speglar målet för bolagets egen treasurystrategi för dessa tillgångar (arbitrage, säkerställd utlåning, likviditetstillförsel), och inte en garanterad eller avtalsenlig ränta. Detta mål har ingen som helst effekt på beräkningen av kundens kredit, som fortsätter att uteslutande regleras av den mekanism som beskrivs i föregående stycke."
+      "body2": "Den tillämpliga säkerhetsräntan är den som gäller vid tidpunkten för varje ny låsning. En senare ändring av denna ränta påverkar inte retroaktivt kredit som redan beviljats för en tidigare låst säkerhet: den krediten förblir under de dåvarande villkoren.",
+      "body3": "Kredit som utfärdats mot en kvalificerad säkerhet (tokeniserade ädelmetaller, tokeniserade industrimetaller och råvaror, ETH) kan återbetalas till högst 60% genom den verkliga värdeökning som konstaterats på den säkerheten, automatiskt tillämpad på den använda krediten. De återstående 40% måste återbetalas genom kundens eget tillskott (insättning eller uttrycklig överföring). Detta tak avser det kreditbelopp som utfärdades vid positionens öppnande och räknas inte om vid en senare ändring av kreditkvoten.",
+      "body4": "Ett indikativt avkastningsmål (för närvarande 8 till 14% per år) meddelas i informationssyfte för tokeniserade industrimetaller och råvaror (platina, palladium, koppar, syntetisk olja): det speglar målet för bolagets egen treasurystrategi på dessa tillgångar (arbitrage, säkerställd utlåning, likviditetstillförsel), och inte en garanterad eller avtalsenlig ränta. Detta mål har ingen effekt på beräkningen av kundens kredit, som uteslutande styrs av den mekanism som beskrivs i föregående stycke."
     },
     "s5": {
       "title": "5. Förvaring av tillgångarna"
     },
     "s6": {
-      "title": "6. Låsning av säkerheten och uttag",
-      "body": "Det pantsatta och låsta beloppet kan inte tas ut så länge motsvarande använda kredit inte är fullständigt amorterad. Endast det tillgängliga saldot, exklusive den spärrade säkerheten, kan tas ut fritt när som helst, med förbehåll för gällande efterlevnadskontroller."
+      "title": "6. Spärrning av säkerheten och uttag",
+      "body": "Det pantsatta och låsta beloppet kan inte tas ut så länge motsvarande använda kredit inte har återbetalats fullt ut. Endast det tillgängliga saldot, exklusive spärrad säkerhet, kan fritt tas ut när som helst, med förbehåll för tillämpliga regelefterlevnadskontroller."
     },
     "s7": {
       "title": "7. Likvidation av säkerheten",
-      "intro": "Säkerheter vars värde utvecklas i takt med marknaden (tokeniserade ädelmetaller, tokeniserade industrimetaller och råvaror, ETH) övervakas dagligen med avseende på sitt värde, jämfört med värdet vid tidpunkten för låsningen:",
-      "item1": "vid en värdeminskning på minst <b>30%</b> jämfört med detta ingångsvärde registreras en varning på kontot, utan ytterligare effekt;",
+      "intro": "Säkerheter vars värde utvecklas i takt med marknaden (tokeniserade ädelmetaller, tokeniserade industrimetaller och råvaror, ETH) övervakas dagligen avseende sitt värde, i jämförelse med värdet vid tidpunkten för låsningen:",
+      "item1": "vid en värdeminskning på minst <b>30%</b> i förhållande till detta ingångsvärde registreras en varning på kontot, utan någon annan effekt;",
       "item2": "vid en värdeminskning på minst <b>50%</b> tas säkerheten automatiskt bort från kontot (likvideras) till sitt ingångsvärde.",
-      "body": "Likvidation av en säkerhet upphäver inte kredit som redan använts mot den säkerheten: den krediten förblir fullt ut skyldig av kunden, utan att längre täckas av den ursprungligen etablerade säkerheten. En likviderad säkerhet kan inte återställas, även om kursen för den berörda tillgången senare återhämtar sig. Ovan nämnda trösklar kan när som helst ändras, utan retroaktiv effekt på bedömningen av en redan konstaterad värdeminskning."
+      "body": "Likvidation av en säkerhet upphäver inte den kredit som redan använts mot den säkerheten: den krediten förblir fullt förfallen av kunden, utan att längre täckas av den ursprungligen ställda säkerheten. En likviderad säkerhet kan inte längre återlämnas, även om kursen för den berörda tillgången senare återhämtar sig. Ovan nämnda trösklar kan ändras när som helst, utan retroaktiv effekt på bedömningen av en redan konstaterad värdeminskning."
     },
     "s8": {
       "title": "8. Bankkort och användning av krediten",
-      "body": "Ett bankkort, utfärdat av en godkänd tredjepartspartner, kan kopplas till kontot för att använda den beviljade kreditlinan, inom gränsen för tillgänglig kredit (beviljad kredit minus redan använd kredit). Alla transaktioner som överskrider denna gräns nekas. De specifika villkoren för utfärdande, användning och spärrning av kortet anges i de särskilda villkor som är knutna till det."
+      "body": "Ett bankkort, utfärdat av en auktoriserad tredjepartspartner, kan kopplas till kontot för att använda den beviljade kreditlinjen, inom gränsen för tillgänglig kredit (beviljad kredit minus redan använd kredit). Varje transaktion som överskrider denna gräns avvisas. De specifika villkoren för utfärdande, användning och spärrning av kortet anges i de särskilda villkor som är kopplade till det."
     },
     "s9": {
-      "title": "9. Amortering",
-      "body": "Kunden kan amortera hela eller delar av den använda krediten när som helst. Fullständig amortering av krediten som använts mot en given säkerhet frigör den säkerheten, som återigen blir uttagbar. De amorteringssimulatorer som finns tillgängliga på plattformen (flexibel prognos, fasta delbetalningar) tillhandahålls endast i vägledande syfte: de bygger på en uppskattad avkastning baserad på tidigare resultat, vilket inte föregriper framtida resultat, och utgör varken ett avtalsenligt åtagande eller en verkställbar betalningsplan."
+      "title": "9. Återbetalning",
+      "body": "Kunden kan när som helst återbetala hela eller delar av den använda krediten. Fullständig återbetalning av den använda krediten mot en given säkerhet frigör den säkerheten, som återigen blir uttagbar. De återbetalningssimulatorer som tillhandahålls på plattformen (flexibel prognos, fasta avbetalningar) tillhandahålls endast i vägledande syfte: de bygger på en avkastning uppskattad utifrån tidigare resultat, vilket inte föregriper framtida resultat, och utgör varken ett avtalsenligt åtagande eller en verkställbar betalningsplan."
     },
     "s10": {
       "title": "10. Avgifter",
-      "body": "De avgifter och räntor som för närvarande tillämpas är: en uppläggningsavgift på <b>2,0%</b>, som tas ut en gång på den utfärdade krediten vid tidpunkten för säkerhetens låsning; en förvaringsavgift för säkerheten på <b>0,5% per år</b>, på beloppet av den låsta säkerheten; samt ränta på den använda krediten på <b>13,5% per år i USD</b> (<b>12,0% per år i EUR</b>), sammansatt av en monetär referensränta (SOFR för USD, EURIBOR för EUR) och en riskpremie på 8,5 punkter, motiverad av plattformens höga kreditkvot (350%). Den aktuella detaljen kring dessa priser finns på sidan <link>Priser</link> på plattformen. Dessa räntor kan uppdateras när som helst, utan retroaktiv effekt på redan etablerade positioner: den räntestruktur som fastställts vid låsningen av en position förblir gällande fram till amortering eller förfall."
+      "body": "De avgifter och räntor som för närvarande tillämpas är: en uppläggningsavgift på <b>2,0%</b>, som tas ut en gång på den utfärdade krediten vid tidpunkten för säkerhetens låsning; en förvaringsavgift för säkerheten på <b>0,5% per år</b>, på beloppet av den låsta säkerheten; och ränta på den använda krediten på <b>13,5% per år i USD</b> (<b>12,0% per år i EUR</b>), bestående av en monetär referensränta (SOFR för USD, EURIBOR för EUR) och en riskpremie på 8,5 punkter, motiverad av plattformens höga kreditkvot (350%). De aktuella detaljerna för dessa priser finns på plattformens sida <link>Priser</link>. Dessa räntor kan uppdateras när som helst, utan retroaktiv effekt på redan etablerade positioner: den räntestruktur som fastställdes vid låsningen av en position gäller fram till dess återbetalning eller förfall."
     },
     "s11": {
       "title": "11. Risker",
       "intro": "Kunden erkänner och accepterar de risker som är förknippade med digitala tillgångar, särskilt:",
-      "item1": "volatiliteten i kursen för tillgångar värderade till spotpris (tokeniserat guld), vilket kan påverka säkerhetens värde och kontots totala köpkraft;",
+      "item1": "volatiliteten i kursen på tillgångar värderade till spotpris (tokeniserat guld), vilket kan påverka säkerhetens värde och kontots totala köpkraft;",
       "item2": "risken för likvidation av säkerheten vid kraftig värdeminskning (se avsnitt 7), vilket inte upphäver redan använd kredit;",
-      "item3": "motparts- och operativ risk kopplad till de depåinstitut och tredjeparts förvaringsleverantörer som nämns i avsnitt 5;",
-      "item4": "regulatorisk risk kopplad till utvecklingen av det rättsliga ramverk som gäller för digitala tillgångar och stablecoins.",
+      "item3": "motpartsrisken och den operativa risken kopplad till de förvaringsinstitut och tredjeparts förvaringsleverantörer som nämns i avsnitt 5;",
+      "item4": "regelverksrisken kopplad till utvecklingen av det rättsliga ramverket som gäller för digitala tillgångar och stablecoins.",
       "body": "Dessa villkor utgör varken investeringsrådgivning eller en rekommendation att köpa, sälja eller inneha någon digital tillgång."
     },
     "s12": {
       "title": "12. Uppsägning",
-      "body": "Kunden kan stänga sitt konto när som helst, med förbehåll för full amortering av all använd kredit. Bolaget kan spärra eller säga upp tillgången till tjänsten vid brott mot dessa villkor, misstanke om bedrägeri eller penningtvätt, eller av vilken laglig eller regulatorisk anledning som helst."
+      "body": "Kunden kan när som helst stänga sitt konto, under förutsättning att all använd kredit återbetalas fullt ut. Bolaget kan spärra eller säga upp tillgången till tjänsten vid brott mot dessa villkor, misstanke om bedrägeri eller penningtvätt, eller av vilket rättsligt eller regelverksmässigt skäl som helst."
     },
     "s13": {
       "title": "13. Ansvar",
-      "body": "Bolaget vidtar rimliga åtgärder för att säkerställa plattformens tillgänglighet och säkerhet, utan att garantera en total frånvaro av avbrott. Dess ansvar kan inte göras gällande vid force majeure, ett fel i ett blockkedjenätverk eller hos en tredjepartsleverantör utanför dess kontroll, inom de gränser som tillåts av tillämplig schweizisk rätt."
+      "body": "Bolaget genomför rimliga åtgärder för att säkerställa plattformens tillgänglighet och säkerhet, utan garanti för fullständig frånvaro av avbrott. Dess ansvar kan inte göras gällande vid force majeure, funktionsstörning i ett blockkedjenätverk eller hos en tredjepartsleverantör utanför dess kontroll, inom de gränser som tillåts av tillämplig schweizisk rätt."
     },
     "s14": {
       "title": "14. Ändring av de allmänna villkoren",
-      "body": "Bolaget kan när som helst ändra dessa allmänna villkor, med förhandsinformation till kunden via de sedvanliga kommunikationsmedlen. Ändringar har ingen retroaktiv effekt på redan etablerade kreditpositioner, om inte lagen föreskriver annat."
+      "body": "Bolaget kan när som helst ändra dessa allmänna villkor, efter föregående information till kunden via sedvanliga kommunikationskanaler. Ändringar har ingen retroaktiv effekt på redan etablerade kreditpositioner, om inte annat föreskrivs i lag."
     },
     "s15": {
       "title": "15. Tillämplig lag och forum",
-      "body": "Dessa allmänna villkor regleras av schweizisk rätt. Alla tvister rörande deras giltighet, tolkning eller genomförande omfattas av exklusiv behörighet för domstolarna i {jurisdiction}, med förbehåll för tillämpliga tvingande lagbestämmelser."
+      "body": "Dessa allmänna villkor regleras av schweizisk rätt. Varje tvist rörande deras giltighet, tolkning eller genomförande faller under exklusiv behörighet för forumet i {jurisdiction}, med förbehåll för tillämpliga tvingande rättsliga bestämmelser."
     }
   },
   "Privacy": {
@@ -399,66 +399,66 @@
       "description": "Hur H. Hentsch Asset Management SA samlar in, använder och skyddar dina personuppgifter, i enlighet med den schweiziska federala dataskyddslagen."
     },
     "title": "Integritetspolicy",
-    "intro": "Denna policy beskriver hur H. Hentsch Asset Management SA samlar in, använder och skyddar personuppgifter för kunder hos Hentsch Credit, en plattform förbehållen en begränsad kundkrets, i enlighet med den schweiziska federala dataskyddslagen (nDSG) och, i tillämpliga fall, den allmänna dataskyddsförordningen (GDPR).",
+    "intro": "Denna policy beskriver hur H. Hentsch Asset Management SA samlar in, använder och skyddar personuppgifterna för Hentsch Credits kunder, en plattform förbehållen en begränsad kundkrets, i enlighet med den schweiziska federala dataskyddslagen (nDSG) och, i förekommande fall, den allmänna dataskyddsförordningen (GDPR).",
     "s1": {
       "title": "1. Personuppgiftsansvarig",
       "controller": "Ansvarig",
       "address": "Adress",
       "dpoContact": "Kontakt för dataskydd",
-      "compliance": "I överensstämmelse med den schweiziska DSG och GDPR."
+      "compliance": "Uppfyller den schweiziska dataskyddslagen och GDPR."
     },
     "s2": {
       "title": "2. Insamlade uppgifter",
       "item1": "Identifierings- och kontaktuppgifter (namn, e-post, kontaktuppgifter);",
       "item2": "Dokument och uppgifter för identitetskontroll (KYC) som lämnas vid kontoöppning;",
-      "item3": "Uppgifter om insättningsadresser, on-chain-transaktioner och transaktioner som utförts på plattformen (insättningar, säkerhetslåsningar, kreditbeviljanden, amorteringar, kortbetalningar);",
-      "item4": "Tekniska anslutningsuppgifter till plattformen (loggar, sessionsidentifierare)."
+      "item3": "Uppgifter om insättningsadresser, on-chain-transaktioner och transaktioner som utförs på plattformen (insättningar, låsning av säkerhet, kreditbeviljanden, återbetalningar, kortbetalningar);",
+      "item4": "Tekniska anslutningsuppgifter till plattformen (loggar, sessions-ID)."
     },
     "s3": {
       "title": "3. Ändamål och rättslig grund",
-      "item1": "Fullgörande av avtalsförhållandet: öppnande och hantering av kontot, beviljande och uppföljning av krediten, utfärdande och hantering av det tillhörande bankkortet;",
-      "item2": "Efterlevnad av rättsliga och regulatoriska skyldigheter: identitetskontroll (KYC), bekämpning av penningtvätt och finansiering av terrorism (AML), bevarande av bokföringsunderlag;",
+      "item1": "Fullgörande av avtalsförhållandet: öppnande och förvaltning av kontot, beviljande och uppföljning av krediten, utfärdande och förvaltning av det tillhörande bankkortet;",
+      "item2": "Efterlevnad av rättsliga och regulatoriska skyldigheter: identitetskontroll (KYC), bekämpning av penningtvätt och finansiering av terrorism, bevarande av bokföringshandlingar;",
       "item3": "Plattformens säkerhet och förebyggande av bedrägeri;",
-      "item4": "Kommunikation med kunden gällande dennes konto och transaktioner."
+      "item4": "Kommunikation med kunden rörande dennes konto och transaktioner."
     },
     "s4": {
-      "title": "4. Partner och underleverantörer",
-      "intro": "För att utföra tjänsten anlitar {legalName} specialiserade leverantörer, som behandlar vissa uppgifter för dess räkning och enligt dess instruktioner, eller som agerar som separata personuppgiftsansvariga för förvaring av tillgångar:",
-      "item1Label": "Tredjeparts depåbanker",
+      "title": "4. Partners och underleverantörer",
+      "intro": "För att utföra tjänsten anlitar {legalName} specialiserade leverantörer, som behandlar vissa uppgifter för dess räkning och enligt dess instruktioner, eller som agerar som separata personuppgiftsansvariga för förvaringen av tillgångarna:",
+      "item1Label": "Tredjeparts förvaringsbanker",
       "item1Body": "förvaring av kundernas likvida medel och värdepapper (se juridisk information, avsnitt 3);",
       "item2Label": "Förvaring av digitala tillgångar ({custodians})",
       "item2Body": "säker förvaring av de stablecoins och det tokeniserade guld som satts in som säkerhet;",
       "item3Label": "Utfärdande av bankkort",
-      "item3Body": "behandling av betalningsauktoriseringar i realtid;",
+      "item3Body": "realtidsbehandling av betalningsauktorisationer;",
       "item4Label": "Identitetskontroll (KYC)",
-      "item4Body": "kontroll av kundens identitet och efterlevnadsstatus;",
-      "item5Label": "Blockkedjemarknadsdata",
+      "item4Body": "kontroll av kundens identitet och regelefterlevnadsstatus;",
+      "item5Label": "Blockkedje-marknadsdata",
       "item5Body": "upptäckt av on-chain-insättningar och realtidskurser för tillgångarna.",
-      "outro": "Namn, exakt roll och etableringsland för varje leverantör som används i produktion lämnas till kunden på begäran hos den avdelning som anges i avsnitt 1."
+      "outro": "Namn, exakt roll och etableringsland för varje leverantör som används i produktion meddelas kunden på begäran hos den avdelning som anges i avsnitt 1."
     },
     "s5": {
-      "title": "5. Lagringstid",
-      "body": "Uppgifter om kunder och deras transaktioner lagras under förvaltningsrelationens löptid, och därefter under den period som krävs enligt tillämpliga lagstadgade lagringsskyldigheter (i synnerhet bokföringshandlingar och transaktionsunderlag)."
+      "title": "5. Bevarandetid",
+      "body": "Uppgifter om kunder och deras transaktioner bevaras under förvaltningsrelationens löptid, och därefter under den tid som krävs enligt tillämpliga rättsliga bevarandeskyldigheter (särskilt bokföringshandlingar och underlag för transaktioner)."
     },
     "s6": {
       "title": "6. Internationella överföringar",
-      "body": "Vissa leverantörer som nämns i avsnitt 4 kan behandla uppgifter utanför Schweiz. I så fall vidtar {legalName} de lämpliga skyddsåtgärder som krävs enligt schweizisk dataskyddslagstiftning (avtalsklausuler, ett adekvansbeslut eller en likvärdig mekanism)."
+      "body": "Vissa leverantörer som nämns i avsnitt 4 kan behandla uppgifter utanför Schweiz. I så fall vidtar {legalName} de lämpliga skyddsåtgärder som krävs enligt schweizisk dataskyddslagstiftning (avtalsklausuler, adekvansbeslut eller likvärdig mekanism)."
     },
     "s7": {
       "title": "7. Dina rättigheter",
-      "body": "Med förbehåll för de begränsningar som föreskrivs i lag (i synnerhet tillämpliga lagstadgade lagringsskyldigheter) har kunden rätt till tillgång, rättelse, radering och invändning avseende sina personuppgifter. Dessa rättigheter kan utövas genom att skriva till den adress som anges i avsnitt 1."
+      "body": "Med förbehåll för de begränsningar som föreskrivs i lag (särskilt tillämpliga rättsliga bevarandeskyldigheter), har kunden rätt till tillgång, rättelse, radering och invändning avseende sina personuppgifter. Dessa rättigheter kan utövas genom att skriva till adressen som anges i avsnitt 1."
     },
     "s8": {
       "title": "8. Cookies och spårare",
-      "body": "Plattformen använder endast cookies som är strikt nödvändiga för dess funktion (sessionsautentisering, visningspreferenser). Ingen reklam- eller tredjepartscookie för besöksmätning används utan kundens förhandssamtycke. Detaljer finns i <link>cookiepolicyn</link>."
+      "body": "Plattformen använder endast cookies som är absolut nödvändiga för dess funktion (sessionsautentisering, visningsinställningar). Ingen reklamcookie eller tredjeparts cookie för publikmätning placeras utan kundens föregående samtycke. Detaljer finns i <link>cookiepolicyn</link>."
     },
     "s9": {
-      "title": "9. Särfallet med intressenter (kontoansökan)",
-      "body": "Personer som lämnar in en kontoansökan utan att ännu vara kunder (via sidan Ansök om konto) lämnar identifierings- och kontaktuppgifter samt information om sitt investeringsprojekt. Dessa uppgifter behandlas endast i syfte att granska ansökan. Om ansökan inte leder till en kapitalförvaltningsrelation lagras de under en begränsad tid, nödvändig för ärendets uppföljning, och raderas sedan; vid godkännande integreras de i kundakten och följer de lagringsregler som beskrivs i avsnitt 5."
+      "title": "9. Särskilt fall för presumtiva kunder (kontoansökan)",
+      "body": "Personer som lämnar en kontoansökan utan att ännu vara kunder (via sidan Ansök om konto) lämnar identifierings- och kontaktuppgifter samt information om sitt investeringsprojekt. Dessa uppgifter behandlas endast i syfte att granska ansökan. Om ansökan inte leder till en kapitalförvaltningsrelation bevaras de under en begränsad tid, nödvändig för uppföljningen av ärendet, och raderas sedan; vid godkännande integreras de i kundakten och följer de bevarandebestämmelser som beskrivs i avsnitt 5."
     },
     "s10": {
       "title": "10. Säkerhet",
-      "body": "{legalName} vidtar lämpliga tekniska och organisatoriska åtgärder (kryptering, åtkomstkontroll, distribuerade lås vid finansiella transaktioner) för att skydda personuppgifter mot obehörig åtkomst, förlust eller ändring."
+      "body": "{legalName} genomför lämpliga tekniska och organisatoriska åtgärder (kryptering, åtkomstkontroll, distribuerade lås för finansiella transaktioner) för att skydda personuppgifter mot obehörig åtkomst, förlust eller ändring."
     },
     "s11": {
       "title": "11. Kontakt",
@@ -468,12 +468,12 @@
   },
   "AccountRequest": {
     "meta": {
-      "title": "Ansök om att öppna ett konto · Hentsch Credit",
-      "description": "Ansök om att öppna ett Hentsch Credit-konto, en plattform för kryptosäkrad kredit förbehållen en begränsad kundkrets, endast på inbjudan."
+      "title": "Ansök om ett konto · Hentsch Credit",
+      "description": "Ansök om ett konto hos Hentsch Credit, en kryptosäkrad kreditplattform förbehållen en begränsad kundkrets, på inbjudan."
     },
     "eyebrow": "Tillgång på inbjudan",
-    "title": "Ansök om att öppna ett konto",
-    "description": "Plattformen är förbehållen en begränsad kundkrets. Lämna dina uppgifter: vårt team granskar varje ansökan innan tillgång beviljas.",
+    "title": "Ansök om ett konto",
+    "description": "Plattform förbehållen en begränsad kundkrets. Lämna dina uppgifter till oss: vårt team granskar varje ansökan innan tillgång beviljas.",
     "alreadyHaveAccount": "Har du redan ett konto? <link>Logga in</link>"
   },
   "AccountRequestForm": {
@@ -483,44 +483,44 @@
     "phone": "Telefon (valfritt)",
     "message": "Ditt projekt (valfritt)",
     "messagePlaceholder": "Planerat belopp, berörda tillgångar, specifika frågor…",
-    "disclaimer": "Genom att skicka in detta formulär godkänner du att dina uppgifter behandlas i enlighet med vår <link>integritetspolicy</link>. Inget konto skapas automatiskt: tillgång beviljas efter att vårt team har granskat och godkänt din ansökan.",
+    "disclaimer": "Genom att skicka in detta formulär godkänner du att dina uppgifter behandlas i enlighet med vår <link>integritetspolicy</link>. Inget konto skapas automatiskt: tillgång beviljas efter att ditt ärende har granskats och validerats av vårt team.",
     "submit": "Skicka min ansökan",
     "successTitle": "Din ansökan har skickats",
-    "successBody": "Vårt team granskar din ansökan och återkommer via e-post. Tillgång till ditt kundområde beviljas först när denna granskning är klar.",
+    "successBody": "Vårt team granskar ditt ärende och återkommer via e-post. Tillgång till ditt kundområde beviljas först när denna validering är klar.",
     "genericError": "Ett fel har inträffat."
   },
   "Faq": {
     "meta": {
       "title": "Vanliga frågor · Hentsch Credit",
-      "description": "Svar på de vanligaste frågorna om kontot, säkerheten och hur Hentsch Credit-plattformen fungerar."
+      "description": "Svaren på de vanligaste frågorna om kontot, säkerheten och hur plattformen Hentsch Credit fungerar."
     },
     "eyebrow": "Vanliga frågor",
     "title": "Vanliga frågor",
-    "description": "Svar på allmänna frågor om kontot, säkerheten och hur plattformen fungerar.",
+    "description": "Svaren på allmänna frågor om kontot, säkerheten och hur plattformen fungerar.",
     "items": {
       "openAccount": {
-        "question": "Hur öppnar jag ett Hentsch Credit-konto?",
-        "answer": "Plattformen är förbehållen en begränsad kundkrets, på inbjudan, inom ramen för en befintlig kapitalförvaltningsrelation med H. Hentsch Asset Management SA. Du kan lämna in en kontoansökan från sidan Ansök om konto; den granskas av våra team innan något konto faktiskt öppnas."
+        "question": "Hur öppnar man ett Hentsch Credit-konto?",
+        "answer": "Plattformen är förbehållen en begränsad kundkrets, på inbjudan, inom ramen för en befintlig kapitalförvaltningsrelation med H. Hentsch Asset Management SA. Du kan lämna en kontoansökan från sidan Ansök om konto; den granskas av våra team innan ett faktiskt konto öppnas."
       },
       "forgotPassword": {
         "question": "Jag har glömt mitt lösenord, vad ska jag göra?",
-        "answer": "Kontakta den tjänst som anges på sidan Kontakt med ditt namn och den e-postadress som är kopplad till ditt konto. Av säkerhetsskäl görs ingen återställning via någon annan kanal."
+        "answer": "Kontakta den avdelning som anges på kontaktsidan med ditt namn och den e-postadress som är kopplad till ditt konto. Av säkerhetsskäl görs ingen återställning via någon annan kanal."
       },
       "assetsSafe": {
         "question": "Är mina digitala tillgångar säkra?",
-        "answer": "De stablecoins och det tokeniserade guld som satts in som säkerhet förvaras av en godkänd leverantör av förvaring av digitala tillgångar, fristående från H. Hentsch Asset Management SA, specialiserad på säker förvaring av kryptotillgångar för schweiziska finansinstituts räkning. Detaljer finns på sidan Reglering, avsnitt 3."
+        "answer": "De stablecoins och det tokeniserade guld som sätts in som säkerhet förvaras av en auktoriserad leverantör av förvaring av digitala tillgångar, skild från H. Hentsch Asset Management SA, specialiserad på säker förvaring av kryptotillgångar för schweiziska finansinstituts räkning. Detaljer finns på sidan Reglering, avsnitt 3."
       },
       "networksAssets": {
         "question": "Vilka nätverk och tillgångar accepteras som säkerhet?",
-        "answer": "För närvarande endast Ethereum-nätverket. Detaljer om accepterade tillgångar (stablecoins, tokeniserat guld, ETH, tokeniserade industrimetaller) och deras värdering finns på sidan Så fungerar det."
+        "answer": "Endast Ethereum-nätverket för närvarande. Detaljerna om accepterade tillgångar (stablecoins, tokeniserat guld, ETH, tokeniserade industrimetaller) och deras värdering finns på sidan Så fungerar det."
       },
       "ratioFees": {
-        "question": "Vad är kreditkvoten och vilka är de faktiska avgifterna?",
-        "answer": "350% av det pantsatta beloppet till den ränta som gäller vid tidpunkten för låsningen, med en uppläggningsavgift på 2% och en årsränta på den faktiskt använda krediten. Den detaljerade siffran, inklusive ett exempel på total kostnad, finns på sidan Priser."
+        "question": "Vad är kreditkvoten och vilka är de verkliga avgifterna?",
+        "answer": "350% av det pantsatta beloppet till den ränta som gäller vid tidpunkten för låsningen, med en uppläggningsavgift på 2% och en årlig ränta på den faktiskt använda krediten. De exakta siffrorna, inklusive ett exempel på totalkostnad, finns på sidan Priser."
       },
       "yieldLiquidation": {
-        "question": "Hur fungerar den automatiska amorteringen och likvidationsrisken?",
-        "answer": "En del av den använda krediten kan amorteras automatiskt genom den verkliga värdeökningen på din säkerhet, begränsad till 60%. Omvänt kan en kraftig värdeminskning av säkerheten leda till att den likvideras. Hela mekanismen, med beräknade exempel, finns på sidan Avkastning."
+        "question": "Hur fungerar den automatiska återbetalningen och likvidationsrisken?",
+        "answer": "En del av den använda krediten kan återbetalas automatiskt genom säkerhetens verkliga värdeökning, begränsad till 60%. Omvänt kan en kraftig värdeminskning av säkerheten leda till att den likvideras. Hela mekanismen, med räkneexempel, finns på sidan Avkastning."
       },
       "kycDoubt": {
         "question": "Vad händer om det finns tvivel om min identitet (KYC)?",
@@ -528,11 +528,11 @@
       },
       "complaint": {
         "question": "Hur lämnar jag ett klagomål?",
-        "answer": "Rikta ditt klagomål till den kontakt som anges på sidan Kontakt. Om ingen samförståndslösning uppnås kan du vända dig till behörigt medlingsorgan, som anges på sidan Reglering, avsnitt 6."
+        "answer": "Skicka ditt klagomål till den kontakt som anges på kontaktsidan. Om ingen uppgörelse i godo nås kan du vända dig till det behöriga medlingsorganet, som anges på sidan Reglering, avsnitt 6."
       }
     },
     "moreQuestionsTitle": "En mer specifik fråga?",
-    "moreQuestionsBody": "Varje stort ämne har sin egen detaljerade sida, med egna vanliga frågor: <howItWorks>Så fungerar det</howItWorks>, <yield>Avkastning</yield>, <rwa>RWA-strategi</rwa> och <pricing>Priser</pricing>. För alla andra frågor är sidan <contact>Kontakt</contact> fortfarande den mest direkta ingången."
+    "moreQuestionsBody": "Varje stort ämne har sin egen detaljerade sida, med sina egna vanliga frågor: <howItWorks>Så fungerar det</howItWorks>, <yield>Avkastning</yield>, <rwa>RWA-strategi</rwa> och <pricing>Priser</pricing>. För alla andra frågor är sidan <contact>Kontakt</contact> fortfarande den mest direkta ingången."
   },
   "Login": {
     "meta": {
@@ -542,11 +542,11 @@
   },
   "LoginForm": {
     "twoFactorTitle": "Tvåstegsverifiering",
-    "twoFactorDescription": "Ange den 6-siffriga kod som genereras av din autentiseringsapp.",
+    "twoFactorDescription": "Ange den 6-siffriga koden som genererats av din autentiseringsapp.",
     "verificationCode": "Verifieringskod",
     "verify": "Verifiera",
     "backToLogin": "← Tillbaka till inloggning",
-    "restrictedAccess": "Tillgång förbehållen inbjudna kunder.",
+    "restrictedAccess": "Åtkomst endast för inbjudna kunder.",
     "email": "E-post",
     "password": "Lösenord",
     "submit": "Logga in",
@@ -556,47 +556,47 @@
   "RiskManagement": {
     "meta": {
       "title": "Riskhantering och förvaring av tillgångar · Hentsch Credit",
-      "description": "Hur Hentsch Credit hanterar förvaring av tillgångar, värdering av säkerheten och likvidationsmekanismen."
+      "description": "Hur Hentsch Credit hanterar förvaringen av tillgångarna, värderingen av säkerheten och likvidationsmekanismen."
     },
     "title": "Riskhantering och förvaring av tillgångar",
-    "intro": "H. Hentsch Asset Management SA utför inte börsorder för tredje parts räkning och publicerar därför varken en utförandepolicy eller en rapport om bästa urval i den mening som avses i regelverket för finansiella marknader. Den här sidan beskriver i stället de faktiska riskhanteringsmetoder som tillämpas på Hentsch Credit-plattformen.",
+    "intro": "H. Hentsch Asset Management SA utför inga börsorder för tredje parts räkning och publicerar därför varken någon utförandepolicy eller rapport om bästa urval enligt regelverket för finansiella marknader. Denna sida beskriver istället de verkliga riskhanteringsmetoder som tillämpas på plattformen Hentsch Credit.",
     "s1": {
-      "title": "1. Verksamhetens art",
-      "body": "{legalName} agerar som oberoende kapitalförvaltare (OKF): bolaget beviljar kryptosäkrad kredit till sina kunder, mot en säkerhet som de satt in, och förvaltar en treasurystrategi på tokeniserade industrimetaller och råvaror med sitt eget kapital. Bolaget utför ingen börsorder för sina kunders räkning och förvaltar ingen diskretionär värdepappersportfölj i deras namn."
+      "title": "1. Verksamhetens natur",
+      "body": "{legalName} agerar som oberoende kapitalförvaltare (OKF): bolaget beviljar kryptosäkrad kredit till sina kunder, mot en säkerhet som de sätter in, och förvaltar en treasurystrategi för tokeniserade industrimetaller och råvaror med eget kapital. Bolaget utför inga börsorder för sina kunders räkning och förvaltar ingen diskretionär värdepappersportfölj i deras namn."
     },
     "s2": {
       "title": "2. Förvaring och åtskillnad av tillgångarna",
-      "body": "Tillgångar som satts in som säkerhet av kunder används aldrig i bolagets treasurystrategi: de två flödena är åtskilda och möts aldrig vid någon tidpunkt. Detaljer om treasurystrategin finns på sidan <link>RWA-strategi</link>, avsnittet \"Styrning & åtskillnad av medel\"."
+      "body": "De tillgångar som kunder sätter in som säkerhet används aldrig i bolagets treasurystrategi: de två flödena är åtskilda och möts aldrig. Detaljerna om treasurystrategin finns på sidan <link>RWA-strategi</link>, avsnittet „Styrning och åtskillnad av medel”."
     },
     "s3": {
       "title": "3. Värdering av säkerheten",
-      "body": "Värdet på den insatta säkerheten fastställs utifrån marknadskurser i realtid (spotpris för tokeniserat guld, tokeniserade industrimetaller, ETH; 1:1-paritet med dollarn för USD-stablecoins; spotpris för den eurokopplade stablecoinen), utan marginal eller diskretionär justering från bolagets sida. Denna värdering används både för att beräkna den kredit som beviljas vid låsningen och för den dagliga övervakning av värdeminskning som beskrivs nedan."
+      "body": "Värdet på den insatta säkerheten bestäms utifrån realtidsmarknadskurser (spotkurs för tokeniserat guld, tokeniserade industrimetaller, ETH; 1:1-paritet med dollarn för USD-stablecoins; spotkurs för den eurokopplade stablecoinen), utan marginal eller diskretionär justering från bolagets sida. Denna värdering används både för beräkningen av krediten som beviljas vid låsningen och för den dagliga uppföljningen av värdeminskning som beskrivs nedan."
     },
     "s4": {
-      "title": "4. Mekanism för likvidation av säkerheten",
-      "body": "En automatisk daglig kontroll jämför säkerhetens aktuella värde med dess ingångsvärde (vid tidpunkten för låsningen). En värdeminskning på 30% utlöser en varning synlig på kundens konto; en värdeminskning på 50% leder till likvidation av säkerheten. Redan använd kredit raderas inte av likvidationen: den blir en osäkrad fordran. Fullständiga detaljer, med ett beräknat exempel, finns på sidan <yieldLink>Avkastning</yieldLink> och i de <termsLink>allmänna villkoren</termsLink>, avsnitt 7."
+      "title": "4. Likvidationsmekanism för säkerheten",
+      "body": "En automatisk daglig kontroll jämför säkerhetens aktuella värde med dess ingångsvärde (vid tidpunkten för låsningen). En värdeminskning på 30% utlöser en varning synlig på kundens konto; en värdeminskning på 50% leder till likvidation av säkerheten. Redan använd kredit raderas inte genom likvidationen: den blir en osäkrad fordran. De fullständiga detaljerna, med ett räkneexempel, finns på sidan <yieldLink>Avkastning</yieldLink> och i de <termsLink>allmänna villkoren</termsLink>, avsnitt 7."
     },
     "s5": {
       "title": "5. Intressekonflikter",
-      "body": "Bolaget intar aldrig en position som strider mot sina kunders vad gäller de tillgångar de sätter in som säkerhet: det tar endast emot säkerheten, beräknar motsvarande kredit och likviderar den, vid behov, enligt trösklar som fastställts i förväg och tillämpas automatiskt och identiskt på alla kunder. Bolagets treasurystrategi (industrimetaller och råvaror) finansieras med dess eget kapital, aldrig med tillgångar som satts in av kunder."
+      "body": "Bolaget intar aldrig en position som strider mot sina kunders avseende de tillgångar som de sätter in som säkerhet: det tar endast emot säkerheten, beräknar motsvarande kredit och, i förekommande fall, likviderar den enligt trösklar som fastställts i förväg och tillämpas automatiskt och identiskt på alla kunder. Bolagets treasurystrategi (industrimetaller och råvaror) finansieras med dess eget kapital, aldrig med tillgångar som satts in av kunder."
     },
     "s6": {
       "title": "6. Kontroll och granskning",
-      "body": "De gällande riskparametrarna (kreditkvot, räntor, likvidationströsklar) är centraliserade i plattformens kreditmotor och genomgår en automatiserad testsvit vid varje ändring. Alla ändringar av dessa parametrar registreras och gäller aldrig retroaktivt för en redan låst position. Detaljer om historiken för dessa ändringar finns på sidan <link>Arkiv</link>."
+      "body": "De gällande riskparametrarna (kreditkvot, räntor, likvidationströsklar) är centraliserade i plattformens kreditmotor och genomgår en automatiserad testsvit vid varje förändring. Varje ändring av dessa parametrar registreras och gäller aldrig retroaktivt för en redan låst position. Detaljerna om historiken för dessa förändringar finns på sidan <link>Arkiv</link>."
     }
   },
   "LegalNotice": {
     "meta": {
       "title": "Juridisk information · Hentsch Credit",
-      "description": "Juridisk information om utgivaren och operatören av Hentsch Credit-plattformen."
+      "description": "Juridisk information om utgivaren och operatören av plattformen Hentsch Credit."
     },
     "title": "Juridisk information",
-    "intro": "Juridisk information om utgivaren och operatören av webbplatsen och plattformen Hentsch Credit, i enlighet med tillämplig schweizisk lagstiftning. Plattformen är förbehållen en begränsad kundkrets, endast på inbjudan: den är inte öppen för allmänheten och utgör inte ett offentligt erbjudande.",
+    "intro": "Juridisk information om utgivaren och operatören av webbplatsen och plattformen Hentsch Credit, i enlighet med tillämplig schweizisk lagstiftning. Plattform förbehållen en begränsad kundkrets, på inbjudan: den är inte öppen för allmänheten och utgör inget offentligt erbjudande.",
     "s1": {
-      "title": "1. Webbplatsens utgivare",
+      "title": "1. Utgivare av webbplatsen",
       "companyName": "Firmanamn",
-      "legalForm": "Bolagsform",
-      "tradingName": "Plattformens varumärkesnamn",
+      "legalForm": "Juridisk form",
+      "tradingName": "Plattformens handelsnamn",
       "registeredOffice": "Säte",
       "postalAddress": "Postadress",
       "canton": "Kanton",
@@ -607,17 +607,17 @@
     },
     "s2": {
       "title": "2. Regulatorisk status och tillsyn",
-      "body": "{legalName} är en <b>oberoende kapitalförvaltare (OKF)</b> i den mening som avses i den federala lagen om finansinstitut (FinIG), <b>och inte en bankinstitution</b>. Som sådan innehar bolaget ingen banklicens utfärdad direkt av FINMA, men står under tillsyn av en tillsynsorganisation (TO) godkänd av {supervisoryAuthority}.",
-      "supervisionBody": "Tillsynsorganisation (TO)",
-      "amlBody": "Självregleringsorganisation för AML",
-      "footer": "Detaljer om det tillämpliga rättsliga ramverket (FinIG, FinSA, AML) presenteras på sidan <link>Reglering</link>."
+      "body": "{legalName} är en <b>oberoende kapitalförvaltare (OKF)</b> enligt den federala lagen om finansinstitut (FinIA), <b>och inte ett bankinstitut</b>. Som sådan innehar bolaget inget banktillstånd utfärdat direkt av FINMA, men står under tillsyn av ett tillsynsorgan (TO) godkänt av {supervisoryAuthority}.",
+      "supervisionBody": "Tillsynsorgan (TO)",
+      "amlBody": "Självregleringsorgan för penningtvätt",
+      "footer": "Detaljerna om det tillämpliga rättsliga ramverket (FinIA, FinSA, penningtvättslagen) presenteras på sidan <link>Reglering</link>."
     },
     "s3": {
       "title": "3. Förvaring av tillgångarna"
     },
     "s4": {
       "title": "4. Begränsad tillgång",
-      "body": "Plattformen {tradingName} riktar sig inte till allmänheten. Tillgången är förbehållen en fastställd kundlista, på inbjudan av {legalName}, efter en befintlig kapitalförvaltningsrelation och en förhandsverifiering av identitet. Inget innehåll på denna webbplats utgör ett erbjudande, en uppmaning eller en reklam riktad till allmänheten."
+      "body": "Plattformen {tradingName} riktar sig inte till allmänheten. Tillgången är förbehållen en bestämd kundlista, på inbjudan från {legalName}, efter en befintlig kapitalförvaltningsrelation och en föregående identitetskontroll. Inget på denna webbplats utgör ett erbjudande, en uppmaning eller reklam riktad till allmänheten."
     },
     "s5": {
       "title": "5. Kontakt",
@@ -630,30 +630,43 @@
     },
     "s7": {
       "title": "7. Immateriella rättigheter",
-      "body": "Samtliga delar som utgör webbplatsen och plattformen (texter, logotyper, grafik, ikoner, struktur, källkod) är {legalName}s eller dess licensgivares egendom, och skyddas som sådana av schweizisk rätt och internationella konventioner om immateriella rättigheter. All reproduktion, återgivning, ändring eller exploatering, helt eller delvis, utan föregående skriftligt tillstånd, är förbjuden."
+      "body": "Samtliga element som utgör webbplatsen och plattformen (texter, logotyper, grafik, ikoner, struktur, källkod) tillhör {legalName} eller dess licensgivare, och skyddas som sådana av schweizisk rätt och internationella konventioner om immateriella rättigheter. All reproduktion, återgivning, ändring eller exploatering, helt eller delvis, utan föregående skriftligt tillstånd, är förbjuden."
     },
     "s8": {
-      "title": "8. Tekniska partner",
-      "body": "Plattformen anlitar tredjepartsleverantörer för vissa tekniska funktioner (förvaring av digitala tillgångar och nyckelhantering, utfärdande av bankkort, identitetskontroll, marknadsdata). Listan över dessa leverantörer och deras roll beskrivs i <link>integritetspolicyn</link>."
+      "title": "8. Tekniska partners",
+      "body": "Plattformen förlitar sig på tredjepartsleverantörer för vissa tekniska funktioner (förvaring av digitala tillgångar och nyckelhantering, utfärdande av bankkort, identitetskontroll, marknadsdata). Listan över dessa leverantörer och deras roll beskrivs i <link>integritetspolicyn</link>."
     }
   },
   "Sitemap": {
     "meta": {
       "title": "Webbplatskarta · Hentsch Credit",
-      "description": "Samtliga offentligt tillgängliga sidor på Hentsch Credit, utan att logga in på ett konto."
+      "description": "Samtliga sidor på Hentsch Credit, både på besökarsidan och i kundområdet."
     },
     "eyebrow": "Navigering",
     "title": "Webbplatskarta",
-    "description": "Samtliga offentligt tillgängliga sidor, utan att logga in på ett konto.",
+    "description": "Samtliga sidor på webbplatsen, både på besökarsidan och i kundområdet.",
     "groups": {
-      "discover": { "title": "Upptäck plattformen" },
-      "account": { "title": "Kontotillgång" },
-      "help": { "title": "Hjälp & kontakt" },
-      "contractual": { "title": "Avtalsdokumentation" },
-      "privacy": { "title": "Personuppgifter" }
+      "discover": {
+        "title": "Upptäck plattformen"
+      },
+      "account": {
+        "title": "Kontoåtkomst"
+      },
+      "help": {
+        "title": "Hjälp och kontakt"
+      },
+      "contractual": {
+        "title": "Avtalsdokumentation"
+      },
+      "privacy": {
+        "title": "Personuppgifter"
+      },
+      "client": {
+        "title": "Kundområde (inloggning krävs)"
+      }
     },
     "links": {
-      "home": "Startsida",
+      "home": "Start",
       "howItWorks": "Så fungerar det",
       "yield": "Avkastning",
       "rwaStrategy": "RWA-strategi",
@@ -673,54 +686,64 @@
       "privacyPolicy": "Integritetspolicy",
       "cookiePolicy": "Cookiepolicy"
     },
-    "clientAreaNote": "Det inloggade kundområdet och det interna administrationsområdet listas inte ovan: deras innehåll beror på din identitetsverifieringsstatus och din roll på kontot, och är endast tillgängligt efter inloggning."
+    "clientLinks": {
+      "home": "Start",
+      "balance": "Saldo",
+      "market": "Marknad",
+      "credit": "Kredit",
+      "cards": "Kort",
+      "history": "Historik",
+      "profile": "Profil",
+      "support": "Support"
+    },
+    "clientAreaNote": "Det interna back office-systemet listas inte ovan: dess innehåll beror på din roll på kontot och är endast tillgängligt för behöriga konton. Sidorna i kundområdet som listas ovan kräver inloggning med ett verifierat konto — det faktiska innehållet (saldon, kredit, historik) är specifikt för varje kund."
   },
   "Market": {
     "meta": {
-      "title": "Marknaden direkt · Hentsch Credit",
-      "description": "Realtidskurser för de tillgångar som accepteras som säkerhet hos Hentsch Credit: stablecoins, guld, silver, ETH och tokeniserade industrimetaller."
+      "title": "Marknaden i realtid · Hentsch Credit",
+      "description": "Realtidskurserna för de tillgångar som accepteras som säkerhet hos Hentsch Credit: stablecoins, guld, silver, ETH och tokeniserade industrimetaller."
     },
     "eyebrow": "Realtidsdata",
-    "title": "Marknaden direkt",
+    "title": "Marknaden i realtid",
     "description": "Kurserna för de tillgångar som accepteras som säkerhet, i realtid."
   },
   "Regulation": {
     "meta": {
       "title": "Reglering · Hentsch Credit",
-      "description": "Det schweiziska rättsliga och regulatoriska ramverk som gäller för Hentsch Credit: FinIG, FinSA, AML, förvaring av tillgångar och tillsyn."
+      "description": "Det schweiziska rättsliga och regulatoriska ramverk som gäller för Hentsch Credit: FinIA, FinSA, penningtvättslagen, förvaring av tillgångarna och tillsyn."
     },
-    "title": "Regelverk",
-    "intro": "Den här sidan beskriver det schweiziska rättsliga och regulatoriska ramverk som gäller för Hentsch Credit, som ett komplement till den juridiska informationen.",
+    "title": "Regulatoriskt ramverk",
+    "intro": "Denna sida beskriver det schweiziska rättsliga och regulatoriska ramverk som gäller för Hentsch Credit, som ett komplement till den juridiska informationen.",
     "s1": {
       "title": "1. Tillämpligt rättsligt ramverk",
-      "intro": "{legalName}s verksamhet regleras särskilt av:",
-      "item1": "den federala lagen om finansinstitut (FinIG) och dess förordning (FinIV), tillämplig på oberoende kapitalförvaltare;",
-      "item2": "den federala lagen om finansiella tjänster (FinSA) och dess förordning (FinSO), avseende tillhandahållande av finansiella tjänster och kundklassificering;",
-      "item3": "den federala lagen mot penningtvätt (AML), avseende skyldigheter till aktsamhet och övervakning;",
-      "item4": "den federala dataskyddslagen (nDSG) och, i tillämpliga fall, den allmänna dataskyddsförordningen (GDPR)."
+      "intro": "Verksamheten hos {legalName} regleras särskilt av:",
+      "item1": "den federala lagen om finansinstitut (FinIA) och dess förordning (FinIO), tillämplig på oberoende kapitalförvaltare;",
+      "item2": "den federala lagen om finansiella tjänster (FinSA) och dess förordning (FinSO), avseende tillhandahållande av finansiella tjänster och klassificering av kunder;",
+      "item3": "den federala lagen mot penningtvätt, avseende skyldigheter om aktsamhet och vaksamhet;",
+      "item4": "den federala dataskyddslagen (nDSG) och, i förekommande fall, den allmänna dataskyddsförordningen (GDPR)."
     },
     "s2": {
       "title": "2. Operatörens status",
-      "body1": "{legalName} är en <b>oberoende kapitalförvaltare (OKF)</b> i den mening som avses i FinIG: bolaget innehar ingen banklicens och tar inte emot några offentliga medel i eget namn.",
-      "supervisionBody": "Tillsynsorganisation (TO)",
+      "body1": "{legalName} är en <b>oberoende kapitalförvaltare (OKF)</b> enligt FinIA: bolaget innehar inget banktillstånd och tar inte emot några insättningar av allmänhetens medel i eget namn.",
+      "supervisionBody": "Tillsynsorgan (TO)",
       "supervisoryAuthority": "Högsta tillsynsmyndighet",
-      "amlBody": "Självregleringsorganisation för AML",
-      "body2": "TO licensierar och övervakar kapitalförvaltningsverksamheten, kontrollerar efterlevnaden av de rättsliga skyldigheterna (inklusive AML) och kan besluta om åtgärder vid överträdelse. Detaljer om utgivarens identitet finns i den <link>juridiska informationen</link>."
+      "amlBody": "Självregleringsorgan för penningtvätt",
+      "body2": "TO godkänner och övervakar kapitalförvaltningsverksamheten, kontrollerar efterlevnaden av rättsliga skyldigheter (inklusive penningtvättslagen) och kan besluta om åtgärder vid överträdelser. Detaljerna om utgivarens identitet finns i den <link>juridiska informationen</link>."
     },
     "s3": {
-      "title": "3. Skydd av kundernas tillgångar"
+      "title": "3. Skydd av kundtillgångar"
     },
     "s4": {
-      "title": "4. Kundklassificering (FinSA)",
-      "body": "FinSA skiljer mellan tre kundkategorier (privatkunder, professionella och institutionella kunder), som motsvarar olika nivåer av information och skydd. {tradingName}s kundkrets klassificeras som <b>{classification}</b> i den mening som avses i FinSA, den kategori som erbjuder den högsta nivån av skydd och information. Tillgången förblir dock förbehållen en begränsad kundlista, på inbjudan, inom ramen för en befintlig kapitalförvaltningsrelation med {legalName}."
+      "title": "4. Klassificering av kundkretsen (FinSA)",
+      "body": "FinSA särskiljer tre kundkategorier (privatkunder, professionella och institutionella), som motsvaras av olika nivåer av information och skydd. {tradingName}s kundkrets klassificeras som <b>{classification}</b> enligt FinSA, den kategori som erbjuder den högsta nivån av skydd och information. Tillgången förblir dock förbehållen en begränsad kundlista, på inbjudan, inom ramen för en befintlig kapitalförvaltningsrelation med {legalName}."
     },
     "s5": {
-      "title": "5. Bekämpning av penningtvätt (AML)",
-      "body": "I enlighet med AML förutsätter tillgången till plattformen, genereringen av en insättningsadress och all kreditbeviljning en förhandsverifiering av kundens identitet och det ekonomiska ursprunget för de berörda tillgångarna. {legalName} tillämpar skärpta aktsamhetsåtgärder vid indikationer på penningtvätt eller finansiering av terrorism, och uppfyller de rapporteringsskyldigheter som föreskrivs i lag när så är tillämpligt."
+      "title": "5. Bekämpning av penningtvätt",
+      "body": "I enlighet med penningtvättslagen är tillgång till plattformen, generering av en insättningsadress och beviljande av kredit underställda en föregående kontroll av kundens identitet och det ekonomiska ursprunget för de berörda tillgångarna. {legalName} tillämpar förstärkta vaksamhetsåtgärder vid tecken på penningtvätt eller finansiering av terrorism, och uppfyller de rapporteringsskyldigheter som föreskrivs i lag när så är tillämpligt."
     },
     "s6": {
       "title": "6. Klagomål och medling",
-      "body": "Alla klagomål om tjänsten kan riktas till kontakten nedan. Om ingen samförståndslösning uppnås kan kunden, enligt de villkor som föreskrivs i FinSA, vända sig till det medlingsorgan som {legalName} lyder under: <b>{mediationBody}</b>."
+      "body": "Alla klagomål rörande tjänsten kan riktas till kontakten nedan. Om ingen uppgörelse i godo nås kan kunden, på de villkor som anges i FinSA, vända sig till det medlingsorgan som {legalName} lyder under: <b>{mediationBody}</b>."
     },
     "s7": {
       "title": "7. Kontakt för regelefterlevnad",
@@ -729,12 +752,12 @@
     }
   },
   "YieldShowcase": {
-    "pricesUnavailable": "Kurser tillfälligt otillgängliga.",
+    "pricesUnavailable": "Kurser inte tillgängliga för närvarande.",
     "yieldBadge": "Avkastning",
     "h24": "24h",
     "badge": "Vår skillnad",
-    "title": "Den enda säkerheten som amorterar en del av din kredit åt dig",
-    "subtitle": "Guld, silver och ETH genererar en verklig avkastning, automatiskt återinjicerad i din kredit.",
+    "title": "Den enda säkerheten som betalar tillbaka en del av din kredit åt dig",
+    "subtitle": "Guld, silver och ETH genererar en verklig avkastning, som automatiskt återförs till din kredit.",
     "steps": {
       "deposit": {
         "title": "1. Du sätter in guld, silver eller ETH",
@@ -742,103 +765,103 @@
       },
       "appreciation": {
         "title": "2. Kursen utvecklas, värdeökningen arbetar för dig",
-        "description": "Varje verklig ökning som konstaterats sedan insättningen minskar automatiskt den använda krediten."
+        "description": "Varje verklig uppgång som konstaterats sedan insättningen minskar automatiskt den använda krediten."
       },
       "repaid": {
-        "title": "3. Upp till 60% av krediten amorterad utan ansträngning",
-        "description": "Resten (minst 40%) amorteras genom eget tillskott, precis som för alla andra tillgångar."
+        "title": "3. Upp till 60% av krediten återbetalas utan att du behöver tänka på det",
+        "description": "Resten (minst 40%) återbetalas genom eget tillskott, precis som för alla andra tillgångar."
       }
     },
-    "stablecoinsReminder": "Stablecoins (USDT, USDC, DAI…) förblir 1:1 USD: deras kredit amorteras helt genom eget tillskott, utan automatisk avkastning."
+    "stablecoinsReminder": "Stablecoins (USDT, USDC, DAI…) förblir 1:1 USD: deras kredit återbetalas helt genom eget tillskott, utan automatisk avkastning."
   },
   "YieldPerformanceHistory": {
-    "unavailable": "Historik tillfälligt otillgänglig.",
+    "unavailable": "Historik inte tillgänglig för närvarande.",
     "low12m": "Lägsta (12 månader)",
     "high12m": "Högsta (12 månader)",
-    "unavailableValue": "ej tillgänglig"
+    "unavailableValue": "ej tillgängligt"
   },
   "Yield": {
     "meta": {
       "title": "Avkastning på säkerheten · Hentsch Credit",
-      "description": "Hur guld, silver och ETH som satts in som säkerhet automatiskt amorterar upp till 60% av din kredit, och likvidationsrisken vid ett kraftigt värdefall."
+      "description": "Hur guld, silver och ETH som satts in som säkerhet automatiskt betalar av upp till 60% av din kredit, och likvidationsrisken vid ett kraftigt fall."
     },
     "eyebrow": "Vår skillnad",
-    "title": "Den enda säkerheten som amorterar en del av din kredit åt dig",
-    "description": "Guld, silver och ETH genererar en verklig avkastning, automatiskt återinjicerad i din kredit, upp till 60% amorterad utan ansträngning.",
+    "title": "Den enda säkerheten som betalar tillbaka en del av din kredit åt dig",
+    "description": "Guld, silver och ETH genererar en verklig avkastning, som automatiskt återförs till din kredit, upp till 60% återbetalas utan att du behöver tänka på det.",
     "eligibleAssetsTitle": "Alla kvalificerade tillgångar",
-    "eligibleAssetsIntro": "Åtta tillgångar drar nytta av samma verkliga mekanism för automatisk amortering genom värdeökning, inte bara guld, silver och ETH som lyfts fram ovan.",
+    "eligibleAssetsIntro": "Åtta tillgångar drar nytta av samma verkliga automatiska återbetalningsmekanism genom värdeökning, inte bara det guld, silver och ETH som lyfts fram ovan.",
     "table": {
       "category": "Kategori",
       "assets": "Tillgångar",
-      "indicativeTarget": "Ytterligare vägledande mål",
+      "indicativeTarget": "Ytterligare indikativt mål",
       "preciousMetals": "Ädelmetaller",
-      "nativeCrypto": "Native kryptovaluta",
-      "industrialMetals": "Industrimetaller & råvaror",
+      "nativeCrypto": "Nativ kryptovaluta",
+      "industrialMetals": "Industrimetaller och råvaror",
       "stablecoins": "Stablecoins",
       "none": "Inget",
       "notEligible": "Ej kvalificerade (fast värde eller för volatila*)",
-      "rwaTarget": "8 till 14% APY (<link>detaljer om RWA-strategin</link>)"
+      "rwaTarget": "8 till 14% APY (<link>detaljer om RWA-strategi</link>)"
     },
-    "shibNote": "* SHIB är inte en stablecoin men förblir ändå exkluderad från mekanismen: dess volatilitet anses vara för hög för att stödja en pålitlig återkommande amortering.",
-    "dualMechanismNote": "Industrimetaller och råvaror kombinerar därför två olika mekanismer: den verkliga automatiska amorteringen som beskrivs på den här sidan (identisk med guld, silver och ETH), och ett vägledande avkastningsmål specifikt för bankens treasurystrategi för dessa tillgångar, presenterat separat och aldrig garanterat.",
-    "performanceTitle": "Resultat över 12 månader",
-    "performanceIntro": "De verkliga kurserna för de avkastningsgenererande tillgångarna, under de senaste 365 dagarna (det maximum som är tillgängligt via vår marknadsdataleverantör, utan något åtagande om framtida resultat).",
+    "shibNote": "* SHIB är inte en stablecoin men är ändå exkluderad från mekanismen: dess volatilitet bedöms vara för hög för att kunna stödja en pålitlig återkommande återbetalning.",
+    "dualMechanismNote": "Industrimetaller och råvaror kombinerar därför två skilda mekanismer: den verkliga automatiska återbetalningen som beskrivs på denna sida (identisk med guld, silver och ETH), och ett indikativt avkastningsmål specifikt för bankens treasurystrategi på dessa tillgångar, presenterat separat och aldrig garanterat.",
+    "performanceTitle": "Utveckling över 12 månader",
+    "performanceIntro": "De verkliga kurserna för de avkastningsgenererande tillgångarna, under de senaste 365 dagarna (det maximum som är tillgängligt via vår marknadsdataleverantör, utan något åtagande om deras framtida utveckling).",
     "exampleTitle": "Ett konkret exempel",
     "example": {
-      "p1": "Du sätter in <b>2000 $</b> tokeniserat guld (XAUT), till en kurs av <b>2400 $ per ounce</b>: din säkerhet motsvarar cirka 0,833 ounce. Vid kvoten 350% beviljas du en kredit på <b>7000 $</b>, och taket för automatisk amortering genom avkastning är därmed <b>4200 $</b> (60% av 7000 $).",
-      "p2": "Guldkursen stiger till <b>2500 $</b> per ounce: den konstaterade värdeökningen (100 $ × 0,833 ounce ≈ 83 $) tillämpas automatiskt på din använda kredit, samma dag som den konstateras. Denna mekanism upprepas vid varje efterföljande kursökning, tills taket på 4200 $ nås.",
-      "p3": "Om kursen sedan sjunker tas ingenting tillbaka från dig: den redan tillämpade värdeökningen förblir vunnen i din kredit (en \"spärr\" som endast rör sig uppåt). Däremot sker ingen ny automatisk amortering så länge kursen inte överstiger den redan uppnådda nivån.",
-      "p4": "När taket på 60% väl är nått måste det återstående kreditsaldot (minst 40%, här <b>2800 $</b>) amorteras genom en uttrycklig betalning från din sida (insättning eller överföring), precis som för all annan kredit."
+      "p1": "Du sätter in <b>2 000 $</b> i tokeniserat guld (XAUT), till kursen <b>2 400 $ per uns</b>: din säkerhet motsvarar cirka 0,833 uns. Vid kvoten 350% beviljas du en kredit på <b>7 000 $</b>, och taket för automatisk återbetalning genom avkastning blir därmed <b>4 200 $</b> (60% av 7 000 $).",
+      "p2": "Guldkursen stiger till <b>2 500 $</b> per uns: den konstaterade värdeökningen (100 $ × 0,833 uns ≈ 83 $) tillämpas automatiskt på din använda kredit, samma dag som den konstateras. Denna mekanism upprepas vid varje efterföljande kursuppgång, tills taket på 4 200 $ nås.",
+      "p3": "Om kursen sedan faller tas ingenting tillbaka från dig: den redan tillämpade värdeökningen förblir förvärvad till din kredit (en „spärr” som endast rör sig uppåt). Däremot sker ingen ny automatisk återbetalning så länge kursen inte överstiger den redan uppnådda nivån.",
+      "p4": "När taket på 60% har uttömts måste det återstående kreditsaldot (minst 40%, här <b>2 800 $</b>) återbetalas genom ett uttryckligt tillskott från dig (insättning eller överföring), precis som för all annan kredit."
     },
     "timelineTitle": "Tidslinje över flera månader",
     "timelineIntro": "Samma exempel, förlängt: guldkursen fortsätter att stiga under flera månader, tills taket på 60% nås.",
     "timelineTable": {
       "month": "Månad",
       "goldPrice": "Guldkurs",
-      "repaidThisMonth": "Amorterat denna månad",
-      "cumulativeRepaid": "Ackumulerat amorterat",
+      "repaidThisMonth": "Återbetalt denna månad",
+      "cumulativeRepaid": "Ackumulerat återbetalt",
       "row0": "0 (låsning)",
-      "row2Price": "2470 $ (nedgång)",
-      "row11Cumulative": "4200 $ (tak nått)"
+      "row2Price": "2 470 $ (nedgång)",
+      "row11Cumulative": "4 200 $ (tak uppnått)"
     },
-    "timelineNote": "I månad 2 sjunker kursen: ingen amortering sker den månaden, men de 83 $ som redan tillämpats i månad 1 förblir vunna (spärr). När taket på 4200 $ väl nåtts i månad 11 sker ingen ytterligare automatisk amortering på denna position, även om kursen fortsätter att stiga.",
-    "liquidationTitle": "Den motsatta risken: likvidation",
+    "timelineNote": "I månad 2 faller kursen: ingen återbetalning sker den månaden, men de 83 $ som redan tillämpats i månad 1 förblir förvärvade (spärr). När taket på 4 200 $ nås i månad 11 sker ingen ytterligare automatisk återbetalning på denna position, även om kursen fortsätter att stiga.",
+    "liquidationTitle": "Den omvända risken: likvidation",
     "liquidation": {
-      "p1": "Mekanismen ovan gynnas av en stigande kurs. En nedgång hanteras separat, genom en annan mekanism: värdet på din säkerhet jämförs dagligen med dess <b>ingångsvärde</b> (det som konstaterats vid tidpunkten för låsningen), inte med den senaste kursen som utlöst en amortering.",
-      "p2": "Vid en värdeminskning på minst <b>30%</b> sedan ingången visas en varning på ditt konto, utan ytterligare effekt. Vid <b>50%</b> värdeminskning tas din säkerhet automatiskt bort från kontot (likvideras) till sitt ingångsvärde. Den kredit du redan använt <b>raderas inte</b> för den skull: den förblir fullt ut skyldig, nu utan någon säkerhet bakom sig. En likviderad säkerhet kan inte återställas, även om kursen senare återhämtar sig.",
-      "p3": "De avtalsenliga detaljerna kring denna mekanism finns i våra <link>allmänna villkor, avsnitt 7</link>."
+      "p1": "Mekanismen ovan gynnas av en kursuppgång. En nedgång hanteras separat, genom en annan mekanism: värdet på din säkerhet jämförs dagligen med dess <b>ingångsvärde</b> (det som konstaterades vid tidpunkten för låsningen), inte med den senaste kurs som utlöste en återbetalning.",
+      "p2": "Vid en värdeminskning på minst <b>30%</b> från detta ingångsvärde visas en varning på ditt konto, utan någon annan effekt. Vid <b>50%</b> värdeminskning tas din säkerhet automatiskt bort från kontot (likvideras) till sitt ingångsvärde. Den kredit du redan hade använt <b>raderas inte</b> för den skull: den förblir fullt förfallen, nu utan någon säkerhet bakom sig. En likviderad säkerhet kan inte återlämnas, även om kursen senare återhämtar sig.",
+      "p3": "De avtalsmässiga detaljerna för denna mekanism finns i våra <link>allmänna villkor, avsnitt 7</link>."
     },
-    "liquidationExampleTitle": "Beräknat exempel",
+    "liquidationExampleTitle": "Räkneexempel",
     "liquidationExample": {
-      "intro": "Låt oss återuppta insättningen av <b>2000 $</b> guld till 2400 $ per ounce (7000 $ beviljad kredit), men den här gången faller guldkursen i stället för att stiga:",
-      "item1": "vid 1680 $ per ounce (-30%): en varning visas på kontot, utan ytterligare effekt;",
-      "item2": "vid 1200 $ per ounce (-50%): säkerheten likvideras. De 2000 $ i säkerhet och de 7000 $ i beviljad kredit tas bort från kontot. Om du redan hade använt <b>1500 $</b> av den krediten (kort, interna utgifter), förblir dessa 1500 $ skyldiga, utan någon säkerhet längre bakom dem."
+      "intro": "Låt oss återgå till insättningen av <b>2 000 $</b> i guld till 2 400 $ per uns (7 000 $ beviljad kredit), men denna gång faller guldkursen istället för att stiga:",
+      "item1": "vid 1 680 $ per uns (-30%): en varning visas på kontot, utan någon annan effekt;",
+      "item2": "vid 1 200 $ per uns (-50%): säkerheten likvideras. De 2 000 $ i säkerhet och de 7 000 $ i beviljad kredit tas bort från kontot. Om du redan hade använt <b>1 500 $</b> av denna kredit (kort, interna utgifter), förblir dessa 1 500 $ förfallna, utan längre någon säkerhet bakom sig."
     },
     "faqTitle": "Vanliga frågor",
     "faq": {
       "guaranteed": {
         "question": "Är avkastningen garanterad?",
-        "answer": "Nej. Den beror helt på den verkliga kursutvecklingen för din säkerhet. Om kursen aldrig stiger över ditt ingångspris sker ingen automatisk amortering: du amorterar då hela beloppet genom eget tillskott, precis som med en stablecoin."
+        "answer": "Nej. Den beror helt på den verkliga kursutvecklingen för din säkerhet. Om kursen aldrig stiger över ditt ingångspris sker ingen automatisk återbetalning: du återbetalar då hela beloppet genom eget tillskott, precis som för en stablecoin."
       },
       "stablecoins": {
-        "question": "Varför genererar stablecoins (USDT, USDC, DAI…) ingen avkastning?",
-        "answer": "En stablecoin förblir per konstruktion 1:1 kopplad till dollarn: per definition har den ingen värdeökning att realisera. Att amortera den förblir dock lika enkelt, genom eget tillskott."
+        "question": "Varför genererar inte stablecoins (USDT, USDC, DAI…) någon?",
+        "answer": "En stablecoin förblir per konstruktion knuten 1:1 till dollarn: den har per definition ingen värdeökning att realisera. Att återbetala den förblir dock lika enkelt, genom eget tillskott."
       },
       "frequency": {
-        "question": "Hur ofta beräknas den automatiska amorteringen?",
-        "answer": "Dagligen, baserat på den löpande spotkursen för din tillgång, utan någon åtgärd från din sida, och synligt i din transaktionshistorik under beteckningen \"Amortering genom avkastning på säkerheten\"."
+        "question": "Hur ofta beräknas den automatiska återbetalningen?",
+        "answer": "Dagligen, baserat på din tillgångs direkta spotkurs, utan någon åtgärd från din sida, och synlig i din transaktionshistorik under beteckningen „Återbetalning genom avkastning på säkerheten”."
       },
       "ratchet": {
-        "question": "Skyddar \"spärren\" mig om kursen faller?",
-        "answer": "Den skyddar endast redan tillämpade amorteringar: de förblir vunna, oavsett vad som händer efteråt. Den skyddar inte mot likvidation, som utlöses i förhållande till din säkerhets ingångsvärde, inte i förhållande till spärren (se \"Den motsatta risken\" ovan)."
+        "question": "Skyddar „spärren” mig om kursen faller?",
+        "answer": "Den skyddar endast redan tillämpade återbetalningar: de förblir förvärvade, oavsett vad som händer sedan. Den skyddar inte mot likvidation, som utlöses i förhållande till din säkerhets ingångsvärde, inte i förhållande till spärren (se „Den omvända risken” ovan)."
       },
       "multipleAssets": {
         "question": "Om jag sätter in flera olika tillgångar, hur fungerar det?",
-        "answer": "Varje kreditansökan binder sig till en enda säkerhetstillgång, fastställd vid tidpunkten för genereringen av insättningsadressen. För att sätta in en andra tillgång lämnar du in en ny ansökan: varje position följer då sin egen värdeökning, sitt eget tak på 60% och sin egen likvidationsrisk, oberoende av de andra."
+        "answer": "Varje kreditansökan binder sig till en enda säkerhetstillgång, fastställd vid tidpunkten för generering av insättningsadressen. För att sätta in en andra tillgång lämnar du en ny ansökan: varje position följer då sin egen värdeökning, sitt eget tak på 60% och sin egen likvidationsrisk, oberoende av de andra."
       },
       "history": {
-        "question": "Kan jag se historiken över mina automatiska amorteringar?",
-        "answer": "Ja, i kontots transaktionshistorik, under beteckningen \"Amortering genom avkastning på säkerheten\" (en rörelse som skiljer sig från en manuell amortering, för att förbli separat granskningsbar)."
+        "question": "Kan jag se historiken över mina automatiska återbetalningar?",
+        "answer": "Ja, i ditt kontos transaktionshistorik, under beteckningen „Återbetalning genom avkastning på säkerheten” (en rörelse som skiljer sig från en manuell återbetalning, för att förbli separat granskningsbar)."
       }
     }
   },
@@ -848,97 +871,141 @@
       "description": "Hentsch Credits treasurystrategi för tokeniserade industrimetaller: cash and carry-arbitrage, triangulär utlåning och likviditetstillförsel."
     },
     "eyebrow": "Transparens · Treasurystrategi",
-    "title": "Vår investeringsstrategi i industrimetaller",
-    "intro": "Utöver ädelmetaller accepterar banken nu tokeniserade industrimetaller och råvaror som säkerhet, och tillämpar sin egen treasurystrategi på dessa tillgångar. Här är, i full transparens, hur den fungerar och vilken handlingsplan som följs.",
-    "apyTargetLabel": "APY, bankens vägledande mål",
-    "apyTargetNote": "Mål för bankens egen treasurystrategi för dessa tillgångar, ingen garanti, och utan någon som helst effekt på beräkningen av din kredit. Den automatiska amorteringen av din kredit förblir den som beskrivs ovan: din säkerhets verkliga värdeökning, begränsad till 60%.",
-    "apyObjective": "APY-mål",
+    "title": "Vår investeringsstrategi för industrimetaller",
+    "intro": "Utöver ädelmetaller accepterar banken nu tokeniserade industrimetaller och råvaror som säkerhet, och tillämpar sin egen treasurystrategi på dessa tillgångar. Här, med full transparens, hur den fungerar och den handlingsplan som följs.",
+    "apyTargetLabel": "APY, bankens indikativa mål",
+    "apyTargetValue": "8 till 14%",
+    "apyTargetNote": "Mål för bankens egen treasurystrategi på dessa tillgångar, ingen garanti, och utan någon effekt på beräkningen av din kredit. Den automatiska återbetalningen av din kredit förblir den som beskrivs ovan: säkerhetens verkliga värdeökning, begränsad till 60%.",
+    "apyObjective": "Mål-APY",
     "pillars": {
       "cashCarry": {
-        "title": "Cash & carry-arbitrage",
+        "title": "Cash & Carry-arbitrage",
         "range": "4 till 7%",
-        "description": "Köp av den tokeniserade metallen på spotmarknaden, samtidig försäljning av ett motsvarande terminskontrakt: positionen är neutral mot prisrisk och fångar finansieringsspreaden (contango)."
+        "description": "Köp av den tokeniserade metallen på spotmarknaden, samtidig försäljning av ett motsvarande terminskontrakt: positionen är neutral mot prisrisk och fångar upp finansieringsspreaden (contango)."
       },
       "triangular": {
-        "title": "Säkerställande & triangulär utlåning",
+        "title": "Säkerställande och triangulär utlåning",
         "range": "6,5 till 10%",
-        "description": "Den tokeniserade metallen deponeras som säkerhet (försiktig LTV, högst 50%) hos ett institutionellt protokoll, för att låna stablecoins som återinvesteras i lågriskfonder för treasury."
+        "description": "Den tokeniserade metallen sätts in som säkerhet (försiktig LTV, högst 50%) hos ett institutionellt protokoll, för att låna stablecoins som återinvesteras i lågrisk-treasuryfonder."
       },
       "liquidity": {
         "title": "Utvald likviditetstillförsel",
         "range": "9 till 15%",
-        "description": "En minoritetsandel av kapitalet försörjer riktade likviditetspooler, som ersätts med en del av marknadsdeltagarnas transaktionsavgifter."
+        "description": "En mindre andel av kapitalet försörjer utvalda likviditetspooler, som ersätts med en del av marknadsaktörernas transaktionsavgifter."
       }
     },
     "caseStudy": {
       "title": "Hur dessa siffror tas fram",
-      "intro": "Ett illustrativt exempel på en treasury-allokering på 10 M$ i platina, i bankens skala, inte i skalan för din individuella säkerhet.",
+      "intro": "Illustrativt exempel på en treasuryallokering på 10 M$ i platina, på bankens nivå, inte din individuella säkerhet.",
       "flow": "Flöde",
-      "basis": "Beräkningsgrund",
+      "basis": "Beräkningsunderlag",
       "annualAmount": "Årligt belopp",
-      "impact": "Effekt",
+      "impact": "Påverkan",
       "netTotal": "Total nettoavkastning",
       "capital": "Kapital på 10 M$",
-      "reallocationNote": "Genom att omfördela en del av treasuryn mot likviditetstillförsel (Pelare C) kan denna nettoavkastning stiga till ett mål på 10,2%, i den övre delen av det vägledande intervallet 8 till 14% som visas ovan, utan ytterligare hävstång eller resultatgaranti.",
+      "reallocationNote": "Genom att omfördela en del av treasuryn till likviditetstillförsel (Pelare C) kan denna nettoavkastning stiga upp till målet på 10,2%, i den övre delen av det indikativa intervallet 8 till 14% som visas ovan, utan ytterligare hävstång eller resultatgaranti.",
       "rows": {
-        "native": { "label": "Native avkastning på platina (fysisk värdeökning)", "basis": "1,5% på 10 M$" },
-        "basis": { "label": "Basis trade / contango i terminer", "basis": "3,5% på 10 M$" },
-        "stablecoinYield": { "label": "Avkastning på lånade, investerade stablecoins (BUIDL)", "basis": "5,0% på 5 M$" },
-        "borrowCost": { "label": "Kostnad för att låna stablecoins", "basis": "-3,2% på 5 M$" },
-        "operational": { "label": "Driftskostnader, förvaring & försäkring", "basis": "0,4% på 10 M$" }
+        "native": {
+          "label": "Nativ avkastning på platina (fysisk värdeökning)",
+          "basis": "1,5% på 10 M$"
+        },
+        "basis": {
+          "label": "Basis trade / contango på terminer",
+          "basis": "3,5% på 10 M$"
+        },
+        "stablecoinYield": {
+          "label": "Avkastning på investerade lånade stablecoins (BUIDL)",
+          "basis": "5,0% på 5 M$"
+        },
+        "borrowCost": {
+          "label": "Kostnad för att låna stablecoins",
+          "basis": "-3,2% på 5 M$"
+        },
+        "operational": {
+          "label": "Driftskostnader, förvaring och försäkring",
+          "basis": "0,4% på 10 M$"
+        }
       }
     },
-    "roadmapTitle": "Färdplan för 12 månader",
+    "roadmapTitle": "Färdplan över 12 månader",
     "roadmap": {
-      "phase1": { "window": "Månad 1 till 3", "title": "Strukturering & regelefterlevnad", "detail": "Rättsligt ramverk, val av godkända depåinstitut, granskning av emittenter." },
-      "phase2": { "window": "Månad 4 till 6", "title": "Pilotprojekt", "detail": "Pilotallokering på 5 M$ i platina, första arbitragekretsarna." },
-      "phase3": { "window": "Månad 7 till 9", "title": "Skalning", "detail": "Kapital utökat till 25 M$, utökning till palladium och koppar." },
-      "phase4": { "window": "Månad 10 till 12", "title": "Industrialisering", "detail": "Realtidsrapportering och sömlös bokföringsintegration." }
+      "phase1": {
+        "window": "Månad 1 till 3",
+        "title": "Strukturering och regelefterlevnad",
+        "detail": "Rättsligt ramverk, urval av auktoriserade förvaringsinstitut, granskning av emittenter."
+      },
+      "phase2": {
+        "window": "Månad 4 till 6",
+        "title": "Pilotprojekt",
+        "detail": "Pilotallokering på 5 M$ i platina, första arbitragekretsarna."
+      },
+      "phase3": {
+        "window": "Månad 7 till 9",
+        "title": "Uppskalning",
+        "detail": "Kapital utökat till 25 M$, utvidgning till palladium och koppar."
+      },
+      "phase4": {
+        "window": "Månad 10 till 12",
+        "title": "Industrialisering",
+        "detail": "Realtidsrapportering och fullständig redovisningsintegration."
+      }
     },
-    "risksTitle": "Identifierade risker & skyddsåtgärder",
+    "risksTitle": "Identifierade risker och skyddsåtgärder",
     "risks": {
-      "counterparty": { "risk": "Motpart & granskning", "mitigation": "Tvåmånatliga reservgranskningar (Proof of Reserve) av oberoende byråer." },
-      "smartContract": { "risk": "Smart kontrakt", "mitigation": "Uteslutande protokoll som granskats flera gånger, täckta av en institutionell försäkring." },
-      "liquidity": { "risk": "Likviditet", "mitigation": "Direkt återköpsavtal med de fysiska emittenterna, högst 48 timmars uppsägningstid." },
-      "liquidation": { "risk": "Likvidation av säkerheten", "mitigation": "Strikt övermarginaliseringskvot (LTV ≤ 50%) med automatiserad ombalansering." }
+      "counterparty": {
+        "risk": "Motpart och granskning",
+        "mitigation": "Tvåmånadersgranskningar av reserven (Proof of Reserve) av oberoende revisionsbyråer."
+      },
+      "smartContract": {
+        "risk": "Smart kontrakt",
+        "mitigation": "Uteslutande protokoll som granskats flera gånger, täckta av en institutionell försäkring."
+      },
+      "liquidity": {
+        "risk": "Likviditet",
+        "mitigation": "Direkt återköpsavtal med de fysiska emittenterna, högst 48 timmars uppsägningstid."
+      },
+      "liquidation": {
+        "risk": "Likvidation av säkerheten",
+        "mitigation": "Strikt övercollateraliseringskvot (LTV ≤ 50%) med automatiserad ombalansering."
+      }
     },
-    "governanceTitle": "Styrning & åtskillnad av medel",
+    "governanceTitle": "Styrning och åtskillnad av medel",
     "governance": {
       "capital": {
-        "title": "Investerat kapital",
-        "body": "Denna strategi drivs med bankens egen treasury, aldrig med de tillgångar som satts in som säkerhet av kunderna. En kunds säkerhet används uteslutande för att säkra dennes egen kredit (se Avkastning); den lånas inte ut och engageras inte i den arbitrage eller market making som beskrivs ovan."
+        "title": "Engagerat kapital",
+        "body": "Denna strategi drivs med bankens egen treasury, aldrig med de tillgångar som kunder satt in som säkerhet. En kunds säkerhet används uteslutande för att säkra dennes egen kredit (se Avkastning); den lånas inte ut och engageras inte i den arbitrage eller market making som beskrivs ovan."
       },
       "supervision": {
         "title": "Tillsyn",
-        "body": "Ledd av avdelningen för finansiella marknader, rapporterad till investeringskommittén och den verkställande ledningen vid varje fasändring (se färdplan ovan), med daglig intern uppföljning av det uppnådda resultatet i förhållande till det vägledande mål som visas."
+        "body": "Leds av avdelningen för finansiella marknader, rapporteras till investeringskommittén och koncernledningen vid varje fasbyte (se färdplanen ovan), med daglig intern uppföljning av den faktiska avkastningen mot det visade indikativa målet."
       }
     },
     "faqTitle": "Vanliga frågor",
     "faq": {
       "usedForStrategy": {
         "question": "Används min säkerhet för denna strategi?",
-        "answer": "Nej. Din säkerhet förblir uteslutande avsatt för din egen kredit. Denna strategi avser bankens egen treasury, ett fristående kapital."
+        "answer": "Nej. Din säkerhet förblir uteslutande knuten till din egen kredit. Denna strategi bygger på bankens egen treasury, ett separat kapital."
       },
       "loss": {
         "question": "Vad händer om strategin förlorar pengar?",
-        "answer": "Förlusten absorberas av bankens treasury, utan någon effekt på kundkonton eller på redan beviljad kredit: denna risk överförs aldrig till kunden."
+        "answer": "Förlusten absorberas av bankens treasury, utan någon effekt på kundkonton eller redan beviljad kredit: denna risk överförs aldrig till kunden."
       },
       "targetReached": {
-        "question": "Har målet på 8 till 14% redan nåtts?",
-        "answer": "Det är ett medellångsiktigt mål, inte ett resultat som garanteras månad för månad: se ovanstående fallstudie för ett detaljerat exempel på beräkningen av nettoavkastningen."
+        "question": "Är målet på 8 till 14% redan uppnått?",
+        "answer": "Det är ett medelfristigt mål, inte ett garanterat resultat månad för månad: se fallstudien ovan för ett detaljerat exempel på beräkningen av nettoavkastningen."
       },
       "whyIndustrialOnly": {
         "question": "Varför har endast industrimetaller detta mål?",
-        "answer": "Guld, silver och ETH drar redan nytta av den verkliga automatiska amortering som beskrivs på sidan Avkastning. Detta vägledande mål är specifikt för treasurystrategin för industriella tillgångar, en separat och kompletterande mekanism."
+        "answer": "Guld, silver och ETH drar redan nytta av den verkliga automatiska återbetalning som beskrivs på sidan Avkastning. Detta indikativa mål är specifikt för treasurystrategin på industritillgångar, en separat och kompletterande mekanism."
       }
     }
   },
   "Pricing": {
     "meta": {
       "title": "Priser · Hentsch Credit",
-      "description": "De faktiska räntorna och avgifterna som Hentsch Credit tillämpar: kreditkvot, ränta, uppläggningsavgift och likvidationströsklar, utan överraskningar."
+      "description": "De verkliga räntor och avgifter som tillämpas av Hentsch Credit: kreditkvot, ränta, uppläggningsavgift och likvidationströsklar, utan överraskningar."
     },
-    "eyebrow": "Transparent prissättning",
+    "eyebrow": "Pristransparens",
     "title": "Våra priser, utan överraskningar",
     "description": "De räntor och avgifter som plattformen faktiskt tillämpar, fastställda vid tidpunkten för låsningen av din säkerhet.",
     "items": {
@@ -947,61 +1014,452 @@
         "detail": "Av det pantsatta beloppet, till den ränta som gäller vid tidpunkten för låsningen."
       },
       "interestRate": {
-        "label": "Årsränta",
-        "detail": "Referensränta (SOFR/EURIBOR) plus en riskpremie på 8,5 punkter, på den använda krediten."
+        "label": "Årlig ränta",
+        "detail": "Referensränta (SOFR/EURIBOR) + riskpremie på 8,5 punkter, på den använda krediten."
       },
       "originationFees": {
         "label": "Uppläggningsavgift",
-        "detail": "Tas ut en gång, på den utfärdade krediten, vid tidpunkten för säkerhetens låsning."
+        "detail": "Tas ut en gång, på den utfärdade krediten, vid tidpunkten för låsningen av säkerheten."
       },
       "custodyFees": {
         "label": "Förvaringsavgift för säkerheten",
+        "value": "0,5% / år",
         "detail": "På beloppet av den låsta säkerheten, så länge positionen förblir aktiv."
       },
       "positionDuration": {
         "label": "Positionens löptid",
-        "detail": "Förlängningsbar; säkerheten förblir låst så länge den använda krediten inte amorterats."
+        "value": "12 månader",
+        "detail": "Förnybar; säkerheten förblir låst så länge den använda krediten inte återbetalats."
       },
       "automaticRepayment": {
-        "label": "Automatisk amortering",
+        "label": "Automatisk återbetalning",
         "value": "upp till 60%",
-        "detail": "Genom säkerhetens verkliga värdeökning (guld, silver, ETH, industrimetaller). De återstående 40% amorteras genom eget tillskott."
+        "detail": "Genom säkerhetens verkliga värdeökning (guld, silver, ETH, industrimetaller). De återstående 40% återbetalas genom eget tillskott."
       },
       "liquidationThresholds": {
         "label": "Likvidationströsklar för säkerheten",
-        "detail": "Värdeminskning från ingångsvärdet: 30% utlöser en varning, 50% likviderar säkerheten (redan använd kredit förblir skyldig). Detaljer på sidan Avkastning."
+        "detail": "Värdeminskning sedan ingångsvärdet: 30% utlöser en varning, 50% likviderar säkerheten (den redan använda krediten förblir förfallen). Detaljer på sidan Avkastning."
       }
     },
-    "nonRetroactivityNote": "Varje senare ändring av en av dessa räntor gäller endast för nya låsningar: en redan öppen position behåller den räntestruktur som tillämpades vid dess tillkomst, fram till amortering eller förfall.",
-    "contractualDetail": "De fullständiga avtalsenliga detaljerna kring dessa priser finns i våra <link>allmänna villkor</link>.",
+    "nonRetroactivityNote": "En senare ändring av någon av dessa räntor gäller endast nya låsningar: en redan öppnad position behåller den räntestruktur som tillämpades på den vid tidpunkten för dess skapande, tills den återbetalas eller förfaller.",
+    "contractualDetail": "De fullständiga avtalsmässiga detaljerna för dessa priser finns i våra <link>allmänna villkor</link>.",
     "exampleTitle": "Exempel på total kostnad över 12 månader",
-    "exampleIntro": "För en insättning på 2000 $ (7000 $ beviljad kredit), helt använd i 12 månader och sedan amorterad, det mest försiktiga scenariot (utan någon minskning genom avkastning).",
+    "exampleIntro": "För en insättning på 2 000 $ (7 000 $ beviljad kredit), fullt använd i 12 månader och sedan återbetald, det försiktigaste scenariot (utan någon minskning genom avkastning).",
     "exampleTable": {
       "item": "Post",
       "calculation": "Beräkning",
       "amount": "Belopp",
       "origination": "Uppläggningsavgift",
-      "originationCalc": "2,0% × 7000 $, tas ut en gång",
+      "originationCalc": "2,0% × 7 000 $, tas ut en gång",
       "interest": "Ränta över 12 månader",
-      "interestCalc": "13,5% × 7000 $ använda hela året",
+      "interestCalc": "13,5% × 7 000 $ använda hela året",
       "totalBeforeYield": "Totalt före avkastning",
-      "totalBeforeYieldNote": "Exklusive en eventuell minskning genom värdeökning på säkerheten"
+      "totalBeforeYieldNote": "Exklusive eventuell minskning genom värdeökning av säkerheten"
     },
-    "exampleFooter": "Förvaringsavgifterna för säkerheten (0,5%/år) visas och fastställs vid låsningen, men det periodiska automatiska uttaget av dem är i detta skede ännu inte i drift; de ingår därför inte i denna totalsumma. Om din säkerhet genererar en avkastning (guld, silver, ETH, industrimetaller), kan en del av dessa 1085 $ täckas automatiskt, inom gränsen för 60% av den använda krediten (se <link>Avkastning</link>).",
+    "exampleFooter": "Förvaringsavgifterna för säkerheten (0,5%/år) visas och fastställs vid låsningen, men det automatiska periodiska uttaget av dem är i detta skede ännu inte i drift; de ingår därför inte i denna totalsumma. Om din säkerhet genererar avkastning (guld, silver, ETH, industrimetaller) kan en del av dessa 1 085 $ täckas automatiskt, inom gränsen för 60% av den använda krediten (se <link>Avkastning</link>).",
     "faqTitle": "Vanliga frågor",
     "faq": {
       "earlyRepayment": {
-        "question": "Finns det avgifter för förtida amortering?",
-        "answer": "Nej. Du kan amortera hela eller delar av den använda krediten när som helst, utan straffavgift. Ränta löper endast på den löptid och det belopp som faktiskt använts."
+        "question": "Finns det avgifter för förtida återbetalning?",
+        "answer": "Nej. Du kan återbetala hela eller delar av den använda krediten när som helst, utan straffavgift. Ränta löper endast på den faktiskt använda löptiden och beloppet."
       },
       "negotiable": {
         "question": "Är dessa priser förhandlingsbara?",
-        "answer": "Nej, de tillämpas enhetligt på alla kunder till den ränta som gäller vid tidpunkten för låsningen. En framtida ränteändring gäller endast för nya låsningar."
+        "answer": "Nej, de tillämpas enhetligt på alla kunder till den ränta som gäller vid tidpunkten för låsningen. En framtida ränteändring gäller endast nya låsningar."
       },
       "currencyDifference": {
         "question": "Varför skiljer sig räntan mellan USD och EUR?",
         "answer": "Varje valuta tillämpar sin egen monetära referensränta (SOFR för USD, EURIBOR för EUR) innan samma riskpremie på 8,5 punkter läggs till, därav skillnaden på 1,5 punkter mellan de två."
       }
     }
+  },
+  "DashboardShell": {
+    "sidebar": {
+      "subtitle": "Översikt",
+      "clientNavAriaLabel": "Kontonavigering",
+      "backofficeNavAriaLabel": "Back office-navigering",
+      "mobileNavAriaLabel": "Navigering mellan sektionerna i kontopanelen",
+      "client": {
+        "home": "Start",
+        "balance": "Saldo",
+        "market": "Marknad",
+        "credit": "Kredit",
+        "cards": "Kort",
+        "history": "Historik",
+        "profile": "Profil",
+        "support": "Support"
+      },
+      "backoffice": {
+        "label": "Back-office",
+        "creditRequests": "Demandes de crédit",
+        "accountRequests": "Demandes de compte",
+        "adminArea": "Espace Admin"
+      }
+    },
+    "legalFooter": {
+      "ariaLabel": "Juridiska länkar",
+      "legalNotice": "Juridisk information",
+      "terms": "Villkor",
+      "privacy": "Integritet",
+      "regulation": "Reglering"
+    }
+  },
+  "Dashboard": {
+    "home": {
+      "loadError": "Det gick inte att läsa in kontrollpanelen"
+    },
+    "balanceCards": {
+      "depositBalance": {
+        "title": "Insättningssaldo",
+        "description": "Belopp tillgängligt i din plånbok, ingen aktiv kreditlinje för närvarande."
+      },
+      "purchasingPower": {
+        "title": "Köpkraft",
+        "descriptionNoCredit": "Detsamma som insättningssaldot så länge ingen kredit har beviljats."
+      },
+      "availableCredit": {
+        "title": "Tillgänglig kredit",
+        "description": "Ingen aktiv linje, skicka en ansökan från Kredit."
+      },
+      "globalBalance": {
+        "title": "Totalt saldo",
+        "description": "Tillgängligt + låst säkerhet + beviljad kredit − utnyttjad kredit"
+      },
+      "lockedCollateral": {
+        "title": "Låst säkerhet",
+        "description": "Kan endast tas ut efter fullständig återbetalning"
+      },
+      "creditLine": {
+        "title": "Kreditlinje",
+        "description": "{available} återstår · {used} utnyttjat"
+      }
+    },
+    "walletActions": {
+      "genericError": "Ett fel har inträffat.",
+      "buyByCard": {
+        "trigger": "Köp med kort",
+        "dialogTitle": "Fyll på med bankkort",
+        "dialogDescription": "Säker betalning hanterad av Mollie. Det tillgängliga saldot krediteras så snart betalningen är bekräftad.",
+        "amountLabel": "Belopp (USD)",
+        "submit": "Fortsätt till betalning"
+      },
+      "deposit": {
+        "trigger": "Sätt in",
+        "dialogTitle": "Sätt in medel",
+        "descriptionSelect": "Välj tillgång och nätverk och se sedan motsvarande insättningsadress.",
+        "descriptionPool": "Bankens insättningsadress för denna tillgång: anmäl din insättning när överföringen har skickats.",
+        "descriptionLegacy": "Individuell insättningsadress genererad för ditt konto, krediteras automatiskt efter on-chain-bekräftelse.",
+        "assetLabel": "Tillgång",
+        "networkLabel": "Nätverk",
+        "continue": "Fortsätt",
+        "addressLabel": "Insättningsadress ({currency} på {chain})",
+        "poolAddressNote": "Bankens förvaltningsadress för tillgångar, gemensam för alla kunder. Skicka endast {currency} på {chain} dit.",
+        "declaredAlert": "Insättning anmäld, synlig i din historik, i väntan på validering efter mottagna medel.",
+        "sentAmountLabel": "Skickat belopp ({currency})",
+        "sentAmountNote": "När överföringen har skickats, anmäl den nedan så att den visas i din historik: en rådgivare validerar den vid mottagandet.",
+        "declareButton": "Jag har skickat medlen",
+        "legacyAddressLabel": "Din insättningsadress",
+        "legacyNote": "Skicka endast {currency} på {chain} till denna adress. Saldot krediteras efter on-chain-bekräftelse."
+      },
+      "withdraw": {
+        "trigger": "Ta ut",
+        "dialogTitle": "Ta ut medel",
+        "dialogDescription": "Tillgängligt saldo: {balance}. Låst säkerhet kan endast tas ut efter fullständig återbetalning av krediten.",
+        "amountLabel": "Belopp",
+        "destinationLabel": "Mottagaradress",
+        "submit": "Bekräfta uttaget",
+        "successToast": "Uttag begärt."
+      }
+    },
+    "marketView": {
+      "dataProvider": "Data tillhandahålls av CoinMarketCap",
+      "pricesUnavailable": "Priser ej tillgängliga.",
+      "title": "Marknad i realtid",
+      "description": "Kurser, 24h-förändring, volym och marknadsvärde för de tillgångar som accepteras som säkerhet.",
+      "loading": "Läser in…",
+      "columns": {
+        "asset": "Tillgång",
+        "price": "Pris",
+        "change24h": "Förändr. 24h",
+        "volume24h": "Volym 24h",
+        "marketCap": "Marknadsvärde",
+        "trend12m": "Trend 12 mån"
+      },
+      "acceptedSection": {
+        "title": "Accepteras som säkerhet",
+        "yieldNote": "Avkastning = värdeökning på säkerheten som automatiskt återbetalar upp till 60% av krediten (ädelmetaller, industrimetaller, ETH)"
+      },
+      "othersSection": {
+        "title": "Andra kryptovalutor (endast information)"
+      },
+      "badges": {
+        "acceptedPegged": "Accepteras · 1:1",
+        "acceptedSpot": "Accepteras · spot",
+        "yieldTitle": "Dess värdeökning återbetalar automatiskt upp till 60% av den utfärdade krediten",
+        "yield": "Avkastning",
+        "targetApyTitle": "Indikativt mål för bankens treasurystrategi för denna tillgång, ingen garanti, utan effekt på beräkningen av din kredit",
+        "targetApy": "Mål {min}-{max}% APY"
+      }
+    },
+    "cardsSection": {
+      "title": "Virtuella kort",
+      "description": "Utfärdande av Visa/Mastercard (integration steg 4)",
+      "noCards": "Inget kort utfärdat för det här kontot.",
+      "limit": "Gräns {amount}",
+      "step4Note": "Tillgängligt i steg 4 (Stripe Issuing/Marqeta-integration)",
+      "issueCard": "Utfärda ett kort"
+    },
+    "labels": {
+      "cardStatus": {
+        "PENDING": "Väntande",
+        "ACTIVE": "Aktivt",
+        "BLOCKED": "Spärrat",
+        "CLOSED": "Avslutat"
+      },
+      "kycStatus": {
+        "PENDING": "KYC väntande",
+        "VERIFIED": "KYC verifierad",
+        "REJECTED": "KYC avvisad"
+      },
+      "transactionType": {
+        "DEPOSIT": "Insättning",
+        "COLLATERAL_LOCK": "Låsning av säkerhet",
+        "CREDIT_ISSUED": "Kredit utfärdad",
+        "CARD_PAYMENT": "Kortbetalning",
+        "REPAYMENT": "Återbetalning",
+        "WITHDRAWAL": "Uttag",
+        "ORIGINATION_FEE": "Uppläggningsavgift",
+        "INTEREST_PAYMENT": "Betald ränta",
+        "CARD_TOPUP": "Påfyllning via kort",
+        "YIELD_REPAYMENT": "Återbetalning via avkastning på säkerheten",
+        "LIQUIDATION": "Likvidation"
+      },
+      "transactionStatus": {
+        "PENDING": "Väntande",
+        "COMPLETED": "Slutförd",
+        "FAILED": "Misslyckad"
+      },
+      "creditRequestStatus": {
+        "PENDING": "Väntar på validering",
+        "APPROVED": "Godkänd",
+        "REJECTED": "Avvisad",
+        "FULFILLED": "Kredit utfärdad"
+      },
+      "addressLabel": {
+        "DOMICILE": "Hemadress",
+        "FISCALE": "Skatteadress",
+        "POSTALE": "Postadress",
+        "PROFESSIONNELLE": "Arbetsadress"
+      }
+    },
+    "profileSection": {
+      "genericError": "Ett fel har inträffat.",
+      "fullName": "Fullständigt namn",
+      "phone": "Telefon",
+      "address": "Adress",
+      "noAddress": "Ingen adress angiven ännu.",
+      "employmentTitle": "Anställningssituation",
+      "activity": "Verksamhet",
+      "employer": "Arbetsgivare",
+      "notProvided": "Ej angivet",
+      "notProvidedFeminine": "Ej angiven",
+      "role": "Befattning",
+      "annualIncome": "Årsinkomst",
+      "noEmployment": "Ingen anställningssituation angiven ännu.",
+      "managedWallet": "Personlig plånbok",
+      "managedWalletNote": "Internt referensnummer som banken använder för att spåra dina insättningar på gemensamma tillgångar (USDT, USDC, XAUT, dEURO).",
+      "title": "Profil",
+      "description": "Kontoinformation",
+      "email": "E-post",
+      "kycStatus": "KYC-status",
+      "memberSince": "Kund sedan",
+      "depositAddresses": "Insättningsadresser (krypto)",
+      "noWallets": "Ingen adress genererad ännu."
+    },
+    "supportSection": {
+      "title": "Kontakta support",
+      "description": "En fråga om ditt konto, din säkerhet eller en insättning?",
+      "liveChat": "Livechatt (kommer snart)"
+    },
+    "transactionHistory": {
+      "title": "Transaktionshistorik",
+      "description": "Fullständig logg över kontoaktivitet",
+      "noTransactions": "Inga transaktioner för det här kontot.",
+      "columns": {
+        "type": "Typ",
+        "amount": "Belopp",
+        "status": "Status",
+        "onChainReference": "On-chain-referens",
+        "date": "Datum"
+      }
+    },
+    "accountMenu": {
+      "admin": "Admin",
+      "logout": "Logga ut"
+    },
+    "creditOverview": {
+      "availableBalance": "Tillgängligt saldo",
+      "lockedCollateral": "Låst säkerhet",
+      "availableCredit": "Tillgänglig kredit",
+      "totalPurchasingPower": "Total köpkraft",
+      "currentRates": "Aktuella räntor",
+      "interestRateLine": "{rate}%/år i ränta",
+      "feesLine": "{origination}% uppläggning · {custody}% förvaring",
+      "ratioNote": "Kreditkvot: 350% av den låsta säkerheten, till den ränta som gällde vid låsningen.",
+      "repaymentNote": "Återbetalning: upp till 60% av krediten kan täckas automatiskt av avkastningen på säkerheten (guld, silver, ETH, platina, palladium, koppar, syntetisk olja); resterande 40% återbetalas genom eget tillskott.",
+      "myRequests": "Mina ansökningar",
+      "noRequests": "Inga ansökningar ännu."
+    },
+    "creditForm": {
+      "title": "Hantera min kreditlinje",
+      "description": "Krediten erhålls på begäran: skicka in den planerade säkerheten och sätt sedan in medlen från <balance>Saldo</balance> när ansökan har godkänts.",
+      "tabRequest": "Ansök om kredit",
+      "tabManage": "Hantera / återbetala",
+      "loading": "Läser in…",
+      "pendingNote": "Din kreditansökan väntar på validering. Gå till <balance>Saldo</balance> när den har godkänts för att generera insättningsadressen och låsa upp krediten.",
+      "approvedNote": "Gå till <balance>Saldo</balance> för att välja tillgång och nätverk och generera sedan den insättningsadress som är avsedd för denna ansökan: krediten utfärdas automatiskt när medlen har tagits emot.",
+      "goToBalance": "Gå till Saldo",
+      "genericError": "Ett fel har inträffat.",
+      "submitRequest": "Skicka en kreditansökan",
+      "simulationOnlyNote": "Endast simulering: en ansökan pågår redan (se ovan).",
+      "usedCredit": "Utnyttjad kredit",
+      "needMoreCredit": "Behöver du mer kredit?",
+      "newRequestLink": "Skicka en ny ansökan",
+      "nothingToRepay": "Ingen kredit utnyttjad för närvarande: inget att återbetala.",
+      "repayAmountLabel": "Belopp att återbetala",
+      "repayButton": "Återbetala",
+      "repayFullNote": "Fullständig återbetalning: säkerheten frigörs till det tillgängliga saldot.",
+      "repayRemainingNote": "Återstående utnyttjad kredit efter återbetalning: {amount}",
+      "repaymentHistory": "Återbetalningens utveckling",
+      "yieldRepaymentTag": "avkastning på säkerheten",
+      "repaySuccessToast": "Återbetalning genomförd.",
+      "repayFullToast": "Fullständig återbetalning genomförd: säkerheten har frigjorts."
+    },
+    "creditSimulator": {
+      "amountLabel": "Planerat säkerhetsbelopp (USD)",
+      "currentBalance": "Aktuellt saldo {amount}",
+      "amountAriaLabel": "Simulerat belopp",
+      "segments": {
+        "available": "Återstående tillgängligt",
+        "locked": "Planerad säkerhet",
+        "credit": "Beviljad kredit (totalt)"
+      },
+      "creditForAmount": "Kredit beviljad för detta belopp",
+      "annualInterestRate": "Årlig ränta ({currency})",
+      "perYear": "{rate}%/år",
+      "originationFee": "Uppläggningsavgift (tas ut vid utfärdande)",
+      "custodyFee": "Förvaringsavgift för säkerheten",
+      "fxRateMissing": "EUR/USD-kurs ej tillgänglig för närvarande, belopp visas i USD.",
+      "depositShortfall": "Du saknar {amount} jämfört med ditt aktuella saldo för att nå detta belopp, att sättas in när ansökan har godkänts.",
+      "usedCredit": "Utnyttjad kredit",
+      "simulatedPurchasingPower": "Simulerad köpkraft",
+      "currentPurchasingPower": "Aktuell köpkraft",
+      "noAmountSimulatedNote": "Inget belopp simulerat ännu: detta är din aktuella köpkraft (tillgängligt + säkerhet + beviljad kredit − utnyttjad kredit). Skriv ett belopp ovan, även utan tillgängligt saldo, för att se vad en kreditansökan skulle ge dig.",
+      "yieldAssetLabel": "Planerad säkerhetstillgång (grund för uppskattningen)",
+      "yieldAssetBlended": "Genomsnitt av alla tillgångar"
+    },
+    "repaymentProjection": {
+      "title": "Långsiktig återbetalningsprognos",
+      "intro": "Kombinerad återbetalning: verklig genomsnittlig avkastning på avkastningsgenererande tillgångar (beräknas automatiskt) + föreslaget externt tillskott för att hålla sig inom den avtalade löptiden (det senare justerbart). Ej garanterad uppskattning, endast vägledande.",
+      "estimatedYieldLabel": "Beräknad årlig avkastning (%)",
+      "yieldComputedNote": "Beräknas automatiskt utifrån den verkliga utvecklingen under de senaste 12 månaderna.",
+      "yieldComputing": "Beräknar…",
+      "externalRepaymentLabel": "Månatlig extern återbetalning ($)",
+      "externalRepaymentNote": "Föreslås för att återbetala inom {months} månader, justerbart (sänk det för att utforska en långsammare återbetalning, som enbart bärs av avkastningen).",
+      "fillInPrompt": "Ange en beräknad avkastning eller en månatlig återbetalning för att prognostisera en återbetalningstid.",
+      "estimatedDuration": "Beräknad löptid",
+      "durationMonths": "{months} månader",
+      "durationMonthsWithYears": "{months} månader (≈ {years} år)",
+      "durationOverflow": "> {months} månader",
+      "estimatedTotalInterest": "Beräknad total ränta",
+      "overContractualTerm": "Denna prognos överskrider den vanliga avtalade löptiden på {months} månader. Öka den beräknade avkastningen eller den månatliga återbetalningen för att hålla tidsplanen.",
+      "columns": {
+        "month": "Månad",
+        "payment": "Betalning",
+        "remainingBalance": "Återstående saldo"
+      },
+      "yieldComputedNoteAsset": "Beräknas automatiskt utifrån {asset}s verkliga utveckling under de senaste 12 månaderna."
+    },
+    "installmentSchedule": {
+      "title": "Simulering med fasta avbetalningar",
+      "intro": "Beräknas automatiskt utifrån den beräknade verkliga avkastningen: genererad ränta, din del av betalningen och datum för den första återbetalningen. Avkastningen minskar betalningen, med ett tak på {cap}% (samma tak som den verkliga automatiska återbetalningen).",
+      "durationLabel": "Löptid",
+      "monthsCount": "{months} månader",
+      "estimatedYieldLabel": "Beräknad årlig avkastning (%)",
+      "yieldComputedNote": "Beräknas automatiskt utifrån den verkliga utvecklingen under de senaste 12 månaderna.",
+      "yieldComputing": "Beräknar…",
+      "grossPayment": "Bruttobetalning",
+      "estimatedReduction": "Beräknad minskning",
+      "netPayment": "Beräknad nettobetalning",
+      "firstPayment": "1:a återbetalningen",
+      "totalInterestNote": "Total ränta över {months} månader (före minskning): {amount}. Ej garanterad uppskattning, endast vägledande: den verkliga återbetalningen förblir flexibel (se simuleringen ovan).",
+      "creditLineNote": "Denna simulering förutsätter att du använder hela krediten direkt vid utfärdandet (ett försiktigt scenario som ligger till grund för beräkningen ovan). I praktiken förfaller ingen återbetalning eller ränta så länge du inte använder din kredit (kort): det är en kreditlinje, inte ett lån som betalas ut på en gång.",
+      "yieldComputedNoteAsset": "Beräknas automatiskt utifrån {asset}s verkliga utveckling under de senaste 12 månaderna."
+    },
+    "assetPicker": {
+      "onlyNetworkAvailable": "Enda tillgängliga nätverket för denna tillgång"
+    },
+    "creditRequestDeposit": {
+      "genericError": "Ett fel har inträffat.",
+      "title": "Kreditansökan godkänd, insättning väntar",
+      "description": "{amount} ({currency}) att sätta in för att krediten ska utfärdas automatiskt.",
+      "yourDepositAddress": "Din insättningsadress",
+      "addressNote": "Skicka endast {currency} på {chain} till denna adress. Sätt in minst {amount}: krediten utfärdas automatiskt vid mottagandet.",
+      "assetLabel": "Tillgång",
+      "networkLabel": "Nätverk",
+      "generateButton": "Generera insättningsadress"
+    },
+    "authLoadError": {
+      "title": "Det gick inte att verifiera din session"
+    },
+    "soldePage": {
+      "topupConfirmedTitle": "Kortpåfyllning bekräftad",
+      "topupConfirmedDescription": "Det tillgängliga saldot nedan återspeglar påfyllningen.",
+      "loadError": "Det gick inte att läsa in saldot"
+    },
+    "creditPage": {
+      "loadError": "Det gick inte att läsa in kreditlinjen"
+    },
+    "cardsPage": {
+      "loadError": "Det gick inte att läsa in korten"
+    },
+    "historyPage": {
+      "loadError": "Det gick inte att läsa in historiken"
+    },
+    "profilePage": {
+      "loadError": "Det gick inte att läsa in profilen"
+    },
+    "simulatedCheckout": {
+      "genericError": "Ett fel har inträffat.",
+      "sandboxNotice": "Simulerad betalning (Mollie sandbox-läge)",
+      "title": "Bekräfta kortbetalningen",
+      "description": "Den här sidan ersätter den värdbaserade Mollie-kassan så länge ingen API-nyckel är konfigurerad på bankens sida. Inga riktiga kortuppgifter begärs här.",
+      "notFoundTitle": "Betalningen hittades inte",
+      "amountToDebit": "Belopp att debitera",
+      "confirmButton": "Bekräfta betalningen",
+      "cancelButton": "Avbryt",
+      "alreadyConfirmedTitle": "Betalningen är redan bekräftad",
+      "alreadyConfirmedDescription": "Saldot har redan krediterats för denna betalning.",
+      "failedTitle": "Betalningen misslyckades",
+      "failedDescription": "Denna betalning gick inte igenom och saldot har inte krediterats."
+    }
+  },
+  "CurrencyLabels": {
+    "USDS": "USDS",
+    "DAI": "DAI",
+    "USDE": "USDe",
+    "PYUSD": "PYUSD",
+    "PAXG": "PAXG (guld)",
+    "XAUT": "XAUT (guld)",
+    "USDT": "USDT",
+    "USDC": "USDC",
+    "DEURO": "dEURO",
+    "ETH": "ETH",
+    "SHIB": "SHIB",
+    "KAG": "KAG (silver)",
+    "XPT": "Tokeniserad platina",
+    "XPD": "Tokeniserad palladium",
+    "XCU": "Tokeniserad koppar",
+    "WTI": "Syntetisk olja (WTI)"
   }
 }

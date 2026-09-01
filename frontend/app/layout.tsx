@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,6 +18,14 @@ const geistMono = Geist_Mono({
 // canoniques en absolu. Pas de domaine de production fixé en dur : NEXT_PUBLIC_SITE_URL
 // doit être défini au déploiement (cf. .env.example), localhost par défaut en dev.
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001";
+
+// Codes de vérification Google Search Console / Bing Webmaster Tools — vides tant que
+// personne n'a enregistré le site sur ces plateformes (ce qui nécessite un domaine public
+// réel, pas localhost, et un compte que nous ne créons jamais à la place de l'opérateur).
+// Une fois le site déployé, créer les deux comptes, choisir la méthode de vérification
+// "balise HTML" et coller le code fourni ici — cf. .env.example.
+const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const BING_SITE_VERIFICATION = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
 
 // Métadonnées par défaut, héritées par toute page qui ne les redéfinit pas explicitement
 // (cf. app/page.tsx et les autres pages publiques pour des title/description spécifiques).
@@ -40,6 +49,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/brand/hentsch-logo-full.png"],
   },
+  ...((GOOGLE_SITE_VERIFICATION || BING_SITE_VERIFICATION) && {
+    verification: {
+      ...(GOOGLE_SITE_VERIFICATION && { google: GOOGLE_SITE_VERIFICATION }),
+      ...(BING_SITE_VERIFICATION && { other: { "msvalidate.01": BING_SITE_VERIFICATION } }),
+    },
+  }),
 };
 
 // Script anti-flash : pose la classe .dark sur <html> avant l'hydratation React, à partir
@@ -71,6 +86,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full bg-background text-foreground" suppressHydrationWarning>
         <ThemeProvider>
           <main className="relative min-h-screen bg-background">{children}</main>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

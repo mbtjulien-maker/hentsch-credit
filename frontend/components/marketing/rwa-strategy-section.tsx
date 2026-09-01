@@ -1,6 +1,7 @@
 import { Layers, Link2, ShieldAlert, ShieldCheck, TrendingUp, Waypoints } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { AssetLogoRow } from "@/components/marketing/asset-logo-row";
+import { JsonLd, faqPageJsonLd } from "@/lib/seo";
 
 // Section de transparence "Stratégie d'investissement RWA" — adapte pour le client la
 // feuille de route interne de trésorerie sur les métaux industriels/matières premières
@@ -50,8 +51,17 @@ export async function RwaStrategySection() {
     { icon: ShieldAlert, risk: t("risks.liquidation.risk"), mitigation: t("risks.liquidation.mitigation") },
   ] as const;
 
+  const FAQ_ITEMS = (["usedForStrategy", "loss", "targetReached", "whyIndustrialOnly"] as const).map((key) => ({
+    key,
+    question: t(`faq.${key}.question`),
+    answer: t(`faq.${key}.answer`),
+  }));
+
   return (
     <section id="strategie-rwa" className="bg-slate-900 py-16 text-white">
+      {/* Balisage FAQPage — construit à partir des MÊMES questions/réponses affichées
+          plus bas (cf. FAQ_ITEMS), jamais un contenu parallèle (cf. lib/seo.ts). */}
+      <JsonLd id="faq-jsonld" data={faqPageJsonLd(FAQ_ITEMS)} />
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
@@ -64,7 +74,7 @@ export async function RwaStrategySection() {
 
         <div className="mx-auto mt-6 flex w-fit flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-4">
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-bold tabular-nums text-white">8 à 14%</span>
+            <span className="text-3xl font-bold tabular-nums text-white">{t("apyTargetValue")}</span>
             <span className="text-sm font-medium text-slate-300">{t("apyTargetLabel")}</span>
           </div>
           <AssetLogoRow currencies={NEW_RWA_ASSETS} className="justify-center" />
@@ -181,10 +191,10 @@ export async function RwaStrategySection() {
             {t("faqTitle")}
           </h3>
           <div className="grid gap-3 sm:grid-cols-2">
-            {(["usedForStrategy", "loss", "targetReached", "whyIndustrialOnly"] as const).map((key) => (
-              <div key={key} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <h4 className="text-sm font-semibold text-white">{t(`faq.${key}.question`)}</h4>
-                <p className="mt-1 text-xs leading-relaxed text-slate-400">{t(`faq.${key}.answer`)}</p>
+            {FAQ_ITEMS.map((item) => (
+              <div key={item.key} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                <h4 className="text-sm font-semibold text-white">{item.question}</h4>
+                <p className="mt-1 text-xs leading-relaxed text-slate-400">{item.answer}</p>
               </div>
             ))}
           </div>

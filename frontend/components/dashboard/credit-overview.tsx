@@ -2,9 +2,10 @@
 
 import type { ComponentType } from "react";
 import { HandCoins, Lock, Percent, TrendingUp, Wallet } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { BalanceSummary, CreditRatesResponse, CreditRequest } from "@/lib/api";
-import { CREDIT_REQUEST_STATUS_LABELS, formatDate, formatUsd } from "@/lib/format";
+import { formatDate, formatUsd } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 // Couleurs par statut de demande — jamais réutilisées comme identité catégorielle,
@@ -26,28 +27,29 @@ const STATUS_DOT_CLASS: Record<CreditRequest["status"], string> = {
 // par la mise en avant du "Pouvoir d'achat total" (dernière carte, texte accentué),
 // cohérent avec la priorité produit Actifs → Gage → Capacité d'achat → Crédit.
 export function CreditOverviewStrip({ summary }: { summary: BalanceSummary }) {
+  const t = useTranslations("Dashboard.creditOverview");
   const { balance } = summary;
   const creditAvailable = Number(balance.grantedCredit) - Number(balance.usedCredit);
 
   const items: { icon: ComponentType<{ className?: string }>; label: string; value: string; emphasis?: boolean }[] = [
     {
       icon: Wallet,
-      label: "Solde disponible",
+      label: t("availableBalance"),
       value: formatUsd(balance.availableBalance),
     },
     {
       icon: Lock,
-      label: "Gage verrouillé",
+      label: t("lockedCollateral"),
       value: formatUsd(balance.lockedCollateral),
     },
     {
       icon: HandCoins,
-      label: "Crédit disponible",
+      label: t("availableCredit"),
       value: formatUsd(creditAvailable),
     },
     {
       icon: TrendingUp,
-      label: "Pouvoir d'achat total",
+      label: t("totalPurchasingPower"),
       value: formatUsd(summary.totalPurchasingPower),
       emphasis: true,
     },
@@ -82,11 +84,12 @@ export function CreditOverviewStrip({ summary }: { summary: BalanceSummary }) {
 // formulaire (contrairement au détail des taux affiché dans CreditSimulator, qui
 // n'apparaît qu'une fois un montant saisi).
 export function CreditRatesPanel({ rates }: { rates: CreditRatesResponse | null }) {
+  const t = useTranslations("Dashboard.creditOverview");
   return (
     <div className="rounded-2xl border border-border bg-card p-4 shadow-sm dark:shadow-none">
       <div className="flex items-center gap-2">
         <Percent className="size-4 text-muted-foreground" />
-        <h3 className="text-sm font-semibold text-foreground">Taux actuels</h3>
+        <h3 className="text-sm font-semibold text-foreground">{t("currentRates")}</h3>
       </div>
       {!rates ? (
         <div className="mt-3 flex flex-col gap-2">
@@ -100,8 +103,13 @@ export function CreditRatesPanel({ rates }: { rates: CreditRatesResponse | null 
               <div key={currency} className="flex items-center justify-between gap-2 border-t border-border pt-2 first:border-t-0 first:pt-0">
                 <dt className="font-medium text-foreground">{currency}</dt>
                 <dd className="flex flex-col items-end gap-0.5 text-right tabular-nums text-muted-foreground">
-                  <span>{info.interestRatePct}%/an d&apos;intérêt</span>
-                  <span>{info.originationFeePct}% d&apos;origination · {info.custodyFeePct}% de garde</span>
+                  <span>{t("interestRateLine", { rate: info.interestRatePct })}</span>
+                  <span>
+                    {t("feesLine", {
+                      origination: info.originationFeePct,
+                      custody: info.custodyFeePct,
+                    })}
+                  </span>
                 </dd>
               </div>
             ),
@@ -109,13 +117,9 @@ export function CreditRatesPanel({ rates }: { rates: CreditRatesResponse | null 
         </dl>
       )}
       <p className="mt-3 border-t border-border pt-2.5 text-[11px] text-muted-foreground">
-        Ratio de crédit : 350 % du gage verrouillé, au taux en vigueur lors du verrouillage.
+        {t("ratioNote")}
       </p>
-      <p className="mt-2 text-[11px] text-muted-foreground">
-        Remboursement : jusqu&apos;à 60 % du crédit peut être couvert automatiquement par le
-        rendement du gage (or, argent, ETH, platine, palladium, cuivre, pétrole synthétique) ; les
-        40 % restants sont à rembourser par apport personnel.
-      </p>
+      <p className="mt-2 text-[11px] text-muted-foreground">{t("repaymentNote")}</p>
     </div>
   );
 }
@@ -129,16 +133,19 @@ export function CreditRequestsHistory({
   requests: CreditRequest[] | null;
   loading: boolean;
 }) {
+  const t = useTranslations("Dashboard.creditOverview");
+  const tLabels = useTranslations("Dashboard.labels");
+  const locale = useLocale();
   return (
     <div className="rounded-2xl border border-border bg-card p-4 shadow-sm dark:shadow-none">
-      <h3 className="text-sm font-semibold text-foreground">Mes demandes</h3>
+      <h3 className="text-sm font-semibold text-foreground">{t("myRequests")}</h3>
       {loading ? (
         <div className="mt-3 flex flex-col gap-2">
           <Skeleton className="h-9 w-full" />
           <Skeleton className="h-9 w-full" />
         </div>
       ) : !requests || requests.length === 0 ? (
-        <p className="mt-3 text-xs text-muted-foreground">Aucune demande pour l&apos;instant.</p>
+        <p className="mt-3 text-xs text-muted-foreground">{t("noRequests")}</p>
       ) : (
         <ul className="mt-3 flex flex-col gap-2.5">
           {requests.slice(0, 5).map((req) => (
@@ -153,11 +160,11 @@ export function CreditRequestsHistory({
                     {formatUsd(req.collateralAmount)}
                   </span>
                   <span className="tabular-nums text-muted-foreground">
-                    {formatDate(req.createdAt)}
+                    {formatDate(req.createdAt, locale)}
                   </span>
                 </div>
                 <span className="text-muted-foreground">
-                  {CREDIT_REQUEST_STATUS_LABELS[req.status]}
+                  {tLabels(`creditRequestStatus.${req.status}`)}
                 </span>
               </div>
             </li>

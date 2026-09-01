@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import NextLink from "next/link";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import {
   ClipboardCheck,
   CreditCard,
@@ -19,45 +20,23 @@ import {
 import { useDashboard } from "@/components/dashboard/dashboard-context";
 import { cn } from "@/lib/utils";
 
-// Pages client — usage courant du compte. Chaque entrée est une route dédiée
-// (cf. app/*/page.tsx), pas une simple ancre : navigation réelle.
-const CLIENT_SECTIONS = [
-  { href: "/dashboard", label: "Accueil", icon: LayoutGrid },
-  { href: "/dashboard/solde", label: "Solde", icon: Wallet },
-  { href: "/dashboard/marche", label: "Marché", icon: TrendingUp },
-  { href: "/dashboard/credit", label: "Crédit", icon: HandCoins },
-  { href: "/dashboard/cartes", label: "Cartes", icon: CreditCard },
-  { href: "/dashboard/historique", label: "Historique", icon: History },
-  { href: "/dashboard/profil", label: "Profil", icon: User },
-  { href: "/dashboard/support", label: "Support", icon: LifeBuoy },
-] as const;
-
-// Vue de validation des demandes de crédit — back-office, pas un usage client courant.
-// Masquée pour tout compte qui n'a pas le rôle ADMIN (cf. AdminGuard côté API — ce n'est
-// pas qu'un masquage cosmétique, l'API rejette de toute façon ces appels pour un client).
-const BACKOFFICE_SECTIONS = [
-  { href: "/dashboard/demandes-credit", label: "Demandes de crédit", icon: ClipboardCheck },
-  { href: "/dashboard/demandes-comptes", label: "Demandes de compte", icon: UserPlus },
-  { href: "/admin", label: "Espace Admin", icon: ShieldCheck },
-] as const;
-
 type NavSection = {
   href: string;
   label: string;
   icon: React.ComponentType<{ className?: string }>;
+  // /admin est hors du périmètre i18n (cf. proxy.ts) : le Link localisé de
+  // @/i18n/navigation préfixerait cette route d'une langue et casserait le lien
+  // (/en/admin n'existe pas). Toute autre section reste true (valeur par défaut).
+  localized?: boolean;
 };
 
 // Version compacte — utilisée par MobileNav, affichée dans la zone de contenu (repli
 // horizontal < lg). Entièrement sur tokens sémantiques : suit déjà le thème actif sans
 // changement ici.
-function NavLink({
-  href,
-  label,
-  icon: Icon,
-  isActive,
-}: NavSection & { isActive: boolean }) {
+function NavLink({ href, label, icon: Icon, isActive, localized = true }: NavSection & { isActive: boolean }) {
+  const LinkComponent = localized ? Link : NextLink;
   return (
-    <Link
+    <LinkComponent
       href={href}
       aria-current={isActive ? "page" : undefined}
       className={cn(
@@ -69,7 +48,7 @@ function NavLink({
     >
       <Icon className="size-3.5" />
       {label}
-    </Link>
+    </LinkComponent>
   );
 }
 
@@ -77,14 +56,10 @@ function NavLink({
 // un fin liseré or à gauche + fond graphite très subtil marquent l'état actif, plutôt
 // qu'un bloc plein. Cohérent avec la sidebar de l'espace admin (même logique de liseré),
 // pour une identité visuelle continue entre les deux zones sombres de l'application.
-function SidebarNavLink({
-  href,
-  label,
-  icon: Icon,
-  isActive,
-}: NavSection & { isActive: boolean }) {
+function SidebarNavLink({ href, label, icon: Icon, isActive, localized = true }: NavSection & { isActive: boolean }) {
+  const LinkComponent = localized ? Link : NextLink;
   return (
-    <Link
+    <LinkComponent
       href={href}
       aria-current={isActive ? "page" : undefined}
       className={cn(
@@ -99,7 +74,7 @@ function SidebarNavLink({
       )}
       <Icon className={cn("size-4 shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground/70 group-hover:text-sidebar-primary/80")} />
       {label}
-    </Link>
+    </LinkComponent>
   );
 }
 
@@ -108,9 +83,32 @@ function SidebarNavLink({
 // bordure champagne très fine, marque en aplat or (plus de dégradé cyan→fuchsia). Puis
 // une section "Back-office" nettement séparée pour la file de validation des demandes.
 export function Sidebar() {
+  const t = useTranslations("DashboardShell.sidebar");
   const pathname = usePathname();
   const { selectedUser } = useDashboard();
   const isAdmin = selectedUser?.role === "ADMIN";
+
+  // Pages client — usage courant du compte. Chaque entrée est une route dédiée
+  // (cf. app/[locale]/dashboard/*/page.tsx), pas une simple ancre : navigation réelle.
+  const CLIENT_SECTIONS: NavSection[] = [
+    { href: "/dashboard", label: t("client.home"), icon: LayoutGrid },
+    { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
+    { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
+    { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
+    { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
+    { href: "/dashboard/historique", label: t("client.history"), icon: History },
+    { href: "/dashboard/profil", label: t("client.profile"), icon: User },
+    { href: "/dashboard/support", label: t("client.support"), icon: LifeBuoy },
+  ];
+
+  // Vue de validation des demandes de crédit — back-office, pas un usage client courant.
+  // Masquée pour tout compte qui n'a pas le rôle ADMIN (cf. AdminGuard côté API — ce n'est
+  // pas qu'un masquage cosmétique, l'API rejette de toute façon ces appels pour un client).
+  const BACKOFFICE_SECTIONS: NavSection[] = [
+    { href: "/dashboard/demandes-credit", label: t("backoffice.creditRequests"), icon: ClipboardCheck },
+    { href: "/dashboard/demandes-comptes", label: t("backoffice.accountRequests"), icon: UserPlus },
+    { href: "/admin", label: t("backoffice.adminArea"), icon: ShieldCheck, localized: false },
+  ];
 
   return (
     <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col gap-8 overflow-y-auto border-r border-sidebar-border bg-sidebar px-4 py-7 lg:flex">
@@ -118,11 +116,11 @@ export function Sidebar() {
         <Image src="/brand/hentsch-mark.png" alt="" width={500} height={500} className="size-10 rounded-lg" />
         <div>
           <h1 className="text-[15px] leading-none font-semibold tracking-[-0.01em] text-sidebar-foreground">Hentsch Credit</h1>
-          <p className="mt-1.5 text-[11px] tracking-[0.04em] text-muted-foreground uppercase">Tableau de bord</p>
+          <p className="mt-1.5 text-[11px] tracking-[0.04em] text-muted-foreground uppercase">{t("subtitle")}</p>
         </div>
       </Link>
 
-      <nav aria-label="Navigation du compte" className="flex flex-col gap-1">
+      <nav aria-label={t("clientNavAriaLabel")} className="flex flex-col gap-1">
         {CLIENT_SECTIONS.map((section) => (
           <SidebarNavLink key={section.href} {...section} isActive={pathname === section.href} />
         ))}
@@ -130,11 +128,11 @@ export function Sidebar() {
 
       {isAdmin && (
         <nav
-          aria-label="Navigation back-office"
+          aria-label={t("backofficeNavAriaLabel")}
           className="mt-auto flex flex-col gap-1 border-t border-sidebar-border pt-5"
         >
           <span className="px-3.5 pb-1 text-[10.5px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-            Back-office
+            {t("backoffice.label")}
           </span>
           {BACKOFFICE_SECTIONS.map((section) => (
             <SidebarNavLink key={section.href} {...section} isActive={pathname === section.href} />
@@ -149,16 +147,31 @@ export function Sidebar() {
 // s'afficher, on retombe sur une bande horizontale défilable dans la zone de contenu —
 // toutes les sections à plat (client + back-office).
 export function MobileNav() {
+  const t = useTranslations("DashboardShell.sidebar");
   const pathname = usePathname();
   const { selectedUser } = useDashboard();
   const isAdmin = selectedUser?.role === "ADMIN";
-  const allSections = isAdmin
-    ? [...CLIENT_SECTIONS, ...BACKOFFICE_SECTIONS]
-    : CLIENT_SECTIONS;
+
+  const CLIENT_SECTIONS: NavSection[] = [
+    { href: "/dashboard", label: t("client.home"), icon: LayoutGrid },
+    { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
+    { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
+    { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
+    { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
+    { href: "/dashboard/historique", label: t("client.history"), icon: History },
+    { href: "/dashboard/profil", label: t("client.profile"), icon: User },
+    { href: "/dashboard/support", label: t("client.support"), icon: LifeBuoy },
+  ];
+  const BACKOFFICE_SECTIONS: NavSection[] = [
+    { href: "/dashboard/demandes-credit", label: t("backoffice.creditRequests"), icon: ClipboardCheck },
+    { href: "/dashboard/demandes-comptes", label: t("backoffice.accountRequests"), icon: UserPlus },
+    { href: "/admin", label: t("backoffice.adminArea"), icon: ShieldCheck, localized: false },
+  ];
+  const allSections = isAdmin ? [...CLIENT_SECTIONS, ...BACKOFFICE_SECTIONS] : CLIENT_SECTIONS;
 
   return (
     <nav
-      aria-label="Navigation entre les sections du tableau de bord"
+      aria-label={t("mobileNavAriaLabel")}
       className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 lg:hidden"
     >
       {allSections.map((section) => (

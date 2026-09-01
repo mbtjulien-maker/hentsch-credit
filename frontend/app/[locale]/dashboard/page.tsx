@@ -1,6 +1,7 @@
 "use client";
 
 import { AlertTriangle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BalanceCards } from "@/components/dashboard/balance-cards";
@@ -20,6 +21,7 @@ import { useCreditRequests } from "@/lib/use-credit-requests";
 // dédiées (/solde, /marche, /credit, /cartes, /profil, /support, /historique) pour
 // un accès direct depuis la nav.
 export default function HomePage() {
+  const t = useTranslations("Dashboard.home");
   const { triggerRefresh, selectedUser } = useDashboard();
   const balance = useSectionData((userId) => api.getBalance(userId));
   const cards = useSectionData((userId) => api.listCards(userId));
@@ -35,7 +37,7 @@ export default function HomePage() {
     return (
       <Alert variant="destructive">
         <AlertTriangle className="size-4" />
-        <AlertTitle>Impossible de charger le tableau de bord</AlertTitle>
+        <AlertTitle>{t("loadError")}</AlertTitle>
         <AlertDescription>{error}</AlertDescription>
       </Alert>
     );

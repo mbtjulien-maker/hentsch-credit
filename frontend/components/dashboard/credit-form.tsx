@@ -1,29 +1,32 @@
 "use client";
 
 import { useMemo, useState, type ReactNode } from "react";
-import Link from "next/link";
 import { ArrowRight, Loader2 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { toast } from "sonner";
+import { Link } from "@/i18n/navigation";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CreditSimulator, CREDIT_RATIO } from "@/components/dashboard/credit-simulator";
+import { CreditSimulator, CREDIT_RATIO, YieldAssetPicker } from "@/components/dashboard/credit-simulator";
 import { RepaymentProjection } from "@/components/dashboard/repayment-projection";
 import { InstallmentSchedule } from "@/components/dashboard/installment-schedule";
 import { useCreditRates } from "@/lib/use-credit-rates";
-import { useEstimatedYield } from "@/lib/use-estimated-yield";
+import { useEstimatedYield, resolveEstimatedYield } from "@/lib/use-estimated-yield";
 import { useCreditRequests } from "@/lib/use-credit-requests";
 import {
   api,
   ApiError,
+  type AcceptedCurrency,
   type AccountCurrency,
   type BalanceSummary,
   type CreditRequest,
   type TransactionRecord,
 } from "@/lib/api";
-import { CREDIT_REQUEST_STATUS_LABELS, formatDate, formatUsd } from "@/lib/format";
+import { formatDate, formatUsd } from "@/lib/format";
 import { GLASS_CARD_CLASS } from "@/lib/utils";
 
 // Le crédit se gère ici en deux temps stricts : (1) simuler/soumettre une demande, (2)
@@ -44,22 +47,22 @@ export function CreditForm({
   transactions: TransactionRecord[] | null;
   onSuccess: () => Promise<void> | void;
 }) {
+  const t = useTranslations("Dashboard.creditForm");
   const [tab, setTab] = useState("request");
 
   return (
     <Card className={GLASS_CARD_CLASS}>
       <CardHeader>
-        <CardTitle>Gérer ma ligne de crédit</CardTitle>
+        <CardTitle>{t("title")}</CardTitle>
         <CardDescription>
-          Le crédit s&apos;obtient sur demande : soumettez le gage envisagé, puis déposez
-          les fonds depuis <strong>Solde</strong> une fois la demande approuvée.
+          {t.rich("description", { balance: (chunks) => <strong>{chunks}</strong> })}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs value={tab} onValueChange={(v) => v && setTab(v)}>
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="request">Demander un crédit</TabsTrigger>
-            <TabsTrigger value="manage">Gérer / rembourser</TabsTrigger>
+            <TabsTrigger value="request">{t("tabRequest")}</TabsTrigger>
+            <TabsTrigger value="manage">{t("tabManage")}</TabsTrigger>
           </TabsList>
           <TabsContent value="request" className="pt-4">
             <CreditRequestPanel summary={summary} requestsState={requestsState} />
@@ -89,10 +92,11 @@ function CreditRequestPanel({
   summary: BalanceSummary;
   requestsState: ReturnType<typeof useCreditRequests>;
 }) {
+  const t = useTranslations("Dashboard.creditForm");
   const { active, loading } = requestsState;
 
   if (loading) {
-    return <p className="text-sm text-muted-foreground">Chargement…</p>;
+    return <p className="text-sm text-muted-foreground">{t("loading")}</p>;
   }
 
   const statusBanner =
@@ -113,18 +117,18 @@ function CreditRequestPanel({
 }
 
 function PendingRequestStatus({ request }: { request: CreditRequest }) {
+  const t = useTranslations("Dashboard.creditForm");
+  const tLabels = useTranslations("Dashboard.labels");
   return (
     <div className="flex flex-col gap-2 rounded-lg border border-dashed bg-muted/40 px-4 py-3 text-sm">
       <div className="flex items-center justify-between">
-        <span className="font-medium">{CREDIT_REQUEST_STATUS_LABELS[request.status]}</span>
+        <span className="font-medium">{tLabels(`creditRequestStatus.${request.status}`)}</span>
         <span className="tabular-nums text-muted-foreground">
           {formatUsd(request.collateralAmount)} ({request.currency})
         </span>
       </div>
       <p className="text-muted-foreground">
-        Votre demande de crédit est en attente de validation. Une fois approuvée, direction{" "}
-        <strong className="text-foreground">Solde</strong> pour générer l&apos;adresse de
-        dépôt et débloquer le crédit.
+        {t.rich("pendingNote", { balance: (chunks) => <strong className="text-foreground">{chunks}</strong> })}
       </p>
     </div>
   );
@@ -133,20 +137,20 @@ function PendingRequestStatus({ request }: { request: CreditRequest }) {
 // Demande approuvée : simple redirection vers Solde, où vit toute la logique de
 // génération d'adresse de dépôt (cf. credit-request-deposit.tsx) — aucune duplication ici.
 function ApprovedRequestStatus({ request }: { request: CreditRequest }) {
+  const t = useTranslations("Dashboard.creditForm");
+  const tLabels = useTranslations("Dashboard.labels");
   return (
     <div className="flex flex-col gap-2 rounded-lg border border-dashed bg-muted/40 px-4 py-3 text-sm">
       <div className="flex items-center justify-between">
         <span className="font-medium text-primary">
-          {CREDIT_REQUEST_STATUS_LABELS[request.status]}
+          {tLabels(`creditRequestStatus.${request.status}`)}
         </span>
         <span className="tabular-nums text-muted-foreground">
           {formatUsd(request.collateralAmount)} ({request.currency})
         </span>
       </div>
       <p className="text-muted-foreground">
-        Rendez-vous dans <strong className="text-foreground">Solde</strong> pour choisir
-        l&apos;actif et le réseau, puis générer l&apos;adresse de dépôt dédiée à cette
-        demande : le crédit sera émis automatiquement dès réception des fonds.
+        {t.rich("approvedNote", { balance: (chunks) => <strong className="text-foreground">{chunks}</strong> })}
       </p>
       <Button
         variant="outline"
@@ -155,7 +159,7 @@ function ApprovedRequestStatus({ request }: { request: CreditRequest }) {
         nativeButton={false}
         render={<Link href="/dashboard/solde" />}
       >
-        Aller à Solde
+        {t("goToBalance")}
         <ArrowRight className="size-3.5" />
       </Button>
     </div>
@@ -173,12 +177,15 @@ function NewRequestForm({
   statusBanner: ReactNode;
   onSubmitted: () => Promise<void> | void;
 }) {
+  const t = useTranslations("Dashboard.creditForm");
   const [amount, setAmount] = useState("");
   const [currency, setCurrency] = useState<AccountCurrency>("USD");
+  const [yieldAsset, setYieldAsset] = useState<AcceptedCurrency | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const rates = useCreditRates();
-  const estimatedYieldPct = useEstimatedYield();
+  const yieldEstimate = useEstimatedYield();
+  const estimatedYieldPct = resolveEstimatedYield(yieldEstimate, yieldAsset);
 
   const parsedAmount = Number(amount);
   const isValid = canSubmit && amount.trim() !== "" && parsedAmount > 0;
@@ -199,7 +206,7 @@ function NewRequestForm({
       setAmount("");
       await onSubmitted();
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
       setSubmitting(false);
     }
@@ -220,16 +227,23 @@ function NewRequestForm({
 
       {simulatedAmount > 0 && (
         <>
+          <YieldAssetPicker
+            perAsset={yieldEstimate.perAsset}
+            value={yieldAsset}
+            onChange={setYieldAsset}
+          />
           <RepaymentProjection
             creditIssued={simulatedCreditIssued}
             collateralAmount={simulatedAmount}
             annualInterestRatePct={interestRatePct}
             estimatedYieldPct={estimatedYieldPct}
+            yieldAssetTicker={yieldAsset}
           />
           <InstallmentSchedule
             creditIssued={simulatedCreditIssued}
             annualInterestRatePct={interestRatePct}
             estimatedYieldPct={estimatedYieldPct}
+            yieldAssetTicker={yieldAsset}
           />
         </>
       )}
@@ -243,12 +257,10 @@ function NewRequestForm({
       {canSubmit ? (
         <Button type="submit" disabled={!isValid || submitting}>
           {submitting && <Loader2 className="size-4 animate-spin" />}
-          Soumettre une demande de crédit
+          {t("submitRequest")}
         </Button>
       ) : (
-        <p className="text-xs text-muted-foreground">
-          Simulation uniquement : une demande est déjà en cours (voir ci-dessus).
-        </p>
+        <p className="text-xs text-muted-foreground">{t("simulationOnlyNote")}</p>
       )}
     </form>
   );
@@ -265,6 +277,8 @@ function RepayPanel({
   onSuccess: () => Promise<void> | void;
   onRequestNewCredit: () => void;
 }) {
+  const t = useTranslations("Dashboard.creditForm");
+  const locale = useLocale();
   const [amount, setAmount] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -280,7 +294,7 @@ function RepayPanel({
   const repayments = useMemo(
     () =>
       (transactions ?? [])
-        .filter((t) => t.type === "REPAYMENT" || t.type === "YIELD_REPAYMENT")
+        .filter((tx) => tx.type === "REPAYMENT" || tx.type === "YIELD_REPAYMENT")
         .slice(0, 5),
     [transactions],
   );
@@ -288,10 +302,8 @@ function RepayPanel({
   const preview = useMemo(() => {
     if (!isValid) return null;
     const remaining = usedCredit - parsedAmount;
-    return remaining === 0
-      ? "Remboursement intégral : le gage sera libéré vers le solde disponible."
-      : `Crédit utilisé restant après remboursement : ${formatUsd(remaining)}`;
-  }, [isValid, usedCredit, parsedAmount]);
+    return remaining === 0 ? t("repayFullNote") : t("repayRemainingNote", { amount: formatUsd(remaining) });
+  }, [isValid, usedCredit, parsedAmount, t]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -302,8 +314,12 @@ function RepayPanel({
       await api.repayCredit(parsedAmount.toFixed(6));
       setAmount("");
       await onSuccess();
+      // Seul signal de succès : le formulaire se vide et les chiffres se mettent à jour,
+      // facile à manquer sans confirmation explicite (contrairement à la demande de
+      // crédit, qui fait apparaître une bannière de statut persistante juste au-dessus).
+      toast.success(willUnlockCollateral ? t("repayFullToast") : t("repaySuccessToast"));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
       setSubmitting(false);
     }
@@ -315,7 +331,7 @@ function RepayPanel({
           rembourser quoi que ce soit. */}
       <div className="rounded-lg border bg-muted/30 px-4 py-3">
         <div className="flex items-center justify-between text-sm">
-          <span className="text-muted-foreground">Crédit utilisé</span>
+          <span className="text-muted-foreground">{t("usedCredit")}</span>
           <span className="font-medium tabular-nums">
             {formatUsd(usedCredit)} / {formatUsd(grantedCredit)}
           </span>
@@ -327,26 +343,24 @@ function RepayPanel({
           />
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          Besoin de plus de crédit ?{" "}
+          {t("needMoreCredit")}{" "}
           <button
             type="button"
             onClick={onRequestNewCredit}
             className="font-medium text-foreground underline underline-offset-2 hover:no-underline"
           >
-            Faire une nouvelle demande
+            {t("newRequestLink")}
           </button>
           .
         </p>
       </div>
 
       {usedCredit === 0 ? (
-        <p className="text-sm text-muted-foreground">
-          Aucun crédit utilisé actuellement : rien à rembourser.
-        </p>
+        <p className="text-sm text-muted-foreground">{t("nothingToRepay")}</p>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="repay-amount">Montant à rembourser</Label>
+            <Label htmlFor="repay-amount">{t("repayAmountLabel")}</Label>
             <Input
               id="repay-amount"
               inputMode="decimal"
@@ -372,7 +386,7 @@ function RepayPanel({
 
           <Button type="submit" variant="outline" disabled={!isValid || submitting}>
             {submitting && <Loader2 className="size-4 animate-spin" />}
-            Rembourser
+            {t("repayButton")}
           </Button>
         </form>
       )}
@@ -381,17 +395,19 @@ function RepayPanel({
           Historique générale. */}
       {repayments.length > 0 && (
         <div>
-          <p className="text-xs font-medium text-muted-foreground">Évolution du remboursement</p>
+          <p className="text-xs font-medium text-muted-foreground">{t("repaymentHistory")}</p>
           <ul className="mt-2 flex flex-col gap-1.5">
-            {repayments.map((t) => (
-              <li key={t.id} className="flex items-center justify-between text-xs">
+            {repayments.map((tx) => (
+              <li key={tx.id} className="flex items-center justify-between text-xs">
                 <span className="text-muted-foreground">
-                  {formatDate(t.createdAt)}
-                  {t.type === "YIELD_REPAYMENT" && (
-                    <span className="ml-1.5 text-[#1baf7a] dark:text-[#34D399]">· rendement du gage</span>
+                  {formatDate(tx.createdAt, locale)}
+                  {tx.type === "YIELD_REPAYMENT" && (
+                    <span className="ml-1.5 text-[#1baf7a] dark:text-[#34D399]">
+                      · {t("yieldRepaymentTag")}
+                    </span>
                   )}
                 </span>
-                <span className="font-medium tabular-nums">− {formatUsd(t.amount)}</span>
+                <span className="font-medium tabular-nums">− {formatUsd(tx.amount)}</span>
               </li>
             ))}
           </ul>

@@ -2,10 +2,12 @@
 
 import { useId, useMemo, useState } from "react";
 import { Info } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { formatUsd } from "@/lib/format";
 import { computeAmortizedPayment } from "@/lib/amortization";
+import type { AcceptedCurrency } from "@/lib/api";
 
 // Durée contractuelle par défaut d'une position de crédit — DEFAULT_TERM_MONTHS côté
 // backend (cf. backend/src/credit/rate.constants.ts). Purement informatif ici (aucune
@@ -71,19 +73,25 @@ export function RepaymentProjection({
   collateralAmount,
   annualInterestRatePct,
   estimatedYieldPct,
+  yieldAssetTicker,
 }: {
   creditIssued: number;
   collateralAmount: number;
   annualInterestRatePct: number | null;
-  // Calculé par le calculateur (cf. useEstimatedYield, moyenne réelle sur 12 mois des
-  // actifs générateurs de rendement) — c'est l'algorithme qui détermine cette hypothèse,
-  // jamais le client : affiché en lecture seule, pas un champ de formulaire (cf. décision
-  // produit du 30 août 2026, revenant sur le champ modifiable introduit précédemment).
-  // L'apport externe, lui, reste un vrai choix du client (cf. externalInputId plus bas) :
-  // suggéré automatiquement (cf. suggestedExternal) pour rester dans la durée
-  // contractuelle, mais librement ajustable.
+  // Calculé par le calculateur (cf. useEstimatedYield) — c'est l'algorithme qui détermine
+  // cette hypothèse, jamais le client : affiché en lecture seule, pas un champ de
+  // formulaire (cf. décision produit du 30 août 2026, revenant sur le champ modifiable
+  // introduit précédemment). L'apport externe, lui, reste un vrai choix du client (cf.
+  // externalInputId plus bas) : suggéré automatiquement (cf. suggestedExternal) pour
+  // rester dans la durée contractuelle, mais librement ajustable.
   estimatedYieldPct: number | null;
+  // Actif de gage sur lequel estimatedYieldPct est basé (cf. YieldAssetPicker,
+  // credit-simulator.tsx) — `null` quand aucun actif précis n'est choisi, auquel cas
+  // estimatedYieldPct est la moyenne des 8 actifs éligibles (cf. resolveEstimatedYield).
+  // Uniquement pour affichage (nommer la source du calcul) : n'entre dans aucun calcul ici.
+  yieldAssetTicker: AcceptedCurrency | null;
 }) {
+  const t = useTranslations("Dashboard.repaymentProjection");
   const externalInputId = useId();
   const yieldPct = estimatedYieldPct !== null ? estimatedYieldPct.toFixed(1) : "0";
 
@@ -130,30 +138,27 @@ export function RepaymentProjection({
   return (
     <div className="rounded-lg border border-dashed bg-muted/30 px-4 py-3.5">
       <div className="flex items-center gap-1.5">
-        <h4 className="text-sm font-medium">Projection de remboursement à long terme</h4>
+        <h4 className="text-sm font-medium">{t("title")}</h4>
       </div>
-      <p className="mt-1 text-xs text-muted-foreground">
-        Remboursement combiné : rendement moyen réel des actifs générateurs de rendement
-        (calculé automatiquement) + apport externe suggéré pour rester dans la durée
-        contractuelle (celui-ci modifiable). Estimation non garantie, à titre indicatif
-        uniquement.
-      </p>
+      <p className="mt-1 text-xs text-muted-foreground">{t("intro")}</p>
 
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
         <div className="grid gap-1.5">
-          <Label className="text-xs">Rendement annuel estimé (%)</Label>
+          <Label className="text-xs">{t("estimatedYieldLabel")}</Label>
           <div className="flex h-8 items-center rounded-md border border-input bg-background px-3 text-sm font-medium tabular-nums">
             {yieldPct}%
           </div>
           <p className="text-[11px] text-muted-foreground">
-            {estimatedYieldPct !== null
-              ? "Calculé automatiquement à partir de la performance réelle sur 12 mois."
-              : "Calcul en cours…"}
+            {estimatedYieldPct === null
+              ? t("yieldComputing")
+              : yieldAssetTicker
+                ? t("yieldComputedNoteAsset", { asset: yieldAssetTicker })
+                : t("yieldComputedNote")}
           </p>
         </div>
         <div className="grid gap-1.5">
           <Label htmlFor={externalInputId} className="text-xs">
-            Remboursement externe mensuel ($)
+            {t("externalRepaymentLabel")}
           </Label>
           <Input
             id={externalInputId}
@@ -164,8 +169,7 @@ export function RepaymentProjection({
             className="h-8 text-sm"
           />
           <p className="text-[11px] text-muted-foreground">
-            Suggéré pour rembourser en {CONTRACTUAL_TERM_MONTHS} mois, modifiable (réduisez-le
-            pour explorer un remboursement plus lent, porté par le seul rendement).
+            {t("externalRepaymentNote", { months: CONTRACTUAL_TERM_MONTHS })}
           </p>
         </div>
       </div>
@@ -173,22 +177,29 @@ export function RepaymentProjection({
       {result.monthlyContribution <= 0 ? (
         <p className="mt-3 flex items-start gap-1.5 text-xs text-muted-foreground">
           <Info className="mt-0.5 size-3.5 shrink-0" />
-          Renseignez un rendement estimé ou un remboursement mensuel pour projeter une
-          durée de remboursement.
+          {t("fillInPrompt")}
         </p>
       ) : (
         <>
           <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
             <div className="rounded-md bg-background px-3 py-2">
-              <div className="text-[11px] text-muted-foreground">Durée estimée</div>
+              <div className="text-[11px] text-muted-foreground">{t("estimatedDuration")}</div>
               <div className="font-semibold tabular-nums">
                 {result.monthsToRepay
-                  ? `${result.monthsToRepay} mois${result.monthsToRepay >= 12 ? ` (≈ ${(result.monthsToRepay / 12).toFixed(1)} ans)` : ""}`
-                  : `> ${MAX_PROJECTION_MONTHS} mois`}
+                  ? t(
+                      result.monthsToRepay >= 12
+                        ? "durationMonthsWithYears"
+                        : "durationMonths",
+                      {
+                        months: result.monthsToRepay,
+                        years: (result.monthsToRepay / 12).toFixed(1),
+                      },
+                    )
+                  : t("durationOverflow", { months: MAX_PROJECTION_MONTHS })}
               </div>
             </div>
             <div className="rounded-md bg-background px-3 py-2">
-              <div className="text-[11px] text-muted-foreground">Intérêts totaux estimés</div>
+              <div className="text-[11px] text-muted-foreground">{t("estimatedTotalInterest")}</div>
               <div className="font-semibold tabular-nums">{formatUsd(result.totalInterest)}</div>
             </div>
           </div>
@@ -196,9 +207,7 @@ export function RepaymentProjection({
           {result.monthsToRepay && result.monthsToRepay > CONTRACTUAL_TERM_MONTHS && (
             <p className="mt-2 flex items-start gap-1.5 text-xs text-amber-700 dark:text-primary">
               <Info className="mt-0.5 size-3.5 shrink-0" />
-              Cette projection dépasse la durée contractuelle habituelle de{" "}
-              {CONTRACTUAL_TERM_MONTHS} mois. Augmentez le rendement estimé ou le
-              remboursement mensuel pour rester dans les temps.
+              {t("overContractualTerm", { months: CONTRACTUAL_TERM_MONTHS })}
             </p>
           )}
 
@@ -207,9 +216,9 @@ export function RepaymentProjection({
               <table className="w-full text-xs">
                 <thead>
                   <tr className="text-left text-muted-foreground">
-                    <th className="pb-1 font-normal">Mois</th>
-                    <th className="pb-1 text-right font-normal">Versement</th>
-                    <th className="pb-1 text-right font-normal">Solde restant</th>
+                    <th className="pb-1 font-normal">{t("columns.month")}</th>
+                    <th className="pb-1 text-right font-normal">{t("columns.payment")}</th>
+                    <th className="pb-1 text-right font-normal">{t("columns.remainingBalance")}</th>
                   </tr>
                 </thead>
                 <tbody>

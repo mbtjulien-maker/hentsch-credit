@@ -1,7 +1,7 @@
 {
   "Common": {
     "backToHome": "Zurück zur Startseite",
-    "lastUpdated": "Letzte Aktualisierung:",
+    "lastUpdated": "Zuletzt aktualisiert:",
     "legalTranslationDisclaimer": "Diese Seite wurde zu Ihrer Bequemlichkeit übersetzt. Bei Auslegungsunterschieden ist ausschließlich die französische Fassung maßgeblich.",
     "learnMore": "Mehr erfahren"
   },
@@ -12,7 +12,7 @@
       "rendement": "Rendite",
       "strategieRwa": "RWA-Strategie",
       "marche": "Markt",
-      "tarifs": "Konditionen"
+      "tarifs": "Preise"
     },
     "connexionShort": "Anmelden",
     "connexionLong": "Zu meinem Konto"
@@ -25,13 +25,13 @@
         "yield": "Rendite",
         "rwaStrategy": "RWA-Strategie",
         "market": "Markt",
-        "pricing": "Konditionen",
+        "pricing": "Preise",
         "requestAccount": "Konto beantragen"
       },
       "help": {
         "title": "Hilfe & Kontakt",
         "contact": "Kontaktieren Sie uns",
-        "faq": "Häufig gestellte Fragen",
+        "faq": "Häufige Fragen",
         "sitemap": "Sitemap",
         "accessibility": "Digitale Barrierefreiheit",
         "archives": "Archiv"
@@ -41,33 +41,33 @@
         "terms": "Allgemeine Geschäftsbedingungen",
         "legalNotice": "Impressum",
         "regulation": "Regulierung",
-        "riskManagement": "Risikomanagement und Vermögensverwahrung"
+        "riskManagement": "Risikomanagement und Verwahrung der Vermögenswerte"
       },
       "privacy": {
         "title": "Personenbezogene Daten",
-        "privacyPolicy": "Datenschutzerklärung",
+        "privacyPolicy": "Datenschutzrichtlinie",
         "cookiePolicy": "Cookie-Richtlinie"
       }
     },
-    "disclaimer": "{tradingName} ist ein Angebot von {legalName}, einem unabhängigen Vermögensverwalter schweizerischen Rechts, beaufsichtigt durch {supervisionBodyName}, eine von der {supervisoryAuthority} zugelassene Aufsichtsorganisation. Der Zugang ist einem eingeschränkten Kundenkreis auf Einladung vorbehalten. Diese Plattform ist nicht öffentlich zugänglich.",
+    "disclaimer": "{tradingName} ist ein Angebot von {legalName}, einem unabhängigen Vermögensverwalter schweizerischen Rechts, beaufsichtigt von {supervisionBodyName}, einer von der {supervisoryAuthority} zugelassenen Aufsichtsorganisation. Zugang ausschließlich für einen eingeschränkten Kundenkreis, auf Einladung. Diese Plattform ist nicht öffentlich zugänglich.",
     "rightsReserved": "Alle Rechte vorbehalten."
   },
   "Home": {
     "meta": {
       "title": "Hentsch Credit · Krypto-besicherter Kredit",
-      "description": "350% des hinterlegten Betrags als sofortige Kaufkraft freigeschaltet. Gold, Silber und ETH erwirtschaften eine echte Rendite, die einen Teil Ihres Kredits automatisch tilgt."
+      "description": "350% des hinterlegten Betrags als sofortige Kaufkraft freigeschaltet. Gold, Silber und ETH erzielen eine reale Rendite, die automatisch einen Teil Ihres Kredits zurückzahlt."
     },
     "badge": "Regulierte Vermögensverwaltung · Zugang nur auf Einladung",
     "titleLine1": "Ihr Gold und Ihr Silber",
-    "titleHighlight": "schlummern nicht länger",
-    "subtitle": "Hinterlegen Sie sie als Sicherheit, ohne sie jemals zu verkaufen. Schalten Sie sofortige Kaufkraft frei, die automatisch durch deren Wertentwicklung getilgt wird.",
-    "statCardCaption": "Kaufkraft, bereits ab Einzahlung",
+    "titleHighlight": "schlummern nicht mehr",
+    "subtitle": "Hinterlegen Sie sie als Sicherheit, ohne sie je zu verkaufen. Schalten Sie sofortige Kaufkraft frei, die automatisch durch deren Wertentwicklung zurückgezahlt wird.",
+    "statCardCaption": "Kaufkraft, ab der Einzahlung",
     "statCardAssets": "Tokenisiertes Gold & Silber",
     "ctaLogin": "Zu meinem Konto",
     "ctaHowItWorks": "So funktioniert es",
     "ctaNoAccount": "Noch kein Konto? Kontoeröffnung beantragen",
     "discoverTitle": "Die Plattform entdecken",
-    "discoverDescription": "Die Details zu jedem Mechanismus, auf einer eigenen Seite.",
+    "discoverDescription": "Die Details jedes Mechanismus, auf seiner eigenen Seite.",
     "teasers": {
       "howItWorks": {
         "title": "So funktioniert es",
@@ -75,32 +75,32 @@
       },
       "yield": {
         "title": "Rendite der Sicherheit",
-        "description": "Gold, Silber und ETH tilgen automatisch bis zu 60% Ihres Kredits."
+        "description": "Gold, Silber und ETH zahlen automatisch bis zu 60% Ihres Kredits zurück."
       },
       "rwa": {
         "title": "RWA-Anlagestrategie",
-        "description": "Tokenisierte Industriemetalle: unsere Treasury-Strategie, in voller Transparenz."
+        "description": "Tokenisierte Industriemetalle: unsere Treasury-Strategie, mit voller Transparenz."
       },
       "market": {
-        "title": "Der Live-Markt",
+        "title": "Der Markt live",
         "description": "Die Kurse der als Sicherheit akzeptierten Vermögenswerte, in Echtzeit."
       }
     },
     "stats": {
       "ratio": "Kreditquote auf die hinterlegte Sicherheit",
-      "custodyValue": "Verwahrung über zugelassene Depotstellen",
+      "custodyValue": "Verwahrung über zugelassene Verwahrstellen",
       "custodyLabel": "Vermögenswerte bei zugelassenen Drittinstituten hinterlegt, nie im eigenen Namen",
       "kycValue": "KYC verifiziert",
       "kycLabel": "Kreditzugang nur für verifizierte Kunden"
     },
     "closingTitle": "Bereit, Ihre Kaufkraft freizuschalten?",
-    "closingDescription": "Die Plattform ist einem eingeschränkten Kundenkreis vorbehalten. Unser Team prüft jeden Antrag, bevor der Zugang gewährt wird.",
+    "closingDescription": "Plattform nur für einen eingeschränkten Kundenkreis. Unser Team prüft jeden Antrag, bevor der Zugang gewährt wird.",
     "closingCta": "Kontoeröffnung beantragen"
   },
   "HowItWorks": {
     "meta": {
       "title": "So funktioniert es · Hentsch Credit",
-      "description": "Von der Identitätsprüfung bis zur Ausgabe: die fünf Schritte zum Erhalt und zur Nutzung eines krypto-besicherten Kredits bei Hentsch Credit."
+      "description": "Von der Identitätsprüfung bis zur Ausgabe: die fünf Schritte, um einen krypto-besicherten Kredit bei Hentsch Credit zu erhalten und zu nutzen."
     },
     "eyebrow": "Der Kundenweg",
     "title": "So funktioniert es",
@@ -108,62 +108,62 @@
     "steps": {
       "kyc": {
         "title": "1. Identitätsprüfung (KYC)",
-        "description": "Nur auf Einladung: Ihre Identität wird vor jedem Zugang zu Einzahlung oder Kredit ausnahmslos überprüft."
+        "description": "Nur auf Einladung: Ihre Identität wird vor jedem Zugang zur Einzahlung oder zum Kredit geprüft, ohne jede Ausnahme."
       },
       "deposit": {
         "title": "2. Hinterlegen Sie Ihre Sicherheit",
-        "description": "Stablecoins, tokenisierte Edel- oder Industriemetalle oder ETH, im Ethereum-Netzwerk."
+        "description": "Stablecoins, tokenisierte Edel- oder Industriemetalle, oder ETH, im Ethereum-Netzwerk."
       },
       "credit": {
-        "title": "3. Kredit wird automatisch gewährt",
-        "description": "350% des hinterlegten Betrags, freigeschaltet sobald Ihr Antrag genehmigt ist (abzüglich einer einmaligen Bearbeitungsgebühr von 2%)."
+        "title": "3. Kredit automatisch gewährt",
+        "description": "350% des eingezahlten Betrags, freigeschaltet sobald Ihr Antrag validiert ist (abzüglich 2% Bearbeitungsgebühr, einmalig erhoben)."
       },
       "spend": {
-        "title": "4. Bezahlen Sie mit Ihrer Karte",
+        "title": "4. Geben Sie mit Ihrer Karte aus",
         "description": "Nutzen Sie Ihre Kreditlinie intern oder direkt mit Ihrer Bankkarte."
       },
       "repay": {
-        "title": "5. Tilgen, um Ihre Sicherheit freizugeben",
-        "description": "Bis zu 60% werden automatisch durch die Rendite der Sicherheit getilgt; der Rest durch Eigenleistung. Umgekehrt kann ein starker Wertverfall der Sicherheit zu deren Liquidation führen."
+        "title": "5. Zahlen Sie zurück, um die Sicherheit freizugeben",
+        "description": "Bis zu 60% werden automatisch durch die Rendite der Sicherheit zurückgezahlt; der Rest durch Eigenbeitrag. Umgekehrt kann ein starker Wertverfall der Sicherheit zu deren Liquidation führen."
       }
     },
-    "feesNote": "Die genauen Zinssätze und Gebühren finden Sie auf der Seite <pricing>Konditionen</pricing>, und die Details zur automatischen Tilgung, einschließlich des Liquidationsrisikos bei starkem Wertverfall der Sicherheit, auf der Seite <yield>Rendite</yield>.",
-    "detailTitle": "Die Details zu jedem Schritt",
+    "feesNote": "Die Details der realen Zinssätze und Gebühren finden Sie auf der Seite <pricing>Preise</pricing>, und die Details der automatischen Rückzahlung, einschließlich des Liquidationsrisikos bei starkem Wertverfall der Sicherheit, auf der Seite <yield>Rendite</yield>.",
+    "detailTitle": "Die Details jedes Schritts",
     "detail": {
       "kyc": {
         "title": "1. Identitätsprüfung",
-        "body": "Der Zugang erfolgt ausschließlich auf Einladung. Sobald Ihr Antrag auf Kontoeröffnung angenommen wurde, werden Ihnen offline ein Konto und ein vorläufiges Passwort mitgeteilt, danach wird Ihre Identität überprüft, bevor jede weitere Transaktion möglich ist. Solange dieser Status nicht bestätigt ist, sind die Erzeugung einer Einzahlungsadresse und jeder Kreditantrag technisch blockiert, nicht nur davon abgeraten."
+        "body": "Der Zugang erfolgt nur auf Einladung. Sobald Ihr Kontoantrag angenommen wurde, werden Ihnen offline ein Konto und ein temporäres Passwort mitgeteilt, anschließend wird Ihre Identität vor jeder weiteren Operation geprüft. Solange dieser Status nicht bestätigt ist, sind die Generierung einer Einzahlungsadresse und jeder Kreditantrag technisch gesperrt, nicht nur davon abgeraten."
       },
       "deposit": {
         "title": "2. Hinterlegung der Sicherheit",
-        "body": "Je nach gewähltem Vermögenswert ist die mitgeteilte Einzahlungsadresse entweder individuell (automatisch gutgeschrieben nach On-Chain-Bestätigung) oder von mehreren Kunden gemeinsam genutzt (Sie melden Ihre Einzahlung, ein Berater bestätigt sie manuell nach tatsächlichem Zahlungseingang). Der entsprechende Kredit wird automatisch ausgezahlt, sobald das verfügbare Guthaben den beantragten Betrag erreicht, ohne weiteres manuelles Eingreifen unsererseits."
+        "body": "Je nach gewähltem Vermögenswert ist die mitgeteilte Einzahlungsadresse entweder individuell (automatisch gutgeschrieben nach On-Chain-Bestätigung) oder unter Kunden gemeinsam genutzt (Sie melden Ihre Einzahlung, ein Berater validiert sie manuell nach tatsächlichem Geldeingang). Der entsprechende Kredit wird automatisch ausgegeben, sobald das verfügbare Guthaben den beantragten Betrag erreicht, ohne zusätzlichen manuellen Eingriff unsererseits."
       },
       "credit": {
-        "title": "3. Kreditvergabe",
-        "body": "350% des hinterlegten Betrags, zu dem zum Zeitpunkt der Sperrung geltenden Satz: Eine bereits gesperrte Position behält diesen Satz stets bei, auch wenn sich die Quote später für neue Kunden ändert. Die Bearbeitungsgebühr (2%) wird einmalig auf den gewährten Kredit erhoben, nicht auf Ihre Sicherheit."
+        "title": "3. Kreditausgabe",
+        "body": "350% des eingezahlten Betrags, zum zum Zeitpunkt der Hinterlegung geltenden Satz: Eine bereits hinterlegte Position behält diesen Satz stets bei, selbst wenn sich die Quote später für neue Kunden ändert. Die Bearbeitungsgebühr (2%) wird nur einmal erhoben, auf den ausgegebenen Kredit, nicht auf Ihre Sicherheit."
       },
       "usage": {
         "title": "4. Nutzung des Kredits",
-        "body": "Der gewährte Kredit ist nur eine Obergrenze: Es fallen weder Zinsen noch Tilgungen an, solange Sie ihn nicht tatsächlich nutzen (Kartenzahlung, interne Nutzung). Es handelt sich um eine revolvierende Kreditlinie, nicht um ein Darlehen, das auf einmal auf Ihr verfügbares Guthaben ausgezahlt wird."
+        "body": "Der gewährte Kredit ist nur eine Obergrenze: Es fallen keine Zinsen oder Rückzahlungen an, solange Sie ihn nicht tatsächlich nutzen (Kartenzahlung, interne Nutzung). Es handelt sich um eine revolvierende Kreditlinie, kein auf einmal in Ihr verfügbares Guthaben ausgezahltes Darlehen."
       },
       "repayment": {
-        "title": "5. Tilgung",
-        "body": "Zwei Kanäle, der erste täglich und automatisch: die reale Wertsteigerung Ihrer Sicherheit (bis zu 60% des gewährten Kredits) und Ihre Eigenleistung für den Rest. Die vollständige Tilgung gibt Ihre Sicherheit frei, die dann wieder abhebbar wird. Umgekehrt führt ein schwerwiegender Wertverfall der Sicherheit (50% seit Eintritt) zu deren Liquidation, ohne den bereits genutzten Kredit zu löschen."
+        "title": "5. Rückzahlung",
+        "body": "Zwei Kanäle, täglich und automatisch für den ersten: die reale Wertsteigerung Ihrer Sicherheit (bis zu 60% des ausgegebenen Kredits), und Ihr Eigenbeitrag für den Rest. Die vollständige Rückzahlung gibt Ihre Sicherheit frei, die wieder abhebbar wird. Umgekehrt führt eine schwere Wertminderung der Sicherheit (50% seit ihrer Hinterlegung) zu deren Liquidation, ohne den bereits genutzten Kredit zu löschen."
       }
     },
-    "faqTitle": "Häufig gestellte Fragen",
+    "faqTitle": "Häufige Fragen",
     "faq": {
       "kycRejected": {
         "question": "Was passiert, wenn mein KYC abgelehnt wird?",
-        "answer": "Solange der Status nicht verifiziert ist, ist keine Finanztransaktion möglich. Im Falle einer Ablehnung kann das Unternehmen das betroffene Konto ablehnen, sperren oder schließen, insbesondere bei Zweifeln an der angegebenen Identität."
+        "answer": "Solange der Status nicht verifiziert ist, ist keine Finanzoperation möglich. Bei Ablehnung kann das Unternehmen das betroffene Konto ablehnen, sperren oder schließen, insbesondere bei Zweifeln an der angegebenen Identität."
       },
       "approvalDelay": {
         "question": "Wie lange dauert die Genehmigung eines Kreditantrags?",
-        "answer": "Dies hängt von der Auslastung des Back Office ab: Ein Antrag durchläuft eine manuelle Prüfungswarteschlange, bevor er eine Einzahlung erhalten kann. Der Kredit selbst wird automatisch bei Zahlungseingang ausgezahlt, ohne zusätzliche Wartezeit nach Genehmigung des Antrags."
+        "answer": "Abhängig von der Auslastung des Back-Office: Ein Antrag durchläuft eine manuelle Validierungswarteschlange, bevor er eine Einzahlung erhalten kann. Der Kredit selbst wird automatisch ausgegeben, sobald die Mittel eingehen, ohne zusätzliche Verzögerung nach Genehmigung des Antrags."
       },
       "earlyWithdrawal": {
         "question": "Kann ich meine Sicherheit abheben, bevor ich alles zurückgezahlt habe?",
-        "answer": "Nein. Die gesperrte Sicherheit bleibt blockiert, solange der entsprechende genutzte Kredit nicht vollständig zurückgezahlt ist. Nur das verfügbare Guthaben, ohne die gesperrte Sicherheit, kann jederzeit frei abgehoben werden."
+        "answer": "Nein. Die hinterlegte Sicherheit bleibt gesperrt, solange der entsprechende genutzte Kredit nicht vollständig zurückgezahlt ist. Nur das verfügbare Guthaben, ohne hinterlegte Sicherheit, kann jederzeit frei abgehoben werden."
       }
     },
     "ctaLogin": "Zu meinem Konto",
@@ -172,98 +172,98 @@
   "Accessibility": {
     "meta": {
       "title": "Digitale Barrierefreiheit · Hentsch Credit",
-      "description": "Der tatsächliche Stand der digitalen Barrierefreiheit der Plattform Hentsch Credit, ohne einen nicht überprüften Grad an Konformität zu behaupten."
+      "description": "Der tatsächliche Stand der digitalen Barrierefreiheit der Plattform Hentsch Credit, ohne ein nicht überprüftes Konformitätsniveau zu beanspruchen."
     },
     "title": "Erklärung zur Barrierefreiheit",
-    "intro": "H. Hentsch Asset Management SA bemüht sich, die Plattform Hentsch Credit für möglichst viele Menschen nutzbar zu machen. Diese Erklärung beschreibt den tatsächlichen Stand, ohne einen Konformitätsgrad zu behaupten, der nicht durch ein formelles Audit überprüft wurde.",
+    "intro": "H. Hentsch Asset Management SA ist bestrebt, die Plattform Hentsch Credit für möglichst viele Menschen nutzbar zu machen. Diese Erklärung beschreibt den tatsächlichen Stand des Fortschritts, ohne ein Konformitätsniveau zu beanspruchen, das nicht durch ein formelles Audit überprüft wurde.",
     "s1": {
       "title": "1. Konformitätsstatus",
-      "body": "Die Website wurde noch keinem formellen Audit zur Barrierefreiheit unterzogen (nach RGAA- oder WCAG-Art). Sie kann daher nicht als konform zu einem bestimmten Niveau erklärt werden. Dennoch werden im Design bereits Anstrengungen unternommen: semantische Seitenstruktur, Überschriftenhierarchie, auf Lesbarkeit ausgelegte Farbkontraste sowie Tastaturnavigation bei den wichtigsten Abläufen (Anmeldung, Kontoantrag, Kontoeinsicht)."
+      "body": "Die Website wurde noch keinem formellen Barrierefreiheits-Audit (etwa nach RGAA oder WCAG) unterzogen. Sie kann daher nicht als einem bestimmten Niveau entsprechend erklärt werden. Dennoch werden bereits Anstrengungen im Design unternommen: semantische Seitenstruktur, Überschriftenhierarchie, auf Lesbarkeit ausgelegte Farbkontraste und Tastaturnavigation auf den wichtigsten Wegen möglich (Anmeldung, Kontoantrag, Kontoeinsicht)."
     },
     "s2": {
       "title": "2. Bekannte Einschränkungen",
-      "item1": "Bestimmte Diagramme und Marktdatentabellen bieten noch kein vollständiges Textäquivalent für Screenreader;",
-      "item2": "Es wurde kein Gegenaudit durch eine auf digitale Barrierefreiheit spezialisierte Drittorganisation durchgeführt;",
+      "item1": "Manche Marktdaten-Diagramme und -Tabellen bieten noch kein vollständiges Textäquivalent für Bildschirmlesegeräte;",
+      "item2": "Es wurde kein unabhängiges Gegenaudit durch eine auf digitale Barrierefreiheit spezialisierte Drittorganisation durchgeführt;",
       "item3": "Bestimmte Inhalte Dritter (zum Beispiel Webhooks und in die Plattform integrierte Schnittstellen externer Anbieter) unterliegen nicht der direkten Kontrolle von {legalName}."
     },
     "s3": {
       "title": "3. Ein Problem melden",
-      "body": "Sollten Sie auf ein Zugänglichkeitsproblem bei einem Inhalt oder einer Funktion der Plattform stoßen, melden Sie dies bitte an den unten stehenden Kontakt und geben Sie dabei die betreffende Seite und, wenn möglich, die verwendete Hilfstechnologie an.",
+      "body": "Wenn Sie auf eine Zugangsschwierigkeit zu einem Inhalt oder einer Funktion der Plattform stoßen, melden Sie dies bitte dem unten angegebenen Kontakt, mit Angabe der betroffenen Seite und, wenn möglich, der verwendeten Hilfssoftware.",
       "email": "E-Mail",
       "phone": "Telefon"
     },
     "s4": {
       "title": "4. Rechtsbehelfe",
-      "body": "Falls innerhalb einer angemessenen Frist keine zufriedenstellende Antwort erfolgt, können Sie eine Beschwerde unter den auf der Seite <link>Regulierung</link>, Abschnitt 6, beschriebenen Bedingungen einreichen."
+      "body": "Erhalten Sie innerhalb einer angemessenen Frist keine zufriedenstellende Antwort, können Sie unter den auf der Seite <link>Regulierung</link>, Abschnitt 6, beschriebenen Bedingungen eine Beschwerde einreichen."
     }
   },
   "Archives": {
     "meta": {
       "title": "Archiv · Hentsch Credit",
-      "description": "Die Entwicklung der Kreditquote, der akzeptierten Vermögenswerte und der Mechanismen der Plattform Hentsch Credit seit ihrer Einführung."
+      "description": "Die Entwicklung der Kreditquote, der akzeptierten Vermögenswerte und der Mechanismen der Plattform Hentsch Credit seit ihrem Start."
     },
-    "eyebrow": "Verlauf",
+    "eyebrow": "Historie",
     "title": "Archiv",
-    "description": "Die Entwicklung der wichtigsten Regeln der Plattform seit ihrer Einführung, in chronologischer Reihenfolge.",
+    "description": "Die Entwicklung der wichtigsten Regeln der Plattform seit ihrem Start, in chronologischer Reihenfolge.",
     "entries": {
       "nonRetroactivity": {
-        "period": "Seit dem Start",
+        "period": "Seit Beginn",
         "title": "Keine Rückwirkung von Bedingungsänderungen",
-        "detail": "Eine Änderung der Kreditquote, des Zinssatzes oder einer Schwelle gilt niemals für eine bereits gesperrte Position: Diese behält die ihr zum Zeitpunkt ihrer Entstehung gewährten Bedingungen bis zu ihrer Tilgung oder Fälligkeit bei. Dieser Grundsatz hat sich seit der Einführung der Plattform nie geändert."
+        "detail": "Eine Änderung der Kreditquote, des Satzes oder einer Schwelle gilt nie für eine bereits hinterlegte Position: Sie behält die ihr bei Erstellung gewährten Bedingungen bis zu ihrer Rückzahlung oder Fälligkeit bei. Dieser Grundsatz hat sich seit dem Start der Plattform nie geändert."
       },
       "step1": {
-        "period": "Stufe 1",
-        "title": "Anfängliche Kreditquote",
+        "period": "Schritt 1",
+        "title": "Ursprüngliche Kreditquote",
         "detail": "75% des hinterlegten Betrags."
       },
       "step2": {
-        "period": "Stufe 2",
+        "period": "Schritt 2",
         "title": "Erste Erhöhung der Quote",
-        "detail": "75% → 150% des hinterlegten Betrags, für neue Sperrungen."
+        "detail": "75% → 150% des hinterlegten Betrags, für neue Hinterlegungen."
       },
       "step3": {
-        "period": "Stufe 3",
+        "period": "Schritt 3",
         "title": "Zweite Erhöhung der Quote",
-        "detail": "150% → 200% des hinterlegten Betrags, für neue Sperrungen."
+        "detail": "150% → 200% des hinterlegten Betrags, für neue Hinterlegungen."
       },
       "step4": {
-        "period": "Stufe 4 (aktueller Wert)",
-        "title": "Aktuell geltende Kreditquote",
-        "detail": "200% → 350% des hinterlegten Betrags, für neue Sperrungen."
+        "period": "Schritt 4 (aktueller Wert)",
+        "title": "Geltende Kreditquote",
+        "detail": "200% → 350% des hinterlegten Betrags, für neue Hinterlegungen."
       },
       "step5": {
-        "period": "Stufe 5",
-        "title": "Erweiterung der akzeptierten Vermögenswerte",
-        "detail": "Aufnahme von ETH und SHIB, dann von tokenisiertem Silber (KAG), zusätzlich zu Stablecoins."
+        "period": "Schritt 5",
+        "title": "Erweiterung der als Sicherheit akzeptierten Vermögenswerte",
+        "detail": "Hinzufügung von ETH und SHIB, dann von tokenisiertem Silber (KAG), zusätzlich zu den Stablecoins."
       },
       "step6": {
-        "period": "Stufe 6",
-        "title": "Erweiterung auf Industriemetalle und -rohstoffe",
-        "detail": "Aufnahme von Platin (XPT), Palladium (XPD), Kupfer (XCU) und synthetischem Öl (WTI), im Rahmen der RWA-Strategie."
+        "period": "Schritt 6",
+        "title": "Erweiterung auf Industriemetalle und Rohstoffe",
+        "detail": "Hinzufügung von Platin (XPT), Palladium (XPD), Kupfer (XCU) und synthetischem Öl (WTI), im Rahmen der RWA-Strategie."
       },
       "step7": {
-        "period": "Stufe 7",
-        "title": "Automatische Tilgung durch Rendite der Sicherheit",
-        "detail": "Einführung der automatischen Tilgung durch die reale Wertsteigerung der Sicherheit, begrenzt auf 60% des gewährten Kredits; der Rest verbleibt zu Lasten des Kunden."
+        "period": "Schritt 7",
+        "title": "Automatische Rückzahlung durch Rendite der Sicherheit",
+        "detail": "Einführung der automatischen Rückzahlung durch die reale Wertsteigerung der Sicherheit, gedeckelt auf 60% des ausgegebenen Kredits; der Rest bleibt zu Lasten des Kunden."
       },
       "step8": {
-        "period": "Stufe 8",
-        "title": "Indikatives Renditeziel für industrielle RWA-Vermögenswerte",
-        "detail": "Aufnahme eines indikativen annualisierten Ziels von 8 bis 14% ausschließlich für Platin, Palladium, Kupfer und synthetisches Öl. Dieses Ziel bleibt indikativ: Es ist weder garantiert noch fließt es in die Berechnung des gewährten Kredits ein."
+        "period": "Schritt 8",
+        "title": "Indikatives Renditeziel auf industrielle RWA-Vermögenswerte",
+        "detail": "Hinzufügung eines indikativen Ziels von 8 bis 14% p. a. ausschließlich auf Platin, Palladium, Kupfer und synthetisches Öl. Dieses Ziel bleibt indikativ: Es ist weder garantiert noch wird es bei der Berechnung des gewährten Kredits verwendet."
       },
       "step9": {
-        "period": "Stufe 9",
+        "period": "Schritt 9",
         "title": "Einführung des Liquidationsmechanismus",
-        "detail": "Einführung einer Warnschwelle (30% Wertverlust der Sicherheit seit Eintritt) und einer Liquidationsschwelle (50%). Details finden Sie auf der Seite Rendite und in den Allgemeinen Geschäftsbedingungen, Abschnitt 7."
+        "detail": "Einführung einer Warnschwelle (30% Wertminderung der Sicherheit seit ihrer Hinterlegung) und einer Liquidationsschwelle (50%). Details finden sich auf der Seite Rendite und in den Allgemeinen Geschäftsbedingungen, Abschnitt 7."
       },
       "step10": {
-        "period": "Stufe 10",
+        "period": "Schritt 10",
         "title": "Übergang zu einer automatisch berechneten geschätzten Rendite",
-        "detail": "Die Kredit-Simulatoren für Kunden berechnen nun die geschätzte Rendite, die monatliche Rate und das Datum der ersten Tilgung auf Grundlage der tatsächlichen Wertentwicklung der letzten 12 Monate, anstatt den Kunden eine Schätzung eingeben zu lassen."
+        "detail": "Die Kreditsimulatoren des Kunden berechnen nun die geschätzte Rendite, die monatliche Rate und das Datum der ersten Rückzahlung anhand der tatsächlichen Wertentwicklung der letzten 12 Monate, anstatt den Kunden um eine Schätzung zu bitten."
       }
     },
-    "note": "Die aktuell geltenden Werte (Quote, Zinssätze, Gebühren, Renditeobergrenze, Liquidationsschwellen) sind mit ihren genauen Zahlen auf der Seite <link>Konditionen</link> aufgeführt. Diese Archivseite zeichnet nur die Historie der Änderungen nach, nicht die auf Ihre aktuelle Position anwendbaren Bedingungen.",
-    "lastUpdated": "Letzte Aktualisierung:"
+    "note": "Die derzeit geltenden Werte (Quote, Sätze, Gebühren, Renditeobergrenze, Liquidationsschwellen) werden mit ihren genauen Zahlen auf der Seite <link>Preise</link> detailliert dargestellt. Diese Archivseite zeichnet nur die Historie der Änderungen nach, nicht die für Ihre aktuelle Position geltenden Bedingungen.",
+    "lastUpdated": "Zuletzt aktualisiert:"
   },
   "Contact": {
     "meta": {
@@ -272,193 +272,193 @@
     },
     "eyebrow": "Kontaktieren Sie uns",
     "title": "Kontaktieren Sie uns",
-    "description": "Die tatsächlichen Kontaktdaten von H. Hentsch Asset Management SA, für alle Fragen zu Ihrem Konto oder zur Plattform.",
+    "description": "Die echten Kontaktdaten von H. Hentsch Asset Management SA, für alle Fragen zu Ihrem Konto oder zur Plattform.",
     "channels": {
       "email": "E-Mail",
       "phone": "Telefon",
       "postalAddress": "Postanschrift",
       "registeredOffice": "Sitz der Gesellschaft"
     },
-    "hours": "Anfragen werden an Werktagen bearbeitet. Bei Fragen zu einer laufenden Transaktion (Einzahlung, Kreditantrag, Karte) geben Sie bitte Ihren Namen und, wenn möglich, die Referenz der betreffenden Transaktion an.",
-    "noAccount": "Sie haben noch kein Konto? Die Plattform ist einem eingeschränkten Kundenkreis auf Einladung vorbehalten. Sie können dennoch einen <link>Antrag auf Kontoeröffnung</link> stellen, der von unseren Teams geprüft wird.",
-    "complaint": "Für eine formelle Beschwerde und, falls keine gütliche Einigung erzielt wird, die verfügbaren Schlichtungsverfahren, siehe die Seite <link>Regulierung</link>, Abschnitt 6."
+    "hours": "Anfragen werden an Werktagen bearbeitet. Geben Sie bei Fragen zu einem laufenden Vorgang (Einzahlung, Kreditantrag, Karte) bitte Ihren Namen und, wenn möglich, die Referenz des betreffenden Vorgangs an.",
+    "noAccount": "Haben Sie noch kein Konto? Die Plattform ist einem eingeschränkten Kundenkreis auf Einladung vorbehalten. Sie können dennoch einen <link>Kontoeröffnungsantrag</link> stellen, der von unseren Teams geprüft wird.",
+    "complaint": "Für eine förmliche Beschwerde und, falls keine gütliche Einigung erzielt wird, die verfügbaren Vermittlungswege, siehe die Seite <link>Regulierung</link>, Abschnitt 6."
   },
   "Cookies": {
     "meta": {
       "title": "Cookie-Richtlinie · Hentsch Credit",
-      "description": "Warum Hentsch Credit nur ein einziges, unbedingt erforderliches Cookie setzt, und sonst nichts."
+      "description": "Warum Hentsch Credit nur ein einziges, zwingend erforderliches Cookie setzt, und sonst nichts."
     },
     "title": "Cookie-Richtlinie",
-    "intro": "Diese Seite beschreibt die von der Plattform Hentsch Credit tatsächlich gesetzten Cookies und erklärt, warum kein Präferenzzentrum angeboten wird.",
+    "intro": "Diese Seite beschreibt die von der Plattform Hentsch Credit tatsächlich gesetzten Cookies und warum kein Präferenzzentrum angeboten wird.",
     "s1": {
       "title": "1. Was die Plattform setzt",
-      "body": "Es wird nur ein einziges Cookie verwendet, ein Sitzungscookie, das für den Betrieb des Dienstes unbedingt erforderlich ist: Es hält Sie während Ihres Besuchs im Kundenbereich angemeldet. Es wird beim Schließen Ihrer Sitzung oder Ihres Browsers gelöscht."
+      "body": "Es wird nur ein einziges Cookie verwendet, ein Sitzungscookie, das für den Betrieb des Dienstes zwingend erforderlich ist: Es hält Ihre authentifizierte Verbindung während Ihrer Navigation im Kundenbereich aufrecht. Es wird beim Schliessen Ihrer Sitzung oder Ihres Browsers gelöscht."
     },
     "s2": {
       "title": "2. Was die Plattform nicht setzt",
       "item1": "Kein Werbe- oder Targeting-Cookie;",
-      "item2": "Kein Cookie zur Reichweitenmessung durch Dritte (Analytics, Statistiken);",
-      "item3": "Kein Tracker sozialer Netzwerke;",
+      "item2": "Kein Drittanbieter-Reichweitenmessungs-Cookie (Analytics, Statistiken);",
+      "item3": "Kein Social-Media-Tracker;",
       "item4": "Kein seitenübergreifendes Tracking-Cookie (Cross-Site-Tracking)."
     },
     "s3": {
       "title": "3. Warum es kein „Meine Cookies verwalten“ gibt",
-      "body": "Ein Präferenzzentrum ist sinnvoll, wenn eine Website nicht unbedingt erforderliche Cookies (Werbung, Reichweitenmessung) setzt, die Ihre vorherige Zustimmung und eine Möglichkeit zum Widerruf erfordern. Die Plattform setzt keines davon: Es gibt daher keine Präferenz, die über die Einstellungen Ihres eigenen Browsers hinaus aktiviert oder deaktiviert werden müsste. Sollte sich dies eines Tages ändern, wird diese Seite aktualisiert und ein echtes Präferenzzentrum angeboten, anstatt eines wirkungslosen Buttons."
+      "body": "Ein Präferenzzentrum ist sinnvoll, wenn eine Website nicht zwingend erforderliche Cookies setzt (Werbung, Reichweitenmessung), die Ihre vorherige Zustimmung und eine Möglichkeit zu deren Widerruf erfordern. Die Plattform setzt keine: Es gibt daher über die Einstellungen Ihres eigenen Browsers hinaus keine Präferenz zu aktivieren oder zu deaktivieren. Sollte sich dies eines Tages ändern, wird diese Seite aktualisiert und ein echtes Präferenzzentrum angeboten, statt einer Schaltfläche ohne reale Wirkung."
     },
     "s4": {
       "title": "4. Kontrolle über Ihren Browser",
-      "body": "Sie können das Sitzungscookie jederzeit in den Einstellungen Ihres Browsers blockieren oder löschen. Das Blockieren dieses speziellen Cookies meldet Sie aus dem Kundenbereich ab: Es handelt sich um ein funktionales Cookie, keinen Tracker, und es hat keine weitere Funktion."
+      "body": "Sie können das Sitzungscookie jederzeit über die Einstellungen Ihres Browsers blockieren oder löschen. Das Blockieren dieses speziellen Cookies meldet Sie aus dem Kundenbereich ab: Es handelt sich um ein funktionales Cookie, keinen Tracker, und es hat keine andere Funktion."
     },
     "s5": {
       "title": "5. Kontakt",
-      "body": "Bei Fragen zu dieser Richtlinie wenden Sie sich an den Datenschutzbeauftragten unter {dpo}. Die Verarbeitung der übrigen personenbezogenen Daten ist in der <link>Datenschutzerklärung</link> beschrieben."
+      "body": "Bei Fragen zu dieser Richtlinie wenden Sie sich an den Datenschutzbeauftragten unter {dpo}. Die Verarbeitung anderer personenbezogener Daten wird in der <link>Datenschutzrichtlinie</link> beschrieben."
     }
   },
   "Terms": {
     "meta": {
       "title": "Allgemeine Geschäftsbedingungen · Hentsch Credit",
-      "description": "Die Allgemeinen Geschäftsbedingungen der Plattform Hentsch Credit: Kredit, Sicherheit, Tilgung, Liquidation und Gebühren."
+      "description": "Die Allgemeinen Geschäftsbedingungen für die Nutzung der Plattform Hentsch Credit: Kredit, Sicherheit, Rückzahlung, Liquidation und Gebühren."
     },
     "title": "Allgemeine Geschäftsbedingungen",
-    "intro": "Die vorliegenden Allgemeinen Geschäftsbedingungen regeln den Zugang zur und die Nutzung der Plattform Hentsch Credit, eines durch digitale Vermögenswerte besicherten Kreditdienstes, der einer eingeschränkten Anzahl von Kunden des Unternehmens auf Einladung angeboten wird. Mit der Eröffnung eines Kontos erklärt der Kunde, diese gelesen und akzeptiert zu haben.",
+    "intro": "Die vorliegenden Allgemeinen Geschäftsbedingungen regeln den Zugang zu und die Nutzung der Plattform Hentsch Credit, eines durch digitale Vermögenswerte besicherten Kreditdienstes, der einer begrenzten Anzahl von Kunden des Unternehmens auf Einladung angeboten wird. Mit der Eröffnung eines Kontos erklärt der Kunde, diese gelesen und akzeptiert zu haben.",
     "s1": {
       "title": "1. Gegenstand",
-      "body": "{tradingName} ermöglicht es einem verifizierten und zuvor eingeladenen Kunden, Stablecoins oder tokenisiertes Gold als Sicherheit (ein „Pfand“) zu hinterlegen und im Gegenzug eine intern und auf einer zugehörigen Bankkarte nutzbare Kreditlinie zu erhalten. Der Dienst wird von {legalName} erbracht, einem unabhängigen Vermögensverwalter (UVV) im Sinne des FINIG, in Zusammenarbeit mit zugelassenen Drittinstituten für Verwahrung und Depotführung (siehe Abschnitt 5)."
+      "body": "{tradingName} ermöglicht es einem verifizierten und zuvor eingeladenen Kunden, Stablecoins oder tokenisiertes Gold als Sicherheit („Pfand“) zu hinterlegen und im Gegenzug eine Kreditlinie zu erhalten, die intern und mit einer verbundenen Bankkarte genutzt werden kann. Der Dienst wird von {legalName} erbracht, einem unabhängigen Vermögensverwalter (UVV) im Sinne des FINIG, in Zusammenarbeit mit zugelassenen Drittverwahrstellen und Verwahrungsdienstleistern (siehe Abschnitt 5)."
     },
     "s2": {
       "title": "2. Eingeschränkter Zugang und Berechtigung",
-      "body": "Die Plattform ist nicht öffentlich zugänglich. Der Zugang ist einer von {legalName} festgelegten Kundenliste vorbehalten, auf Einladung, im Rahmen einer bestehenden Vermögensverwaltungsbeziehung. Die Kontoeröffnung, die Erzeugung einer Einzahlungsadresse, jede Sicherheitshinterlegung und jede Kreditgewährung setzen außerdem die vorherige Überprüfung der Identität des Kunden („KYC“) voraus. Solange der Verifizierungsstatus des Kunden nicht bestätigt ist, werden diese Vorgänge verweigert. Das Unternehmen behält sich das Recht vor, ein Konto bei Fehlschlagen oder Zweifeln an dieser Überprüfung oder bei Verdacht auf Betrug, Geldwäsche oder Terrorismusfinanzierung abzulehnen, zu sperren oder zu schließen."
+      "body": "Die Plattform ist nicht öffentlich zugänglich. Der Zugang ist einer von {legalName} festgelegten Kundenliste vorbehalten, auf Einladung, im Rahmen einer bestehenden Vermögensverwaltungsbeziehung. Die Eröffnung eines Kontos, die Generierung einer Einzahlungsadresse, jede Hinterlegung einer Sicherheit und jede Kreditgewährung setzen zudem die vorherige Überprüfung der Identität des Kunden („KYC“) voraus. Solange der Verifizierungsstatus des Kunden nicht bestätigt ist, werden diese Vorgänge abgelehnt. Das Unternehmen behält sich das Recht vor, ein Konto bei Fehlschlag oder Zweifeln an dieser Überprüfung oder bei Verdacht auf Betrug, Geldwäsche oder Terrorismusfinanzierung abzulehnen, zu sperren oder zu schließen."
     },
     "s3": {
       "title": "3. Als Sicherheit akzeptierte Vermögenswerte",
-      "body": "Als Sicherheit werden folgende, zum Nennwert (1:1 USD) bewertete Stablecoins akzeptiert: DAI, USDT, USDC; der folgende, an den Euro gekoppelte Stablecoin, bewertet zum aktuellen Spotkurs: dEURO; die folgenden tokenisierten Edelmetalle, ebenfalls zum aktuellen Spotkurs bewertet: XAUT (Gold), KAG (Silber); die folgenden tokenisierten Industriemetalle und Rohstoffe, bewertet zum aktuellen Spotkurs: XPT (Platin), XPD (Palladium), XCU (Kupfer), WTI (synthetisches Öl); sowie die folgenden nativen Kryptowährungen, bewertet zum aktuellen Spotkurs und ihrer jeweils eigenen Volatilität unterliegend: ETH, SHIB. Diese Vermögenswerte werden ausschließlich im Ethereum-Netzwerk akzeptiert. Bei bestimmten Vermögenswerten ist die mitgeteilte Einzahlungsadresse für jeden Kunden individuell; bei anderen wird sie von mehreren Kunden gemeinsam genutzt, und die gemeldete Einzahlung wird vor der Gutschrift manuell geprüft. Die Liste der akzeptierten Vermögenswerte, der unterstützten Netzwerke oder des für jeden Vermögenswert geltenden Adressmechanismus kann jederzeit geändert werden, ohne rückwirkende Auswirkung auf bereits bestehende Positionen."
+      "body": "Als Sicherheit werden folgende Stablecoins akzeptiert, zum Nennwert bewertet (1:1 USD): DAI, USDT, USDC; der folgende an den Euro gekoppelte Stablecoin, bewertet zum live gehandelten Spotkurs: dEURO; die folgenden tokenisierten Edelmetalle, ebenfalls zum live gehandelten Spotkurs bewertet: XAUT (Gold), KAG (Silber); die folgenden tokenisierten Industriemetalle und Rohstoffe, zum live gehandelten Spotkurs bewertet: XPT (Platin), XPD (Palladium), XCU (Kupfer), WTI (synthetisches Öl); sowie die folgenden nativen Kryptowährungen, zum live gehandelten Spotkurs bewertet und mit ihrer jeweils eigenen Volatilität: ETH, SHIB. Diese Vermögenswerte werden ausschließlich im Ethereum-Netzwerk akzeptiert. Bei manchen Vermögenswerten ist die mitgeteilte Einzahlungsadresse jedem Kunden individuell zugeordnet; bei anderen wird sie unter Kunden gemeinsam genutzt, und die gemeldete Einzahlung wird vor der Gutschrift manuell validiert. Die Liste der akzeptierten Vermögenswerte, der unterstützten Netzwerke oder des für jeden Vermögenswert geltenden Adressmechanismus kann jederzeit geändert werden, ohne rückwirkende Auswirkung auf bereits bestehende Positionen."
     },
     "s4": {
-      "title": "4. Kreditmechanismus und Sicherheitenquote",
-      "body1": "Bei der Sperrung einer Sicherheit wird ein Kredit in Höhe von <b>350% des hinterlegten Betrags</b> gewährt, zu dem zum Zeitpunkt dieser Sperrung geltenden Satz. Die gesamte Kaufkraft des Kontos wird wie folgt berechnet:",
-      "formula": "Gesamte Kaufkraft = Verfügbares Guthaben + Gesperrte Sicherheit + Gewährter Kredit − Genutzter Kredit",
-      "body2": "Die geltende Sicherheitenquote ist die zum Zeitpunkt jeder neuen Sperrung geltende. Eine spätere Änderung dieser Quote wirkt sich nicht rückwirkend auf einen bereits für eine früher gesperrte Sicherheit gewährten Kredit aus: Dieser Kredit bleibt zu den damaligen Bedingungen bestehen.",
-      "body3": "Der auf eine berechtigte Sicherheit (tokenisierte Edelmetalle, tokenisierte Industriemetalle und Rohstoffe, ETH) ausgezahlte Kredit kann zu höchstens 60% durch die auf dieser Sicherheit tatsächlich festgestellte Wertsteigerung getilgt werden, die automatisch auf den genutzten Kredit angerechnet wird. Die verbleibenden 40% müssen durch Eigenleistung des Kunden (ausdrückliche Einzahlung oder Überweisung) getilgt werden. Diese Obergrenze bezieht sich auf den bei Eröffnung der Position ausgezahlten Kreditbetrag und wird bei einer späteren Änderung der Kreditquote nicht neu berechnet.",
-      "body4": "Ein indikatives Renditeziel (derzeit 8 bis 14% pro Jahr) wird zu Informationszwecken für tokenisierte Industriemetalle und Rohstoffe (Platin, Palladium, Kupfer, synthetisches Öl) mitgeteilt: Es spiegelt das Ziel der eigenen Treasury-Strategie des Unternehmens für diese Vermögenswerte wider (Arbitrage, besicherte Kreditvergabe, Liquiditätsbereitstellung) und stellt keinen garantierten oder vertraglichen Satz dar. Dieses Ziel hat keinerlei Auswirkung auf die Berechnung des Kredits des Kunden, die ausschließlich durch den im vorstehenden Absatz beschriebenen Mechanismus geregelt bleibt."
+      "title": "4. Kreditmechanismus und Sicherheitensatz",
+      "body1": "Bei der Hinterlegung einer Sicherheit wird ein Kredit in Höhe von <b>350% des hinterlegten Betrags</b> gewährt, zum zum Zeitpunkt dieser Hinterlegung geltenden Satz. Die gesamte Kaufkraft des Kontos berechnet sich wie folgt:",
+      "formula": "Gesamte Kaufkraft = Verfügbares Guthaben + Hinterlegte Sicherheit + Gewährter Kredit − Genutzter Kredit",
+      "body2": "Der anwendbare Sicherheitensatz ist der zum Zeitpunkt jeder neuen Hinterlegung geltende Satz. Eine spätere Änderung dieses Satzes wirkt sich nicht rückwirkend auf bereits für eine zuvor hinterlegte Sicherheit gewährten Kredit aus: Dieser Kredit bleibt zu den damaligen Bedingungen bestehen.",
+      "body3": "Der auf eine berechtigte Sicherheit (tokenisierte Edelmetalle, tokenisierte Industriemetalle und Rohstoffe, ETH) ausgegebene Kredit kann bis zu maximal 60% durch die auf dieser Sicherheit real festgestellte Wertsteigerung zurückgezahlt werden, automatisch auf den genutzten Kredit angewendet. Die verbleibenden 40% müssen durch einen persönlichen Beitrag des Kunden (Einzahlung oder ausdrückliche Überweisung) zurückgezahlt werden. Diese Obergrenze bezieht sich auf den bei Eröffnung der Position ausgegebenen Kreditbetrag und wird bei einer späteren Änderung der Kreditquote nicht neu berechnet.",
+      "body4": "Ein indikatives Renditeziel (derzeit 8 bis 14% pro Jahr) wird zu Informationszwecken für tokenisierte Industriemetalle und Rohstoffe (Platin, Palladium, Kupfer, synthetisches Öl) mitgeteilt: Es spiegelt das Ziel der eigenen Treasury-Strategie des Unternehmens für diese Vermögenswerte wider (Arbitrage, besicherte Kreditvergabe, Liquiditätsbereitstellung), und keinen garantierten oder vertraglichen Satz. Dieses Ziel hat keine Auswirkung auf die Berechnung des Kredits des Kunden, die ausschließlich dem im vorstehenden Absatz beschriebenen Mechanismus unterliegt."
     },
     "s5": {
       "title": "5. Verwahrung der Vermögenswerte"
     },
     "s6": {
       "title": "6. Sperrung der Sicherheit und Abhebung",
-      "body": "Der hinterlegte und gesperrte Betrag kann nicht abgehoben werden, solange der entsprechende genutzte Kredit nicht vollständig getilgt ist. Nur das verfügbare Guthaben, ohne die gesperrte Sicherheit, kann jederzeit vorbehaltlich der geltenden Compliance-Kontrollen frei abgehoben werden."
+      "body": "Der hinterlegte und gesperrte Betrag kann nicht abgehoben werden, solange der entsprechende genutzte Kredit nicht vollständig zurückgezahlt ist. Nur das verfügbare Guthaben, ohne gesperrte Sicherheit, kann jederzeit frei abgehoben werden, vorbehaltlich der geltenden Compliance-Kontrollen."
     },
     "s7": {
       "title": "7. Liquidation der Sicherheit",
-      "intro": "Sicherheiten, deren Wert sich nach dem Markt richtet (tokenisierte Edelmetalle, tokenisierte Industriemetalle und Rohstoffe, ETH), unterliegen einer täglichen Überwachung ihres Werts im Vergleich zu ihrem Wert zum Zeitpunkt der Sperrung:",
-      "item1": "bei einem Wertverlust von mindestens <b>30%</b> gegenüber diesem Eintrittswert wird eine Warnung auf dem Konto vermerkt, ohne weitere Auswirkung;",
-      "item2": "bei einem Wertverlust von mindestens <b>50%</b> wird die Sicherheit automatisch zu ihrem Eintrittswert vom Konto entfernt (liquidiert).",
-      "body": "Die Liquidation einer Sicherheit erlischt nicht den bereits im Rahmen dieser Sicherheit genutzten Kredit: Dieser Kredit bleibt vollständig vom Kunden geschuldet, ohne weiterhin durch die ursprünglich gebildete Sicherheit gedeckt zu sein. Eine liquidierte Sicherheit kann nicht zurückerstattet werden, selbst wenn sich der Kurs des betreffenden Vermögenswerts anschließend erholt. Die oben genannten Schwellenwerte können jederzeit geändert werden, ohne rückwirkende Auswirkung auf die Bewertung eines bereits festgestellten Wertverlusts."
+      "intro": "Sicherheiten, deren Wert sich mit dem Markt entwickelt (tokenisierte Edelmetalle, tokenisierte Industriemetalle und Rohstoffe, ETH), unterliegen einer täglichen Überwachung ihres Werts im Vergleich zu ihrem Wert zum Zeitpunkt der Hinterlegung:",
+      "item1": "bei einer Wertminderung von mindestens <b>30%</b> gegenüber diesem Einstiegswert wird eine Warnung auf dem Konto erfasst, ohne weitere Wirkung;",
+      "item2": "bei einer Wertminderung von mindestens <b>50%</b> wird die Sicherheit automatisch zu ihrem Einstiegswert aus dem Konto entfernt (liquidiert).",
+      "body": "Die Liquidation einer Sicherheit tilgt nicht den bereits für diese Sicherheit genutzten Kredit: Dieser Kredit bleibt vollständig vom Kunden geschuldet, ohne noch durch die ursprünglich bestellte Sicherheit gedeckt zu sein. Eine liquidierte Sicherheit kann nicht mehr zurückerstattet werden, selbst wenn sich der Kurs des betreffenden Vermögenswerts später erholt. Die oben genannten Schwellenwerte können jederzeit geändert werden, ohne rückwirkende Auswirkung auf die Bewertung einer bereits festgestellten Wertminderung."
     },
     "s8": {
       "title": "8. Bankkarte und Kreditnutzung",
-      "body": "Eine von einem zugelassenen Drittpartner ausgegebene Bankkarte kann dem Konto zugeordnet werden, um die gewährte Kreditlinie im Rahmen des verfügbaren Kredits (gewährter Kredit abzüglich bereits genutzten Kredits) zu nutzen. Jede Transaktion, die dieses Limit überschreitet, wird abgelehnt. Die spezifischen Bedingungen für Ausgabe, Nutzung und Sperrung der Karte sind in den zugehörigen besonderen Bedingungen festgelegt."
+      "body": "Eine von einem zugelassenen Drittpartner ausgestellte Bankkarte kann mit dem Konto verknüpft werden, um die gewährte Kreditlinie im Rahmen des verfügbaren Kredits zu nutzen (gewährter Kredit abzüglich bereits genutzter Kredit). Jede diese Grenze überschreitende Transaktion wird abgelehnt. Die spezifischen Bedingungen für die Ausgabe, Nutzung und Sperrung der Karte sind in den zugehörigen besonderen Bedingungen festgelegt."
     },
     "s9": {
-      "title": "9. Tilgung",
-      "body": "Der Kunde kann den genutzten Kredit jederzeit ganz oder teilweise tilgen. Die vollständige Tilgung des im Rahmen einer bestimmten Sicherheit genutzten Kredits gibt diese Sicherheit frei, die dann wieder abhebbar wird. Die auf der Plattform bereitgestellten Tilgungssimulatoren (flexible Prognose, feste Raten) dienen ausschließlich zu Informationszwecken: Sie beruhen auf einer geschätzten Rendite auf Grundlage vergangener Wertentwicklung, die keine Aussage über die künftige Wertentwicklung erlaubt, und stellen weder eine vertragliche Verpflichtung noch einen durchsetzbaren Zahlungsplan dar."
+      "title": "9. Rückzahlung",
+      "body": "Der Kunde kann den genutzten Kredit jederzeit ganz oder teilweise zurückzahlen. Die vollständige Rückzahlung des für eine bestimmte Sicherheit genutzten Kredits gibt diese Sicherheit frei, die wieder abhebbar wird. Die auf der Plattform bereitgestellten Rückzahlungssimulatoren (flexible Projektion, feste Raten) dienen ausschließlich zu indikativen Zwecken: Sie beruhen auf einer aus vergangenen Wertentwicklungen geschätzten Rendite, die keinen Rückschluss auf künftige Wertentwicklungen zulässt, und stellen weder eine vertragliche Verpflichtung noch einen durchsetzbaren Zahlungsplan dar."
     },
     "s10": {
       "title": "10. Gebühren",
-      "body": "Die derzeit angewandten Gebühren und Zinssätze sind: eine einmalig auf den bei Sperrung der Sicherheit ausgezahlten Kredit erhobene Bearbeitungsgebühr von <b>2,0%</b>; eine Verwahrgebühr für die Sicherheit von <b>0,5% pro Jahr</b> auf den Betrag der gesperrten Sicherheit; und Zinsen auf den genutzten Kredit von <b>13,5% pro Jahr in USD</b> (<b>12,0% pro Jahr in EUR</b>), zusammengesetzt aus einem monetären Referenzsatz (SOFR für USD, EURIBOR für EUR) und einer Risikoprämie von 8,5 Punkten, gerechtfertigt durch die hohe Kreditquote (350%) der Plattform. Die aktuellen Details dieser Konditionen finden Sie auf der Seite <link>Konditionen</link> der Plattform. Diese Sätze können jederzeit aktualisiert werden, ohne rückwirkende Auswirkung auf bereits bestehende Positionen: Die zum Zeitpunkt der Sperrung einer Position festgelegte Zinsstruktur bleibt bis zu deren Tilgung oder Fälligkeit bestehen."
+      "body": "Die derzeit angewandten Gebühren und Sätze sind: eine Bearbeitungsgebühr von <b>2,0%</b>, einmalig auf den bei Hinterlegung der Sicherheit ausgegebenen Kredit erhoben; eine Verwahrungsgebühr für die Sicherheit von <b>0,5% pro Jahr</b>, auf den Betrag der hinterlegten Sicherheit; und Zinsen auf den genutzten Kredit von <b>13,5% pro Jahr in USD</b> (<b>12,0% pro Jahr in EUR</b>), bestehend aus einem monetären Referenzsatz (SOFR für USD, EURIBOR für EUR) und einer Risikoprämie von 8,5 Punkten, gerechtfertigt durch die hohe Kreditquote (350%) der Plattform. Die aktuellen Details dieser Preise finden sich auf der Seite <link>Preise</link> der Plattform. Diese Sätze können jederzeit aktualisiert werden, ohne rückwirkende Auswirkung auf bereits bestehende Positionen: Die zum Zeitpunkt der Hinterlegung einer Position festgelegte Zinsstruktur bleibt bis zu ihrer Rückzahlung oder Fälligkeit bestehen."
     },
     "s11": {
       "title": "11. Risiken",
       "intro": "Der Kunde erkennt die mit digitalen Vermögenswerten verbundenen Risiken an und akzeptiert sie, insbesondere:",
       "item1": "die Volatilität des Kurses der zum Spotpreis bewerteten Vermögenswerte (tokenisiertes Gold), die den Wert der Sicherheit und die gesamte Kaufkraft des Kontos beeinträchtigen kann;",
-      "item2": "das Risiko der Liquidation der Sicherheit bei starkem Wertverfall (siehe Abschnitt 7), das den bereits genutzten Kredit nicht erlöschen lässt;",
-      "item3": "das Gegenpartei- und operationelle Risiko im Zusammenhang mit den in Abschnitt 5 genannten Depotstellen und Verwahrungsdienstleistern Dritter;",
+      "item2": "das Risiko der Liquidation der Sicherheit bei starker Wertminderung (siehe Abschnitt 7), die den bereits genutzten Kredit nicht tilgt;",
+      "item3": "das Gegenparteirisiko und das operationelle Risiko im Zusammenhang mit den in Abschnitt 5 genannten Verwahrstellen und Drittverwahrungsdienstleistern;",
       "item4": "das regulatorische Risiko im Zusammenhang mit der Entwicklung des für digitale Vermögenswerte und Stablecoins geltenden Rechtsrahmens.",
       "body": "Die vorliegenden Bedingungen stellen weder eine Anlageberatung noch eine Empfehlung zum Kauf, Verkauf oder Halten eines digitalen Vermögenswerts dar."
     },
     "s12": {
       "title": "12. Kündigung",
-      "body": "Der Kunde kann sein Konto jederzeit schließen, vorbehaltlich der vollständigen Tilgung jedes genutzten Kredits. Das Unternehmen kann den Zugang zum Dienst bei Verstoß gegen die vorliegenden Bedingungen, Verdacht auf Betrug oder Geldwäsche oder aus jedem gesetzlichen oder regulatorischen Grund aussetzen oder beenden."
+      "body": "Der Kunde kann sein Konto jederzeit schließen, vorbehaltlich der vollständigen Rückzahlung jedes genutzten Kredits. Das Unternehmen kann den Zugang zum Dienst bei Verstoß gegen diese Bedingungen, bei Verdacht auf Betrug oder Geldwäsche oder aus jedem rechtlichen oder regulatorischen Grund aussetzen oder kündigen."
     },
     "s13": {
       "title": "13. Haftung",
-      "body": "Das Unternehmen setzt angemessene Mittel ein, um die Verfügbarkeit und Sicherheit der Plattform zu gewährleisten, ohne eine völlige Unterbrechungsfreiheit zu garantieren. Seine Haftung kann im Falle höherer Gewalt, einer Störung eines Blockchain-Netzwerks oder eines seinem Einfluss entzogenen Drittanbieters innerhalb der nach geltendem schweizerischem Recht zulässigen Grenzen nicht in Anspruch genommen werden."
+      "body": "Das Unternehmen setzt angemessene Mittel ein, um die Verfügbarkeit und Sicherheit der Plattform zu gewährleisten, ohne Garantie einer vollständigen Unterbrechungsfreiheit. Seine Haftung kann bei höherer Gewalt, Fehlfunktion eines Blockchain-Netzwerks oder eines seinem Einfluss entzogenen Drittanbieters nicht in Anspruch genommen werden, innerhalb der Grenzen des anwendbaren Schweizer Rechts."
     },
     "s14": {
       "title": "14. Änderung der Allgemeinen Geschäftsbedingungen",
-      "body": "Das Unternehmen kann die vorliegenden Allgemeinen Geschäftsbedingungen jederzeit ändern, vorbehaltlich einer vorherigen Information des Kunden über die üblichen Kommunikationswege. Änderungen wirken sich nicht rückwirkend auf bereits bestehende Kreditpositionen aus, sofern gesetzlich nicht anders vorgeschrieben."
+      "body": "Das Unternehmen kann die vorliegenden Allgemeinen Geschäftsbedingungen jederzeit ändern, nach vorheriger Information des Kunden über die üblichen Kommunikationswege. Änderungen haben keine rückwirkende Auswirkung auf bereits bestehende Kreditpositionen, sofern gesetzlich nicht anders vorgeschrieben."
     },
     "s15": {
       "title": "15. Anwendbares Recht und Gerichtsstand",
-      "body": "Die vorliegenden Allgemeinen Geschäftsbedingungen unterliegen schweizerischem Recht. Jeder Streit über deren Gültigkeit, Auslegung oder Erfüllung unterliegt der ausschließlichen Zuständigkeit der Gerichte von {jurisdiction}, vorbehaltlich der geltenden zwingenden gesetzlichen Bestimmungen."
+      "body": "Die vorliegenden Allgemeinen Geschäftsbedingungen unterliegen Schweizer Recht. Jeder Streit über deren Gültigkeit, Auslegung oder Erfüllung unterliegt der ausschließlichen Zuständigkeit des Gerichtsstands {jurisdiction}, vorbehaltlich anwendbarer zwingender gesetzlicher Bestimmungen."
     }
   },
   "Privacy": {
     "meta": {
       "title": "Datenschutz · Hentsch Credit",
-      "description": "Wie H. Hentsch Asset Management SA Ihre personenbezogenen Daten erhebt, nutzt und schützt, im Einklang mit dem schweizerischen Bundesdatenschutzgesetz."
+      "description": "Wie H. Hentsch Asset Management SA Ihre personenbezogenen Daten erhebt, verwendet und schützt, gemäß dem eidgenössischen Datenschutzgesetz."
     },
-    "title": "Datenschutzerklärung",
-    "intro": "Diese Richtlinie beschreibt, wie H. Hentsch Asset Management SA die personenbezogenen Daten der Kunden von Hentsch Credit, einer einem eingeschränkten Kundenkreis vorbehaltenen Plattform, erhebt, nutzt und schützt, im Einklang mit dem schweizerischen Bundesgesetz über den Datenschutz (revDSG) und gegebenenfalls der Datenschutz-Grundverordnung (DSGVO).",
+    "title": "Datenschutzrichtlinie",
+    "intro": "Die vorliegende Richtlinie beschreibt, wie H. Hentsch Asset Management SA die personenbezogenen Daten der Kunden von Hentsch Credit erhebt, verwendet und schützt, einer einem eingeschränkten Kundenkreis vorbehaltenen Plattform, gemäß dem eidgenössischen Datenschutzgesetz (nDSG) und gegebenenfalls der Datenschutz-Grundverordnung (DSGVO).",
     "s1": {
       "title": "1. Verantwortlicher für die Verarbeitung",
       "controller": "Verantwortlicher",
       "address": "Adresse",
       "dpoContact": "Kontakt Datenschutz",
-      "compliance": "Konform mit dem schweizerischen DSG und der DSGVO."
+      "compliance": "Konform mit dem Schweizer DSG und der DSGVO."
     },
     "s2": {
       "title": "2. Erhobene Daten",
       "item1": "Identifikations- und Kontaktdaten (Name, E-Mail, Kontaktdaten);",
-      "item2": "Dokumente und Daten zur Identitätsprüfung (KYC), die bei der Kontoeröffnung übermittelt werden;",
-      "item3": "Daten zu Einzahlungsadressen, On-Chain-Transaktionen und auf der Plattform durchgeführten Vorgängen (Einzahlungen, Sicherheitensperrungen, Kreditgewährungen, Tilgungen, Kartenzahlungen);",
+      "item2": "Bei der Kontoeröffnung übermittelte Dokumente und Daten zur Identitätsprüfung (KYC);",
+      "item3": "Daten zu Einzahlungsadressen, On-Chain-Transaktionen und auf der Plattform durchgeführten Vorgängen (Einzahlungen, Sperrung von Sicherheiten, Kreditgewährungen, Rückzahlungen, Kartenzahlungen);",
       "item4": "Technische Verbindungsdaten zur Plattform (Protokolle, Sitzungskennungen)."
     },
     "s3": {
       "title": "3. Zwecke und Rechtsgrundlage",
-      "item1": "Erfüllung des Vertragsverhältnisses: Eröffnung und Verwaltung des Kontos, Gewährung und Überwachung des Kredits, Ausgabe und Verwaltung der zugehörigen Bankkarte;",
+      "item1": "Erfüllung der Vertragsbeziehung: Eröffnung und Verwaltung des Kontos, Gewährung und Überwachung des Kredits, Ausgabe und Verwaltung der zugehörigen Bankkarte;",
       "item2": "Einhaltung gesetzlicher und regulatorischer Pflichten: Identitätsprüfung (KYC), Bekämpfung von Geldwäscherei und Terrorismusfinanzierung (GwG), Aufbewahrung von Buchhaltungsunterlagen;",
       "item3": "Sicherheit der Plattform und Betrugsprävention;",
-      "item4": "Kommunikation mit dem Kunden bezüglich seines Kontos und seiner Transaktionen."
+      "item4": "Kommunikation mit dem Kunden bezüglich seines Kontos und seiner Vorgänge."
     },
     "s4": {
-      "title": "4. Partner und Auftragsverarbeiter",
-      "intro": "Zur Erbringung des Dienstes nutzt {legalName} spezialisierte Anbieter, die bestimmte Daten in seinem Auftrag und nach seinen Anweisungen verarbeiten oder als eigenständig Verantwortliche für die Verwahrung der Vermögenswerte auftreten:",
-      "item1Label": "Depotbanken Dritter",
-      "item1Body": "Verwahrung der Barmittel und Wertpapiere der Kunden (siehe Impressum, Abschnitt 3);",
+      "title": "4. Partner und Unterauftragnehmer",
+      "intro": "Zur Erbringung des Dienstes greift {legalName} auf spezialisierte Anbieter zurück, die bestimmte Daten in seinem Auftrag und nach seinen Anweisungen verarbeiten, oder die als separate Verantwortliche für die Verwahrung der Vermögenswerte auftreten:",
+      "item1Label": "Drittverwahrbanken",
+      "item1Body": "Verwahrung der liquiden Mittel und Wertschriften der Kunden (siehe Impressum, Abschnitt 3);",
       "item2Label": "Verwahrung digitaler Vermögenswerte ({custodians})",
       "item2Body": "sichere Verwahrung der als Sicherheit hinterlegten Stablecoins und des tokenisierten Golds;",
       "item3Label": "Ausgabe von Bankkarten",
-      "item3Body": "Verarbeitung von Echtzeit-Zahlungsautorisierungen;",
+      "item3Body": "Echtzeit-Verarbeitung von Zahlungsautorisierungen;",
       "item4Label": "Identitätsprüfung (KYC)",
       "item4Body": "Prüfung der Identität und des Compliance-Status des Kunden;",
       "item5Label": "Blockchain-Marktdaten",
-      "item5Body": "Erkennung von On-Chain-Einzahlungen und Echtzeitkursen der Vermögenswerte.",
-      "outro": "Name, genaue Rolle und Niederlassungsland jedes in der Produktion eingesetzten Anbieters werden dem Kunden auf Anfrage bei der in Abschnitt 1 angegebenen Stelle mitgeteilt."
+      "item5Body": "Erkennung von On-Chain-Einzahlungen und Echtzeitkurse der Vermögenswerte.",
+      "outro": "Der Name, die genaue Rolle und das Niederlassungsland jedes im Produktivbetrieb eingesetzten Anbieters werden dem Kunden auf Anfrage bei der in Abschnitt 1 angegebenen Stelle mitgeteilt."
     },
     "s5": {
       "title": "5. Aufbewahrungsdauer",
-      "body": "Daten zu Kunden und ihren Transaktionen werden für die Dauer der Verwaltungsbeziehung aufbewahrt, danach für die durch die geltenden gesetzlichen Aufbewahrungspflichten vorgeschriebene Dauer (insbesondere Buchhaltungsunterlagen und Transaktionsnachweise)."
+      "body": "Daten zu Kunden und ihren Vorgängen werden für die Dauer der Verwaltungsbeziehung aufbewahrt, danach für die Dauer, die durch die geltenden gesetzlichen Aufbewahrungspflichten vorgeschrieben ist (insbesondere Buchhaltungsunterlagen und Belege für Transaktionen)."
     },
     "s6": {
       "title": "6. Internationale Übermittlungen",
-      "body": "Einige der in Abschnitt 4 genannten Anbieter können Daten außerhalb der Schweiz verarbeiten. In diesem Fall trifft {legalName} die von der schweizerischen Datenschutzgesetzgebung geforderten geeigneten Garantien (Vertragsklauseln, Angemessenheitsbeschluss oder gleichwertiger Mechanismus)."
+      "body": "Manche in Abschnitt 4 genannten Anbieter können Daten ausserhalb der Schweiz verarbeiten. In diesem Fall trifft {legalName} die von der Schweizer Datenschutzgesetzgebung geforderten geeigneten Garantien (Vertragsklauseln, Angemessenheitsbeschluss oder gleichwertiger Mechanismus)."
     },
     "s7": {
       "title": "7. Ihre Rechte",
-      "body": "Vorbehaltlich der gesetzlich vorgesehenen Einschränkungen (insbesondere der geltenden gesetzlichen Aufbewahrungspflichten) hat der Kunde ein Recht auf Auskunft, Berichtigung, Löschung und Widerspruch bezüglich seiner personenbezogenen Daten. Diese Rechte können durch Schreiben an die in Abschnitt 1 angegebene Adresse ausgeübt werden."
+      "body": "Vorbehaltlich der gesetzlich vorgesehenen Einschränkungen (insbesondere der geltenden gesetzlichen Aufbewahrungspflichten) verfügt der Kunde über ein Recht auf Auskunft, Berichtigung, Löschung und Widerspruch bezüglich seiner personenbezogenen Daten. Diese Rechte können durch schriftliche Mitteilung an die in Abschnitt 1 angegebene Adresse ausgeübt werden."
     },
     "s8": {
       "title": "8. Cookies und Tracker",
-      "body": "Die Plattform verwendet ausschließlich für ihren Betrieb unbedingt erforderliche Cookies (Sitzungsauthentifizierung, Anzeigepräferenzen). Ohne vorherige Zustimmung des Kunden wird kein Werbe- oder Reichweitenmessungs-Cookie Dritter gesetzt. Details finden Sie in der <link>Cookie-Richtlinie</link>."
+      "body": "Die Plattform verwendet ausschliesslich für ihren Betrieb zwingend erforderliche Cookies (Sitzungsauthentifizierung, Anzeigepräferenzen). Es wird kein Werbe- oder Drittanbieter-Reichweitenmessungs-Cookie ohne vorherige Zustimmung des Kunden gesetzt. Details finden sich in der <link>Cookie-Richtlinie</link>."
     },
     "s9": {
-      "title": "9. Sonderfall der Interessenten (Antrag auf Kontoeröffnung)",
-      "body": "Personen, die einen Antrag auf Kontoeröffnung stellen, ohne bereits Kunde zu sein (über die Seite Konto beantragen), übermitteln Identifikations- und Kontaktdaten sowie Informationen zu ihrem Anlageprojekt. Diese Daten werden ausschließlich zum Zweck der Prüfung des Antrags verarbeitet. Führt der Antrag nicht zu einer Vermögensverwaltungsbeziehung, werden sie für eine begrenzte, für die Bearbeitung des Vorgangs erforderliche Dauer aufbewahrt und dann gelöscht; bei Annahme werden sie in die Kundenakte übernommen und folgen den in Abschnitt 5 beschriebenen Aufbewahrungsregeln."
+      "title": "9. Sonderfall der Interessenten (Kontoeröffnungsantrag)",
+      "body": "Personen, die einen Kontoeröffnungsantrag stellen, ohne bereits Kunde zu sein (über die Seite Konto beantragen), übermitteln Identifikations- und Kontaktdaten sowie Informationen zu ihrem Anlageprojekt. Diese Daten werden ausschliesslich zum Zweck der Prüfung des Antrags verarbeitet. Führt der Antrag nicht zu einer Vermögensverwaltungsbeziehung, werden sie für eine begrenzte, für die Bearbeitung des Vorgangs erforderliche Dauer aufbewahrt und dann gelöscht; bei Annahme werden sie in die Kundenakte integriert und unterliegen den in Abschnitt 5 beschriebenen Aufbewahrungsregeln."
     },
     "s10": {
       "title": "10. Sicherheit",
-      "body": "{legalName} setzt geeignete technische und organisatorische Maßnahmen (Verschlüsselung, Zugangskontrolle, verteilte Sperren bei Finanztransaktionen) um, um personenbezogene Daten vor unbefugtem Zugriff, Verlust oder Veränderung zu schützen."
+      "body": "{legalName} setzt angemessene technische und organisatorische Massnahmen um (Verschlüsselung, Zugangskontrolle, verteilte Sperren bei Finanzoperationen), um personenbezogene Daten vor unbefugtem Zugriff, Verlust oder Veränderung zu schützen."
     },
     "s11": {
       "title": "11. Kontakt",
@@ -469,12 +469,12 @@
   "AccountRequest": {
     "meta": {
       "title": "Kontoeröffnung beantragen · Hentsch Credit",
-      "description": "Beantragen Sie die Eröffnung eines Hentsch-Credit-Kontos, einer krypto-besicherten Kreditplattform, die einem eingeschränkten Kundenkreis auf Einladung vorbehalten ist."
+      "description": "Beantragen Sie die Eröffnung eines Hentsch Credit-Kontos, einer krypto-besicherten Kreditplattform, die einem eingeschränkten Kundenkreis auf Einladung vorbehalten ist."
     },
     "eyebrow": "Zugang auf Einladung",
     "title": "Kontoeröffnung beantragen",
-    "description": "Die Plattform ist einem eingeschränkten Kundenkreis vorbehalten. Hinterlassen Sie uns Ihre Kontaktdaten: Unser Team prüft jeden Antrag, bevor der Zugang gewährt wird.",
-    "alreadyHaveAccount": "Sie haben bereits ein Konto? <link>Anmelden</link>"
+    "description": "Plattform nur für einen eingeschränkten Kundenkreis. Hinterlassen Sie uns Ihre Kontaktdaten: Unser Team prüft jeden Antrag, bevor der Zugang gewährt wird.",
+    "alreadyHaveAccount": "Haben Sie bereits ein Konto? <link>Anmelden</link>"
   },
   "AccountRequestForm": {
     "firstName": "Vorname",
@@ -482,67 +482,67 @@
     "email": "E-Mail",
     "phone": "Telefon (optional)",
     "message": "Ihr Vorhaben (optional)",
-    "messagePlaceholder": "Angestrebter Betrag, betroffene Vermögenswerte, spezifische Fragen…",
-    "disclaimer": "Mit dem Absenden dieses Formulars erklären Sie sich damit einverstanden, dass Ihre Angaben gemäß unserer <link>Datenschutzerklärung</link> verarbeitet werden. Es wird kein Konto automatisch erstellt: Der Zugang wird erst gewährt, nachdem unser Team Ihren Antrag geprüft und genehmigt hat.",
-    "submit": "Antrag senden",
+    "messagePlaceholder": "Geplanter Betrag, betroffene Vermögenswerte, besondere Fragen…",
+    "disclaimer": "Mit dem Absenden dieses Formulars stimmen Sie zu, dass Ihre Angaben gemäß unserer <link>Datenschutzrichtlinie</link> verarbeitet werden. Es wird kein Konto automatisch erstellt: Der Zugang wird nach Prüfung und Validierung Ihres Antrags durch unser Team gewährt.",
+    "submit": "Meinen Antrag senden",
     "successTitle": "Ihr Antrag wurde erfolgreich übermittelt",
-    "successBody": "Unser Team prüft Ihren Antrag und wird sich per E-Mail bei Ihnen melden. Der Zugang zu Ihrem Kundenbereich wird erst nach Abschluss dieser Prüfung gewährt.",
+    "successBody": "Unser Team prüft Ihren Antrag und meldet sich per E-Mail bei Ihnen. Der Zugang zu Ihrem Kundenbereich wird erst nach dieser Validierung gewährt.",
     "genericError": "Ein Fehler ist aufgetreten."
   },
   "Faq": {
     "meta": {
-      "title": "Häufig gestellte Fragen · Hentsch Credit",
-      "description": "Antworten auf die häufigsten Fragen zum Konto, zur Sicherheit und zur Funktionsweise der Plattform Hentsch Credit."
+      "title": "Häufige Fragen · Hentsch Credit",
+      "description": "Die Antworten auf die häufigsten Fragen zu Konto, Sicherheit und Funktionsweise der Plattform Hentsch Credit."
     },
-    "eyebrow": "Häufig gestellte Fragen",
-    "title": "Häufig gestellte Fragen",
-    "description": "Antworten auf allgemeine Fragen zum Konto, zur Sicherheit und zur Funktionsweise der Plattform.",
+    "eyebrow": "Häufige Fragen",
+    "title": "Häufige Fragen",
+    "description": "Die Antworten auf allgemeine Fragen zu Konto, Sicherheit und Funktionsweise der Plattform.",
     "items": {
       "openAccount": {
-        "question": "Wie eröffne ich ein Hentsch-Credit-Konto?",
-        "answer": "Die Plattform ist einem eingeschränkten Kundenkreis vorbehalten, auf Einladung, im Rahmen einer bestehenden Vermögensverwaltungsbeziehung mit H. Hentsch Asset Management SA. Sie können über die Seite Konto beantragen einen Antrag auf Kontoeröffnung stellen; dieser wird von unseren Teams geprüft, bevor ein Konto tatsächlich eröffnet wird."
+        "question": "Wie eröffne ich ein Hentsch Credit-Konto?",
+        "answer": "Die Plattform ist einem eingeschränkten Kundenkreis auf Einladung vorbehalten, im Rahmen einer bestehenden Vermögensverwaltungsbeziehung mit H. Hentsch Asset Management SA. Sie können über die Seite Konto beantragen einen Kontoeröffnungsantrag stellen; dieser wird von unseren Teams vor jeder tatsächlichen Eröffnung geprüft."
       },
       "forgotPassword": {
         "question": "Ich habe mein Passwort vergessen, was soll ich tun?",
-        "answer": "Kontaktieren Sie den auf der Seite Kontakt angegebenen Dienst mit Ihrem Namen und der mit Ihrem Konto verknüpften E-Mail-Adresse. Aus Sicherheitsgründen erfolgt kein Zurücksetzen über einen anderen Kanal."
+        "answer": "Kontaktieren Sie den auf der Kontaktseite angegebenen Dienst mit Ihrem Namen und der mit Ihrem Konto verknüpften E-Mail-Adresse. Aus Sicherheitsgründen erfolgt kein Zurücksetzen über einen anderen Kanal."
       },
       "assetsSafe": {
         "question": "Sind meine digitalen Vermögenswerte sicher?",
-        "answer": "Die als Sicherheit hinterlegten Stablecoins und das tokenisierte Gold werden von einem zugelassenen Anbieter für die Verwahrung digitaler Vermögenswerte verwahrt, unabhängig von H. Hentsch Asset Management SA, spezialisiert auf die sichere Verwahrung von Krypto-Vermögenswerten im Auftrag schweizerischer Finanzinstitute. Details finden Sie auf der Seite Regulierung, Abschnitt 3."
+        "answer": "Die als Sicherheit hinterlegten Stablecoins und das tokenisierte Gold werden von einem zugelassenen Anbieter für die Verwahrung digitaler Vermögenswerte aufbewahrt, getrennt von H. Hentsch Asset Management SA, spezialisiert auf die sichere Verwahrung von Krypto-Assets im Auftrag Schweizer Finanzinstitute. Details finden Sie auf der Seite Regulierung, Abschnitt 3."
       },
       "networksAssets": {
         "question": "Welche Netzwerke und Vermögenswerte werden als Sicherheit akzeptiert?",
-        "answer": "Derzeit ausschließlich das Ethereum-Netzwerk. Details zu den akzeptierten Vermögenswerten (Stablecoins, tokenisiertes Gold, ETH, tokenisierte Industriemetalle) und ihrer Bewertung finden Sie auf der Seite So funktioniert es."
+        "answer": "Vorerst nur das Ethereum-Netzwerk. Die Details der akzeptierten Vermögenswerte (Stablecoins, tokenisiertes Gold, ETH, tokenisierte Industriemetalle) und ihrer Bewertung finden Sie auf der Seite So funktioniert es."
       },
       "ratioFees": {
         "question": "Wie hoch ist die Kreditquote und wie hoch sind die tatsächlichen Gebühren?",
-        "answer": "350% des hinterlegten Betrags zu dem zum Zeitpunkt der Sperrung geltenden Satz, mit einer Bearbeitungsgebühr von 2% und einem Jahreszinssatz auf den tatsächlich genutzten Kredit. Die genauen Zahlen, einschließlich eines Beispiels für die Gesamtkosten, finden Sie auf der Seite Konditionen."
+        "answer": "350% des hinterlegten Betrags zum zum Zeitpunkt der Hinterlegung geltenden Satz, mit einer Bearbeitungsgebühr von 2% und einem jährlichen Zinssatz auf den tatsächlich genutzten Kredit. Die genauen Zahlen, einschließlich eines Beispiels für die Gesamtkosten, finden Sie auf der Seite Preise."
       },
       "yieldLiquidation": {
-        "question": "Wie funktionieren die automatische Tilgung und das Liquidationsrisiko?",
-        "answer": "Ein Teil des genutzten Kredits kann automatisch durch die reale Wertsteigerung Ihrer Sicherheit getilgt werden, begrenzt auf 60%. Umgekehrt kann ein starker Wertverfall der Sicherheit zu deren Liquidation führen. Den vollständigen Mechanismus mit durchgerechneten Beispielen finden Sie auf der Seite Rendite."
+        "question": "Wie funktioniert die automatische Rückzahlung und das Liquidationsrisiko?",
+        "answer": "Ein Teil des genutzten Kredits kann automatisch durch die reale Wertsteigerung Ihrer Sicherheit zurückgezahlt werden, gedeckelt auf 60%. Umgekehrt kann ein starker Wertverfall der Sicherheit zu deren Liquidation führen. Der vollständige Mechanismus, mit Zahlenbeispielen, findet sich auf der Seite Rendite."
       },
       "kycDoubt": {
         "question": "Was passiert bei Zweifeln an meiner Identität (KYC)?",
-        "answer": "Solange Ihr Identitätsverifizierungsstatus nicht bestätigt ist, ist keine Finanztransaktion möglich (Erzeugung einer Einzahlungsadresse, Einzahlung, Kreditgewährung). Details finden Sie auf der Seite So funktioniert es."
+        "answer": "Solange Ihr Identitätsverifizierungsstatus nicht bestätigt ist, ist keine Finanzoperation (Generierung einer Einzahlungsadresse, Einzahlung, Kreditgewährung) möglich. Details finden Sie auf der Seite So funktioniert es."
       },
       "complaint": {
         "question": "Wie reiche ich eine Beschwerde ein?",
-        "answer": "Richten Sie Ihre Beschwerde an den auf der Seite Kontakt angegebenen Kontakt. Falls keine gütliche Einigung erzielt wird, können Sie sich an die zuständige Schlichtungsstelle wenden, die auf der Seite Regulierung, Abschnitt 6, angegeben ist."
+        "answer": "Richten Sie Ihre Beschwerde an den auf der Kontaktseite angegebenen Kontakt. Falls keine gütliche Einigung erzielt wird, können Sie sich an die zuständige Vermittlungsstelle wenden, die auf der Seite Regulierung, Abschnitt 6, angegeben ist."
       }
     },
     "moreQuestionsTitle": "Eine genauere Frage?",
-    "moreQuestionsBody": "Jedes große Thema hat seine eigene ausführliche Seite mit eigenen häufig gestellten Fragen: <howItWorks>So funktioniert es</howItWorks>, <yield>Rendite</yield>, <rwa>RWA-Strategie</rwa> und <pricing>Konditionen</pricing>. Für alle anderen Fragen bleibt die Seite <contact>Kontakt</contact> der direkteste Einstiegspunkt."
+    "moreQuestionsBody": "Jedes große Thema hat seine eigene detaillierte Seite mit eigenen häufigen Fragen: <howItWorks>So funktioniert es</howItWorks>, <yield>Rendite</yield>, <rwa>RWA-Strategie</rwa> und <pricing>Preise</pricing>. Für alle anderen Fragen bleibt die Seite <contact>Kontakt</contact> der direkteste Ansprechpunkt."
   },
   "Login": {
     "meta": {
       "title": "Anmelden · Hentsch Credit",
-      "description": "Melden Sie sich bei Ihrem Hentsch-Credit-Konto an."
+      "description": "Melden Sie sich bei Ihrem Hentsch Credit-Konto an."
     }
   },
   "LoginForm": {
-    "twoFactorTitle": "Zweistufige Verifizierung",
-    "twoFactorDescription": "Geben Sie den 6-stelligen Code ein, der von Ihrer Authentifizierungs-App generiert wurde.",
+    "twoFactorTitle": "Zwei-Faktor-Verifizierung",
+    "twoFactorDescription": "Geben Sie den 6-stelligen Code aus Ihrer Authentifizierungs-App ein.",
     "verificationCode": "Verifizierungscode",
     "verify": "Verifizieren",
     "backToLogin": "← Zurück zur Anmeldung",
@@ -555,34 +555,34 @@
   },
   "RiskManagement": {
     "meta": {
-      "title": "Risikomanagement und Vermögensverwahrung · Hentsch Credit",
-      "description": "Wie Hentsch Credit die Vermögensverwahrung, die Bewertung der Sicherheit und den Liquidationsmechanismus handhabt."
+      "title": "Risikomanagement und Verwahrung der Vermögenswerte · Hentsch Credit",
+      "description": "Wie Hentsch Credit die Verwahrung der Vermögenswerte, die Bewertung der Sicherheit und den Liquidationsmechanismus verwaltet."
     },
-    "title": "Risikomanagement und Vermögensverwahrung",
-    "intro": "H. Hentsch Asset Management SA führt keine Börsenaufträge im Auftrag Dritter aus und veröffentlicht daher weder eine Ausführungspolitik noch einen Best-Selection-Bericht im Sinne der Finanzmarktregulierung. Diese Seite beschreibt stattdessen die tatsächlichen Risikomanagementpraktiken, die auf der Plattform Hentsch Credit angewendet werden.",
+    "title": "Risikomanagement und Verwahrung der Vermögenswerte",
+    "intro": "H. Hentsch Asset Management SA führt keine Börsenaufträge für Rechnung Dritter aus und veröffentlicht daher weder eine Ausführungspolitik noch einen Bericht über die beste Auswahl im Sinne der Finanzmarktregulierung. Diese Seite beschreibt stattdessen die tatsächlichen Risikomanagementpraktiken, die auf die Plattform Hentsch Credit angewandt werden.",
     "s1": {
       "title": "1. Art der Tätigkeit",
-      "body": "{legalName} agiert als unabhängiger Vermögensverwalter (UVV): Das Unternehmen gewährt seinen Kunden krypto-besicherten Kredit gegen von ihnen hinterlegte Sicherheiten und verwaltet mit eigenem Kapital eine Treasury-Strategie für tokenisierte Industriemetalle und Rohstoffe. Es führt keine Börsenaufträge im Auftrag seiner Kunden aus und verwaltet kein diskretionäres Wertpapierportfolio in deren Namen."
+      "body": "{legalName} handelt als unabhängiger Vermögensverwalter (UVV): Er gewährt seinen Kunden krypto-besicherten Kredit gegen eine von ihnen hinterlegte Sicherheit und verwaltet mit eigenem Kapital eine Treasury-Strategie auf tokenisierte Industriemetalle und Rohstoffe. Er führt keinen Börsenauftrag für Rechnung seiner Kunden aus und verwaltet in ihrem Namen kein diskretionäres Wertschriftenportfolio."
     },
     "s2": {
       "title": "2. Verwahrung und Trennung der Vermögenswerte",
-      "body": "Von Kunden als Sicherheit hinterlegte Vermögenswerte werden niemals in der Treasury-Strategie des Unternehmens verwendet: Die beiden Ströme sind getrennt und treffen zu keinem Zeitpunkt aufeinander. Details zur Treasury-Strategie finden Sie auf der Seite <link>RWA-Strategie</link>, Abschnitt „Governance & Trennung der Mittel“."
+      "body": "Die von Kunden als Sicherheit hinterlegten Vermögenswerte werden niemals in der Treasury-Strategie des Unternehmens verwendet: Die beiden Ströme sind getrennt und treffen an keiner Stelle aufeinander. Die Details der Treasury-Strategie finden sich auf der Seite <link>RWA-Strategie</link>, Abschnitt „Governance & Trennung der Mittel“."
     },
     "s3": {
       "title": "3. Bewertung der Sicherheit",
-      "body": "Der Wert der hinterlegten Sicherheit wird anhand von Echtzeit-Marktkursen ermittelt (Spotpreis für tokenisiertes Gold, tokenisierte Industriemetalle, ETH; 1:1-Parität zum Dollar für USD-Stablecoins; Spotpreis für den an den Euro gekoppelten Stablecoin), ohne Marge oder diskretionäre Anpassung durch das Unternehmen. Diese Bewertung dient sowohl zur Berechnung des bei der Sperrung gewährten Kredits als auch für die unten beschriebene tägliche Überwachung des Wertverlusts."
+      "body": "Der Wert der hinterlegten Sicherheit wird anhand von Echtzeit-Marktkursen bestimmt (Spotkurs für tokenisiertes Gold, tokenisierte Industriemetalle, ETH; 1:1-Parität zum Dollar für USD-Stablecoins; Spotkurs für den an den Euro gekoppelten Stablecoin), ohne vom Unternehmen angewandte Marge oder diskretionäre Anpassung. Diese Bewertung dient sowohl der Berechnung des bei Hinterlegung gewährten Kredits als auch der unten beschriebenen täglichen Überwachung der Wertminderung."
     },
     "s4": {
-      "title": "4. Mechanismus zur Liquidation der Sicherheit",
-      "body": "Eine automatische tägliche Prüfung vergleicht den aktuellen Wert der Sicherheit mit ihrem Eintrittswert (zum Zeitpunkt der Sperrung). Ein Wertverlust von 30% löst eine auf dem Kundenkonto sichtbare Warnung aus; ein Wertverlust von 50% führt zur Liquidation der Sicherheit. Bereits genutzter Kredit wird durch die Liquidation nicht gelöscht: Er wird zu einer unbesicherten Forderung. Vollständige Details mit einem durchgerechneten Beispiel finden Sie auf der Seite <yieldLink>Rendite</yieldLink> und in den <termsLink>Allgemeinen Geschäftsbedingungen</termsLink>, Abschnitt 7."
+      "title": "4. Liquidationsmechanismus der Sicherheit",
+      "body": "Eine automatische tägliche Kontrolle vergleicht den aktuellen Wert der Sicherheit mit ihrem Einstiegswert (zum Zeitpunkt der Hinterlegung). Eine Wertminderung von 30% löst eine auf dem Kundenkonto sichtbare Warnung aus; eine Wertminderung von 50% führt zur Liquidation der Sicherheit. Der bereits genutzte Kredit wird durch die Liquidation nicht getilgt: Er wird zu einer unbesicherten Forderung. Die vollständigen Details, mit einem Zahlenbeispiel, finden sich auf der Seite <yieldLink>Rendite</yieldLink> und in den <termsLink>Allgemeinen Geschäftsbedingungen</termsLink>, Abschnitt 7."
     },
     "s5": {
       "title": "5. Interessenkonflikte",
-      "body": "Das Unternehmen bezieht niemals eine seinen Kunden entgegengesetzte Position bei den von ihnen als Sicherheit hinterlegten Vermögenswerten: Es empfängt lediglich diese Sicherheit, berechnet den entsprechenden Kredit und liquidiert ihn gegebenenfalls gemäß im Voraus festgelegten, automatisch und für alle Kunden identisch angewandten Schwellenwerten. Die Treasury-Strategie des Unternehmens (Industriemetalle und Rohstoffe) wird mit eigenem Kapital finanziert, niemals mit von Kunden hinterlegten Vermögenswerten."
+      "body": "Das Unternehmen nimmt niemals eine der Position seiner Kunden entgegengesetzte Position bei den von ihnen als Sicherheit hinterlegten Vermögenswerten ein: Es empfängt lediglich diese Sicherheit, berechnet den entsprechenden Kredit und liquidiert diesen gegebenenfalls gemäß im Voraus festgelegten Schwellenwerten, die automatisch und für alle Kunden identisch angewandt werden. Die Treasury-Strategie des Unternehmens (Industriemetalle und Rohstoffe) wird durch sein Eigenkapital finanziert, niemals durch die von Kunden hinterlegten Vermögenswerte."
     },
     "s6": {
       "title": "6. Kontrolle und Audit",
-      "body": "Die geltenden Risikoparameter (Kreditquote, Zinssätze, Liquidationsschwellen) sind in der Kreditengine der Plattform zentralisiert und werden bei jeder Änderung einer automatisierten Testsuite unterzogen. Jede Änderung dieser Parameter wird protokolliert und gilt niemals rückwirkend für eine bereits gesperrte Position. Details zur Historie dieser Änderungen finden Sie auf der Seite <link>Archiv</link>."
+      "body": "Die geltenden Risikoparameter (Kreditquote, Sätze, Liquidationsschwellen) sind im Kredit-Engine der Plattform zentralisiert und werden bei jeder Änderung einer automatisierten Testreihe unterzogen. Jede Änderung dieser Parameter wird protokolliert und gilt niemals rückwirkend für eine bereits hinterlegte Position. Die Details der Historie dieser Änderungen finden sich auf der Seite <link>Archiv</link>."
     }
   },
   "LegalNotice": {
@@ -591,10 +591,10 @@
       "description": "Rechtliche Angaben zum Herausgeber und Betreiber der Plattform Hentsch Credit."
     },
     "title": "Impressum",
-    "intro": "Rechtliche Angaben zum Herausgeber und Betreiber der Website und Plattform Hentsch Credit, gemäß dem geltenden schweizerischen Recht. Die Plattform ist einem eingeschränkten Kundenkreis auf Einladung vorbehalten: Sie ist nicht öffentlich zugänglich und stellt kein öffentliches Angebot dar.",
+    "intro": "Rechtliche Angaben zum Herausgeber und Betreiber der Website und der Plattform Hentsch Credit, gemäß geltendem Schweizer Recht. Die einem eingeschränkten Kundenkreis auf Einladung vorbehaltene Plattform ist nicht öffentlich zugänglich und stellt kein öffentliches Angebot dar.",
     "s1": {
       "title": "1. Herausgeber der Website",
-      "companyName": "Firma",
+      "companyName": "Firmenname",
       "legalForm": "Rechtsform",
       "tradingName": "Handelsname der Plattform",
       "registeredOffice": "Sitz der Gesellschaft",
@@ -602,22 +602,22 @@
       "canton": "Kanton",
       "country": "Land",
       "registerNumber": "UID / Handelsregisternummer",
-      "vatNumber": "MwSt.-Nummer",
+      "vatNumber": "MwSt.-Nr.",
       "publicationDirector": "Verantwortlicher für die Veröffentlichung"
     },
     "s2": {
       "title": "2. Regulatorischer Status und Aufsicht",
-      "body": "{legalName} ist ein <b>unabhängiger Vermögensverwalter (UVV)</b> im Sinne des Bundesgesetzes über die Finanzinstitute (FINIG), <b>und kein Bankinstitut</b>. Als solcher verfügt er über keine direkt von der FINMA erteilte Banklizenz, unterliegt jedoch der Aufsicht einer von der {supervisoryAuthority} zugelassenen Aufsichtsorganisation (AO).",
+      "body": "{legalName} ist ein <b>unabhängiger Vermögensverwalter (UVV)</b> im Sinne des Finanzinstitutsgesetzes (FINIG), <b>und kein Bankinstitut</b>. Als solches verfügt es über keine direkt von der FINMA erteilte Bankbewilligung, unterliegt aber der Aufsicht einer von der {supervisoryAuthority} zugelassenen Aufsichtsorganisation (AO).",
       "supervisionBody": "Aufsichtsorganisation (AO)",
       "amlBody": "GwG-Selbstregulierungsorganisation",
-      "footer": "Details zum geltenden rechtlichen Rahmen (FINIG, FIDLEG, GwG) finden Sie auf der Seite <link>Regulierung</link>."
+      "footer": "Die Details des anwendbaren rechtlichen Rahmens (FINIG, FIDLEG, GwG) werden auf der Seite <link>Regulierung</link> dargestellt."
     },
     "s3": {
       "title": "3. Verwahrung der Vermögenswerte"
     },
     "s4": {
       "title": "4. Eingeschränkter Zugang",
-      "body": "Die Plattform {tradingName} ist nicht für die breite Öffentlichkeit bestimmt. Der Zugang ist einer bestimmten Kundenliste vorbehalten, auf Einladung von {legalName}, nach einer bestehenden Vermögensverwaltungsbeziehung und vorheriger Identitätsprüfung. Kein Element dieser Website stellt ein an die Öffentlichkeit gerichtetes Angebot, eine Aufforderung oder eine Werbung dar."
+      "body": "Die Plattform {tradingName} ist nicht für die breite Öffentlichkeit bestimmt. Der Zugang ist einer bestimmten Kundenliste vorbehalten, auf Einladung von {legalName}, im Anschluss an eine bestehende Vermögensverwaltungsbeziehung und eine vorherige Identitätsprüfung. Kein Element dieser Website stellt ein an die Öffentlichkeit gerichtetes Angebot, eine Aufforderung oder Werbung dar."
     },
     "s5": {
       "title": "5. Kontakt",
@@ -630,27 +630,40 @@
     },
     "s7": {
       "title": "7. Geistiges Eigentum",
-      "body": "Alle Elemente, aus denen sich die Website und die Plattform zusammensetzen (Texte, Logos, Grafiken, Symbole, Struktur, Quellcode), sind Eigentum von {legalName} oder seiner Lizenzgeber und als solche durch schweizerisches Recht und internationale Übereinkommen zum geistigen Eigentum geschützt. Jede Vervielfältigung, Darstellung, Änderung oder Verwertung, ganz oder teilweise, ohne vorherige schriftliche Genehmigung ist untersagt."
+      "body": "Alle Elemente der Website und der Plattform (Texte, Logos, Grafiken, Symbole, Struktur, Quellcode) sind Eigentum von {legalName} oder seiner Lizenzgeber und als solche durch Schweizer Recht und internationale Übereinkommen zum geistigen Eigentum geschützt. Jede Vervielfältigung, Darstellung, Änderung oder Verwertung, ganz oder teilweise, ohne vorherige schriftliche Genehmigung, ist untersagt."
     },
     "s8": {
       "title": "8. Technische Partner",
-      "body": "Die Plattform stützt sich für bestimmte technische Funktionen auf Drittanbieter (Verwahrung digitaler Vermögenswerte und Schlüsselverwaltung, Ausgabe von Bankkarten, Identitätsprüfung, Marktdaten). Die Liste dieser Anbieter und ihre Rolle sind in der <link>Datenschutzerklärung</link> detailliert aufgeführt."
+      "body": "Die Plattform stützt sich für bestimmte technische Funktionen auf Drittanbieter (Verwahrung digitaler Vermögenswerte und Schlüsselverwaltung, Ausgabe von Bankkarten, Identitätsprüfung, Marktdaten). Die Liste dieser Anbieter und ihre Rolle sind in der <link>Datenschutzrichtlinie</link> detailliert."
     }
   },
   "Sitemap": {
     "meta": {
       "title": "Sitemap · Hentsch Credit",
-      "description": "Alle öffentlich zugänglichen Seiten von Hentsch Credit, ohne Anmeldung bei einem Konto."
+      "description": "Alle Seiten von Hentsch Credit, sowohl im öffentlichen Bereich als auch im Kundenbereich."
     },
     "eyebrow": "Navigation",
     "title": "Sitemap",
-    "description": "Alle öffentlich zugänglichen Seiten, ohne Anmeldung bei einem Konto.",
+    "description": "Alle Seiten der Website, sowohl im öffentlichen Bereich als auch im Kundenbereich.",
     "groups": {
-      "discover": { "title": "Die Plattform entdecken" },
-      "account": { "title": "Kontozugang" },
-      "help": { "title": "Hilfe & Kontakt" },
-      "contractual": { "title": "Vertragsunterlagen" },
-      "privacy": { "title": "Personenbezogene Daten" }
+      "discover": {
+        "title": "Die Plattform entdecken"
+      },
+      "account": {
+        "title": "Kontozugang"
+      },
+      "help": {
+        "title": "Hilfe & Kontakt"
+      },
+      "contractual": {
+        "title": "Vertragsunterlagen"
+      },
+      "privacy": {
+        "title": "Personenbezogene Daten"
+      },
+      "client": {
+        "title": "Kundenbereich (Anmeldung erforderlich)"
+      }
     },
     "links": {
       "home": "Startseite",
@@ -658,69 +671,79 @@
       "yield": "Rendite",
       "rwaStrategy": "RWA-Strategie",
       "market": "Markt",
-      "pricing": "Konditionen",
+      "pricing": "Preise",
       "requestAccount": "Konto beantragen",
       "login": "Anmelden",
       "contact": "Kontaktieren Sie uns",
-      "faq": "Häufig gestellte Fragen",
+      "faq": "Häufige Fragen",
       "accessibility": "Digitale Barrierefreiheit",
       "archives": "Archiv",
       "sitemap": "Sitemap",
       "terms": "Allgemeine Geschäftsbedingungen",
       "legalNotice": "Impressum",
       "regulation": "Regulierung",
-      "riskManagement": "Risikomanagement und Vermögensverwahrung",
-      "privacyPolicy": "Datenschutzerklärung",
+      "riskManagement": "Risikomanagement und Verwahrung der Vermögenswerte",
+      "privacyPolicy": "Datenschutzrichtlinie",
       "cookiePolicy": "Cookie-Richtlinie"
     },
-    "clientAreaNote": "Der angemeldete Kundenbereich und der interne Verwaltungsbereich sind oben nicht aufgeführt: Ihr Inhalt hängt von Ihrem Identitätsverifizierungsstatus und Ihrer Rolle im Konto ab und ist nur nach Anmeldung zugänglich."
+    "clientLinks": {
+      "home": "Start",
+      "balance": "Saldo",
+      "market": "Markt",
+      "credit": "Kredit",
+      "cards": "Karten",
+      "history": "Verlauf",
+      "profile": "Profil",
+      "support": "Support"
+    },
+    "clientAreaNote": "Das interne Back-Office ist oben nicht aufgeführt: Sein Inhalt hängt von Ihrer Rolle im Konto ab und ist nur autorisierten Konten zugänglich. Die oben aufgeführten Seiten des Kundenbereichs erfordern die Anmeldung mit einem verifizierten Konto — ihr tatsächlicher Inhalt (Guthaben, Kredit, Verlauf) ist für jeden Kunden individuell."
   },
   "Market": {
     "meta": {
-      "title": "Live-Markt · Hentsch Credit",
-      "description": "Die Echtzeitkurse der auf Hentsch Credit als Sicherheit akzeptierten Vermögenswerte: Stablecoins, Gold, Silber, ETH und tokenisierte Industriemetalle."
+      "title": "Markt live · Hentsch Credit",
+      "description": "Die Echtzeitkurse der als Sicherheit akzeptierten Vermögenswerte bei Hentsch Credit: Stablecoins, Gold, Silber, ETH und tokenisierte Industriemetalle."
     },
     "eyebrow": "Live-Daten",
-    "title": "Der Live-Markt",
+    "title": "Der Markt live",
     "description": "Die Kurse der als Sicherheit akzeptierten Vermögenswerte, in Echtzeit."
   },
   "Regulation": {
     "meta": {
       "title": "Regulierung · Hentsch Credit",
-      "description": "Der schweizerische Rechts- und Regulierungsrahmen für Hentsch Credit: FINIG, FIDLEG, GwG, Vermögensverwahrung und Aufsicht."
+      "description": "Der für Hentsch Credit geltende Schweizer Rechts- und Regulierungsrahmen: FINIG, FIDLEG, GwG, Verwahrung der Vermögenswerte und Aufsicht."
     },
     "title": "Regulatorischer Rahmen",
-    "intro": "Diese Seite beschreibt den schweizerischen Rechts- und Regulierungsrahmen für Hentsch Credit, ergänzend zum Impressum.",
+    "intro": "Diese Seite beschreibt den für Hentsch Credit geltenden Schweizer Rechts- und Regulierungsrahmen, ergänzend zum Impressum.",
     "s1": {
-      "title": "1. Geltender Rechtsrahmen",
-      "intro": "Die Tätigkeit von {legalName} richtet sich insbesondere nach:",
-      "item1": "dem Bundesgesetz über die Finanzinstitute (FINIG) und seiner Verordnung (FINIV), anwendbar auf unabhängige Vermögensverwalter;",
-      "item2": "dem Bundesgesetz über die Finanzdienstleistungen (FIDLEG) und seiner Verordnung (FIDLEV), betreffend die Erbringung von Finanzdienstleistungen und die Kundenklassifizierung;",
-      "item3": "dem Bundesgesetz zur Bekämpfung der Geldwäscherei (GwG), betreffend die Sorgfalts- und Überwachungspflichten;",
-      "item4": "dem Bundesgesetz über den Datenschutz (revDSG) und gegebenenfalls der Datenschutz-Grundverordnung (DSGVO)."
+      "title": "1. Anwendbarer Rechtsrahmen",
+      "intro": "Die Tätigkeit von {legalName} wird insbesondere geregelt durch:",
+      "item1": "das Finanzinstitutsgesetz (FINIG) und seine Verordnung (FINIV), anwendbar auf unabhängige Vermögensverwalter;",
+      "item2": "das Finanzdienstleistungsgesetz (FIDLEG) und seine Verordnung (FIDLEV), betreffend die Erbringung von Finanzdienstleistungen und die Kundenklassifizierung;",
+      "item3": "das Geldwäschereigesetz (GwG), betreffend die Sorgfalts- und Wachsamkeitspflichten;",
+      "item4": "das Bundesgesetz über den Datenschutz (nDSG) und gegebenenfalls die Datenschutz-Grundverordnung (DSGVO)."
     },
     "s2": {
       "title": "2. Status des Betreibers",
-      "body1": "{legalName} ist ein <b>unabhängiger Vermögensverwalter (UVV)</b> im Sinne des FINIG: Das Unternehmen verfügt über keine Banklizenz und nimmt keine öffentlichen Gelder im eigenen Namen entgegen.",
+      "body1": "{legalName} ist ein <b>unabhängiger Vermögensverwalter (UVV)</b> im Sinne des FINIG: Er verfügt über keine Bankbewilligung und nimmt keine Publikumseinlagen im eigenen Namen entgegen.",
       "supervisionBody": "Aufsichtsorganisation (AO)",
       "supervisoryAuthority": "Oberste Aufsichtsbehörde",
       "amlBody": "GwG-Selbstregulierungsorganisation",
-      "body2": "Die AO lizenziert und beaufsichtigt die Vermögensverwaltungstätigkeit, überwacht die Einhaltung der gesetzlichen Pflichten (einschließlich des GwG) und kann bei Verstößen Massnahmen ergreifen. Details zur Identität des Herausgebers finden Sie im <link>Impressum</link>."
+      "body2": "Die AO lizenziert und beaufsichtigt die Vermögensverwaltungstätigkeit, überwacht die Einhaltung gesetzlicher Pflichten (einschließlich GwG) und kann bei Verstößen Massnahmen verhängen. Die Details zur Identität des Herausgebers finden sich im <link>Impressum</link>."
     },
     "s3": {
-      "title": "3. Schutz der Kundenvermögenswerte"
+      "title": "3. Schutz der Kundenvermögen"
     },
     "s4": {
       "title": "4. Kundenklassifizierung (FIDLEG)",
-      "body": "Das FIDLEG unterscheidet drei Kundenkategorien (Privatkunden, professionelle und institutionelle Kunden), denen unterschiedliche Informations- und Schutzniveaus entsprechen. Die Kundschaft von {tradingName} wird im Sinne des FIDLEG als <b>{classification}</b> eingestuft, die Kategorie mit dem höchsten Schutz- und Informationsniveau. Der Zugang bleibt dennoch einer eingeschränkten Kundenliste auf Einladung vorbehalten, im Rahmen einer bestehenden Vermögensverwaltungsbeziehung mit {legalName}."
+      "body": "Das FIDLEG unterscheidet drei Kundenkategorien (Privatkunden, professionelle und institutionelle Kunden), denen unterschiedliche Informations- und Schutzniveaus entsprechen. Die Kundschaft von {tradingName} wird im Sinne des FIDLEG als <b>{classification}</b> eingestuft, die Kategorie mit dem höchsten Schutz- und Informationsniveau. Der Zugang bleibt dennoch einer eingeschränkten Kundenliste vorbehalten, auf Einladung, im Rahmen einer bestehenden Vermögensverwaltungsbeziehung mit {legalName}."
     },
     "s5": {
       "title": "5. Bekämpfung der Geldwäscherei (GwG)",
-      "body": "Gemäß dem GwG setzen der Zugang zur Plattform, die Erzeugung einer Einzahlungsadresse und jede Kreditgewährung eine vorherige Überprüfung der Identität des Kunden und der wirtschaftlichen Herkunft der betreffenden Vermögenswerte voraus. {legalName} wendet bei Anhaltspunkten für Geldwäscherei oder Terrorismusfinanzierung verstärkte Sorgfaltsmassnahmen an und erfüllt gegebenenfalls die gesetzlich vorgesehenen Meldepflichten."
+      "body": "Gemäß dem GwG setzen der Zugang zur Plattform, die Generierung einer Einzahlungsadresse und jede Kreditgewährung die vorherige Überprüfung der Identität des Kunden und der wirtschaftlichen Herkunft der betreffenden Vermögenswerte voraus. {legalName} wendet verstärkte Sorgfaltspflichten an, wenn Anzeichen für Geldwäscherei oder Terrorismusfinanzierung vorliegen, und erfüllt gegebenenfalls die gesetzlich vorgesehenen Meldepflichten."
     },
     "s6": {
-      "title": "6. Beschwerden und Schlichtung",
-      "body": "Jede Beschwerde bezüglich des Dienstes kann an den unten angegebenen Kontakt gerichtet werden. Falls keine gütliche Einigung erzielt wird, kann sich der Kunde unter den im FIDLEG vorgesehenen Bedingungen an die Schlichtungsstelle wenden, der {legalName} untersteht: <b>{mediationBody}</b>."
+      "title": "6. Beschwerden und Vermittlung",
+      "body": "Jede Beschwerde bezüglich des Dienstes kann an den unten angegebenen Kontakt gerichtet werden. Erzielt keine gütliche Einigung, kann sich der Kunde unter den im FIDLEG vorgesehenen Bedingungen an die Vermittlungsstelle wenden, der {legalName} untersteht: <b>{mediationBody}</b>."
     },
     "s7": {
       "title": "7. Compliance-Kontakt",
@@ -729,12 +752,12 @@
     }
   },
   "YieldShowcase": {
-    "pricesUnavailable": "Kurse derzeit nicht verfügbar.",
+    "pricesUnavailable": "Kurse vorerst nicht verfügbar.",
     "yieldBadge": "Rendite",
-    "h24": "24h",
+    "h24": "24 Std.",
     "badge": "Unser Unterschied",
-    "title": "Die einzigen Sicherheiten, die einen Teil Ihres Kredits für Sie tilgen",
-    "subtitle": "Gold, Silber und ETH erwirtschaften eine echte Rendite, die automatisch in Ihren Kredit reinvestiert wird.",
+    "title": "Die einzige Sicherheit, die einen Teil Ihres Kredits für Sie zurückzahlt",
+    "subtitle": "Gold, Silber und ETH erzielen eine reale Rendite, die automatisch in Ihren Kredit reinvestiert wird.",
     "steps": {
       "deposit": {
         "title": "1. Sie hinterlegen Gold, Silber oder ETH",
@@ -745,28 +768,28 @@
         "description": "Jeder seit der Einzahlung festgestellte reale Anstieg reduziert automatisch den genutzten Kredit."
       },
       "repaid": {
-        "title": "3. Bis zu 60% des Kredits ohne Aufwand getilgt",
-        "description": "Der Rest (mindestens 40%) wird wie bei jedem anderen Vermögenswert durch Eigenleistung getilgt."
+        "title": "3. Bis zu 60% des Kredits zurückgezahlt, ohne dass Sie etwas tun müssen",
+        "description": "Der Rest (mindestens 40%) wird durch Eigenbeitrag zurückgezahlt, wie bei jedem anderen Vermögenswert."
       }
     },
-    "stablecoinsReminder": "Stablecoins (USDT, USDC, DAI…) bleiben 1:1 zum USD: Ihr Kredit wird vollständig durch Eigenleistung getilgt, ohne automatische Rendite."
+    "stablecoinsReminder": "Stablecoins (USDT, USDC, DAI…) bleiben 1:1 zum USD: Ihr Kredit wird vollständig durch Eigenbeitrag zurückgezahlt, ohne automatische Rendite."
   },
   "YieldPerformanceHistory": {
-    "unavailable": "Historie derzeit nicht verfügbar.",
-    "low12m": "Tiefstwert (12 Monate)",
-    "high12m": "Höchstwert (12 Monate)",
+    "unavailable": "Historie vorerst nicht verfügbar.",
+    "low12m": "Tief (12 Monate)",
+    "high12m": "Hoch (12 Monate)",
     "unavailableValue": "nicht verfügbar"
   },
   "Yield": {
     "meta": {
       "title": "Rendite der Sicherheit · Hentsch Credit",
-      "description": "Wie als Sicherheit hinterlegte Gold-, Silber- und ETH-Bestände automatisch bis zu 60% Ihres Kredits tilgen, und das Liquidationsrisiko bei starkem Wertverfall."
+      "description": "Wie als Sicherheit hinterlegtes Gold, Silber und ETH automatisch bis zu 60% Ihres Kredits zurückzahlen, und das Liquidationsrisiko bei starkem Wertverfall."
     },
     "eyebrow": "Unser Unterschied",
-    "title": "Die einzigen Sicherheiten, die einen Teil Ihres Kredits für Sie tilgen",
-    "description": "Gold, Silber und ETH erwirtschaften eine echte Rendite, die automatisch in Ihren Kredit reinvestiert wird, bis zu 60% ohne Aufwand getilgt.",
+    "title": "Die einzige Sicherheit, die einen Teil Ihres Kredits für Sie zurückzahlt",
+    "description": "Gold, Silber und ETH erzielen eine reale Rendite, die automatisch in Ihren Kredit reinvestiert wird, bis zu 60% zurückgezahlt, ohne dass Sie etwas tun müssen.",
     "eligibleAssetsTitle": "Alle berechtigten Vermögenswerte",
-    "eligibleAssetsIntro": "Acht Vermögenswerte profitieren vom selben echten Mechanismus der automatischen Tilgung durch Wertsteigerung, nicht nur die oben hervorgehobenen Gold, Silber und ETH.",
+    "eligibleAssetsIntro": "Acht Vermögenswerte profitieren vom gleichen realen automatischen Rückzahlungsmechanismus durch Wertsteigerung, nicht nur das oben hervorgehobene Gold, Silber und ETH.",
     "table": {
       "category": "Kategorie",
       "assets": "Vermögenswerte",
@@ -775,233 +798,668 @@
       "nativeCrypto": "Native Kryptowährung",
       "industrialMetals": "Industriemetalle & Rohstoffe",
       "stablecoins": "Stablecoins",
-      "none": "Keines",
+      "none": "Keine",
       "notEligible": "Nicht berechtigt (fester Wert oder zu volatil*)",
       "rwaTarget": "8 bis 14% APY (<link>Details zur RWA-Strategie</link>)"
     },
-    "shibNote": "* SHIB ist kein Stablecoin, bleibt aber vom Mechanismus ausgeschlossen: Seine Volatilität wird als zu hoch angesehen, um eine zuverlässige wiederkehrende Tilgung zu tragen.",
-    "dualMechanismNote": "Industriemetalle und Rohstoffe kombinieren daher zwei unterschiedliche Mechanismen: die auf dieser Seite beschriebene echte automatische Tilgung (identisch mit Gold, Silber und ETH) und ein indikatives, der Treasury-Strategie der Bank für diese Vermögenswerte eigenes Renditeziel, das separat dargestellt wird und niemals garantiert ist.",
-    "performanceTitle": "12-Monats-Wertentwicklung",
-    "performanceIntro": "Die tatsächlichen Kurse der renditegenerierenden Vermögenswerte über die letzten 365 Tage (das über unseren Marktdatenanbieter maximal verfügbare, ohne jede Zusage zur künftigen Wertentwicklung).",
+    "shibNote": "* SHIB ist kein Stablecoin, bleibt aber vom Mechanismus ausgeschlossen: Seine Volatilität wird als zu hoch eingestuft, um eine verlässliche wiederkehrende Rückzahlung zu tragen.",
+    "dualMechanismNote": "Industriemetalle und Rohstoffe kombinieren daher zwei unterschiedliche Mechanismen: die auf dieser Seite beschriebene reale automatische Rückzahlung (identisch mit Gold, Silber und ETH), und ein indikatives Renditeziel, das der eigenen Treasury-Strategie der Bank auf diese Vermögenswerte eigen ist, separat dargestellt und niemals garantiert.",
+    "performanceTitle": "Wertentwicklung über 12 Monate",
+    "performanceIntro": "Die realen Kurse der renditebringenden Vermögenswerte, über die letzten 365 Tage (das über unseren Marktdatenanbieter verfügbare Maximum, ohne Zusage zur künftigen Wertentwicklung).",
     "exampleTitle": "Ein konkretes Beispiel",
     "example": {
-      "p1": "Sie hinterlegen <b>2000 $</b> tokenisiertes Gold (XAUT), zu einem Kurs von <b>2400 $ pro Unze</b>: Ihre Sicherheit entspricht etwa 0,833 Unzen. Bei einer Quote von 350% wird Ihnen ein Kredit von <b>7000 $</b> gewährt, und die Obergrenze für die automatische Renditetilgung beträgt somit <b>4200 $</b> (60% von 7000 $).",
-      "p2": "Der Goldpreis steigt auf <b>2500 $</b> pro Unze: Die festgestellte Wertsteigerung (100 $ × 0,833 Unzen ≈ 83 $) wird noch am selben Tag automatisch auf Ihren genutzten Kredit angerechnet. Dieser Mechanismus wiederholt sich bei jedem weiteren Kursanstieg, bis die Obergrenze von 4200 $ erreicht ist.",
-      "p3": "Fällt der Kurs anschließend, wird Ihnen nichts zurückgenommen: Die bereits angerechnete Wertsteigerung bleibt Ihrem Kredit erhalten (eine „Sperrklinke“, die sich nur nach oben bewegt). Allerdings erfolgt keine neue automatische Tilgung, solange der Kurs das bereits erreichte Niveau nicht übersteigt.",
-      "p4": "Sobald die Obergrenze von 60% ausgeschöpft ist, muss der verbleibende Kreditsaldo (mindestens 40%, hier <b>2800 $</b>) durch eine ausdrückliche Zahlung Ihrerseits (Einzahlung oder Überweisung) getilgt werden, wie bei jedem anderen Kredit."
+      "p1": "Sie hinterlegen <b>2.000 $</b> tokenisiertes Gold (XAUT), zum Kurs von <b>2.400 $ pro Unze</b>: Ihre Sicherheit entspricht etwa 0,833 Unzen. Bei einer Quote von 350% wird Ihnen ein Kredit von <b>7.000 $</b> gewährt, und die Obergrenze der automatischen Rendite-Rückzahlung liegt somit bei <b>4.200 $</b> (60% von 7.000 $).",
+      "p2": "Der Goldkurs steigt auf <b>2.500 $</b> pro Unze: Die festgestellte Wertsteigerung (100 $ × 0,833 Unzen ≈ 83 $) wird noch am selben Tag automatisch auf Ihren genutzten Kredit angewendet. Dieser Mechanismus wiederholt sich bei jedem weiteren Kursanstieg, bis die Obergrenze von 4.200 $ erreicht ist.",
+      "p3": "Fällt der Kurs anschließend, wird Ihnen nichts wieder abgezogen: Die bereits angewendete Wertsteigerung bleibt Ihrem Kredit erhalten (eine „Sperrklinke“, die sich nur nach oben bewegt). Es findet jedoch keine neue automatische Rückzahlung statt, solange der Kurs das bereits erreichte Niveau nicht übersteigt.",
+      "p4": "Sobald die 60%-Obergrenze ausgeschöpft ist, muss der verbleibende Kreditsaldo (mindestens 40%, hier <b>2.800 $</b>) durch eine ausdrückliche Einzahlung Ihrerseits (Einzahlung oder Überweisung) zurückgezahlt werden, wie bei jedem anderen Kredit."
     },
     "timelineTitle": "Zeitverlauf über mehrere Monate",
-    "timelineIntro": "Dasselbe Beispiel, fortgesetzt: Der Goldpreis steigt über mehrere Monate weiter, bis die Obergrenze von 60% erreicht wird.",
+    "timelineIntro": "Dasselbe Beispiel, fortgesetzt: Der Goldkurs steigt über mehrere Monate weiter, bis die 60%-Obergrenze erreicht ist.",
     "timelineTable": {
       "month": "Monat",
-      "goldPrice": "Goldpreis",
-      "repaidThisMonth": "Diesen Monat getilgt",
-      "cumulativeRepaid": "Kumuliert getilgt",
-      "row0": "0 (Sperrung)",
-      "row2Price": "2470 $ (Rückgang)",
-      "row11Cumulative": "4200 $ (Obergrenze erreicht)"
+      "goldPrice": "Goldkurs",
+      "repaidThisMonth": "Diesen Monat zurückgezahlt",
+      "cumulativeRepaid": "Kumuliert zurückgezahlt",
+      "row0": "0 (Hinterlegung)",
+      "row2Price": "2.470 $ (Rückgang)",
+      "row11Cumulative": "4.200 $ (Obergrenze erreicht)"
     },
-    "timelineNote": "In Monat 2 fällt der Kurs: In diesem Monat erfolgt keine Tilgung, aber die bereits in Monat 1 angerechneten 83 $ bleiben erhalten (Sperrklinke). Sobald in Monat 11 die Obergrenze von 4200 $ erreicht ist, erfolgt bei dieser Position keine weitere automatische Tilgung mehr, selbst wenn der Kurs weiter steigt.",
+    "timelineNote": "Im Monat 2 fällt der Kurs: In diesem Monat findet keine Rückzahlung statt, aber die im Monat 1 bereits angewendeten 83 $ bleiben erhalten (Sperrklinke). Sobald die Obergrenze von 4.200 $ im Monat 11 erreicht ist, findet auf dieser Position keine weitere automatische Rückzahlung mehr statt, selbst wenn der Kurs weiter steigt.",
     "liquidationTitle": "Das umgekehrte Risiko: die Liquidation",
     "liquidation": {
-      "p1": "Der obige Mechanismus profitiert von einem steigenden Kurs. Ein Rückgang wird separat behandelt, durch einen eigenständigen Mechanismus: Der Wert Ihrer Sicherheit wird täglich mit ihrem <b>Eintrittswert</b> verglichen (dem zum Zeitpunkt der Sperrung festgestellten Wert), nicht mit dem letzten Kurs, der eine Tilgung ausgelöst hat.",
-      "p2": "Bei einem Wertverlust von mindestens <b>30%</b> seit Eintritt erscheint eine Warnung auf Ihrem Konto, ohne weitere Auswirkung. Bei <b>50%</b> Wertverlust wird Ihre Sicherheit automatisch zu ihrem Eintrittswert vom Konto entfernt (liquidiert). Der von Ihnen bereits genutzte Kredit wird dadurch <b>nicht gelöscht</b>: Er bleibt vollständig geschuldet, nun ohne jede Sicherheit dahinter. Eine liquidierte Sicherheit kann nicht zurückerstattet werden, selbst wenn sich der Kurs anschließend erholt.",
-      "p3": "Die vertraglichen Details dieses Mechanismus finden Sie in unseren <link>Allgemeinen Geschäftsbedingungen, Abschnitt 7</link>."
+      "p1": "Der obige Mechanismus profitiert von einem Kursanstieg. Ein Rückgang wird separat behandelt, durch einen eigenen Mechanismus: Der Wert Ihrer Sicherheit wird täglich mit ihrem <b>Einstiegswert</b> verglichen (dem zum Zeitpunkt der Hinterlegung festgestellten Wert), nicht mit dem letzten Kurs, der eine Rückzahlung ausgelöst hat.",
+      "p2": "Bei einer Wertminderung von mindestens <b>30%</b> gegenüber diesem Einstiegswert erscheint eine Warnung auf Ihrem Konto, ohne weitere Wirkung. Bei <b>50%</b> Wertminderung wird Ihre Sicherheit automatisch zu ihrem Einstiegswert aus dem Konto entfernt (liquidiert). Der bereits von Ihnen genutzte Kredit wird dadurch <b>nicht gelöscht</b>: Er bleibt vollständig fällig, nun ohne jede dahinterstehende Sicherheit. Eine liquidierte Sicherheit kann nicht zurückerstattet werden, selbst wenn sich der Kurs später erholt.",
+      "p3": "Die vertraglichen Details dieses Mechanismus finden sich in unseren <link>Allgemeinen Geschäftsbedingungen, Abschnitt 7</link>."
     },
-    "liquidationExampleTitle": "Durchgerechnetes Beispiel",
+    "liquidationExampleTitle": "Zahlenbeispiel",
     "liquidationExample": {
-      "intro": "Nehmen wir dieselbe Golddeponierung von 2000 $ zu 2400 $ pro Unze (7000 $ gewährter Kredit), aber diesmal fällt der Goldpreis, anstatt zu steigen:",
-      "item1": "bei 1680 $ pro Unze (-30%): Eine Warnung erscheint auf dem Konto, ohne weitere Auswirkung;",
-      "item2": "bei 1200 $ pro Unze (-50%): Die Sicherheit wird liquidiert. Die 2000 $ Sicherheit und die 7000 $ gewährter Kredit werden vom Konto entfernt. Hatten Sie bereits <b>1500 $</b> dieses Kredits genutzt (Karte, interne Ausgaben), bleiben diese 1500 $ geschuldet, ohne dass noch eine Sicherheit dahintersteht."
+      "intro": "Nehmen wir wieder die Einzahlung von <b>2.000 $</b> Gold zu 2.400 $ pro Unze (7.000 $ gewährter Kredit), aber diesmal fällt der Goldkurs, statt zu steigen:",
+      "item1": "bei 1.680 $ pro Unze (-30%): Auf dem Konto erscheint eine Warnung, ohne weitere Wirkung;",
+      "item2": "bei 1.200 $ pro Unze (-50%): Die Sicherheit wird liquidiert. Die 2.000 $ Sicherheit und die 7.000 $ gewährter Kredit werden aus dem Konto entfernt. Hatten Sie bereits <b>1.500 $</b> dieses Kredits genutzt (Karte, interne Ausgaben), bleiben diese 1.500 $ fällig, ohne dass noch eine Sicherheit dahintersteht."
     },
-    "faqTitle": "Häufig gestellte Fragen",
+    "faqTitle": "Häufige Fragen",
     "faq": {
       "guaranteed": {
         "question": "Ist die Rendite garantiert?",
-        "answer": "Nein. Sie hängt vollständig von der tatsächlichen Kursentwicklung Ihrer Sicherheit ab. Steigt der Kurs nie über Ihren Einstiegspreis, erfolgt keine automatische Tilgung: In diesem Fall tilgen Sie den gesamten Betrag durch Eigenleistung, genau wie bei einem Stablecoin."
+        "answer": "Nein. Sie hängt vollständig von der tatsächlichen Kursentwicklung Ihrer Sicherheit ab. Steigt der Kurs nie über Ihren Einstiegspreis, findet keine automatische Rückzahlung statt: Sie zahlen dann den gesamten Betrag durch Eigenbeitrag zurück, genau wie bei einem Stablecoin."
       },
       "stablecoins": {
-        "question": "Warum erwirtschaften Stablecoins (USDT, USDC, DAI…) keine Rendite?",
-        "answer": "Ein Stablecoin bleibt konstruktionsbedingt 1:1 an den Dollar gekoppelt: Er hat per Definition keine Wertsteigerung zu realisieren. Ihn zu tilgen bleibt dennoch ebenso einfach, durch Eigenleistung."
+        "question": "Warum erzielen Stablecoins (USDT, USDC, DAI…) keine?",
+        "answer": "Ein Stablecoin bleibt konstruktionsbedingt 1:1 an den Dollar gekoppelt: Er hat per Definition keine Wertsteigerung zu realisieren. Ihn zurückzuzahlen bleibt jedoch genauso einfach, durch Eigenbeitrag."
       },
       "frequency": {
-        "question": "Wie oft wird die automatische Tilgung berechnet?",
-        "answer": "Täglich, auf Grundlage des aktuellen Spotkurses Ihres Vermögenswerts, ohne Ihr Zutun, und sichtbar in Ihrer Transaktionshistorie unter der Bezeichnung „Tilgung durch Rendite der Sicherheit“."
+        "question": "Wie oft wird die automatische Rückzahlung berechnet?",
+        "answer": "Täglich, auf Basis des live gehandelten Spotkurses Ihres Vermögenswerts, ohne Zutun Ihrerseits, und sichtbar in Ihrem Transaktionsverlauf unter der Bezeichnung „Rückzahlung durch Rendite der Sicherheit“."
       },
       "ratchet": {
-        "question": "Schützt mich die „Sperrklinke“ bei fallendem Kurs?",
-        "answer": "Sie schützt nur die bereits angerechneten Tilgungen: Diese bleiben erhalten, was auch immer danach geschieht. Sie schützt nicht vor Liquidation, die relativ zum Eintrittswert Ihrer Sicherheit ausgelöst wird, nicht relativ zur Sperrklinke (siehe „Das umgekehrte Risiko“ oben)."
+        "question": "Schützt mich die „Sperrklinke“, wenn der Kurs fällt?",
+        "answer": "Sie schützt nur die bereits angewendeten Rückzahlungen: Diese bleiben erhalten, egal was danach passiert. Sie schützt nicht vor Liquidation, die sich am Einstiegswert Ihrer Sicherheit orientiert, nicht an der Sperrklinke (siehe „Das umgekehrte Risiko“ oben)."
       },
       "multipleAssets": {
-        "question": "Wenn ich mehrere verschiedene Vermögenswerte hinterlege, wie funktioniert das?",
-        "answer": "Jeder Kreditantrag bindet sich an einen einzigen Sicherheits-Vermögenswert, der bei der Erzeugung der Einzahlungsadresse festgelegt wird. Um einen zweiten Vermögenswert zu hinterlegen, stellen Sie einen neuen Antrag: Jede Position folgt dann ihrer eigenen Wertsteigerung, ihrer eigenen 60%-Obergrenze und ihrem eigenen Liquidationsrisiko, unabhängig von den anderen."
+        "question": "Wenn ich mehrere verschiedene Vermögenswerte hinterlege, wie läuft das ab?",
+        "answer": "Jeder Kreditantrag bindet sich an einen einzigen Sicherheitswert, der bei der Generierung der Einzahlungsadresse festgelegt wird. Um einen zweiten Vermögenswert zu hinterlegen, stellen Sie einen neuen Antrag: Jede Position folgt dann ihrer eigenen Wertsteigerung, ihrer eigenen 60%-Obergrenze und ihrem eigenen Liquidationsrisiko, unabhängig von den anderen."
       },
       "history": {
-        "question": "Kann ich die Historie meiner automatischen Tilgungen einsehen?",
-        "answer": "Ja, in der Transaktionshistorie Ihres Kontos, unter der Bezeichnung „Tilgung durch Rendite der Sicherheit“ (eine von einer manuellen Tilgung unterschiedene Bewegung, um separat prüfbar zu bleiben)."
+        "question": "Kann ich die Historie meiner automatischen Rückzahlungen einsehen?",
+        "answer": "Ja, im Transaktionsverlauf Ihres Kontos, unter der Bezeichnung „Rückzahlung durch Rendite der Sicherheit“ (eine von einer manuellen Rückzahlung getrennte Bewegung, um separat prüfbar zu bleiben)."
       }
     }
   },
   "RwaStrategy": {
     "meta": {
       "title": "RWA-Anlagestrategie · Hentsch Credit",
-      "description": "Die Treasury-Strategie von Hentsch Credit für tokenisierte Industriemetalle: Cash-and-Carry-Arbitrage, dreiseitige Kreditvergabe und Liquiditätsbereitstellung."
+      "description": "Die Treasury-Strategie von Hentsch Credit für tokenisierte Industriemetalle: Cash-and-Carry-Arbitrage, Dreiecksverleih und Liquiditätsbereitstellung."
     },
     "eyebrow": "Transparenz · Treasury-Strategie",
     "title": "Unsere Anlagestrategie für Industriemetalle",
-    "intro": "Über Edelmetalle hinaus akzeptiert die Bank nun auch tokenisierte Industriemetalle und Rohstoffe als Sicherheit und setzt für diese Vermögenswerte ihre eigene Treasury-Strategie ein. Hier erfahren Sie in voller Transparenz, wie sie funktioniert und welcher Aktionsplan verfolgt wird.",
+    "intro": "Über Edelmetalle hinaus akzeptiert die Bank nun tokenisierte Industriemetalle und Rohstoffe als Sicherheit und setzt auf diese Vermögenswerte ihre eigene Treasury-Strategie um. Hier, mit voller Transparenz, wie sie funktioniert und der verfolgte Aktionsplan.",
     "apyTargetLabel": "APY, indikatives Ziel der Bank",
-    "apyTargetNote": "Ziel der eigenen Treasury-Strategie der Bank für diese Vermögenswerte, keine Garantie, und ohne jede Auswirkung auf die Berechnung Ihres Kredits. Die automatische Tilgung Ihres Kredits bleibt die oben beschriebene: die reale Wertsteigerung Ihrer Sicherheit, begrenzt auf 60%.",
-    "apyObjective": "APY-Ziel",
+    "apyTargetValue": "8 bis 14%",
+    "apyTargetNote": "Ziel der eigenen Treasury-Strategie der Bank für diese Vermögenswerte, keine Garantie, und ohne jede Auswirkung auf die Berechnung Ihres Kredits. Die automatische Rückzahlung Ihres Kredits bleibt die oben beschriebene: die reale Wertsteigerung Ihrer Sicherheit, gedeckelt auf 60%.",
+    "apyObjective": "Ziel-APY",
     "pillars": {
       "cashCarry": {
-        "title": "Cash-and-Carry-Arbitrage",
+        "title": "Cash-&-Carry-Arbitrage",
         "range": "4 bis 7%",
-        "description": "Kauf des tokenisierten Metalls am Spotmarkt, gleichzeitiger Verkauf eines gleichwertigen Terminkontrakts: Die Position ist preisrisikoneutral und erfasst die Finanzierungsspanne (Contango)."
+        "description": "Kauf des tokenisierten Metalls am Spotmarkt, gleichzeitiger Verkauf eines gleichwertigen Terminkontrakts: Die Position ist preisrisikoneutral und vereinnahmt die Finanzierungsspanne (Contango)."
       },
       "triangular": {
-        "title": "Besicherung & dreiseitige Kreditvergabe",
+        "title": "Besicherung & Dreiecksverleih",
         "range": "6,5 bis 10%",
-        "description": "Das tokenisierte Metall wird als Sicherheit (vorsichtiger LTV, maximal 50%) bei einem institutionellen Protokoll hinterlegt, um Stablecoins zu leihen, die in risikoarme Treasury-Fonds reinvestiert werden."
+        "description": "Das tokenisierte Metall wird bei einem institutionellen Protokoll als Sicherheit hinterlegt (vorsichtiges LTV, maximal 50%), um Stablecoins zu leihen, die in risikoarme Treasury-Fonds reinvestiert werden."
       },
       "liquidity": {
         "title": "Ausgewählte Liquiditätsbereitstellung",
         "range": "9 bis 15%",
-        "description": "Ein Minderheitsanteil des Kapitals fließt in gezielte Liquiditätspools, vergütet durch einen Teil der Transaktionsgebühren der Marktteilnehmer."
+        "description": "Ein Minderheitsanteil des Kapitals speist gezielte Liquiditätspools, vergütet durch einen Anteil der Transaktionsgebühren der Marktteilnehmer."
       }
     },
     "caseStudy": {
       "title": "Wie diese Zahlen zustande kommen",
-      "intro": "Ein illustratives Beispiel für einen Treasury-Einsatz von 10 Mio. $ in Platin, im Massstab der Bank, nicht im Massstab Ihrer individuellen Sicherheit.",
+      "intro": "Veranschaulichendes Beispiel eines Treasury-Einsatzes von 10 Mio. $ in Platin, auf Ebene der Bank, nicht Ihrer individuellen Sicherheit.",
       "flow": "Fluss",
       "basis": "Berechnungsgrundlage",
       "annualAmount": "Jahresbetrag",
       "impact": "Auswirkung",
-      "netTotal": "Netto-Gesamtrendite",
+      "netTotal": "Gesamte Nettorendite",
       "capital": "Kapital von 10 Mio. $",
-      "reallocationNote": "Durch Umschichtung eines Teils der Treasury in Richtung Liquiditätsbereitstellung (Pfeiler C) kann diese Nettorendite auf ein Ziel von 10,2% steigen, am oberen Ende der oben gezeigten indikativen Spanne von 8 bis 14%, ohne zusätzliche Hebelwirkung oder Ergebnisgarantie.",
+      "reallocationNote": "Durch Umschichtung eines Teils der Treasury in die Liquiditätsbereitstellung (Säule C) kann diese Nettorendite auf das Ziel von 10,2% steigen, am oberen Ende der oben gezeigten indikativen Spanne von 8 bis 14%, ohne zusätzlichen Hebel oder Ergebnisgarantie.",
       "rows": {
-        "native": { "label": "Native Rendite von Platin (physische Wertsteigerung)", "basis": "1,5% auf 10 Mio. $" },
-        "basis": { "label": "Basis-Trade / Contango bei Futures", "basis": "3,5% auf 10 Mio. $" },
-        "stablecoinYield": { "label": "Rendite der geliehenen, investierten Stablecoins (BUIDL)", "basis": "5,0% auf 5 Mio. $" },
-        "borrowCost": { "label": "Kosten der Stablecoin-Kreditaufnahme", "basis": "-3,2% auf 5 Mio. $" },
-        "operational": { "label": "Betriebskosten, Verwahrung & Versicherung", "basis": "0,4% auf 10 Mio. $" }
+        "native": {
+          "label": "Native Rendite von Platin (physische Wertsteigerung)",
+          "basis": "1,5% auf 10 Mio. $"
+        },
+        "basis": {
+          "label": "Basis-Trade / Contango auf Futures",
+          "basis": "3,5% auf 10 Mio. $"
+        },
+        "stablecoinYield": {
+          "label": "Rendite der angelegten geliehenen Stablecoins (BUIDL)",
+          "basis": "5,0% auf 5 Mio. $"
+        },
+        "borrowCost": {
+          "label": "Kosten der Stablecoin-Leihe",
+          "basis": "-3,2% auf 5 Mio. $"
+        },
+        "operational": {
+          "label": "Betriebskosten, Verwahrung & Versicherung",
+          "basis": "0,4% auf 10 Mio. $"
+        }
       }
     },
     "roadmapTitle": "12-Monats-Fahrplan",
     "roadmap": {
-      "phase1": { "window": "Monate 1 bis 3", "title": "Strukturierung & Compliance", "detail": "Rechtsrahmen, Auswahl zugelassener Depotstellen, Emittenten-Audits." },
-      "phase2": { "window": "Monate 4 bis 6", "title": "Pilotprojekt", "detail": "Pilotzuweisung von 5 Mio. $ auf Platin, erste Arbitrage-Kreisläufe." },
-      "phase3": { "window": "Monate 7 bis 9", "title": "Hochskalierung", "detail": "Kapital auf 25 Mio. $ erweitert, Ausweitung auf Palladium und Kupfer." },
-      "phase4": { "window": "Monate 10 bis 12", "title": "Industrialisierung", "detail": "Echtzeit-Reporting und durchgängige buchhalterische Integration." }
+      "phase1": {
+        "window": "Monate 1 bis 3",
+        "title": "Strukturierung & Compliance",
+        "detail": "Rechtsrahmen, Auswahl zugelassener Verwahrstellen, Emittenten-Audit."
+      },
+      "phase2": {
+        "window": "Monate 4 bis 6",
+        "title": "Pilotprojekt",
+        "detail": "Pilot-Kapital von 5 Mio. $ in Platin, erste Arbitrage-Kreisläufe."
+      },
+      "phase3": {
+        "window": "Monate 7 bis 9",
+        "title": "Skalierung",
+        "detail": "Kapital erweitert auf 25 Mio. $, Ausweitung auf Palladium und Kupfer."
+      },
+      "phase4": {
+        "window": "Monate 10 bis 12",
+        "title": "Industrialisierung",
+        "detail": "Echtzeit-Reporting und durchgängige buchhalterische Integration."
+      }
     },
     "risksTitle": "Identifizierte Risiken & Schutzmaßnahmen",
     "risks": {
-      "counterparty": { "risk": "Gegenpartei & Audit", "mitigation": "Zweimonatliche Reserveaudits (Proof of Reserve) durch unabhängige Prüfungsgesellschaften." },
-      "smartContract": { "risk": "Smart Contract", "mitigation": "Ausschließlich mehrfach geprüfte Protokolle, abgedeckt durch eine institutionelle Versicherung." },
-      "liquidity": { "risk": "Liquidität", "mitigation": "Direkte Rückkaufvereinbarung mit den physischen Emittenten, maximale Kündigungsfrist von 48 Stunden." },
-      "liquidation": { "risk": "Liquidation des Collaterals", "mitigation": "Strenge Übersicherungsquote (LTV ≤ 50%) mit automatisiertem Rebalancing." }
+      "counterparty": {
+        "risk": "Gegenpartei & Audit",
+        "mitigation": "Zweimonatliche Proof-of-Reserve-Audits durch unabhängige Prüfgesellschaften."
+      },
+      "smartContract": {
+        "risk": "Smart Contract",
+        "mitigation": "Ausschließlich mehrfach geprüfte Protokolle, abgedeckt durch eine institutionelle Versicherung."
+      },
+      "liquidity": {
+        "risk": "Liquidität",
+        "mitigation": "Direkte Rückkaufvereinbarung mit den physischen Emittenten, maximale Frist von 48 Stunden."
+      },
+      "liquidation": {
+        "risk": "Liquidation der Sicherheit",
+        "mitigation": "Strenge Übersicherungsquote (LTV ≤ 50%) mit automatisiertem Rebalancing."
+      }
     },
     "governanceTitle": "Governance & Trennung der Mittel",
     "governance": {
       "capital": {
         "title": "Eingesetztes Kapital",
-        "body": "Diese Strategie wird mit der eigenen Treasury der Bank betrieben, niemals mit von Kunden als Sicherheit hinterlegten Vermögenswerten. Die Sicherheit eines Kunden dient ausschließlich der Besicherung seines eigenen Kredits (siehe Rendite); sie wird weder verliehen noch in die oben beschriebene Arbitrage oder das Market Making eingebracht."
+        "body": "Diese Strategie wird auf der eigenen Treasury der Bank gefahren, niemals auf den von Kunden als Sicherheit hinterlegten Vermögenswerten. Die Sicherheit eines Kunden dient ausschließlich zur Besicherung seines eigenen Kredits (siehe Rendite); sie wird weder verliehen noch in die oben beschriebene Arbitrage oder das Market Making eingebracht."
       },
       "supervision": {
         "title": "Aufsicht",
-        "body": "Geleitet von der Abteilung Finanzmärkte, berichtet bei jedem Phasenwechsel an den Anlageausschuss und die Geschäftsleitung (siehe Fahrplan oben), mit täglicher interner Überwachung der erzielten Wertentwicklung im Vergleich zum angezeigten indikativen Ziel."
+        "body": "Geleitet von der Direktion für Finanzmärkte, berichtet an den Anlageausschuss und die Geschäftsleitung bei jedem Phasenwechsel (siehe obiger Fahrplan), mit täglicher interner Überwachung der tatsächlichen Wertentwicklung gegenüber dem angezeigten indikativen Ziel."
       }
     },
-    "faqTitle": "Häufig gestellte Fragen",
+    "faqTitle": "Häufige Fragen",
     "faq": {
       "usedForStrategy": {
         "question": "Wird meine Sicherheit für diese Strategie verwendet?",
-        "answer": "Nein. Ihre Sicherheit bleibt ausschließlich Ihrem eigenen Kredit zugeordnet. Diese Strategie betrifft die eigene Treasury der Bank, ein davon getrenntes Kapital."
+        "answer": "Nein. Ihre Sicherheit bleibt ausschließlich Ihrem eigenen Kredit zugeordnet. Diese Strategie beruht auf der eigenen Treasury der Bank, einem separaten Kapital."
       },
       "loss": {
         "question": "Was passiert, wenn die Strategie Geld verliert?",
         "answer": "Der Verlust wird von der Treasury der Bank getragen, ohne jede Auswirkung auf Kundenkonten oder bereits gewährten Kredit: Dieses Risiko wird niemals auf den Kunden übertragen."
       },
       "targetReached": {
-        "question": "Wurde das Ziel von 8 bis 14% bereits erreicht?",
-        "answer": "Es handelt sich um ein mittelfristiges Ziel, kein monatlich garantiertes Ergebnis: Siehe die obige Fallstudie für ein detailliertes Beispiel der Berechnung der Nettorendite."
+        "question": "Wird das Ziel von 8 bis 14% bereits erreicht?",
+        "answer": "Es handelt sich um ein mittelfristiges Ziel, kein Monat für Monat garantiertes Ergebnis: siehe die obige Fallstudie für ein detailliertes Beispiel der Nettorenditeberechnung."
       },
       "whyIndustrialOnly": {
         "question": "Warum haben nur Industriemetalle dieses Ziel?",
-        "answer": "Gold, Silber und ETH profitieren bereits von der auf der Seite Rendite beschriebenen echten automatischen Tilgung. Dieses indikative Ziel ist der Treasury-Strategie für industrielle Vermögenswerte eigen, ein eigenständiger und zusätzlicher Mechanismus."
+        "answer": "Gold, Silber und ETH profitieren bereits von der auf der Seite Rendite beschriebenen realen automatischen Rückzahlung. Dieses indikative Ziel ist der Treasury-Strategie auf Industrievermögenswerte eigen, ein separater und zusätzlicher Mechanismus."
       }
     }
   },
   "Pricing": {
     "meta": {
-      "title": "Konditionen · Hentsch Credit",
-      "description": "Die von Hentsch Credit tatsächlich angewandten Zinssätze und Gebühren: Kreditquote, Zinsen, Bearbeitungsgebühr und Liquidationsschwellen, ohne Überraschungen."
+      "title": "Preise · Hentsch Credit",
+      "description": "Die tatsächlich von Hentsch Credit angewandten Zinssätze und Gebühren: Kreditquote, Zinsen, Bearbeitungsgebühr und Liquidationsschwellen, ohne Überraschungen."
     },
-    "eyebrow": "Transparente Konditionen",
-    "title": "Unsere Konditionen, ohne Überraschungen",
-    "description": "Die von der Plattform tatsächlich angewandten Zinssätze und Gebühren, festgelegt zum Zeitpunkt der Sperrung Ihrer Sicherheit.",
+    "eyebrow": "Preistransparenz",
+    "title": "Unsere Preise, ohne Überraschungen",
+    "description": "Die von der Plattform tatsächlich angewandten Zinssätze und Gebühren, festgelegt zum Zeitpunkt der Hinterlegung Ihrer Sicherheit.",
     "items": {
       "ratio": {
         "label": "Kreditquote",
-        "detail": "Des hinterlegten Betrags, zu dem zum Zeitpunkt der Sperrung geltenden Satz."
+        "detail": "Vom hinterlegten Betrag, zum zum Zeitpunkt der Hinterlegung geltenden Satz."
       },
       "interestRate": {
-        "label": "Jahreszinssatz",
-        "detail": "Referenzsatz (SOFR/EURIBOR) zuzüglich einer Risikoprämie von 8,5 Punkten, auf den genutzten Kredit."
+        "label": "Jährlicher Zinssatz",
+        "detail": "Referenzzinssatz (SOFR/EURIBOR) + Risikoprämie von 8,5 Punkten, auf den genutzten Kredit."
       },
       "originationFees": {
         "label": "Bearbeitungsgebühr",
-        "detail": "Einmalig erhoben, auf den gewährten Kredit, zum Zeitpunkt der Sperrung der Sicherheit."
+        "detail": "Einmalig erhoben, auf den ausgegebenen Kredit, zum Zeitpunkt der Hinterlegung der Sicherheit."
       },
       "custodyFees": {
-        "label": "Verwahrgebühr für die Sicherheit",
-        "detail": "Auf den Betrag der gesperrten Sicherheit, solange die Position aktiv bleibt."
+        "label": "Verwahrungsgebühr für die Sicherheit",
+        "value": "0,5% / Jahr",
+        "detail": "Auf den Betrag der hinterlegten Sicherheit, solange die Position aktiv bleibt."
       },
       "positionDuration": {
         "label": "Laufzeit der Position",
-        "detail": "Verlängerbar; die Sicherheit bleibt gesperrt, bis der genutzte Kredit getilgt ist."
+        "value": "12 Monate",
+        "detail": "Verlängerbar; die Sicherheit bleibt gesperrt, solange der genutzte Kredit nicht zurückgezahlt ist."
       },
       "automaticRepayment": {
-        "label": "Automatische Tilgung",
+        "label": "Automatische Rückzahlung",
         "value": "bis zu 60%",
-        "detail": "Durch die reale Wertsteigerung der Sicherheit (Gold, Silber, ETH, Industriemetalle). Die verbleibenden 40% werden durch Eigenleistung getilgt."
+        "detail": "Durch die reale Wertsteigerung der Sicherheit (Gold, Silber, ETH, Industriemetalle). Die verbleibenden 40% werden durch Eigenbeitrag zurückgezahlt."
       },
       "liquidationThresholds": {
         "label": "Liquidationsschwellen der Sicherheit",
-        "detail": "Wertverlust ab dem Eintrittswert: 30% löst eine Warnung aus, 50% liquidiert die Sicherheit (bereits genutzter Kredit bleibt geschuldet). Details auf der Seite Rendite."
+        "detail": "Wertminderung seit dem Einstiegswert: 30% löst eine Warnung aus, 50% liquidiert die Sicherheit (der bereits genutzte Kredit bleibt fällig). Details auf der Seite Rendite."
       }
     },
-    "nonRetroactivityNote": "Jede spätere Änderung eines dieser Sätze gilt nur für neue Sperrungen: Eine bereits offene Position behält die ihr zum Zeitpunkt ihrer Entstehung angewandte Zinsstruktur bis zu ihrer Tilgung oder Fälligkeit bei.",
-    "contractualDetail": "Die vollständigen vertraglichen Details dieser Konditionen finden Sie in unseren <link>Allgemeinen Geschäftsbedingungen</link>.",
-    "exampleTitle": "Beispiel für die Gesamtkosten über 12 Monate",
-    "exampleIntro": "Für eine Einzahlung von 2000 $ (7000 $ gewährter Kredit), vollständig für 12 Monate genutzt und dann getilgt, im vorsichtigsten Szenario (ohne jede Reduzierung durch Rendite).",
+    "nonRetroactivityNote": "Eine spätere Änderung eines dieser Sätze gilt nur für neue Hinterlegungen: Eine bereits eröffnete Position behält die zum Zeitpunkt ihrer Erstellung angewandte Zinsstruktur bei, bis zu ihrer Rückzahlung oder Fälligkeit.",
+    "contractualDetail": "Die vollständigen vertraglichen Details dieser Preise finden sich in unseren <link>Allgemeinen Geschäftsbedingungen</link>.",
+    "exampleTitle": "Beispiel für Gesamtkosten über 12 Monate",
+    "exampleIntro": "Für eine Einzahlung von 2.000 $ (7.000 $ gewährter Kredit), vollständig 12 Monate lang genutzt und dann zurückgezahlt, das vorsichtigste Szenario (ohne jede Reduzierung durch Rendite).",
     "exampleTable": {
       "item": "Posten",
       "calculation": "Berechnung",
       "amount": "Betrag",
       "origination": "Bearbeitungsgebühr",
-      "originationCalc": "2,0% × 7000 $, einmalig erhoben",
+      "originationCalc": "2,0% × 7.000 $, einmalig erhoben",
       "interest": "Zinsen über 12 Monate",
-      "interestCalc": "13,5% × 7000 $ das ganze Jahr genutzt",
-      "totalBeforeYield": "Gesamtbetrag vor Rendite",
-      "totalBeforeYieldNote": "Ohne eine etwaige Reduzierung durch Wertsteigerung der Sicherheit"
+      "interestCalc": "13,5% × 7.000 $, das ganze Jahr genutzt",
+      "totalBeforeYield": "Gesamt vor Rendite",
+      "totalBeforeYieldNote": "Ohne mögliche Reduzierung durch Wertsteigerung der Sicherheit"
     },
-    "exampleFooter": "Die Verwahrgebühren für die Sicherheit (0,5%/Jahr) werden zum Zeitpunkt der Sperrung angezeigt und festgelegt, ihre periodische automatische Erhebung ist jedoch derzeit noch nicht in Betrieb; sie sind daher nicht in diesem Gesamtbetrag enthalten. Erwirtschaftet Ihre Sicherheit eine Rendite (Gold, Silber, ETH, Industriemetalle), kann ein Teil dieser 1085 $ automatisch gedeckt werden, innerhalb der Grenze von 60% des genutzten Kredits (siehe <link>Rendite</link>).",
-    "faqTitle": "Häufig gestellte Fragen",
+    "exampleFooter": "Die Verwahrungsgebühren für die Sicherheit (0,5%/Jahr) werden angezeigt und bei der Hinterlegung festgelegt, ihre automatische periodische Erhebung ist jedoch in diesem Stadium noch nicht in Betrieb; sie sind daher nicht in diesem Gesamtbetrag enthalten. Erzielt Ihre Sicherheit eine Rendite (Gold, Silber, ETH, Industriemetalle), kann ein Teil dieser 1.085 $ automatisch gedeckt werden, innerhalb der Grenze von 60% des genutzten Kredits (siehe <link>Rendite</link>).",
+    "faqTitle": "Häufige Fragen",
     "faq": {
       "earlyRepayment": {
-        "question": "Gibt es Gebühren für vorzeitige Tilgung?",
-        "answer": "Nein. Sie können den genutzten Kredit jederzeit ganz oder teilweise ohne Vertragsstrafe tilgen. Zinsen fallen nur auf die tatsächlich genutzte Dauer und den genutzten Betrag an."
+        "question": "Gibt es Gebühren für vorzeitige Rückzahlung?",
+        "answer": "Nein. Sie können den genutzten Kredit jederzeit ganz oder teilweise zurückzahlen, ohne Strafgebühr. Zinsen laufen nur für die tatsächlich genutzte Dauer und den genutzten Betrag."
       },
       "negotiable": {
-        "question": "Sind diese Konditionen verhandelbar?",
-        "answer": "Nein, sie gelten einheitlich für alle Kunden zu dem zum Zeitpunkt der Sperrung geltenden Satz. Eine künftige Satzänderung gilt nur für neue Sperrungen."
+        "question": "Sind diese Preise verhandelbar?",
+        "answer": "Nein, sie gelten einheitlich für alle Kunden zum zum Zeitpunkt der Hinterlegung geltenden Satz. Eine künftige Satzänderung gilt nur für neue Hinterlegungen."
       },
       "currencyDifference": {
         "question": "Warum unterscheidet sich der Satz zwischen USD und EUR?",
-        "answer": "Jede Währung wendet ihren eigenen monetären Referenzsatz an (SOFR für USD, EURIBOR für EUR), bevor dieselbe Risikoprämie von 8,5 Punkten hinzugefügt wird, daher die Differenz von 1,5 Punkten zwischen beiden."
+        "answer": "Jede Währung wendet ihren eigenen monetären Referenzsatz an (SOFR für USD, EURIBOR für EUR), bevor dieselbe Risikoprämie von 8,5 Punkten hinzugefügt wird, daher der Unterschied von 1,5 Punkten zwischen beiden."
       }
     }
+  },
+  "DashboardShell": {
+    "sidebar": {
+      "subtitle": "Dashboard",
+      "clientNavAriaLabel": "Kontonavigation",
+      "backofficeNavAriaLabel": "Back-Office-Navigation",
+      "mobileNavAriaLabel": "Navigation zwischen den Dashboard-Bereichen",
+      "client": {
+        "home": "Start",
+        "balance": "Saldo",
+        "market": "Markt",
+        "credit": "Kredit",
+        "cards": "Karten",
+        "history": "Verlauf",
+        "profile": "Profil",
+        "support": "Support"
+      },
+      "backoffice": {
+        "label": "Back-office",
+        "creditRequests": "Demandes de crédit",
+        "accountRequests": "Demandes de compte",
+        "adminArea": "Espace Admin"
+      }
+    },
+    "legalFooter": {
+      "ariaLabel": "Rechtliche Links",
+      "legalNotice": "Impressum",
+      "terms": "AGB",
+      "privacy": "Datenschutz",
+      "regulation": "Regulierung"
+    }
+  },
+  "Dashboard": {
+    "home": {
+      "loadError": "Dashboard konnte nicht geladen werden"
+    },
+    "balanceCards": {
+      "depositBalance": {
+        "title": "Einlagenguthaben",
+        "description": "Im Wallet verfügbarer Betrag, derzeit keine aktive Kreditlinie."
+      },
+      "purchasingPower": {
+        "title": "Kaufkraft",
+        "descriptionNoCredit": "Entspricht dem Einlagenguthaben, solange kein Kredit gewährt wurde."
+      },
+      "availableCredit": {
+        "title": "Verfügbarer Kredit",
+        "description": "Keine aktive Linie, stellen Sie einen Antrag unter Kredit."
+      },
+      "globalBalance": {
+        "title": "Gesamtguthaben",
+        "description": "Verfügbar + hinterlegte Sicherheit + gewährter Kredit − genutzter Kredit"
+      },
+      "lockedCollateral": {
+        "title": "Hinterlegte Sicherheit",
+        "description": "Erst nach vollständiger Rückzahlung abhebbar"
+      },
+      "creditLine": {
+        "title": "Kreditlinie",
+        "description": "{available} verbleibend · {used} genutzt"
+      }
+    },
+    "walletActions": {
+      "genericError": "Ein Fehler ist aufgetreten.",
+      "buyByCard": {
+        "trigger": "Per Karte kaufen",
+        "dialogTitle": "Per Bankkarte aufladen",
+        "dialogDescription": "Sichere Zahlung über Mollie. Das verfügbare Guthaben wird sofort nach Zahlungsbestätigung gutgeschrieben.",
+        "amountLabel": "Betrag (USD)",
+        "submit": "Weiter zur Zahlung"
+      },
+      "deposit": {
+        "trigger": "Einzahlen",
+        "dialogTitle": "Geld einzahlen",
+        "descriptionSelect": "Wählen Sie den Vermögenswert und das Netzwerk und sehen Sie sich die entsprechende Einzahlungsadresse an.",
+        "descriptionPool": "Einzahlungsadresse der Bank für diesen Vermögenswert: Melden Sie Ihre Einzahlung, sobald die Überweisung erfolgt ist.",
+        "descriptionLegacy": "Individuelle, für Ihr Konto generierte Einzahlungsadresse, automatisch gutgeschrieben nach On-Chain-Bestätigung.",
+        "assetLabel": "Vermögenswert",
+        "networkLabel": "Netzwerk",
+        "continue": "Weiter",
+        "addressLabel": "Einzahlungsadresse ({currency} auf {chain})",
+        "poolAddressNote": "Verwaltungsadresse der Bank für diesen Vermögenswert, gemeinsam für alle Kunden. Senden Sie nur {currency} auf {chain}.",
+        "declaredAlert": "Einzahlung gemeldet, sichtbar in Ihrem Verlauf, ausstehend zur Validierung nach Geldeingang.",
+        "sentAmountLabel": "Gesendeter Betrag ({currency})",
+        "sentAmountNote": "Melden Sie die Überweisung nach dem Versand hier unten, damit sie in Ihrem Verlauf erscheint: ein Berater validiert sie bei Eingang.",
+        "declareButton": "Ich habe das Geld gesendet",
+        "legacyAddressLabel": "Ihre Einzahlungsadresse",
+        "legacyNote": "Senden Sie nur {currency} auf {chain} an diese Adresse. Das Guthaben wird nach On-Chain-Bestätigung gutgeschrieben."
+      },
+      "withdraw": {
+        "trigger": "Abheben",
+        "dialogTitle": "Geld abheben",
+        "dialogDescription": "Verfügbares Guthaben: {balance}. Hinterlegte Sicherheiten können erst nach vollständiger Rückzahlung des Kredits abgehoben werden.",
+        "amountLabel": "Betrag",
+        "destinationLabel": "Zieladresse",
+        "submit": "Abhebung bestätigen",
+        "successToast": "Abhebung erfolgreich beantragt."
+      }
+    },
+    "marketView": {
+      "dataProvider": "Daten bereitgestellt von CoinMarketCap",
+      "pricesUnavailable": "Kurse nicht verfügbar.",
+      "title": "Markt in Echtzeit",
+      "description": "Kurse, 24h-Veränderung, Volumen und Marktkapitalisierung der als Sicherheit akzeptierten Vermögenswerte.",
+      "loading": "Wird geladen…",
+      "columns": {
+        "asset": "Vermögenswert",
+        "price": "Kurs",
+        "change24h": "24h-Änd.",
+        "volume24h": "24h-Volumen",
+        "marketCap": "Marktkap.",
+        "trend12m": "12-Monats-Trend"
+      },
+      "acceptedSection": {
+        "title": "Als Sicherheit akzeptiert",
+        "yieldNote": "Rendite = Wertsteigerung der Sicherheit, die automatisch bis zu 60% des Kredits zurückzahlt (Edelmetalle, Industriemetalle, ETH)"
+      },
+      "othersSection": {
+        "title": "Andere Kryptowährungen (nur zur Information)"
+      },
+      "badges": {
+        "acceptedPegged": "Akzeptiert · 1:1",
+        "acceptedSpot": "Akzeptiert · Spot",
+        "yieldTitle": "Ihre Wertsteigerung zahlt automatisch bis zu 60% des ausgegebenen Kredits zurück",
+        "yield": "Rendite",
+        "targetApyTitle": "Indikatives Ziel der Treasury-Strategie der Bank für diesen Vermögenswert, keine Garantie, ohne Auswirkung auf Ihre Kreditberechnung",
+        "targetApy": "Ziel {min}-{max}% APY"
+      }
+    },
+    "cardsSection": {
+      "title": "Virtuelle Karten",
+      "description": "Visa/Mastercard-Ausgabe (Integration Schritt 4)",
+      "noCards": "Für dieses Konto wurde keine Karte ausgestellt.",
+      "limit": "Limit {amount}",
+      "step4Note": "Verfügbar in Schritt 4 (Stripe Issuing / Marqeta Integration)",
+      "issueCard": "Karte ausstellen"
+    },
+    "labels": {
+      "cardStatus": {
+        "PENDING": "Ausstehend",
+        "ACTIVE": "Aktiv",
+        "BLOCKED": "Gesperrt",
+        "CLOSED": "Geschlossen"
+      },
+      "kycStatus": {
+        "PENDING": "KYC ausstehend",
+        "VERIFIED": "KYC verifiziert",
+        "REJECTED": "KYC abgelehnt"
+      },
+      "transactionType": {
+        "DEPOSIT": "Einzahlung",
+        "COLLATERAL_LOCK": "Hinterlegung der Sicherheit",
+        "CREDIT_ISSUED": "Kredit ausgegeben",
+        "CARD_PAYMENT": "Kartenzahlung",
+        "REPAYMENT": "Rückzahlung",
+        "WITHDRAWAL": "Abhebung",
+        "ORIGINATION_FEE": "Bearbeitungsgebühr",
+        "INTEREST_PAYMENT": "Gezahlte Zinsen",
+        "CARD_TOPUP": "Kartenaufladung",
+        "YIELD_REPAYMENT": "Rückzahlung durch Rendite der Sicherheit",
+        "LIQUIDATION": "Liquidation"
+      },
+      "transactionStatus": {
+        "PENDING": "Ausstehend",
+        "COMPLETED": "Abgeschlossen",
+        "FAILED": "Fehlgeschlagen"
+      },
+      "creditRequestStatus": {
+        "PENDING": "Ausstehende Validierung",
+        "APPROVED": "Genehmigt",
+        "REJECTED": "Abgelehnt",
+        "FULFILLED": "Kredit ausgegeben"
+      },
+      "addressLabel": {
+        "DOMICILE": "Wohnsitz",
+        "FISCALE": "Steuerlich",
+        "POSTALE": "Postalisch",
+        "PROFESSIONNELLE": "Geschäftlich"
+      }
+    },
+    "profileSection": {
+      "genericError": "Ein Fehler ist aufgetreten.",
+      "fullName": "Vollständiger Name",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "noAddress": "Bisher keine Adresse angegeben.",
+      "employmentTitle": "Berufliche Situation",
+      "activity": "Tätigkeit",
+      "employer": "Arbeitgeber",
+      "notProvided": "Nicht angegeben",
+      "notProvidedFeminine": "Nicht angegeben",
+      "role": "Funktion",
+      "annualIncome": "Jahreseinkommen",
+      "noEmployment": "Bisher keine berufliche Situation angegeben.",
+      "managedWallet": "Persönliches Wallet",
+      "managedWalletNote": "Interne Referenz der Bank zur Nachverfolgung Ihrer Einzahlungen auf gepoolte Vermögenswerte (USDT, USDC, XAUT, dEURO).",
+      "title": "Profil",
+      "description": "Kontoinformationen",
+      "email": "E-Mail",
+      "kycStatus": "KYC-Status",
+      "memberSince": "Kunde seit",
+      "depositAddresses": "Einzahlungsadressen (Krypto)",
+      "noWallets": "Bisher keine Adresse generiert."
+    },
+    "supportSection": {
+      "title": "Support kontaktieren",
+      "description": "Eine Frage zu Ihrem Konto, Ihrer Sicherheit oder einer Einzahlung?",
+      "liveChat": "Live-Chat (demnächst verfügbar)"
+    },
+    "transactionHistory": {
+      "title": "Transaktionsverlauf",
+      "description": "Vollständiges Protokoll der Kontobewegungen",
+      "noTransactions": "Keine Transaktionen für dieses Konto.",
+      "columns": {
+        "type": "Typ",
+        "amount": "Betrag",
+        "status": "Status",
+        "onChainReference": "On-Chain-Referenz",
+        "date": "Datum"
+      }
+    },
+    "accountMenu": {
+      "admin": "Admin",
+      "logout": "Abmelden"
+    },
+    "creditOverview": {
+      "availableBalance": "Verfügbares Guthaben",
+      "lockedCollateral": "Hinterlegte Sicherheit",
+      "availableCredit": "Verfügbarer Kredit",
+      "totalPurchasingPower": "Gesamtkaufkraft",
+      "currentRates": "Aktuelle Zinssätze",
+      "interestRateLine": "{rate}%/Jahr Zinsen",
+      "feesLine": "{origination}% Bearbeitung · {custody}% Verwahrung",
+      "ratioNote": "Kreditquote: 350% der hinterlegten Sicherheit, zum bei der Hinterlegung geltenden Satz.",
+      "repaymentNote": "Rückzahlung: Bis zu 60% des Kredits können automatisch durch die Rendite der Sicherheit gedeckt werden (Gold, Silber, ETH, Platin, Palladium, Kupfer, synthetisches Öl); die restlichen 40% werden durch Eigenbeitrag zurückgezahlt.",
+      "myRequests": "Meine Anträge",
+      "noRequests": "Bisher keine Anträge."
+    },
+    "creditForm": {
+      "title": "Meine Kreditlinie verwalten",
+      "description": "Der Kredit wird auf Antrag gewährt: Reichen Sie die geplante Sicherheit ein und zahlen Sie die Mittel dann ab <balance>Guthaben</balance> ein, sobald der Antrag genehmigt ist.",
+      "tabRequest": "Kredit beantragen",
+      "tabManage": "Verwalten / zurückzahlen",
+      "loading": "Wird geladen…",
+      "pendingNote": "Ihr Kreditantrag wartet auf Validierung. Nach der Genehmigung gehen Sie zu <balance>Guthaben</balance>, um die Einzahlungsadresse zu generieren und den Kredit freizuschalten.",
+      "approvedNote": "Gehen Sie zu <balance>Guthaben</balance>, um den Vermögenswert und das Netzwerk zu wählen und dann die diesem Antrag gewidmete Einzahlungsadresse zu generieren: Der Kredit wird automatisch ausgegeben, sobald die Mittel eingehen.",
+      "goToBalance": "Zu Guthaben",
+      "genericError": "Ein Fehler ist aufgetreten.",
+      "submitRequest": "Kreditantrag einreichen",
+      "simulationOnlyNote": "Nur Simulation: Ein Antrag läuft bereits (siehe oben).",
+      "usedCredit": "Genutzter Kredit",
+      "needMoreCredit": "Benötigen Sie mehr Kredit?",
+      "newRequestLink": "Einen neuen Antrag stellen",
+      "nothingToRepay": "Derzeit kein Kredit genutzt: nichts zurückzuzahlen.",
+      "repayAmountLabel": "Rückzuzahlender Betrag",
+      "repayButton": "Zurückzahlen",
+      "repayFullNote": "Vollständige Rückzahlung: Die Sicherheit wird auf das verfügbare Guthaben freigegeben.",
+      "repayRemainingNote": "Verbleibender genutzter Kredit nach Rückzahlung: {amount}",
+      "repaymentHistory": "Rückzahlungsverlauf",
+      "yieldRepaymentTag": "Rendite der Sicherheit",
+      "repaySuccessToast": "Rückzahlung erfolgreich durchgeführt.",
+      "repayFullToast": "Vollständige Rückzahlung durchgeführt: Die Sicherheit wurde freigegeben."
+    },
+    "creditSimulator": {
+      "amountLabel": "Geplanter Sicherheitenbetrag (USD)",
+      "currentBalance": "Aktuelles Guthaben {amount}",
+      "amountAriaLabel": "Simulierter Betrag",
+      "segments": {
+        "available": "Verbleibend verfügbar",
+        "locked": "Geplante Sicherheit",
+        "credit": "Gewährter Kredit (gesamt)"
+      },
+      "creditForAmount": "Für diesen Betrag gewährter Kredit",
+      "annualInterestRate": "Jährlicher Zinssatz ({currency})",
+      "perYear": "{rate}%/Jahr",
+      "originationFee": "Bearbeitungsgebühr (bei Ausgabe erhoben)",
+      "custodyFee": "Verwahrungsgebühr für die Sicherheit",
+      "fxRateMissing": "EUR/USD-Kurs derzeit nicht verfügbar, Beträge in USD angezeigt.",
+      "depositShortfall": "Ihnen fehlen {amount} im Vergleich zu Ihrem aktuellen Guthaben, um diesen Betrag zu erreichen; einzuzahlen, sobald der Antrag genehmigt ist.",
+      "usedCredit": "Genutzter Kredit",
+      "simulatedPurchasingPower": "Simulierte Kaufkraft",
+      "currentPurchasingPower": "Aktuelle Kaufkraft",
+      "noAmountSimulatedNote": "Noch kein Betrag simuliert: Dies ist Ihre aktuelle Kaufkraft (verfügbar + Sicherheit + gewährter Kredit − genutzter Kredit). Geben Sie oben einen Betrag ein, auch ohne verfügbares Guthaben, um zu sehen, was Ihnen ein Kreditantrag ermöglichen würde.",
+      "yieldAssetLabel": "Geplanter Sicherheitenwert (Grundlage der Schätzung)",
+      "yieldAssetBlended": "Durchschnitt aller Vermögenswerte"
+    },
+    "repaymentProjection": {
+      "title": "Langfristige Rückzahlungsprojektion",
+      "intro": "Kombinierte Rückzahlung: reale durchschnittliche Rendite der renditebringenden Vermögenswerte (automatisch berechnet) + vorgeschlagener externer Beitrag, um innerhalb der vertraglichen Laufzeit zu bleiben (Letzterer anpassbar). Nicht garantierte Schätzung, rein zur Orientierung.",
+      "estimatedYieldLabel": "Geschätzte jährliche Rendite (%)",
+      "yieldComputedNote": "Automatisch berechnet anhand der tatsächlichen Wertentwicklung der letzten 12 Monate.",
+      "yieldComputing": "Berechnung läuft…",
+      "externalRepaymentLabel": "Monatliche externe Rückzahlung ($)",
+      "externalRepaymentNote": "Vorgeschlagen zur Rückzahlung innerhalb von {months} Monaten, anpassbar (verringern Sie ihn, um eine langsamere, allein durch Rendite getragene Rückzahlung zu erkunden).",
+      "fillInPrompt": "Geben Sie eine geschätzte Rendite oder eine monatliche Rückzahlung ein, um eine Rückzahlungsdauer zu projizieren.",
+      "estimatedDuration": "Geschätzte Dauer",
+      "durationMonths": "{months} Monate",
+      "durationMonthsWithYears": "{months} Monate (≈ {years} Jahre)",
+      "durationOverflow": "> {months} Monate",
+      "estimatedTotalInterest": "Geschätzte Gesamtzinsen",
+      "overContractualTerm": "Diese Projektion übersteigt die übliche vertragliche Laufzeit von {months} Monaten. Erhöhen Sie die geschätzte Rendite oder die monatliche Rückzahlung, um im Zeitplan zu bleiben.",
+      "columns": {
+        "month": "Monat",
+        "payment": "Zahlung",
+        "remainingBalance": "Restsaldo"
+      },
+      "yieldComputedNoteAsset": "Automatisch berechnet anhand der tatsächlichen Wertentwicklung von {asset} in den letzten 12 Monaten."
+    },
+    "installmentSchedule": {
+      "title": "Simulation mit festen Raten",
+      "intro": "Automatisch berechnet anhand der geschätzten realen Rendite: generierte Zinsen, von Ihnen zu tragende Rate und Datum der ersten Rückzahlung. Die Rendite reduziert die Rate, begrenzt auf {cap}% (dieselbe Obergrenze wie die reale automatische Rückzahlung).",
+      "durationLabel": "Laufzeit",
+      "monthsCount": "{months} Monate",
+      "estimatedYieldLabel": "Geschätzte jährliche Rendite (%)",
+      "yieldComputedNote": "Automatisch berechnet anhand der tatsächlichen Wertentwicklung der letzten 12 Monate.",
+      "yieldComputing": "Berechnung läuft…",
+      "grossPayment": "Bruttorate",
+      "estimatedReduction": "Geschätzte Reduzierung",
+      "netPayment": "Geschätzte Nettorate",
+      "firstPayment": "1. Rückzahlung",
+      "totalInterestNote": "Gesamtzinsen über {months} Monate (vor Reduzierung): {amount}. Nicht garantierte Schätzung, rein zur Orientierung: Die reale Rückzahlung bleibt flexibel (siehe Simulation oben).",
+      "creditLineNote": "Diese Simulation geht davon aus, dass Sie den gesamten Kredit sofort bei Ausgabe nutzen (vorsichtiges Szenario, das der obigen Berechnung zugrunde liegt). In der Praxis ist, solange Sie Ihren Kredit (Karte) nicht nutzen, keine Rückzahlung oder Zinsen fällig: Es handelt sich um eine Kreditlinie, kein auf einmal ausgezahltes Darlehen.",
+      "yieldComputedNoteAsset": "Automatisch berechnet anhand der tatsächlichen Wertentwicklung von {asset} in den letzten 12 Monaten."
+    },
+    "assetPicker": {
+      "onlyNetworkAvailable": "Einziges verfügbares Netzwerk für diesen Vermögenswert"
+    },
+    "creditRequestDeposit": {
+      "genericError": "Ein Fehler ist aufgetreten.",
+      "title": "Kreditantrag genehmigt, Einzahlung ausstehend",
+      "description": "{amount} ({currency}) einzuzahlen, damit der Kredit automatisch ausgegeben wird.",
+      "yourDepositAddress": "Ihre Einzahlungsadresse",
+      "addressNote": "Senden Sie nur {currency} auf {chain} an diese Adresse. Zahlen Sie mindestens {amount} ein: Der Kredit wird bei Eingang automatisch ausgegeben.",
+      "assetLabel": "Vermögenswert",
+      "networkLabel": "Netzwerk",
+      "generateButton": "Einzahlungsadresse generieren"
+    },
+    "authLoadError": {
+      "title": "Ihre Sitzung konnte nicht überprüft werden"
+    },
+    "soldePage": {
+      "topupConfirmedTitle": "Kartenaufladung bestätigt",
+      "topupConfirmedDescription": "Das unten angezeigte verfügbare Guthaben spiegelt die Aufladung wider.",
+      "loadError": "Guthaben konnte nicht geladen werden"
+    },
+    "creditPage": {
+      "loadError": "Kreditlinie konnte nicht geladen werden"
+    },
+    "cardsPage": {
+      "loadError": "Karten konnten nicht geladen werden"
+    },
+    "historyPage": {
+      "loadError": "Verlauf konnte nicht geladen werden"
+    },
+    "profilePage": {
+      "loadError": "Profil konnte nicht geladen werden"
+    },
+    "simulatedCheckout": {
+      "genericError": "Ein Fehler ist aufgetreten.",
+      "sandboxNotice": "Simulierte Zahlung (Mollie-Sandbox-Modus)",
+      "title": "Kartenzahlung bestätigen",
+      "description": "Diese Seite ersetzt den gehosteten Mollie-Checkout, solange bankseitig kein API-Schlüssel konfiguriert ist. Hier werden keine echten Kartendaten abgefragt.",
+      "notFoundTitle": "Zahlung nicht gefunden",
+      "amountToDebit": "Zu belastender Betrag",
+      "confirmButton": "Zahlung bestätigen",
+      "cancelButton": "Abbrechen",
+      "alreadyConfirmedTitle": "Zahlung bereits bestätigt",
+      "alreadyConfirmedDescription": "Das Guthaben wurde für diese Zahlung bereits gutgeschrieben.",
+      "failedTitle": "Zahlung fehlgeschlagen",
+      "failedDescription": "Diese Zahlung wurde nicht abgeschlossen und das Guthaben wurde nicht gutgeschrieben."
+    }
+  },
+  "CurrencyLabels": {
+    "USDS": "USDS",
+    "DAI": "DAI",
+    "USDE": "USDe",
+    "PYUSD": "PYUSD",
+    "PAXG": "PAXG (Gold)",
+    "XAUT": "XAUT (Gold)",
+    "USDT": "USDT",
+    "USDC": "USDC",
+    "DEURO": "dEURO",
+    "ETH": "ETH",
+    "SHIB": "SHIB",
+    "KAG": "KAG (Silber)",
+    "XPT": "Tokenisiertes Platin",
+    "XPD": "Tokenisiertes Palladium",
+    "XCU": "Tokenisiertes Kupfer",
+    "WTI": "Synthetisches Öl (WTI)"
   }
 }

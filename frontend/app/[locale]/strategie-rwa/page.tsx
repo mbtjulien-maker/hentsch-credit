@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { SiteNav } from "@/components/marketing/site-nav";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { RwaStrategySection } from "@/components/marketing/rwa-strategy-section";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -13,7 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "RwaStrategy.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/strategie-rwa", title: t("title"), description: t("description") });
 }
 
 // Page dédiée à la stratégie de trésorerie sur les métaux industriels/matières premières

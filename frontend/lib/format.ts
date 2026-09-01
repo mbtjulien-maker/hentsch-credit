@@ -37,8 +37,21 @@ const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
   minute: "2-digit",
 });
 
-export function formatDate(value: string): string {
-  return dateFormatter.format(new Date(value));
+// `locale` optionnel, par défaut fr-FR (comportement historique) : le back-office
+// (demandes-crédit, demandes-comptes, /admin/deposit-intents) reste toujours en français
+// quel que soit l'appel, il n'a jamais besoin de passer ce paramètre. Les écrans client
+// traduits (cf. transaction-history.tsx, credit-form.tsx, credit-overview.tsx) passent en
+// revanche la locale active (useLocale()) pour que les dates suivent la langue affichée —
+// contrairement aux montants (formatUsd/formatAccountCurrency), qui restent volontairement
+// en formatage français quelle que soit la langue (cf. décision produit, cf. i18n/routing.ts).
+export function formatDate(value: string, locale?: string): string {
+  return locale ? new Intl.DateTimeFormat(locale, {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date(value)) : dateFormatter.format(new Date(value));
 }
 
 export const TRANSACTION_TYPE_LABELS: Record<string, string> = {

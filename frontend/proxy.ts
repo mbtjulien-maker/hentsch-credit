@@ -7,10 +7,10 @@ import { routing } from "./i18n/routing";
 export default createMiddleware(routing);
 
 export const config = {
-  // Exclut /dashboard et /admin (hors périmètre i18n, cf. i18n/routing.ts), l'API interne
-  // Next.js, les fichiers statiques et les routes spéciales (sitemap/robots/icônes) — ce
-  // proxy ne doit tourner que sur les pages de la vitrine publique.
+  // Exclut /admin (seule zone hors périmètre i18n désormais — cf. décision produit de
+  // traduire aussi l'espace client, /dashboard/**, en plus de la vitrine), l'API interne
+  // Next.js, les fichiers statiques et les routes spéciales (sitemap/robots/icônes).
   matcher: [
-    "/((?!api|dashboard|admin|_next|_vercel|.*\\..*).*)",
+    "/((?!api|admin|_next|_vercel|.*\\..*).*)",
   ],
 };

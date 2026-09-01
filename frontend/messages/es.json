@@ -2,7 +2,7 @@
   "Common": {
     "backToHome": "Volver al inicio",
     "lastUpdated": "Última actualización:",
-    "legalTranslationDisclaimer": "Esta página se ha traducido para su comodidad. En caso de divergencia de interpretación, solo la versión francesa es válida.",
+    "legalTranslationDisclaimer": "Esta página ha sido traducida por comodidad. En caso de divergencia de interpretación, solo la versión francesa da fe.",
     "learnMore": "Saber más"
   },
   "Nav": {
@@ -14,7 +14,7 @@
       "marche": "Mercado",
       "tarifs": "Tarifas"
     },
-    "connexionShort": "Acceder",
+    "connexionShort": "Iniciar sesión",
     "connexionLong": "Acceder a mi cuenta"
   },
   "Footer": {
@@ -49,7 +49,7 @@
         "cookiePolicy": "Política de cookies"
       }
     },
-    "disclaimer": "{tradingName} es una oferta de {legalName}, gestor de patrimonio independiente de derecho suizo, supervisado por {supervisionBodyName}, organismo de supervisión autorizado por la {supervisoryAuthority}. Acceso reservado a una clientela restringida, solo por invitación. Esta plataforma no está abierta al público.",
+    "disclaimer": "{tradingName} es una oferta de {legalName}, gestor de fortuna independiente de derecho suizo, supervisado por {supervisionBodyName}, organismo de supervisión autorizado por la {supervisoryAuthority}. Acceso reservado a una clientela restringida, por invitación. Esta plataforma no está abierta al público.",
     "rightsReserved": "Todos los derechos reservados."
   },
   "Home": {
@@ -57,21 +57,21 @@
       "title": "Hentsch Credit · Crédito cripto-colateralizado",
       "description": "350% del importe pignorado desbloqueado como poder adquisitivo inmediato. El oro, la plata y el ETH generan un rendimiento real que reembolsa automáticamente parte de su crédito."
     },
-    "badge": "Gestión de patrimonio regulada · Acceso reservado, solo por invitación",
+    "badge": "Gestión de fortuna regulada · Acceso reservado, por invitación",
     "titleLine1": "Su oro y su plata",
     "titleHighlight": "ya no duermen",
-    "subtitle": "Deposítelos como garantía, sin venderlos nunca. Desbloquee poder adquisitivo inmediato, reembolsado automáticamente gracias a su rendimiento.",
+    "subtitle": "Deposítelos en garantía, sin venderlos nunca. Desbloquee poder adquisitivo inmediato, reembolsado automáticamente gracias a su rendimiento.",
     "statCardCaption": "de poder adquisitivo, desde el depósito",
     "statCardAssets": "Oro y plata tokenizados",
     "ctaLogin": "Acceder a mi cuenta",
     "ctaHowItWorks": "Cómo funciona",
-    "ctaNoAccount": "¿Aún no tiene cuenta? Solicite la apertura de una cuenta",
-    "discoverTitle": "Descubra la plataforma",
+    "ctaNoAccount": "¿Aún no tiene cuenta? Solicitar la apertura de una cuenta",
+    "discoverTitle": "Descubrir la plataforma",
     "discoverDescription": "El detalle de cada mecanismo, en su propia página.",
     "teasers": {
       "howItWorks": {
         "title": "Cómo funciona",
-        "description": "Del depósito de la garantía al gasto, en cuatro pasos."
+        "description": "Del depósito de garantía al gasto, en cuatro etapas."
       },
       "yield": {
         "title": "Rendimiento de la garantía",
@@ -88,7 +88,7 @@
     },
     "stats": {
       "ratio": "Ratio de crédito sobre la garantía depositada",
-      "custodyValue": "Custodia mediante depositarios autorizados",
+      "custodyValue": "Custodia a través de depositarios autorizados",
       "custodyLabel": "Activos depositados en entidades terceras autorizadas, nunca a nombre propio",
       "kycValue": "KYC verificado",
       "kycLabel": "Acceso al crédito reservado a clientes verificados"
@@ -100,11 +100,11 @@
   "HowItWorks": {
     "meta": {
       "title": "Cómo funciona · Hentsch Credit",
-      "description": "Desde la verificación de identidad hasta el gasto: los cinco pasos para obtener y utilizar un crédito cripto-colateralizado en Hentsch Credit."
+      "description": "De la verificación de identidad al gasto: las cinco etapas para obtener y utilizar un crédito cripto-colateralizado en Hentsch Credit."
     },
     "eyebrow": "El recorrido del cliente",
     "title": "Cómo funciona",
-    "description": "Desde la verificación de identidad hasta el gasto, en cinco pasos.",
+    "description": "De la verificación de identidad al gasto, en cinco etapas.",
     "steps": {
       "kyc": {
         "title": "1. Verificación de identidad (KYC)",
@@ -124,46 +124,46 @@
       },
       "repay": {
         "title": "5. Reembolse para liberar la garantía",
-        "description": "Hasta el 60% se reembolsa automáticamente por el rendimiento de la garantía; el resto mediante aportación personal. En sentido inverso, una fuerte caída de la garantía puede provocar su liquidación."
+        "description": "Hasta el 60% se reembolsa automáticamente mediante el rendimiento de la garantía; el resto mediante aportación personal. A la inversa, una fuerte caída de la garantía puede provocar su liquidación."
       }
     },
-    "feesNote": "El detalle de las tasas y comisiones reales figura en la página <pricing>Tarifas</pricing>, y el detalle del reembolso automático, incluido el riesgo de liquidación en caso de fuerte caída de la garantía, en la página <yield>Rendimiento</yield>.",
-    "detailTitle": "El detalle de cada paso",
+    "feesNote": "El detalle de las tasas y comisiones reales está en la página <pricing>Tarifas</pricing>, y el detalle del reembolso automático, incluido el riesgo de liquidación en caso de fuerte caída de la garantía, en la página <yield>Rendimiento</yield>.",
+    "detailTitle": "El detalle de cada etapa",
     "detail": {
       "kyc": {
         "title": "1. Verificación de identidad",
-        "body": "El acceso solo se abre por invitación. Una vez aceptada su solicitud de apertura de cuenta, se le comunican fuera de línea una cuenta y una contraseña temporal, y a continuación se verifica su identidad antes de cualquier otra operación. Mientras este estado no esté confirmado, la generación de la dirección de depósito y cualquier solicitud de crédito están técnicamente bloqueadas, no solo desaconsejadas."
+        "body": "El acceso solo se abre por invitación. Una vez aceptada su solicitud de cuenta, se le comunican fuera de línea una cuenta y una contraseña temporal, y luego se verifica su identidad antes de cualquier otra operación. Mientras este estado no esté confirmado, la generación de la dirección de depósito y cualquier solicitud de crédito están técnicamente bloqueadas, no solo desaconsejadas."
       },
       "deposit": {
         "title": "2. Depósito de la garantía",
-        "body": "Según el activo elegido, la dirección de depósito comunicada es individual (acreditada automáticamente tras la confirmación on-chain) o compartida entre clientes (usted declara su depósito y un asesor lo valida manualmente tras la recepción efectiva de los fondos). El crédito correspondiente se emite automáticamente en cuanto el saldo disponible alcanza el importe de la solicitud, sin intervención manual adicional por nuestra parte."
+        "body": "Según el activo elegido, la dirección de depósito comunicada es individual (acreditada automáticamente tras la confirmación on-chain) o mancomunada entre clientes (usted declara su depósito, un asesor lo valida manualmente tras la recepción efectiva de los fondos). El crédito correspondiente se emite automáticamente en cuanto el saldo disponible alcanza el importe de la solicitud, sin intervención manual adicional por nuestra parte."
       },
       "credit": {
         "title": "3. Emisión del crédito",
-        "body": "350% del importe depositado, al tipo vigente en el momento del bloqueo: una posición ya bloqueada conserva siempre ese tipo, aunque el ratio cambie posteriormente para los nuevos clientes. La comisión de apertura (2%) se cobra una sola vez, sobre el crédito emitido, no sobre su garantía."
+        "body": "350% del importe depositado, a la tasa vigente en el momento del bloqueo: una posición ya bloqueada conserva siempre esta tasa, aunque el ratio cambie después para los nuevos clientes. La comisión de apertura (2%) se cobra una sola vez, sobre el crédito emitido, no sobre su garantía."
       },
       "usage": {
         "title": "4. Uso del crédito",
-        "body": "El crédito concedido es solo un límite: no se debe ningún interés ni reembolso mientras no lo utilice realmente (pago con tarjeta, uso interno). Es una línea de crédito renovable, no un préstamo desembolsado de una sola vez en su saldo disponible."
+        "body": "El crédito concedido es solo un límite: no se debe ningún interés ni reembolso mientras no lo utilice realmente (pago con tarjeta, uso interno). Es una línea de crédito renovable, no un préstamo desembolsado de una vez en su saldo disponible."
       },
       "repayment": {
         "title": "5. Reembolso",
-        "body": "Dos canales, diarios y automáticos para el primero: la plusvalía real de su garantía (hasta el 60% del crédito emitido) y su aportación personal para el resto. El reembolso íntegro libera su garantía, que vuelve a ser retirable. En sentido inverso, una depreciación grave de la garantía (50% desde su entrada) provoca su liquidación, sin borrar el crédito ya utilizado."
+        "body": "Dos canales, diarios y automáticos para el primero: la plusvalía real de su garantía (hasta el 60% del crédito emitido), y su aportación personal para el resto. El reembolso íntegro libera su garantía, que vuelve a ser retirable. A la inversa, una depreciación severa de la garantía (50% desde su entrada) provoca su liquidación, sin borrar el crédito ya utilizado."
       }
     },
     "faqTitle": "Preguntas frecuentes",
     "faq": {
       "kycRejected": {
-        "question": "¿Qué ocurre si mi KYC es rechazado?",
-        "answer": "No es posible ninguna operación financiera mientras el estado no esté verificado. En caso de rechazo, la sociedad puede rechazar, suspender o cerrar la cuenta afectada, especialmente si hay dudas sobre la identidad declarada."
+        "question": "¿Qué ocurre si se rechaza mi KYC?",
+        "answer": "Ninguna operación financiera es posible mientras el estado no esté verificado. En caso de rechazo, la sociedad puede rechazar, suspender o cerrar la cuenta en cuestión, en particular en caso de duda sobre la identidad declarada."
       },
       "approvalDelay": {
         "question": "¿Cuánto tiempo tarda la aprobación de una solicitud de crédito?",
-        "answer": "Varía según la carga de trabajo del back office: una solicitud pasa por una cola de validación manual antes de poder recibir un depósito. El crédito en sí se emite automáticamente al recibir los fondos, sin demora adicional una vez aprobada la solicitud."
+        "answer": "Variable según la carga del back-office: una solicitud pasa por una cola de validación manual antes de poder recibir un depósito. El crédito en sí se emite automáticamente en cuanto se reciben los fondos, sin demora adicional una vez aprobada la solicitud."
       },
       "earlyWithdrawal": {
         "question": "¿Puedo retirar mi garantía antes de haberlo reembolsado todo?",
-        "answer": "No. La garantía bloqueada permanece bloqueada mientras el crédito utilizado correspondiente no se haya reembolsado íntegramente. Solo el saldo disponible, excluida la garantía bloqueada, puede retirarse libremente en cualquier momento."
+        "answer": "No. La garantía bloqueada permanece bloqueada mientras el crédito utilizado correspondiente no se reembolse íntegramente. Solo el saldo disponible, excluida la garantía bloqueada, puede retirarse libremente en cualquier momento."
       }
     },
     "ctaLogin": "Acceder a mi cuenta",
@@ -172,23 +172,23 @@
   "Accessibility": {
     "meta": {
       "title": "Accesibilidad digital · Hentsch Credit",
-      "description": "El estado real de avance de la accesibilidad digital de la plataforma Hentsch Credit, sin reivindicar un nivel de conformidad no verificado."
+      "description": "Estado real de avance de la accesibilidad digital de la plataforma Hentsch Credit, sin reivindicar un nivel de conformidad no verificado."
     },
     "title": "Declaración de accesibilidad",
-    "intro": "H. Hentsch Asset Management SA se esfuerza por hacer que la plataforma Hentsch Credit sea utilizable por el mayor número de personas posible. Esta declaración describe el estado real de avance, sin reivindicar un nivel de conformidad que no ha sido verificado mediante una auditoría formal.",
+    "intro": "H. Hentsch Asset Management SA se esfuerza por hacer que la plataforma Hentsch Credit sea utilizable por el mayor número posible de personas. Esta declaración describe el estado real de avance, sin reivindicar un nivel de conformidad que no ha sido verificado por una auditoría formal.",
     "s1": {
       "title": "1. Estado de conformidad",
-      "body": "El sitio aún no ha sido objeto de una auditoría de accesibilidad formal (de tipo RGAA o WCAG). Por tanto, no puede declararse conforme a un nivel preciso. No obstante, ya se aplican esfuerzos en el diseño: estructura semántica de las páginas, jerarquía de títulos, contrastes de color pensados para la legibilidad, y navegación posible mediante teclado en los principales recorridos (inicio de sesión, solicitud de cuenta, consulta de la cuenta)."
+      "body": "El sitio aún no ha sido objeto de una auditoría de accesibilidad formal (de tipo RGAA o WCAG). Por tanto, no puede declararse conforme a un nivel preciso. No obstante, ya se aplican esfuerzos en el diseño: estructura semántica de las páginas, jerarquía de títulos, contrastes de color pensados para la legibilidad, y navegación posible con el teclado en los principales recorridos (inicio de sesión, solicitud de cuenta, consulta de la cuenta)."
     },
     "s2": {
       "title": "2. Limitaciones conocidas",
       "item1": "Algunos gráficos y tablas de datos de mercado aún no ofrecen un equivalente textual completo para los lectores de pantalla;",
-      "item2": "No se ha realizado ninguna auditoría contradictoria por parte de un organismo tercero especializado en accesibilidad digital;",
+      "item2": "No se ha realizado ninguna auditoría contradictoria por un organismo tercero especializado en accesibilidad digital;",
       "item3": "Algunos contenidos de terceros (por ejemplo, los webhooks e interfaces de proveedores externos integrados en la plataforma) no están bajo el control directo de {legalName}."
     },
     "s3": {
-      "title": "3. Comunicar un problema",
-      "body": "Si encuentra una dificultad de acceso a un contenido o una funcionalidad de la plataforma, comuníquelo al contacto indicado a continuación, precisando la página en cuestión y, si es posible, el software de asistencia utilizado.",
+      "title": "3. Notificar un problema",
+      "body": "Si encuentra una dificultad de acceso a un contenido o una funcionalidad de la plataforma, notifíquelo al contacto indicado a continuación, precisando la página en cuestión y, si es posible, el software de asistencia utilizado.",
       "email": "Correo electrónico",
       "phone": "Teléfono"
     },
@@ -209,7 +209,7 @@
       "nonRetroactivity": {
         "period": "Desde el origen",
         "title": "No retroactividad de los cambios de condiciones",
-        "detail": "Un cambio en el ratio de crédito, en la tasa o en un umbral nunca se aplica a una posición ya bloqueada: esta conserva las condiciones que se le concedieron en el momento de su creación, hasta su reembolso o vencimiento. Este principio nunca ha cambiado desde el lanzamiento de la plataforma."
+        "detail": "Un cambio de ratio de crédito, de tasa o de umbral nunca se aplica a una posición ya bloqueada: esta conserva las condiciones que se le concedieron en el momento de su creación, hasta su reembolso o vencimiento. Este principio nunca ha cambiado desde el lanzamiento de la plataforma."
       },
       "step1": {
         "period": "Etapa 1",
@@ -218,12 +218,12 @@
       },
       "step2": {
         "period": "Etapa 2",
-        "title": "Primer aumento del ratio",
+        "title": "Primera subida del ratio",
         "detail": "75% → 150% del importe pignorado, para los nuevos bloqueos."
       },
       "step3": {
         "period": "Etapa 3",
-        "title": "Segundo aumento del ratio",
+        "title": "Segunda subida del ratio",
         "detail": "150% → 200% del importe pignorado, para los nuevos bloqueos."
       },
       "step4": {
@@ -233,33 +233,33 @@
       },
       "step5": {
         "period": "Etapa 5",
-        "title": "Ampliación de los activos aceptados",
-        "detail": "Adición de ETH y SHIB, y después de la plata tokenizada (KAG), además de las stablecoins."
+        "title": "Extensión de los activos aceptados en garantía",
+        "detail": "Añadido de ETH y SHIB, y después de plata tokenizada (KAG), además de los stablecoins."
       },
       "step6": {
         "period": "Etapa 6",
-        "title": "Ampliación a metales y materias primas industriales",
-        "detail": "Adición del platino (XPT), el paladio (XPD), el cobre (XCU) y el petróleo sintético (WTI), dentro de la estrategia RWA."
+        "title": "Extensión a los metales y materias primas industriales",
+        "detail": "Añadido del platino (XPT), el paladio (XPD), el cobre (XCU) y el petróleo sintético (WTI), en el marco de la estrategia RWA."
       },
       "step7": {
         "period": "Etapa 7",
-        "title": "Reembolso automático por rendimiento de la garantía",
-        "detail": "Introducción del reembolso automático mediante la plusvalía real de la garantía, limitado al 60% del crédito emitido; el resto sigue a cargo del cliente."
+        "title": "Reembolso automático mediante rendimiento de la garantía",
+        "detail": "Introducción del reembolso automático mediante la plusvalía real de la garantía, con un límite del 60% del crédito emitido; el resto sigue a cargo del cliente."
       },
       "step8": {
         "period": "Etapa 8",
-        "title": "Objetivo de rendimiento indicativo sobre los activos RWA industriales",
-        "detail": "Adición de un objetivo indicativo del 8 al 14% anualizado sobre el platino, el paladio, el cobre y el petróleo sintético únicamente. Este objetivo sigue siendo indicativo: no está garantizado ni se utiliza en el cálculo del crédito concedido."
+        "title": "Objetivo de rendimiento indicativo en los activos RWA industriales",
+        "detail": "Añadido de un objetivo indicativo del 8 al 14% anualizado únicamente sobre el platino, el paladio, el cobre y el petróleo sintético. Este objetivo sigue siendo indicativo: no está garantizado ni se utiliza en el cálculo del crédito concedido."
       },
       "step9": {
         "period": "Etapa 9",
         "title": "Introducción del mecanismo de liquidación",
-        "detail": "Implantación de un umbral de alerta (30% de depreciación de la garantía desde su entrada) y de un umbral de liquidación (50%). El detalle figura en la página Rendimiento y en las condiciones generales, sección 7."
+        "detail": "Puesta en marcha de un umbral de alerta (30% de depreciación de la garantía desde su entrada) y de un umbral de liquidación (50%). El detalle figura en la página Rendimiento y en las condiciones generales, sección 7."
       },
       "step10": {
         "period": "Etapa 10",
         "title": "Paso a un rendimiento estimado calculado automáticamente",
-        "detail": "Los simuladores de crédito del cliente calculan ahora el rendimiento estimado, la cuota mensual y la fecha del primer reembolso a partir del rendimiento real de los últimos 12 meses, en lugar de pedir al cliente que introduzca una estimación."
+        "detail": "Los simuladores de crédito del cliente ahora calculan el rendimiento estimado, la mensualidad y la fecha del primer reembolso a partir del rendimiento real de los últimos 12 meses, en lugar de pedir al cliente que introduzca una estimación."
       }
     },
     "note": "Los valores actualmente vigentes (ratio, tasas, comisiones, límite de rendimiento, umbrales de liquidación) se detallan con sus cifras exactas en la página <link>Tarifas</link>. Esta página de archivo solo recoge el historial de cambios, no las condiciones aplicables a su posición actual.",
@@ -279,23 +279,23 @@
       "postalAddress": "Dirección postal",
       "registeredOffice": "Domicilio social"
     },
-    "hours": "Las solicitudes se procesan en días hábiles. Para cualquier pregunta relativa a una operación en curso (depósito, solicitud de crédito, tarjeta), indique su nombre y, si es posible, la referencia de la operación en cuestión.",
-    "noAccount": "¿Aún no tiene cuenta? La plataforma está reservada a una clientela restringida, solo por invitación. No obstante, puede presentar una <link>solicitud de apertura de cuenta</link>, que será examinada por nuestros equipos.",
-    "complaint": "Para una reclamación formal y, en su defecto, las vías de mediación disponibles, consulte la página <link>Regulación</link>, sección 6."
+    "hours": "Las solicitudes se tramitan durante los días hábiles. Para cualquier pregunta relativa a una operación en curso (depósito, solicitud de crédito, tarjeta), indique su nombre y, si es posible, la referencia de la operación en cuestión.",
+    "noAccount": "¿Aún no tiene cuenta? La plataforma está reservada a una clientela restringida, por invitación. No obstante, puede presentar una <link>solicitud de apertura de cuenta</link>, que será examinada por nuestros equipos.",
+    "complaint": "Para una reclamación formal y, a falta de resolución amistosa, las vías de mediación disponibles, véase la página <link>Regulación</link>, sección 6."
   },
   "Cookies": {
     "meta": {
       "title": "Política de cookies · Hentsch Credit",
-      "description": "Por qué Hentsch Credit solo utiliza una única cookie estrictamente necesaria, y ninguna otra."
+      "description": "Por qué Hentsch Credit solo instala una única cookie estrictamente necesaria, y nada más."
     },
     "title": "Política de cookies",
-    "intro": "Esta página describe las cookies realmente utilizadas por la plataforma Hentsch Credit y por qué no se ofrece ningún centro de preferencias.",
+    "intro": "Esta página describe las cookies realmente instaladas por la plataforma Hentsch Credit y por qué no se ofrece ningún centro de preferencias.",
     "s1": {
-      "title": "1. Lo que la plataforma utiliza",
-      "body": "Se utiliza una sola cookie, de sesión, estrictamente necesaria para el funcionamiento del servicio: mantiene su conexión autenticada mientras navega por el área de cliente. Se elimina al cerrar su sesión o su navegador."
+      "title": "1. Lo que instala la plataforma",
+      "body": "Se utiliza una única cookie, de sesión, estrictamente necesaria para el funcionamiento del servicio: mantiene su conexión autenticada mientras navega por el espacio de cliente. Se elimina al cerrar su sesión o su navegador."
     },
     "s2": {
-      "title": "2. Lo que la plataforma no utiliza",
+      "title": "2. Lo que la plataforma no instala",
       "item1": "Ninguna cookie publicitaria o de segmentación;",
       "item2": "Ninguna cookie de medición de audiencia de terceros (analítica, estadísticas);",
       "item3": "Ningún rastreador de redes sociales;",
@@ -303,11 +303,11 @@
     },
     "s3": {
       "title": "3. Por qué no hay «gestionar mis cookies»",
-      "body": "Un centro de preferencias tiene sentido cuando un sitio utiliza cookies no esenciales (publicidad, medición de audiencia) que requieren su consentimiento previo y una forma de retirarlo. La plataforma no utiliza ninguna: por tanto, no existe ninguna preferencia que activar o desactivar más allá de la configuración de su propio navegador. Si esto cambiara algún día, esta página se actualizará y se ofrecerá un verdadero centro de preferencias, en lugar de un botón sin efecto real."
+      "body": "Un centro de preferencias tiene sentido cuando un sitio instala cookies no esenciales (publicidad, medición de audiencia) que requieren su consentimiento previo y un medio para retirarlo. La plataforma no instala ninguna: por tanto, no existe ninguna preferencia que activar o desactivar más allá del ajuste de su propio navegador. Si esto cambia algún día, esta página se actualizará y se ofrecerá un verdadero centro de preferencias, en lugar de un botón sin efecto real."
     },
     "s4": {
       "title": "4. Control desde su navegador",
-      "body": "Puede bloquear o eliminar en cualquier momento la cookie de sesión desde la configuración de su navegador. Bloquear esta cookie en particular le desconectará del área de cliente: es una cookie funcional, no un rastreador, y no tiene otra función."
+      "body": "Puede bloquear o eliminar la cookie de sesión en cualquier momento desde los ajustes de su navegador. Bloquear esta cookie en particular le desconectará del espacio de cliente: es una cookie funcional, no un rastreador, y no tiene ninguna otra función."
     },
     "s5": {
       "title": "5. Contacto",
@@ -323,74 +323,74 @@
     "intro": "Las presentes condiciones generales rigen el acceso y el uso de la plataforma Hentsch Credit, servicio de crédito garantizado por activos digitales, ofrecido a un número restringido de clientes de la sociedad por invitación. Al abrir una cuenta, el cliente declara haberlas leído y aceptado.",
     "s1": {
       "title": "1. Objeto",
-      "body": "{tradingName} permite a un cliente verificado y previamente invitado depositar, como garantía («pignoración»), stablecoins u oro tokenizado, y obtener a cambio una línea de crédito, utilizable internamente y en una tarjeta bancaria asociada. El servicio es prestado por {legalName}, gestor de patrimonio independiente (GPI) en el sentido de la LEFin, en colaboración con entidades depositarias y proveedores de custodia terceros autorizados (véase la sección 5)."
+      "body": "{tradingName} permite a un cliente verificado y previamente invitado depositar, en garantía («pignoración»), stablecoins u oro tokenizado, y obtener a cambio una línea de crédito, utilizable internamente y con una tarjeta bancaria asociada. El servicio es prestado por {legalName}, gestor de fortuna independiente (GFI) en el sentido de la LEFin, en colaboración con entidades depositarias y proveedores de custodia terceros autorizados (véase sección 5)."
     },
     "s2": {
       "title": "2. Acceso restringido y elegibilidad",
-      "body": "La plataforma no está abierta al público. Su acceso está reservado a una lista de clientes determinada por {legalName}, por invitación, en el marco de una relación de gestión de patrimonio existente. La apertura de una cuenta, la generación de una dirección de depósito, cualquier depósito de garantía y cualquier concesión de crédito están además supeditados a la verificación previa de la identidad del cliente («KYC»). Mientras el estado de verificación del cliente no esté confirmado, estas operaciones se rechazan. La sociedad se reserva el derecho de rechazar, suspender o cerrar una cuenta en caso de fallo o duda sobre esta verificación, o de sospecha de fraude, blanqueo de capitales o financiación del terrorismo."
+      "body": "La plataforma no está abierta al público. Su acceso está reservado a una lista de clientes determinada por {legalName}, por invitación, en el marco de una relación de gestión de fortuna existente. La apertura de una cuenta, la generación de una dirección de depósito, cualquier depósito de garantía y cualquier concesión de crédito están además subordinados a la verificación previa de la identidad del cliente («KYC»). Mientras el estado de verificación del cliente no esté confirmado, estas operaciones se rechazan. La sociedad se reserva el derecho de rechazar, suspender o cerrar una cuenta en caso de fallo o duda sobre esta verificación, o de sospecha de fraude, blanqueo de capitales o financiación del terrorismo."
     },
     "s3": {
-      "title": "3. Activos aceptados como garantía",
-      "body": "Se aceptan como garantía las siguientes stablecoins, valoradas a la par (1:1 USD): DAI, USDT, USDC; la siguiente stablecoin indexada al euro, valorada a la cotización spot en directo: dEURO; los siguientes metales preciosos tokenizados, también valorados a la cotización spot en directo: XAUT (oro), KAG (plata); los siguientes metales industriales y materias primas tokenizados, valorados a la cotización spot en directo: XPT (platino), XPD (paladio), XCU (cobre), WTI (petróleo sintético); así como las siguientes criptomonedas nativas, valoradas a la cotización spot en directo y sujetas a su propia volatilidad: ETH, SHIB. Estos activos se aceptan exclusivamente en la red Ethereum. Para algunos activos, la dirección de depósito comunicada es individual para cada cliente; para otros, es compartida entre clientes y el depósito declarado se somete a una validación manual antes de ser acreditado. La lista de activos aceptados, de las redes admitidas o del mecanismo de dirección aplicable a cada activo puede modificarse en cualquier momento, sin efecto retroactivo sobre las posiciones ya constituidas."
+      "title": "3. Activos aceptados en garantía",
+      "body": "Se aceptan en garantía los siguientes stablecoins, valorados a la par (1:1 USD): DAI, USDT, USDC; el siguiente stablecoin indexado al euro, valorado a la cotización spot en directo: dEURO; los siguientes metales preciosos tokenizados, también valorados a la cotización spot en directo: XAUT (oro), KAG (plata); los siguientes metales industriales y materias primas tokenizados, valorados a la cotización spot en directo: XPT (platino), XPD (paladio), XCU (cobre), WTI (petróleo sintético); así como las siguientes criptomonedas nativas, valoradas a la cotización spot en directo y con la volatilidad propia de cada una: ETH, SHIB. Estos activos se aceptan exclusivamente en la red Ethereum. Para algunos activos, la dirección de depósito comunicada es individual para cada cliente; para otros, es mancomunada entre clientes y el depósito declarado es objeto de una validación manual antes de ser acreditado. La lista de activos aceptados, de redes admitidas o del mecanismo de dirección aplicable a cada activo puede modificarse en cualquier momento, sin efecto retroactivo sobre las posiciones ya constituidas."
     },
     "s4": {
-      "title": "4. Mecanismo de crédito y ratio de garantía",
-      "body1": "Al bloquear una garantía, se concede un crédito igual al <b>350% del importe pignorado</b>, al tipo vigente en el momento de dicho bloqueo. El poder adquisitivo total de la cuenta se calcula de la siguiente manera:",
+      "title": "4. Mecanismo de crédito y tasa de garantía",
+      "body1": "Al bloquear una garantía, se concede un crédito igual al <b>350% del importe pignorado</b>, a la tasa vigente en el momento de dicho bloqueo. El poder adquisitivo total de la cuenta se calcula de la siguiente manera:",
       "formula": "Poder adquisitivo total = Saldo disponible + Garantía bloqueada + Crédito concedido − Crédito utilizado",
-      "body2": "El ratio de garantía aplicable es el vigente en el momento de cada nuevo bloqueo. Cualquier modificación posterior de este ratio no afecta retroactivamente al crédito ya concedido por una garantía bloqueada con anterioridad: dicho crédito permanece adquirido en las condiciones de su época.",
-      "body3": "El crédito emitido sobre una garantía elegible (metales preciosos tokenizados, metales industriales y materias primas tokenizados, ETH) puede reembolsarse hasta un máximo del 60% mediante la plusvalía real observada en dicha garantía, aplicada automáticamente al crédito utilizado. El 40% restante debe reembolsarse mediante aportación personal del cliente (depósito o transferencia explícita). Este límite se aplica al importe de crédito emitido en la apertura de la posición y no se recalcula en caso de un cambio posterior del ratio de crédito.",
-      "body4": "Se comunica, a título informativo, un objetivo de rendimiento indicativo (actualmente del 8 al 14% anual) sobre los metales industriales y materias primas tokenizados (platino, paladio, cobre, petróleo sintético): refleja el objetivo de la estrategia de tesorería propia de la sociedad sobre estos activos (arbitraje, préstamo colateralizado, aportación de liquidez), y no una tasa garantizada o contractual. Este objetivo no tiene ningún efecto sobre el cálculo del crédito del cliente, que sigue regido exclusivamente por el mecanismo descrito en el párrafo anterior."
+      "body2": "La tasa de garantía aplicable es la vigente en el momento de cada nuevo bloqueo. Cualquier modificación posterior de esta tasa no afecta retroactivamente al crédito ya concedido en virtud de una garantía bloqueada con anterioridad: ese crédito sigue rigiéndose por las condiciones de la época.",
+      "body3": "El crédito emitido sobre una garantía elegible (metales preciosos tokenizados, metales industriales y materias primas tokenizados, ETH) puede reembolsarse hasta un máximo del 60% mediante la plusvalía real constatada sobre dicha garantía, aplicada automáticamente al crédito utilizado. El 40% restante debe reembolsarse mediante aportación personal del cliente (depósito o transferencia explícita). Este límite se aplica al importe de crédito emitido en la apertura de la posición y no se recalcula en caso de cambio posterior del ratio de crédito.",
+      "body4": "Se comunica un objetivo de rendimiento indicativo (actualmente del 8 al 14% anual) con fines informativos sobre los metales industriales y las materias primas tokenizados (platino, paladio, cobre, petróleo sintético): refleja el objetivo de la estrategia de tesorería propia de la sociedad sobre estos activos (arbitraje, préstamo colateralizado, aportación de liquidez), y no una tasa garantizada o contractual. Este objetivo no tiene ningún efecto sobre el cálculo del crédito del cliente, que sigue rigiéndose exclusivamente por el mecanismo descrito en el apartado anterior."
     },
     "s5": {
       "title": "5. Custodia de los activos"
     },
     "s6": {
-      "title": "6. Bloqueo de la garantía y retirada",
-      "body": "El importe pignorado y bloqueado no puede retirarse mientras el crédito utilizado correspondiente no se haya reembolsado íntegramente. Solo el saldo disponible, excluida la garantía bloqueada, puede retirarse libremente en cualquier momento, sin perjuicio de los controles de cumplimiento aplicables."
+      "title": "6. Bloqueo de la garantía y retiro",
+      "body": "El importe pignorado y bloqueado no puede retirarse mientras el crédito utilizado correspondiente no se haya reembolsado íntegramente. Solo el saldo disponible, excluida la garantía bloqueada, puede retirarse libremente en cualquier momento, sujeto a los controles de cumplimiento aplicables."
     },
     "s7": {
       "title": "7. Liquidación de la garantía",
-      "intro": "Las garantías cuyo valor evoluciona en función del mercado (metales preciosos tokenizados, metales industriales y materias primas tokenizados, ETH) son objeto de un seguimiento diario de su valor, comparado con su valor en el momento del bloqueo:",
-      "item1": "en caso de depreciación de al menos el <b>30%</b> respecto a este valor de entrada, se registra una alerta en la cuenta, sin ningún otro efecto;",
-      "item2": "en caso de depreciación de al menos el <b>50%</b>, la garantía se retira automáticamente de la cuenta (se liquida) a su valor de entrada.",
-      "body": "La liquidación de una garantía no extingue el crédito ya utilizado con cargo a dicha garantía: ese crédito sigue siendo íntegramente debido por el cliente, sin estar ya cubierto por la garantía inicialmente constituida. Una garantía liquidada no puede restituirse, aunque la cotización del activo en cuestión se recupere posteriormente. Los umbrales mencionados anteriormente pueden modificarse en cualquier momento, sin efecto retroactivo sobre la apreciación de una depreciación ya constatada."
+      "intro": "Las garantías cuyo valor evoluciona en función del mercado (metales preciosos tokenizados, metales industriales y materias primas tokenizados, ETH) son objeto de una supervisión diaria de su valor, en comparación con su valor en el momento del bloqueo:",
+      "item1": "en caso de depreciación de al menos <b>30%</b> respecto a ese valor de entrada, se registra una alerta en la cuenta, sin ningún otro efecto;",
+      "item2": "en caso de depreciación de al menos <b>50%</b>, la garantía se retira automáticamente de la cuenta (se liquida) a su valor de entrada.",
+      "body": "La liquidación de una garantía no extingue el crédito ya utilizado en virtud de dicha garantía: ese crédito sigue siendo íntegramente debido por el cliente, sin ya estar cubierto por la garantía inicialmente constituida. Una garantía liquidada ya no puede restituirse, incluso si la cotización del activo en cuestión se recupera posteriormente. Los umbrales mencionados anteriormente pueden modificarse en cualquier momento, sin efecto retroactivo sobre la apreciación de una depreciación ya constatada."
     },
     "s8": {
       "title": "8. Tarjeta bancaria y uso del crédito",
-      "body": "Puede asociarse a la cuenta una tarjeta bancaria, emitida por un socio tercero autorizado, para utilizar la línea de crédito concedida, dentro del límite del crédito disponible (crédito concedido menos crédito ya utilizado). Cualquier transacción que exceda este límite se rechaza. Las condiciones específicas de emisión, uso y bloqueo de la tarjeta se especifican en las condiciones particulares asociadas a la misma."
+      "body": "Puede asociarse a la cuenta una tarjeta bancaria, emitida por un socio tercero autorizado, para utilizar la línea de crédito concedida, dentro del límite del crédito disponible (crédito concedido menos crédito ya utilizado). Toda transacción que exceda este límite se rechaza. Las condiciones específicas de emisión, uso y bloqueo de la tarjeta se precisan en las condiciones particulares asociadas a esta."
     },
     "s9": {
       "title": "9. Reembolso",
-      "body": "El cliente puede reembolsar la totalidad o parte del crédito utilizado en cualquier momento. El reembolso íntegro del crédito utilizado por una garantía determinada libera dicha garantía, que vuelve a ser retirable. Los simuladores de reembolso disponibles en la plataforma (proyección flexible, cuotas fijas) se proporcionan únicamente a título indicativo: se basan en un rendimiento estimado a partir de rendimientos pasados, que no prejuzga los rendimientos futuros, y no constituyen ni un compromiso contractual ni un calendario de pagos exigible."
+      "body": "El cliente puede reembolsar todo o parte del crédito utilizado en cualquier momento. El reembolso íntegro del crédito utilizado en virtud de una garantía dada libera dicha garantía, que vuelve a ser retirable. Los simuladores de reembolso puestos a disposición en la plataforma (proyección flexible, plazos fijos) se proporcionan únicamente con fines indicativos: se basan en un rendimiento estimado a partir de rendimientos pasados, que no prejuzga los rendimientos futuros, y no constituyen ni un compromiso contractual ni un calendario de pago exigible."
     },
     "s10": {
       "title": "10. Comisiones",
-      "body": "Las comisiones y tasas actualmente aplicadas son: una comisión de apertura del <b>2,0%</b>, cobrada una sola vez sobre el crédito emitido en el momento del bloqueo de la garantía; una comisión de custodia del colateral del <b>0,5% anual</b>, sobre el importe de la garantía bloqueada; y unos intereses sobre el crédito utilizado del <b>13,5% anual en USD</b> (<b>12,0% anual en EUR</b>), compuestos por un tipo de referencia monetario (SOFR para el USD, EURIBOR para el EUR) y una prima de riesgo de 8,5 puntos, justificada por el elevado ratio de crédito (350%) ofrecido por la plataforma. El detalle actualizado de estas tarifas figura en la página <link>Tarifas</link> de la plataforma. Estas tasas pueden actualizarse en cualquier momento, sin efecto retroactivo sobre las posiciones ya constituidas: la estructura de tasas fijada en el momento del bloqueo de una posición permanece adquirida hasta su reembolso o vencimiento."
+      "body": "Las comisiones y tasas actualmente aplicadas son: una comisión de apertura del <b>2,0%</b>, cobrada una sola vez sobre el crédito emitido en el momento del bloqueo de la garantía; una comisión de custodia del colateral del <b>0,5% anual</b>, sobre el importe de la garantía bloqueada; e intereses sobre el crédito utilizado del <b>13,5% anual en USD</b> (<b>12,0% anual en EUR</b>), compuestos por una tasa de referencia monetaria (SOFR para el USD, EURIBOR para el EUR) y una prima de riesgo de 8,5 puntos, justificada por el elevado ratio de crédito (350%) ofrecido por la plataforma. El detalle actualizado de estas tarifas figura en la página <link>Tarifas</link> de la plataforma. Estas tasas pueden actualizarse en cualquier momento, sin efecto retroactivo sobre las posiciones ya constituidas: la estructura de tasas fijada en el momento del bloqueo de una posición sigue vigente hasta su reembolso o vencimiento."
     },
     "s11": {
       "title": "11. Riesgos",
       "intro": "El cliente reconoce y acepta los riesgos inherentes a los activos digitales, en particular:",
-      "item1": "la volatilidad de la cotización de los activos valorados al precio spot (oro tokenizado), que puede afectar al valor de la garantía y al poder adquisitivo total de la cuenta;",
-      "item2": "el riesgo de liquidación de la garantía en caso de fuerte depreciación (véase la sección 7), que no extingue el crédito ya utilizado;",
-      "item3": "el riesgo de contraparte y el riesgo operativo relacionados con las entidades depositarias y los proveedores de custodia terceros mencionados en la sección 5;",
-      "item4": "el riesgo regulatorio relacionado con la evolución del marco jurídico aplicable a los activos digitales y a las stablecoins.",
-      "body": "Las presentes condiciones no constituyen ni un asesoramiento en materia de inversión ni una recomendación de compra, venta o tenencia de ningún activo digital."
+      "item1": "la volatilidad de la cotización de los activos valorados a precio spot (oro tokenizado), que puede afectar al valor de la garantía y al poder adquisitivo total de la cuenta;",
+      "item2": "el riesgo de liquidación de la garantía en caso de fuerte depreciación (véase sección 7), que no extingue el crédito ya utilizado;",
+      "item3": "el riesgo de contraparte y el riesgo operativo vinculados a las entidades depositarias y proveedores de custodia terceros mencionados en la sección 5;",
+      "item4": "el riesgo regulatorio vinculado a la evolución del marco jurídico aplicable a los activos digitales y a los stablecoins.",
+      "body": "Las presentes condiciones no constituyen ni un asesoramiento de inversión, ni una recomendación de compra, venta o tenencia de ningún activo digital."
     },
     "s12": {
       "title": "12. Resolución",
-      "body": "El cliente puede cerrar su cuenta en cualquier momento, sin perjuicio del reembolso íntegro de todo crédito utilizado. La sociedad puede suspender o resolver el acceso al servicio en caso de incumplimiento de las presentes condiciones, sospecha de fraude o de blanqueo, o por cualquier motivo legal o regulatorio."
+      "body": "El cliente puede cerrar su cuenta en cualquier momento, sujeto al reembolso íntegro de cualquier crédito utilizado. La sociedad puede suspender o resolver el acceso al servicio en caso de incumplimiento de las presentes condiciones, de sospecha de fraude o blanqueo, o por cualquier motivo legal o regulatorio."
     },
     "s13": {
       "title": "13. Responsabilidad",
-      "body": "La sociedad pone en práctica los medios razonables para garantizar la disponibilidad y la seguridad de la plataforma, sin garantizar una ausencia total de interrupciones. Su responsabilidad no podrá exigirse en caso de fuerza mayor, de fallo de una red blockchain o de un proveedor tercero ajeno a su voluntad, dentro de los límites permitidos por el derecho suizo aplicable."
+      "body": "La sociedad pone en práctica los medios razonables para garantizar la disponibilidad y la seguridad de la plataforma, sin garantía de ausencia total de interrupción. Su responsabilidad no podrá comprometerse en caso de fuerza mayor, de disfunción de una red blockchain o de un proveedor tercero ajeno a su voluntad, dentro de los límites permitidos por el derecho suizo aplicable."
     },
     "s14": {
       "title": "14. Modificación de las condiciones generales",
-      "body": "La sociedad puede modificar las presentes condiciones generales en cualquier momento, mediante una notificación previa al cliente por los medios de comunicación habituales. Las modificaciones no tienen efecto retroactivo sobre las posiciones de crédito ya constituidas, salvo disposición legal en contrario."
+      "body": "La sociedad puede modificar las presentes condiciones generales en cualquier momento, mediante información previa al cliente por los medios de comunicación habituales. Las modificaciones no tienen efecto retroactivo sobre las posiciones de crédito ya constituidas, salvo disposición legal en contrario."
     },
     "s15": {
-      "title": "15. Derecho aplicable y jurisdicción",
-      "body": "Las presentes condiciones generales se rigen por el derecho suizo. Cualquier litigio relativo a su validez, interpretación o ejecución es competencia exclusiva de los tribunales de {jurisdiction}, sin perjuicio de las disposiciones legales imperativas aplicables."
+      "title": "15. Derecho aplicable y fuero",
+      "body": "Las presentes condiciones generales están sujetas al derecho suizo. Cualquier litigio relativo a su validez, interpretación o ejecución es competencia exclusiva del fuero de {jurisdiction}, sin perjuicio de las disposiciones legales imperativas aplicables."
     }
   },
   "Privacy": {
@@ -399,66 +399,66 @@
       "description": "Cómo H. Hentsch Asset Management SA recopila, utiliza y protege sus datos personales, de conformidad con la ley federal suiza de protección de datos."
     },
     "title": "Política de privacidad",
-    "intro": "La presente política describe cómo H. Hentsch Asset Management SA recopila, utiliza y protege los datos personales de los clientes de Hentsch Credit, plataforma reservada a una clientela restringida, de conformidad con la ley federal suiza de protección de datos (nLPD) y, en su caso, con el Reglamento General de Protección de Datos (RGPD).",
+    "intro": "La presente política describe cómo H. Hentsch Asset Management SA recopila, utiliza y protege los datos personales de los clientes de Hentsch Credit, plataforma reservada a una clientela restringida, de conformidad con la ley federal suiza de protección de datos (nLPD) y, en su caso, con el reglamento general de protección de datos (RGPD).",
     "s1": {
       "title": "1. Responsable del tratamiento",
       "controller": "Responsable",
       "address": "Dirección",
       "dpoContact": "Contacto de protección de datos",
-      "compliance": "Conforme con la LPD suiza y el RGPD."
+      "compliance": "Conforme a la LPD suiza y al RGPD."
     },
     "s2": {
       "title": "2. Datos recopilados",
       "item1": "Datos de identificación y de contacto (nombre, correo electrónico, datos de contacto);",
       "item2": "Documentos y datos de verificación de identidad (KYC) transmitidos al abrir la cuenta;",
-      "item3": "Datos relativos a las direcciones de depósito, a las transacciones on-chain y a las operaciones realizadas en la plataforma (depósitos, bloqueos de garantía, concesiones de crédito, reembolsos, pagos con tarjeta);",
+      "item3": "Datos relativos a las direcciones de depósito, a las transacciones on-chain y a las operaciones efectuadas en la plataforma (depósitos, bloqueos de garantía, concesiones de crédito, reembolsos, pagos con tarjeta);",
       "item4": "Datos técnicos de conexión a la plataforma (registros, identificadores de sesión)."
     },
     "s3": {
       "title": "3. Finalidades y base jurídica",
       "item1": "Ejecución de la relación contractual: apertura y gestión de la cuenta, concesión y seguimiento del crédito, emisión y gestión de la tarjeta bancaria asociada;",
-      "item2": "Cumplimiento de las obligaciones legales y regulatorias: verificación de identidad (KYC), lucha contra el blanqueo de capitales y la financiación del terrorismo (LBA), conservación de los justificantes contables;",
+      "item2": "Cumplimiento de las obligaciones legales y regulatorias: verificación de identidad (KYC), lucha contra el blanqueo de capitales y la financiación del terrorismo (LBA), conservación de los documentos contables;",
       "item3": "Seguridad de la plataforma y prevención del fraude;",
       "item4": "Comunicación con el cliente relativa a su cuenta y a sus operaciones."
     },
     "s4": {
       "title": "4. Socios y subcontratistas",
-      "intro": "Para prestar el servicio, {legalName} recurre a proveedores especializados, que tratan determinados datos por su cuenta y bajo sus instrucciones, o que actúan como responsables distintos para la custodia de los activos:",
+      "intro": "Para ejecutar el servicio, {legalName} recurre a proveedores especializados, que tratan ciertos datos por su cuenta y bajo sus instrucciones, o que actúan como responsables distintos para la custodia de los activos:",
       "item1Label": "Bancos depositarios terceros",
-      "item1Body": "custodia de la liquidez y los valores de los clientes (véase el aviso legal, sección 3);",
+      "item1Body": "custodia de la liquidez y los valores de los clientes (véase aviso legal, sección 3);",
       "item2Label": "Custodia de activos digitales ({custodians})",
-      "item2Body": "custodia segura de las stablecoins y del oro tokenizado depositados como garantía;",
+      "item2Body": "custodia segura de los stablecoins y del oro tokenizado depositados en garantía;",
       "item3Label": "Emisión de tarjetas bancarias",
       "item3Body": "tratamiento de las autorizaciones de pago en tiempo real;",
       "item4Label": "Verificación de identidad (KYC)",
       "item4Body": "control de la identidad y del estado de cumplimiento del cliente;",
       "item5Label": "Datos de mercado blockchain",
       "item5Body": "detección de los depósitos on-chain y cotizaciones de los activos en tiempo real.",
-      "outro": "El nombre, la función exacta y el país de implantación de cada proveedor utilizado en producción se comunican al cliente a petición, dirigiéndose al servicio indicado en la sección 1."
+      "outro": "El nombre, la función exacta y el país de implantación de cada proveedor utilizado en producción se comunican al cliente a petición del servicio indicado en la sección 1."
     },
     "s5": {
-      "title": "5. Duración de la conservación",
-      "body": "Los datos relativos a los clientes y a sus operaciones se conservan durante la duración de la relación de gestión, y posteriormente durante el plazo exigido por las obligaciones legales de conservación aplicables (en particular, documentos contables y justificantes de las transacciones)."
+      "title": "5. Duración de conservación",
+      "body": "Los datos relativos a los clientes y a sus operaciones se conservan durante la duración de la relación de gestión, y después durante la duración exigida por las obligaciones legales de conservación aplicables (documentos contables y justificantes de las transacciones en particular)."
     },
     "s6": {
       "title": "6. Transferencias internacionales",
-      "body": "Algunos proveedores mencionados en la sección 4 pueden tratar datos fuera de Suiza. En ese caso, {legalName} implementa las garantías adecuadas exigidas por la legislación suiza de protección de datos (cláusulas contractuales, decisión de adecuación o mecanismo equivalente)."
+      "body": "Algunos proveedores mencionados en la sección 4 pueden tratar datos fuera de Suiza. En ese caso, {legalName} pone en marcha las garantías apropiadas exigidas por la legislación suiza de protección de datos (cláusulas contractuales, decisión de adecuación o mecanismo equivalente)."
     },
     "s7": {
       "title": "7. Sus derechos",
-      "body": "Sin perjuicio de las restricciones previstas por la ley (en particular las obligaciones legales de conservación aplicables), el cliente dispone de un derecho de acceso, rectificación, supresión y oposición sobre sus datos personales. Estos derechos pueden ejercerse escribiendo a la dirección indicada en la sección 1."
+      "body": "Sujeto a las restricciones previstas por la ley (en particular las obligaciones legales de conservación aplicables), el cliente dispone de un derecho de acceso, rectificación, supresión y oposición sobre sus datos personales. Estos derechos pueden ejercerse escribiendo a la dirección indicada en la sección 1."
     },
     "s8": {
       "title": "8. Cookies y rastreadores",
-      "body": "La plataforma utiliza únicamente las cookies estrictamente necesarias para su funcionamiento (autenticación de sesión, preferencias de visualización). No se utiliza ninguna cookie publicitaria o de medición de audiencia de terceros sin el consentimiento previo del cliente. El detalle figura en la <link>política de cookies</link>."
+      "body": "La plataforma solo utiliza las cookies estrictamente necesarias para su funcionamiento (autenticación de sesión, preferencias de visualización). No se instala ninguna cookie publicitaria o de medición de audiencia de terceros sin el consentimiento previo del cliente. El detalle figura en la <link>política de cookies</link>."
     },
     "s9": {
-      "title": "9. Caso particular de los interesados (solicitud de apertura de cuenta)",
-      "body": "Las personas que presentan una solicitud de apertura de cuenta sin ser aún clientes (a través de la página Solicitar una cuenta) transmiten datos de identificación y de contacto, así como información sobre su proyecto de inversión. Estos datos se tratan con el único fin de examinar la solicitud. Si la solicitud no da lugar a una relación de gestión de patrimonio, se conservan durante un plazo limitado, necesario para el seguimiento del expediente, y luego se suprimen; en caso de aceptación, se integran en el expediente del cliente y siguen las normas de conservación descritas en la sección 5."
+      "title": "9. Caso particular de los prospectos (solicitud de apertura de cuenta)",
+      "body": "Las personas que presentan una solicitud de apertura de cuenta sin ser aún clientes (a través de la página Solicitar una cuenta) transmiten datos de identificación y de contacto, así como información sobre su proyecto de inversión. Estos datos se tratan con el único fin de examinar la solicitud. Si la solicitud no da lugar a una relación de gestión de fortuna, se conservan durante un plazo limitado, necesario para el seguimiento del expediente, y luego se suprimen; en caso de aceptación, se integran en el expediente del cliente y siguen las normas de conservación descritas en la sección 5."
     },
     "s10": {
       "title": "10. Seguridad",
-      "body": "{legalName} implementa medidas técnicas y organizativas adecuadas (cifrado, control de acceso, bloqueos distribuidos en las operaciones financieras) para proteger los datos personales frente al acceso no autorizado, la pérdida o la alteración."
+      "body": "{legalName} pone en práctica medidas técnicas y organizativas apropiadas (cifrado, control de acceso, bloqueos distribuidos en las operaciones financieras) para proteger los datos personales contra el acceso no autorizado, la pérdida o la alteración."
     },
     "s11": {
       "title": "11. Contacto",
@@ -469,12 +469,12 @@
   "AccountRequest": {
     "meta": {
       "title": "Solicitar la apertura de una cuenta · Hentsch Credit",
-      "description": "Solicite la apertura de una cuenta Hentsch Credit, plataforma de crédito cripto-colateralizado reservada a una clientela restringida, solo por invitación."
+      "description": "Solicite la apertura de una cuenta de Hentsch Credit, plataforma de crédito cripto-colateralizado reservada a una clientela restringida, por invitación."
     },
     "eyebrow": "Acceso por invitación",
     "title": "Solicitar la apertura de una cuenta",
     "description": "Plataforma reservada a una clientela restringida. Déjenos sus datos: nuestro equipo estudia cada expediente antes de conceder el acceso.",
-    "alreadyHaveAccount": "¿Ya tiene una cuenta? <link>Acceder</link>"
+    "alreadyHaveAccount": "¿Ya tiene una cuenta? <link>Iniciar sesión</link>"
   },
   "AccountRequestForm": {
     "firstName": "Nombre",
@@ -482,25 +482,25 @@
     "email": "Correo electrónico",
     "phone": "Teléfono (opcional)",
     "message": "Su proyecto (opcional)",
-    "messagePlaceholder": "Importe previsto, activos afectados, preguntas concretas…",
-    "disclaimer": "Al enviar este formulario, acepta que su información sea tratada de conformidad con nuestra <link>política de privacidad</link>. No se crea ninguna cuenta automáticamente: el acceso se concede tras el estudio y la validación de su expediente por nuestro equipo.",
+    "messagePlaceholder": "Importe previsto, activos implicados, preguntas particulares…",
+    "disclaimer": "Al enviar este formulario, acepta que su información sea tratada de acuerdo con nuestra <link>política de privacidad</link>. No se crea ninguna cuenta automáticamente: el acceso se concede tras el estudio y la validación de su expediente por nuestro equipo.",
     "submit": "Enviar mi solicitud",
     "successTitle": "Su solicitud se ha enviado correctamente",
-    "successBody": "Nuestro equipo está estudiando su expediente y se pondrá en contacto con usted por correo electrónico. El acceso a su área de cliente solo se concede una vez realizada esta validación.",
+    "successBody": "Nuestro equipo estudia su expediente y se pondrá en contacto con usted por correo electrónico. El acceso a su espacio de cliente solo se concede una vez realizada esta validación.",
     "genericError": "Se ha producido un error."
   },
   "Faq": {
     "meta": {
       "title": "Preguntas frecuentes · Hentsch Credit",
-      "description": "Respuestas a las preguntas más frecuentes sobre la cuenta, la seguridad y el funcionamiento de la plataforma Hentsch Credit."
+      "description": "Las respuestas a las preguntas más frecuentes sobre la cuenta, la seguridad y el funcionamiento de la plataforma Hentsch Credit."
     },
     "eyebrow": "Preguntas frecuentes",
     "title": "Preguntas frecuentes",
-    "description": "Respuestas a las preguntas generales sobre la cuenta, la seguridad y el funcionamiento de la plataforma.",
+    "description": "Las respuestas a las preguntas generales sobre la cuenta, la seguridad y el funcionamiento de la plataforma.",
     "items": {
       "openAccount": {
-        "question": "¿Cómo abro una cuenta Hentsch Credit?",
-        "answer": "La plataforma está reservada a una clientela restringida, por invitación, en el marco de una relación de gestión de patrimonio existente con H. Hentsch Asset Management SA. Puede presentar una solicitud de apertura de cuenta desde la página Solicitar una cuenta; será examinada por nuestros equipos antes de cualquier apertura efectiva."
+        "question": "¿Cómo abrir una cuenta Hentsch Credit?",
+        "answer": "La plataforma está reservada a una clientela restringida, por invitación, en el marco de una relación de gestión de fortuna existente con H. Hentsch Asset Management SA. Puede presentar una solicitud de apertura de cuenta desde la página Solicitar una cuenta; será examinada por nuestros equipos antes de cualquier apertura efectiva."
       },
       "forgotPassword": {
         "question": "He olvidado mi contraseña, ¿qué hago?",
@@ -508,36 +508,36 @@
       },
       "assetsSafe": {
         "question": "¿Están seguros mis activos digitales?",
-        "answer": "Las stablecoins y el oro tokenizado depositados como garantía son custodiados por un proveedor de custodia de activos digitales autorizado, independiente de H. Hentsch Asset Management SA, especializado en la custodia segura de criptoactivos por cuenta de entidades financieras suizas. El detalle figura en la página Regulación, sección 3."
+        "answer": "Los stablecoins y el oro tokenizado depositados en garantía son custodiados por un proveedor de custodia de activos digitales autorizado, distinto de H. Hentsch Asset Management SA, especializado en la custodia segura de criptoactivos por cuenta de entidades financieras suizas. El detalle figura en la página Regulación, sección 3."
       },
       "networksAssets": {
         "question": "¿Qué redes y activos se aceptan como garantía?",
-        "answer": "Por el momento, solo la red Ethereum. El detalle de los activos aceptados (stablecoins, oro tokenizado, ETH, metales industriales tokenizados) y de su valoración figura en la página Cómo funciona."
+        "answer": "Solo la red Ethereum por ahora. El detalle de los activos aceptados (stablecoins, oro tokenizado, ETH, metales industriales tokenizados) y de su valoración figura en la página Cómo funciona."
       },
       "ratioFees": {
         "question": "¿Cuál es el ratio de crédito y cuáles son las comisiones reales?",
-        "answer": "350% del importe pignorado al tipo vigente en el momento del bloqueo, con una comisión de apertura del 2% y un tipo de interés anual sobre el crédito realmente utilizado. El detalle numérico, incluido un ejemplo de coste total, figura en la página Tarifas."
+        "answer": "350% del importe pignorado a la tasa vigente en el momento del bloqueo, con una comisión de apertura del 2% y una tasa de interés anual sobre el crédito realmente utilizado. El detalle numérico, incluido un ejemplo de coste total, figura en la página Tarifas."
       },
       "yieldLiquidation": {
         "question": "¿Cómo funciona el reembolso automático y el riesgo de liquidación?",
-        "answer": "Parte del crédito utilizado puede reembolsarse automáticamente mediante la plusvalía real de su garantía, con un límite del 60%. En sentido inverso, una fuerte depreciación de la garantía puede provocar su liquidación. El mecanismo completo, con ejemplos numéricos, figura en la página Rendimiento."
+        "answer": "Una parte del crédito utilizado puede reembolsarse automáticamente mediante la plusvalía real de su garantía, con un límite del 60%. A la inversa, una fuerte depreciación de la garantía puede provocar su liquidación. El mecanismo completo, con ejemplos numéricos, figura en la página Rendimiento."
       },
       "kycDoubt": {
-        "question": "¿Qué ocurre si hay dudas sobre mi identidad (KYC)?",
-        "answer": "No es posible ninguna operación financiera (generación de dirección de depósito, depósito, concesión de crédito) mientras su estado de verificación de identidad no esté confirmado. El detalle figura en la página Cómo funciona."
+        "question": "¿Qué ocurre en caso de duda sobre mi identidad (KYC)?",
+        "answer": "Ninguna operación financiera (generación de dirección de depósito, depósito, concesión de crédito) es posible mientras su estado de verificación de identidad no esté confirmado. El detalle figura en la página Cómo funciona."
       },
       "complaint": {
-        "question": "¿Cómo presento una reclamación?",
-        "answer": "Dirija su reclamación al contacto indicado en la página Contacto. En su defecto, puede acudir al organismo de mediación competente, indicado en la página Regulación, sección 6."
+        "question": "¿Cómo presentar una reclamación?",
+        "answer": "Dirija su reclamación al contacto indicado en la página Contacto. A falta de resolución amistosa, puede recurrir al órgano de mediación competente, indicado en la página Regulación, sección 6."
       }
     },
-    "moreQuestionsTitle": "¿Una pregunta más concreta?",
-    "moreQuestionsBody": "Cada gran tema tiene su propia página detallada, con su propia lista de preguntas frecuentes: <howItWorks>Cómo funciona</howItWorks>, <yield>Rendimiento</yield>, <rwa>Estrategia RWA</rwa> y <pricing>Tarifas</pricing>. Para cualquier otra pregunta, la página <contact>Contacto</contact> sigue siendo la vía de acceso más directa."
+    "moreQuestionsTitle": "¿Una pregunta más precisa?",
+    "moreQuestionsBody": "Cada gran tema tiene su propia página detallada, con su propia lista de preguntas frecuentes: <howItWorks>Cómo funciona</howItWorks>, <yield>Rendimiento</yield>, <rwa>Estrategia RWA</rwa> y <pricing>Tarifas</pricing>. Para cualquier otra pregunta, la página <contact>Contacto</contact> sigue siendo el punto de entrada más directo."
   },
   "Login": {
     "meta": {
-      "title": "Acceder · Hentsch Credit",
-      "description": "Acceda a su cuenta Hentsch Credit."
+      "title": "Iniciar sesión · Hentsch Credit",
+      "description": "Inicie sesión en su cuenta de Hentsch Credit."
     }
   },
   "LoginForm": {
@@ -545,44 +545,44 @@
     "twoFactorDescription": "Introduzca el código de 6 dígitos generado por su aplicación de autenticación.",
     "verificationCode": "Código de verificación",
     "verify": "Verificar",
-    "backToLogin": "← Volver al inicio de sesión",
-    "restrictedAccess": "Acceso reservado a los clientes invitados.",
+    "backToLogin": "← Volver a iniciar sesión",
+    "restrictedAccess": "Acceso reservado a clientes invitados.",
     "email": "Correo electrónico",
     "password": "Contraseña",
-    "submit": "Acceder",
+    "submit": "Iniciar sesión",
     "backToHome": "← Volver al inicio",
     "genericError": "Se ha producido un error."
   },
   "RiskManagement": {
     "meta": {
       "title": "Gestión de riesgos y custodia de activos · Hentsch Credit",
-      "description": "Cómo gestiona Hentsch Credit la custodia de activos, la valoración de la garantía y el mecanismo de liquidación."
+      "description": "Cómo gestiona Hentsch Credit la custodia de los activos, la valoración de la garantía y el mecanismo de liquidación."
     },
     "title": "Gestión de riesgos y custodia de activos",
-    "intro": "H. Hentsch Asset Management SA no ejecuta órdenes bursátiles por cuenta de terceros y, por tanto, no publica una política de ejecución ni un informe de mejor selección en el sentido de la normativa sobre mercados financieros. Esta página describe, en su lugar, las prácticas reales de gestión de riesgos aplicadas a la plataforma Hentsch Credit.",
+    "intro": "H. Hentsch Asset Management SA no ejecuta órdenes bursátiles por cuenta de terceros y, por tanto, no publica ninguna política de ejecución ni informe de mejor selección en el sentido de la regulación sobre los mercados financieros. Esta página describe, en su lugar, las prácticas reales de gestión de riesgos aplicadas a la plataforma Hentsch Credit.",
     "s1": {
       "title": "1. Naturaleza de la actividad",
-      "body": "{legalName} actúa como gestor de patrimonio independiente (GPI): concede crédito cripto-colateralizado a sus clientes, a cambio de una garantía depositada por ellos, y gestiona una estrategia de tesorería sobre metales y materias primas industriales tokenizados con su propio capital. No ejecuta ninguna orden bursátil por cuenta de sus clientes ni gestiona ninguna cartera de valores discrecional en su nombre."
+      "body": "{legalName} actúa como gestor de fortuna independiente (GFI): concede crédito cripto-colateralizado a sus clientes, a cambio de una garantía depositada por ellos, y gestiona una estrategia de tesorería sobre metales y materias primas industriales tokenizados con su propio capital. No ejecuta ninguna orden bursátil por cuenta de sus clientes ni gestiona ninguna cartera de valores discrecional en su nombre."
     },
     "s2": {
-      "title": "2. Custodia y segregación de los activos",
-      "body": "Los activos depositados como garantía por los clientes nunca se utilizan en la estrategia de tesorería de la sociedad: ambos flujos son distintos y no se cruzan en ningún momento. El detalle de la estrategia de tesorería figura en la página <link>Estrategia RWA</link>, sección «Gobernanza y segregación de fondos»."
+      "title": "2. Custodia y separación de los activos",
+      "body": "Los activos depositados en garantía por los clientes nunca se utilizan en la estrategia de tesorería de la sociedad: los dos flujos son distintos y no se encuentran en ningún momento. El detalle de la estrategia de tesorería figura en la página <link>Estrategia RWA</link>, sección «Gobernanza y separación de fondos»."
     },
     "s3": {
       "title": "3. Valoración de la garantía",
-      "body": "El valor de la garantía depositada se determina a partir de cotizaciones de mercado en tiempo real (precio spot para el oro tokenizado, los metales industriales tokenizados, el ETH; paridad 1:1 con el dólar para las stablecoins en USD; precio spot para la stablecoin indexada al euro), sin margen ni ajuste discrecional aplicado por la sociedad. Esta valoración se utiliza tanto para calcular el crédito concedido en el momento del bloqueo como para el seguimiento diario de depreciación descrito a continuación."
+      "body": "El valor de la garantía depositada se determina a partir de cotizaciones de mercado en tiempo real (cotización spot para el oro tokenizado, los metales industriales tokenizados, el ETH; paridad 1:1 con el dólar para los stablecoins USD; cotización spot para el stablecoin indexado al euro), sin margen ni ajuste discrecional aplicado por la sociedad. Esta valoración sirve tanto para el cálculo del crédito concedido en el bloqueo como para el seguimiento diario de depreciación descrito a continuación."
     },
     "s4": {
       "title": "4. Mecanismo de liquidación de la garantía",
-      "body": "Un control automático diario compara el valor actual de la garantía con su valor de entrada (en el momento del bloqueo). Una depreciación del 30% activa una alerta visible en la cuenta del cliente; una depreciación del 50% provoca la liquidación de la garantía. El crédito ya utilizado no se borra con la liquidación: se convierte en un crédito no garantizado. El detalle completo, con un ejemplo numérico, figura en la página <yieldLink>Rendimiento</yieldLink> y en las <termsLink>condiciones generales</termsLink>, sección 7."
+      "body": "Un control automático diario compara el valor actual de la garantía con su valor de entrada (en el momento del bloqueo). Una depreciación del 30% desencadena una alerta visible en la cuenta del cliente; una depreciación del 50% provoca la liquidación de la garantía. El crédito ya utilizado no se borra por la liquidación: se convierte en una deuda no garantizada. El detalle completo, con un ejemplo numérico, figura en la página <yieldLink>Rendimiento</yieldLink> y en las <termsLink>condiciones generales</termsLink>, sección 7."
     },
     "s5": {
       "title": "5. Conflictos de interés",
-      "body": "La sociedad nunca adopta una posición contraria a la de sus clientes sobre los activos que depositan como garantía: se limita a recibir dicha garantía, calcular el crédito correspondiente y, en su caso, liquidarla según los umbrales fijados de antemano y aplicados de manera automática e idéntica a todos los clientes. La estrategia de tesorería de la sociedad (metales y materias primas industriales) se financia con su propio capital, nunca con los activos depositados por los clientes."
+      "body": "La sociedad nunca adopta una posición contraria a la de sus clientes sobre los activos que estos depositan en garantía: se limita a recibir dicha garantía, calcular el crédito correspondiente y, en su caso, liquidarla según los umbrales fijados de antemano y aplicados de manera automática e idéntica a todos los clientes. La estrategia de tesorería de la sociedad (metales y materias primas industriales) se financia con su capital propio, nunca con los activos depositados por los clientes."
     },
     "s6": {
       "title": "6. Control y auditoría",
-      "body": "Los parámetros de riesgo vigentes (ratio de crédito, tasas, umbrales de liquidación) están centralizados en el motor de crédito de la plataforma y son objeto de un conjunto de pruebas automatizadas con cada modificación. Todo cambio de estos parámetros se registra y nunca se aplica retroactivamente a una posición ya bloqueada. El detalle del historial de estas modificaciones figura en la página <link>Archivo</link>."
+      "body": "Los parámetros de riesgo vigentes (ratio de crédito, tasas, umbrales de liquidación) están centralizados en el motor de crédito de la plataforma y son objeto de una batería de pruebas automatizadas con cada evolución. Cualquier cambio de estos parámetros queda registrado y nunca se aplica retroactivamente a una posición ya bloqueada. El detalle del historial de estas evoluciones figura en la página <link>Archivo</link>."
     }
   },
   "LegalNotice": {
@@ -591,7 +591,7 @@
       "description": "Información legal relativa al editor y al operador de la plataforma Hentsch Credit."
     },
     "title": "Aviso legal",
-    "intro": "Información legal relativa al editor y al operador del sitio y de la plataforma Hentsch Credit, de conformidad con la legislación suiza aplicable. Plataforma reservada a una clientela restringida, solo por invitación: no está abierta al público y no constituye una oferta pública.",
+    "intro": "Información legal relativa al editor y al operador del sitio y de la plataforma Hentsch Credit, de conformidad con la legislación suiza aplicable. Plataforma reservada a una clientela restringida, por invitación: no está abierta al público y no constituye una oferta pública.",
     "s1": {
       "title": "1. Editor del sitio",
       "companyName": "Razón social",
@@ -602,12 +602,12 @@
       "canton": "Cantón",
       "country": "País",
       "registerNumber": "N.º IDE / registro mercantil",
-      "vatNumber": "N.º de IVA",
+      "vatNumber": "N.º IVA",
       "publicationDirector": "Responsable de la publicación"
     },
     "s2": {
       "title": "2. Estatuto regulatorio y supervisión",
-      "body": "{legalName} es un <b>gestor de patrimonio independiente (GPI)</b> en el sentido de la ley federal sobre las entidades financieras (LEFin), <b>y no una entidad bancaria</b>. Como tal, no dispone de una licencia bancaria expedida directamente por la FINMA, pero está sujeta a la supervisión de un organismo de supervisión (OS) autorizado por la {supervisoryAuthority}.",
+      "body": "{legalName} es un <b>gestor de fortuna independiente (GFI)</b> en el sentido de la ley federal sobre entidades financieras (LEFin), <b>y no una entidad bancaria</b>. Como tal, no dispone de una autorización bancaria emitida directamente por la FINMA, pero está sujeta a la supervisión de un organismo de supervisión (OS) autorizado por la {supervisoryAuthority}.",
       "supervisionBody": "Organismo de supervisión (OS)",
       "amlBody": "Organismo de autorregulación LBA",
       "footer": "El detalle del marco legal aplicable (LEFin, LSFin, LBA) se presenta en la página <link>Regulación</link>."
@@ -617,7 +617,7 @@
     },
     "s4": {
       "title": "4. Acceso restringido",
-      "body": "La plataforma {tradingName} no está destinada al público en general. Su acceso está reservado a una lista determinada de clientes, por invitación de {legalName}, tras una relación de gestión de patrimonio existente y una verificación de identidad previa. Ningún elemento del presente sitio constituye una oferta, una solicitud o una publicidad dirigida al público."
+      "body": "La plataforma {tradingName} no está destinada al público en general. Su acceso está reservado a una lista determinada de clientes, por invitación de {legalName}, tras una relación de gestión de fortuna existente y una verificación de identidad previa. Ningún elemento del presente sitio constituye una oferta, una solicitud o una publicidad destinada al público."
     },
     "s5": {
       "title": "5. Contacto",
@@ -630,27 +630,40 @@
     },
     "s7": {
       "title": "7. Propiedad intelectual",
-      "body": "El conjunto de elementos que componen el sitio y la plataforma (textos, logotipos, gráficos, iconos, estructura, código fuente) es propiedad de {legalName} o de sus licenciantes, y está protegido como tal por el derecho suizo y los convenios internacionales relativos a la propiedad intelectual. Queda prohibida cualquier reproducción, representación, modificación o explotación, total o parcial, sin autorización previa por escrito."
+      "body": "El conjunto de elementos que componen el sitio y la plataforma (textos, logotipos, gráficos, iconos, estructura, código fuente) es propiedad de {legalName} o de sus licenciantes, y está protegido como tal por el derecho suizo y los convenios internacionales relativos a la propiedad intelectual. Queda prohibida toda reproducción, representación, modificación o explotación, total o parcial, sin autorización escrita previa."
     },
     "s8": {
       "title": "8. Socios técnicos",
-      "body": "La plataforma se apoya en proveedores terceros para determinadas funciones técnicas (custodia de activos digitales y gestión de claves, emisión de tarjetas bancarias, verificación de identidad, datos de mercado). La lista de estos proveedores y su función se detallan en la <link>política de privacidad</link>."
+      "body": "La plataforma se apoya en proveedores terceros para ciertas funciones técnicas (custodia de activos digitales y gestión de claves, emisión de tarjetas bancarias, verificación de identidad, datos de mercado). La lista de estos proveedores y su función se detallan en la <link>política de privacidad</link>."
     }
   },
   "Sitemap": {
     "meta": {
       "title": "Mapa del sitio · Hentsch Credit",
-      "description": "El conjunto de páginas accesibles públicamente en Hentsch Credit, sin conectarse a una cuenta."
+      "description": "Todas las páginas de Hentsch Credit, tanto del sitio público como del área de cliente."
     },
     "eyebrow": "Navegación",
     "title": "Mapa del sitio",
-    "description": "El conjunto de páginas accesibles públicamente, sin conectarse a una cuenta.",
+    "description": "Todas las páginas del sitio, tanto del sitio público como del área de cliente.",
     "groups": {
-      "discover": { "title": "Descubrir la plataforma" },
-      "account": { "title": "Acceso a la cuenta" },
-      "help": { "title": "Ayuda y contacto" },
-      "contractual": { "title": "Documentación contractual" },
-      "privacy": { "title": "Datos personales" }
+      "discover": {
+        "title": "Descubrir la plataforma"
+      },
+      "account": {
+        "title": "Acceso a la cuenta"
+      },
+      "help": {
+        "title": "Ayuda y contacto"
+      },
+      "contractual": {
+        "title": "Documentación contractual"
+      },
+      "privacy": {
+        "title": "Datos personales"
+      },
+      "client": {
+        "title": "Área de cliente (requiere inicio de sesión)"
+      }
     },
     "links": {
       "home": "Inicio",
@@ -660,7 +673,7 @@
       "market": "Mercado",
       "pricing": "Tarifas",
       "requestAccount": "Solicitar una cuenta",
-      "login": "Acceder",
+      "login": "Iniciar sesión",
       "contact": "Contáctenos",
       "faq": "Preguntas frecuentes",
       "accessibility": "Accesibilidad digital",
@@ -673,7 +686,17 @@
       "privacyPolicy": "Política de privacidad",
       "cookiePolicy": "Política de cookies"
     },
-    "clientAreaNote": "El área de cliente conectado y el área de gestión interna no figuran anteriormente: su contenido depende de su estado de verificación de identidad y de su rol en la cuenta, y solo es accesible tras iniciar sesión."
+    "clientLinks": {
+      "home": "Inicio",
+      "balance": "Saldo",
+      "market": "Mercado",
+      "credit": "Crédito",
+      "cards": "Tarjetas",
+      "history": "Historial",
+      "profile": "Perfil",
+      "support": "Soporte"
+    },
+    "clientAreaNote": "El back-office de gestión interna no figura arriba: su contenido depende de su rol en la cuenta y solo es accesible a cuentas autorizadas. Las páginas del área de cliente indicadas arriba requieren iniciar sesión con una cuenta verificada; su contenido real (saldos, crédito, historial) es propio de cada cliente."
   },
   "Market": {
     "meta": {
@@ -687,40 +710,40 @@
   "Regulation": {
     "meta": {
       "title": "Regulación · Hentsch Credit",
-      "description": "El marco legal y regulatorio suizo aplicable a Hentsch Credit: LEFin, LSFin, LBA, custodia de activos y supervisión."
+      "description": "El marco legal y regulatorio suizo aplicable a Hentsch Credit: LEFin, LSFin, LBA, custodia de los activos y supervisión."
     },
     "title": "Marco regulatorio",
-    "intro": "Esta página detalla el marco legal y regulatorio suizo aplicable a Hentsch Credit, como complemento del aviso legal.",
+    "intro": "Esta página detalla el marco legal y regulatorio suizo aplicable a Hentsch Credit, en complemento del aviso legal.",
     "s1": {
       "title": "1. Marco legal aplicable",
-      "intro": "La actividad de {legalName} se rige, en particular, por:",
-      "item1": "la ley federal sobre las entidades financieras (LEFin) y su ordenanza (OEFin), aplicables a los gestores de patrimonio independientes;",
+      "intro": "La actividad de {legalName} se rige en particular por:",
+      "item1": "la ley federal sobre las entidades financieras (LEFin) y su ordenanza (OEFin), aplicables a los gestores de fortuna independientes;",
       "item2": "la ley federal sobre los servicios financieros (LSFin) y su ordenanza (OSFin), relativas a la prestación de servicios financieros y a la clasificación de la clientela;",
-      "item3": "la ley federal sobre el blanqueo de capitales (LBA), relativa a las obligaciones de diligencia y vigilancia;",
-      "item4": "la ley federal de protección de datos (nLPD) y, en su caso, el Reglamento General de Protección de Datos (RGPD)."
+      "item3": "la ley federal contra el blanqueo de capitales (LBA), relativa a las obligaciones de diligencia y vigilancia;",
+      "item4": "la ley federal de protección de datos (nLPD) y, en su caso, el reglamento general de protección de datos (RGPD)."
     },
     "s2": {
       "title": "2. Estatuto del operador",
-      "body1": "{legalName} es un <b>gestor de patrimonio independiente (GPI)</b> en el sentido de la LEFin: no dispone de ninguna licencia bancaria y no acepta ningún depósito de fondos del público en su propio nombre.",
+      "body1": "{legalName} es un <b>gestor de fortuna independiente (GFI)</b> en el sentido de la LEFin: no dispone de ninguna autorización bancaria y no acepta ningún depósito de fondos del público a nombre propio.",
       "supervisionBody": "Organismo de supervisión (OS)",
       "supervisoryAuthority": "Autoridad de supervisión suprema",
       "amlBody": "Organismo de autorregulación LBA",
-      "body2": "El OS autoriza y supervisa la actividad de gestión de patrimonio, controla el cumplimiento de las obligaciones legales (incluida la LBA) y puede imponer medidas en caso de incumplimiento. El detalle de la identidad del editor figura en el <link>aviso legal</link>."
+      "body2": "El OS autoriza y supervisa la actividad de gestión de fortuna, controla el cumplimiento de las obligaciones legales (incluida la LBA) y puede imponer medidas en caso de incumplimiento. El detalle de la identidad del editor figura en el <link>aviso legal</link>."
     },
     "s3": {
       "title": "3. Protección de los activos de los clientes"
     },
     "s4": {
       "title": "4. Clasificación de la clientela (LSFin)",
-      "body": "La LSFin distingue tres categorías de clientes (particulares, profesionales e institucionales), a las que corresponden distintos niveles de información y protección. La clientela de {tradingName} se clasifica como <b>{classification}</b> en el sentido de la LSFin, la categoría que ofrece el mayor nivel de protección e información. El acceso sigue, no obstante, reservado a una lista restringida de clientes, por invitación, en el marco de una relación de gestión de patrimonio existente con {legalName}."
+      "body": "La LSFin distingue tres categorías de clientes (particulares, profesionales e institucionales), a las que corresponden niveles diferentes de información y protección. La clientela de {tradingName} se clasifica como <b>{classification}</b> en el sentido de la LSFin, la categoría que ofrece el mayor nivel de protección e información. El acceso sigue no obstante reservado a una lista restringida de clientes, por invitación, en el marco de una relación de gestión de fortuna existente con {legalName}."
     },
     "s5": {
       "title": "5. Lucha contra el blanqueo de capitales (LBA)",
-      "body": "De conformidad con la LBA, el acceso a la plataforma, la generación de una dirección de depósito y cualquier concesión de crédito están supeditados a la verificación previa de la identidad del cliente y del origen económico de los valores patrimoniales en cuestión. {legalName} aplica medidas de diligencia reforzada en presencia de indicios de blanqueo de capitales o de financiación del terrorismo, y cumple las obligaciones de comunicación previstas por la ley cuando corresponde."
+      "body": "De conformidad con la LBA, el acceso a la plataforma, la generación de una dirección de depósito y cualquier concesión de crédito están subordinados a la verificación previa de la identidad del cliente y del origen económico de los valores patrimoniales en cuestión. {legalName} aplica medidas de vigilancia reforzada en presencia de indicios de blanqueo de capitales o de financiación del terrorismo, y respeta las obligaciones de comunicación previstas por la ley cuando proceda."
     },
     "s6": {
       "title": "6. Reclamaciones y mediación",
-      "body": "Toda reclamación relativa al servicio puede dirigirse al contacto indicado a continuación. En su defecto, el cliente puede, en las condiciones previstas por la LSFin, acudir al organismo de mediación del que depende {legalName}: <b>{mediationBody}</b>."
+      "body": "Cualquier reclamación relativa al servicio puede dirigirse al contacto indicado a continuación. A falta de resolución amistosa, el cliente puede, en las condiciones previstas por la LSFin, recurrir al órgano de mediación del que depende {legalName}: <b>{mediationBody}</b>."
     },
     "s7": {
       "title": "7. Contacto de cumplimiento",
@@ -729,7 +752,7 @@
     }
   },
   "YieldShowcase": {
-    "pricesUnavailable": "Cotizaciones no disponibles por el momento.",
+    "pricesUnavailable": "Cotizaciones no disponibles por ahora.",
     "yieldBadge": "Rendimiento",
     "h24": "24h",
     "badge": "Nuestra diferencia",
@@ -737,22 +760,22 @@
     "subtitle": "El oro, la plata y el ETH generan un rendimiento real, reinyectado automáticamente en su crédito.",
     "steps": {
       "deposit": {
-        "title": "1. Deposita oro, plata o ETH",
-        "description": "Estos activos se pignoran exactamente igual que una stablecoin, al mismo ratio de crédito."
+        "title": "1. Usted deposita oro, plata o ETH",
+        "description": "Estos activos se pignoran exactamente igual que un stablecoin, al mismo ratio de crédito."
       },
       "appreciation": {
         "title": "2. Su cotización evoluciona, la plusvalía trabaja para usted",
-        "description": "Cada subida real observada desde el depósito reduce automáticamente el crédito utilizado."
+        "description": "Cada subida real constatada desde el depósito reduce automáticamente el crédito utilizado."
       },
       "repaid": {
-        "title": "3. Hasta el 60% del crédito reembolsado sin esfuerzo",
+        "title": "3. Hasta el 60% del crédito reembolsado sin pensarlo",
         "description": "El resto (40% mínimo) se reembolsa mediante aportación personal, como con cualquier otro activo."
       }
     },
-    "stablecoinsReminder": "Las stablecoins (USDT, USDC, DAI…) siguen siendo 1:1 USD: su crédito se reembolsa íntegramente mediante aportación personal, sin rendimiento automático."
+    "stablecoinsReminder": "Los stablecoins (USDT, USDC, DAI…) siguen siendo 1:1 USD: su crédito se reembolsa íntegramente mediante aportación personal, sin rendimiento automático."
   },
   "YieldPerformanceHistory": {
-    "unavailable": "Historial no disponible por el momento.",
+    "unavailable": "Historial no disponible por ahora.",
     "low12m": "Mínimo (12 meses)",
     "high12m": "Máximo (12 meses)",
     "unavailableValue": "no disponible"
@@ -760,11 +783,11 @@
   "Yield": {
     "meta": {
       "title": "Rendimiento de la garantía · Hentsch Credit",
-      "description": "Cómo el oro, la plata y el ETH depositados como garantía reembolsan automáticamente hasta el 60% de su crédito, y el riesgo de liquidación en caso de fuerte caída."
+      "description": "Cómo el oro, la plata y el ETH depositados en garantía reembolsan automáticamente hasta el 60% de su crédito, y el riesgo de liquidación en caso de fuerte caída."
     },
     "eyebrow": "Nuestra diferencia",
     "title": "Las únicas garantías que reembolsan parte de su crédito por usted",
-    "description": "El oro, la plata y el ETH generan un rendimiento real, reinyectado automáticamente en su crédito, hasta el 60% reembolsado sin esfuerzo.",
+    "description": "El oro, la plata y el ETH generan un rendimiento real, reinyectado automáticamente en su crédito, hasta un 60% reembolsado sin pensarlo.",
     "eligibleAssetsTitle": "Todos los activos elegibles",
     "eligibleAssetsIntro": "Ocho activos se benefician del mismo mecanismo real de reembolso automático por plusvalía, no solo el oro, la plata y el ETH destacados más arriba.",
     "table": {
@@ -776,61 +799,61 @@
       "industrialMetals": "Metales industriales y materias primas",
       "stablecoins": "Stablecoins",
       "none": "Ninguno",
-      "notEligible": "No elegibles (valor fijo o demasiado volátiles*)",
-      "rwaTarget": "8 al 14% TAE (<link>detalle en Estrategia RWA</link>)"
+      "notEligible": "No elegibles (valor fijo o demasiado volátil*)",
+      "rwaTarget": "8 a 14% APY (<link>detalle en Estrategia RWA</link>)"
     },
-    "shibNote": "* SHIB no es una stablecoin, pero sigue excluida del mecanismo: su volatilidad se considera demasiado elevada para sustentar un reembolso recurrente fiable.",
+    "shibNote": "* SHIB no es un stablecoin, pero permanece excluido del mecanismo: su volatilidad se considera demasiado elevada para sustentar un reembolso recurrente fiable.",
     "dualMechanismNote": "Los metales industriales y las materias primas combinan por tanto dos mecanismos distintos: el reembolso automático real descrito en esta página (idéntico al del oro, la plata y el ETH), y un objetivo de rendimiento indicativo propio de la estrategia de tesorería del banco sobre estos activos, presentado por separado y nunca garantizado.",
     "performanceTitle": "Rendimiento a 12 meses",
-    "performanceIntro": "Las cotizaciones reales de los activos generadores de rendimiento, durante los últimos 365 días (el máximo disponible a través de nuestro proveedor de datos de mercado, sin compromiso sobre su rendimiento futuro).",
+    "performanceIntro": "Las cotizaciones reales de los activos generadores de rendimiento, en los últimos 365 días (el máximo disponible a través de nuestro proveedor de datos de mercado, sin compromiso sobre su rendimiento futuro).",
     "exampleTitle": "Un ejemplo concreto",
     "example": {
-      "p1": "Deposita <b>2000 $</b> de oro tokenizado (XAUT), a una cotización de <b>2400 $ la onza</b>: su garantía representa aproximadamente 0,833 onzas. Al ratio del 350%, se le concede un crédito de <b>7000 $</b>, y el límite de reembolso automático por rendimiento es, por tanto, de <b>4200 $</b> (60% de 7000 $).",
-      "p2": "La cotización del oro sube a <b>2500 $</b> la onza: la plusvalía observada (100 $ × 0,833 onzas ≈ 83 $) se aplica automáticamente a su crédito utilizado, el mismo día en que se constata. Este mecanismo se repite con cada subida posterior de la cotización, hasta alcanzar el límite de 4200 $.",
-      "p3": "Si la cotización baja después, no se le retira nada: la plusvalía ya aplicada queda adquirida en su crédito (un «trinquete» que solo avanza hacia arriba). En cambio, no se produce ningún nuevo reembolso automático mientras la cotización no supere el nivel ya alcanzado.",
-      "p4": "Una vez agotado el límite del 60%, el saldo de crédito restante (mínimo 40%, aquí <b>2800 $</b>) debe reembolsarse mediante un pago explícito por su parte (depósito o transferencia), como con cualquier otro crédito."
+      "p1": "Usted deposita <b>2.000 $</b> de oro tokenizado (XAUT), a una cotización de <b>2.400 $ la onza</b>: su garantía representa aproximadamente 0,833 onzas. Al ratio del 350%, se le concede un crédito de <b>7.000 $</b>, y el límite de reembolso automático por rendimiento es por tanto de <b>4.200 $</b> (60% de 7.000 $).",
+      "p2": "La cotización del oro sube a <b>2.500 $</b> la onza: la plusvalía constatada (100 $ × 0,833 onzas ≈ 83 $) se aplica automáticamente a su crédito utilizado, el mismo día en que se constata. Este mecanismo se repite en cada subida posterior de la cotización, hasta alcanzar el límite de 4.200 $.",
+      "p3": "Si la cotización baja después, no se le retira nada: la plusvalía ya aplicada permanece adquirida a su crédito (un «trinquete» que solo avanza hacia arriba). En cambio, no se produce ningún nuevo reembolso automático mientras la cotización no supere el nivel ya alcanzado.",
+      "p4": "Una vez agotado el límite del 60%, el saldo de crédito restante (como mínimo el 40%, aquí <b>2.800 $</b>) debe reembolsarse mediante una aportación explícita por su parte (depósito o transferencia), como con cualquier otro crédito."
     },
     "timelineTitle": "Cronología a lo largo de varios meses",
-    "timelineIntro": "El mismo ejemplo, ampliado: la cotización del oro continúa subiendo durante varios meses, hasta alcanzar el límite del 60%.",
+    "timelineIntro": "El mismo ejemplo, prolongado: la cotización del oro sigue subiendo durante varios meses, hasta alcanzar el límite del 60%.",
     "timelineTable": {
       "month": "Mes",
       "goldPrice": "Cotización del oro",
       "repaidThisMonth": "Reembolsado este mes",
-      "cumulativeRepaid": "Reembolso acumulado",
+      "cumulativeRepaid": "Acumulado reembolsado",
       "row0": "0 (bloqueo)",
-      "row2Price": "2470 $ (bajada)",
-      "row11Cumulative": "4200 $ (límite alcanzado)"
+      "row2Price": "2.470 $ (bajada)",
+      "row11Cumulative": "4.200 $ (límite alcanzado)"
     },
-    "timelineNote": "En el mes 2, la cotización baja: no se produce ningún reembolso ese mes, pero los 83 $ ya aplicados en el mes 1 quedan adquiridos (trinquete). Una vez alcanzado el límite de 4200 $ en el mes 11, ya no se produce ningún reembolso automático adicional en esta posición, aunque la cotización siga subiendo.",
+    "timelineNote": "En el mes 2, la cotización baja: no se produce ningún reembolso ese mes, pero los 83 $ ya aplicados en el mes 1 permanecen adquiridos (trinquete). Una vez alcanzado el límite de 4.200 $ en el mes 11, ya no se produce ningún reembolso automático más sobre esta posición, aunque la cotización siga subiendo.",
     "liquidationTitle": "El riesgo inverso: la liquidación",
     "liquidation": {
       "p1": "El mecanismo anterior se beneficia de una subida de la cotización. Una bajada se trata por separado, mediante un mecanismo distinto: el valor de su garantía se compara diariamente con su <b>valor de entrada</b> (el constatado en el momento del bloqueo), no con la última cotización que desencadenó un reembolso.",
-      "p2": "En caso de depreciación de al menos el <b>30%</b> desde la entrada, aparece una alerta en su cuenta, sin ningún otro efecto. Al <b>50%</b> de depreciación, su garantía se retira automáticamente de la cuenta (se liquida) a su valor de entrada. El crédito que ya había utilizado <b>no se borra</b> por ello: sigue siendo íntegramente debido, ya sin ninguna garantía detrás. Una garantía liquidada no puede restituirse, aunque la cotización se recupere posteriormente.",
+      "p2": "En caso de depreciación de al menos <b>30%</b> desde el valor de entrada, aparece una alerta en su cuenta, sin ningún otro efecto. Al <b>50%</b> de depreciación, su garantía se retira automáticamente de la cuenta (liquidada) a su valor de entrada. El crédito que ya había utilizado <b>no se borra</b> por ello: sigue siendo íntegramente adeudado, ahora sin ninguna garantía detrás. Una garantía liquidada no puede restituirse, aunque la cotización se recupere posteriormente.",
       "p3": "El detalle contractual de este mecanismo figura en nuestras <link>condiciones generales, sección 7</link>."
     },
     "liquidationExampleTitle": "Ejemplo numérico",
     "liquidationExample": {
-      "intro": "Retomemos el depósito de <b>2000 $</b> de oro a 2400 $ la onza (7000 $ de crédito concedido), pero esta vez la cotización del oro cae en lugar de subir:",
-      "item1": "a 1680 $ la onza (-30%): aparece una alerta en la cuenta, sin ningún otro efecto;",
-      "item2": "a 1200 $ la onza (-50%): la garantía se liquida. Los 2000 $ de garantía y los 7000 $ de crédito concedido se retiran de la cuenta. Si ya había utilizado <b>1500 $</b> de ese crédito (tarjeta, gastos internos), esos 1500 $ siguen siendo debidos, sin ninguna garantía ya detrás de ellos."
+      "intro": "Retomemos el depósito de <b>2.000 $</b> de oro a 2.400 $ la onza (7.000 $ de crédito concedido), pero esta vez la cotización del oro cae en lugar de subir:",
+      "item1": "a 1.680 $ la onza (-30%): aparece una alerta en la cuenta, sin ningún otro efecto;",
+      "item2": "a 1.200 $ la onza (-50%): la garantía se liquida. Los 2.000 $ de garantía y los 7.000 $ de crédito concedido se retiran de la cuenta. Si ya había utilizado <b>1.500 $</b> de este crédito (tarjeta, gastos internos), esos 1.500 $ siguen siendo debidos, sin ninguna garantía ya detrás."
     },
     "faqTitle": "Preguntas frecuentes",
     "faq": {
       "guaranteed": {
         "question": "¿Está garantizado el rendimiento?",
-        "answer": "No. Depende íntegramente de la evolución real de la cotización de su garantía. Si la cotización nunca sube por encima de su precio de entrada, no se produce ningún reembolso automático: en ese caso, reembolsa la totalidad mediante aportación personal, exactamente igual que con una stablecoin."
+        "answer": "No. Depende enteramente de la evolución real de la cotización de su garantía. Si la cotización nunca sube por encima de su precio de entrada, no se produce ningún reembolso automático: usted reembolsa entonces la totalidad mediante aportación personal, exactamente igual que con un stablecoin."
       },
       "stablecoins": {
-        "question": "¿Por qué las stablecoins (USDT, USDC, DAI…) no generan ninguno?",
-        "answer": "Una stablecoin permanece, por construcción, indexada 1:1 al dólar: por definición, no tiene ninguna plusvalía que realizar. No obstante, reembolsarla sigue siendo igual de sencillo, mediante aportación personal."
+        "question": "¿Por qué los stablecoins (USDT, USDC, DAI…) no generan ninguno?",
+        "answer": "Un stablecoin permanece por construcción indexado 1:1 al dólar: por definición, no tiene ninguna plusvalía que realizar. Reembolsarlo sigue siendo igual de sencillo, mediante aportación personal."
       },
       "frequency": {
         "question": "¿Con qué frecuencia se calcula el reembolso automático?",
-        "answer": "Diariamente, a partir de la cotización spot en directo de su activo, sin ninguna acción por su parte, y visible en su historial de transacciones bajo la etiqueta «Reembolso por rendimiento de la garantía»."
+        "answer": "Diariamente, en base a la cotización spot en directo de su activo, sin ninguna acción por su parte, y visible en su historial de transacciones bajo la etiqueta «Reembolso por rendimiento de la garantía»."
       },
       "ratchet": {
-        "question": "¿El «trinquete» me protege si baja la cotización?",
-        "answer": "Solo protege los reembolsos ya aplicados: quedan adquiridos, pase lo que pase después. No protege contra la liquidación, que se activa en relación con el valor de entrada de su garantía, no en relación con el trinquete (véase «El riesgo inverso» más arriba)."
+        "question": "¿El «trinquete» me protege si la cotización baja?",
+        "answer": "Solo protege los reembolsos ya aplicados: permanecen adquiridos, pase lo que pase después. No protege contra la liquidación, que se desencadena en relación con el valor de entrada de su garantía, no en relación con el trinquete (véase «El riesgo inverso» más arriba)."
       },
       "multipleAssets": {
         "question": "Si deposito varios activos diferentes, ¿cómo funciona?",
@@ -838,94 +861,138 @@
       },
       "history": {
         "question": "¿Puedo ver el historial de mis reembolsos automáticos?",
-        "answer": "Sí, en el historial de transacciones de su cuenta, bajo la etiqueta «Reembolso por rendimiento de la garantía» (un movimiento distinto de un reembolso manual, para mantenerse auditable por separado)."
+        "answer": "Sí, en el historial de transacciones de su cuenta, bajo la etiqueta «Reembolso por rendimiento de la garantía» (un movimiento distinto de un reembolso manual, para seguir siendo auditable por separado)."
       }
     }
   },
   "RwaStrategy": {
     "meta": {
       "title": "Estrategia de inversión RWA · Hentsch Credit",
-      "description": "La estrategia de tesorería de Hentsch Credit sobre metales industriales tokenizados: arbitraje cash and carry, préstamo triangular y aportación de liquidez."
+      "description": "La estrategia de tesorería de Hentsch Credit sobre los metales industriales tokenizados: arbitraje cash and carry, préstamo triangular y aportación de liquidez."
     },
     "eyebrow": "Transparencia · Estrategia de tesorería",
     "title": "Nuestra estrategia de inversión en metales industriales",
-    "intro": "Más allá de los metales preciosos, el banco acepta ahora como garantía metales industriales y materias primas tokenizados, y despliega sobre estos activos su propia estrategia de tesorería. He aquí, con total transparencia, cómo funciona y el plan de acción seguido.",
-    "apyTargetLabel": "TAE, objetivo indicativo del banco",
-    "apyTargetNote": "Objetivo de la estrategia de tesorería propia del banco sobre estos activos, no una garantía, y sin ningún efecto sobre el cálculo de su crédito. El reembolso automático de su crédito sigue siendo el descrito más arriba: la plusvalía real de su garantía, limitada al 60%.",
-    "apyObjective": "TAE objetivo",
+    "intro": "Más allá de los metales preciosos, el banco acepta ahora en garantía metales industriales y materias primas tokenizados, y despliega sobre estos activos su propia estrategia de tesorería. He aquí, con total transparencia, cómo funciona y el plan de acción seguido.",
+    "apyTargetLabel": "APY, objetivo indicativo del banco",
+    "apyTargetValue": "8 a 14%",
+    "apyTargetNote": "Objetivo de la estrategia de tesorería propia del banco sobre estos activos, no una garantía, y sin ningún efecto en el cálculo de su crédito. El reembolso automático de su crédito sigue siendo el descrito más arriba: la plusvalía real de su garantía, con un límite del 60%.",
+    "apyObjective": "APY objetivo",
     "pillars": {
       "cashCarry": {
         "title": "Arbitraje Cash & Carry",
-        "range": "4 al 7%",
+        "range": "4 a 7%",
         "description": "Compra del metal tokenizado en el mercado spot, venta simultánea de un contrato de futuros equivalente: la posición es neutra al riesgo de precio y captura el diferencial de financiación (contango)."
       },
       "triangular": {
         "title": "Colateralización y préstamo triangular",
-        "range": "6,5 al 10%",
-        "description": "El metal tokenizado se deposita como colateral (LTV prudente, 50% máximo) en un protocolo institucional, para tomar prestadas stablecoins reinvertidas en fondos de tesorería de bajo riesgo."
+        "range": "6,5 a 10%",
+        "description": "El metal tokenizado se deposita como colateral (LTV prudente, 50% máximo) en un protocolo institucional, para pedir prestados stablecoins reinvertidos en fondos de tesorería de bajo riesgo."
       },
       "liquidity": {
         "title": "Aportación de liquidez seleccionada",
-        "range": "9 al 15%",
-        "description": "Una parte minoritaria del capital alimenta pools de liquidez seleccionados, remunerados con una fracción de las comisiones de transacción de los participantes del mercado."
+        "range": "9 a 15%",
+        "description": "Una parte minoritaria del capital alimenta pools de liquidez específicos, remunerada mediante una fracción de las comisiones de transacción de los participantes del mercado."
       }
     },
     "caseStudy": {
       "title": "Cómo se obtienen estas cifras",
-      "intro": "Ejemplo ilustrativo de un despliegue de tesorería de 10 M$ en Platino, a escala del banco, no a escala de su garantía individual.",
+      "intro": "Ejemplo ilustrativo de un despliegue de tesorería de 10 M$ en Platino, a escala del banco, no de su garantía individual.",
       "flow": "Flujo",
       "basis": "Base de cálculo",
       "annualAmount": "Importe anual",
       "impact": "Impacto",
       "netTotal": "Rendimiento neto total",
       "capital": "Capital de 10 M$",
-      "reallocationNote": "Reasignando parte de la tesorería hacia la aportación de liquidez (Pilar C), este rendimiento neto puede subir hasta el objetivo del 10,2%, en la parte alta de la horquilla indicativa del 8 al 14% mostrada más arriba, sin apalancamiento adicional ni garantía de resultado.",
+      "reallocationNote": "Al reasignar una parte de la tesorería hacia la aportación de liquidez (Pilar C), este rendimiento neto puede subir hasta el objetivo del 10,2%, en la parte alta del rango indicativo del 8 al 14% mostrado más arriba, sin apalancamiento adicional ni garantía de resultado.",
       "rows": {
-        "native": { "label": "Rendimiento nativo del Platino (plusvalía física)", "basis": "1,5% sobre 10 M$" },
-        "basis": { "label": "Basis trade / contango en futuros", "basis": "3,5% sobre 10 M$" },
-        "stablecoinYield": { "label": "Rendimiento de las stablecoins prestadas e invertidas (BUIDL)", "basis": "5,0% sobre 5 M$" },
-        "borrowCost": { "label": "Coste del préstamo de stablecoins", "basis": "-3,2% sobre 5 M$" },
-        "operational": { "label": "Costes operativos, custodia y seguro", "basis": "0,4% sobre 10 M$" }
+        "native": {
+          "label": "Rendimiento nativo del Platino (plusvalía física)",
+          "basis": "1,5% sobre 10 M$"
+        },
+        "basis": {
+          "label": "Basis trade / contango sobre futuros",
+          "basis": "3,5% sobre 10 M$"
+        },
+        "stablecoinYield": {
+          "label": "Rendimiento de los stablecoins prestados invertidos (BUIDL)",
+          "basis": "5,0% sobre 5 M$"
+        },
+        "borrowCost": {
+          "label": "Coste del préstamo de stablecoins",
+          "basis": "-3,2% sobre 5 M$"
+        },
+        "operational": {
+          "label": "Costes operativos, custodia y seguro",
+          "basis": "0,4% sobre 10 M$"
+        }
       }
     },
     "roadmapTitle": "Hoja de ruta a 12 meses",
     "roadmap": {
-      "phase1": { "window": "Meses 1 a 3", "title": "Estructuración y cumplimiento", "detail": "Marco jurídico, selección de depositarios autorizados, auditoría de los emisores." },
-      "phase2": { "window": "Meses 4 a 6", "title": "Proyecto piloto", "detail": "Asignación piloto de 5 M$ en Platino, primeros circuitos de arbitraje." },
-      "phase3": { "window": "Meses 7 a 9", "title": "Escalado", "detail": "Capital ampliado a 25 M$, extensión al Paladio y al Cobre." },
-      "phase4": { "window": "Meses 10 a 12", "title": "Industrialización", "detail": "Informes en tiempo real e integración contable de extremo a extremo." }
+      "phase1": {
+        "window": "Meses 1 a 3",
+        "title": "Estructuración y cumplimiento",
+        "detail": "Marco jurídico, selección de depositarios autorizados, auditoría de emisores."
+      },
+      "phase2": {
+        "window": "Meses 4 a 6",
+        "title": "Proyecto piloto",
+        "detail": "Asignación piloto de 5 M$ en Platino, primeros circuitos de arbitraje."
+      },
+      "phase3": {
+        "window": "Meses 7 a 9",
+        "title": "Ampliación",
+        "detail": "Capital ampliado a 25 M$, extensión al Paladio y al Cobre."
+      },
+      "phase4": {
+        "window": "Meses 10 a 12",
+        "title": "Industrialización",
+        "detail": "Informes en tiempo real e integración contable de extremo a extremo."
+      }
     },
     "risksTitle": "Riesgos identificados y medidas de protección",
     "risks": {
-      "counterparty": { "risk": "Contraparte y auditoría", "mitigation": "Auditorías bimensuales de la reserva (Proof of Reserve) por parte de firmas independientes." },
-      "smartContract": { "risk": "Contrato inteligente", "mitigation": "Protocolos auditados exclusivamente en múltiples ocasiones, cubiertos por un seguro institucional." },
-      "liquidity": { "risk": "Liquidez", "mitigation": "Acuerdo de recompra directa con los emisores físicos, preaviso máximo de 48 horas." },
-      "liquidation": { "risk": "Liquidación del colateral", "mitigation": "Ratio de sobrecolateralización estricto (LTV ≤ 50%) con reequilibrio automatizado." }
+      "counterparty": {
+        "risk": "Contraparte y auditoría",
+        "mitigation": "Auditorías bimensuales de la reserva (Proof of Reserve) por firmas independientes."
+      },
+      "smartContract": {
+        "risk": "Contrato inteligente",
+        "mitigation": "Protocolos exclusivamente auditados en múltiples ocasiones, cubiertos por un seguro institucional."
+      },
+      "liquidity": {
+        "risk": "Liquidez",
+        "mitigation": "Convenio de recompra directa con los emisores físicos, preaviso máximo de 48 horas."
+      },
+      "liquidation": {
+        "risk": "Liquidación del colateral",
+        "mitigation": "Ratio de sobrecolateralización estricto (LTV ≤ 50%) con reequilibrio automatizado."
+      }
     },
-    "governanceTitle": "Gobernanza y segregación de fondos",
+    "governanceTitle": "Gobernanza y separación de fondos",
     "governance": {
       "capital": {
         "title": "Capital comprometido",
-        "body": "Esta estrategia se gestiona con la tesorería propia del banco, nunca con los activos depositados como garantía por los clientes. La garantía de un cliente se destina exclusivamente a garantizar su propio crédito (véase Rendimiento); no se presta ni se compromete en el arbitraje o el market making descritos anteriormente."
+        "body": "Esta estrategia se gestiona con la tesorería propia del banco, nunca con los activos depositados en garantía por los clientes. Una garantía de cliente sirve exclusivamente para garantizar su propio crédito (véase Rendimiento); no se presta ni se compromete en el arbitraje o el market making descritos anteriormente."
       },
       "supervision": {
         "title": "Supervisión",
-        "body": "Dirigida por la Dirección de Mercados Financieros, informada al Comité de Inversión y a la Dirección General en cada cambio de fase (véase la hoja de ruta anterior), con un seguimiento diario interno del rendimiento obtenido en relación con el objetivo indicativo mostrado."
+        "body": "Dirigida por la Dirección de Mercados Financieros, reportada al Comité de Inversión y a la Dirección General en cada cambio de fase (véase la hoja de ruta anterior), con un seguimiento interno diario del rendimiento real respecto al objetivo indicativo mostrado."
       }
     },
     "faqTitle": "Preguntas frecuentes",
     "faq": {
       "usedForStrategy": {
         "question": "¿Se utiliza mi garantía para esta estrategia?",
-        "answer": "No. Su garantía sigue destinada exclusivamente a su propio crédito. Esta estrategia se refiere a la tesorería propia del banco, un capital independiente."
+        "answer": "No. Su garantía permanece exclusivamente afectada a su propio crédito. Esta estrategia se basa en la tesorería propia del banco, un capital distinto."
       },
       "loss": {
         "question": "¿Qué ocurre si la estrategia pierde dinero?",
         "answer": "La pérdida es absorbida por la tesorería del banco, sin ningún efecto sobre las cuentas de los clientes ni sobre el crédito ya concedido: este riesgo nunca se transfiere al cliente."
       },
       "targetReached": {
-        "question": "¿Se ha alcanzado ya el objetivo del 8 al 14%?",
-        "answer": "Es un objetivo a medio plazo, no un resultado garantizado mes a mes: consulte el estudio de caso anterior para ver un ejemplo detallado del cálculo del rendimiento neto."
+        "question": "¿Ya se ha alcanzado el objetivo del 8 al 14%?",
+        "answer": "Es un objetivo a medio plazo, no un resultado garantizado mes a mes: véase el estudio de caso anterior para un ejemplo de cálculo detallado del rendimiento neto."
       },
       "whyIndustrialOnly": {
         "question": "¿Por qué solo los metales industriales tienen este objetivo?",
@@ -944,11 +1011,11 @@
     "items": {
       "ratio": {
         "label": "Ratio de crédito",
-        "detail": "Del importe pignorado, al tipo vigente en el momento del bloqueo."
+        "detail": "Del importe pignorado, a la tasa vigente en el momento del bloqueo."
       },
       "interestRate": {
-        "label": "Tipo de interés anual",
-        "detail": "Tipo de referencia (SOFR/EURIBOR) más una prima de riesgo de 8,5 puntos, sobre el crédito utilizado."
+        "label": "Tasa de interés anual",
+        "detail": "Tasa de referencia (SOFR/EURIBOR) + prima de riesgo de 8,5 puntos, sobre el crédito utilizado."
       },
       "originationFees": {
         "label": "Comisión de apertura",
@@ -956,10 +1023,12 @@
       },
       "custodyFees": {
         "label": "Comisión de custodia del colateral",
+        "value": "0,5% / año",
         "detail": "Sobre el importe de la garantía bloqueada, mientras la posición permanezca activa."
       },
       "positionDuration": {
         "label": "Duración de la posición",
+        "value": "12 meses",
         "detail": "Renovable; la garantía permanece bloqueada mientras el crédito utilizado no se reembolse."
       },
       "automaticRepayment": {
@@ -969,39 +1038,428 @@
       },
       "liquidationThresholds": {
         "label": "Umbrales de liquidación de la garantía",
-        "detail": "Depreciación desde el valor de entrada: el 30% activa una alerta, el 50% liquida la garantía (el crédito ya utilizado sigue siendo debido). Detalle en la página Rendimiento."
+        "detail": "Depreciación desde el valor de entrada: el 30% desencadena una alerta, el 50% liquida la garantía (el crédito ya utilizado sigue siendo debido). Detalle en la página Rendimiento."
       }
     },
-    "nonRetroactivityNote": "Cualquier cambio posterior de una de estas tasas solo se aplica a los nuevos bloqueos: una posición ya abierta conserva la estructura de tasas que se le aplicó en el momento de su creación, hasta su reembolso o vencimiento.",
+    "nonRetroactivityNote": "Un cambio posterior de cualquiera de estas tasas solo se aplica a los nuevos bloqueos: una posición ya abierta conserva la estructura de tasas que se le aplicó en el momento de su creación, hasta su reembolso o vencimiento.",
     "contractualDetail": "El detalle contractual completo de estas tarifas figura en nuestras <link>condiciones generales</link>.",
     "exampleTitle": "Ejemplo de coste total a 12 meses",
-    "exampleIntro": "Para un depósito de 2000 $ (7000 $ de crédito concedido), utilizado íntegramente durante 12 meses y luego reembolsado, el escenario más prudente (sin ninguna reducción por rendimiento).",
+    "exampleIntro": "Para un depósito de 2.000 $ (7.000 $ de crédito concedido), utilizado íntegramente durante 12 meses y luego reembolsado, escenario más prudente (sin ninguna reducción por rendimiento).",
     "exampleTable": {
       "item": "Concepto",
       "calculation": "Cálculo",
       "amount": "Importe",
       "origination": "Comisión de apertura",
-      "originationCalc": "2,0% × 7000 $, cobrada una sola vez",
+      "originationCalc": "2,0% × 7.000 $, cobrada una vez",
       "interest": "Intereses a 12 meses",
-      "interestCalc": "13,5% × 7000 $ utilizados todo el año",
+      "interestCalc": "13,5% × 7.000 $ utilizados todo el año",
       "totalBeforeYield": "Total antes de rendimiento",
-      "totalBeforeYieldNote": "Excluida cualquier reducción eventual por plusvalía de la garantía"
+      "totalBeforeYieldNote": "Sin la posible reducción por plusvalía de la garantía"
     },
-    "exampleFooter": "Las comisiones de custodia del colateral (0,5%/año) se muestran y fijan en el bloqueo, pero su cobro automático periódico aún no está en servicio en esta etapa; por tanto, no se incluyen en este total. Si su garantía genera un rendimiento (oro, plata, ETH, metales industriales), parte de estos 1085 $ puede cubrirse automáticamente, dentro del límite del 60% del crédito utilizado (véase <link>Rendimiento</link>).",
+    "exampleFooter": "Las comisiones de custodia del colateral (0,5%/año) se muestran y se fijan en el bloqueo, pero su cobro automático periódico aún no está en servicio en esta etapa; por tanto, no se incluyen en este total. Si su garantía genera rendimiento (oro, plata, ETH, metales industriales), parte de estos 1.085 $ puede cubrirse automáticamente, dentro del límite del 60% del crédito utilizado (véase <link>Rendimiento</link>).",
     "faqTitle": "Preguntas frecuentes",
     "faq": {
       "earlyRepayment": {
         "question": "¿Hay comisiones por reembolso anticipado?",
-        "answer": "No. Puede reembolsar la totalidad o parte del crédito utilizado en cualquier momento, sin penalización. Los intereses solo se devengan sobre la duración y el importe realmente utilizados."
+        "answer": "No. Puede reembolsar todo o parte del crédito utilizado en cualquier momento, sin penalización. Los intereses solo se devengan sobre la duración y el importe realmente utilizados."
       },
       "negotiable": {
         "question": "¿Son negociables estas tarifas?",
-        "answer": "No, se aplican de manera uniforme a todos los clientes al tipo vigente en el momento del bloqueo. Un futuro cambio de tipo solo se aplica a los nuevos bloqueos."
+        "answer": "No, se aplican de manera uniforme a todos los clientes a la tasa vigente en el momento del bloqueo. Un futuro cambio de tasa solo se aplica a los nuevos bloqueos."
       },
       "currencyDifference": {
-        "question": "¿Por qué el tipo difiere entre USD y EUR?",
-        "answer": "Cada divisa aplica su propio tipo de referencia monetario (SOFR para el USD, EURIBOR para el EUR) antes de añadir la misma prima de riesgo de 8,5 puntos, de ahí la diferencia de 1,5 puntos entre ambos."
+        "question": "¿Por qué la tasa difiere entre USD y EUR?",
+        "answer": "Cada divisa aplica su propia tasa de referencia monetaria (SOFR para el USD, EURIBOR para el EUR) antes de añadirle la misma prima de riesgo de 8,5 puntos, de ahí la diferencia de 1,5 puntos entre ambas."
       }
     }
+  },
+  "DashboardShell": {
+    "sidebar": {
+      "subtitle": "Panel de control",
+      "clientNavAriaLabel": "Navegación de la cuenta",
+      "backofficeNavAriaLabel": "Navegación del back-office",
+      "mobileNavAriaLabel": "Navegación entre las secciones del panel",
+      "client": {
+        "home": "Inicio",
+        "balance": "Saldo",
+        "market": "Mercado",
+        "credit": "Crédito",
+        "cards": "Tarjetas",
+        "history": "Historial",
+        "profile": "Perfil",
+        "support": "Soporte"
+      },
+      "backoffice": {
+        "label": "Back-office",
+        "creditRequests": "Demandes de crédit",
+        "accountRequests": "Demandes de compte",
+        "adminArea": "Espace Admin"
+      }
+    },
+    "legalFooter": {
+      "ariaLabel": "Enlaces legales",
+      "legalNotice": "Aviso legal",
+      "terms": "Condiciones",
+      "privacy": "Privacidad",
+      "regulation": "Regulación"
+    }
+  },
+  "Dashboard": {
+    "home": {
+      "loadError": "No se ha podido cargar el panel"
+    },
+    "balanceCards": {
+      "depositBalance": {
+        "title": "Saldo de depósito",
+        "description": "Importe disponible en su wallet, sin línea de crédito activa por ahora."
+      },
+      "purchasingPower": {
+        "title": "Poder de compra",
+        "descriptionNoCredit": "Idéntico al saldo de depósito mientras no se conceda ningún crédito."
+      },
+      "availableCredit": {
+        "title": "Crédito disponible",
+        "description": "Ninguna línea activa, envíe una solicitud desde Crédito."
+      },
+      "globalBalance": {
+        "title": "Saldo global",
+        "description": "Disponible + gage bloqueado + crédito concedido − crédito utilizado"
+      },
+      "lockedCollateral": {
+        "title": "Garantía bloqueada",
+        "description": "Retirable solo tras el reembolso íntegro"
+      },
+      "creditLine": {
+        "title": "Línea de crédito",
+        "description": "{available} restante · {used} utilizado"
+      }
+    },
+    "walletActions": {
+      "genericError": "Se ha producido un error.",
+      "buyByCard": {
+        "trigger": "Comprar con tarjeta",
+        "dialogTitle": "Recargar con tarjeta bancaria",
+        "dialogDescription": "Pago seguro gestionado por Mollie. El saldo disponible se acredita en cuanto se confirma el pago.",
+        "amountLabel": "Importe (USD)",
+        "submit": "Continuar al pago"
+      },
+      "deposit": {
+        "trigger": "Depositar",
+        "dialogTitle": "Depositar fondos",
+        "descriptionSelect": "Elija el activo y la red y consulte la dirección de depósito correspondiente.",
+        "descriptionPool": "Dirección de depósito del banco para este activo: declare su depósito una vez realizado el envío.",
+        "descriptionLegacy": "Dirección de depósito individual generada para su cuenta, acreditada automáticamente tras la confirmación on-chain.",
+        "assetLabel": "Activo",
+        "networkLabel": "Red",
+        "continue": "Continuar",
+        "addressLabel": "Dirección de depósito ({currency} en {chain})",
+        "poolAddressNote": "Dirección de gestión de activos del banco, común a todos los clientes. Envíe únicamente {currency} en {chain}.",
+        "declaredAlert": "Depósito declarado, visible en su historial, pendiente de validación tras la recepción de los fondos.",
+        "sentAmountLabel": "Importe enviado ({currency})",
+        "sentAmountNote": "Una vez realizado el envío, decláre­lo a continuación para que aparezca en su historial: un asesor lo validará al recibirlo.",
+        "declareButton": "He enviado los fondos",
+        "legacyAddressLabel": "Su dirección de depósito",
+        "legacyNote": "Envíe únicamente {currency} en {chain} a esta dirección. El saldo se acredita tras la confirmación on-chain."
+      },
+      "withdraw": {
+        "trigger": "Retirar",
+        "dialogTitle": "Retirar fondos",
+        "dialogDescription": "Saldo disponible: {balance}. La garantía bloqueada solo puede retirarse tras el reembolso íntegro del crédito.",
+        "amountLabel": "Importe",
+        "destinationLabel": "Dirección de destino",
+        "submit": "Confirmar el retiro",
+        "successToast": "Retiro solicitado correctamente."
+      }
+    },
+    "marketView": {
+      "dataProvider": "Datos proporcionados por CoinMarketCap",
+      "pricesUnavailable": "Precios no disponibles.",
+      "title": "Mercado en tiempo real",
+      "description": "Cotizaciones, variación 24h, volúmenes y capitalización de los activos aceptados como garantía.",
+      "loading": "Cargando…",
+      "columns": {
+        "asset": "Activo",
+        "price": "Precio",
+        "change24h": "Var. 24h",
+        "volume24h": "Volumen 24h",
+        "marketCap": "Cap. de mercado",
+        "trend12m": "Tendencia 12 meses"
+      },
+      "acceptedSection": {
+        "title": "Aceptados como garantía",
+        "yieldNote": "Rendimiento = plusvalía de la garantía que reembolsa automáticamente hasta el 60% del crédito (metales preciosos, metales industriales, ETH)"
+      },
+      "othersSection": {
+        "title": "Otras criptomonedas (solo información)"
+      },
+      "badges": {
+        "acceptedPegged": "Aceptado · 1:1",
+        "acceptedSpot": "Aceptado · spot",
+        "yieldTitle": "Su plusvalía reembolsa automáticamente hasta el 60% del crédito emitido",
+        "yield": "Rendimiento",
+        "targetApyTitle": "Objetivo indicativo de la estrategia de tesorería del banco sobre este activo, no una garantía, sin efecto en el cálculo de su crédito",
+        "targetApy": "Objetivo {min}-{max}% APY"
+      }
+    },
+    "cardsSection": {
+      "title": "Tarjetas virtuales",
+      "description": "Emisión Visa/Mastercard (integración Etapa 4)",
+      "noCards": "No se ha emitido ninguna tarjeta para esta cuenta.",
+      "limit": "Límite {amount}",
+      "step4Note": "Disponible en la Etapa 4 (integración Stripe Issuing / Marqeta)",
+      "issueCard": "Emitir una tarjeta"
+    },
+    "labels": {
+      "cardStatus": {
+        "PENDING": "Pendiente",
+        "ACTIVE": "Activa",
+        "BLOCKED": "Bloqueada",
+        "CLOSED": "Cerrada"
+      },
+      "kycStatus": {
+        "PENDING": "KYC pendiente",
+        "VERIFIED": "KYC verificado",
+        "REJECTED": "KYC rechazado"
+      },
+      "transactionType": {
+        "DEPOSIT": "Depósito",
+        "COLLATERAL_LOCK": "Bloqueo de garantía",
+        "CREDIT_ISSUED": "Crédito emitido",
+        "CARD_PAYMENT": "Pago con tarjeta",
+        "REPAYMENT": "Reembolso",
+        "WITHDRAWAL": "Retiro",
+        "ORIGINATION_FEE": "Comisión de apertura",
+        "INTEREST_PAYMENT": "Intereses pagados",
+        "CARD_TOPUP": "Recarga con tarjeta",
+        "YIELD_REPAYMENT": "Reembolso por rendimiento de la garantía",
+        "LIQUIDATION": "Liquidación"
+      },
+      "transactionStatus": {
+        "PENDING": "Pendiente",
+        "COMPLETED": "Completada",
+        "FAILED": "Fallida"
+      },
+      "creditRequestStatus": {
+        "PENDING": "Pendiente de validación",
+        "APPROVED": "Aprobada",
+        "REJECTED": "Rechazada",
+        "FULFILLED": "Crédito emitido"
+      },
+      "addressLabel": {
+        "DOMICILE": "Domicilio",
+        "FISCALE": "Fiscal",
+        "POSTALE": "Postal",
+        "PROFESSIONNELLE": "Profesional"
+      }
+    },
+    "profileSection": {
+      "genericError": "Se ha producido un error.",
+      "fullName": "Nombre completo",
+      "phone": "Teléfono",
+      "address": "Dirección",
+      "noAddress": "Aún no se ha proporcionado ninguna dirección.",
+      "employmentTitle": "Situación laboral",
+      "activity": "Actividad",
+      "employer": "Empleador",
+      "notProvided": "No proporcionado",
+      "notProvidedFeminine": "No proporcionada",
+      "role": "Cargo",
+      "annualIncome": "Ingreso anual",
+      "noEmployment": "Aún no se ha proporcionado ninguna situación laboral.",
+      "managedWallet": "Wallet personal",
+      "managedWalletNote": "Identificador interno utilizado por el banco para el seguimiento de sus depósitos en los activos mancomunados (USDT, USDC, XAUT, dEURO).",
+      "title": "Perfil",
+      "description": "Información de la cuenta",
+      "email": "Correo electrónico",
+      "kycStatus": "Estado KYC",
+      "memberSince": "Cliente desde",
+      "depositAddresses": "Direcciones de depósito (cripto)",
+      "noWallets": "Aún no se ha generado ninguna dirección."
+    },
+    "supportSection": {
+      "title": "Contactar con soporte",
+      "description": "¿Alguna pregunta sobre su cuenta, su garantía o un depósito?",
+      "liveChat": "Chat en directo (próximamente)"
+    },
+    "transactionHistory": {
+      "title": "Historial de transacciones",
+      "description": "Registro completo de los movimientos de la cuenta",
+      "noTransactions": "Ninguna transacción para esta cuenta.",
+      "columns": {
+        "type": "Tipo",
+        "amount": "Importe",
+        "status": "Estado",
+        "onChainReference": "Referencia on-chain",
+        "date": "Fecha"
+      }
+    },
+    "accountMenu": {
+      "admin": "Admin",
+      "logout": "Cerrar sesión"
+    },
+    "creditOverview": {
+      "availableBalance": "Saldo disponible",
+      "lockedCollateral": "Garantía bloqueada",
+      "availableCredit": "Crédito disponible",
+      "totalPurchasingPower": "Poder de compra total",
+      "currentRates": "Tasas actuales",
+      "interestRateLine": "{rate}%/año de interés",
+      "feesLine": "{origination}% de apertura · {custody}% de custodia",
+      "ratioNote": "Ratio de crédito: 350% de la garantía bloqueada, a la tasa vigente en el momento del bloqueo.",
+      "repaymentNote": "Reembolso: hasta el 60% del crédito puede cubrirse automáticamente mediante el rendimiento de la garantía (oro, plata, ETH, platino, paladio, cobre, petróleo sintético); el 40% restante se reembolsa mediante aportación personal.",
+      "myRequests": "Mis solicitudes",
+      "noRequests": "Ninguna solicitud por el momento."
+    },
+    "creditForm": {
+      "title": "Gestionar mi línea de crédito",
+      "description": "El crédito se obtiene bajo solicitud: envíe la garantía prevista y luego deposite los fondos desde <balance>Saldo</balance> una vez aprobada la solicitud.",
+      "tabRequest": "Solicitar crédito",
+      "tabManage": "Gestionar / reembolsar",
+      "loading": "Cargando…",
+      "pendingNote": "Su solicitud de crédito está pendiente de validación. Una vez aprobada, vaya a <balance>Saldo</balance> para generar la dirección de depósito y desbloquear el crédito.",
+      "approvedNote": "Vaya a <balance>Saldo</balance> para elegir el activo y la red, y luego generar la dirección de depósito dedicada a esta solicitud: el crédito se emitirá automáticamente en cuanto se reciban los fondos.",
+      "goToBalance": "Ir a Saldo",
+      "genericError": "Se ha producido un error.",
+      "submitRequest": "Enviar una solicitud de crédito",
+      "simulationOnlyNote": "Solo simulación: ya hay una solicitud en curso (véase más arriba).",
+      "usedCredit": "Crédito utilizado",
+      "needMoreCredit": "¿Necesita más crédito?",
+      "newRequestLink": "Enviar una nueva solicitud",
+      "nothingToRepay": "Ningún crédito utilizado actualmente: nada que reembolsar.",
+      "repayAmountLabel": "Importe a reembolsar",
+      "repayButton": "Reembolsar",
+      "repayFullNote": "Reembolso íntegro: la garantía se liberará hacia el saldo disponible.",
+      "repayRemainingNote": "Crédito utilizado restante tras el reembolso: {amount}",
+      "repaymentHistory": "Evolución del reembolso",
+      "yieldRepaymentTag": "rendimiento de la garantía",
+      "repaySuccessToast": "Reembolso realizado correctamente.",
+      "repayFullToast": "Reembolso íntegro realizado: la garantía ha sido liberada."
+    },
+    "creditSimulator": {
+      "amountLabel": "Importe de garantía previsto (USD)",
+      "currentBalance": "Saldo actual {amount}",
+      "amountAriaLabel": "Importe simulado",
+      "segments": {
+        "available": "Disponible restante",
+        "locked": "Garantía prevista",
+        "credit": "Crédito concedido (total)"
+      },
+      "creditForAmount": "Crédito concedido para este importe",
+      "annualInterestRate": "Tasa de interés anual ({currency})",
+      "perYear": "{rate}%/año",
+      "originationFee": "Comisión de apertura (cobrada al emitirse)",
+      "custodyFee": "Comisión de custodia de la garantía",
+      "fxRateMissing": "Tipo de cambio EUR/USD no disponible por ahora, importes mostrados en USD.",
+      "depositShortfall": "Le faltan {amount} respecto a su saldo actual para alcanzar este importe, a depositar una vez aprobada la solicitud.",
+      "usedCredit": "Crédito utilizado",
+      "simulatedPurchasingPower": "Poder de compra simulado",
+      "currentPurchasingPower": "Poder de compra actual",
+      "noAmountSimulatedNote": "Ningún importe simulado por ahora: este es su poder de compra actual (disponible + garantía + crédito concedido − crédito utilizado). Escriba un importe arriba, incluso sin saldo disponible, para ver lo que le permitiría obtener una solicitud de crédito.",
+      "yieldAssetLabel": "Activo de garantía previsto (base de la estimación)",
+      "yieldAssetBlended": "Media de todos los activos"
+    },
+    "repaymentProjection": {
+      "title": "Proyección de reembolso a largo plazo",
+      "intro": "Reembolso combinado: rendimiento medio real de los activos generadores de rendimiento (calculado automáticamente) + aportación externa sugerida para mantenerse dentro del plazo contractual (esta última modificable). Estimación no garantizada, con fines meramente indicativos.",
+      "estimatedYieldLabel": "Rendimiento anual estimado (%)",
+      "yieldComputedNote": "Calculado automáticamente a partir del rendimiento real de los últimos 12 meses.",
+      "yieldComputing": "Calculando…",
+      "externalRepaymentLabel": "Reembolso externo mensual ($)",
+      "externalRepaymentNote": "Sugerido para reembolsar en {months} meses, modificable (redúzcalo para explorar un reembolso más lento, sostenido solo por el rendimiento).",
+      "fillInPrompt": "Indique un rendimiento estimado o un reembolso mensual para proyectar una duración de reembolso.",
+      "estimatedDuration": "Duración estimada",
+      "durationMonths": "{months} meses",
+      "durationMonthsWithYears": "{months} meses (≈ {years} años)",
+      "durationOverflow": "> {months} meses",
+      "estimatedTotalInterest": "Intereses totales estimados",
+      "overContractualTerm": "Esta proyección supera el plazo contractual habitual de {months} meses. Aumente el rendimiento estimado o el reembolso mensual para mantenerse en plazo.",
+      "columns": {
+        "month": "Mes",
+        "payment": "Pago",
+        "remainingBalance": "Saldo restante"
+      },
+      "yieldComputedNoteAsset": "Calculado automáticamente a partir del rendimiento real de {asset} en los últimos 12 meses."
+    },
+    "installmentSchedule": {
+      "title": "Simulación a plazos fijos",
+      "intro": "Calculada automáticamente a partir del rendimiento real estimado: intereses generados, cuota a su cargo y fecha del primer reembolso. El rendimiento reduce la cuota, con un límite del {cap}% (el mismo límite que el reembolso automático real).",
+      "durationLabel": "Duración",
+      "monthsCount": "{months} meses",
+      "estimatedYieldLabel": "Rendimiento anual estimado (%)",
+      "yieldComputedNote": "Calculado automáticamente a partir del rendimiento real de los últimos 12 meses.",
+      "yieldComputing": "Calculando…",
+      "grossPayment": "Cuota bruta",
+      "estimatedReduction": "Reducción estimada",
+      "netPayment": "Cuota neta estimada",
+      "firstPayment": "1er reembolso",
+      "totalInterestNote": "Intereses totales en {months} meses (antes de la reducción): {amount}. Estimación no garantizada, con fines meramente indicativos: el reembolso real sigue siendo flexible (véase la simulación anterior).",
+      "creditLineNote": "Esta simulación supone que utiliza la totalidad del crédito desde su emisión (escenario prudente, que sirve de base para el cálculo anterior). En la práctica, mientras no utilice su crédito (tarjeta), no se debe ningún reembolso ni interés: es una línea de crédito, no un préstamo desembolsado de una sola vez.",
+      "yieldComputedNoteAsset": "Calculado automáticamente a partir del rendimiento real de {asset} en los últimos 12 meses."
+    },
+    "assetPicker": {
+      "onlyNetworkAvailable": "Única red disponible para este activo"
+    },
+    "creditRequestDeposit": {
+      "genericError": "Se ha producido un error.",
+      "title": "Solicitud de crédito aprobada, depósito pendiente",
+      "description": "{amount} ({currency}) a depositar para que el crédito se emita automáticamente.",
+      "yourDepositAddress": "Su dirección de depósito",
+      "addressNote": "Envíe únicamente {currency} en {chain} a esta dirección. Deposite al menos {amount}: el crédito se emite automáticamente al recibirse.",
+      "assetLabel": "Activo",
+      "networkLabel": "Red",
+      "generateButton": "Generar dirección de depósito"
+    },
+    "authLoadError": {
+      "title": "No se ha podido verificar su sesión"
+    },
+    "soldePage": {
+      "topupConfirmedTitle": "Recarga por tarjeta confirmada",
+      "topupConfirmedDescription": "El saldo disponible a continuación refleja la recarga.",
+      "loadError": "No se ha podido cargar el saldo"
+    },
+    "creditPage": {
+      "loadError": "No se ha podido cargar la línea de crédito"
+    },
+    "cardsPage": {
+      "loadError": "No se han podido cargar las tarjetas"
+    },
+    "historyPage": {
+      "loadError": "No se ha podido cargar el historial"
+    },
+    "profilePage": {
+      "loadError": "No se ha podido cargar el perfil"
+    },
+    "simulatedCheckout": {
+      "genericError": "Se ha producido un error.",
+      "sandboxNotice": "Pago simulado (modo sandbox de Mollie)",
+      "title": "Confirmar el pago con tarjeta",
+      "description": "Esta página sustituye al checkout alojado de Mollie mientras no se configure ninguna clave API por parte del banco. Aquí no se solicita ningún dato de tarjeta real.",
+      "notFoundTitle": "Pago no encontrado",
+      "amountToDebit": "Importe a cargar",
+      "confirmButton": "Confirmar el pago",
+      "cancelButton": "Cancelar",
+      "alreadyConfirmedTitle": "Pago ya confirmado",
+      "alreadyConfirmedDescription": "El saldo ya ha sido acreditado para este pago.",
+      "failedTitle": "Pago fallido",
+      "failedDescription": "Este pago no se ha completado y el saldo no ha sido acreditado."
+    }
+  },
+  "CurrencyLabels": {
+    "USDS": "USDS",
+    "DAI": "DAI",
+    "USDE": "USDe",
+    "PYUSD": "PYUSD",
+    "PAXG": "PAXG (oro)",
+    "XAUT": "XAUT (oro)",
+    "USDT": "USDT",
+    "USDC": "USDC",
+    "DEURO": "dEURO",
+    "ETH": "ETH",
+    "SHIB": "SHIB",
+    "KAG": "KAG (plata)",
+    "XPT": "Platino tokenizado",
+    "XPD": "Paladio tokenizado",
+    "XCU": "Cobre tokenizado",
+    "WTI": "Petróleo sintético (WTI)"
   }
 }

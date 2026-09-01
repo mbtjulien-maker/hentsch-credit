@@ -9,6 +9,8 @@ import {
   CreditCard,
   Loader2,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { toast } from "sonner";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,7 +33,8 @@ import {
   type Chain,
   type ManagedDepositAddress,
 } from "@/lib/api";
-import { CHAIN_LABELS, CURRENCY_LABELS, formatUsd } from "@/lib/format";
+import { CHAIN_LABELS, formatUsd } from "@/lib/format";
+import { useCurrencyLabel } from "@/lib/use-currency-label";
 
 export function WalletActions({
   summary,
@@ -52,6 +55,7 @@ export function WalletActions({
 }
 
 function CardTopupDialog() {
+  const t = useTranslations("Dashboard.walletActions");
   const [open, setOpen] = useState(false);
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
@@ -77,7 +81,7 @@ function CardTopupDialog() {
       // comportement que le vrai flux Mollie, qui redirige toujours hors de l'app.
       window.location.href = checkoutUrl;
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
       setLoading(false);
     }
   }
@@ -94,23 +98,20 @@ function CardTopupDialog() {
         render={
           <Button variant="outline" size="sm">
             <CreditCard className="size-4" />
-            Acheter par carte
+            {t("buyByCard.trigger")}
           </Button>
         }
       />
       <DialogContent>
         <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>Recharger par carte bancaire</DialogTitle>
-            <DialogDescription>
-              Paiement sécurisé géré par Mollie. Le solde disponible est crédité dès
-              confirmation du paiement.
-            </DialogDescription>
+            <DialogTitle>{t("buyByCard.dialogTitle")}</DialogTitle>
+            <DialogDescription>{t("buyByCard.dialogDescription")}</DialogDescription>
           </DialogHeader>
 
           <div className="flex flex-col gap-4 py-2">
             <div className="grid gap-2">
-              <Label htmlFor="topup-amount">Montant (USD)</Label>
+              <Label htmlFor="topup-amount">{t("buyByCard.amountLabel")}</Label>
               <Input
                 id="topup-amount"
                 inputMode="decimal"
@@ -130,7 +131,7 @@ function CardTopupDialog() {
           <DialogFooter>
             <Button type="submit" disabled={!isValid || loading}>
               {loading && <Loader2 className="size-4 animate-spin" />}
-              Continuer vers le paiement
+              {t("buyByCard.submit")}
             </Button>
           </DialogFooter>
         </form>
@@ -149,6 +150,8 @@ function CardTopupDialog() {
 type DepositStep = "select" | "pool" | "legacy";
 
 function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () => void }) {
+  const t = useTranslations("Dashboard.walletActions");
+  const currencyLabel = useCurrencyLabel();
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<DepositStep>("select");
   const { currency, chain, setCurrency, setChain } = useAssetSelection();
@@ -190,10 +193,10 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
           setLegacyAddress(wallet.address);
           setStep("legacy");
         } catch (innerErr) {
-          setError(innerErr instanceof ApiError ? innerErr.message : "Une erreur est survenue.");
+          setError(innerErr instanceof ApiError ? innerErr.message : t("genericError"));
         }
       } else {
-        setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+        setError(err instanceof ApiError ? err.message : t("genericError"));
       }
     } finally {
       setLoading(false);
@@ -209,7 +212,7 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
       setDeclared(true);
       onSuccess();
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
       setLoading(false);
     }
@@ -234,31 +237,28 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
         render={
           <Button variant="outline" size="sm">
             <ArrowDownToLine className="size-4" />
-            Déposer
+            {t("deposit.trigger")}
           </Button>
         }
       />
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Déposer des fonds</DialogTitle>
+          <DialogTitle>{t("deposit.dialogTitle")}</DialogTitle>
           <DialogDescription>
-            {step === "select" &&
-              "Choisissez l'actif et le réseau, puis consultez l'adresse de dépôt correspondante."}
-            {step === "pool" &&
-              "Adresse de dépôt de la banque pour cet actif : déclarez votre dépôt une fois l'envoi effectué."}
-            {step === "legacy" &&
-              "Adresse de dépôt individuelle générée pour votre compte, créditée automatiquement dès confirmation on-chain."}
+            {step === "select" && t("deposit.descriptionSelect")}
+            {step === "pool" && t("deposit.descriptionPool")}
+            {step === "legacy" && t("deposit.descriptionLegacy")}
           </DialogDescription>
         </DialogHeader>
 
         {step === "select" && (
           <div className="flex flex-col gap-4">
             <div className="grid gap-2">
-              <Label>Actif</Label>
+              <Label>{t("deposit.assetLabel")}</Label>
               <AssetList value={currency} onChange={setCurrency} />
             </div>
             <div className="grid gap-2">
-              <Label>Réseau</Label>
+              <Label>{t("deposit.networkLabel")}</Label>
               <ChainList currency={currency} value={chain} onChange={setChain} />
             </div>
 
@@ -270,7 +270,7 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
 
             <Button type="button" onClick={handleContinue} disabled={loading}>
               {loading && <Loader2 className="size-4 animate-spin" />}
-              Continuer
+              {t("deposit.continue")}
             </Button>
           </div>
         )}
@@ -278,7 +278,12 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
         {step === "pool" && managedAddress && (
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <Label>Adresse de dépôt ({CURRENCY_LABELS[currency]} sur {CHAIN_LABELS[chain]})</Label>
+              <Label>
+                {t("deposit.addressLabel", {
+                  currency: currencyLabel(currency),
+                  chain: CHAIN_LABELS[chain],
+                })}
+              </Label>
               <div className="flex items-center gap-2 rounded-lg border bg-muted/40 px-3 py-2">
                 <code className="flex-1 truncate text-xs">{managedAddress.address}</code>
                 <Button
@@ -291,22 +296,21 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground">
-                Adresse de gestion des actifs de la banque, commune à tous les clients. N&apos;y
-                envoyez que du {CURRENCY_LABELS[currency]} sur {CHAIN_LABELS[chain]}.
+                {t("deposit.poolAddressNote", {
+                  currency: currencyLabel(currency),
+                  chain: CHAIN_LABELS[chain],
+                })}
               </p>
             </div>
 
             {declared ? (
               <Alert>
-                <AlertDescription>
-                  Dépôt déclaré, visible dans votre historique, en attente de validation après
-                  réception des fonds.
-                </AlertDescription>
+                <AlertDescription>{t("deposit.declaredAlert")}</AlertDescription>
               </Alert>
             ) : (
               <div className="flex flex-col gap-2">
                 <Label htmlFor="deposit-token-amount">
-                  Montant envoyé ({CURRENCY_LABELS[currency]})
+                  {t("deposit.sentAmountLabel", { currency: currencyLabel(currency) })}
                 </Label>
                 <Input
                   id="deposit-token-amount"
@@ -315,10 +319,7 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
                   value={tokenAmount}
                   onChange={(e) => setTokenAmount(e.target.value)}
                 />
-                <p className="text-xs text-muted-foreground">
-                  Une fois l&apos;envoi effectué, déclarez-le ci-dessous pour qu&apos;il apparaisse
-                  dans votre historique : un conseiller le valide dès réception.
-                </p>
+                <p className="text-xs text-muted-foreground">{t("deposit.sentAmountNote")}</p>
               </div>
             )}
 
@@ -335,7 +336,7 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
                 disabled={loading || !tokenAmount || Number(tokenAmount) <= 0}
               >
                 {loading && <Loader2 className="size-4 animate-spin" />}
-                J&apos;ai envoyé les fonds
+                {t("deposit.declareButton")}
               </Button>
             )}
           </div>
@@ -343,7 +344,7 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
 
         {step === "legacy" && legacyAddress && (
           <div className="flex flex-col gap-2">
-            <Label>Votre adresse de dépôt</Label>
+            <Label>{t("deposit.legacyAddressLabel")}</Label>
             <div className="flex items-center gap-2 rounded-lg border bg-muted/40 px-3 py-2">
               <code className="flex-1 truncate text-xs">{legacyAddress}</code>
               <Button
@@ -356,8 +357,10 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
               </Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              N&apos;envoyez que du {CURRENCY_LABELS[currency]} sur {CHAIN_LABELS[chain]} à cette
-              adresse. Le solde est crédité après confirmation on-chain.
+              {t("deposit.legacyNote", {
+                currency: currencyLabel(currency),
+                chain: CHAIN_LABELS[chain],
+              })}
             </p>
           </div>
         )}
@@ -373,6 +376,7 @@ function WithdrawDialog({
   summary: BalanceSummary;
   onSuccess: () => void;
 }) {
+  const t = useTranslations("Dashboard.walletActions");
   const [open, setOpen] = useState(false);
   const { currency, chain, setCurrency, setChain } = useAssetSelection();
   const [amount, setAmount] = useState("");
@@ -409,8 +413,12 @@ function WithdrawDialog({
       setOpen(false);
       reset();
       onSuccess();
+      // Fermeture silencieuse sinon — seul signal de succès jusqu'ici, facile à manquer.
+      // Toast plutôt qu'une bannière persistante : la demande n'a pas d'état à suivre
+      // ensuite dans ce dialogue (contrairement au dépôt déclaré, cf. DepositDialog).
+      toast.success(t("withdraw.successToast"));
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
       setLoading(false);
     }
@@ -428,31 +436,30 @@ function WithdrawDialog({
         render={
           <Button variant="outline" size="sm">
             <ArrowUpFromLine className="size-4" />
-            Retirer
+            {t("withdraw.trigger")}
           </Button>
         }
       />
       <DialogContent>
         <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>Retirer des fonds</DialogTitle>
+            <DialogTitle>{t("withdraw.dialogTitle")}</DialogTitle>
             <DialogDescription>
-              Solde disponible : {formatUsd(availableBalance)}. Le gage verrouillé n&apos;est
-              retirable qu&apos;après remboursement intégral du crédit.
+              {t("withdraw.dialogDescription", { balance: formatUsd(availableBalance) })}
             </DialogDescription>
           </DialogHeader>
 
           <div className="flex flex-col gap-4 py-2">
             <div className="grid gap-2">
-              <Label>Actif</Label>
+              <Label>{t("deposit.assetLabel")}</Label>
               <AssetList value={currency} onChange={setCurrency} />
             </div>
             <div className="grid gap-2">
-              <Label>Réseau</Label>
+              <Label>{t("deposit.networkLabel")}</Label>
               <ChainList currency={currency} value={chain} onChange={setChain} />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="withdraw-amount">Montant</Label>
+              <Label htmlFor="withdraw-amount">{t("withdraw.amountLabel")}</Label>
               <Input
                 id="withdraw-amount"
                 inputMode="decimal"
@@ -462,7 +469,7 @@ function WithdrawDialog({
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="withdraw-destination">Adresse destinataire</Label>
+              <Label htmlFor="withdraw-destination">{t("withdraw.destinationLabel")}</Label>
               <Input
                 id="withdraw-destination"
                 placeholder="0x…"
@@ -482,7 +489,7 @@ function WithdrawDialog({
           <DialogFooter>
             <Button type="submit" disabled={!isValid || loading}>
               {loading && <Loader2 className="size-4 animate-spin" />}
-              Confirmer le retrait
+              {t("withdraw.submit")}
             </Button>
           </DialogFooter>
         </form>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api, type MarketOverviewEntry } from "@/lib/api";
-import { CURRENCY_LABELS } from "@/lib/format";
+import { useCurrencyLabel } from "@/lib/use-currency-label";
 
 // Rangée de logos pour une liste d'actifs — réutilisée à plusieurs endroits de la
 // vitrine publique pour ne jamais lister des tickers en texte brut quand le vrai logo
@@ -23,6 +23,7 @@ export function AssetLogoRow({
   variant?: "chips" | "bare";
   className?: string;
 }) {
+  const currencyLabel = useCurrencyLabel();
   const [entries, setEntries] = useState<MarketOverviewEntry[] | null>(null);
 
   useEffect(() => {
@@ -59,7 +60,7 @@ export function AssetLogoRow({
           <span
             key={currency}
             className="size-7 shrink-0 overflow-hidden rounded-full border-2 border-white shadow-sm"
-            title={CURRENCY_LABELS[currency] ?? currency}
+            title={currencyLabel(currency)}
           >
             {logoFor(currency)}
           </span>
@@ -76,7 +77,7 @@ export function AssetLogoRow({
           className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-card px-2 py-1 text-xs font-medium text-foreground/80"
         >
           <span className="size-4 shrink-0 overflow-hidden rounded-full">{logoFor(currency)}</span>
-          {CURRENCY_LABELS[currency] ?? currency}
+          {currencyLabel(currency)}
         </span>
       ))}
     </div>

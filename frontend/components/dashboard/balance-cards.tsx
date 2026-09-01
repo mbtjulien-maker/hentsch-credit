@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { HandCoins, Landmark, CreditCard, TrendingUp, Wallet } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { VaultBadgeIcon } from "@/components/dashboard/vault-graphics";
 import { GLASS_CARD_CLASS, cn } from "@/lib/utils";
@@ -41,6 +42,7 @@ function KpiCardShell({ children }: { children: ReactNode }) {
 // → Capacité d'achat → Crédit sont les éléments prioritaires du produit (cf. brief de
 // refonte) — les montants doivent être identifiables au premier coup d'œil.
 export function BalanceCards({ summary }: { summary: BalanceSummary }) {
+  const t = useTranslations("Dashboard.balanceCards");
   const { balance, totalPurchasingPower } = summary;
   const hasCredit = Number(balance.grantedCredit) > 0;
   const creditAvailable =
@@ -53,7 +55,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
           <Card className={cn(GLASS_CARD_CLASS, "border-primary/20")}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
-                Solde de dépôt
+                {t("depositBalance.title")}
               </CardTitle>
               <Wallet className="size-4 text-primary" />
             </CardHeader>
@@ -62,8 +64,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
                 {formatUsd(balance.availableBalance)}
               </div>
               <p className="mt-1.5 text-xs text-muted-foreground">
-                Montant disponible dans votre wallet, aucune ligne de crédit active pour
-                l&apos;instant.
+                {t("depositBalance.description")}
               </p>
             </CardContent>
           </Card>
@@ -73,7 +74,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
           <Card className={GLASS_CARD_CLASS}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
-                Pouvoir d&apos;achat
+                {t("purchasingPower.title")}
               </CardTitle>
               <TrendingUp className="size-4 text-muted-foreground" />
             </CardHeader>
@@ -82,7 +83,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
                 {formatUsd(totalPurchasingPower)}
               </div>
               <p className="mt-1.5 text-xs text-muted-foreground">
-                Identique au solde de dépôt tant qu&apos;aucun crédit n&apos;est accordé.
+                {t("purchasingPower.descriptionNoCredit")}
               </p>
             </CardContent>
           </Card>
@@ -92,7 +93,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
           <Card className={GLASS_CARD_CLASS}>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">
-                Crédit disponible
+                {t("availableCredit.title")}
               </CardTitle>
               <HandCoins className="size-4 text-muted-foreground" />
             </CardHeader>
@@ -101,7 +102,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
                 {formatUsd(0)}
               </div>
               <p className="mt-1.5 text-xs text-muted-foreground">
-                Aucune ligne active, soumettez une demande depuis Crédit.
+                {t("availableCredit.description")}
               </p>
             </CardContent>
           </Card>
@@ -116,7 +117,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
         <Card className={cn(GLASS_CARD_CLASS, "border-primary/20 dark:border-primary/25")}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Solde global
+              {t("globalBalance.title")}
             </CardTitle>
             <Landmark className="size-4 text-primary" />
           </CardHeader>
@@ -125,7 +126,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
               {formatUsd(totalPurchasingPower)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">
-              Disponible + gage verrouillé + crédit accordé − crédit utilisé
+              {t("globalBalance.description")}
             </p>
           </CardContent>
         </Card>
@@ -135,7 +136,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
         <Card className={GLASS_CARD_CLASS}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Gage verrouillé
+              {t("lockedCollateral.title")}
             </CardTitle>
             <div className="rounded-xl border border-slate-300/50 bg-gradient-to-br from-slate-100 to-slate-200 p-2.5 shadow-inner dark:border-primary/25 dark:bg-none dark:bg-primary/10 dark:shadow-none">
               <VaultBadgeIcon className="size-4 text-slate-500 dark:text-primary" />
@@ -146,7 +147,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
               {formatUsd(balance.lockedCollateral)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">
-              Retirable seulement après remboursement intégral
+              {t("lockedCollateral.description")}
             </p>
           </CardContent>
         </Card>
@@ -156,7 +157,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
         <Card className={GLASS_CARD_CLASS}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Ligne de crédit
+              {t("creditLine.title")}
             </CardTitle>
             <CreditCard className="size-4 text-muted-foreground" />
           </CardHeader>
@@ -165,7 +166,10 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
               {formatUsd(balance.grantedCredit)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">
-              {formatUsd(creditAvailable)} restant · {formatUsd(balance.usedCredit)} utilisé
+              {t("creditLine.description", {
+                available: formatUsd(creditAvailable),
+                used: formatUsd(balance.usedCredit),
+              })}
             </p>
           </CardContent>
         </Card>

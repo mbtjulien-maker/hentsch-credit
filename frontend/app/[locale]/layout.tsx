@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { LocaleHtmlLangSync } from "@/components/locale-html-lang-sync";
+import { JsonLd, organizationJsonLd } from "@/lib/seo";
 
 // Layout imbriqué (pas de <html>/<body> ici — hérités de app/layout.tsx, partagé avec
 // /dashboard et /admin) : ne fait que résoudre la langue et fournir les traductions à
@@ -33,6 +34,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
+      {/* Un seul schéma Organization pour toute la vitrine publique (cf. lib/seo.ts) —
+          décrit l'exploitant réel, jamais dupliqué par page. */}
+      <JsonLd id="organization-jsonld" data={organizationJsonLd()} />
       <LocaleHtmlLangSync locale={locale} />
       {children}
     </NextIntlClientProvider>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Copy, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,6 +24,7 @@ export function ApprovedCreditRequestDeposit({
   request: CreditRequest;
   onSuccess: () => Promise<void> | void;
 }) {
+  const t = useTranslations("Dashboard.creditRequestDeposit");
   const { currency, chain, setCurrency, setChain } = useAssetSelection();
   const [address, setAddress] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -41,7 +43,7 @@ export function ApprovedCreditRequestDeposit({
       setAddress(wallet.address);
       await onSuccess();
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
       setLoading(false);
     }
@@ -58,16 +60,15 @@ export function ApprovedCreditRequestDeposit({
   return (
     <Card className={GLASS_CARD_CLASS + " border-primary/30"}>
       <CardHeader>
-        <CardTitle>Demande de crédit approuvée, dépôt en attente</CardTitle>
+        <CardTitle>{t("title")}</CardTitle>
         <CardDescription>
-          {formatUsd(request.collateralAmount)} ({request.currency}) à déposer pour que le
-          crédit soit émis automatiquement.
+          {t("description", { amount: formatUsd(request.collateralAmount), currency: request.currency })}
         </CardDescription>
       </CardHeader>
       <CardContent>
         {address ? (
           <div className="flex flex-col gap-2">
-            <Label>Votre adresse de dépôt</Label>
+            <Label>{t("yourDepositAddress")}</Label>
             <div className="flex items-center gap-2 rounded-lg border bg-muted/40 px-3 py-2">
               <code className="flex-1 truncate text-xs">{address}</code>
               <Button type="button" size="icon-sm" variant="ghost" onClick={handleCopy}>
@@ -75,19 +76,17 @@ export function ApprovedCreditRequestDeposit({
               </Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              N&apos;envoyez que du {currency} sur {chain} à cette adresse. Déposez au moins{" "}
-              {formatUsd(request.collateralAmount)} : le crédit est émis automatiquement dès
-              réception.
+              {t("addressNote", { currency, chain, amount: formatUsd(request.collateralAmount) })}
             </p>
           </div>
         ) : (
           <div className="flex flex-col gap-3">
             <div className="grid gap-2">
-              <Label>Actif</Label>
+              <Label>{t("assetLabel")}</Label>
               <AssetList value={currency} onChange={setCurrency} />
             </div>
             <div className="grid gap-2">
-              <Label>Réseau</Label>
+              <Label>{t("networkLabel")}</Label>
               <ChainList currency={currency} value={chain} onChange={setChain} />
             </div>
 
@@ -99,7 +98,7 @@ export function ApprovedCreditRequestDeposit({
 
             <Button type="button" onClick={handleGenerate} disabled={loading} className="self-start">
               {loading && <Loader2 className="size-4 animate-spin" />}
-              Générer l&apos;adresse de dépôt
+              {t("generateButton")}
             </Button>
           </div>
         )}

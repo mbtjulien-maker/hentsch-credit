@@ -1,9 +1,9 @@
 import { defineRouting } from "next-intl/routing";
 
-// Langues de la vitrine publique — "le site côté client visiteur" (pas /dashboard ni
-// /admin, qui restent uniquement en français : ce sont des espaces internes à un compte
-// déjà ouvert, jamais consultés par un simple visiteur). Le français reste la langue de
-// référence légale/contractuelle (cf. LegalDisclaimerNotice) : les autres langues sont des
+// Langues de la vitrine publique ET de l'espace client (/dashboard, cf. décision produit
+// de traduire aussi le tableau de bord — proxy.ts n'exclut plus que /admin, réservé au
+// back-office interne et jamais traduit). Le français reste la langue de référence
+// légale/contractuelle (cf. LegalDisclaimerNotice) : les autres langues sont des
 // traductions de confort, jamais la version qui fait foi en cas de litige.
 export const routing = defineRouting({
   locales: ["fr", "en", "es", "de", "pt", "nl", "sv"],

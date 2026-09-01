@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { AlertTriangle, CreditCard, Loader2, ShieldCheck } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,6 +25,7 @@ import { formatUsd } from "@/lib/format";
 // même endpoint que le webhook Mollie réel appellerait (POST /payments/mollie-webhook) :
 // aucune divergence de logique entre sandbox et production, cf. MollieService.
 export default function SimulatedCheckoutPage() {
+  const t = useTranslations("Dashboard.simulatedCheckout");
   const { paymentId } = useParams<{ paymentId: string }>();
   const router = useRouter();
 
@@ -40,13 +43,13 @@ export default function SimulatedCheckoutPage() {
       })
       .catch((err) => {
         if (!ignore) {
-          setLoadError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+          setLoadError(err instanceof ApiError ? err.message : t("genericError"));
         }
       });
     return () => {
       ignore = true;
     };
-  }, [paymentId]);
+  }, [paymentId, t]);
 
   async function handleConfirm() {
     setConfirming(true);
@@ -55,7 +58,7 @@ export default function SimulatedCheckoutPage() {
       await api.confirmCardTopup(paymentId);
       router.push("/dashboard/solde?topup=complete");
     } catch (err) {
-      setConfirmError(err instanceof ApiError ? err.message : "Une erreur est survenue.");
+      setConfirmError(err instanceof ApiError ? err.message : t("genericError"));
       setConfirming(false);
     }
   }
@@ -66,20 +69,16 @@ export default function SimulatedCheckoutPage() {
         <CardHeader>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <CreditCard className="size-4" />
-            Paiement simulé (mode sandbox Mollie)
+            {t("sandboxNotice")}
           </div>
-          <CardTitle>Confirmer le paiement par carte</CardTitle>
-          <CardDescription>
-            Cette page remplace le checkout Mollie hébergé tant qu&apos;aucune clé API
-            n&apos;est configurée côté banque. Aucune donnée de carte réelle n&apos;est
-            demandée ici.
-          </CardDescription>
+          <CardTitle>{t("title")}</CardTitle>
+          <CardDescription>{t("description")}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           {loadError && (
             <Alert variant="destructive">
               <AlertTriangle className="size-4" />
-              <AlertTitle>Paiement introuvable</AlertTitle>
+              <AlertTitle>{t("notFoundTitle")}</AlertTitle>
               <AlertDescription>{loadError}</AlertDescription>
             </Alert>
           )}
@@ -89,7 +88,7 @@ export default function SimulatedCheckoutPage() {
           {status && (
             <>
               <div className="flex items-center justify-between rounded-lg border bg-muted/40 px-3 py-2.5">
-                <span className="text-sm text-muted-foreground">Montant à débiter</span>
+                <span className="text-sm text-muted-foreground">{t("amountToDebit")}</span>
                 <span className="text-lg font-semibold tabular-nums">
                   {formatUsd(status.amount)}
                 </span>
@@ -108,7 +107,7 @@ export default function SimulatedCheckoutPage() {
                     ) : (
                       <ShieldCheck className="size-4" />
                     )}
-                    Confirmer le paiement
+                    {t("confirmButton")}
                   </Button>
                   <Button
                     type="button"
@@ -116,7 +115,7 @@ export default function SimulatedCheckoutPage() {
                     onClick={() => router.push("/dashboard/solde")}
                     disabled={confirming}
                   >
-                    Annuler
+                    {t("cancelButton")}
                   </Button>
                 </>
               )}
@@ -124,20 +123,16 @@ export default function SimulatedCheckoutPage() {
               {status.status === "COMPLETED" && (
                 <Alert>
                   <ShieldCheck className="size-4" />
-                  <AlertTitle>Paiement déjà confirmé</AlertTitle>
-                  <AlertDescription>
-                    Le solde a déjà été crédité pour ce paiement.
-                  </AlertDescription>
+                  <AlertTitle>{t("alreadyConfirmedTitle")}</AlertTitle>
+                  <AlertDescription>{t("alreadyConfirmedDescription")}</AlertDescription>
                 </Alert>
               )}
 
               {status.status === "FAILED" && (
                 <Alert variant="destructive">
                   <AlertTriangle className="size-4" />
-                  <AlertTitle>Paiement échoué</AlertTitle>
-                  <AlertDescription>
-                    Ce paiement n&apos;a pas abouti et le solde n&apos;a pas été crédité.
-                  </AlertDescription>
+                  <AlertTitle>{t("failedTitle")}</AlertTitle>
+                  <AlertDescription>{t("failedDescription")}</AlertDescription>
                 </Alert>
               )}
             </>

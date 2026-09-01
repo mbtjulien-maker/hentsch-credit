@@ -20,3 +20,7 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Playwright (e2e) — filet de sécurité si lancé depuis la racine plutôt que frontend/
+# (qui a sa propre règle plus large, cf. frontend/.gitignore).
+/test-results/

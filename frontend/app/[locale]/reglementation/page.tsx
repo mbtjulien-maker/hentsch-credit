@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { LegalField, LegalPageShell, LegalSection } from "@/components/marketing/legal-page-shell";
 import { ENTITY_IDENTITY } from "@/lib/entity-identity";
+import { buildPageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -12,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Regulation.meta" });
-  return { title: t("title"), description: t("description") };
+  return buildPageMetadata({ locale, path: "/reglementation", title: t("title"), description: t("description") });
 }
 
 const bold = (chunks: ReactNode) => <strong className="font-semibold text-foreground">{chunks}</strong>;

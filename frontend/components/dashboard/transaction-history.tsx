@@ -1,3 +1,4 @@
+import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -8,12 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  TRANSACTION_STATUS_LABELS,
-  TRANSACTION_TYPE_LABELS,
-  formatDate,
-  formatUsd,
-} from "@/lib/format";
+import { formatDate, formatUsd } from "@/lib/format";
 import type { TransactionRecord, TransactionStatus } from "@/lib/api";
 
 const SIGN: Record<string, "+" | "−" | ""> = {
@@ -32,32 +28,35 @@ function statusVariant(status: TransactionStatus): "default" | "secondary" | "de
 }
 
 export function TransactionHistory({ transactions }: { transactions: TransactionRecord[] }) {
+  const t = useTranslations("Dashboard.transactionHistory");
+  const tLabels = useTranslations("Dashboard.labels");
+  const locale = useLocale();
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Historique des transactions</CardTitle>
-        <CardDescription>Journal complet des mouvements du compte</CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent>
         {transactions.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Aucune transaction pour ce compte.</p>
+          <p className="text-sm text-muted-foreground">{t("noTransactions")}</p>
         ) : (
           <div className="overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Montant</TableHead>
-                  <TableHead>Statut</TableHead>
-                  <TableHead>Référence on-chain</TableHead>
-                  <TableHead className="text-right">Date</TableHead>
+                  <TableHead>{t("columns.type")}</TableHead>
+                  <TableHead>{t("columns.amount")}</TableHead>
+                  <TableHead>{t("columns.status")}</TableHead>
+                  <TableHead>{t("columns.onChainReference")}</TableHead>
+                  <TableHead className="text-right">{t("columns.date")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {transactions.map((tx) => (
                   <TableRow key={tx.id}>
                     <TableCell className="font-medium">
-                      {TRANSACTION_TYPE_LABELS[tx.type] ?? tx.type}
+                      {tLabels(`transactionType.${tx.type}`)}
                     </TableCell>
                     <TableCell className="tabular-nums">
                       {SIGN[tx.type]}
@@ -65,14 +64,14 @@ export function TransactionHistory({ transactions }: { transactions: Transaction
                     </TableCell>
                     <TableCell>
                       <Badge variant={statusVariant(tx.status)}>
-                        {TRANSACTION_STATUS_LABELS[tx.status]}
+                        {tLabels(`transactionStatus.${tx.status}`)}
                       </Badge>
                     </TableCell>
                     <TableCell className="max-w-[220px] truncate font-mono text-xs text-muted-foreground">
                       {tx.referenceTx ?? "—"}
                     </TableCell>
                     <TableCell className="text-right text-muted-foreground">
-                      {formatDate(tx.createdAt)}
+                      {formatDate(tx.createdAt, locale)}
                     </TableCell>
                   </TableRow>
                 ))}

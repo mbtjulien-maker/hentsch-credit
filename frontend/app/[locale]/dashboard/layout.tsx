@@ -1,24 +1,26 @@
 import Image from "next/image";
-import Link from "next/link";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { AuthGate } from "@/components/dashboard/auth-gate";
 import { AuthLoadError } from "@/components/dashboard/auth-load-error";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { DashboardProvider } from "@/components/dashboard/dashboard-context";
 import { Sidebar } from "@/components/dashboard/sidebar";
 
-const LEGAL_LINKS = [
-  { href: "/mentions-legales", label: "Mentions légales" },
-  { href: "/conditions-generales", label: "CGU" },
-  { href: "/confidentialite", label: "Confidentialité" },
-  { href: "/reglementation", label: "Réglementation" },
-] as const;
-
 // Rappel légal minimal, requis sur l'espace client au même titre que sur la vitrine
 // (cf. SiteFooter) — volontairement discret, une seule ligne en bas du contenu.
-function DashboardLegalFooter() {
+async function DashboardLegalFooter() {
+  const t = await getTranslations("DashboardShell.legalFooter");
+  const LEGAL_LINKS = [
+    { href: "/mentions-legales", label: t("legalNotice") },
+    { href: "/conditions-generales", label: t("terms") },
+    { href: "/confidentialite", label: t("privacy") },
+    { href: "/reglementation", label: t("regulation") },
+  ] as const;
+
   return (
     <footer
-      aria-label="Liens légaux"
+      aria-label={t("ariaLabel")}
       className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border-t border-border pt-4 text-xs text-muted-foreground"
     >
       {LEGAL_LINKS.map((link, i) => (
@@ -34,19 +36,31 @@ function DashboardLegalFooter() {
 }
 
 // Chrome de l'espace client connecté (sidebar + header + fond photo) — propre à
-// "/dashboard/*", pas à la vitrine publique ("/", cf. app/page.tsx) qui a sa propre mise
-// en page. Direction artistique "Luxury Fintech" (Obsidian/Ivoire → Champagne Gold),
-// déclinée en clair ET en sombre : la classe .dark globale (posée sur <html>, cf.
-// lib/theme-provider.tsx) pilote désormais laquelle des deux s'applique ici, plutôt
-// qu'un forçage local — même mécanisme que la vitrine publique et l'espace admin.
-export default function DashboardLayout({ children }: LayoutProps<"/dashboard">) {
+// "/[locale]/dashboard/*", pas à la vitrine publique ("/", cf. app/[locale]/page.tsx) qui a
+// sa propre mise en page. Direction artistique "Luxury Fintech" (Obsidian/Ivoire →
+// Champagne Gold), déclinée en clair ET en sombre : la classe .dark globale (posée sur
+// <html>, cf. lib/theme-provider.tsx) pilote désormais laquelle des deux s'applique ici,
+// plutôt qu'un forçage local — même mécanisme que la vitrine publique et l'espace admin.
+// Nested sous app/[locale]/layout.tsx (NextIntlClientProvider déjà fourni) : /dashboard
+// est désormais traduit dans les 7 langues, comme la vitrine (décision produit) — /admin
+// reste seul hors de ce périmètre (cf. proxy.ts, app/admin/layout.tsx inchangé).
+export default async function DashboardLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
       {/* Fond photo (même photo réelle de coffre-fort que le hero de la vitrine publique,
-          cf. app/page.tsx), assombri par un voile uni (--background) pour que cartes et
-          texte restent parfaitement lisibles. `absolute` plutôt que `fixed` : posé sur ce
-          conteneur `min-h-screen` (pas sur le viewport), il ne "poursuit" donc pas le
-          défilement, mais évite un vrai bug de compositing Chromium constaté avec
+          cf. app/[locale]/page.tsx), assombri par un voile uni (--background) pour que
+          cartes et texte restent parfaitement lisibles. `absolute` plutôt que `fixed` :
+          posé sur ce conteneur `min-h-screen` (pas sur le viewport), il ne "poursuit" donc
+          pas le défilement, mais évite un vrai bug de compositing Chromium constaté avec
           `fixed` + cet ancêtre `overflow-hidden` combiné aux `sticky`/`backdrop-blur` de
           la sidebar et du header : la classe .dark ne s'appliquait plus visuellement en
           clair alors que le DOM/CSSOM était pourtant correct (vérifié via

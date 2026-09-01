@@ -546,5 +546,64 @@ describe('MarketDataService', () => {
       // Un appel info (métadonnées, mises en cache séparément) + un appel historique.
       expect(fetchSpy).toHaveBeenCalledTimes(2);
     });
+
+    it('does not let one caller with a different currency list overwrite another caller\'s cached entries (regression: shared batch cache)', async () => {
+      fetchSpy.mockImplementation((input) => {
+        const url = urlOf(input);
+        if (url.includes('/cryptocurrency/info')) {
+          return Promise.resolve(
+            infoResponse([
+              info({ id: 101, slug: 'tether-gold' }),
+              info({ id: 102, slug: 'silver' }),
+              info({ id: 103, slug: 'ethereum' }),
+            ]),
+          );
+        }
+        if (url.includes('id=101')) {
+          return Promise.resolve(
+            historyResponse([
+              { timestamp: '2026-01-01T00:00:00.000Z', price: 2400 },
+            ]),
+          );
+        }
+        if (url.includes('id=102')) {
+          return Promise.resolve(
+            historyResponse([
+              { timestamp: '2026-01-01T00:00:00.000Z', price: 35 },
+            ]),
+          );
+        }
+        if (url.includes('id=103')) {
+          return Promise.resolve(
+            historyResponse([
+              { timestamp: '2026-01-01T00:00:00.000Z', price: 2500 },
+            ]),
+          );
+        }
+        return Promise.resolve(jsonResponse({}, false, 404));
+      });
+
+      // Un premier appelant (ex. la vitrine "/rendement") ne demande que XAUT et KAG.
+      const showcase = await service.getYieldAssetHistory(['XAUT', 'KAG']);
+      expect(showcase.map((e) => e.currency)).toEqual(['XAUT', 'KAG']);
+
+      // Un second appelant (ex. le simulateur de crédit) demande XAUT, KAG et ETH — avec
+      // l'ancien cache en lot (un seul tableau partagé), cet appel écrasait le cache du
+      // premier appelant avec sa propre liste de 3 actifs.
+      const full = await service.getYieldAssetHistory(['XAUT', 'KAG', 'ETH']);
+      expect(full.map((e) => e.currency)).toEqual(['XAUT', 'KAG', 'ETH']);
+      expect(full.find((e) => e.currency === 'ETH')?.changePct).toBe(0);
+
+      // Le premier appelant doit toujours recevoir exactement sa propre liste (2 actifs),
+      // jamais 3, même après que le second a été résolu — c'est exactement le bug : sans
+      // le cache par actif, ce second appel renverrait désormais XAUT/KAG/ETH.
+      const showcaseAgain = await service.getYieldAssetHistory(['XAUT', 'KAG']);
+      expect(showcaseAgain.map((e) => e.currency)).toEqual(['XAUT', 'KAG']);
+
+      // Les actifs communs (XAUT, KAG) ne sont récupérés qu'une seule fois au total,
+      // preuve que le second appel a bien réutilisé le cache déjà posé par le premier
+      // plutôt que de tout refetcher : 1 appel info + 3 historiques (XAUT, KAG, ETH).
+      expect(fetchSpy).toHaveBeenCalledTimes(4);
+    });
   });
 });

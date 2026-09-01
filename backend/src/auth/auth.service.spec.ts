@@ -1,9 +1,14 @@
+import { ForbiddenException } from '@nestjs/common';
 import { User } from '@prisma/client';
 import * as passwordUtil from '../common/password.util';
 import { AuthService } from './auth.service';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
-import { PENDING_TWO_FACTOR_TOKEN_TTL_SECONDS } from './auth.constants';
+import {
+  ACCOUNT_LOCKOUT_DURATION_MINUTES,
+  MAX_FAILED_LOGIN_ATTEMPTS,
+  PENDING_TWO_FACTOR_TOKEN_TTL_SECONDS,
+} from './auth.constants';
 
 function buildUser(overrides: Partial<User> = {}): User {
   return {
@@ -17,17 +22,19 @@ function buildUser(overrides: Partial<User> = {}): User {
     updatedAt: new Date(),
     twoFactorSecret: null,
     twoFactorEnabled: false,
+    failedLoginAttempts: 0,
+    lockedUntil: null,
     ...overrides,
   };
 }
 
 describe('AuthService', () => {
-  let prisma: { user: { findUnique: jest.Mock } };
+  let prisma: { user: { findUnique: jest.Mock; update: jest.Mock } };
   let jwtService: { signAsync: jest.Mock; verifyAsync: jest.Mock };
   let service: AuthService;
 
   beforeEach(() => {
-    prisma = { user: { findUnique: jest.fn() } };
+    prisma = { user: { findUnique: jest.fn(), update: jest.fn() } };
     jwtService = { signAsync: jest.fn(), verifyAsync: jest.fn() };
     service = new AuthService(
       prisma as unknown as PrismaService,
@@ -83,6 +90,92 @@ describe('AuthService', () => {
       );
 
       expect(result).toBeNull();
+    });
+
+    it('increments failedLoginAttempts on a wrong password, without locking the account yet', async () => {
+      prisma.user.findUnique.mockResolvedValue(
+        buildUser({ failedLoginAttempts: 2 }),
+      );
+      jest.spyOn(passwordUtil, 'verifyPassword').mockResolvedValue(false);
+
+      await service.validateCredentials('user@example.com', 'wrong-password');
+
+      expect(prisma.user.update).toHaveBeenCalledWith({
+        where: { id: 'user-1' },
+        data: { failedLoginAttempts: 3, lockedUntil: null },
+      });
+    });
+
+    it(`locks the account for ${ACCOUNT_LOCKOUT_DURATION_MINUTES} minutes on the ${MAX_FAILED_LOGIN_ATTEMPTS}th consecutive failure, resetting the counter`, async () => {
+      prisma.user.findUnique.mockResolvedValue(
+        buildUser({ failedLoginAttempts: MAX_FAILED_LOGIN_ATTEMPTS - 1 }),
+      );
+      jest.spyOn(passwordUtil, 'verifyPassword').mockResolvedValue(false);
+      const before = Date.now();
+
+      const result = await service.validateCredentials(
+        'user@example.com',
+        'wrong-password',
+      );
+
+      expect(result).toBeNull();
+      const calls = prisma.user.update.mock.calls as unknown as Array<
+        [{ data: { failedLoginAttempts: number; lockedUntil: Date } }]
+      >;
+      const call = calls[0][0];
+      expect(call.data.failedLoginAttempts).toBe(0);
+      expect(call.data.lockedUntil.getTime()).toBeGreaterThanOrEqual(
+        before + ACCOUNT_LOCKOUT_DURATION_MINUTES * 60 * 1000,
+      );
+    });
+
+    it('rejects with ForbiddenException while the account is still locked, without checking the password', async () => {
+      prisma.user.findUnique.mockResolvedValue(
+        buildUser({ lockedUntil: new Date(Date.now() + 60_000) }),
+      );
+      const verifySpy = jest.spyOn(passwordUtil, 'verifyPassword');
+
+      await expect(
+        service.validateCredentials('user@example.com', 'whatever'),
+      ).rejects.toThrow(ForbiddenException);
+      expect(verifySpy).not.toHaveBeenCalled();
+    });
+
+    it('allows login again once lockedUntil is in the past', async () => {
+      prisma.user.findUnique.mockResolvedValue(
+        buildUser({ lockedUntil: new Date(Date.now() - 60_000) }),
+      );
+      jest.spyOn(passwordUtil, 'verifyPassword').mockResolvedValue(true);
+
+      const result = await service.validateCredentials(
+        'user@example.com',
+        'correct-password',
+      );
+
+      expect(result).not.toBeNull();
+    });
+
+    it('resets failedLoginAttempts/lockedUntil on a successful login that follows prior failures', async () => {
+      prisma.user.findUnique.mockResolvedValue(
+        buildUser({ failedLoginAttempts: 3 }),
+      );
+      jest.spyOn(passwordUtil, 'verifyPassword').mockResolvedValue(true);
+
+      await service.validateCredentials('user@example.com', 'correct-password');
+
+      expect(prisma.user.update).toHaveBeenCalledWith({
+        where: { id: 'user-1' },
+        data: { failedLoginAttempts: 0, lockedUntil: null },
+      });
+    });
+
+    it('does not touch the database on a clean successful login (no prior failures)', async () => {
+      prisma.user.findUnique.mockResolvedValue(buildUser());
+      jest.spyOn(passwordUtil, 'verifyPassword').mockResolvedValue(true);
+
+      await service.validateCredentials('user@example.com', 'correct-password');
+
+      expect(prisma.user.update).not.toHaveBeenCalled();
     });
   });
 

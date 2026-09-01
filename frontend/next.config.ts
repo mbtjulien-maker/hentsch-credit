@@ -1,13 +1,44 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
+// Content-Security-Policy — composée et testée en direct (navigateur, console sans
+// violation) sur la vitrine, le dashboard (logos d'actifs CoinMarketCap, cf.
+// market-view.tsx/asset-picker.tsx/yield-*.tsx) et les paramètres 2FA back-office (QR code
+// en data: URI, cf. two-factor-settings.tsx) plutôt qu'ajoutée à l'aveugle.
+// script-src garde 'unsafe-eval' seulement en dev (requis par le HMR webpack de
+// `next dev`, absent du build de production) et 'unsafe-inline' des deux côtés — Next.js
+// n'utilise pas encore de nonce par requête ici ; à resserrer si ce besoin disparaît.
+function buildContentSecurityPolicy(): string {
+  const isDev = process.env.NODE_ENV !== "production";
+  let apiOrigin = "http://localhost:3000";
+  try {
+    apiOrigin = new URL(process.env.NEXT_PUBLIC_API_URL ?? apiOrigin).origin;
+  } catch {
+    // NEXT_PUBLIC_API_URL mal formée : on garde le repli localhost plutôt que de faire
+    // planter le build pour une CSP, qui reste une défense en profondeur.
+  }
+
+  return [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    `connect-src 'self' ${apiOrigin}`,
+    // s2.coinmarketcap.com : logos d'actifs (MarketDataService), seule image externe
+    // réellement chargée par le frontend. data: pour le QR code TOTP (généré en mémoire,
+    // jamais servi par une URL) et les icônes inline.
+    "img-src 'self' data: https://s2.coinmarketcap.com",
+    "font-src 'self'",
+    "style-src 'self' 'unsafe-inline'",
+    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  ].join("; ");
+}
+
 // En-têtes de sécurité de base, appliqués à toutes les routes de la vitrine/dashboard
 // Next.js (le back-office NestJS a les siens via helmet, cf. backend/src/main.ts).
-// Pas de Content-Security-Policy ici : la CSP dépend fortement des sources externes
-// réellement utilisées (CoinMarketCap pour les logos d'actifs, cf. market-view.tsx) et une
-// CSP mal calibrée casse silencieusement des fonctionnalités — à composer et tester
-// explicitement plutôt qu'ajoutée à l'aveugle.
 const SECURITY_HEADERS = [
+  { key: "Content-Security-Policy", value: buildContentSecurityPolicy() },
   // Empêche un navigateur de "deviner" un type MIME différent du Content-Type déclaré
   // (protection contre certaines attaques XSS par confusion de type).
   { key: "X-Content-Type-Options", value: "nosniff" },

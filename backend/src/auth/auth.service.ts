@@ -1,9 +1,17 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
 import { verifyPassword } from '../common/password.util';
 import { PrismaService } from '../prisma/prisma.service';
-import { PENDING_TWO_FACTOR_TOKEN_TTL_SECONDS } from './auth.constants';
+import {
+  ACCOUNT_LOCKOUT_DURATION_MINUTES,
+  MAX_FAILED_LOGIN_ATTEMPTS,
+  PENDING_TWO_FACTOR_TOKEN_TTL_SECONDS,
+} from './auth.constants';
 
 // Contenu du JWT de session — volontairement minimal (id + rôle). Le rôle est figé au
 // moment du login : un changement de rôle en base ne prend effet qu'à la prochaine
@@ -34,9 +42,13 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  // Retourne l'utilisateur si email + mot de passe correspondent, sinon null — jamais
-  // d'exception ici (le contrôleur décide du message générique à renvoyer, pour ne pas
-  // laisser deviner si c'est l'email ou le mot de passe qui est erroné).
+  // Retourne l'utilisateur si email + mot de passe correspondent, sinon null — pas
+  // d'exception sur un simple échec (le contrôleur décide du message générique à
+  // renvoyer, pour ne pas laisser deviner si c'est l'email ou le mot de passe qui est
+  // erroné). Seul le verrouillage du compte (trop d'échecs récents) lève directement une
+  // exception ici : au-delà du rate limit par IP (@Throttle sur /auth/login, contourné par
+  // un attaquant distribué sur plusieurs IP), ce compteur porté par le compte lui-même
+  // bloque le compte pour tout le monde une fois le seuil atteint.
   async validateCredentials(
     email: string,
     password: string,
@@ -45,8 +57,40 @@ export class AuthService {
     if (!user) {
       return null;
     }
+
+    if (user.lockedUntil && user.lockedUntil > new Date()) {
+      throw new ForbiddenException(
+        `Compte temporairement verrouillé après plusieurs échecs de connexion. Réessayez dans ${ACCOUNT_LOCKOUT_DURATION_MINUTES} minutes.`,
+      );
+    }
+
     const valid = await verifyPassword(password, user.passwordHash);
-    return valid ? user : null;
+
+    if (!valid) {
+      const failedLoginAttempts = user.failedLoginAttempts + 1;
+      const lockingOut = failedLoginAttempts >= MAX_FAILED_LOGIN_ATTEMPTS;
+      await this.prisma.user.update({
+        where: { id: user.id },
+        data: {
+          failedLoginAttempts: lockingOut ? 0 : failedLoginAttempts,
+          lockedUntil: lockingOut
+            ? new Date(
+                Date.now() + ACCOUNT_LOCKOUT_DURATION_MINUTES * 60 * 1000,
+              )
+            : null,
+        },
+      });
+      return null;
+    }
+
+    if (user.failedLoginAttempts > 0 || user.lockedUntil) {
+      await this.prisma.user.update({
+        where: { id: user.id },
+        data: { failedLoginAttempts: 0, lockedUntil: null },
+      });
+    }
+
+    return user;
   }
 
   async signToken(user: Pick<User, 'id' | 'role'>): Promise<string> {

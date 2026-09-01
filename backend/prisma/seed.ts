@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { generateURI } from 'otplib';
 import { hashPassword } from '../src/common/password.util';
 
 const prisma = new PrismaClient();
@@ -6,6 +7,14 @@ const prisma = new PrismaClient();
 // Mot de passe commun aux 3 comptes de démo — DEV UNIQUEMENT, jamais utilisé tel quel en
 // production (une vraie plateforme n'utilise jamais de seed pour créer des comptes réels).
 const DEV_PASSWORD = 'ChangeMe123!';
+
+// 2FA désormais obligatoire pour tout accès back-office (cf. AdminGuard, journal des
+// modifications CLAUDE.md) : le compte admin de démo doit donc en avoir une, sans quoi il
+// serait bloqué hors de tout /admin/* dès le prochain seed. Secret FIXE (pas
+// generateSecret() à chaque run) pour qu'un authenticator déjà configuré sur ce compte de
+// démo reste valide d'un reseed à l'autre — DEV UNIQUEMENT, jamais un secret figé en
+// production.
+const DEV_ADMIN_TOTP_SECRET = 'PWVYTOPKBCVRGSRT4YCNT3YC7QQDUGXZ';
 
 // Adresses de dépôt "pool" gérées par la banque (CLAUDE.md — pas propres à un client,
 // cf. ManagedDepositAddress). Réseau Ethereum uniquement pour l'instant.
@@ -146,12 +155,19 @@ async function main() {
   // demandes de crédit et déclencher les jobs manuels (cf. §5 Rôles d'accès).
   const adminUser = await prisma.user.upsert({
     where: { email: 'admin@hhentsch.com' },
-    update: { role: 'ADMIN', passwordHash },
+    update: {
+      role: 'ADMIN',
+      passwordHash,
+      twoFactorEnabled: true,
+      twoFactorSecret: DEV_ADMIN_TOTP_SECRET,
+    },
     create: {
       email: 'admin@hhentsch.com',
       passwordHash,
       kycStatus: 'VERIFIED',
       role: 'ADMIN',
+      twoFactorEnabled: true,
+      twoFactorSecret: DEV_ADMIN_TOTP_SECRET,
       ledgerBalance: {
         create: {},
       },
@@ -162,6 +178,11 @@ async function main() {
     verifiedUser: verifiedUser.email,
     pendingUser: pendingUser.email,
     adminUser: adminUser.email,
+    adminTotpOtpauthUrl: generateURI({
+      issuer: 'Hentsch Credit',
+      label: adminUser.email,
+      secret: DEV_ADMIN_TOTP_SECRET,
+    }),
     devPassword: DEV_PASSWORD,
   });
 }

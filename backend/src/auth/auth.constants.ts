@@ -13,3 +13,12 @@ export const SESSION_DURATION_SECONDS = 60 * 60 * 24;
 // POST /auth/2fa/challenge. 5 minutes : assez pour saisir un code, pas assez pour un
 // jeton volé/intercepté (ex. log applicatif) de rester exploitable longtemps.
 export const PENDING_TWO_FACTOR_TOKEN_TTL_SECONDS = 60 * 5;
+
+// Verrouillage de compte après échecs répétés — complète le rate limit par IP
+// (@Throttle sur POST /auth/login, cf. AuthController) qui ralentit un brute force sans
+// jamais le bloquer : un attaquant distribué sur plusieurs IP n'est pas gêné par le rate
+// limit seul, mais l'est par ce compteur porté par le compte lui-même. 5 échecs
+// consécutifs (même seuil que le rate limit, pour une expérience cohérente) verrouillent
+// le compte 15 minutes ; une connexion réussie réinitialise le compteur.
+export const MAX_FAILED_LOGIN_ATTEMPTS = 5;
+export const ACCOUNT_LOCKOUT_DURATION_MINUTES = 15;

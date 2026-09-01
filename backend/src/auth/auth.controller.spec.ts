@@ -18,6 +18,8 @@ function buildUser(overrides: Partial<User> = {}): User {
     updatedAt: new Date(),
     twoFactorSecret: null,
     twoFactorEnabled: false,
+    failedLoginAttempts: 0,
+    lockedUntil: null,
     ...overrides,
   };
 }

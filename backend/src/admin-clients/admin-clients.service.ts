@@ -704,6 +704,11 @@ export class AdminClientsService {
       id: request
         ? dossierCode(request.id, request.createdAt)
         : `CR-${new Date().getFullYear()}-NEANT`,
+      // UUID réel de la CreditRequest, distinct de `id` ci-dessus (un code d'affichage
+      // tronqué, non réversible — cf. dossierCode) : nécessaire pour que le back-office
+      // puisse appeler POST /credit-requests/:id/approve|reject depuis la liste, sans
+      // passer par la fiche client détaillée. `null` quand aucune demande n'existe.
+      requestId: request?.id ?? null,
       product: 'Crédit lombard',
       amountRequested,
       durationMonths,

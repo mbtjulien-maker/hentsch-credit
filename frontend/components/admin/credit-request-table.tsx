@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { AdminCard, AdminCardHeader, AdminEmptyState } from "@/components/admin/admin-ui";
+import { Button } from "@/components/ui/button";
 import { ContractStatusBadge, DecisionBadge } from "@/components/admin/status-badge";
 import type { AdminContract, DecisionStatus } from "@/lib/admin-mock-data";
 import { formatUsd } from "@/lib/format";
-import { Inbox } from "lucide-react";
+import { Check, Inbox, X } from "lucide-react";
 
 // Champs communs à AdminClient (fiche détaillée, cf. lib/admin-mock-data.ts) et
 // AdminClientSummary (liste, cf. lib/api.ts) — les deux types satisfont structurellement
@@ -14,7 +15,13 @@ interface CreditDossierRow {
   userId?: string;
   firstName: string;
   lastName: string;
-  creditRequest: { id: string; product: string; amountRequested: number; status: DecisionStatus };
+  creditRequest: {
+    id: string;
+    requestId?: string | null;
+    product: string;
+    amountRequested: number;
+    status: DecisionStatus;
+  };
   dossierStatus: { currentStepIndex: number; steps: { label: string }[] };
   contract: AdminContract;
 }
@@ -23,14 +30,27 @@ interface CreditDossierRow {
 // actifs / clôturés) — chacune ne filtre qu'un sous-ensemble des clients (réels, cf.
 // api.listAdminClients()), la présentation reste identique pour rester cohérente et
 // prévisible pour l'utilisateur.
+//
+// `onDecision` n'a de sens que pour la file "demandes" (dossierCategory DEMANDE, cf.
+// /admin/credits/demandes/page.tsx) : c'est la seule catégorie où creditRequest.status
+// vaut encore PENDING, donc la seule où approuver/rejeter est une action valide côté API
+// (POST /credit-requests/:id/approve|reject). Les trois autres pages (dossiers en cours,
+// actifs, clôturés) omettent la prop et gardent la table en lecture seule — auparavant la
+// seule action réelle sur une demande vivait exclusivement dans
+// /dashboard/demandes-credit, ce qui rendait le back-office "vue seule" incapable d'agir
+// sur ce qu'il affiche (cf. constat "deux surfaces admin qui ne convergent pas").
 export function CreditRequestTable({
   clients,
   title,
   description,
+  onDecision,
+  actingOn,
 }: {
   clients: CreditDossierRow[];
   title: string;
   description?: string;
+  onDecision?: (id: string, action: "approve" | "reject") => void;
+  actingOn?: string | null;
 }) {
   return (
     <AdminCard padded={false}>
@@ -51,6 +71,7 @@ export function CreditRequestTable({
                 <th className="px-5 py-2.5 font-medium text-[11px]">Étape</th>
                 <th className="px-5 py-2.5 font-medium text-[11px]">Contrat</th>
                 <th className="px-5 py-2.5 font-medium text-[11px]">Statut</th>
+                {onDecision && <th className="px-5 py-2.5 font-medium text-[11px]">Actions</th>}
               </tr>
             </thead>
             <tbody>
@@ -71,6 +92,35 @@ export function CreditRequestTable({
                   <td className="px-5 py-2.5">
                     <DecisionBadge status={c.creditRequest.status} />
                   </td>
+                  {onDecision && (
+                    <td className="px-5 py-2.5">
+                      {c.creditRequest.requestId ? (
+                        <div className="flex gap-2">
+                          <Button
+                            type="button"
+                            size="sm"
+                            variant="outline"
+                            disabled={actingOn === c.creditRequest.requestId}
+                            onClick={() => onDecision(c.creditRequest.requestId!, "reject")}
+                          >
+                            <X className="size-3.5" />
+                            Rejeter
+                          </Button>
+                          <Button
+                            type="button"
+                            size="sm"
+                            disabled={actingOn === c.creditRequest.requestId}
+                            onClick={() => onDecision(c.creditRequest.requestId!, "approve")}
+                          >
+                            <Check className="size-3.5" />
+                            Valider
+                          </Button>
+                        </div>
+                      ) : (
+                        <span className="text-xs text-muted-foreground">—</span>
+                      )}
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>

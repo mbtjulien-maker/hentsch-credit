@@ -405,6 +405,11 @@ export interface AdminClientSummary {
   // /admin/credits/*) lit `product`/`amountRequested`, pas seulement `purpose`/`status`.
   creditRequest: {
     id: string;
+    // UUID réel de la CreditRequest — distinct de `id` ci-dessus (un code d'affichage
+    // tronqué "CR-2026-XXXXXX", non réversible) : c'est celui qu'attendent
+    // approveCreditRequest/rejectCreditRequest. `null` quand dossierCategory vaut AUCUNE
+    // (aucune demande n'existe encore pour ce client).
+    requestId: string | null;
     product: string;
     amountRequested: number;
     durationMonths: number;

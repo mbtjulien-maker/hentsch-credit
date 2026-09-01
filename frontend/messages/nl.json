@@ -1197,7 +1197,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Gegevens verstrekt door CoinGecko",
+      "dataProvider": "Gegevens verstrekt door CoinMarketCap",
       "pricesUnavailable": "Prijzen niet beschikbaar.",
       "title": "Markt in real time",
       "description": "Koersen, 24u-verandering, volumes en marktkapitalisatie van de als onderpand geaccepteerde activa.",
@@ -1206,11 +1206,9 @@
         "asset": "Activum",
         "price": "Prijs",
         "change24h": "Wijz. 24u",
-        "high24h": "Hoogste 24u",
-        "low24h": "Laagste 24u",
         "volume24h": "Volume 24u",
         "marketCap": "Marktkap.",
-        "sevenDays": "7 dagen"
+        "trend12m": "Trend 12 mnd"
       },
       "acceptedSection": {
         "title": "Geaccepteerd als onderpand",

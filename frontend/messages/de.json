@@ -1197,7 +1197,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Daten bereitgestellt von CoinGecko",
+      "dataProvider": "Daten bereitgestellt von CoinMarketCap",
       "pricesUnavailable": "Kurse nicht verfügbar.",
       "title": "Markt in Echtzeit",
       "description": "Kurse, 24h-Veränderung, Volumen und Marktkapitalisierung der als Sicherheit akzeptierten Vermögenswerte.",
@@ -1206,11 +1206,9 @@
         "asset": "Vermögenswert",
         "price": "Kurs",
         "change24h": "24h-Änd.",
-        "high24h": "24h-Hoch",
-        "low24h": "24h-Tief",
         "volume24h": "24h-Volumen",
         "marketCap": "Marktkap.",
-        "sevenDays": "7 Tage"
+        "trend12m": "12-Monats-Trend"
       },
       "acceptedSection": {
         "title": "Als Sicherheit akzeptiert",

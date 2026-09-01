@@ -294,15 +294,12 @@ export interface MarketOverviewEntry {
   targetApyRangePct: { min: number; max: number } | null;
   usdPrice: string | null;
   change24hPct: number | null;
-  high24h: string | null;
-  low24h: string | null;
   volume24h: string | null;
   marketCap: string | null;
-  sparkline7d: number[];
 }
 
 // Performance sur 12 mois d'un actif générateur de rendement (page /rendement) — 365
-// jours est le maximum disponible sur le plan gratuit CoinGecko, affiché honnêtement
+// jours est le maximum disponible sur le plan gratuit CoinMarketCap, affiché honnêtement
 // comme "sur 12 mois", jamais "depuis le lancement" quel que soit l'âge réel de l'actif.
 export interface AssetHistoryEntry {
   currency: AcceptedCurrency;

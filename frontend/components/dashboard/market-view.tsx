@@ -13,8 +13,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Sparkline } from "@/components/dashboard/sparkline";
-import { api, ApiError, type MarketOverviewEntry } from "@/lib/api";
+import { MiniSparkline } from "@/components/marketing/performance-chart";
+import { api, ApiError, type AcceptedCurrency, type AssetHistoryEntry, type MarketOverviewEntry } from "@/lib/api";
 import { formatCompactUsd, formatPercent, formatPrice, formatTime } from "@/lib/format";
 
 const REFRESH_INTERVAL_MS = 45_000;
@@ -36,29 +36,18 @@ function ChangeBadge({ pct }: { pct: number | null }) {
   );
 }
 
-// Attribution de la source de données (obligatoire pour l'usage de l'API publique
-// CoinGecko) — logo en SVG pur (inline, aucune dépendance à une image externe), couleur
-// de marque CoinGecko (#8dc63f), lien vers coingecko.com.
+// Attribution de la source de données (obligatoire, cf. conditions d'usage de l'API
+// gratuite CoinMarketCap) — texte seul avec lien, sans logo imposé : plus sobre que le
+// badge logo obligatoire de l'ancienne intégration CoinGecko (décision produit).
 function DataProviderAttribution() {
   const t = useTranslations("Dashboard.marketView");
   return (
     <a
-      href="https://www.coingecko.com"
+      href="https://coinmarketcap.com"
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-white px-2.5 py-1 text-xs font-medium text-slate-600 shadow-sm transition-colors hover:border-slate-300 hover:text-slate-900 dark:border-border dark:bg-transparent dark:text-muted-foreground dark:shadow-none dark:hover:border-primary/30 dark:hover:text-foreground"
+      className="text-xs font-medium text-muted-foreground/80 underline underline-offset-2 hover:text-foreground"
     >
-      <svg viewBox="0 0 24 24" className="size-3.5" aria-hidden>
-        <circle cx="12" cy="12" r="11" fill="#8dc63f" />
-        <circle cx="8.7" cy="10.2" r="1.5" fill="#0d1a0a" />
-        <path
-          d="M6 15c1.9 1.6 3.9 2.1 6 2.1s4.1-.5 6-2.1"
-          stroke="#0d1a0a"
-          strokeWidth="1.4"
-          fill="none"
-          strokeLinecap="round"
-        />
-      </svg>
       {t("dataProvider")}
     </a>
   );
@@ -69,6 +58,7 @@ export function MarketView() {
   const [entries, setEntries] = useState<MarketOverviewEntry[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [refreshedAt, setRefreshedAt] = useState<Date | null>(null);
+  const [trends, setTrends] = useState<Map<AcceptedCurrency, AssetHistoryEntry["points"]>>(new Map());
 
   useEffect(() => {
     let ignore = false;
@@ -95,6 +85,29 @@ export function MarketView() {
     };
   }, [t]);
 
+  // Tendance 12 mois — chargée une seule fois (pas à chaque cycle de 45s comme les prix
+  // en direct ci-dessus : un historique annuel n'a pas besoin de cette fraîcheur, et
+  // l'endpoint est déjà mis en cache 6h côté backend, cf. HISTORY_CACHE_TTL_MS). Même
+  // source que useEstimatedYield (simulateurs de crédit) : de vrais points de cours, pas
+  // un sparkline fabriqué — l'API CoinMarketCap gratuite n'en fournit pas nativement,
+  // contrairement à l'ancienne intégration CoinGecko (cf. journal des modifications).
+  useEffect(() => {
+    let ignore = false;
+    api
+      .getYieldHistoryFull()
+      .then((history) => {
+        if (ignore) return;
+        setTrends(new Map(history.map((h) => [h.currency, h.points])));
+      })
+      .catch(() => {
+        // Purement décoratif — la colonne Tendance retombe sur "—" pour ces lignes,
+        // le reste du tableau (prix, variation, volumes) reste pleinement utilisable.
+      });
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   const accepted = entries?.filter((e) => e.isAcceptedForCredit) ?? [];
   const others = entries?.filter((e) => !e.isAcceptedForCredit) ?? [];
 
@@ -120,23 +133,21 @@ export function MarketView() {
         {!error && !entries && <p className="text-sm text-muted-foreground">{t("loading")}</p>}
         {entries && (
           <div className="overflow-x-auto">
-            <Table className="min-w-[720px]">
+            <Table className="min-w-[560px]">
               <TableHeader>
                 <TableRow>
                   <TableHead>{t("columns.asset")}</TableHead>
                   <TableHead className="text-right">{t("columns.price")}</TableHead>
                   <TableHead className="text-right">{t("columns.change24h")}</TableHead>
-                  <TableHead className="text-right">{t("columns.high24h")}</TableHead>
-                  <TableHead className="text-right">{t("columns.low24h")}</TableHead>
                   <TableHead className="text-right">{t("columns.volume24h")}</TableHead>
                   <TableHead className="text-right">{t("columns.marketCap")}</TableHead>
-                  <TableHead className="text-right">{t("columns.sevenDays")}</TableHead>
+                  <TableHead className="text-right">{t("columns.trend12m")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {accepted.length > 0 && (
                   <TableRow key="section-accepted" className="hover:bg-transparent">
-                    <TableCell colSpan={8} className="py-1.5 text-xs font-medium text-muted-foreground">
+                    <TableCell colSpan={6} className="py-1.5 text-xs font-medium text-muted-foreground">
                       <span className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
                         {t("acceptedSection.title")}
                         <span className="inline-flex items-center gap-1 font-normal normal-case text-muted-foreground/80">
@@ -149,18 +160,26 @@ export function MarketView() {
                   </TableRow>
                 )}
                 {accepted.map((entry) => (
-                  <MarketRow key={entry.id} entry={entry} />
+                  <MarketRow
+                    key={entry.id}
+                    entry={entry}
+                    trendPoints={entry.currency ? trends.get(entry.currency) : undefined}
+                  />
                 ))}
 
                 {others.length > 0 && (
                   <TableRow key="section-others" className="hover:bg-transparent">
-                    <TableCell colSpan={8} className="py-1.5 text-xs font-medium text-muted-foreground">
+                    <TableCell colSpan={6} className="py-1.5 text-xs font-medium text-muted-foreground">
                       {t("othersSection.title")}
                     </TableCell>
                   </TableRow>
                 )}
                 {others.map((entry) => (
-                  <MarketRow key={entry.id} entry={entry} />
+                  <MarketRow
+                    key={entry.id}
+                    entry={entry}
+                    trendPoints={entry.currency ? trends.get(entry.currency) : undefined}
+                  />
                 ))}
               </TableBody>
             </Table>
@@ -171,7 +190,13 @@ export function MarketView() {
   );
 }
 
-function MarketRow({ entry }: { entry: MarketOverviewEntry }) {
+function MarketRow({
+  entry,
+  trendPoints,
+}: {
+  entry: MarketOverviewEntry;
+  trendPoints?: AssetHistoryEntry["points"];
+}) {
   const t = useTranslations("Dashboard.marketView");
   return (
     // Survol neutre — commun au dashboard/admin (gold/obsidian) et à la vitrine
@@ -228,21 +253,19 @@ function MarketRow({ entry }: { entry: MarketOverviewEntry }) {
         <ChangeBadge pct={entry.change24hPct} />
       </TableCell>
       <TableCell className="text-right tabular-nums text-muted-foreground">
-        {entry.high24h ? formatPrice(entry.high24h) : "—"}
-      </TableCell>
-      <TableCell className="text-right tabular-nums text-muted-foreground">
-        {entry.low24h ? formatPrice(entry.low24h) : "—"}
-      </TableCell>
-      <TableCell className="text-right tabular-nums text-muted-foreground">
         {formatCompactUsd(entry.volume24h)}
       </TableCell>
       <TableCell className="text-right tabular-nums text-muted-foreground">
         {formatCompactUsd(entry.marketCap)}
       </TableCell>
       <TableCell className="text-right">
-        <div className="flex justify-end">
-          <Sparkline data={entry.sparkline7d} />
-        </div>
+        {entry.isYieldEligible ? (
+          <div className="flex justify-end">
+            <MiniSparkline points={trendPoints ?? []} />
+          </div>
+        ) : (
+          <span className="text-xs text-muted-foreground/50">—</span>
+        )}
       </TableCell>
     </TableRow>
   );

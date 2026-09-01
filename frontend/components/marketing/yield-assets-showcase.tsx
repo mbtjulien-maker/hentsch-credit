@@ -55,7 +55,7 @@ function AssetYieldCard({ entry, compact = false }: { entry: MarketOverviewEntry
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           {entry.image ? (
-            // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinGecko
+            // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinMarketCap
             <img src={entry.image} alt="" className={compact ? "size-6 shrink-0 rounded-full" : "size-8 shrink-0 rounded-full"} />
           ) : (
             <div className={compact ? "size-6 shrink-0 rounded-full bg-muted" : "size-8 shrink-0 rounded-full bg-muted"} />

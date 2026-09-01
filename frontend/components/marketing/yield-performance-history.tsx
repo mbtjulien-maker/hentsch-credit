@@ -9,7 +9,7 @@ import { formatPercent, formatPrice } from "@/lib/format";
 
 // Historique réel sur 12 mois des actifs générateurs de rendement (cf.
 // MarketDataService.getYieldAssetHistory côté backend) — 365 jours est le maximum
-// disponible sur le plan gratuit CoinGecko : affiché honnêtement comme "performance
+// disponible sur le plan gratuit CoinMarketCap : affiché honnêtement comme "performance
 // sur 12 mois", jamais "depuis le lancement", quel que soit l'âge réel de chaque actif.
 // Les logos/noms viennent de /market/prices (même appel que le reste de la vitrine)
 // plutôt que d'être dupliqués ici.
@@ -58,7 +58,7 @@ export function YieldPerformanceHistory() {
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
                 {entry?.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinGecko
+                  // eslint-disable-next-line @next/next/no-img-element -- logo distant CoinMarketCap
                   <img src={entry.image} alt="" className="size-7 rounded-full" />
                 ) : (
                   <div className="size-7 rounded-full bg-muted" />

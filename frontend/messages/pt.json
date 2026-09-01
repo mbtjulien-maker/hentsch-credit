@@ -1197,7 +1197,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Dados fornecidos pela CoinGecko",
+      "dataProvider": "Dados fornecidos pela CoinMarketCap",
       "pricesUnavailable": "Preços indisponíveis.",
       "title": "Mercado em tempo real",
       "description": "Cotações, variação 24h, volumes e capitalização dos ativos aceites como garantia.",
@@ -1206,11 +1206,9 @@
         "asset": "Ativo",
         "price": "Preço",
         "change24h": "Var. 24h",
-        "high24h": "Máx. 24h",
-        "low24h": "Mín. 24h",
         "volume24h": "Volume 24h",
         "marketCap": "Cap. de mercado",
-        "sevenDays": "7 dias"
+        "trend12m": "Tendência 12 meses"
       },
       "acceptedSection": {
         "title": "Aceites como garantia",

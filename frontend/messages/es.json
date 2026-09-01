@@ -1197,7 +1197,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Datos proporcionados por CoinGecko",
+      "dataProvider": "Datos proporcionados por CoinMarketCap",
       "pricesUnavailable": "Precios no disponibles.",
       "title": "Mercado en tiempo real",
       "description": "Cotizaciones, variación 24h, volúmenes y capitalización de los activos aceptados como garantía.",
@@ -1206,11 +1206,9 @@
         "asset": "Activo",
         "price": "Precio",
         "change24h": "Var. 24h",
-        "high24h": "Máx. 24h",
-        "low24h": "Mín. 24h",
         "volume24h": "Volumen 24h",
         "marketCap": "Cap. de mercado",
-        "sevenDays": "7 días"
+        "trend12m": "Tendencia 12 meses"
       },
       "acceptedSection": {
         "title": "Aceptados como garantía",

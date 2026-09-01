@@ -5,7 +5,7 @@ import { api, type AcceptedCurrency } from "@/lib/api";
 
 // Performance réelle sur 12 mois d'UN actif éligible au rendement — cf. AssetHistoryEntry
 // côté backend. `changePct` est `null` quand l'historique n'a pas pu être récupéré
-// (panne CoinGecko sur cet actif précis) : jamais confondu avec un rendement nul.
+// (panne CoinMarketCap sur cet actif précis) : jamais confondu avec un rendement nul.
 export interface AssetYieldEstimate {
   currency: AcceptedCurrency;
   changePct: number | null;

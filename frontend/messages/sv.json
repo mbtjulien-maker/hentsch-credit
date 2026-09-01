@@ -1197,7 +1197,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Data tillhandahålls av CoinGecko",
+      "dataProvider": "Data tillhandahålls av CoinMarketCap",
       "pricesUnavailable": "Priser ej tillgängliga.",
       "title": "Marknad i realtid",
       "description": "Kurser, 24h-förändring, volym och marknadsvärde för de tillgångar som accepteras som säkerhet.",
@@ -1206,11 +1206,9 @@
         "asset": "Tillgång",
         "price": "Pris",
         "change24h": "Förändr. 24h",
-        "high24h": "Högsta 24h",
-        "low24h": "Lägsta 24h",
         "volume24h": "Volym 24h",
         "marketCap": "Marknadsvärde",
-        "sevenDays": "7 dagar"
+        "trend12m": "Trend 12 mån"
       },
       "acceptedSection": {
         "title": "Accepteras som säkerhet",

@@ -1197,7 +1197,7 @@
       }
     },
     "marketView": {
-      "dataProvider": "Data provided by CoinGecko",
+      "dataProvider": "Data provided by CoinMarketCap",
       "pricesUnavailable": "Prices unavailable.",
       "title": "Live market",
       "description": "Prices, 24h change, volume and market cap of the assets accepted as collateral.",
@@ -1206,11 +1206,9 @@
         "asset": "Asset",
         "price": "Price",
         "change24h": "24h chg.",
-        "high24h": "24h high",
-        "low24h": "24h low",
         "volume24h": "24h volume",
         "marketCap": "Market cap",
-        "sevenDays": "7 days"
+        "trend12m": "12-month trend"
       },
       "acceptedSection": {
         "title": "Accepted as collateral",

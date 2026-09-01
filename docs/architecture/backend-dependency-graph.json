@@ -309,6 +309,13 @@
       "valid": true
     },
     {
+      "source": "src/common/guards/business-account.guard.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "src/common/guards/kyc-verified.guard.ts",
       "dependencies": [],
       "dependents": [],
@@ -450,6 +457,48 @@
     },
     {
       "source": "src/deposit-intents/dto/declare-deposit.dto.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/direct-credit/admin-direct-credit.controller.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/direct-credit/direct-credit.constants.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/direct-credit/direct-credit.controller.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/direct-credit/direct-credit.module.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/direct-credit/direct-credit.service.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/direct-credit/dto/create-direct-credit-request.dto.ts",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -749,7 +798,7 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 106,
+    "totalCruised": 113,
     "totalDependenciesCruised": 0,
     "optionsUsed": {
       "baseDir": "/Users/macbookpro/crypto-credit-bank/backend",

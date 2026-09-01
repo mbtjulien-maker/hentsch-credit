@@ -47,5 +47,5 @@ npx --yes dependency-cruiser@18.2.0 --no-config --ts-config tsconfig.json \
 
 ## Dernier contrôle (1 septembre 2026)
 
-- Backend : 106 modules, 0 dépendance circulaire.
-- Frontend : 152 modules, 0 dépendance circulaire.
+- Backend : 113 modules, 0 dépendance circulaire.
+- Frontend : 153 modules, 0 dépendance circulaire.

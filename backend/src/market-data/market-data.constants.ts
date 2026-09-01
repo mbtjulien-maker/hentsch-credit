@@ -1,11 +1,20 @@
 import { AcceptedCurrency } from '@prisma/client';
 
-// Identifiants CoinGecko (API publique, sans clé — cf. journal des modifications,
-// entrée sur le retour à CoinGecko après un essai de CoinMarketCap) pour chaque actif
-// accepté.
-export const COINGECKO_IDS: Record<AcceptedCurrency, string> = {
+// Slugs CoinMarketCap (API Pro, clé gratuite requise — cf. COINMARKETCAP_API_KEY) pour
+// chaque actif accepté. Remplace l'ancienne intégration CoinGecko (identique
+// fonctionnellement — mêmes actifs couverts, même logique de dégradation gracieuse dans
+// MarketDataService — changée pour son rendu plus sobre : attribution texte seule au lieu
+// d'un badge logo obligatoire, cf. décision produit "remplacer CoinGecko par un autre plus
+// esthétique"). Slugs vérifiés un par un sur coinmarketcap.com/currencies/<slug>/ avant
+// migration, pas devinés : plusieurs diffèrent des identifiants CoinGecko équivalents
+// (ex. KAG → "silver", pas "kinesis-silver").
+export const COINMARKETCAP_SLUGS: Record<AcceptedCurrency, string> = {
   USDS: 'usds',
-  DAI: 'dai',
+  // Piège trouvé en vérifiant en direct après obtention d'une clé API réelle : le slug
+  // "dai" tout court résout vers SAI (Single Collateral DAI), un token abandonné
+  // remplacé par Multi-Collateral DAI en 2019 — jamais le vrai DAI actuel. Le bon slug
+  // CoinMarketCap pour le DAI actuel est "multi-collateral-dai" (symbole toujours "DAI").
+  DAI: 'multi-collateral-dai',
   USDE: 'ethena-usde',
   PYUSD: 'paypal-usd',
   PAXG: 'pax-gold',
@@ -13,34 +22,40 @@ export const COINGECKO_IDS: Record<AcceptedCurrency, string> = {
   USDT: 'tether',
   USDC: 'usd-coin',
   // dEURO — stablecoin indexé sur l'euro, PAS 1:1 USD : exclu de PEGGED_CURRENCIES
-  // ci-dessous, sa valeur USD est donc recalculée au prix spot CoinGecko (qui reflète
+  // ci-dessous, sa valeur USD est donc recalculée au prix spot CoinMarketCap (qui reflète
   // déjà la conversion EUR/USD), sans logique dédiée. Volontairement absent de
   // PRECIOUS_METAL_CURRENCIES plus bas : ce set gate spécifiquement le rendement indexé
   // sur la performance des métaux précieux (CollateralYieldService), pas la
   // revalorisation spot en général.
   DEURO: 'decentralized-euro',
   // ETH/SHIB — cryptomonnaies natives, aucun ancrage : comme les métaux précieux,
-  // exclues de PEGGED_CURRENCIES, valorisées au prix spot CoinGecko. ETH est éligible au
-  // rendement indexé (cf. YIELD_ELIGIBLE_CURRENCIES plus bas) sans faire partie de
+  // exclues de PEGGED_CURRENCIES, valorisées au prix spot CoinMarketCap. ETH est éligible
+  // au rendement indexé (cf. YIELD_ELIGIBLE_CURRENCIES plus bas) sans faire partie de
   // PRECIOUS_METAL_CURRENCIES (réservé aux métaux) ; SHIB n'est pas éligible (trop volatil).
   ETH: 'ethereum',
   SHIB: 'shiba-inu',
   // KAG — argent tokenisé (Kinesis Silver), même principe que PAXG/XAUT pour l'or :
-  // valorisé au cours spot en direct, éligible au rendement indexé.
-  KAG: 'kinesis-silver',
+  // valorisé au cours spot en direct, éligible au rendement indexé. Slug CoinMarketCap
+  // "silver" (pas "kinesis-silver" comme sur CoinGecko).
+  KAG: 'silver',
   // XPT/XPD/XCU/WTI — métaux industriels et matières premières tokenisés (cf.
-  // INDUSTRIAL_RWA_CURRENCIES). CoinGecko ne référence pas de token RWA "pur" pour ces
-  // actifs (contrairement à PAXG/XAUT/KAG pour l'or/argent) : on s'appuie sur les
-  // enveloppes tokenisées d'ETF physiques/indiciels (Dinari/Ondo), qui répliquent le cours
-  // spot de l'actif sous-jacent et disposent d'un historique de prix en direct fiable.
-  XPT: 'abrdn-physical-platinum-shares-etf-dinari-tokenized-etf', // Platine physique
-  XPD: 'abrdn-physical-palladium-shares-etf-dinari-tokenized-etf', // Palladium physique
-  // Indice futures cuivre pur (pas un ETF de mineurs) — le mapping CoinMarketCap utilisé
-  // brièvement pendant l'essai de ce fournisseur (cf. journal des modifications) suivait un
-  // ETF de mineurs de cuivre par manque d'équivalent direct ; CoinGecko référence bien
-  // l'indice futures pur, donc ce retour à CoinGecko referme cet écart de couverture.
-  XCU: 'us-copper-index-fund-ondo-tokenized', // Indice cuivre (futures)
-  WTI: 'united-states-oil-fund-ondo-tokenized', // Pétrole (WTI, futures)
+  // INDUSTRIAL_RWA_CURRENCIES). Ni CoinGecko ni CoinMarketCap ne référencent de token RWA
+  // "pur" pour ces actifs (contrairement à PAXG/XAUT/KAG pour l'or/argent) : on s'appuie
+  // sur les enveloppes tokenisées d'ETF physiques/indiciels (Dinari/Ondo), qui répliquent
+  // le cours spot de l'actif sous-jacent et disposent d'un historique de prix en direct
+  // fiable, listées sur CoinMarketCap sous ces mêmes émetteurs.
+  XPT: 'abrdn-physical-platinum-shares-tokenized-etf-dinari', // Platine physique
+  XPD: 'abrdn-physical-palladium-shares-tokenized-etf-dinari', // Palladium physique
+  // Écart assumé par rapport à l'ancien mapping CoinGecko : CoinGecko référençait un
+  // wrapper Ondo sur l'indice futures cuivre pur (US Copper Index Fund / CPER). Aucun
+  // équivalent direct trouvé sur CoinMarketCap au moment de la migration ; on utilise à la
+  // place le wrapper Ondo sur l'ETF actions de mineurs de cuivre (Global X Copper Miners
+  // ETF / COPX) — exposition corrélée mais économiquement différente (actions de
+  // producteurs, pas le métal lui-même). Documenté ici et dans le journal d'audit
+  // (CLAUDE.md §6) : à surveiller si l'écart de corrélation devient significatif pour le
+  // calcul du rendement indexé (CollateralYieldService).
+  XCU: 'global-x-copper-miners-tokenized-etf-ondo', // ETF mineurs de cuivre (substitut)
+  WTI: 'united-states-oil-tokenized-fund-ondo', // Pétrole (WTI, futures)
 };
 
 // Actifs valorisés 1:1 en USD dans le ledger (stablecoins indexés sur le dollar), quel
@@ -98,32 +113,46 @@ export const YIELD_ELIGIBLE_CURRENCIES: ReadonlySet<AcceptedCurrency> = new Set(
 
 export const PRICE_CACHE_TTL_MS = 30_000;
 
+// Métadonnées statiques par actif (id numérique CoinMarketCap + logo) — résolues une fois
+// via /v2/cryptocurrency/info (le seul endpoint acceptant un slug pour cette information)
+// puis mises en cache très longtemps : un logo ou un id CoinMarketCap ne change
+// essentiellement jamais, inutile de le redemander toutes les 30s comme le prix. Séparé de
+// PRICE_CACHE_TTL_MS pour limiter la consommation de crédits API (plan gratuit : 15 000
+// crédits/mois, cf. .env.example).
+export const METADATA_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+
 // Historique de prix (cf. MarketDataService.getYieldAssetHistory, page /rendement) — 365
-// jours est le maximum accessible sans clé API sur le plan public CoinGecko (days > 365
-// répond 401) : on l'affiche honnêtement comme "performance sur 12 mois", jamais comme
-// "depuis le lancement", que ces actifs soient plus anciens ou non. Cache plus long que
-// PRICE_CACHE_TTL_MS : un historique quotidien n'a pas besoin d'être rafraîchi à la minute,
-// et cela limite le nombre d'appels à l'API publique (une requête par actif, contrairement
-// à getMarketOverview qui couvre tous les actifs en un seul appel).
+// jours est le maximum accessible sur le plan gratuit de CoinMarketCap (comme sur
+// l'ancien plan public CoinGecko) : on l'affiche honnêtement comme "performance sur 12
+// mois", jamais comme "depuis le lancement", que ces actifs soient plus anciens ou non.
+// Cache plus long que PRICE_CACHE_TTL_MS : un historique quotidien n'a pas besoin d'être
+// rafraîchi à la minute, et cela limite le nombre d'appels à l'API (une requête par actif,
+// contrairement à getMarketOverview qui couvre tous les actifs en un seul appel).
 export const HISTORY_PERIOD_DAYS = 365;
 export const HISTORY_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 
 // Cryptos majeures affichées à titre informatif dans la vue "marché" façon plateforme
 // d'échange (OKX, Binance…), en plus des actifs acceptés en garantie. Non liées au
 // moteur de crédit — purement pour donner au client une vue d'ensemble du marché.
-// "ethereum" n'y figure plus : ETH est désormais un actif accepté (cf. COINGECKO_IDS
-// ci-dessus) — le lister ici aussi dupliquerait la ligne dans getMarketOverview().
-export const MARKET_OVERVIEW_IDS: Record<
+// "ethereum" n'y figure plus : ETH est désormais un actif accepté (cf. COINMARKETCAP_SLUGS
+// ci-dessus) — le lister ici aussi dupliquerait la ligne dans getMarketOverview(). Clés en
+// slugs CoinMarketCap : "bnb" et "xrp" diffèrent des identifiants CoinGecko équivalents
+// ("binancecoin", "ripple"). Chaque slug vérifié en direct avec une vraie clé API avant
+// de figer ce mapping (cf. CLAUDE.md §6, entrée 15) : "binance-coin" (identifiant utilisé
+// jusqu'ici) répond bien mais CoinMarketCap le renvoie systématiquement sous le slug
+// canonique "bnb" — utilisé ici directement pour éviter tout risque de désynchronisation
+// entre le slug demandé et le slug réellement renvoyé par l'API.
+export const MARKET_OVERVIEW_SLUGS: Record<
   string,
   { symbol: string; name: string }
 > = {
   bitcoin: { symbol: 'BTC', name: 'Bitcoin' },
   solana: { symbol: 'SOL', name: 'Solana' },
-  binancecoin: { symbol: 'BNB', name: 'BNB' },
-  ripple: { symbol: 'XRP', name: 'XRP' },
+  bnb: { symbol: 'BNB', name: 'BNB' },
+  xrp: { symbol: 'XRP', name: 'XRP' },
   cardano: { symbol: 'ADA', name: 'Cardano' },
   dogecoin: { symbol: 'DOGE', name: 'Dogecoin' },
   tron: { symbol: 'TRX', name: 'Tron' },
-  'avalanche-2': { symbol: 'AVAX', name: 'Avalanche' },
+  avalanche: { symbol: 'AVAX', name: 'Avalanche' },
   chainlink: { symbol: 'LINK', name: 'Chainlink' },
 };

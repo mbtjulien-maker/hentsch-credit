@@ -57,6 +57,13 @@
       "valid": true
     },
     {
+      "source": "app/[locale]/dashboard/credit-direct/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "app/[locale]/dashboard/credit/page.tsx",
       "dependencies": [],
       "dependents": [],
@@ -680,6 +687,13 @@
       "valid": true
     },
     {
+      "source": "components/dashboard/direct-credit-form.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "components/dashboard/installment-schedule.tsx",
       "dependencies": [],
       "dependents": [],
@@ -709,13 +723,6 @@
     },
     {
       "source": "components/dashboard/sidebar.tsx",
-      "dependencies": [],
-      "dependents": [],
-      "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "components/dashboard/sparkline.tsx",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -1099,7 +1106,7 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 152,
+    "totalCruised": 153,
     "totalDependenciesCruised": 1,
     "optionsUsed": {
       "baseDir": "/Users/macbookpro/crypto-credit-bank/frontend",

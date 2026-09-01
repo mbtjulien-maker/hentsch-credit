@@ -13,6 +13,7 @@ function buildUser(overrides: Partial<User> = {}): User {
     passwordHash: 'hashed',
     kycStatus: 'VERIFIED',
     role: 'CLIENT',
+    accountType: 'PARTICULIER',
     createdAt: new Date(),
     updatedAt: new Date(),
     twoFactorSecret: null,

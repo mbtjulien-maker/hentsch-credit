@@ -20,6 +20,7 @@ function buildRequest(
     email: 'ada@example.com',
     phone: null,
     message: null,
+    accountType: 'PARTICULIER',
     status: 'PENDING',
     createdAt: new Date(),
     reviewedAt: null,
@@ -35,6 +36,7 @@ function buildUser(overrides: Partial<User> = {}): User {
     passwordHash: 'hash',
     kycStatus: 'PENDING',
     role: 'CLIENT',
+    accountType: 'PARTICULIER',
     createdAt: new Date(),
     updatedAt: new Date(),
     twoFactorSecret: null,
@@ -110,9 +112,31 @@ describe('AccountRequestsService', () => {
           email: 'ada@example.com',
           phone: undefined,
           message: undefined,
+          accountType: 'PARTICULIER',
         },
       });
       expect(result).toBe(created);
+    });
+
+    it('propagates an explicit BUSINESS accountType', async () => {
+      prisma.user.findUnique.mockResolvedValue(null);
+      prisma.accountOpeningRequest.findFirst.mockResolvedValue(null);
+      prisma.accountOpeningRequest.create.mockResolvedValue(
+        buildRequest({ accountType: 'BUSINESS' }),
+      );
+
+      await service.create({
+        firstName: 'Ada',
+        lastName: 'Lovelace',
+        email: 'ada@example.com',
+        accountType: 'BUSINESS',
+      });
+
+      expect(prisma.accountOpeningRequest.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({ accountType: 'BUSINESS' }),
+        }),
+      );
     });
 
     it('throws AccountAlreadyExistsException when a User already exists for the email', async () => {
@@ -184,6 +208,7 @@ describe('AccountRequestsService', () => {
           passwordHash: 'hashed-temp-pass',
           kycStatus: 'PENDING',
           role: 'CLIENT',
+          accountType: 'PARTICULIER',
           ledgerBalance: { create: {} },
         },
       });
@@ -199,6 +224,29 @@ describe('AccountRequestsService', () => {
         request: updatedRequest,
         temporaryPassword: 'temp-pass-123',
       });
+    });
+
+    it('propagates a BUSINESS accountType from the request to the created User', async () => {
+      prisma.accountOpeningRequest.findUnique.mockResolvedValue(
+        buildRequest({ accountType: 'BUSINESS' }),
+      );
+      prisma.user.findUnique.mockResolvedValue(null);
+      jest
+        .spyOn(passwordUtil, 'generateTemporaryPassword')
+        .mockReturnValue('temp-pass-123');
+      jest
+        .spyOn(passwordUtil, 'hashPassword')
+        .mockResolvedValue('hashed-temp-pass');
+      tx.user.create.mockResolvedValue(buildUser({ accountType: 'BUSINESS' }));
+      tx.accountOpeningRequest.update.mockResolvedValue(buildRequest());
+
+      await service.approve('request-1');
+
+      expect(tx.user.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          data: expect.objectContaining({ accountType: 'BUSINESS' }),
+        }),
+      );
     });
 
     it('throws AccountRequestNotFoundException for an unknown request', async () => {

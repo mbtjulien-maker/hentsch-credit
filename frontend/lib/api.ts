@@ -1,4 +1,4 @@
-import type { AdminClient } from "@/lib/admin-mock-data";
+import type { AdminClient, AdminContract, DecisionStatus } from "@/lib/admin-mock-data";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000";
 
@@ -44,11 +44,17 @@ export type TransactionStatus = "PENDING" | "COMPLETED" | "FAILED";
 
 export type UserRole = "CLIENT" | "ADMIN";
 
+// Fixé à l'ouverture du compte (formulaire public "Demander l'ouverture d'un compte"),
+// jamais modifié ensuite. BUSINESS débloque le crédit direct (cf. DirectCreditRequest) en
+// plus du crédit gagé crypto, disponible aux deux types de compte.
+export type AccountType = "PARTICULIER" | "BUSINESS";
+
 export interface UserSummary {
   id: string;
   email: string;
   kycStatus: KycStatus;
   role: UserRole;
+  accountType: AccountType;
   createdAt: string;
   // Présent uniquement sur la réponse de GET /auth/me (cf. AuthController) — absent sur
   // les réponses de login/challenge, qui n'ont pas besoin de le renvoyer.
@@ -86,6 +92,7 @@ export interface AccountOpeningRequest {
   email: string;
   phone: string | null;
   message: string | null;
+  accountType: AccountType;
   status: AccountRequestStatus;
   createdAt: string;
   reviewedAt: string | null;
@@ -152,6 +159,51 @@ export interface CreditRequest {
   validatedAt: string | null;
   fulfilledAt: string | null;
   creditPositionId: string | null;
+}
+
+// Crédit direct — non gagé, réservé aux comptes BUSINESS (cf. AccountType, CLAUDE.md
+// §2). Décision automatique à la soumission (aucune file d'attente admin) : cinq
+// critères déclaratifs, tous obligatoires. Les données évaluées sont auto-déclarées par
+// le client, jamais vérifiées par un tiers.
+export type DirectCreditDecision = "ELIGIBLE" | "INELIGIBLE";
+
+export interface DirectCreditEligibilityCriterion {
+  key: string;
+  label: string;
+  passed: boolean;
+  observed: string;
+  threshold: string;
+}
+
+export interface DirectCreditRequest {
+  id: string;
+  userId: string;
+  companyName: string;
+  registrationNumber: string;
+  sector: string;
+  companySeniorityMonths: number;
+  projectDescription: string;
+  requestedAmount: string;
+  currency: AccountCurrency;
+  declaredMonthlyRevenue: string;
+  declaredMonthlyExpenses: string;
+  guaranteeOffered: string;
+  decision: DirectCreditDecision;
+  eligibilityBreakdown: DirectCreditEligibilityCriterion[];
+  estimatedRatePct: string;
+  estimatedMonthlyPayment: string;
+  createdAt: string;
+}
+
+export interface DirectCreditRates {
+  interestRatePct: string;
+  originationFeePct: string;
+  termMonths: number;
+  minCompanySeniorityMonths: number;
+  minMonthlyRevenue: string;
+  maxRequestToMonthlyRevenueMultiple: string;
+  maxDebtServiceRatioPct: string;
+  minGuaranteeCoveragePct: string;
 }
 
 export interface RepayCreditResult {
@@ -351,7 +403,30 @@ export interface AdminClientSummary {
   kycStatus: KycStatus;
   riskLevel: "LOW" | "MEDIUM" | "HIGH";
   riskScore: number;
-  creditRequest: { id: string; purpose: string; status: string };
+  // Même forme que AdminClient["creditRequest"] (cf. lib/admin-mock-data.ts) — objet
+  // complet, pas un sous-ensemble : CreditRequestTable (partagée par les 4 pages
+  // /admin/credits/*) lit `product`/`amountRequested`, pas seulement `purpose`/`status`.
+  creditRequest: {
+    id: string;
+    product: string;
+    amountRequested: number;
+    durationMonths: number;
+    purpose: string;
+    estimatedMonthlyPayment: number;
+    proposedRate: number;
+    requestDate: string;
+    status: DecisionStatus;
+  };
+  // Catégorie réelle du dossier de crédit (dérivée de CreditRequestStatus/
+  // CreditPositionStatus, cf. computeDossierCategory côté backend) — utilisée pour
+  // répartir les clients entre les 4 pages /admin/credits/* (demandes/dossiers en
+  // cours/actifs/clôturés), à la place du parcours fictif à 8 étapes.
+  dossierCategory: "DEMANDE" | "EN_COURS" | "ACTIF" | "CLOTURE" | "AUCUNE";
+  dossierStatus: {
+    currentStepIndex: number;
+    steps: { key: string; label: string; date: string | null }[];
+  };
+  contract: AdminContract;
   email: string;
 }
 
@@ -552,6 +627,28 @@ export const api = {
   getYieldHistoryFull: () =>
     request<AssetHistoryEntry[]>("/market/yield-history-full"),
   getCreditRates: () => request<CreditRatesResponse>("/credit/rates"),
+  // Crédit direct (BUSINESS uniquement, cf. AccountType) — conditions actuelles avant
+  // soumission, décision automatique à la soumission, historique des demandes.
+  getDirectCreditRates: (currency: AccountCurrency) =>
+    request<DirectCreditRates>(`/direct-credit-requests/rates/${currency}`),
+  createDirectCreditRequest: (data: {
+    companyName: string;
+    registrationNumber: string;
+    sector: string;
+    companySeniorityMonths: number;
+    projectDescription: string;
+    requestedAmount: string;
+    currency: AccountCurrency;
+    declaredMonthlyRevenue: string;
+    declaredMonthlyExpenses: string;
+    guaranteeOffered: string;
+  }) =>
+    request<DirectCreditRequest>("/direct-credit-requests", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+  listDirectCreditRequests: (userId: string) =>
+    request<DirectCreditRequest[]>(`/users/${userId}/direct-credit-requests`),
   // userId n'est plus envoyé : dérivé côté serveur du cookie de session (JwtAuthGuard).
   createCreditRequest: (collateralAmount: string, currency: AccountCurrency) =>
     request<CreditRequest>("/credit-requests", {
@@ -607,6 +704,7 @@ export const api = {
     email: string;
     phone?: string;
     message?: string;
+    accountType?: AccountType;
   }) =>
     request<AccountOpeningRequest>("/account-requests", {
       method: "POST",

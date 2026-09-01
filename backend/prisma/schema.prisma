@@ -30,6 +30,17 @@ enum UserRole {
   ADMIN
 }
 
+// Type de compte, choisi à l'ouverture (formulaire public "Demander l'ouverture d'un
+// compte", cf. AccountOpeningRequest) et fixé une fois pour toutes — pas de bascule après
+// coup. PARTICULIER garde l'accès au crédit gagé crypto (350% du gage, cf.
+// CreditEngineService) comme aujourd'hui. BUSINESS s'y ajoute : les deux options
+// cohabitent pour un compte business (cf. DirectCreditRequest) — un compte particulier
+// n'a lui jamais accès au crédit direct, réservé au financement de projets professionnels.
+enum AccountType {
+  PARTICULIER
+  BUSINESS
+}
+
 enum Chain {
   ETHEREUM
   POLYGON
@@ -162,13 +173,15 @@ enum AddressLabel {
 // ---------------------------------------------------------------------------
 
 model User {
-  id           String    @id @default(uuid())
-  email        String    @unique
+  id           String      @id @default(uuid())
+  email        String      @unique
   passwordHash String
-  kycStatus    KycStatus @default(PENDING)
-  role         UserRole  @default(CLIENT)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  kycStatus    KycStatus   @default(PENDING)
+  role         UserRole    @default(CLIENT)
+  // cf. enum AccountType — fixé à l'ouverture du compte, jamais modifié ensuite.
+  accountType  AccountType @default(PARTICULIER)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 
   // Authentification à deux facteurs (TOTP, cf. TwoFactorService) — actuellement proposée
   // aux comptes ADMIN uniquement (back-office sensible), opt-in : twoFactorSecret est
@@ -184,6 +197,10 @@ model User {
   cards                 Card[]
   transactions          Transaction[]
   creditRequests        CreditRequest[]
+  // Réservé aux comptes BUSINESS côté service (DirectCreditGuard) — présent sur le modèle
+  // pour tous les comptes par simplicité de relation Prisma, toujours vide pour un compte
+  // PARTICULIER en pratique.
+  directCreditRequests  DirectCreditRequest[]
   // Renseigné uniquement si ce compte a été créé via une demande d'ouverture approuvée
   // (cf. AccountOpeningRequest) — traçabilité, jamais réutilisé pour recalculer quoi que
   // ce soit. Les comptes de seed n'en ont pas.
@@ -219,15 +236,19 @@ enum AccountRequestStatus {
 // (cf. AccountRequestsService.approve), avec un mot de passe temporaire communiqué au
 // client hors-bande (pas de service d'e-mail branché à ce stade).
 model AccountOpeningRequest {
-  id         String               @id @default(uuid())
-  firstName  String
-  lastName   String
-  email      String
-  phone      String?
-  message    String?
-  status     AccountRequestStatus @default(PENDING)
-  createdAt  DateTime             @default(now())
-  reviewedAt DateTime?
+  id          String               @id @default(uuid())
+  firstName   String
+  lastName    String
+  email       String
+  phone       String?
+  message     String?
+  // Choisi par le demandeur lui-même dans le formulaire public — propagé tel quel au
+  // User créé à l'approbation (cf. AccountRequestsService.approve). Un compte BUSINESS
+  // débloque le crédit direct (cf. DirectCreditRequest) en plus du crédit gagé crypto.
+  accountType AccountType          @default(PARTICULIER)
+  status      AccountRequestStatus @default(PENDING)
+  createdAt   DateTime             @default(now())
+  reviewedAt  DateTime?
 
   // Renseigné uniquement une fois APPROVED (le User créé à l'approbation).
   userId String? @unique
@@ -422,6 +443,50 @@ model CreditRequest {
   @@index([userId])
   @@index([status])
   @@map("credit_requests")
+}
+
+enum DirectCreditDecision {
+  ELIGIBLE
+  INELIGIBLE
+}
+
+// Crédit direct — non gagé, réservé aux comptes BUSINESS pour financer un projet
+// professionnel (cf. AccountType, CLAUDE.md §2). Décision automatique à la soumission
+// (DirectCreditService.evaluate), pas de file d'attente admin : cinq critères déclaratifs
+// (ancienneté, revenu minimum, ratio d'endettement, garantie de remboursement, plafond
+// relatif au revenu — cf. direct-credit.constants.ts) évalués sur des données auto-
+// déclarées par le client, jamais vérifiées par un tiers (aucun fournisseur de
+// vérification de revenus/registre du commerce n'est branché à ce stade). `eligible`
+// n'émet PAS de crédit : c'est une réponse informative, cohérent avec le reste du produit
+// où aucune émission de crédit ne se fait sans une étape humaine/de garantie (cf.
+// CreditRequest, DepositIntents).
+model DirectCreditRequest {
+  id                      String               @id @default(uuid())
+  userId                  String
+  companyName             String
+  registrationNumber      String
+  sector                  String
+  companySeniorityMonths  Int
+  projectDescription      String
+  requestedAmount         Decimal              @db.Decimal(18, 6)
+  currency                AccountCurrency      @default(USD)
+  declaredMonthlyRevenue  Decimal              @db.Decimal(18, 6)
+  declaredMonthlyExpenses Decimal              @db.Decimal(18, 6)
+  guaranteeOffered        Decimal              @db.Decimal(18, 6) @default(0)
+  decision                DirectCreditDecision
+  // Détail des 5 critères tel qu'affiché au client au moment de la décision (libellé,
+  // résultat, valeur observée vs seuil) — figé, jamais recalculé rétroactivement si les
+  // seuils changent ensuite (même principe de non-rétroactivité que CREDIT_RATIO).
+  eligibilityBreakdown    Json
+  estimatedRatePct        Decimal              @db.Decimal(6, 3)
+  estimatedMonthlyPayment Decimal              @db.Decimal(18, 6)
+  createdAt               DateTime             @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([decision])
+  @@map("direct_credit_requests")
 }
 
 // Carte Visa/Mastercard émise via Stripe Issuing / Marqeta

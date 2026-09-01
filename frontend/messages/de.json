@@ -481,6 +481,17 @@
     "lastName": "Nachname",
     "email": "E-Mail",
     "phone": "Telefon (optional)",
+    "accountType": {
+      "label": "Kontotyp",
+      "PARTICULIER": {
+        "title": "Privatperson",
+        "description": "Digitale Vermögenswerte verpfänden, eine Kreditlinie freischalten."
+      },
+      "BUSINESS": {
+        "title": "Unternehmen / Startup / Freiberufler",
+        "description": "Finanziert ein berufliches Projekt — Zugang zum besicherten Kredit und, unter Bedingungen, zum Direktkredit."
+      }
+    },
     "message": "Ihr Vorhaben (optional)",
     "messagePlaceholder": "Geplanter Betrag, betroffene Vermögenswerte, besondere Fragen…",
     "disclaimer": "Mit dem Absenden dieses Formulars stimmen Sie zu, dass Ihre Angaben gemäß unserer <link>Datenschutzrichtlinie</link> verarbeitet werden. Es wird kein Konto automatisch erstellt: Der Zugang wird nach Prüfung und Validierung Ihres Antrags durch unser Team gewährt.",
@@ -1084,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Markt",
         "credit": "Kredit",
+        "directCredit": "Direktkredit",
         "cards": "Karten",
         "history": "Verlauf",
         "profile": "Profil",
@@ -1309,6 +1321,7 @@
       }
     },
     "accountMenu": {
+      "business": "Business",
       "admin": "Admin",
       "logout": "Abmelden"
     },
@@ -1457,6 +1470,49 @@
       "alreadyConfirmedDescription": "Das Guthaben wurde für diese Zahlung bereits gutgeschrieben.",
       "failedTitle": "Zahlung fehlgeschlagen",
       "failedDescription": "Diese Zahlung wurde nicht abgeschlossen und das Guthaben wurde nicht gutgeschrieben."
+    },
+    "directCredit": {
+      "accessDeniedTitle": "Nur für Business-Konten",
+      "accessDeniedBody": "Der Direktkredit finanziert berufliche Projekte und steht nur Business-Konten zur Verfügung. Das aktuell angemeldete Konto ist ein Privatkonto.",
+      "ratesTitle": "Aktuelle Konditionen",
+      "ratesDescription": "Fünf deklarative Kriterien, alle verpflichtend — die Entscheidung wird bei Einreichung automatisch berechnet, keine Warteschlange.",
+      "ratesInterestRate": "Zinssatz",
+      "ratesOriginationFee": "Bearbeitungsgebühr",
+      "ratesTerm": "Laufzeit",
+      "months": "Monate",
+      "ratesMinSeniority": "Mindestbestandsdauer",
+      "ratesMinRevenue": "Mindest-Monatsumsatz",
+      "ratesMaxMultiple": "Obergrenze vs. Monatsumsatz",
+      "ratesMaxDsr": "Max. Schuldendienstquote",
+      "ratesMinGuarantee": "Mindestsicherheit",
+      "formTitle": "Antrag auf Direktkredit",
+      "formDescription": "Beschreiben Sie Ihr Projekt und Ihre angegebene finanzielle Situation — die Entscheidung erscheint sofort darunter.",
+      "companyName": "Firmenname",
+      "registrationNumber": "Registernummer",
+      "sector": "Branche",
+      "seniorityMonths": "Bestandsdauer (Monate)",
+      "projectDescription": "Projektbeschreibung",
+      "currency": "Währung",
+      "requestedAmount": "Beantragter Betrag",
+      "declaredMonthlyRevenue": "Angegebener Monatsumsatz",
+      "declaredMonthlyExpenses": "Angegebene monatliche Ausgaben",
+      "guaranteeOffered": "Angebotene Rückzahlungssicherheit",
+      "guaranteeNote": "Bargeld, betrieblicher Vermögenswert, persönliche Bürgschaft… deklarativ, in diesem Stadium nicht hinterlegt.",
+      "disclaimer": "Diese Angaben sind selbst deklariert und werden in diesem Stadium nicht von Dritten geprüft (kein Einkommensprüfungsanbieter angebunden) — die Entscheidung beruht ausschließlich auf Ihren hier gemachten Angaben.",
+      "submit": "Meine Förderfähigkeit prüfen",
+      "genericError": "Ein Fehler ist aufgetreten.",
+      "resultEligible": "Förderfähig",
+      "resultIneligible": "Nicht förderfähig",
+      "resultEligibleNote": "Alle fünf Kriterien sind erfüllt. Ein Berater wird sich für die nächsten Schritte melden.",
+      "resultIneligibleNote": "Mindestens ein Kriterium ist nicht erfüllt — die Details unten zeigen, welches.",
+      "threshold": "Schwelle",
+      "resultEstimate": "Zur Orientierung: {rate}%/Jahr, geschätzte Monatsrate {payment}.",
+      "historyTitle": "Meine Anträge",
+      "historyEmpty": "Noch kein Antrag auf Direktkredit.",
+      "historyDecision": {
+        "ELIGIBLE": "Förderfähig",
+        "INELIGIBLE": "Nicht förderfähig"
+      }
     }
   },
   "CurrencyLabels": {

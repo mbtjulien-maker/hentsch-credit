@@ -8,7 +8,8 @@ import { ConfirmDialog } from "@/components/admin/confirm-dialog";
 import { ContractPreviewDialog } from "@/components/admin/client-detail/contract-preview-dialog";
 import { ADMIN_BTN_PRIMARY, ADMIN_BTN_SECONDARY, ADMIN_DIVIDER, ADMIN_FOCUS_RING } from "@/lib/admin-theme";
 import type { AdminClient } from "@/lib/admin-mock-data";
-import { formatEur, formatPercentPlain } from "@/lib/admin-format";
+import { formatPercentPlain } from "@/lib/admin-format";
+import { formatUsd } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const STAGES: { key: "generatedAt" | "sentAt" | "signedAt" | "countersignedAt"; label: string }[] = [
@@ -71,13 +72,13 @@ export function ContractTab({ client }: { client: AdminClient }) {
           }
         />
         <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
-          <AdminField label="Montant financé" value={formatEur(creditRequest.amountRequested)} mono />
+          <AdminField label="Montant financé" value={formatUsd(creditRequest.amountRequested)} mono />
           <AdminField label="Durée" value={`${creditRequest.durationMonths} mois`} />
-          <AdminField label="Mensualité" value={formatEur(creditRequest.estimatedMonthlyPayment)} mono />
+          <AdminField label="Mensualité" value={formatUsd(creditRequest.estimatedMonthlyPayment)} mono />
           <AdminField label="Taux nominal annuel" value={formatPercentPlain(contract.nominalRate)} />
           <AdminField label="TAEG" value={formatPercentPlain(contract.apr)} />
-          <AdminField label="Coût total du crédit" value={formatEur(contract.totalInterest)} mono />
-          <AdminField label="Montant total dû" value={formatEur(contract.totalRepayable)} mono />
+          <AdminField label="Coût total du crédit" value={formatUsd(contract.totalInterest)} mono />
+          <AdminField label="Montant total dû" value={formatUsd(contract.totalRepayable)} mono />
         </div>
       </AdminCard>
 

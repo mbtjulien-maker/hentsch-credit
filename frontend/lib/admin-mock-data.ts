@@ -256,6 +256,10 @@ export interface AdminClient {
     currentStepIndex: number;
     steps: { key: string; label: string; date: string | null }[];
   };
+  // Présent uniquement sur une fiche réelle (cf. lib/api.ts AdminClientSummary/
+  // getAdminClientDetail) — la catégorisation à 4 valeurs dérivée du vrai statut, pas du
+  // parcours fictif ci-dessus. Optionnel pour ne pas casser les clients de démonstration.
+  dossierCategory?: "DEMANDE" | "EN_COURS" | "ACTIF" | "CLOTURE" | "AUCUNE";
 
   creditDecision: {
     analyst: string;

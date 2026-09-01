@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { api, ApiError } from "@/lib/api";
+import { api, ApiError, type AccountType } from "@/lib/api";
 
 // Formulaire public "Demander l'ouverture d'un compte / être contacté" — la plateforme
 // est réservée à une clientèle sur invitation (cf. mentions légales) : aucune
@@ -24,6 +24,7 @@ export function AccountRequestForm() {
   const phoneId = useId();
   const messageId = useId();
 
+  const [accountType, setAccountType] = useState<AccountType>("PARTICULIER");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -47,6 +48,7 @@ export function AccountRequestForm() {
         email: email.trim(),
         phone: phone.trim() || undefined,
         message: message.trim() || undefined,
+        accountType,
       });
       setSubmitted(true);
     } catch (err) {
@@ -71,6 +73,31 @@ export function AccountRequestForm() {
       onSubmit={handleSubmit}
       className="flex flex-col gap-4 rounded-2xl border border-border/80 bg-card p-6 text-left shadow-sm sm:p-8"
     >
+      <div className="grid gap-2">
+        <Label>{t("accountType.label")}</Label>
+        <div className="grid gap-2 sm:grid-cols-2">
+          {(["PARTICULIER", "BUSINESS"] as const).map((type) => (
+            <button
+              key={type}
+              type="button"
+              onClick={() => setAccountType(type)}
+              className={`rounded-xl border px-4 py-3 text-left text-sm transition-colors ${
+                accountType === type
+                  ? "border-primary bg-primary/10 text-foreground"
+                  : "border-border/80 text-muted-foreground hover:border-border hover:text-foreground"
+              }`}
+            >
+              <span className="block font-medium text-foreground">
+                {t(`accountType.${type}.title`)}
+              </span>
+              <span className="mt-0.5 block text-xs text-muted-foreground">
+                {t(`accountType.${type}.description`)}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="grid gap-2">
           <Label htmlFor={firstNameId}>{t("firstName")}</Label>

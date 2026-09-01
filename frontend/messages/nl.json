@@ -481,6 +481,17 @@
     "lastName": "Achternaam",
     "email": "E-mail",
     "phone": "Telefoon (optioneel)",
+    "accountType": {
+      "label": "Type account",
+      "PARTICULIER": {
+        "title": "Particulier",
+        "description": "Verpand digitale activa, ontgrendel een kredietlijn."
+      },
+      "BUSINESS": {
+        "title": "Bedrijf / Startup / Zelfstandige",
+        "description": "Financiert een zakelijk project — toegang tot gedekt krediet en, onder voorwaarden, direct krediet."
+      }
+    },
     "message": "Uw project (optioneel)",
     "messagePlaceholder": "Beoogd bedrag, betrokken activa, specifieke vragen…",
     "disclaimer": "Door dit formulier in te dienen, gaat u ermee akkoord dat uw gegevens worden verwerkt in overeenstemming met ons <link>privacybeleid</link>. Er wordt geen account automatisch aangemaakt: toegang wordt verleend na beoordeling en validatie van uw aanvraag door ons team.",
@@ -1084,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Markt",
         "credit": "Krediet",
+        "directCredit": "Direct krediet",
         "cards": "Kaarten",
         "history": "Geschiedenis",
         "profile": "Profiel",
@@ -1309,6 +1321,7 @@
       }
     },
     "accountMenu": {
+      "business": "Zakelijk",
       "admin": "Admin",
       "logout": "Uitloggen"
     },
@@ -1457,6 +1470,49 @@
       "alreadyConfirmedDescription": "Het saldo is al gecrediteerd voor deze betaling.",
       "failedTitle": "Betaling mislukt",
       "failedDescription": "Deze betaling is niet geslaagd en het saldo is niet gecrediteerd."
+    },
+    "directCredit": {
+      "accessDeniedTitle": "Alleen voor zakelijke accounts",
+      "accessDeniedBody": "Direct krediet financiert zakelijke projecten en is alleen beschikbaar voor zakelijke accounts. Het momenteel aangemelde account is een particulier account.",
+      "ratesTitle": "Huidige voorwaarden",
+      "ratesDescription": "Vijf declaratieve criteria, allemaal verplicht — de beslissing wordt automatisch berekend bij indiening, geen wachtrij.",
+      "ratesInterestRate": "Rentetarief",
+      "ratesOriginationFee": "Afsluitkosten",
+      "ratesTerm": "Looptijd",
+      "months": "maanden",
+      "ratesMinSeniority": "Minimale bedrijfsduur",
+      "ratesMinRevenue": "Minimale maandomzet",
+      "ratesMaxMultiple": "Maximum t.o.v. maandomzet",
+      "ratesMaxDsr": "Max. schuldendienstratio",
+      "ratesMinGuarantee": "Minimale garantie",
+      "formTitle": "Aanvraag direct krediet",
+      "formDescription": "Beschrijf uw project en uw opgegeven financiële situatie — de beslissing verschijnt direct hieronder.",
+      "companyName": "Bedrijfsnaam",
+      "registrationNumber": "Registratienummer",
+      "sector": "Sector",
+      "seniorityMonths": "Bedrijfsduur (maanden)",
+      "projectDescription": "Projectbeschrijving",
+      "currency": "Valuta",
+      "requestedAmount": "Gevraagd bedrag",
+      "declaredMonthlyRevenue": "Opgegeven maandomzet",
+      "declaredMonthlyExpenses": "Opgegeven maandelijkse kosten",
+      "guaranteeOffered": "Aangeboden terugbetalingsgarantie",
+      "guaranteeNote": "Contanten, zakelijk actief, persoonlijke borgstelling… declaratief, in dit stadium niet vastgezet.",
+      "disclaimer": "Deze gegevens zijn zelf opgegeven en worden in dit stadium niet door een derde partij geverifieerd (er is geen inkomensverificatie-aanbieder gekoppeld) — de beslissing is uitsluitend gebaseerd op wat u hier invult.",
+      "submit": "Mijn geschiktheid controleren",
+      "genericError": "Er is een fout opgetreden.",
+      "resultEligible": "In aanmerking",
+      "resultIneligible": "Niet in aanmerking",
+      "resultEligibleNote": "Aan alle vijf criteria is voldaan. Een adviseur neemt contact op voor de vervolgstappen.",
+      "resultIneligibleNote": "Aan minstens één criterium is niet voldaan — het detail hieronder toont welk.",
+      "threshold": "drempel",
+      "resultEstimate": "Ter indicatie: {rate}%/jaar, geschatte maandelijkse termijn {payment}.",
+      "historyTitle": "Mijn aanvragen",
+      "historyEmpty": "Nog geen aanvraag voor direct krediet.",
+      "historyDecision": {
+        "ELIGIBLE": "In aanmerking",
+        "INELIGIBLE": "Niet in aanmerking"
+      }
     }
   },
   "CurrencyLabels": {

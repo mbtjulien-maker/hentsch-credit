@@ -481,6 +481,17 @@
     "lastName": "Last name",
     "email": "Email",
     "phone": "Phone (optional)",
+    "accountType": {
+      "label": "Account type",
+      "PARTICULIER": {
+        "title": "Individual",
+        "description": "Pledge digital assets, unlock a credit line."
+      },
+      "BUSINESS": {
+        "title": "Business / Startup / Professional",
+        "description": "Finance a professional project — access to collateral credit and, under conditions, direct credit."
+      }
+    },
     "message": "Your project (optional)",
     "messagePlaceholder": "Amount envisaged, assets involved, specific questions…",
     "disclaimer": "By submitting this form, you agree that your information will be processed in accordance with our <link>privacy policy</link>. No account is created automatically: access is granted after your application has been reviewed and validated by our team.",
@@ -1084,6 +1095,7 @@
         "balance": "Balance",
         "market": "Market",
         "credit": "Credit",
+        "directCredit": "Direct credit",
         "cards": "Cards",
         "history": "History",
         "profile": "Profile",
@@ -1309,6 +1321,7 @@
       }
     },
     "accountMenu": {
+      "business": "Business",
       "admin": "Admin",
       "logout": "Log out"
     },
@@ -1457,6 +1470,49 @@
       "alreadyConfirmedDescription": "The balance has already been credited for this payment.",
       "failedTitle": "Payment failed",
       "failedDescription": "This payment did not go through and the balance was not credited."
+    },
+    "directCredit": {
+      "accessDeniedTitle": "Business accounts only",
+      "accessDeniedBody": "Direct credit finances professional projects and is only available to business accounts. The account currently signed in is an individual account.",
+      "ratesTitle": "Current terms",
+      "ratesDescription": "Five declarative criteria, all mandatory — the decision is computed automatically on submission, no queue.",
+      "ratesInterestRate": "Interest rate",
+      "ratesOriginationFee": "Origination fee",
+      "ratesTerm": "Term",
+      "months": "months",
+      "ratesMinSeniority": "Minimum seniority",
+      "ratesMinRevenue": "Minimum monthly revenue",
+      "ratesMaxMultiple": "Cap vs monthly revenue",
+      "ratesMaxDsr": "Max. debt-service ratio",
+      "ratesMinGuarantee": "Minimum guarantee",
+      "formTitle": "Direct credit application",
+      "formDescription": "Describe your project and your declared financial situation — the decision appears immediately below.",
+      "companyName": "Company name",
+      "registrationNumber": "Registration number",
+      "sector": "Sector",
+      "seniorityMonths": "Seniority (months)",
+      "projectDescription": "Project description",
+      "currency": "Currency",
+      "requestedAmount": "Requested amount",
+      "declaredMonthlyRevenue": "Declared monthly revenue",
+      "declaredMonthlyExpenses": "Declared monthly expenses",
+      "guaranteeOffered": "Repayment guarantee offered",
+      "guaranteeNote": "Cash, professional asset, personal guarantee… declarative, not locked at this stage.",
+      "disclaimer": "This information is self-declared and not verified by a third party at this stage (no income-verification provider is connected) — the decision is based solely on what you enter here.",
+      "submit": "Check my eligibility",
+      "genericError": "An error occurred.",
+      "resultEligible": "Eligible",
+      "resultIneligible": "Not eligible",
+      "resultEligibleNote": "All five criteria are met. An advisor will contact you about next steps.",
+      "resultIneligibleNote": "At least one criterion isn't met — the detail below shows which one.",
+      "threshold": "threshold",
+      "resultEstimate": "For reference: {rate}%/yr, estimated monthly payment {payment}.",
+      "historyTitle": "My requests",
+      "historyEmpty": "No direct credit request yet.",
+      "historyDecision": {
+        "ELIGIBLE": "Eligible",
+        "INELIGIBLE": "Not eligible"
+      }
     }
   },
   "CurrencyLabels": {

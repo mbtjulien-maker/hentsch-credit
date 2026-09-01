@@ -58,6 +58,7 @@ export class AccountRequestsService {
         email: dto.email,
         phone: dto.phone,
         message: dto.message,
+        accountType: dto.accountType ?? 'PARTICULIER',
       },
     });
   }
@@ -120,6 +121,9 @@ export class AccountRequestsService {
           passwordHash,
           kycStatus: 'PENDING',
           role: 'CLIENT',
+          // Propagé tel quel depuis la demande — choisi par le client, jamais modifié à
+          // l'approbation (cf. AccountType).
+          accountType: request.accountType,
           ledgerBalance: { create: {} },
         },
       });

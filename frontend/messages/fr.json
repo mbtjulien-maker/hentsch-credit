@@ -481,6 +481,17 @@
     "lastName": "Nom",
     "email": "E-mail",
     "phone": "Téléphone (optionnel)",
+    "accountType": {
+      "label": "Type de compte",
+      "PARTICULIER": {
+        "title": "Particulier",
+        "description": "Gage des actifs numériques, débloque une ligne de crédit."
+      },
+      "BUSINESS": {
+        "title": "Business / Startup / Professionnel",
+        "description": "Finance un projet professionnel — accès au crédit gagé et, sous conditions, au crédit direct."
+      }
+    },
     "message": "Votre projet (optionnel)",
     "messagePlaceholder": "Montant envisagé, actifs concernés, questions particulières…",
     "disclaimer": "En soumettant ce formulaire, vous acceptez que vos informations soient traitées conformément à notre <link>politique de confidentialité</link>. Aucun compte n'est créé automatiquement : l'accès est accordé après étude et validation de votre dossier par notre équipe.",
@@ -1084,6 +1095,7 @@
         "balance": "Solde",
         "market": "Marché",
         "credit": "Crédit",
+        "directCredit": "Crédit direct",
         "cards": "Cartes",
         "history": "Historique",
         "profile": "Profil",
@@ -1309,6 +1321,7 @@
       }
     },
     "accountMenu": {
+      "business": "Business",
       "admin": "Admin",
       "logout": "Se déconnecter"
     },
@@ -1457,6 +1470,49 @@
       "alreadyConfirmedDescription": "Le solde a déjà été crédité pour ce paiement.",
       "failedTitle": "Paiement échoué",
       "failedDescription": "Ce paiement n'a pas abouti et le solde n'a pas été crédité."
+    },
+    "directCredit": {
+      "accessDeniedTitle": "Section réservée aux comptes business",
+      "accessDeniedBody": "Le crédit direct finance des projets professionnels et n'est accessible qu'aux comptes business. Le compte actuellement connecté est un compte particulier.",
+      "ratesTitle": "Conditions actuelles",
+      "ratesDescription": "Cinq critères déclaratifs, tous obligatoires — la décision est calculée automatiquement à la soumission, sans file d'attente.",
+      "ratesInterestRate": "Taux d'intérêt",
+      "ratesOriginationFee": "Frais d'origination",
+      "ratesTerm": "Durée",
+      "months": "mois",
+      "ratesMinSeniority": "Ancienneté minimale",
+      "ratesMinRevenue": "Revenu mensuel minimum",
+      "ratesMaxMultiple": "Plafond vs revenu mensuel",
+      "ratesMaxDsr": "Ratio d'endettement max.",
+      "ratesMinGuarantee": "Garantie minimale",
+      "formTitle": "Demande de crédit direct",
+      "formDescription": "Renseignez votre projet et votre situation financière déclarée — la décision s'affiche immédiatement ci-dessous.",
+      "companyName": "Nom de l'entreprise",
+      "registrationNumber": "Numéro d'immatriculation",
+      "sector": "Secteur d'activité",
+      "seniorityMonths": "Ancienneté (mois)",
+      "projectDescription": "Description du projet",
+      "currency": "Devise",
+      "requestedAmount": "Montant demandé",
+      "declaredMonthlyRevenue": "Revenu mensuel déclaré",
+      "declaredMonthlyExpenses": "Charges mensuelles déclarées",
+      "guaranteeOffered": "Garantie de remboursement proposée",
+      "guaranteeNote": "Espèces, actif professionnel, caution personnelle… déclaratif, non verrouillé à ce stade.",
+      "disclaimer": "Ces informations sont auto-déclarées et ne sont pas vérifiées par un tiers à ce stade (aucun fournisseur de vérification de revenus n'est branché) — la décision se fonde uniquement sur ce que vous indiquez ici.",
+      "submit": "Vérifier mon éligibilité",
+      "genericError": "Une erreur est survenue.",
+      "resultEligible": "Éligible",
+      "resultIneligible": "Non éligible",
+      "resultEligibleNote": "Les cinq critères sont remplis. Un conseiller vous recontactera pour la suite du dossier.",
+      "resultIneligibleNote": "Au moins un critère n'est pas rempli — le détail ci-dessous indique lequel.",
+      "threshold": "seuil",
+      "resultEstimate": "À titre indicatif : {rate}%/an, mensualité estimée {payment}.",
+      "historyTitle": "Mes demandes",
+      "historyEmpty": "Aucune demande de crédit direct pour l'instant.",
+      "historyDecision": {
+        "ELIGIBLE": "Éligible",
+        "INELIGIBLE": "Non éligible"
+      }
     }
   },
   "CurrencyLabels": {

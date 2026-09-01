@@ -2,7 +2,7 @@ import { ShieldCheck } from "lucide-react";
 import { AdminCard, AdminCardHeader, AdminField } from "@/components/admin/admin-ui";
 import { DecisionBadge, RiskBadge } from "@/components/admin/status-badge";
 import type { AdminClient } from "@/lib/admin-mock-data";
-import { formatEur } from "@/lib/admin-format";
+import { formatUsd } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 function ScoreBar({ label, value }: { label: string; value: number }) {
@@ -83,8 +83,8 @@ export function RiskDecisionTab({ client }: { client: AdminClient }) {
                 </div>
                 <div className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-4">
                   <AdminField label="Propriétaire" value={g.owner} />
-                  <AdminField label="Valeur déclarée" value={formatEur(g.declaredValue)} mono />
-                  <AdminField label="Valeur retenue" value={formatEur(g.retainedValue)} mono />
+                  <AdminField label="Valeur déclarée" value={formatUsd(g.declaredValue)} mono />
+                  <AdminField label="Valeur retenue" value={formatUsd(g.retainedValue)} mono />
                   <AdminField label="Évaluée le" value={g.evaluatedAt} />
                 </div>
                 <p className="mt-3 text-xs text-muted-foreground">Documents : {g.documents.join(", ")}</p>

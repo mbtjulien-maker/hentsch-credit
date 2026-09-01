@@ -481,6 +481,17 @@
     "lastName": "Efternamn",
     "email": "E-post",
     "phone": "Telefon (valfritt)",
+    "accountType": {
+      "label": "Kontotyp",
+      "PARTICULIER": {
+        "title": "Privatperson",
+        "description": "Pantsätt digitala tillgångar, lås upp en kreditlinje."
+      },
+      "BUSINESS": {
+        "title": "Företag / Startup / Yrkesverksamma",
+        "description": "Finansierar ett affärsprojekt — tillgång till säkerställd kredit och, under vissa villkor, direktkredit."
+      }
+    },
     "message": "Ditt projekt (valfritt)",
     "messagePlaceholder": "Planerat belopp, berörda tillgångar, specifika frågor…",
     "disclaimer": "Genom att skicka in detta formulär godkänner du att dina uppgifter behandlas i enlighet med vår <link>integritetspolicy</link>. Inget konto skapas automatiskt: tillgång beviljas efter att ditt ärende har granskats och validerats av vårt team.",
@@ -1084,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Marknad",
         "credit": "Kredit",
+        "directCredit": "Direktkredit",
         "cards": "Kort",
         "history": "Historik",
         "profile": "Profil",
@@ -1309,6 +1321,7 @@
       }
     },
     "accountMenu": {
+      "business": "Företag",
       "admin": "Admin",
       "logout": "Logga ut"
     },
@@ -1457,6 +1470,49 @@
       "alreadyConfirmedDescription": "Saldot har redan krediterats för denna betalning.",
       "failedTitle": "Betalningen misslyckades",
       "failedDescription": "Denna betalning gick inte igenom och saldot har inte krediterats."
+    },
+    "directCredit": {
+      "accessDeniedTitle": "Endast för företagskonton",
+      "accessDeniedBody": "Direktkredit finansierar affärsprojekt och är endast tillgängligt för företagskonton. Kontot som är inloggat just nu är ett privatkonto.",
+      "ratesTitle": "Nuvarande villkor",
+      "ratesDescription": "Fem deklarativa kriterier, alla obligatoriska — beslutet beräknas automatiskt vid inlämning, ingen kö.",
+      "ratesInterestRate": "Räntesats",
+      "ratesOriginationFee": "Uppläggningsavgift",
+      "ratesTerm": "Löptid",
+      "months": "månader",
+      "ratesMinSeniority": "Minsta verksamhetstid",
+      "ratesMinRevenue": "Lägsta månadsintäkt",
+      "ratesMaxMultiple": "Tak mot månadsintäkt",
+      "ratesMaxDsr": "Max. skuldkvot",
+      "ratesMinGuarantee": "Lägsta säkerhet",
+      "formTitle": "Ansökan om direktkredit",
+      "formDescription": "Beskriv ditt projekt och din deklarerade ekonomiska situation — beslutet visas direkt nedan.",
+      "companyName": "Företagsnamn",
+      "registrationNumber": "Organisationsnummer",
+      "sector": "Bransch",
+      "seniorityMonths": "Verksamhetstid (månader)",
+      "projectDescription": "Projektbeskrivning",
+      "currency": "Valuta",
+      "requestedAmount": "Begärt belopp",
+      "declaredMonthlyRevenue": "Deklarerad månadsintäkt",
+      "declaredMonthlyExpenses": "Deklarerade månadskostnader",
+      "guaranteeOffered": "Erbjuden återbetalningsgaranti",
+      "guaranteeNote": "Kontanter, verksamhetstillgång, personlig borgen… deklarativt, inte låst i detta skede.",
+      "disclaimer": "Denna information är självdeklarerad och verifieras inte av tredje part i detta skede (ingen leverantör för inkomstverifiering är ansluten) — beslutet grundas enbart på vad du anger här.",
+      "submit": "Kontrollera min behörighet",
+      "genericError": "Ett fel uppstod.",
+      "resultEligible": "Behörig",
+      "resultIneligible": "Inte behörig",
+      "resultEligibleNote": "Alla fem kriterier är uppfyllda. En rådgivare kontaktar dig om nästa steg.",
+      "resultIneligibleNote": "Minst ett kriterium är inte uppfyllt — detaljerna nedan visar vilket.",
+      "threshold": "tröskelvärde",
+      "resultEstimate": "Som vägledning: {rate}%/år, uppskattad månadsbetalning {payment}.",
+      "historyTitle": "Mina ansökningar",
+      "historyEmpty": "Ingen ansökan om direktkredit ännu.",
+      "historyDecision": {
+        "ELIGIBLE": "Behörig",
+        "INELIGIBLE": "Inte behörig"
+      }
     }
   },
   "CurrencyLabels": {

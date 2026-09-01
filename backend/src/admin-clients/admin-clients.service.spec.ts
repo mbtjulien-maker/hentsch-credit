@@ -102,6 +102,23 @@ function buildUser(overrides: Record<string, unknown> = {}) {
   };
 }
 
+function buildCreditRequest(overrides: Record<string, unknown> = {}) {
+  return {
+    id: 'bbbbbbbb-1111-2222-3333-444444444444',
+    userId: 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
+    collateralAmount: '2000',
+    currency: 'USD',
+    status: 'PENDING',
+    collateralCurrency: null,
+    createdAt: new Date('2026-01-05T10:00:00Z'),
+    validatedAt: null,
+    fulfilledAt: null,
+    creditPositionId: null,
+    creditPosition: null,
+    ...overrides,
+  };
+}
+
 describe('AdminClientsService', () => {
   let prisma: {
     user: { findMany: jest.Mock; findUnique: jest.Mock };
@@ -141,6 +158,47 @@ describe('AdminClientsService', () => {
       expect(result[0].firstName).toBe('Jean');
       expect(result[0].kycStatus).toBe('VERIFIED');
     });
+
+    it('includes dossierStatus/contract alongside the summary, computed from the same real request', async () => {
+      prisma.user.findMany.mockResolvedValue([
+        buildUser({
+          creditRequests: [buildCreditRequest({ status: 'FULFILLED', creditPosition: { status: 'ACTIVE' } })],
+        }),
+      ]);
+
+      const [summary] = await service.list();
+
+      expect(summary.dossierCategory).toBe('ACTIF');
+      expect(summary.dossierStatus.currentStepIndex).toBeGreaterThan(0);
+      expect(summary.contract.reference).toMatch(/^CTR-/);
+    });
+
+    it.each<[string | undefined, string | undefined, string]>([
+      [undefined, undefined, 'AUCUNE'],
+      ['PENDING', undefined, 'DEMANDE'],
+      ['APPROVED', undefined, 'EN_COURS'],
+      ['REJECTED', undefined, 'CLOTURE'],
+      ['FULFILLED', 'ACTIVE', 'ACTIF'],
+      ['FULFILLED', 'CLOSED', 'CLOTURE'],
+      ['FULFILLED', 'LIQUIDATED', 'CLOTURE'],
+    ])(
+      'request=%s position=%s -> dossierCategory=%s',
+      async (requestStatus, positionStatus, expected) => {
+        const creditRequests = requestStatus
+          ? [
+              buildCreditRequest({
+                status: requestStatus,
+                creditPosition: positionStatus ? { status: positionStatus } : null,
+              }),
+            ]
+          : [];
+        prisma.user.findMany.mockResolvedValue([buildUser({ creditRequests })]);
+
+        const [summary] = await service.list();
+
+        expect(summary.dossierCategory).toBe(expected);
+      },
+    );
   });
 
   describe('getDetail', () => {
@@ -158,6 +216,48 @@ describe('AdminClientsService', () => {
       await expect(service.getDetail('any')).rejects.toThrow(
         ClientNotFoundException,
       );
+    });
+
+    // Régression : `presentDetail` retombait sur `user.creditPositions[0]` (une position
+    // plus ancienne, sans rapport) dès que la demande la plus récente n'avait pas encore
+    // de position liée — le montant/taux affichés pour CETTE demande (PENDING, donc
+    // légitimement sans position) venaient alors d'un tout autre dossier. Les garanties,
+    // elles, ont raison d'afficher cette position antérieure (track record du client) —
+    // seul `creditRequest` ne doit jamais s'y mélanger.
+    it("never borrows an unrelated older CreditPosition's amount for the latest (unlinked) credit request, while still surfacing it as a guarantee", async () => {
+      const oldPosition = {
+        id: 'position-old',
+        status: 'ACTIVE',
+        collateralCurrency: 'ETH',
+        collateralAmount: '750',
+        creditIssued: '750',
+        interestRatePct: '13.5',
+        termMonths: 12,
+        createdAt: new Date('2025-01-01'),
+      };
+      prisma.user.findUnique.mockResolvedValue(
+        buildUser({
+          creditRequests: [
+            buildCreditRequest({
+              status: 'PENDING',
+              collateralAmount: '1',
+              creditPosition: null,
+            }),
+          ],
+          creditPositions: [oldPosition],
+        }),
+      );
+
+      const detail = await service.getDetail(
+        'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
+      );
+
+      // 1 (collateral) × CREDIT_RATIO (3.5) = 3.5 — jamais 750 (la position antérieure).
+      expect(detail.creditRequest.amountRequested).toBeCloseTo(3.5, 6);
+      expect(detail.dossierCategory).toBe('DEMANDE');
+      // La position antérieure reste visible comme garantie déclarée pour ce client.
+      expect(detail.guarantees).toHaveLength(1);
+      expect(detail.guarantees[0].declaredValue).toBe(750);
     });
 
     it('aggregates a full client-detail payload with real personal, address, employment and financial data', async () => {

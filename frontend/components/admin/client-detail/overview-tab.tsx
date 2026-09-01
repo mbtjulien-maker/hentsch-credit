@@ -2,7 +2,8 @@ import { CheckCircle2, Circle } from "lucide-react";
 import { AdminCard, AdminCardHeader, AdminField, AdminMetric } from "@/components/admin/admin-ui";
 import { DecisionBadge } from "@/components/admin/status-badge";
 import type { AdminClient } from "@/lib/admin-mock-data";
-import { formatEur, formatPercentPlain } from "@/lib/admin-format";
+import { formatPercentPlain } from "@/lib/admin-format";
+import { formatUsd } from "@/lib/format";
 import { TONE_SOLID } from "@/lib/admin-theme";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +21,9 @@ export function OverviewTab({ client }: { client: AdminClient }) {
           action={<DecisionBadge status={client.creditRequest.status} />}
         />
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-          <AdminMetric label="Montant demandé" value={formatEur(client.creditRequest.amountRequested)} accent="text-primary" />
+          <AdminMetric label="Montant demandé" value={formatUsd(client.creditRequest.amountRequested)} accent="text-primary" />
           <AdminMetric label="Durée" value={`${client.creditRequest.durationMonths} mois`} />
-          <AdminMetric label="Mensualité estimée" value={formatEur(client.creditRequest.estimatedMonthlyPayment)} />
+          <AdminMetric label="Mensualité estimée" value={formatUsd(client.creditRequest.estimatedMonthlyPayment)} />
           <AdminMetric label="Taux proposé" value={formatPercentPlain(client.creditRequest.proposedRate)} />
         </div>
         <div className="mt-4 flex flex-wrap gap-x-8 gap-y-2 border-t border-foreground/[0.06] pt-4">
@@ -94,7 +95,7 @@ export function OverviewTab({ client }: { client: AdminClient }) {
                   <p className="text-foreground">{acc.type}</p>
                   <p className="text-[11.5px] text-muted-foreground">{acc.ibanMasked}</p>
                 </div>
-                <p className="tabular-nums text-foreground">{formatEur(acc.balance)}</p>
+                <p className="tabular-nums text-foreground">{formatUsd(acc.balance)}</p>
               </div>
             ))}
           </div>

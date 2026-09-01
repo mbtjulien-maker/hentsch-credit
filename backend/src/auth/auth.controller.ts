@@ -85,6 +85,7 @@ export class AuthController {
       email: user.email,
       kycStatus: user.kycStatus,
       role: user.role,
+      accountType: user.accountType,
       createdAt: user.createdAt,
     };
   }
@@ -125,6 +126,7 @@ export class AuthController {
       email: user.email,
       kycStatus: user.kycStatus,
       role: user.role,
+      accountType: user.accountType,
       createdAt: user.createdAt,
     };
   }
@@ -149,6 +151,7 @@ export class AuthController {
         email: true,
         kycStatus: true,
         role: true,
+        accountType: true,
         createdAt: true,
         twoFactorEnabled: true,
       },

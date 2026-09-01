@@ -30,6 +30,9 @@ export function AccountMenu() {
       <Badge variant={kycVariant(selectedUser.kycStatus)}>
         {t(`kycStatus.${selectedUser.kycStatus}`)}
       </Badge>
+      {selectedUser.accountType === "BUSINESS" && (
+        <Badge variant="outline">{tMenu("business")}</Badge>
+      )}
       {selectedUser.role === "ADMIN" && <Badge variant="outline">{tMenu("admin")}</Badge>}
       <Button
         type="button"

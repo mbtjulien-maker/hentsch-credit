@@ -481,6 +481,17 @@
     "lastName": "Apelido",
     "email": "E-mail",
     "phone": "Telefone (opcional)",
+    "accountType": {
+      "label": "Tipo de conta",
+      "PARTICULIER": {
+        "title": "Particular",
+        "description": "Penhora ativos digitais, desbloqueia uma linha de crédito."
+      },
+      "BUSINESS": {
+        "title": "Empresa / Startup / Profissional",
+        "description": "Financia um projeto profissional — acesso ao crédito garantido e, sob condições, ao crédito direto."
+      }
+    },
     "message": "O seu projeto (opcional)",
     "messagePlaceholder": "Montante previsto, ativos em causa, questões específicas…",
     "disclaimer": "Ao submeter este formulário, aceita que as suas informações sejam tratadas em conformidade com a nossa <link>política de privacidade</link>. Nenhuma conta é criada automaticamente: o acesso é concedido após análise e validação do seu processo pela nossa equipa.",
@@ -1084,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Mercado",
         "credit": "Crédito",
+        "directCredit": "Crédito direto",
         "cards": "Cartões",
         "history": "Histórico",
         "profile": "Perfil",
@@ -1309,6 +1321,7 @@
       }
     },
     "accountMenu": {
+      "business": "Empresa",
       "admin": "Admin",
       "logout": "Terminar sessão"
     },
@@ -1457,6 +1470,49 @@
       "alreadyConfirmedDescription": "O saldo já foi creditado para este pagamento.",
       "failedTitle": "Pagamento falhado",
       "failedDescription": "Este pagamento não foi bem-sucedido e o saldo não foi creditado."
+    },
+    "directCredit": {
+      "accessDeniedTitle": "Apenas para contas empresa",
+      "accessDeniedBody": "O crédito direto financia projetos profissionais e está disponível apenas para contas empresa. A conta atualmente ligada é uma conta particular.",
+      "ratesTitle": "Condições atuais",
+      "ratesDescription": "Cinco critérios declarativos, todos obrigatórios — a decisão é calculada automaticamente no envio, sem fila de espera.",
+      "ratesInterestRate": "Taxa de juro",
+      "ratesOriginationFee": "Comissão de abertura",
+      "ratesTerm": "Duração",
+      "months": "meses",
+      "ratesMinSeniority": "Antiguidade mínima",
+      "ratesMinRevenue": "Receita mensal mínima",
+      "ratesMaxMultiple": "Limite vs receita mensal",
+      "ratesMaxDsr": "Rácio de endividamento máx.",
+      "ratesMinGuarantee": "Garantia mínima",
+      "formTitle": "Pedido de crédito direto",
+      "formDescription": "Indique o seu projeto e a sua situação financeira declarada — a decisão aparece imediatamente abaixo.",
+      "companyName": "Nome da empresa",
+      "registrationNumber": "Número de registo",
+      "sector": "Setor de atividade",
+      "seniorityMonths": "Antiguidade (meses)",
+      "projectDescription": "Descrição do projeto",
+      "currency": "Moeda",
+      "requestedAmount": "Montante solicitado",
+      "declaredMonthlyRevenue": "Receita mensal declarada",
+      "declaredMonthlyExpenses": "Despesas mensais declaradas",
+      "guaranteeOffered": "Garantia de reembolso proposta",
+      "guaranteeNote": "Dinheiro, ativo profissional, fiança pessoal… declarativo, não bloqueado nesta fase.",
+      "disclaimer": "Estas informações são autodeclaradas e não são verificadas por terceiros nesta fase (nenhum fornecedor de verificação de rendimentos está ligado) — a decisão baseia-se exclusivamente no que indicar aqui.",
+      "submit": "Verificar a minha elegibilidade",
+      "genericError": "Ocorreu um erro.",
+      "resultEligible": "Elegível",
+      "resultIneligible": "Não elegível",
+      "resultEligibleNote": "Os cinco critérios estão cumpridos. Um consultor entrará em contacto para os próximos passos.",
+      "resultIneligibleNote": "Pelo menos um critério não está cumprido — o detalhe abaixo indica qual.",
+      "threshold": "limite",
+      "resultEstimate": "A título indicativo: {rate}%/ano, prestação mensal estimada {payment}.",
+      "historyTitle": "Os meus pedidos",
+      "historyEmpty": "Ainda sem pedidos de crédito direto.",
+      "historyDecision": {
+        "ELIGIBLE": "Elegível",
+        "INELIGIBLE": "Não elegível"
+      }
     }
   },
   "CurrencyLabels": {

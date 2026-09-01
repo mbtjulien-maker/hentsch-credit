@@ -481,6 +481,17 @@
     "lastName": "Apellidos",
     "email": "Correo electrónico",
     "phone": "Teléfono (opcional)",
+    "accountType": {
+      "label": "Tipo de cuenta",
+      "PARTICULIER": {
+        "title": "Particular",
+        "description": "Pignora activos digitales, desbloquea una línea de crédito."
+      },
+      "BUSINESS": {
+        "title": "Empresa / Startup / Profesional",
+        "description": "Financia un proyecto profesional — acceso al crédito garantizado y, bajo ciertas condiciones, al crédito directo."
+      }
+    },
     "message": "Su proyecto (opcional)",
     "messagePlaceholder": "Importe previsto, activos implicados, preguntas particulares…",
     "disclaimer": "Al enviar este formulario, acepta que su información sea tratada de acuerdo con nuestra <link>política de privacidad</link>. No se crea ninguna cuenta automáticamente: el acceso se concede tras el estudio y la validación de su expediente por nuestro equipo.",
@@ -1084,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Mercado",
         "credit": "Crédito",
+        "directCredit": "Crédito directo",
         "cards": "Tarjetas",
         "history": "Historial",
         "profile": "Perfil",
@@ -1309,6 +1321,7 @@
       }
     },
     "accountMenu": {
+      "business": "Empresa",
       "admin": "Admin",
       "logout": "Cerrar sesión"
     },
@@ -1457,6 +1470,49 @@
       "alreadyConfirmedDescription": "El saldo ya ha sido acreditado para este pago.",
       "failedTitle": "Pago fallido",
       "failedDescription": "Este pago no se ha completado y el saldo no ha sido acreditado."
+    },
+    "directCredit": {
+      "accessDeniedTitle": "Solo cuentas empresa",
+      "accessDeniedBody": "El crédito directo financia proyectos profesionales y solo está disponible para cuentas empresa. La cuenta conectada actualmente es una cuenta particular.",
+      "ratesTitle": "Condiciones actuales",
+      "ratesDescription": "Cinco criterios declarativos, todos obligatorios — la decisión se calcula automáticamente al enviar la solicitud, sin cola de espera.",
+      "ratesInterestRate": "Tipo de interés",
+      "ratesOriginationFee": "Comisión de apertura",
+      "ratesTerm": "Duración",
+      "months": "meses",
+      "ratesMinSeniority": "Antigüedad mínima",
+      "ratesMinRevenue": "Ingreso mensual mínimo",
+      "ratesMaxMultiple": "Tope vs ingreso mensual",
+      "ratesMaxDsr": "Ratio de endeudamiento máx.",
+      "ratesMinGuarantee": "Garantía mínima",
+      "formTitle": "Solicitud de crédito directo",
+      "formDescription": "Indique su proyecto y su situación financiera declarada — la decisión aparece de inmediato a continuación.",
+      "companyName": "Nombre de la empresa",
+      "registrationNumber": "Número de registro",
+      "sector": "Sector de actividad",
+      "seniorityMonths": "Antigüedad (meses)",
+      "projectDescription": "Descripción del proyecto",
+      "currency": "Divisa",
+      "requestedAmount": "Importe solicitado",
+      "declaredMonthlyRevenue": "Ingreso mensual declarado",
+      "declaredMonthlyExpenses": "Gastos mensuales declarados",
+      "guaranteeOffered": "Garantía de reembolso propuesta",
+      "guaranteeNote": "Efectivo, activo profesional, aval personal… declarativo, no bloqueado en esta etapa.",
+      "disclaimer": "Esta información es autodeclarada y no está verificada por un tercero en esta etapa (no hay ningún proveedor de verificación de ingresos conectado) — la decisión se basa únicamente en lo que indique aquí.",
+      "submit": "Comprobar mi elegibilidad",
+      "genericError": "Se produjo un error.",
+      "resultEligible": "Elegible",
+      "resultIneligible": "No elegible",
+      "resultEligibleNote": "Se cumplen los cinco criterios. Un asesor se pondrá en contacto para los siguientes pasos.",
+      "resultIneligibleNote": "Al menos un criterio no se cumple — el detalle siguiente indica cuál.",
+      "threshold": "umbral",
+      "resultEstimate": "A título indicativo: {rate}%/año, cuota mensual estimada {payment}.",
+      "historyTitle": "Mis solicitudes",
+      "historyEmpty": "Aún no hay solicitudes de crédito directo.",
+      "historyDecision": {
+        "ELIGIBLE": "Elegible",
+        "INELIGIBLE": "No elegible"
+      }
     }
   },
   "CurrencyLabels": {

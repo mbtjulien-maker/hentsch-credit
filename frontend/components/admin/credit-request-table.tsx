@@ -1,19 +1,34 @@
 import Link from "next/link";
 import { AdminCard, AdminCardHeader, AdminEmptyState } from "@/components/admin/admin-ui";
 import { ContractStatusBadge, DecisionBadge } from "@/components/admin/status-badge";
-import type { AdminClient } from "@/lib/admin-mock-data";
-import { formatEur } from "@/lib/admin-format";
+import type { AdminContract, DecisionStatus } from "@/lib/admin-mock-data";
+import { formatUsd } from "@/lib/format";
 import { Inbox } from "lucide-react";
 
+// Champs communs à AdminClient (fiche détaillée, cf. lib/admin-mock-data.ts) et
+// AdminClientSummary (liste, cf. lib/api.ts) — les deux types satisfont structurellement
+// cette forme, donc les 4 pages /admin/credits/* peuvent passer indifféremment des
+// clients de démonstration ou de vraies fiches sans conversion.
+interface CreditDossierRow {
+  id: string;
+  userId?: string;
+  firstName: string;
+  lastName: string;
+  creditRequest: { id: string; product: string; amountRequested: number; status: DecisionStatus };
+  dossierStatus: { currentStepIndex: number; steps: { label: string }[] };
+  contract: AdminContract;
+}
+
 // Table réutilisée par les quatre sous-pages "Crédits" (demandes / dossiers en cours /
-// actifs / clôturés) — chacune ne filtre qu'un sous-ensemble de ADMIN_CLIENTS, la
-// présentation reste identique pour rester cohérente et prévisible pour l'utilisateur.
+// actifs / clôturés) — chacune ne filtre qu'un sous-ensemble des clients (réels, cf.
+// api.listAdminClients()), la présentation reste identique pour rester cohérente et
+// prévisible pour l'utilisateur.
 export function CreditRequestTable({
   clients,
   title,
   description,
 }: {
-  clients: AdminClient[];
+  clients: CreditDossierRow[];
   title: string;
   description?: string;
 }) {
@@ -42,13 +57,13 @@ export function CreditRequestTable({
               {clients.map((c) => (
                 <tr key={c.id} className="border-b border-foreground/[0.05] last:border-b-0 hover:bg-foreground/[0.02]">
                   <td className="px-5 py-2.5">
-                    <Link href={`/admin/clients/${c.id}`} className="text-foreground hover:underline">
+                    <Link href={`/admin/clients/${c.userId ?? c.id}`} className="text-foreground hover:underline">
                       {c.firstName} {c.lastName}
                     </Link>
                   </td>
                   <td className="px-5 py-2.5 font-mono text-xs text-muted-foreground">{c.creditRequest.id}</td>
                   <td className="px-5 py-2.5 text-foreground">{c.creditRequest.product}</td>
-                  <td className="px-5 py-2.5 text-right tabular-nums text-foreground">{formatEur(c.creditRequest.amountRequested)}</td>
+                  <td className="px-5 py-2.5 text-right tabular-nums text-foreground">{formatUsd(c.creditRequest.amountRequested)}</td>
                   <td className="px-5 py-2.5 text-muted-foreground">{c.dossierStatus.steps[c.dossierStatus.currentStepIndex].label}</td>
                   <td className="px-5 py-2.5">
                     <ContractStatusBadge status={c.contract.status} />

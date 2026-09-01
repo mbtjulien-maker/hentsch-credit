@@ -13,6 +13,7 @@ import { ClientWalletsModule } from './client-wallets/client-wallets.module';
 import { CreditEngineModule } from './credit/credit-engine.module';
 import { CreditRequestsModule } from './credit-requests/credit-requests.module';
 import { DepositIntentsModule } from './deposit-intents/deposit-intents.module';
+import { DirectCreditModule } from './direct-credit/direct-credit.module';
 import { LedgerModule } from './ledger/ledger.module';
 import { MarketDataModule } from './market-data/market-data.module';
 import { PaymentsModule } from './payments/payments.module';
@@ -49,6 +50,7 @@ import { WithdrawalModule } from './withdrawal/withdrawal.module';
     AccountRequestsModule,
     AdminClientsModule,
     DepositIntentsModule,
+    DirectCreditModule,
     ClientWalletsModule,
     TreasuryBotModule,
   ],

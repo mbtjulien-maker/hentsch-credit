@@ -5,6 +5,7 @@ import NextLink from "next/link";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import {
+  Briefcase,
   ClipboardCheck,
   CreditCard,
   HandCoins,
@@ -87,6 +88,7 @@ export function Sidebar() {
   const pathname = usePathname();
   const { selectedUser } = useDashboard();
   const isAdmin = selectedUser?.role === "ADMIN";
+  const isBusiness = selectedUser?.accountType === "BUSINESS";
 
   // Pages client — usage courant du compte. Chaque entrée est une route dédiée
   // (cf. app/[locale]/dashboard/*/page.tsx), pas une simple ancre : navigation réelle.
@@ -95,6 +97,11 @@ export function Sidebar() {
     { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
     { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
     { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
+    // Réservé aux comptes BUSINESS (cf. AccountType) — masqué pour un compte particulier,
+    // qui n'a de toute façon pas accès au crédit direct (cf. BusinessAccountGuard côté API).
+    ...(isBusiness
+      ? [{ href: "/dashboard/credit-direct", label: t("client.directCredit"), icon: Briefcase }]
+      : []),
     { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
     { href: "/dashboard/historique", label: t("client.history"), icon: History },
     { href: "/dashboard/profil", label: t("client.profile"), icon: User },
@@ -151,12 +158,16 @@ export function MobileNav() {
   const pathname = usePathname();
   const { selectedUser } = useDashboard();
   const isAdmin = selectedUser?.role === "ADMIN";
+  const isBusiness = selectedUser?.accountType === "BUSINESS";
 
   const CLIENT_SECTIONS: NavSection[] = [
     { href: "/dashboard", label: t("client.home"), icon: LayoutGrid },
     { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
     { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
     { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
+    ...(isBusiness
+      ? [{ href: "/dashboard/credit-direct", label: t("client.directCredit"), icon: Briefcase }]
+      : []),
     { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
     { href: "/dashboard/historique", label: t("client.history"), icon: History },
     { href: "/dashboard/profil", label: t("client.profile"), icon: User },

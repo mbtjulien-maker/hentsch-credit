@@ -201,6 +201,34 @@ function currentStepIndex(
   }
 }
 
+// Catégorie réelle d'un dossier de crédit — utilisée par les 4 pages /admin/credits/*
+// pour se répartir les clients (demandes / dossiers en cours / actifs / clôturés), à la
+// place du parcours fictif à 8 étapes (DOSSIER_STEPS) qui n'a pas cette granularité en
+// base (cf. currentStepIndex). Dérivée uniquement des statuts réels :
+// CreditRequestStatus (PENDING/APPROVED/REJECTED/FULFILLED) et, une fois le crédit
+// émis, CreditPositionStatus (ACTIVE/CLOSED/LIQUIDATED).
+function computeDossierCategory(
+  request:
+    (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
+  position: CreditPosition | null,
+): 'DEMANDE' | 'EN_COURS' | 'ACTIF' | 'CLOTURE' | 'AUCUNE' {
+  if (!request) return 'AUCUNE';
+  switch (request.status) {
+    case 'PENDING':
+      return 'DEMANDE';
+    case 'REJECTED':
+      return 'CLOTURE';
+    case 'APPROVED':
+      // Approuvé mais le crédit n'est pas encore émis (le client doit encore déposer le
+      // gage, cf. CreditRequestsService.tryAutoFulfill) — toujours "en cours".
+      return 'EN_COURS';
+    case 'FULFILLED':
+      return position?.status === 'ACTIVE' ? 'ACTIF' : 'CLOTURE';
+    default:
+      return 'AUCUNE';
+  }
+}
+
 function buildDossierStatus(
   request:
     (CreditRequest & { creditPosition?: CreditPosition | null }) | undefined,
@@ -374,6 +402,7 @@ export class AdminClientsService {
 
   private presentSummary(user: UserWithRelations) {
     const request = user.creditRequests?.[0];
+    const position = request?.creditPosition ?? null;
     const riskScoring = computeRiskScoring(
       user.employment,
       user.financialSnapshot,
@@ -381,6 +410,14 @@ export class AdminClientsService {
       user.addresses?.length ?? 0,
       false,
     );
+    // dossierStatus/contract réutilisés tels quels par CreditRequestTable (cf.
+    // components/admin/credit-request-table.tsx, partagé par les 4 pages
+    // /admin/credits/*) — mêmes fonctions que presentDetail(), une seule logique de
+    // présentation du dossier, jamais dupliquée entre liste et détail.
+    const creditRequest = this.presentCreditRequest(user, request, position);
+    const dossierStatus = buildDossierStatus(request);
+    const contract = this.presentContract(creditRequest, dossierStatus, request);
+
     return {
       id: clientCode(user.id),
       userId: user.id,
@@ -400,11 +437,19 @@ export class AdminClientsService {
       kycStatus: user.kycStatus,
       riskLevel: riskScoring.level,
       riskScore: riskScoring.score,
-      creditRequest: {
-        id: request ? dossierCode(request.id, request.createdAt) : '—',
-        purpose: request ? 'Crédit lombard' : '—',
-        status: this.mapDecisionStatus(request),
-      },
+      // Objet complet (id, product, amountRequested, statut...) — même fonction que
+      // presentDetail(), jamais un sous-ensemble recalculé à la main en double : c'est
+      // exactement ce qui causait l'incohérence corrigée ici (creditRequest.status
+      // utilisait mapDecisionStatus() en double par rapport à ce que la fiche détaillée
+      // affiche réellement).
+      creditRequest,
+      // Catégorie dérivée du statut réel (jamais du parcours à 8 étapes fictif, qui n'a
+      // pas de granularité correspondante en base — cf. currentStepIndex) : seule
+      // catégorisation utilisée par les 4 pages /admin/credits/* pour se répartir les
+      // dossiers, cf. computeDossierCategory.
+      dossierCategory: computeDossierCategory(request, position),
+      dossierStatus,
+      contract,
       email: user.email,
     };
   }
@@ -414,8 +459,14 @@ export class AdminClientsService {
     const employment = user.employment ?? null;
     const financials = user.financialSnapshot ?? null;
     const request = user.creditRequests?.[0];
-    const position =
-      request?.creditPosition ?? user.creditPositions?.[0] ?? null;
+    // Position réellement liée à la demande la plus récente — jamais mélangée à une
+    // position plus ancienne et sans rapport (cf. bug corrigé : `guarantees` ci-dessous
+    // a légitimement besoin d'un repli sur la dernière position connue du client même
+    // sans rapport avec la demande la plus récente, mais `presentCreditRequest` ne doit
+    // JAMAIS recevoir la position d'une autre demande — sinon le montant/taux affichés
+    // pour CETTE demande viendraient d'un dossier différent).
+    const linkedPosition = request?.creditPosition ?? null;
+    const position = linkedPosition ?? user.creditPositions?.[0] ?? null;
     const dossierStatus = buildDossierStatus(request);
     const hasFailedTx = (user.transactions ?? []).some(
       (t) => t.status === 'FAILED',
@@ -428,7 +479,11 @@ export class AdminClientsService {
       hasFailedTx,
     );
 
-    const creditRequest = this.presentCreditRequest(user, request, position);
+    const creditRequest = this.presentCreditRequest(
+      user,
+      request,
+      linkedPosition,
+    );
     const contract = this.presentContract(
       creditRequest,
       dossierStatus,
@@ -577,6 +632,7 @@ export class AdminClientsService {
 
       riskScoring,
       dossierStatus,
+      dossierCategory: computeDossierCategory(request, linkedPosition),
 
       creditDecision: {
         analyst: 'Non assigné',

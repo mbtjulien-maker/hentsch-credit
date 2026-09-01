@@ -5,7 +5,8 @@ import { Download, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ADMIN_BTN_SECONDARY, ADMIN_FOCUS_RING } from "@/lib/admin-theme";
 import { ENTITY_IDENTITY } from "@/lib/entity-identity";
-import { formatEur, formatPercentPlain } from "@/lib/admin-format";
+import { formatPercentPlain } from "@/lib/admin-format";
+import { formatUsd } from "@/lib/format";
 import { buildAmortizationSchedule } from "@/lib/amortization";
 import type { AdminClient } from "@/lib/admin-mock-data";
 
@@ -80,7 +81,7 @@ export function ContractPreviewDialog({
   const domicile = addresses.find((a) => a.label === "Domicile") ?? addresses[0];
   const pledgeDescription =
     guarantees.length > 0
-      ? guarantees.map((g) => `${g.type} : ${g.description} (valeur retenue : ${formatEur(g.retainedValue)})`).join(" ; ")
+      ? guarantees.map((g) => `${g.type} : ${g.description} (valeur retenue : ${formatUsd(g.retainedValue)})`).join(" ; ")
       : "les actifs numériques (stablecoins et/ou or tokenisé) déposés par l'Emprunteur en garantie, conservés par le prestataire de garde désigné par le Créancier";
 
   const professionalSituation = employment.isIndependent
@@ -200,7 +201,7 @@ export function ContractPreviewDialog({
               <Article number={2} title="Objet du contrat">
                 <p>
                   Le Créancier accorde à l&apos;Emprunteur, qui l&apos;accepte, un crédit lombard d&apos;un montant en principal de{" "}
-                  <strong>{formatEur(creditRequest.amountRequested)}</strong>, destiné à : {creditRequest.purpose}. Ce Crédit est intégralement gagé par{" "}
+                  <strong>{formatUsd(creditRequest.amountRequested)}</strong>, destiné à : {creditRequest.purpose}. Ce Crédit est intégralement gagé par{" "}
                   {pledgeDescription}, constitué en garantie au profit du Créancier pour toute la durée du présent contrat.
                 </p>
                 <p>
@@ -214,7 +215,7 @@ export function ContractPreviewDialog({
                   <tbody>
                     <tr className="border-b border-slate-200">
                       <td className="py-1.5 pr-3 text-slate-500">Montant financé</td>
-                      <td className="py-1.5 text-right font-medium text-slate-900">{formatEur(creditRequest.amountRequested)}</td>
+                      <td className="py-1.5 text-right font-medium text-slate-900">{formatUsd(creditRequest.amountRequested)}</td>
                     </tr>
                     <tr className="border-b border-slate-200">
                       <td className="py-1.5 pr-3 text-slate-500">Durée</td>
@@ -230,15 +231,15 @@ export function ContractPreviewDialog({
                     </tr>
                     <tr className="border-b border-slate-200">
                       <td className="py-1.5 pr-3 text-slate-500">Mensualité</td>
-                      <td className="py-1.5 text-right font-medium text-slate-900">{formatEur(creditRequest.estimatedMonthlyPayment)}</td>
+                      <td className="py-1.5 text-right font-medium text-slate-900">{formatUsd(creditRequest.estimatedMonthlyPayment)}</td>
                     </tr>
                     <tr className="border-b border-slate-200">
                       <td className="py-1.5 pr-3 text-slate-500">Coût total du crédit</td>
-                      <td className="py-1.5 text-right font-medium text-slate-900">{formatEur(contract.totalInterest)}</td>
+                      <td className="py-1.5 text-right font-medium text-slate-900">{formatUsd(contract.totalInterest)}</td>
                     </tr>
                     <tr>
                       <td className="py-1.5 pr-3 text-slate-500">Montant total dû</td>
-                      <td className="py-1.5 text-right font-medium text-slate-900">{formatEur(contract.totalRepayable)}</td>
+                      <td className="py-1.5 text-right font-medium text-slate-900">{formatUsd(contract.totalRepayable)}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -378,7 +379,7 @@ export function ContractPreviewDialog({
                 <p className="font-semibold text-slate-900">Annexe 1 : Tableau d&apos;amortissement prévisionnel</p>
                 <p className="mt-1.5 text-[12.5px] text-slate-600">
                   Échéancier indicatif établi sur la base du taux nominal fixe de {formatPercentPlain(contract.nominalRate)} et d&apos;une mensualité
-                  constante de {formatEur(creditRequest.estimatedMonthlyPayment)}. Toute modulation du remboursement par le rendement du gage (Article
+                  constante de {formatUsd(creditRequest.estimatedMonthlyPayment)}. Toute modulation du remboursement par le rendement du gage (Article
                   6) accélère l&apos;amortissement réel par rapport à cet échéancier théorique.
                 </p>
                 <table className="mt-3 w-full border-collapse text-[11px]">
@@ -395,10 +396,10 @@ export function ContractPreviewDialog({
                     {schedule.map((row) => (
                       <tr key={row.month} className="border-b border-slate-100">
                         <td className="py-1 pr-2 text-slate-600">{row.month}</td>
-                        <td className="py-1 pr-2 text-right text-slate-800">{formatEur(row.payment)}</td>
-                        <td className="py-1 pr-2 text-right text-slate-500">{formatEur(row.interest)}</td>
-                        <td className="py-1 pr-2 text-right text-slate-500">{formatEur(row.principal)}</td>
-                        <td className="py-1 text-right font-medium text-slate-900">{formatEur(row.balance)}</td>
+                        <td className="py-1 pr-2 text-right text-slate-800">{formatUsd(row.payment)}</td>
+                        <td className="py-1 pr-2 text-right text-slate-500">{formatUsd(row.interest)}</td>
+                        <td className="py-1 pr-2 text-right text-slate-500">{formatUsd(row.principal)}</td>
+                        <td className="py-1 text-right font-medium text-slate-900">{formatUsd(row.balance)}</td>
                       </tr>
                     ))}
                   </tbody>

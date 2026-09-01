@@ -206,6 +206,39 @@ export interface DirectCreditRates {
   minGuaranteeCoveragePct: string;
 }
 
+// Investissement direct (cf. §2H CLAUDE.md) — ouvert aux comptes PARTICULIER et BUSINESS
+// (contrairement au crédit direct, réservé BUSINESS), un placement à part entière depuis
+// le solde disponible, sans gage ni crédit émis.
+export type InvestmentBasket = "RWA_STRATEGY" | "STOCKS";
+export type InvestmentPositionStatus = "ACTIVE" | "CLOSED";
+
+export interface InvestmentPosition {
+  id: string;
+  userId: string;
+  basket: InvestmentBasket;
+  principalAmount: string;
+  accruedYield: string;
+  status: InvestmentPositionStatus;
+  createdAt: string;
+  updatedAt: string;
+  closedAt: string | null;
+}
+
+export interface InvestmentBasketRate {
+  indicativeAnnualPct: string;
+  // RWA_STRATEGY seulement — dernier rendement quotidien réel appliqué (peut être
+  // négatif). null tant qu'aucun passage du bot de trésorerie n'a encore eu lieu.
+  latestDailyReturnPct?: string | null;
+  // STOCKS seulement — dernière variation moyenne réelle du panier d'actions (Finnhub).
+  // null sans FINNHUB_API_KEY ou en cas de panne totale du fournisseur.
+  latestMarketSignalPct?: string | null;
+}
+
+export interface InvestmentRates {
+  RWA_STRATEGY: InvestmentBasketRate;
+  STOCKS: InvestmentBasketRate;
+}
+
 export interface RepayCreditResult {
   balance: LedgerBalance;
   collateralUnlocked: boolean;
@@ -651,6 +684,21 @@ export const api = {
     }),
   listDirectCreditRequests: (userId: string) =>
     request<DirectCreditRequest[]>(`/users/${userId}/direct-credit-requests`),
+  // Investissement direct — userId dérivé du cookie de session côté serveur, comme
+  // createCreditRequest ci-dessous.
+  getInvestmentRates: () => request<InvestmentRates>("/investment/rates"),
+  depositInvestment: (basket: InvestmentBasket, amount: string) =>
+    request<InvestmentPosition>("/investment/deposit", {
+      method: "POST",
+      body: JSON.stringify({ basket, amount }),
+    }),
+  withdrawInvestment: (basket: InvestmentBasket) =>
+    request<{ balance: LedgerBalance; withdrawnAmount: string }>("/investment/withdraw", {
+      method: "POST",
+      body: JSON.stringify({ basket }),
+    }),
+  listInvestmentPositions: (userId: string) =>
+    request<InvestmentPosition[]>(`/users/${userId}/investment-positions`),
   // userId n'est plus envoyé : dérivé côté serveur du cookie de session (JwtAuthGuard).
   createCreditRequest: (collateralAmount: string, currency: AccountCurrency) =>
     request<CreditRequest>("/credit-requests", {

@@ -133,6 +133,15 @@ enum TransactionType {
   // (au prix d'entrée) est retiré du bilan (lockedCollateral/grantedCredit), sans effet
   // sur le crédit déjà utilisé (cf. CreditPositionStatus.LIQUIDATED).
   LIQUIDATION
+  // Investissement direct (cf. §2H CLAUDE.md, InvestmentService) — placement de fonds
+  // réels dans un panier (RWA_STRATEGY ou STOCKS, cf. InvestmentBasket), distinct du gage
+  // crypto : débite/crédite directement availableBalance, jamais lockedCollateral.
+  INVESTMENT_DEPOSIT
+  INVESTMENT_WITHDRAWAL
+  // Accrual quotidien du rendement réel du panier choisi, appliqué au principal de la
+  // position (composé jour après jour) — jamais versé sur availableBalance tant que le
+  // client n'a pas retiré sa position (cf. InvestmentService.withdraw).
+  INVESTMENT_YIELD_ACCRUAL
 }
 
 enum TransactionStatus {
@@ -183,13 +192,19 @@ model User {
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
 
-  // Authentification à deux facteurs (TOTP, cf. TwoFactorService) — actuellement proposée
-  // aux comptes ADMIN uniquement (back-office sensible), opt-in : twoFactorSecret est
-  // renseigné dès la génération du QR code (POST /auth/2fa/setup) mais twoFactorEnabled
-  // ne passe à true qu'après confirmation d'un premier code valide (POST
-  // /auth/2fa/enable) — un secret généré puis jamais confirmé ne bloque jamais le login.
+  // Authentification à deux facteurs (TOTP, cf. TwoFactorService) — réservée aux comptes
+  // ADMIN (back-office sensible) et désormais obligatoire pour eux (cf. AdminGuard) :
+  // twoFactorSecret est renseigné dès la génération du QR code (POST /auth/2fa/setup) mais
+  // twoFactorEnabled ne passe à true qu'après confirmation d'un premier code valide (POST
+  // /auth/2fa/enable) — un secret généré puis jamais confirmé ne bloque jamais le login,
+  // mais AdminGuard bloque alors tout accès back-office autre qu'à ces trois routes.
   twoFactorSecret  String?
   twoFactorEnabled Boolean @default(false)
+
+  // Verrouillage de compte après échecs de connexion répétés (cf. AuthService,
+  // MAX_FAILED_LOGIN_ATTEMPTS) — remis à zéro à chaque connexion réussie.
+  failedLoginAttempts Int       @default(0)
+  lockedUntil         DateTime?
 
   wallets               Wallet[]
   ledgerBalance         LedgerBalance?
@@ -201,6 +216,11 @@ model User {
   // pour tous les comptes par simplicité de relation Prisma, toujours vide pour un compte
   // PARTICULIER en pratique.
   directCreditRequests  DirectCreditRequest[]
+  // Investissement direct (cf. §2H CLAUDE.md) — ouvert aux comptes PARTICULIER et BUSINESS
+  // (contrairement au crédit direct, réservé BUSINESS) : placement de fonds réels, pas un
+  // gage. Plusieurs lignes possibles dans le temps (une par cycle dépôt→retrait, comme
+  // CreditPosition), au plus une ACTIVE par (userId, basket).
+  investmentPositions   InvestmentPosition[]
   // Renseigné uniquement si ce compte a été créé via une demande d'ouverture approuvée
   // (cf. AccountOpeningRequest) — traçabilité, jamais réutilisé pour recalculer quoi que
   // ce soit. Les comptes de seed n'en ont pas.
@@ -686,4 +706,69 @@ model TreasuryBotRun {
 
   @@unique([runDate])
   @@map("treasury_bot_runs")
+}
+
+// Investissement direct (cf. §2H CLAUDE.md, InvestmentService) — le client choisit un
+// panier au dépôt (RWA_STRATEGY : même stratégie que TreasuryBotService, désormais
+// ouverte au capital client réel en plus du capital notionnel interne ; STOCKS : panier
+// d'actions cotées réelles, cf. StockMarketDataService) et place des fonds réels depuis
+// son solde disponible — contrairement au gage crypto (§2A), rien n'est verrouillé en
+// garantie d'un crédit, c'est un placement à part entière, avec un vrai risque de perte
+// (le rendement quotidien peut être négatif un jour de marché défavorable).
+enum InvestmentBasket {
+  RWA_STRATEGY
+  STOCKS
+}
+
+enum InvestmentPositionStatus {
+  ACTIVE
+  CLOSED
+}
+
+model InvestmentPosition {
+  id     String           @id @default(uuid())
+  userId String
+  basket InvestmentBasket
+
+  // Capital placé (cumulé sur les dépôts successifs tant que la position reste ACTIVE) et
+  // rendement composé accru quotidiennement (cf. InvestmentService.runDailyAccrual) —
+  // jamais versé sur availableBalance avant un retrait complet (withdraw), qui clôture la
+  // position et journalise principalAmount + accruedYield en une seule Transaction
+  // INVESTMENT_WITHDRAWAL.
+  principalAmount Decimal                  @default(0) @db.Decimal(18, 6)
+  accruedYield    Decimal                  @default(0) @db.Decimal(18, 6)
+  status          InvestmentPositionStatus @default(ACTIVE)
+  createdAt       DateTime                 @default(now())
+  updatedAt       DateTime                 @updatedAt
+  closedAt        DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("investment_positions")
+}
+
+// Rendement quotidien réel du panier d'actions (cf. StockMarketDataService,
+// STOCK_BASKET_TICKERS) — pendant de TreasuryBotRun pour le panier STOCKS : une ligne par
+// jour (upsert si le job est redéclenché le même jour), jamais recalculée à la volée lors
+// de l'accrual pour rester déterministe (le cours d'une action varie en continu dans la
+// journée, contrairement à un accrual qui doit produire le même résultat à chaque relecture).
+model StockBasketRun {
+  id      String   @id @default(uuid())
+  runDate DateTime @db.Date
+
+  // Moyenne réelle de la variation quotidienne (%) des tickers du panier (Finnhub) — le
+  // seul chiffre non fabriqué de ce modèle.
+  marketSignalPct Decimal @db.Decimal(9, 6)
+  // STOCK_BASKET_DIVIDEND_YIELD_PCT / 365 + marketSignalPct — baseline dividende
+  // indicatif (hypothèse de stratégie, comme PILLAR_TARGET_APY_PCT pour la RWA, jamais
+  // une donnée de marché) + variation réelle du jour, appliqué tel quel aux positions
+  // STOCKS ce jour-là (cf. InvestmentService.accrueYieldForPosition).
+  dailyReturnPct Decimal @db.Decimal(9, 6)
+
+  createdAt DateTime @default(now())
+
+  @@unique([runDate])
+  @@map("stock_basket_runs")
 }

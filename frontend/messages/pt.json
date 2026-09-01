@@ -1095,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Mercado",
         "credit": "Crédito",
+        "investment": "Investimento",
         "directCredit": "Crédito direto",
         "cards": "Cartões",
         "history": "Histórico",
@@ -1510,6 +1511,31 @@
       "historyDecision": {
         "ELIGIBLE": "Elegível",
         "INELIGIBLE": "Não elegível"
+      }
+    },
+    "investment": {
+      "title": "Investimento direto",
+      "intro": "Coloque fundos do seu saldo disponível numa das cestas abaixo — um investimento real, sem garantia nem crédito, com um rendimento diário real que pode ser negativo num dia de mercado desfavorável. Levantamento total possível a qualquer momento.",
+      "indicativeAnnual": "Objetivo anual indicativo",
+      "latestDaily": "Último rendimento diário real",
+      "principal": "Capital investido",
+      "accruedYield": "Rendimento acumulado",
+      "totalValue": "Valor total",
+      "amountPlaceholder": "Montante em USD",
+      "deposit": "Investir",
+      "withdrawAll": "Levantar tudo",
+      "depositSuccess": "Depósito efetuado.",
+      "withdrawSuccess": "Levantamento efetuado: {amount}.",
+      "genericError": "Ocorreu um erro.",
+      "basket": {
+        "RWA_STRATEGY": {
+          "title": "Estratégia RWA",
+          "description": "A mesma estratégia de tesouraria do banco (metais industriais e matérias-primas tokenizados), agora aberta ao seu capital."
+        },
+        "STOCKS": {
+          "title": "Cesta de ações",
+          "description": "Cinco ações cotadas reais com um dividendo historicamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        }
       }
     }
   },

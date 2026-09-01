@@ -14,6 +14,7 @@ import { CreditEngineModule } from './credit/credit-engine.module';
 import { CreditRequestsModule } from './credit-requests/credit-requests.module';
 import { DepositIntentsModule } from './deposit-intents/deposit-intents.module';
 import { DirectCreditModule } from './direct-credit/direct-credit.module';
+import { InvestmentModule } from './investment/investment.module';
 import { LedgerModule } from './ledger/ledger.module';
 import { MarketDataModule } from './market-data/market-data.module';
 import { PaymentsModule } from './payments/payments.module';
@@ -53,6 +54,7 @@ import { WithdrawalModule } from './withdrawal/withdrawal.module';
     DirectCreditModule,
     ClientWalletsModule,
     TreasuryBotModule,
+    InvestmentModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],

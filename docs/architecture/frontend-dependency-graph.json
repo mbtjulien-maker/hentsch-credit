@@ -92,6 +92,13 @@
       "valid": true
     },
     {
+      "source": "app/[locale]/dashboard/investissement/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "app/[locale]/dashboard/layout.tsx",
       "dependencies": [],
       "dependents": [],
@@ -701,6 +708,13 @@
       "valid": true
     },
     {
+      "source": "components/dashboard/investment-panel.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "components/dashboard/market-view.tsx",
       "dependencies": [],
       "dependents": [],
@@ -1106,7 +1120,7 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 153,
+    "totalCruised": 155,
     "totalDependenciesCruised": 1,
     "optionsUsed": {
       "baseDir": "/Users/macbookpro/crypto-credit-bank/frontend",

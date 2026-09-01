@@ -12,6 +12,7 @@ import {
   History,
   LayoutGrid,
   LifeBuoy,
+  LineChart,
   ShieldCheck,
   TrendingUp,
   User,
@@ -97,6 +98,9 @@ export function Sidebar() {
     { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
     { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
     { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
+    // Ouvert à tous les comptes vérifiés (particulier ET business, cf. §2H CLAUDE.md) —
+    // contrairement au crédit direct ci-dessous, aucun masquage par accountType.
+    { href: "/dashboard/investissement", label: t("client.investment"), icon: LineChart },
     // Réservé aux comptes BUSINESS (cf. AccountType) — masqué pour un compte particulier,
     // qui n'a de toute façon pas accès au crédit direct (cf. BusinessAccountGuard côté API).
     ...(isBusiness
@@ -165,6 +169,7 @@ export function MobileNav() {
     { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
     { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
     { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
+    { href: "/dashboard/investissement", label: t("client.investment"), icon: LineChart },
     ...(isBusiness
       ? [{ href: "/dashboard/credit-direct", label: t("client.directCredit"), icon: Briefcase }]
       : []),

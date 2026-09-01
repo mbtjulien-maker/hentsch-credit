@@ -1095,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Markt",
         "credit": "Krediet",
+        "investment": "Beleggen",
         "directCredit": "Direct krediet",
         "cards": "Kaarten",
         "history": "Geschiedenis",
@@ -1510,6 +1511,31 @@
       "historyDecision": {
         "ELIGIBLE": "In aanmerking",
         "INELIGIBLE": "Niet in aanmerking"
+      }
+    },
+    "investment": {
+      "title": "Directe belegging",
+      "intro": "Plaats geld van uw beschikbare saldo in een van onderstaande manden — een echte belegging, zonder onderpand of krediet, met een reëel dagelijks rendement dat op een ongunstige marktdag negatief kan zijn. Volledige opname op elk moment mogelijk.",
+      "indicativeAnnual": "Indicatief jaarlijks doel",
+      "latestDaily": "Laatste reële dagrendement",
+      "principal": "Belegd kapitaal",
+      "accruedYield": "Opgebouwd rendement",
+      "totalValue": "Totale waarde",
+      "amountPlaceholder": "Bedrag in US$",
+      "deposit": "Beleggen",
+      "withdrawAll": "Alles opnemen",
+      "depositSuccess": "Storting voltooid.",
+      "withdrawSuccess": "Opname voltooid: {amount}.",
+      "genericError": "Er is een fout opgetreden.",
+      "basket": {
+        "RWA_STRATEGY": {
+          "title": "RWA-strategie",
+          "description": "Dezelfde treasurystrategie als die van de bank (getokeniseerde industriële metalen en grondstoffen), nu open voor uw kapitaal."
+        },
+        "STOCKS": {
+          "title": "Aandelenmand",
+          "description": "Vijf echte beursgenoteerde aandelen met historisch een regelmatig dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        }
       }
     }
   },

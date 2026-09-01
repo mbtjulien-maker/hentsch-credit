@@ -1095,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Marknad",
         "credit": "Kredit",
+        "investment": "Investering",
         "directCredit": "Direktkredit",
         "cards": "Kort",
         "history": "Historik",
@@ -1510,6 +1511,31 @@
       "historyDecision": {
         "ELIGIBLE": "Behörig",
         "INELIGIBLE": "Inte behörig"
+      }
+    },
+    "investment": {
+      "title": "Direktinvestering",
+      "intro": "Placera medel från ditt tillgängliga saldo i en av korgarna nedan — en riktig placering, utan säkerhet eller kredit, med en verklig daglig avkastning som kan vara negativ en ogynnsam marknadsdag. Fullständigt uttag möjligt när som helst.",
+      "indicativeAnnual": "Vägledande årsmål",
+      "latestDaily": "Senaste verkliga dagsavkastning",
+      "principal": "Investerat kapital",
+      "accruedYield": "Upplupen avkastning",
+      "totalValue": "Totalt värde",
+      "amountPlaceholder": "Belopp i US$",
+      "deposit": "Investera",
+      "withdrawAll": "Ta ut allt",
+      "depositSuccess": "Insättning genomförd.",
+      "withdrawSuccess": "Uttag genomfört: {amount}.",
+      "genericError": "Ett fel uppstod.",
+      "basket": {
+        "RWA_STRATEGY": {
+          "title": "RWA-strategi",
+          "description": "Samma likviditetsstrategi som banken själv använder (tokeniserade industrimetaller och råvaror), nu öppen för ditt kapital."
+        },
+        "STOCKS": {
+          "title": "Aktiekorg",
+          "description": "Fem verkliga börsnoterade aktier med historiskt regelbunden utdelning (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        }
       }
     }
   },

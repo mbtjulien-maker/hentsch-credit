@@ -1095,6 +1095,7 @@
         "balance": "Saldo",
         "market": "Markt",
         "credit": "Kredit",
+        "investment": "Investition",
         "directCredit": "Direktkredit",
         "cards": "Karten",
         "history": "Verlauf",
@@ -1510,6 +1511,31 @@
       "historyDecision": {
         "ELIGIBLE": "Förderfähig",
         "INELIGIBLE": "Nicht förderfähig"
+      }
+    },
+    "investment": {
+      "title": "Direktinvestition",
+      "intro": "Legen Sie Mittel aus Ihrem verfügbaren Guthaben in einem der folgenden Körbe an — eine echte Geldanlage, ohne Sicherheit oder Kredit, mit einer echten Tagesrendite, die an einem ungünstigen Markttag negativ sein kann. Vollständige Auszahlung jederzeit möglich.",
+      "indicativeAnnual": "Indikatives Jahresziel",
+      "latestDaily": "Letzte reale Tagesrendite",
+      "principal": "Angelegtes Kapital",
+      "accruedYield": "Aufgelaufene Rendite",
+      "totalValue": "Gesamtwert",
+      "amountPlaceholder": "Betrag in US$",
+      "deposit": "Anlegen",
+      "withdrawAll": "Alles abheben",
+      "depositSuccess": "Einzahlung erfolgt.",
+      "withdrawSuccess": "Auszahlung erfolgt: {amount}.",
+      "genericError": "Ein Fehler ist aufgetreten.",
+      "basket": {
+        "RWA_STRATEGY": {
+          "title": "RWA-Strategie",
+          "description": "Dieselbe Treasury-Strategie wie die der Bank (tokenisierte Industriemetalle und Rohstoffe), jetzt für Ihr Kapital geöffnet."
+        },
+        "STOCKS": {
+          "title": "Aktienkorb",
+          "description": "Fünf real notierte Aktien mit historisch regelmäßiger Dividende (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        }
       }
     }
   },

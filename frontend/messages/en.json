@@ -1095,6 +1095,7 @@
         "balance": "Balance",
         "market": "Market",
         "credit": "Credit",
+        "investment": "Investment",
         "directCredit": "Direct credit",
         "cards": "Cards",
         "history": "History",
@@ -1510,6 +1511,31 @@
       "historyDecision": {
         "ELIGIBLE": "Eligible",
         "INELIGIBLE": "Not eligible"
+      }
+    },
+    "investment": {
+      "title": "Direct investment",
+      "intro": "Place funds from your available balance into one of the baskets below — a real investment, no collateral or credit involved, with a real daily return that can be negative on an unfavorable market day. Full withdrawal available at any time.",
+      "indicativeAnnual": "Indicative annual target",
+      "latestDaily": "Latest real daily return",
+      "principal": "Capital invested",
+      "accruedYield": "Accrued return",
+      "totalValue": "Total value",
+      "amountPlaceholder": "Amount in $US",
+      "deposit": "Invest",
+      "withdrawAll": "Withdraw all",
+      "depositSuccess": "Deposit completed.",
+      "withdrawSuccess": "Withdrawal completed: {amount}.",
+      "genericError": "An error occurred.",
+      "basket": {
+        "RWA_STRATEGY": {
+          "title": "RWA strategy",
+          "description": "The same treasury strategy as the bank's own (tokenized industrial metals and commodities), now open to your capital."
+        },
+        "STOCKS": {
+          "title": "Stock basket",
+          "description": "Five real listed stocks with a historically regular dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        }
       }
     }
   },

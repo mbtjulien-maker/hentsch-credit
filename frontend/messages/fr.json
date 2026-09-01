@@ -1095,6 +1095,7 @@
         "balance": "Solde",
         "market": "Marché",
         "credit": "Crédit",
+        "investment": "Investissement",
         "directCredit": "Crédit direct",
         "cards": "Cartes",
         "history": "Historique",
@@ -1510,6 +1511,31 @@
       "historyDecision": {
         "ELIGIBLE": "Éligible",
         "INELIGIBLE": "Non éligible"
+      }
+    },
+    "investment": {
+      "title": "Investissement direct",
+      "intro": "Placez des fonds depuis votre solde disponible dans l'un des paniers ci-dessous — un vrai placement, sans gage ni crédit, avec un rendement quotidien réel qui peut être négatif un jour de marché défavorable. Retrait intégral possible à tout moment.",
+      "indicativeAnnual": "Objectif indicatif annuel",
+      "latestDaily": "Dernier rendement quotidien réel",
+      "principal": "Capital placé",
+      "accruedYield": "Rendement accumulé",
+      "totalValue": "Valeur totale",
+      "amountPlaceholder": "Montant en $US",
+      "deposit": "Placer",
+      "withdrawAll": "Tout retirer",
+      "depositSuccess": "Dépôt effectué.",
+      "withdrawSuccess": "Retrait effectué : {amount}.",
+      "genericError": "Une erreur est survenue.",
+      "basket": {
+        "RWA_STRATEGY": {
+          "title": "Stratégie RWA",
+          "description": "Même stratégie de trésorerie que la banque (métaux industriels et matières premières tokenisés), désormais ouverte à votre capital."
+        },
+        "STOCKS": {
+          "title": "Panier d'actions",
+          "description": "Cinq actions cotées réelles versant historiquement un dividende régulier (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        }
       }
     }
   },

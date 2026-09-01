@@ -45,7 +45,7 @@ npx --yes dependency-cruiser@18.2.0 --no-config --ts-config tsconfig.json \
 > `dependency-cruiser` (le binaire s'appelle `depcruise`, mais le paquet npm ne s'appelle
 > pas ainsi).
 
-## Dernier contrôle (1 septembre 2026)
+## Dernier contrôle (2 septembre 2026)
 
-- Backend : 113 modules, 0 dépendance circulaire.
-- Frontend : 153 modules, 0 dépendance circulaire.
+- Backend : 122 modules, 0 dépendance circulaire.
+- Frontend : 155 modules, 0 dépendance circulaire.

@@ -33,3 +33,14 @@ export class OverRepaymentException extends BadRequestException {
     );
   }
 }
+
+// Retrait d'investissement direct demandé sans position ACTIVE sur le panier concerné
+// (cf. InvestmentService.withdraw) — jamais de retrait partiel à ce stade, donc jamais
+// "montant insuffisant", uniquement "rien à retirer".
+export class NoActiveInvestmentException extends BadRequestException {
+  constructor(userId: string) {
+    super(
+      `Aucune position d'investissement active pour l'utilisateur ${userId}`,
+    );
+  }
+}

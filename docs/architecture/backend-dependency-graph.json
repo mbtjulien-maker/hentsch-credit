@@ -505,6 +505,48 @@
       "valid": true
     },
     {
+      "source": "src/investment/dto/deposit-investment.dto.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/investment/dto/withdraw-investment.dto.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/investment/investment.constants.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/investment/investment.controller.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/investment/investment.module.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/investment/investment.service.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
       "source": "src/ledger/ledger.constants.ts",
       "dependencies": [],
       "dependents": [],
@@ -611,6 +653,27 @@
     },
     {
       "source": "src/prisma/prisma.service.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/stock-market-data/stock-market-data.constants.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/stock-market-data/stock-market-data.module.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": true
+    },
+    {
+      "source": "src/stock-market-data/stock-market-data.service.ts",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
@@ -798,7 +861,7 @@
     "warn": 0,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 113,
+    "totalCruised": 122,
     "totalDependenciesCruised": 0,
     "optionsUsed": {
       "baseDir": "/Users/macbookpro/crypto-credit-bank/backend",

@@ -1582,6 +1582,12 @@
           "title": "Aandelenmand",
           "description": "Vijf echte beursgenoteerde aandelen met historisch een regelmatig dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
+      },
+      "assetsTable": {
+        "title": "Activa in de mand",
+        "asset": "Actief",
+        "price": "Koers",
+        "change": "Verandering"
       }
     }
   },

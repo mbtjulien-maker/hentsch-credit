@@ -239,6 +239,32 @@ export interface InvestmentRates {
   STOCKS: InvestmentBasketRate;
 }
 
+// Détail des actifs réellement impliqués dans chaque panier (cf. GET /investment/assets)
+// — au-delà du rendement agrégé de InvestmentRates ci-dessus, pour montrer concrètement
+// la composition de la stratégie. Un actif RWA sans cours disponible (image/name présents
+// mais price/changePct null) reste listé plutôt que masqué : la composition du panier est
+// stable, seule sa cotation peut manquer temporairement (cf. dégradation gracieuse
+// MarketDataService).
+export interface RwaBasketAsset {
+  currency: AcceptedCurrency;
+  name: string;
+  image: string;
+  price: string | null;
+  changePct: number | null;
+}
+
+export interface StockBasketAsset {
+  ticker: string;
+  name: string;
+  price: number;
+  changePct: number;
+}
+
+export interface InvestmentAssets {
+  RWA_STRATEGY: { assets: RwaBasketAsset[] };
+  STOCKS: { assets: StockBasketAsset[] };
+}
+
 export interface RepayCreditResult {
   balance: LedgerBalance;
   collateralUnlocked: boolean;
@@ -741,6 +767,7 @@ export const api = {
   // Investissement direct — userId dérivé du cookie de session côté serveur, comme
   // createCreditRequest ci-dessous.
   getInvestmentRates: () => request<InvestmentRates>("/investment/rates"),
+  getInvestmentAssets: () => request<InvestmentAssets>("/investment/assets"),
   depositInvestment: (basket: InvestmentBasket, amount: string) =>
     request<InvestmentPosition>("/investment/deposit", {
       method: "POST",

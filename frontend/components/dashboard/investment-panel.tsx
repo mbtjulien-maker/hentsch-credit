@@ -17,14 +17,70 @@ import { Input } from "@/components/ui/input";
 import {
   api,
   ApiError,
+  type InvestmentAssets,
   type InvestmentBasket,
   type InvestmentBasketRate,
   type InvestmentPosition,
   type InvestmentRates,
+  type RwaBasketAsset,
+  type StockBasketAsset,
 } from "@/lib/api";
 import { formatUsd } from "@/lib/format";
 
 const BASKETS: InvestmentBasket[] = ["RWA_STRATEGY", "STOCKS"];
+
+// Détail des actifs réellement impliqués dans le panier — au-delà du rendement agrégé
+// affiché plus bas, pour que le client voie concrètement la composition de la stratégie
+// avant de placer des fonds (cf. §2H CLAUDE.md, GET /investment/assets). Un actif sans
+// cours disponible pour l'instant (prix null) affiche "—" plutôt que d'être masqué : la
+// composition du panier reste stable même si sa cotation manque temporairement.
+function AssetsTable({ assets }: { assets: (RwaBasketAsset | StockBasketAsset)[] }) {
+  const t = useTranslations("Dashboard.investment");
+  if (assets.length === 0) return null;
+
+  return (
+    <div className="overflow-x-auto rounded-lg border border-border/60">
+      <table className="w-full min-w-[280px] text-left text-xs">
+        <thead>
+          <tr className="border-b border-border/60 text-[10.5px] uppercase tracking-wide text-muted-foreground/80">
+            <th className="px-2.5 py-1.5 font-medium">{t("assetsTable.asset")}</th>
+            <th className="px-2.5 py-1.5 text-right font-medium">{t("assetsTable.price")}</th>
+            <th className="px-2.5 py-1.5 text-right font-medium">{t("assetsTable.change")}</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border/40 tabular-nums">
+          {assets.map((asset) => {
+            const key = "currency" in asset ? asset.currency : asset.ticker;
+            const image = "image" in asset ? asset.image : null;
+            const changePct = asset.changePct;
+            const isNegative = changePct != null && changePct < 0;
+            return (
+              <tr key={key}>
+                <td className="flex items-center gap-1.5 px-2.5 py-1.5">
+                  {image && (
+                    // eslint-disable-next-line @next/next/no-img-element -- même logo CDN CoinMarketCap que market-view.tsx, hors du domaine autorisé par next/image
+                    <img src={image} alt="" className="size-4 rounded-full" />
+                  )}
+                  <span className="truncate">{asset.name}</span>
+                </td>
+                <td className="px-2.5 py-1.5 text-right">
+                  {asset.price != null ? formatUsd(asset.price) : "—"}
+                </td>
+                <td
+                  className={`px-2.5 py-1.5 text-right font-medium ${
+                    changePct == null ? "text-muted-foreground" : isNegative ? "text-destructive" : "text-primary"
+                  }`}
+                >
+                  {changePct != null ? `${isNegative ? "" : "+"}${changePct.toFixed(2)}%` : "—"}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 // Un seul panneau par panier — dernier rendement quotidien réel affiché (peut être
 // négatif, cf. InvestmentService.accrueYieldForPosition), jamais masqué comme une erreur :
@@ -33,6 +89,7 @@ const BASKETS: InvestmentBasket[] = ["RWA_STRATEGY", "STOCKS"];
 function BasketCard({
   basket,
   rate,
+  assets,
   position,
   busy,
   onDeposit,
@@ -40,6 +97,7 @@ function BasketCard({
 }: {
   basket: InvestmentBasket;
   rate: InvestmentBasketRate | null;
+  assets: (RwaBasketAsset | StockBasketAsset)[];
   position: InvestmentPosition | null;
   busy: boolean;
   onDeposit: (basket: InvestmentBasket, amount: string) => Promise<void>;
@@ -63,6 +121,11 @@ function BasketCard({
         <CardDescription>{t(`basket.${basket}.description`)}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
+        <div>
+          <p className="mb-1.5 text-xs font-medium text-muted-foreground">{t("assetsTable.title")}</p>
+          <AssetsTable assets={assets} />
+        </div>
+
         <div className="flex items-center justify-between text-sm">
           <span className="text-muted-foreground">{t("indicativeAnnual")}</span>
           <span className="font-semibold tabular-nums">
@@ -158,6 +221,7 @@ export function InvestmentPanel({
 }) {
   const t = useTranslations("Dashboard.investment");
   const [rates, setRates] = useState<InvestmentRates | null>(null);
+  const [assets, setAssets] = useState<InvestmentAssets | null>(null);
   const [busyBasket, setBusyBasket] = useState<InvestmentBasket | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -170,6 +234,14 @@ export function InvestmentPanel({
       })
       .catch(() => {
         // Purement informatif — le panneau reste utilisable sans le rendement indicatif.
+      });
+    api
+      .getInvestmentAssets()
+      .then((a) => {
+        if (!ignore) setAssets(a);
+      })
+      .catch(() => {
+        // Purement informatif — le panneau reste utilisable sans le détail des actifs.
       });
     return () => {
       ignore = true;
@@ -221,6 +293,7 @@ export function InvestmentPanel({
             key={basket}
             basket={basket}
             rate={rates?.[basket] ?? null}
+            assets={assets?.[basket]?.assets ?? []}
             position={activePositions.get(basket) ?? null}
             busy={busyBasket === basket}
             onDeposit={handleDeposit}

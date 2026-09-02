@@ -1582,6 +1582,12 @@
           "title": "Stock basket",
           "description": "Five real listed stocks with a historically regular dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
+      },
+      "assetsTable": {
+        "title": "Basket assets",
+        "asset": "Asset",
+        "price": "Price",
+        "change": "Change"
       }
     }
   },

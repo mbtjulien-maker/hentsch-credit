@@ -1582,6 +1582,12 @@
           "title": "Panier d'actions",
           "description": "Cinq actions cotées réelles versant historiquement un dividende régulier (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
+      },
+      "assetsTable": {
+        "title": "Actifs du panier",
+        "asset": "Actif",
+        "price": "Cours",
+        "change": "Variation"
       }
     }
   },

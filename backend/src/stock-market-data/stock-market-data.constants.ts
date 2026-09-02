@@ -17,6 +17,17 @@ export const STOCK_BASKET_TICKERS = [
 
 export type StockTicker = (typeof STOCK_BASKET_TICKERS)[number];
 
+// Noms affichables — jamais recalculés à partir du ticker, Finnhub ne renvoie pas de nom
+// d'entreprise sur l'endpoint /quote du plan gratuit (seulement le cours). Utilisé par
+// GET /investment/assets (cf. InvestmentController) pour le détail du panier STOCKS.
+export const STOCK_NAMES: Record<StockTicker, string> = {
+  AAPL: 'Apple',
+  MSFT: 'Microsoft',
+  JNJ: 'Johnson & Johnson',
+  PG: 'Procter & Gamble',
+  KO: 'Coca-Cola',
+};
+
 // Rendement du dividende annuel indicatif du panier — une hypothèse de stratégie
 // (moyenne historique approximative de ce type de panier blue chip), pas une donnée de
 // marché en direct (Finnhub ne fournit pas de rendement de dividende en temps réel sur le

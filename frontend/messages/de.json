@@ -1582,6 +1582,12 @@
           "title": "Aktienkorb",
           "description": "Fünf real notierte Aktien mit historisch regelmäßiger Dividende (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
+      },
+      "assetsTable": {
+        "title": "Vermögenswerte des Korbs",
+        "asset": "Vermögenswert",
+        "price": "Kurs",
+        "change": "Veränderung"
       }
     }
   },

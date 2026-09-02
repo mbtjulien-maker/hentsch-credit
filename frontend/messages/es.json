@@ -1582,6 +1582,12 @@
           "title": "Canasta de acciones",
           "description": "Cinco acciones cotizadas reales con un dividendo históricamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
+      },
+      "assetsTable": {
+        "title": "Activos de la canasta",
+        "asset": "Activo",
+        "price": "Precio",
+        "change": "Variación"
       }
     }
   },

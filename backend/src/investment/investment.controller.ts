@@ -17,7 +17,10 @@ import { INDICATIVE_ANNUAL_YIELD_PCT } from './investment.constants';
 import { DepositInvestmentDto } from './dto/deposit-investment.dto';
 import { WithdrawInvestmentDto } from './dto/withdraw-investment.dto';
 import { InvestmentService } from './investment.service';
+import { MarketDataService } from '../market-data/market-data.service';
+import { STOCK_NAMES } from '../stock-market-data/stock-market-data.constants';
 import { StockMarketDataService } from '../stock-market-data/stock-market-data.service';
+import { TREASURY_BOT_BASKET } from '../treasury-bot/treasury-bot.constants';
 import { TreasuryBotService } from '../treasury-bot/treasury-bot.service';
 
 // Ouvert aux comptes PARTICULIER et BUSINESS (contrairement au crédit direct, réservé
@@ -30,6 +33,7 @@ export class InvestmentController {
     private readonly investmentService: InvestmentService,
     private readonly treasuryBotService: TreasuryBotService,
     private readonly stockMarketDataService: StockMarketDataService,
+    private readonly marketDataService: MarketDataService,
   ) {}
 
   @Post('deposit')
@@ -76,6 +80,45 @@ export class InvestmentController {
         latestMarketSignalPct:
           latestStockRun !== null ? latestStockRun.toString() : null,
       },
+    };
+  }
+
+  // Détail des actifs réellement impliqués dans chaque panier — au-delà du chiffre agrégé
+  // de GET /investment/rates, pour montrer concrètement à quoi correspond la stratégie
+  // (cf. demande client : "en dire plus sur les stratégies"). RWA_STRATEGY réutilise
+  // MarketDataService.getMarketOverview() (même source que la vue "Marché en temps réel"
+  // du dashboard), filtrée sur les 4 actifs de TREASURY_BOT_BASKET ; STOCKS réutilise
+  // StockMarketDataService.getBasketQuotes() (Finnhub, cf. §2H CLAUDE.md). Chaque actif
+  // omis silencieusement s'il n'a pas de cours disponible — jamais un prix inventé.
+  @Get('assets')
+  async getAssets() {
+    const [overview, stockQuotes] = await Promise.all([
+      this.marketDataService.getMarketOverview(),
+      this.stockMarketDataService.getBasketQuotes(),
+    ]);
+
+    const rwaAssets = TREASURY_BOT_BASKET.map((currency) =>
+      overview.find((entry) => entry.currency === currency),
+    )
+      .filter((entry): entry is NonNullable<typeof entry> => entry != null)
+      .map((entry) => ({
+        currency: entry.currency,
+        name: entry.name,
+        image: entry.image,
+        price: entry.usdPrice?.toString() ?? null,
+        changePct: entry.change24hPct,
+      }));
+
+    const stockAssets = stockQuotes.map((q) => ({
+      ticker: q.ticker,
+      name: STOCK_NAMES[q.ticker],
+      price: q.price,
+      changePct: q.changePct,
+    }));
+
+    return {
+      RWA_STRATEGY: { assets: rwaAssets },
+      STOCKS: { assets: stockAssets },
     };
   }
 }

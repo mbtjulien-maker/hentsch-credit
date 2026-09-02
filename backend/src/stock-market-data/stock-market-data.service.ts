@@ -65,6 +65,30 @@ export class StockMarketDataService {
     }
   }
 
+  // Cours + variation réels de chaque action du panier — pendant, par ticker, de
+  // MarketDataService.getMarketOverview() pour les cryptos/RWA. Consommé par GET
+  // /investment/assets (cf. InvestmentController) pour détailler le panier STOCKS au
+  // client, et par getBasketMarketSignal ci-dessous pour la moyenne utilisée à
+  // l'accrual — un seul et même jeu d'appels Finnhub, jamais deux logiques séparées qui
+  // pourraient diverger. Ne renvoie que les tickers réellement disponibles (une panne
+  // partielle n'empêche pas d'afficher les autres).
+  async getBasketQuotes(): Promise<
+    { ticker: StockTicker; price: number; changePct: number }[]
+  > {
+    const quotes = await Promise.all(
+      STOCK_BASKET_TICKERS.map(async (ticker) => {
+        const quote = await this.getQuote(ticker);
+        return quote && quote.dp !== null
+          ? { ticker, price: quote.c, changePct: quote.dp }
+          : null;
+      }),
+    );
+    return quotes.filter(
+      (q): q is { ticker: StockTicker; price: number; changePct: number } =>
+        q !== null,
+    );
+  }
+
   // Variation quotidienne moyenne (%) du panier — pendant de
   // TreasuryBotService.computeMarketSignal pour les actions, consommé par
   // InvestmentService pour calculer le rendement du jour du panier STOCKS (cf.
@@ -74,17 +98,10 @@ export class StockMarketDataService {
   // fabriqué (0 ou autre) dans ce cas, pour que l'appelant sache distinguer "marché neutre
   // aujourd'hui" de "donnée indisponible".
   async getBasketMarketSignal(): Promise<number | null> {
-    const quotes = await Promise.all(
-      STOCK_BASKET_TICKERS.map((ticker) => this.getQuote(ticker)),
-    );
-    const changes = quotes
-      .filter((q): q is FinnhubQuote => q !== null)
-      .map((q) => q.dp)
-      .filter((dp): dp is number => dp !== null);
-
-    if (changes.length === 0) {
+    const quotes = await this.getBasketQuotes();
+    if (quotes.length === 0) {
       return null;
     }
-    return changes.reduce((sum, v) => sum + v, 0) / changes.length;
+    return quotes.reduce((sum, q) => sum + q.changePct, 0) / quotes.length;
   }
 }

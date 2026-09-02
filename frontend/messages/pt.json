@@ -1582,6 +1582,12 @@
           "title": "Cesta de ações",
           "description": "Cinco ações cotadas reais com um dividendo historicamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
+      },
+      "assetsTable": {
+        "title": "Ativos da cesta",
+        "asset": "Ativo",
+        "price": "Cotação",
+        "change": "Variação"
       }
     }
   },

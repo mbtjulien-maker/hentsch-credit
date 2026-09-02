@@ -93,4 +93,52 @@ describe('StockMarketDataService', () => {
 
     expect(signal).toBeNull();
   });
+
+  describe('getBasketQuotes', () => {
+    it('returns the real price and change per ticker, in basket order', async () => {
+      const service = new StockMarketDataService(withKey('test-key'));
+      fetchSpy.mockImplementation((input: Parameters<typeof fetch>[0]) => {
+        const url = urlOf(input);
+        const index = STOCK_BASKET_TICKERS.findIndex((t) =>
+          url.includes(`symbol=${t}`),
+        );
+        return Promise.resolve(
+          jsonResponse({ c: 100 + index, pc: 99, dp: index }),
+        );
+      });
+
+      const quotes = await service.getBasketQuotes();
+
+      expect(quotes).toHaveLength(STOCK_BASKET_TICKERS.length);
+      expect(quotes[0]).toEqual({
+        ticker: STOCK_BASKET_TICKERS[0],
+        price: 100,
+        changePct: 0,
+      });
+    });
+
+    it('omits tickers that failed instead of substituting a fabricated value', async () => {
+      const service = new StockMarketDataService(withKey('test-key'));
+      let call = 0;
+      fetchSpy.mockImplementation(() => {
+        call++;
+        if (call === 1) {
+          return Promise.resolve(jsonResponse({ c: 100, pc: 96, dp: 4 }));
+        }
+        return Promise.resolve(jsonResponse({}, false, 500));
+      });
+
+      const quotes = await service.getBasketQuotes();
+
+      expect(quotes).toHaveLength(1);
+    });
+
+    it('returns an empty array without a FINNHUB_API_KEY', async () => {
+      const service = new StockMarketDataService(withKey(undefined));
+
+      const quotes = await service.getBasketQuotes();
+
+      expect(quotes).toEqual([]);
+    });
+  });
 });

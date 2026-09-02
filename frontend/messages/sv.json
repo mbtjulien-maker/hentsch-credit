@@ -1110,6 +1110,26 @@
         "label": "Aktiekorg",
         "value": "2,5 %/år vägledande",
         "detail": "Vägledande utdelning + utvecklingen för 5 börsnoterade aktier (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      },
+      "stocksConservative": {
+        "label": "Konservativ korg",
+        "value": "2,1 %/år vägledande",
+        "detail": "Vägledande utdelning + utvecklingen för 4 börsnoterade aktier (Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway)."
+      },
+      "stocksBalanced": {
+        "label": "Balanserad korg",
+        "value": "0,5 %/år vägledande",
+        "detail": "Vägledande utdelning + utvecklingen för 4 börsnoterade aktier (Microsoft, Apple, Eli Lilly, Amazon)."
+      },
+      "stocksTechAi": {
+        "label": "Tech & AI-korg",
+        "value": "0,6 %/år vägledande",
+        "detail": "Vägledande utdelning + utvecklingen för 4 börsnoterade aktier (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+      },
+      "stocksMomentum": {
+        "label": "Momentum-korg AI & lagring",
+        "value": "0,5 %/år vägledande",
+        "detail": "Vägledande utdelning + utvecklingen för 4 börsnoterade aktier (Micron, SanDisk, Dell Technologies, Palantir)."
       }
     },
     "directInvestmentNote": "Fullständigt uttag möjligt när som helst, utan uppsägningstid eller avgift. Dessa avkastningsmål är vägledande och utgör aldrig en resultatgaranti.",

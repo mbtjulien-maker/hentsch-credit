@@ -1110,6 +1110,26 @@
         "label": "Aandelenmand",
         "value": "2,5%/jaar indicatief",
         "detail": "Indicatief dividend + ontwikkeling van 5 beursgenoteerde aandelen (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      },
+      "stocksConservative": {
+        "label": "Conservatieve mand",
+        "value": "2,1%/jaar indicatief",
+        "detail": "Indicatief dividend + ontwikkeling van 4 beursgenoteerde aandelen (Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway)."
+      },
+      "stocksBalanced": {
+        "label": "Evenwichtige mand",
+        "value": "0,5%/jaar indicatief",
+        "detail": "Indicatief dividend + ontwikkeling van 4 beursgenoteerde aandelen (Microsoft, Apple, Eli Lilly, Amazon)."
+      },
+      "stocksTechAi": {
+        "label": "Tech & AI-mand",
+        "value": "0,6%/jaar indicatief",
+        "detail": "Indicatief dividend + ontwikkeling van 4 beursgenoteerde aandelen (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+      },
+      "stocksMomentum": {
+        "label": "Momentum-mand AI & Storage",
+        "value": "0,5%/jaar indicatief",
+        "detail": "Indicatief dividend + ontwikkeling van 4 beursgenoteerde aandelen (Micron, SanDisk, Dell Technologies, Palantir)."
       }
     },
     "directInvestmentNote": "Volledige opname op elk moment mogelijk, zonder opzegtermijn of boete. Deze rendementsdoelen zijn indicatief en vormen nooit een prestatiegarantie.",

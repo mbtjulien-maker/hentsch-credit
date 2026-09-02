@@ -1110,6 +1110,26 @@
         "label": "Canasta de acciones",
         "value": "2,5 %/año indicativo",
         "detail": "Dividendo indicativo + variación de 5 acciones cotizadas (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      },
+      "stocksConservative": {
+        "label": "Canasta Conservadora",
+        "value": "2,1 %/año indicativo",
+        "detail": "Dividendo indicativo + variación de 4 acciones cotizadas (Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway)."
+      },
+      "stocksBalanced": {
+        "label": "Canasta Equilibrada",
+        "value": "0,5 %/año indicativo",
+        "detail": "Dividendo indicativo + variación de 4 acciones cotizadas (Microsoft, Apple, Eli Lilly, Amazon)."
+      },
+      "stocksTechAi": {
+        "label": "Canasta Tech & IA",
+        "value": "0,6 %/año indicativo",
+        "detail": "Dividendo indicativo + variación de 4 acciones cotizadas (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+      },
+      "stocksMomentum": {
+        "label": "Canasta Momentum IA y Almacenamiento",
+        "value": "0,5 %/año indicativo",
+        "detail": "Dividendo indicativo + variación de 4 acciones cotizadas (Micron, SanDisk, Dell Technologies, Palantir)."
       }
     },
     "directInvestmentNote": "Retiro total disponible en cualquier momento, sin aviso previo ni penalización. Estos objetivos de rendimiento son indicativos y nunca constituyen una garantía de rentabilidad.",

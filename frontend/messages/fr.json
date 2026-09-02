@@ -1110,6 +1110,26 @@
         "label": "Panier d'actions",
         "value": "2,5 %/an indicatif",
         "detail": "Dividende indicatif + variation de 5 actions cotées (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      },
+      "stocksConservative": {
+        "label": "Panier Conservateur",
+        "value": "2,1 %/an indicatif",
+        "detail": "Dividende indicatif + variation de 4 actions cotées (Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway)."
+      },
+      "stocksBalanced": {
+        "label": "Panier Équilibré",
+        "value": "0,5 %/an indicatif",
+        "detail": "Dividende indicatif + variation de 4 actions cotées (Microsoft, Apple, Eli Lilly, Amazon)."
+      },
+      "stocksTechAi": {
+        "label": "Panier Tech & IA",
+        "value": "0,6 %/an indicatif",
+        "detail": "Dividende indicatif + variation de 4 actions cotées (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+      },
+      "stocksMomentum": {
+        "label": "Panier Momentum IA & Storage",
+        "value": "0,5 %/an indicatif",
+        "detail": "Dividende indicatif + variation de 4 actions cotées (Micron, SanDisk, Dell Technologies, Palantir)."
       }
     },
     "directInvestmentNote": "Retrait intégral possible à tout moment, sans préavis ni pénalité. Ces objectifs de rendement sont indicatifs et ne constituent jamais une garantie de performance.",

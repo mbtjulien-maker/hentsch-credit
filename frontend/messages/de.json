@@ -1110,6 +1110,26 @@
         "label": "Aktienkorb",
         "value": "2,5 %/Jahr indikativ",
         "detail": "Indikative Dividende + Entwicklung von 5 notierten Aktien (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      },
+      "stocksConservative": {
+        "label": "Konservativer Korb",
+        "value": "2,1 %/Jahr indikativ",
+        "detail": "Indikative Dividende + Entwicklung von 4 notierten Aktien (Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway)."
+      },
+      "stocksBalanced": {
+        "label": "Ausgewogener Korb",
+        "value": "0,5 %/Jahr indikativ",
+        "detail": "Indikative Dividende + Entwicklung von 4 notierten Aktien (Microsoft, Apple, Eli Lilly, Amazon)."
+      },
+      "stocksTechAi": {
+        "label": "Tech-&-KI-Korb",
+        "value": "0,6 %/Jahr indikativ",
+        "detail": "Indikative Dividende + Entwicklung von 4 notierten Aktien (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+      },
+      "stocksMomentum": {
+        "label": "Momentum-Korb KI & Storage",
+        "value": "0,5 %/Jahr indikativ",
+        "detail": "Indikative Dividende + Entwicklung von 4 notierten Aktien (Micron, SanDisk, Dell Technologies, Palantir)."
       }
     },
     "directInvestmentNote": "Vollständige Auszahlung jederzeit möglich, ohne Kündigungsfrist oder Gebühr. Diese Renditeziele sind indikativ und stellen niemals eine Performancegarantie dar.",

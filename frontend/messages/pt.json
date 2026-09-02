@@ -1110,6 +1110,26 @@
         "label": "Cesta de ações",
         "value": "2,5 %/ano indicativo",
         "detail": "Dividendo indicativo + variação de 5 ações cotadas (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      },
+      "stocksConservative": {
+        "label": "Cesta Conservadora",
+        "value": "2,1 %/ano indicativo",
+        "detail": "Dividendo indicativo + variação de 4 ações cotadas (Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway)."
+      },
+      "stocksBalanced": {
+        "label": "Cesta Equilibrada",
+        "value": "0,5 %/ano indicativo",
+        "detail": "Dividendo indicativo + variação de 4 ações cotadas (Microsoft, Apple, Eli Lilly, Amazon)."
+      },
+      "stocksTechAi": {
+        "label": "Cesta Tech & IA",
+        "value": "0,6 %/ano indicativo",
+        "detail": "Dividendo indicativo + variação de 4 ações cotadas (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+      },
+      "stocksMomentum": {
+        "label": "Cesta Momentum IA e Armazenamento",
+        "value": "0,5 %/ano indicativo",
+        "detail": "Dividendo indicativo + variação de 4 ações cotadas (Micron, SanDisk, Dell Technologies, Palantir)."
       }
     },
     "directInvestmentNote": "Levantamento total disponível a qualquer momento, sem aviso prévio nem penalização. Estes objetivos de rendimento são indicativos e nunca constituem uma garantia de desempenho.",

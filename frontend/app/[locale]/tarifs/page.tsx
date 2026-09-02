@@ -1,4 +1,4 @@
-import { Coins, Landmark, LineChart, Lock, Percent, ShieldAlert, ShieldCheck, Timer, TrendingUp } from "lucide-react";
+import { Coins, Cpu, Landmark, LineChart, Lock, Percent, Rocket, Scale, ShieldAlert, ShieldCheck, Timer, TrendingUp } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -43,6 +43,10 @@ export default async function TarifsPage({ params }: { params: Promise<{ locale:
   const DIRECT_INVESTMENT_ITEMS = [
     { key: "rwa", icon: LineChart, label: t("directInvestmentItems.rwa.label"), value: t("directInvestmentItems.rwa.value"), detail: t("directInvestmentItems.rwa.detail") },
     { key: "stocks", icon: TrendingUp, label: t("directInvestmentItems.stocks.label"), value: t("directInvestmentItems.stocks.value"), detail: t("directInvestmentItems.stocks.detail") },
+    { key: "stocksConservative", icon: ShieldCheck, label: t("directInvestmentItems.stocksConservative.label"), value: t("directInvestmentItems.stocksConservative.value"), detail: t("directInvestmentItems.stocksConservative.detail") },
+    { key: "stocksBalanced", icon: Scale, label: t("directInvestmentItems.stocksBalanced.label"), value: t("directInvestmentItems.stocksBalanced.value"), detail: t("directInvestmentItems.stocksBalanced.detail") },
+    { key: "stocksTechAi", icon: Cpu, label: t("directInvestmentItems.stocksTechAi.label"), value: t("directInvestmentItems.stocksTechAi.value"), detail: t("directInvestmentItems.stocksTechAi.detail") },
+    { key: "stocksMomentum", icon: Rocket, label: t("directInvestmentItems.stocksMomentum.label"), value: t("directInvestmentItems.stocksMomentum.value"), detail: t("directInvestmentItems.stocksMomentum.detail") },
   ];
 
   const FAQ_ITEMS = (["earlyRepayment", "negotiable", "currencyDifference"] as const).map((key) => ({
@@ -125,7 +129,7 @@ export default async function TarifsPage({ params }: { params: Promise<{ locale:
 
         <h2 className="mt-10 text-xl font-semibold text-foreground">{t("directInvestmentTitle")}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{t("directInvestmentIntro")}</p>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {DIRECT_INVESTMENT_ITEMS.map((item) => (
             <div key={item.key} className="flex flex-col rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
               <div className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-600 text-white">

@@ -1110,6 +1110,26 @@
         "label": "Stock basket",
         "value": "2.5%/year indicative",
         "detail": "Indicative dividend + the movement of 5 listed stocks (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      },
+      "stocksConservative": {
+        "label": "Conservative basket",
+        "value": "2.1%/year indicative",
+        "detail": "Indicative dividend + the movement of 4 listed stocks (Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway)."
+      },
+      "stocksBalanced": {
+        "label": "Balanced basket",
+        "value": "0.5%/year indicative",
+        "detail": "Indicative dividend + the movement of 4 listed stocks (Microsoft, Apple, Eli Lilly, Amazon)."
+      },
+      "stocksTechAi": {
+        "label": "Tech & AI basket",
+        "value": "0.6%/year indicative",
+        "detail": "Indicative dividend + the movement of 4 listed stocks (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+      },
+      "stocksMomentum": {
+        "label": "AI & Storage Momentum basket",
+        "value": "0.5%/year indicative",
+        "detail": "Indicative dividend + the movement of 4 listed stocks (Micron, SanDisk, Dell Technologies, Palantir)."
       }
     },
     "directInvestmentNote": "Full withdrawal available at any time, no notice or penalty. These return targets are indicative and never a performance guarantee.",

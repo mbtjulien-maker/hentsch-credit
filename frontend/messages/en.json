@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Direct investment",
-        "description": "A real placement, no collateral or credit: RWA strategy or a stock basket, your choice."
+        "description": "A placement, no collateral or credit: RWA strategy or a stock basket, your choice."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Direct investment",
-    "directInvestmentIntro": "A real placement, distinct from credit: two baskets to choose from, a real daily return that can be negative.",
+    "directInvestmentIntro": "A placement distinct from credit: two baskets to choose from, a daily return that can be negative.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA strategy",
@@ -1109,7 +1109,7 @@
       "stocks": {
         "label": "Stock basket",
         "value": "2.5%/year indicative",
-        "detail": "Indicative dividend + the real movement of 5 listed stocks (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        "detail": "Indicative dividend + the movement of 5 listed stocks (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
       }
     },
     "directInvestmentNote": "Full withdrawal available at any time, no notice or penalty. These return targets are indicative and never a performance guarantee.",
@@ -1561,9 +1561,9 @@
     },
     "investment": {
       "title": "Direct investment",
-      "intro": "Place funds from your available balance into one of the baskets below: a real investment, no collateral or credit involved, with a real daily return that can be negative on an unfavorable market day. Full withdrawal available at any time.",
+      "intro": "Place funds from your available balance into one of the baskets below: a placement, no collateral or credit involved, with a daily return that can be negative on an unfavorable market day. Full withdrawal available at any time.",
       "indicativeAnnual": "Indicative annual target",
-      "latestDaily": "Latest real daily return",
+      "latestDaily": "Latest daily return",
       "principal": "Capital invested",
       "accruedYield": "Accrued return",
       "totalValue": "Total value",
@@ -1580,7 +1580,7 @@
         },
         "STOCKS": {
           "title": "Stock basket",
-          "description": "Five real listed stocks with a historically regular dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+          "description": "Five listed stocks with a historically regular dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
       },
       "assetsTable": {
@@ -1620,7 +1620,7 @@
           "horizonYears": "{years, plural, one {# year} other {# years}}",
           "projectedValue": "Projected value",
           "projectedGain": "Projected gain",
-          "disclaimer": "Projection based on the current indicative return target, compounded over the chosen period. Never a guarantee: the actual return depends on the market and can be lower, nil, or negative."
+          "disclaimer": "Projection based on the current indicative return target, compounded over the chosen period. Never a guarantee: the return you actually get depends on the market and can be lower, nil, or negative."
         },
         "quiz": {
           "horizon": {
@@ -1658,7 +1658,7 @@
             },
             "dynamic": {
               "title": "Dynamic profile",
-              "description": "An allocation that favors the stock basket, more exposed to real market movements."
+              "description": "An allocation that favors the stock basket, more exposed to market movements."
             }
           },
           "allocationRwa": "RWA strategy: {pct}%",
@@ -1668,7 +1668,7 @@
         "faq": {
           "difference": {
             "question": "What's the difference between the two baskets?",
-            "answer": "The RWA strategy mirrors the bank's own treasury strategy on tokenized industrial metals and commodities, with a dampened return. The stock basket fully participates in the real movement of 5 listed stocks, with a potentially higher but more volatile return."
+            "answer": "The RWA strategy mirrors the bank's own treasury strategy on tokenized industrial metals and commodities, with a dampened return. The stock basket fully participates in the movement of 5 listed stocks, with a potentially higher but more volatile return."
           },
           "guarantee": {
             "question": "Is my capital guaranteed?",
@@ -1703,16 +1703,16 @@
   "DirectInvestment": {
     "meta": {
       "title": "Direct investment",
-      "description": "Place funds in the bank's RWA strategy or a basket of real stocks: a real placement, no collateral or credit, with a real daily return."
+      "description": "Place funds in the bank's RWA strategy or a basket of listed stocks: a placement, no collateral or credit, with a daily return that tracks the market."
     },
     "eyebrow": "A third product",
     "title": "Direct investment",
-    "description": "A real placement, not a loan: lock up funds from your available balance for a real daily return, with no collateral and no credit issued.",
+    "description": "A placement, not a loan: lock up funds from your available balance for a daily return that tracks the market, with no collateral and no credit issued.",
     "basketsTitle": "Two baskets to choose from",
     "steps": {
       "choose": {
         "title": "Choose a basket",
-        "description": "RWA strategy (tokenized industrial metals and commodities) or a basket of 5 real listed stocks: two return profiles to choose from."
+        "description": "RWA strategy (tokenized industrial metals and commodities) or a basket of 5 listed stocks: two return profiles to choose from."
       },
       "deposit": {
         "title": "Place funds",
@@ -1720,7 +1720,7 @@
       },
       "accrue": {
         "title": "Compounded daily return",
-        "description": "Calculated every day from real market data, never fabricated. It can be negative on an unfavorable market day."
+        "description": "Calculated every day from the market: it can be negative on an unfavorable day."
       },
       "withdraw": {
         "title": "Withdraw anytime",
@@ -1735,17 +1735,17 @@
       },
       "stocks": {
         "title": "Stock basket",
-        "description": "Five real listed stocks with a historically regular dividend: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
-        "rate": "2.5%/year indicative + the basket's real movement"
+        "description": "Five listed stocks with a historically regular dividend: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2.5%/year indicative + the basket's movement"
       }
     },
     "riskTitle": "A real placement, a real risk",
-    "riskBody": "Unlike the collateral's yield, which only ever repays on real upside, direct investment can lose value: the daily return reflects real market data and can be negative. The indicative return targets shown are never a performance guarantee.",
+    "riskBody": "Unlike the collateral's yield, which only ever repays on price gains, direct investment can lose value: the daily return tracks the market and can be negative. The indicative return targets shown are never a performance guarantee.",
     "faqTitle": "Frequently asked questions",
     "faq": {
       "guarantee": {
         "question": "Is the displayed return guaranteed?",
-        "answer": "No. It's an indicative target based on a strategy assumption; the return actually applied each day depends on real market data and can be negative."
+        "answer": "No. It's an indicative target based on a strategy assumption; the return applied each day depends on the market and can be negative."
       },
       "withdraw": {
         "question": "Can I withdraw my funds at any time?",

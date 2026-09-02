@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Direktinvestition",
-        "description": "Eine echte Geldanlage, ohne Sicherheit oder Kredit: RWA-Strategie oder ein Aktienkorb, nach Wahl."
+        "description": "Eine Geldanlage, ohne Sicherheit oder Kredit: RWA-Strategie oder ein Aktienkorb, nach Wahl."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Direktinvestition",
-    "directInvestmentIntro": "Eine echte Geldanlage, getrennt vom Kredit: zwei Körbe zur Wahl, eine echte Tagesrendite, die negativ sein kann.",
+    "directInvestmentIntro": "Eine Geldanlage, getrennt vom Kredit: zwei Körbe zur Wahl, eine Tagesrendite, die negativ sein kann.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA-Strategie",
@@ -1109,7 +1109,7 @@
       "stocks": {
         "label": "Aktienkorb",
         "value": "2,5 %/Jahr indikativ",
-        "detail": "Indikative Dividende + reale Entwicklung von 5 notierten Aktien (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        "detail": "Indikative Dividende + Entwicklung von 5 notierten Aktien (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
       }
     },
     "directInvestmentNote": "Vollständige Auszahlung jederzeit möglich, ohne Kündigungsfrist oder Gebühr. Diese Renditeziele sind indikativ und stellen niemals eine Performancegarantie dar.",
@@ -1561,9 +1561,9 @@
     },
     "investment": {
       "title": "Direktinvestition",
-      "intro": "Legen Sie Mittel aus Ihrem verfügbaren Guthaben in einem der folgenden Körbe an: eine echte Geldanlage, ohne Sicherheit oder Kredit, mit einer echten Tagesrendite, die an einem ungünstigen Markttag negativ sein kann. Vollständige Auszahlung jederzeit möglich.",
+      "intro": "Legen Sie Mittel aus Ihrem verfügbaren Guthaben in einem der folgenden Körbe an: eine Geldanlage, ohne Sicherheit oder Kredit, mit einer Tagesrendite, die an einem ungünstigen Markttag negativ sein kann. Vollständige Auszahlung jederzeit möglich.",
       "indicativeAnnual": "Indikatives Jahresziel",
-      "latestDaily": "Letzte reale Tagesrendite",
+      "latestDaily": "Letzte Tagesrendite",
       "principal": "Angelegtes Kapital",
       "accruedYield": "Aufgelaufene Rendite",
       "totalValue": "Gesamtwert",
@@ -1580,7 +1580,7 @@
         },
         "STOCKS": {
           "title": "Aktienkorb",
-          "description": "Fünf real notierte Aktien mit historisch regelmäßiger Dividende (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+          "description": "Fünf notierte Aktien mit historisch regelmäßiger Dividende (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
       },
       "assetsTable": {
@@ -1620,7 +1620,7 @@
           "horizonYears": "{years, plural, one {# Jahr} other {# Jahre}}",
           "projectedValue": "Prognostizierter Wert",
           "projectedGain": "Prognostizierter Gewinn",
-          "disclaimer": "Prognose basierend auf dem aktuellen indikativen Renditeziel, verzinst über den gewählten Zeitraum. Niemals eine Garantie: Die tatsächliche Rendite hängt vom Markt ab und kann niedriger, null oder negativ ausfallen."
+          "disclaimer": "Prognose basierend auf dem aktuellen indikativen Renditeziel, verzinst über den gewählten Zeitraum. Niemals eine Garantie: Die tatsächlich erzielte Rendite hängt vom Markt ab und kann niedriger, null oder negativ ausfallen."
         },
         "quiz": {
           "horizon": {
@@ -1658,7 +1658,7 @@
             },
             "dynamic": {
               "title": "Dynamisches Profil",
-              "description": "Eine Aufteilung, die den Aktienkorb bevorzugt, stärker den realen Marktbewegungen ausgesetzt."
+              "description": "Eine Aufteilung, die den Aktienkorb bevorzugt, stärker den Marktbewegungen ausgesetzt."
             }
           },
           "allocationRwa": "RWA-Strategie: {pct}%",
@@ -1668,7 +1668,7 @@
         "faq": {
           "difference": {
             "question": "Was ist der Unterschied zwischen den beiden Körben?",
-            "answer": "Die RWA-Strategie spiegelt die Treasury-Strategie der Bank auf tokenisierte Industriemetalle und Rohstoffe wider, mit einer gedämpften Rendite. Der Aktienkorb nimmt voll an der realen Entwicklung von 5 notierten Aktien teil, mit potenziell höherer, aber volatilerer Rendite."
+            "answer": "Die RWA-Strategie spiegelt die Treasury-Strategie der Bank auf tokenisierte Industriemetalle und Rohstoffe wider, mit einer gedämpften Rendite. Der Aktienkorb nimmt voll an der Entwicklung von 5 notierten Aktien teil, mit potenziell höherer, aber volatilerer Rendite."
           },
           "guarantee": {
             "question": "Ist mein Kapital garantiert?",
@@ -1703,16 +1703,16 @@
   "DirectInvestment": {
     "meta": {
       "title": "Direktinvestition",
-      "description": "Legen Sie Mittel in der RWA-Strategie der Bank oder einem Korb echter Aktien an: eine echte Geldanlage, ohne Sicherheit oder Kredit, mit einer echten Tagesrendite."
+      "description": "Legen Sie Mittel in der RWA-Strategie der Bank oder einem Korb notierter Aktien an: eine Geldanlage, ohne Sicherheit oder Kredit, mit einer Tagesrendite, die dem Markt folgt."
     },
     "eyebrow": "Ein drittes Produkt",
     "title": "Direktinvestition",
-    "description": "Eine echte Geldanlage, kein Darlehen: Legen Sie Mittel aus Ihrem verfügbaren Guthaben für eine echte Tagesrendite an, ohne Sicherheit und ohne gewährten Kredit.",
+    "description": "Eine Geldanlage, kein Darlehen: Legen Sie Mittel aus Ihrem verfügbaren Guthaben für eine Tagesrendite an, die dem Markt folgt, ohne Sicherheit und ohne gewährten Kredit.",
     "basketsTitle": "Zwei Körbe zur Wahl",
     "steps": {
       "choose": {
         "title": "Einen Korb wählen",
-        "description": "RWA-Strategie (tokenisierte Industriemetalle und Rohstoffe) oder ein Korb aus 5 echten notierten Aktien: zwei Renditeprofile zur Wahl."
+        "description": "RWA-Strategie (tokenisierte Industriemetalle und Rohstoffe) oder ein Korb aus 5 notierten Aktien: zwei Renditeprofile zur Wahl."
       },
       "deposit": {
         "title": "Mittel anlegen",
@@ -1720,7 +1720,7 @@
       },
       "accrue": {
         "title": "Zusammengesetzte Tagesrendite",
-        "description": "Täglich aus echten Marktdaten berechnet, niemals erfunden. An einem ungünstigen Markttag kann sie negativ sein."
+        "description": "Täglich auf Basis des Marktes berechnet: An einem ungünstigen Tag kann sie negativ sein."
       },
       "withdraw": {
         "title": "Jederzeit auszahlbar",
@@ -1735,17 +1735,17 @@
       },
       "stocks": {
         "title": "Aktienkorb",
-        "description": "Fünf echte notierte Aktien mit historisch regelmäßiger Dividende: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
-        "rate": "2,5 %/Jahr indikativ + reale Entwicklung des Korbs"
+        "description": "Fünf notierte Aktien mit historisch regelmäßiger Dividende: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/Jahr indikativ + Entwicklung des Korbs"
       }
     },
     "riskTitle": "Eine echte Geldanlage, ein echtes Risiko",
-    "riskBody": "Im Gegensatz zur Rendite der Krypto-Sicherheit, die nur bei realem Kursgewinn zurückzahlt, kann die Direktinvestition an Wert verlieren: Die Tagesrendite spiegelt reale Marktdaten wider und kann negativ sein. Die angezeigten indikativen Renditeziele stellen keinesfalls eine Performancegarantie dar.",
+    "riskBody": "Im Gegensatz zur Rendite der Krypto-Sicherheit, die nur bei Kursgewinn zurückzahlt, kann die Direktinvestition an Wert verlieren: Die Tagesrendite folgt dem Markt und kann negativ sein. Die angezeigten indikativen Renditeziele stellen keinesfalls eine Performancegarantie dar.",
     "faqTitle": "Häufig gestellte Fragen",
     "faq": {
       "guarantee": {
         "question": "Ist die angezeigte Rendite garantiert?",
-        "answer": "Nein. Es handelt sich um ein indikatives Ziel auf Basis einer Strategieannahme; die tatsächlich täglich angewendete Rendite hängt von echten Marktdaten ab und kann negativ sein."
+        "answer": "Nein. Es handelt sich um ein indikatives Ziel auf Basis einer Strategieannahme; die täglich angewendete Rendite hängt vom Markt ab und kann negativ sein."
       },
       "withdraw": {
         "question": "Kann ich meine Mittel jederzeit abheben?",

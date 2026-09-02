@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Directe belegging",
-        "description": "Een echte belegging, zonder onderpand of krediet: RWA-strategie of een aandelenmand, naar keuze."
+        "description": "Een belegging, zonder onderpand of krediet: RWA-strategie of een aandelenmand, naar keuze."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Directe belegging",
-    "directInvestmentIntro": "Een echte belegging, los van krediet: twee manden naar keuze, een reëel dagrendement dat negatief kan zijn.",
+    "directInvestmentIntro": "Een belegging los van krediet: twee manden naar keuze, een dagrendement dat negatief kan zijn.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA-strategie",
@@ -1109,7 +1109,7 @@
       "stocks": {
         "label": "Aandelenmand",
         "value": "2,5%/jaar indicatief",
-        "detail": "Indicatief dividend + reële ontwikkeling van 5 beursgenoteerde aandelen (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        "detail": "Indicatief dividend + ontwikkeling van 5 beursgenoteerde aandelen (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
       }
     },
     "directInvestmentNote": "Volledige opname op elk moment mogelijk, zonder opzegtermijn of boete. Deze rendementsdoelen zijn indicatief en vormen nooit een prestatiegarantie.",
@@ -1561,9 +1561,9 @@
     },
     "investment": {
       "title": "Directe belegging",
-      "intro": "Plaats geld van uw beschikbare saldo in een van onderstaande manden: een echte belegging, zonder onderpand of krediet, met een reëel dagelijks rendement dat op een ongunstige marktdag negatief kan zijn. Volledige opname op elk moment mogelijk.",
+      "intro": "Plaats geld van uw beschikbare saldo in een van onderstaande manden: een belegging, zonder onderpand of krediet, met een dagelijks rendement dat op een ongunstige marktdag negatief kan zijn. Volledige opname op elk moment mogelijk.",
       "indicativeAnnual": "Indicatief jaarlijks doel",
-      "latestDaily": "Laatste reële dagrendement",
+      "latestDaily": "Laatste dagrendement",
       "principal": "Belegd kapitaal",
       "accruedYield": "Opgebouwd rendement",
       "totalValue": "Totale waarde",
@@ -1580,7 +1580,7 @@
         },
         "STOCKS": {
           "title": "Aandelenmand",
-          "description": "Vijf echte beursgenoteerde aandelen met historisch een regelmatig dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+          "description": "Vijf beursgenoteerde aandelen met historisch een regelmatig dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
       },
       "assetsTable": {
@@ -1620,7 +1620,7 @@
           "horizonYears": "{years, plural, one {# jaar} other {# jaar}}",
           "projectedValue": "Geprojecteerde waarde",
           "projectedGain": "Geprojecteerde winst",
-          "disclaimer": "Projectie op basis van het huidige indicatieve rendementsdoel, samengesteld over de gekozen periode. Nooit een garantie: het werkelijke rendement hangt af van de markt en kan lager, nul of negatief zijn."
+          "disclaimer": "Projectie op basis van het huidige indicatieve rendementsdoel, samengesteld over de gekozen periode. Nooit een garantie: het daadwerkelijk behaalde rendement hangt af van de markt en kan lager, nul of negatief zijn."
         },
         "quiz": {
           "horizon": {
@@ -1658,7 +1658,7 @@
             },
             "dynamic": {
               "title": "Dynamisch profiel",
-              "description": "Een verdeling die de aandelenmand bevoordeelt, sterker blootgesteld aan reële marktbewegingen."
+              "description": "Een verdeling die de aandelenmand bevoordeelt, sterker blootgesteld aan marktbewegingen."
             }
           },
           "allocationRwa": "RWA-strategie: {pct}%",
@@ -1668,7 +1668,7 @@
         "faq": {
           "difference": {
             "question": "Wat is het verschil tussen de twee manden?",
-            "answer": "De RWA-strategie weerspiegelt de treasurystrategie van de bank op getokeniseerde industriële metalen en grondstoffen, met een gedempt rendement. De aandelenmand neemt volledig deel aan de reële ontwikkeling van 5 beursgenoteerde aandelen, met een potentieel hoger maar volatieler rendement."
+            "answer": "De RWA-strategie weerspiegelt de treasurystrategie van de bank op getokeniseerde industriële metalen en grondstoffen, met een gedempt rendement. De aandelenmand neemt volledig deel aan de ontwikkeling van 5 beursgenoteerde aandelen, met een potentieel hoger maar volatieler rendement."
           },
           "guarantee": {
             "question": "Is mijn kapitaal gegarandeerd?",
@@ -1703,16 +1703,16 @@
   "DirectInvestment": {
     "meta": {
       "title": "Directe belegging",
-      "description": "Plaats middelen in de RWA-strategie van de bank of een mand echte aandelen: een echte belegging, zonder onderpand of krediet, met een reëel dagrendement."
+      "description": "Plaats middelen in de RWA-strategie van de bank of een mand beursgenoteerde aandelen: een belegging, zonder onderpand of krediet, met een dagrendement dat de markt volgt."
     },
     "eyebrow": "Een derde product",
     "title": "Directe belegging",
-    "description": "Een echte belegging, geen lening: zet middelen van uw beschikbare saldo vast voor een reëel dagrendement, zonder onderpand en zonder verstrekt krediet.",
+    "description": "Een belegging, geen lening: zet middelen van uw beschikbare saldo vast voor een dagrendement dat de markt volgt, zonder onderpand en zonder verstrekt krediet.",
     "basketsTitle": "Twee manden om uit te kiezen",
     "steps": {
       "choose": {
         "title": "Kies een mand",
-        "description": "RWA-strategie (getokeniseerde industriële metalen en grondstoffen) of een mand van 5 echte beursgenoteerde aandelen: twee rendementsprofielen naar keuze."
+        "description": "RWA-strategie (getokeniseerde industriële metalen en grondstoffen) of een mand van 5 beursgenoteerde aandelen: twee rendementsprofielen naar keuze."
       },
       "deposit": {
         "title": "Middelen plaatsen",
@@ -1720,7 +1720,7 @@
       },
       "accrue": {
         "title": "Samengesteld dagrendement",
-        "description": "Elke dag berekend op basis van reële marktgegevens, nooit verzonnen. Kan negatief zijn op een ongunstige marktdag."
+        "description": "Elke dag berekend op basis van de markt: kan negatief zijn op een ongunstige dag."
       },
       "withdraw": {
         "title": "Op elk moment opnemen",
@@ -1735,17 +1735,17 @@
       },
       "stocks": {
         "title": "Aandelenmand",
-        "description": "Vijf echte beursgenoteerde aandelen met historisch een regelmatig dividend: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
-        "rate": "2,5%/jaar indicatief + reële ontwikkeling van de mand"
+        "description": "Vijf beursgenoteerde aandelen met historisch een regelmatig dividend: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5%/jaar indicatief + ontwikkeling van de mand"
       }
     },
     "riskTitle": "Een echte belegging, een echt risico",
-    "riskBody": "In tegenstelling tot het rendement van het crypto-onderpand, dat alleen terugbetaalt bij reële waardestijging, kan de directe belegging aan waarde verliezen: het dagrendement weerspiegelt reële marktgegevens en kan negatief zijn. De getoonde indicatieve rendementsdoelen vormen nooit een prestatiegarantie.",
+    "riskBody": "In tegenstelling tot het rendement van het crypto-onderpand, dat alleen terugbetaalt bij waardestijging, kan de directe belegging aan waarde verliezen: het dagrendement volgt de markt en kan negatief zijn. De getoonde indicatieve rendementsdoelen vormen nooit een prestatiegarantie.",
     "faqTitle": "Veelgestelde vragen",
     "faq": {
       "guarantee": {
         "question": "Is het getoonde rendement gegarandeerd?",
-        "answer": "Nee. Het is een indicatief doel op basis van een strategieaanname; het dagelijks daadwerkelijk toegepaste rendement hangt af van reële marktgegevens en kan negatief zijn."
+        "answer": "Nee. Het is een indicatief doel op basis van een strategieaanname; het dagelijks toegepaste rendement hangt af van de markt en kan negatief zijn."
       },
       "withdraw": {
         "question": "Kan ik mijn middelen op elk moment opnemen?",

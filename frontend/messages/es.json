@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Inversión directa",
-        "description": "Una inversión real, sin garantía ni crédito: estrategia RWA o una canasta de acciones, a elegir."
+        "description": "Una inversión, sin garantía ni crédito: estrategia RWA o una canasta de acciones, a elegir."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Inversión directa",
-    "directInvestmentIntro": "Una inversión real, distinta del crédito: dos canastas a elegir, un rendimiento diario real que puede ser negativo.",
+    "directInvestmentIntro": "Una inversión distinta del crédito: dos canastas a elegir, un rendimiento diario que puede ser negativo.",
     "directInvestmentItems": {
       "rwa": {
         "label": "Estrategia RWA",
@@ -1109,7 +1109,7 @@
       "stocks": {
         "label": "Canasta de acciones",
         "value": "2,5 %/año indicativo",
-        "detail": "Dividendo indicativo + variación real de 5 acciones cotizadas (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        "detail": "Dividendo indicativo + variación de 5 acciones cotizadas (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
       }
     },
     "directInvestmentNote": "Retiro total disponible en cualquier momento, sin aviso previo ni penalización. Estos objetivos de rendimiento son indicativos y nunca constituyen una garantía de rentabilidad.",
@@ -1561,9 +1561,9 @@
     },
     "investment": {
       "title": "Inversión directa",
-      "intro": "Coloca fondos de tu saldo disponible en una de las siguientes canastas: una inversión real, sin garantía ni crédito, con un rendimiento diario real que puede ser negativo en un día de mercado desfavorable. Retiro total disponible en cualquier momento.",
+      "intro": "Coloca fondos de tu saldo disponible en una de las siguientes canastas: una inversión, sin garantía ni crédito, con un rendimiento diario que puede ser negativo en un día de mercado desfavorable. Retiro total disponible en cualquier momento.",
       "indicativeAnnual": "Objetivo anual indicativo",
-      "latestDaily": "Último rendimiento diario real",
+      "latestDaily": "Último rendimiento diario",
       "principal": "Capital invertido",
       "accruedYield": "Rendimiento acumulado",
       "totalValue": "Valor total",
@@ -1580,7 +1580,7 @@
         },
         "STOCKS": {
           "title": "Canasta de acciones",
-          "description": "Cinco acciones cotizadas reales con un dividendo históricamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+          "description": "Cinco acciones cotizadas con un dividendo históricamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
       },
       "assetsTable": {
@@ -1620,7 +1620,7 @@
           "horizonYears": "{years, plural, one {# año} other {# años}}",
           "projectedValue": "Valor proyectado",
           "projectedGain": "Ganancia proyectada",
-          "disclaimer": "Proyección basada en el objetivo de rendimiento indicativo actual, compuesto durante el periodo elegido. Nunca es una garantía: el rendimiento real depende del mercado y puede ser inferior, nulo o negativo."
+          "disclaimer": "Proyección basada en el objetivo de rendimiento indicativo actual, compuesto durante el periodo elegido. Nunca es una garantía: el rendimiento efectivamente obtenido depende del mercado y puede ser inferior, nulo o negativo."
         },
         "quiz": {
           "horizon": {
@@ -1658,7 +1658,7 @@
             },
             "dynamic": {
               "title": "Perfil dinámico",
-              "description": "Una asignación que favorece la canasta de acciones, más expuesta a las variaciones reales del mercado."
+              "description": "Una asignación que favorece la canasta de acciones, más expuesta a las variaciones del mercado."
             }
           },
           "allocationRwa": "Estrategia RWA: {pct}%",
@@ -1668,7 +1668,7 @@
         "faq": {
           "difference": {
             "question": "¿Cuál es la diferencia entre las dos canastas?",
-            "answer": "La estrategia RWA reproduce la estrategia de tesorería del banco sobre metales industriales y materias primas tokenizados, con un rendimiento amortiguado. La canasta de acciones participa plenamente en la variación real de 5 acciones cotizadas, con un rendimiento potencialmente mayor pero más volátil."
+            "answer": "La estrategia RWA reproduce la estrategia de tesorería del banco sobre metales industriales y materias primas tokenizados, con un rendimiento amortiguado. La canasta de acciones participa plenamente en la variación de 5 acciones cotizadas, con un rendimiento potencialmente mayor pero más volátil."
           },
           "guarantee": {
             "question": "¿Mi capital está garantizado?",
@@ -1703,16 +1703,16 @@
   "DirectInvestment": {
     "meta": {
       "title": "Inversión directa",
-      "description": "Coloca fondos en la estrategia RWA del banco o en una canasta de acciones reales: una inversión real, sin garantía ni crédito, con un rendimiento diario real."
+      "description": "Coloca fondos en la estrategia RWA del banco o en una canasta de acciones cotizadas: una inversión, sin garantía ni crédito, con un rendimiento diario que sigue el mercado."
     },
     "eyebrow": "Un tercer producto",
     "title": "Inversión directa",
-    "description": "Una inversión real, no un préstamo: inmoviliza fondos de tu saldo disponible para obtener un rendimiento diario real, sin garantía ni crédito emitido.",
+    "description": "Una inversión, no un préstamo: inmoviliza fondos de tu saldo disponible para obtener un rendimiento diario que sigue el mercado, sin garantía ni crédito emitido.",
     "basketsTitle": "Dos canastas a elegir",
     "steps": {
       "choose": {
         "title": "Elegir una canasta",
-        "description": "Estrategia RWA (metales industriales y materias primas tokenizados) o una canasta de 5 acciones cotizadas reales: dos perfiles de rendimiento a elegir."
+        "description": "Estrategia RWA (metales industriales y materias primas tokenizados) o una canasta de 5 acciones cotizadas: dos perfiles de rendimiento a elegir."
       },
       "deposit": {
         "title": "Colocar fondos",
@@ -1720,7 +1720,7 @@
       },
       "accrue": {
         "title": "Rendimiento diario compuesto",
-        "description": "Calculado cada día a partir de un dato de mercado real, nunca inventado. Puede ser negativo en un día de mercado desfavorable."
+        "description": "Calculado cada día a partir del mercado: puede ser negativo en un día desfavorable."
       },
       "withdraw": {
         "title": "Retiro en cualquier momento",
@@ -1735,17 +1735,17 @@
       },
       "stocks": {
         "title": "Canasta de acciones",
-        "description": "Cinco acciones cotizadas reales con un dividendo históricamente regular: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
-        "rate": "2,5 %/año indicativo + variación real de la canasta"
+        "description": "Cinco acciones cotizadas con un dividendo históricamente regular: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/año indicativo + variación de la canasta"
       }
     },
     "riskTitle": "Una inversión real, un riesgo real",
-    "riskBody": "A diferencia del rendimiento del gage cripto, que solo se reembolsa sobre plusvalía real, la inversión directa puede perder valor: el rendimiento diario refleja un dato de mercado real y puede ser negativo. Los objetivos de rendimiento indicativos mostrados nunca constituyen una garantía de rentabilidad.",
+    "riskBody": "A diferencia del rendimiento del gage cripto, que solo se reembolsa sobre plusvalía, la inversión directa puede perder valor: el rendimiento diario sigue el mercado y puede ser negativo. Los objetivos de rendimiento indicativos mostrados nunca constituyen una garantía de rentabilidad.",
     "faqTitle": "Preguntas frecuentes",
     "faq": {
       "guarantee": {
         "question": "¿El rendimiento mostrado está garantizado?",
-        "answer": "No. Es un objetivo indicativo basado en una hipótesis de estrategia; el rendimiento realmente aplicado cada día depende de un dato de mercado real y puede ser negativo."
+        "answer": "No. Es un objetivo indicativo basado en una hipótesis de estrategia; el rendimiento aplicado cada día depende del mercado y puede ser negativo."
       },
       "withdraw": {
         "question": "¿Puedo retirar mis fondos en cualquier momento?",

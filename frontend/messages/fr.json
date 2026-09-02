@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Investissement direct",
-        "description": "Un placement réel, sans gage ni crédit : stratégie RWA ou panier d'actions, au choix."
+        "description": "Un placement, sans gage ni crédit : stratégie RWA ou panier d'actions, au choix."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Investissement direct",
-    "directInvestmentIntro": "Un placement réel, distinct du crédit : deux paniers au choix, un rendement quotidien réel qui peut être négatif.",
+    "directInvestmentIntro": "Un placement distinct du crédit : deux paniers au choix, un rendement quotidien qui peut être négatif.",
     "directInvestmentItems": {
       "rwa": {
         "label": "Stratégie RWA",
@@ -1109,7 +1109,7 @@
       "stocks": {
         "label": "Panier d'actions",
         "value": "2,5 %/an indicatif",
-        "detail": "Dividende indicatif + variation réelle de 5 actions cotées (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        "detail": "Dividende indicatif + variation de 5 actions cotées (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
       }
     },
     "directInvestmentNote": "Retrait intégral possible à tout moment, sans préavis ni pénalité. Ces objectifs de rendement sont indicatifs et ne constituent jamais une garantie de performance.",
@@ -1561,9 +1561,9 @@
     },
     "investment": {
       "title": "Investissement direct",
-      "intro": "Placez des fonds depuis votre solde disponible dans l'un des paniers ci-dessous : un vrai placement, sans gage ni crédit, avec un rendement quotidien réel qui peut être négatif un jour de marché défavorable. Retrait intégral possible à tout moment.",
+      "intro": "Placez des fonds depuis votre solde disponible dans l'un des paniers ci-dessous : un placement, sans gage ni crédit, avec un rendement quotidien qui peut être négatif un jour de marché défavorable. Retrait intégral possible à tout moment.",
       "indicativeAnnual": "Objectif indicatif annuel",
-      "latestDaily": "Dernier rendement quotidien réel",
+      "latestDaily": "Dernier rendement quotidien",
       "principal": "Capital placé",
       "accruedYield": "Rendement accumulé",
       "totalValue": "Valeur totale",
@@ -1580,7 +1580,7 @@
         },
         "STOCKS": {
           "title": "Panier d'actions",
-          "description": "Cinq actions cotées réelles versant historiquement un dividende régulier (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+          "description": "Cinq actions cotées versant historiquement un dividende régulier (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
       },
       "assetsTable": {
@@ -1620,7 +1620,7 @@
           "horizonYears": "{years, plural, one {# an} other {# ans}}",
           "projectedValue": "Valeur projetée",
           "projectedGain": "Gain projeté",
-          "disclaimer": "Projection basée sur l'objectif de rendement indicatif actuel, composé sur la durée choisie. Ce n'est jamais une garantie : le rendement réel dépend du marché et peut être inférieur, nul ou négatif."
+          "disclaimer": "Projection basée sur l'objectif de rendement indicatif actuel, composé sur la durée choisie. Ce n'est jamais une garantie : le rendement effectivement obtenu dépend du marché et peut être inférieur, nul ou négatif."
         },
         "quiz": {
           "horizon": {
@@ -1658,7 +1658,7 @@
             },
             "dynamic": {
               "title": "Profil dynamique",
-              "description": "Une répartition qui privilégie le panier d'actions, plus exposé aux variations réelles du marché."
+              "description": "Une répartition qui privilégie le panier d'actions, plus exposé aux variations du marché."
             }
           },
           "allocationRwa": "Stratégie RWA : {pct}%",
@@ -1668,7 +1668,7 @@
         "faq": {
           "difference": {
             "question": "Quelle est la différence entre les deux paniers ?",
-            "answer": "La stratégie RWA reprend la stratégie de trésorerie de la banque sur les métaux industriels et matières premières tokenisés, avec un rendement amorti. Le panier d'actions participe pleinement à la variation réelle de 5 actions cotées, avec un rendement potentiellement plus élevé mais plus volatile."
+            "answer": "La stratégie RWA reprend la stratégie de trésorerie de la banque sur les métaux industriels et matières premières tokenisés, avec un rendement amorti. Le panier d'actions participe pleinement à la variation de 5 actions cotées, avec un rendement potentiellement plus élevé mais plus volatile."
           },
           "guarantee": {
             "question": "Mon capital est-il garanti ?",
@@ -1703,16 +1703,16 @@
   "DirectInvestment": {
     "meta": {
       "title": "Investissement direct",
-      "description": "Placez des fonds dans la stratégie RWA de la banque ou un panier d'actions réelles : un vrai placement, sans gage ni crédit, avec un rendement quotidien réel."
+      "description": "Placez des fonds dans la stratégie RWA de la banque ou un panier d'actions cotées : un placement, sans gage ni crédit, avec un rendement quotidien qui suit le marché."
     },
     "eyebrow": "Un troisième produit",
     "title": "Investissement direct",
-    "description": "Un placement réel, pas un emprunt : immobilisez des fonds depuis votre solde disponible pour un rendement quotidien réel, sans gage ni crédit émis.",
+    "description": "Un placement, pas un emprunt : immobilisez des fonds depuis votre solde disponible pour un rendement quotidien qui suit le marché, sans gage ni crédit émis.",
     "basketsTitle": "Deux paniers au choix",
     "steps": {
       "choose": {
         "title": "Choisir un panier",
-        "description": "Stratégie RWA (métaux industriels et matières premières tokenisés) ou panier de 5 actions cotées réelles : deux profils de rendement au choix."
+        "description": "Stratégie RWA (métaux industriels et matières premières tokenisés) ou panier de 5 actions cotées : deux profils de rendement au choix."
       },
       "deposit": {
         "title": "Placer des fonds",
@@ -1720,7 +1720,7 @@
       },
       "accrue": {
         "title": "Rendement quotidien composé",
-        "description": "Calculé chaque jour à partir d'une donnée de marché réelle, jamais fabriquée. Il peut être négatif un jour de marché défavorable."
+        "description": "Calculé chaque jour à partir du marché : il peut être négatif un jour défavorable."
       },
       "withdraw": {
         "title": "Retrait à tout moment",
@@ -1735,17 +1735,17 @@
       },
       "stocks": {
         "title": "Panier d'actions",
-        "description": "Cinq actions cotées réelles versant historiquement un dividende régulier : Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
-        "rate": "2,5 %/an indicatif + variation réelle du panier"
+        "description": "Cinq actions cotées versant historiquement un dividende régulier : Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/an indicatif + variation du panier"
       }
     },
     "riskTitle": "Un vrai placement, un vrai risque",
-    "riskBody": "Contrairement au rendement du gage crypto, qui ne rembourse jamais que sur plus-value, l'investissement direct peut perdre de la valeur : le rendement quotidien reflète une donnée de marché réelle et peut être négatif. Les objectifs de rendement indicatifs affichés ne constituent en aucun cas une garantie de performance.",
+    "riskBody": "Contrairement au rendement du gage crypto, qui ne rembourse jamais que sur plus-value, l'investissement direct peut perdre de la valeur : le rendement quotidien suit le marché et peut être négatif. Les objectifs de rendement indicatifs affichés ne constituent en aucun cas une garantie de performance.",
     "faqTitle": "Questions fréquentes",
     "faq": {
       "guarantee": {
         "question": "Le rendement affiché est-il garanti ?",
-        "answer": "Non. C'est un objectif indicatif basé sur une hypothèse de stratégie ; le rendement réellement appliqué chaque jour dépend d'une donnée de marché réelle et peut être négatif."
+        "answer": "Non. C'est un objectif indicatif basé sur une hypothèse de stratégie ; le rendement appliqué chaque jour dépend du marché et peut être négatif."
       },
       "withdraw": {
         "question": "Puis-je retirer mes fonds à tout moment ?",

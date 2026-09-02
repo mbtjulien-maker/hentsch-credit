@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Investimento direto",
-        "description": "Um investimento real, sem garantia nem crédito: estratégia RWA ou uma cesta de ações, à escolha."
+        "description": "Um investimento, sem garantia nem crédito: estratégia RWA ou uma cesta de ações, à escolha."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Investimento direto",
-    "directInvestmentIntro": "Um investimento real, distinto do crédito: duas cestas à escolha, um rendimento diário real que pode ser negativo.",
+    "directInvestmentIntro": "Um investimento distinto do crédito: duas cestas à escolha, um rendimento diário que pode ser negativo.",
     "directInvestmentItems": {
       "rwa": {
         "label": "Estratégia RWA",
@@ -1109,7 +1109,7 @@
       "stocks": {
         "label": "Cesta de ações",
         "value": "2,5 %/ano indicativo",
-        "detail": "Dividendo indicativo + variação real de 5 ações cotadas (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        "detail": "Dividendo indicativo + variação de 5 ações cotadas (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
       }
     },
     "directInvestmentNote": "Levantamento total disponível a qualquer momento, sem aviso prévio nem penalização. Estes objetivos de rendimento são indicativos e nunca constituem uma garantia de desempenho.",
@@ -1561,9 +1561,9 @@
     },
     "investment": {
       "title": "Investimento direto",
-      "intro": "Coloque fundos do seu saldo disponível numa das cestas abaixo: um investimento real, sem garantia nem crédito, com um rendimento diário real que pode ser negativo num dia de mercado desfavorável. Levantamento total possível a qualquer momento.",
+      "intro": "Coloque fundos do seu saldo disponível numa das cestas abaixo: um investimento, sem garantia nem crédito, com um rendimento diário que pode ser negativo num dia de mercado desfavorável. Levantamento total possível a qualquer momento.",
       "indicativeAnnual": "Objetivo anual indicativo",
-      "latestDaily": "Último rendimento diário real",
+      "latestDaily": "Último rendimento diário",
       "principal": "Capital investido",
       "accruedYield": "Rendimento acumulado",
       "totalValue": "Valor total",
@@ -1580,7 +1580,7 @@
         },
         "STOCKS": {
           "title": "Cesta de ações",
-          "description": "Cinco ações cotadas reais com um dividendo historicamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+          "description": "Cinco ações cotadas com um dividendo historicamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
         }
       },
       "assetsTable": {
@@ -1620,7 +1620,7 @@
           "horizonYears": "{years, plural, one {# ano} other {# anos}}",
           "projectedValue": "Valor projetado",
           "projectedGain": "Ganho projetado",
-          "disclaimer": "Projeção baseada no objetivo de rendimento indicativo atual, composto ao longo do período escolhido. Nunca é uma garantia: o rendimento real depende do mercado e pode ser inferior, nulo ou negativo."
+          "disclaimer": "Projeção baseada no objetivo de rendimento indicativo atual, composto ao longo do período escolhido. Nunca é uma garantia: o rendimento efetivamente obtido depende do mercado e pode ser inferior, nulo ou negativo."
         },
         "quiz": {
           "horizon": {
@@ -1658,7 +1658,7 @@
             },
             "dynamic": {
               "title": "Perfil dinâmico",
-              "description": "Uma repartição que privilegia a cesta de ações, mais exposta às variações reais do mercado."
+              "description": "Uma repartição que privilegia a cesta de ações, mais exposta às variações do mercado."
             }
           },
           "allocationRwa": "Estratégia RWA: {pct}%",
@@ -1668,7 +1668,7 @@
         "faq": {
           "difference": {
             "question": "Qual é a diferença entre as duas cestas?",
-            "answer": "A estratégia RWA reproduz a estratégia de tesouraria do banco sobre metais industriais e matérias-primas tokenizados, com um rendimento amortecido. A cesta de ações participa plenamente na variação real de 5 ações cotadas, com um rendimento potencialmente mais elevado mas mais volátil."
+            "answer": "A estratégia RWA reproduz a estratégia de tesouraria do banco sobre metais industriais e matérias-primas tokenizados, com um rendimento amortecido. A cesta de ações participa plenamente na variação de 5 ações cotadas, com um rendimento potencialmente mais elevado mas mais volátil."
           },
           "guarantee": {
             "question": "O meu capital está garantido?",
@@ -1703,16 +1703,16 @@
   "DirectInvestment": {
     "meta": {
       "title": "Investimento direto",
-      "description": "Coloque fundos na estratégia RWA do banco ou numa cesta de ações reais: um investimento real, sem garantia nem crédito, com um rendimento diário real."
+      "description": "Coloque fundos na estratégia RWA do banco ou numa cesta de ações cotadas: um investimento, sem garantia nem crédito, com um rendimento diário que acompanha o mercado."
     },
     "eyebrow": "Um terceiro produto",
     "title": "Investimento direto",
-    "description": "Um investimento real, não um empréstimo: imobilize fundos do seu saldo disponível para um rendimento diário real, sem garantia nem crédito emitido.",
+    "description": "Um investimento, não um empréstimo: imobilize fundos do seu saldo disponível para um rendimento diário que acompanha o mercado, sem garantia nem crédito emitido.",
     "basketsTitle": "Duas cestas à escolha",
     "steps": {
       "choose": {
         "title": "Escolher uma cesta",
-        "description": "Estratégia RWA (metais industriais e matérias-primas tokenizados) ou uma cesta de 5 ações cotadas reais: dois perfis de rendimento à escolha."
+        "description": "Estratégia RWA (metais industriais e matérias-primas tokenizados) ou uma cesta de 5 ações cotadas: dois perfis de rendimento à escolha."
       },
       "deposit": {
         "title": "Colocar fundos",
@@ -1720,7 +1720,7 @@
       },
       "accrue": {
         "title": "Rendimento diário composto",
-        "description": "Calculado todos os dias a partir de um dado de mercado real, nunca inventado. Pode ser negativo num dia de mercado desfavorável."
+        "description": "Calculado todos os dias a partir do mercado: pode ser negativo num dia desfavorável."
       },
       "withdraw": {
         "title": "Levantamento a qualquer momento",
@@ -1735,17 +1735,17 @@
       },
       "stocks": {
         "title": "Cesta de ações",
-        "description": "Cinco ações cotadas reais com um dividendo historicamente regular: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
-        "rate": "2,5 %/ano indicativo + variação real da cesta"
+        "description": "Cinco ações cotadas com um dividendo historicamente regular: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/ano indicativo + variação da cesta"
       }
     },
     "riskTitle": "Um investimento real, um risco real",
-    "riskBody": "Ao contrário do rendimento da garantia cripto, que só é reembolsado sobre mais-valia real, o investimento direto pode perder valor: o rendimento diário reflete um dado de mercado real e pode ser negativo. Os objetivos de rendimento indicativos apresentados nunca constituem uma garantia de desempenho.",
+    "riskBody": "Ao contrário do rendimento da garantia cripto, que só é reembolsado sobre mais-valia, o investimento direto pode perder valor: o rendimento diário acompanha o mercado e pode ser negativo. Os objetivos de rendimento indicativos apresentados nunca constituem uma garantia de desempenho.",
     "faqTitle": "Perguntas frequentes",
     "faq": {
       "guarantee": {
         "question": "O rendimento apresentado é garantido?",
-        "answer": "Não. É um objetivo indicativo baseado numa hipótese de estratégia; o rendimento efetivamente aplicado todos os dias depende de um dado de mercado real e pode ser negativo."
+        "answer": "Não. É um objetivo indicativo baseado numa hipótese de estratégia; o rendimento aplicado todos os dias depende do mercado e pode ser negativo."
       },
       "withdraw": {
         "question": "Posso levantar os meus fundos a qualquer momento?",

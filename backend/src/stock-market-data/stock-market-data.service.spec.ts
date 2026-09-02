@@ -1,6 +1,8 @@
 import { ConfigService } from '@nestjs/config';
-import { STOCK_BASKET_TICKERS } from './stock-market-data.constants';
+import { STOCK_SUB_BASKETS } from './stock-market-data.constants';
 import { StockMarketDataService } from './stock-market-data.service';
+
+const STOCKS_TICKERS = STOCK_SUB_BASKETS.STOCKS.tickers;
 
 function jsonResponse(body: unknown, ok = true, status = 200) {
   return { ok, status, json: () => Promise.resolve(body) } as Response;
@@ -35,7 +37,7 @@ describe('StockMarketDataService', () => {
   it('returns null without a FINNHUB_API_KEY, without ever calling fetch', async () => {
     const service = new StockMarketDataService(withKey(undefined));
 
-    const signal = await service.getBasketMarketSignal();
+    const signal = await service.getBasketMarketSignal('STOCKS');
 
     expect(signal).toBeNull();
     expect(fetchSpy).not.toHaveBeenCalled();
@@ -43,20 +45,20 @@ describe('StockMarketDataService', () => {
 
   it('averages the real dp (percent change) across the whole basket', async () => {
     const service = new StockMarketDataService(withKey('test-key'));
-    // 5 tickers dans STOCK_BASKET_TICKERS, dp: 1, 2, 3, -1, 0 -> moyenne 1.
+    // 5 tickers dans STOCKS, dp: 1, 2, 3, -1, 0 -> moyenne 1.
     const dps = [1, 2, 3, -1, 0];
     fetchSpy.mockImplementation((input: Parameters<typeof fetch>[0]) => {
       const url = urlOf(input);
-      const index = STOCK_BASKET_TICKERS.findIndex((t) =>
+      const index = STOCKS_TICKERS.findIndex((t) =>
         url.includes(`symbol=${t}`),
       );
       return Promise.resolve(jsonResponse({ c: 100, pc: 99, dp: dps[index] }));
     });
 
-    const signal = await service.getBasketMarketSignal();
+    const signal = await service.getBasketMarketSignal('STOCKS');
 
     expect(signal).toBeCloseTo(1, 6);
-    expect(fetchSpy).toHaveBeenCalledTimes(STOCK_BASKET_TICKERS.length);
+    expect(fetchSpy).toHaveBeenCalledTimes(STOCKS_TICKERS.length);
   });
 
   it('averages only over tickers that actually responded, ignoring failures', async () => {
@@ -71,7 +73,7 @@ describe('StockMarketDataService', () => {
       return Promise.resolve(jsonResponse({}, false, 500));
     });
 
-    const signal = await service.getBasketMarketSignal();
+    const signal = await service.getBasketMarketSignal('STOCKS');
 
     expect(signal).toBe(4);
   });
@@ -80,7 +82,7 @@ describe('StockMarketDataService', () => {
     const service = new StockMarketDataService(withKey('test-key'));
     fetchSpy.mockRejectedValue(new Error('network down'));
 
-    const signal = await service.getBasketMarketSignal();
+    const signal = await service.getBasketMarketSignal('STOCKS');
 
     expect(signal).toBeNull();
   });
@@ -89,9 +91,24 @@ describe('StockMarketDataService', () => {
     const service = new StockMarketDataService(withKey('test-key'));
     fetchSpy.mockResolvedValue(jsonResponse({ c: 0, pc: 0, dp: 0 }));
 
-    const signal = await service.getBasketMarketSignal();
+    const signal = await service.getBasketMarketSignal('STOCKS');
 
     expect(signal).toBeNull();
+  });
+
+  it('queries a different sub-basket with its own distinct tickers', async () => {
+    const service = new StockMarketDataService(withKey('test-key'));
+    const techTickers = STOCK_SUB_BASKETS.STOCKS_TECH_AI.tickers;
+    fetchSpy.mockImplementation((input: Parameters<typeof fetch>[0]) => {
+      const url = urlOf(input);
+      expect(techTickers.some((t) => url.includes(`symbol=${t}`))).toBe(true);
+      return Promise.resolve(jsonResponse({ c: 100, pc: 99, dp: 2 }));
+    });
+
+    const signal = await service.getBasketMarketSignal('STOCKS_TECH_AI');
+
+    expect(signal).toBeCloseTo(2, 6);
+    expect(fetchSpy).toHaveBeenCalledTimes(techTickers.length);
   });
 
   describe('getBasketQuotes', () => {
@@ -99,7 +116,7 @@ describe('StockMarketDataService', () => {
       const service = new StockMarketDataService(withKey('test-key'));
       fetchSpy.mockImplementation((input: Parameters<typeof fetch>[0]) => {
         const url = urlOf(input);
-        const index = STOCK_BASKET_TICKERS.findIndex((t) =>
+        const index = STOCKS_TICKERS.findIndex((t) =>
           url.includes(`symbol=${t}`),
         );
         return Promise.resolve(
@@ -107,11 +124,11 @@ describe('StockMarketDataService', () => {
         );
       });
 
-      const quotes = await service.getBasketQuotes();
+      const quotes = await service.getBasketQuotes('STOCKS');
 
-      expect(quotes).toHaveLength(STOCK_BASKET_TICKERS.length);
+      expect(quotes).toHaveLength(STOCKS_TICKERS.length);
       expect(quotes[0]).toEqual({
-        ticker: STOCK_BASKET_TICKERS[0],
+        ticker: STOCKS_TICKERS[0],
         price: 100,
         changePct: 0,
       });
@@ -128,7 +145,7 @@ describe('StockMarketDataService', () => {
         return Promise.resolve(jsonResponse({}, false, 500));
       });
 
-      const quotes = await service.getBasketQuotes();
+      const quotes = await service.getBasketQuotes('STOCKS');
 
       expect(quotes).toHaveLength(1);
     });
@@ -136,7 +153,7 @@ describe('StockMarketDataService', () => {
     it('returns an empty array without a FINNHUB_API_KEY', async () => {
       const service = new StockMarketDataService(withKey(undefined));
 
-      const quotes = await service.getBasketQuotes();
+      const quotes = await service.getBasketQuotes('STOCKS');
 
       expect(quotes).toEqual([]);
     });

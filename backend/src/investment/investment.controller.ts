@@ -22,7 +22,10 @@ import { DepositInvestmentDto } from './dto/deposit-investment.dto';
 import { WithdrawInvestmentDto } from './dto/withdraw-investment.dto';
 import { InvestmentService } from './investment.service';
 import { MarketDataService } from '../market-data/market-data.service';
-import { STOCK_NAMES } from '../stock-market-data/stock-market-data.constants';
+import {
+  STOCK_NAMES,
+  STOCK_SUB_BASKET_IDS,
+} from '../stock-market-data/stock-market-data.constants';
 import { StockMarketDataService } from '../stock-market-data/stock-market-data.service';
 import { TREASURY_BOT_BASKET } from '../treasury-bot/treasury-bot.constants';
 import { TreasuryBotService } from '../treasury-bot/treasury-bot.service';
@@ -62,17 +65,22 @@ export class InvestmentController {
 
   // Rendement indicatif par panier, consulté par le formulaire client avant placement —
   // même principe que GET /credit/rates : afficher les seuils/objectifs réels plutôt que
-  // les deviner côté frontend. `latestDailyReturnPct` reflète le dernier passage réel
-  // connu (peut être négatif) ; `indicativeAnnualPct` est l'hypothèse de stratégie
-  // affichée à titre informatif, jamais une garantie (cf. INDICATIVE_ANNUAL_YIELD_PCT).
+  // les deviner côté frontend. `latestDailyReturnPct`/`latestMarketSignalPct` reflètent le
+  // dernier passage réel connu (peut être négatif) — pour les 5 paniers STOCKS*, relu
+  // depuis StockBasketRun (déjà persisté par l'accrual quotidien) plutôt qu'un appel
+  // Finnhub en direct à chaque consultation. `indicativeAnnualPct` est l'hypothèse de
+  // stratégie affichée à titre informatif, jamais une garantie (cf.
+  // INDICATIVE_ANNUAL_YIELD_PCT).
   @Get('rates')
   async getRates() {
-    const [latestRwaRun, latestStockRun] = await Promise.all([
+    const [latestRwaRun, ...latestStockRuns] = await Promise.all([
       this.treasuryBotService.getHistory(1),
-      this.stockMarketDataService.getBasketMarketSignal(),
+      ...STOCK_SUB_BASKET_IDS.map((basket) =>
+        this.investmentService.getLatestStockBasketRun(basket),
+      ),
     ]);
 
-    return {
+    const rates: Record<string, unknown> = {
       minAmountUsd: MIN_INVESTMENT_AMOUNT_USD.toString(),
       RWA_STRATEGY: {
         indicativeAnnualPct:
@@ -81,13 +89,18 @@ export class InvestmentController {
           latestRwaRun[0]?.blendedReturnPct.toString() ?? null,
         riskLevel: RISK_LEVEL.RWA_STRATEGY,
       },
-      STOCKS: {
-        indicativeAnnualPct: INDICATIVE_ANNUAL_YIELD_PCT.STOCKS.toString(),
-        latestMarketSignalPct:
-          latestStockRun !== null ? latestStockRun.toString() : null,
-        riskLevel: RISK_LEVEL.STOCKS,
-      },
     };
+
+    STOCK_SUB_BASKET_IDS.forEach((basket, index) => {
+      const latestRun = latestStockRuns[index];
+      rates[basket] = {
+        indicativeAnnualPct: INDICATIVE_ANNUAL_YIELD_PCT[basket].toString(),
+        latestMarketSignalPct: latestRun?.marketSignalPct.toString() ?? null,
+        riskLevel: RISK_LEVEL[basket],
+      };
+    });
+
+    return rates;
   }
 
   // Historique réel du rendement quotidien de chaque panier (30 derniers jours) — pas un
@@ -98,35 +111,45 @@ export class InvestmentController {
   // qu'une série interpolée.
   @Get('history')
   async getHistory() {
-    const [rwaRuns, stockRuns] = await Promise.all([
+    const [rwaRuns, ...stockHistories] = await Promise.all([
       this.treasuryBotService.getHistory(30),
-      this.investmentService.getStockBasketHistory(30),
+      ...STOCK_SUB_BASKET_IDS.map((basket) =>
+        this.investmentService.getStockBasketHistory(basket, 30),
+      ),
     ]);
 
-    return {
+    const history: Record<string, unknown> = {
       RWA_STRATEGY: rwaRuns.map((run) => ({
         date: run.runDate.toISOString(),
         returnPct: run.blendedReturnPct.toString(),
       })),
-      STOCKS: stockRuns.map((run) => ({
+    };
+
+    STOCK_SUB_BASKET_IDS.forEach((basket, index) => {
+      history[basket] = stockHistories[index].map((run) => ({
         date: run.runDate.toISOString(),
         returnPct: run.dailyReturnPct.toString(),
-      })),
-    };
+      }));
+    });
+
+    return history;
   }
 
   // Détail des actifs réellement impliqués dans chaque panier — au-delà du chiffre agrégé
   // de GET /investment/rates, pour montrer concrètement à quoi correspond la stratégie
   // (cf. demande client : "en dire plus sur les stratégies"). RWA_STRATEGY réutilise
   // MarketDataService.getMarketOverview() (même source que la vue "Marché en temps réel"
-  // du dashboard), filtrée sur les 4 actifs de TREASURY_BOT_BASKET ; STOCKS réutilise
-  // StockMarketDataService.getBasketQuotes() (Finnhub, cf. §2H CLAUDE.md). Chaque actif
-  // omis silencieusement s'il n'a pas de cours disponible — jamais un prix inventé.
+  // du dashboard), filtrée sur les 4 actifs de TREASURY_BOT_BASKET ; chaque panier
+  // STOCKS* réutilise StockMarketDataService.getBasketQuotes() (Finnhub, cf. §2H
+  // CLAUDE.md, STOCK_SUB_BASKETS). Chaque actif omis silencieusement s'il n'a pas de
+  // cours disponible — jamais un prix inventé.
   @Get('assets')
   async getAssets() {
-    const [overview, stockQuotes] = await Promise.all([
+    const [overview, ...stockQuotesByBasket] = await Promise.all([
       this.marketDataService.getMarketOverview(),
-      this.stockMarketDataService.getBasketQuotes(),
+      ...STOCK_SUB_BASKET_IDS.map((basket) =>
+        this.stockMarketDataService.getBasketQuotes(basket),
+      ),
     ]);
 
     const rwaAssets = TREASURY_BOT_BASKET.map((currency) =>
@@ -141,17 +164,23 @@ export class InvestmentController {
         changePct: entry.change24hPct,
       }));
 
-    const stockAssets = stockQuotes.map((q) => ({
-      ticker: q.ticker,
-      name: STOCK_NAMES[q.ticker],
-      price: q.price,
-      changePct: q.changePct,
-    }));
-
-    return {
+    const assets: Record<string, { assets: unknown[] }> = {
       RWA_STRATEGY: { assets: rwaAssets },
-      STOCKS: { assets: stockAssets },
     };
+
+    STOCK_SUB_BASKET_IDS.forEach((basket, index) => {
+      const quotes = stockQuotesByBasket[index];
+      assets[basket] = {
+        assets: quotes.map((q) => ({
+          ticker: q.ticker,
+          name: STOCK_NAMES[q.ticker],
+          price: q.price,
+          changePct: q.changePct,
+        })),
+      };
+    });
+
+    return assets;
   }
 }
 

@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Investissement direct",
-    "directInvestmentIntro": "Un placement distinct du crédit : deux paniers au choix, un rendement quotidien qui peut être négatif.",
+    "directInvestmentIntro": "Un placement distinct du crédit : plusieurs paniers au choix, un rendement quotidien qui peut être négatif.",
     "directInvestmentItems": {
       "rwa": {
         "label": "Stratégie RWA",
@@ -1581,6 +1581,22 @@
         "STOCKS": {
           "title": "Panier d'actions",
           "description": "Cinq actions cotées versant historiquement un dividende régulier (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        },
+        "STOCKS_CONSERVATIVE": {
+          "title": "Panier Conservateur",
+          "description": "Axé sur la préservation du capital et le versement de dividendes stables : Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway."
+        },
+        "STOCKS_BALANCED": {
+          "title": "Panier Équilibré",
+          "description": "Combinaison de géants technologiques et du secteur de la santé : Microsoft, Apple, Eli Lilly, Amazon."
+        },
+        "STOCKS_TECH_AI": {
+          "title": "Panier Tech & IA",
+          "description": "Ciblé sur les entreprises leaders du marché de l'intelligence artificielle : NVIDIA, Broadcom, Meta Platforms, Alphabet."
+        },
+        "STOCKS_MOMENTUM": {
+          "title": "Panier Momentum IA & Storage",
+          "description": "Entreprises enregistrant la plus forte accélération de revenus récents : Micron, SanDisk, Dell Technologies, Palantir."
         }
       },
       "assetsTable": {
@@ -1611,7 +1627,11 @@
           "basketLabel": "Panier",
           "basket": {
             "RWA_STRATEGY": "Stratégie RWA",
-            "STOCKS": "Panier d'actions"
+            "STOCKS": "Panier d'actions",
+            "STOCKS_CONSERVATIVE": "Panier Conservateur",
+            "STOCKS_BALANCED": "Panier Équilibré",
+            "STOCKS_TECH_AI": "Panier Tech & IA",
+            "STOCKS_MOMENTUM": "Panier Momentum IA & Storage"
           },
           "amountLabel": "Montant à placer",
           "balanceHint": "Solde disponible : {balance}",
@@ -1659,10 +1679,14 @@
             "dynamic": {
               "title": "Profil dynamique",
               "description": "Une répartition qui privilégie le panier d'actions, plus exposé aux variations du marché."
+            },
+            "veryDynamic": {
+              "title": "Profil très dynamique",
+              "description": "Une répartition qui pousse fortement l'exposition vers le panier d'actions le plus volatile, en quête du rendement potentiel le plus élevé."
             }
           },
           "allocationRwa": "Stratégie RWA : {pct}%",
-          "allocationStocks": "Panier d'actions : {pct}%",
+          "allocationStock": "{basket} : {pct}%",
           "disclaimer": "Une suggestion indicative basée sur vos réponses, jamais un conseil en investissement personnalisé ni une allocation appliquée automatiquement — à vous de décider et de placer vous-même les montants de votre choix."
         },
         "faq": {
@@ -1708,11 +1732,11 @@
     "eyebrow": "Un troisième produit",
     "title": "Investissement direct",
     "description": "Un placement, pas un emprunt : immobilisez des fonds depuis votre solde disponible pour un rendement quotidien qui suit le marché, sans gage ni crédit émis.",
-    "basketsTitle": "Deux paniers au choix",
+    "basketsTitle": "Six paniers au choix",
     "steps": {
       "choose": {
         "title": "Choisir un panier",
-        "description": "Stratégie RWA (métaux industriels et matières premières tokenisés) ou panier de 5 actions cotées : deux profils de rendement au choix."
+        "description": "Stratégie RWA (métaux industriels et matières premières tokenisés) ou l'un des cinq paniers d'actions, du plus prudent au plus dynamique : plusieurs profils de rendement au choix."
       },
       "deposit": {
         "title": "Placer des fonds",
@@ -1737,6 +1761,26 @@
         "title": "Panier d'actions",
         "description": "Cinq actions cotées versant historiquement un dividende régulier : Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
         "rate": "2,5 %/an indicatif + variation du panier"
+      },
+      "stocksConservative": {
+        "title": "Panier Conservateur",
+        "description": "Axé sur la préservation du capital et le versement de dividendes stables.",
+        "rate": "2,1 %/an indicatif + variation du panier"
+      },
+      "stocksBalanced": {
+        "title": "Panier Équilibré",
+        "description": "Combinaison optimale de géants technologiques et du secteur médical.",
+        "rate": "0,5 %/an indicatif + variation du panier"
+      },
+      "stocksTechAi": {
+        "title": "Panier Tech & IA",
+        "description": "Ciblé sur les entreprises leaders du marché de l'intelligence artificielle.",
+        "rate": "0,6 %/an indicatif + variation du panier"
+      },
+      "stocksMomentum": {
+        "title": "Panier Momentum IA & Storage",
+        "description": "Entreprises enregistrant la plus forte accélération de revenus récents.",
+        "rate": "0,5 %/an indicatif + variation du panier"
       }
     },
     "riskTitle": "Un vrai placement, un vrai risque",

@@ -5,6 +5,7 @@ import {
   StockBasketRun,
   TreasuryBotRun,
 } from '@prisma/client';
+import { STOCK_SUB_BASKET_IDS } from '../stock-market-data/stock-market-data.constants';
 import { InvalidAmountException } from '../common/exceptions/financial.exceptions';
 import { NoActiveInvestmentException } from '../common/exceptions/financial.exceptions';
 import { InvestmentService } from './investment.service';
@@ -64,6 +65,7 @@ function buildStockRun(
   return {
     id: 'stock-run-1',
     runDate: new Date('2026-09-02'),
+    basket: 'STOCKS',
     marketSignalPct: new Prisma.Decimal('0'),
     dailyReturnPct: new Prisma.Decimal('0.006849'),
     createdAt: new Date(),
@@ -281,12 +283,23 @@ describe('InvestmentService', () => {
   });
 
   describe('runDailyAccrual', () => {
-    it('accrues RWA positions off TreasuryBotRun and STOCKS positions off the stock basket signal', async () => {
+    // recordStockBasketRun tourne une fois par panier STOCKS* (5 au total, cf.
+    // STOCK_SUB_BASKET_IDS) — chaque appel relit/écrit sa propre ligne StockBasketRun
+    // filtrée par (runDate, basket), jamais une seule ligne partagée entre les 5.
+    function mockNoExistingStockRuns() {
+      prisma.stockBasketRun.findUnique.mockResolvedValue(null);
+      prisma.stockBasketRun.create.mockImplementation(
+        ({ data }: { data: Partial<StockBasketRun> }) =>
+          Promise.resolve(buildStockRun(data)),
+      );
+    }
+
+    it('accrues RWA positions off TreasuryBotRun and STOCKS positions off their own basket signal', async () => {
       const rwaRun = buildTreasuryRun({
         blendedReturnPct: new Prisma.Decimal('0.1'),
       });
       treasuryBotService.runDailySimulation.mockResolvedValue(rwaRun);
-      prisma.stockBasketRun.findUnique.mockResolvedValue(null);
+      mockNoExistingStockRuns();
       stockMarketDataService.getBasketMarketSignal.mockResolvedValue(0.5);
 
       const rwaPosition = buildPosition({
@@ -302,17 +315,15 @@ describe('InvestmentService', () => {
         ({ where }: { where: { id: string } }) =>
           Promise.resolve(where.id === 'p-rwa' ? rwaPosition : stockPosition),
       );
-      const createdStockRun = buildStockRun({
-        dailyReturnPct: new Prisma.Decimal('0.5').plus(
-          new Prisma.Decimal('2.5').dividedBy(365),
-        ),
-      });
-      prisma.stockBasketRun.create.mockResolvedValue(createdStockRun);
 
       const results = await service.runDailyAccrual(
         new Date('2026-09-02T04:00:00Z'),
       );
 
+      // 1 par pilier RWA + 5 paniers STOCKS* interrogés une fois chacun.
+      expect(
+        stockMarketDataService.getBasketMarketSignal,
+      ).toHaveBeenCalledTimes(STOCK_SUB_BASKET_IDS.length);
       expect(results).toHaveLength(2);
       const rwaResult = results.find((r) => r.positionId === 'p-rwa')!;
       const stockResult = results.find((r) => r.positionId === 'p-stock')!;
@@ -323,12 +334,45 @@ describe('InvestmentService', () => {
       expect(stockResult.yieldAmount.lessThan(5.1)).toBe(true);
     });
 
-    it('reuses an existing StockBasketRun for the same day instead of recomputing it', async () => {
+    it('accrues a position on a newer sub-basket (e.g. STOCKS_TECH_AI) off that basket own signal', async () => {
       treasuryBotService.runDailySimulation.mockResolvedValue(
         buildTreasuryRun(),
       );
-      const existingStockRun = buildStockRun();
-      prisma.stockBasketRun.findUnique.mockResolvedValue(existingStockRun);
+      prisma.stockBasketRun.findUnique.mockResolvedValue(null);
+      // Chaque panier reçoit un signal différent — la position ne doit accruer que sur
+      // celui de SON propre panier (STOCKS_TECH_AI), pas sur STOCKS ni un autre.
+      stockMarketDataService.getBasketMarketSignal.mockImplementation(
+        (basket: string) =>
+          Promise.resolve(basket === 'STOCKS_TECH_AI' ? 3 : 0),
+      );
+      prisma.stockBasketRun.create.mockImplementation(
+        ({ data }: { data: Partial<StockBasketRun> }) =>
+          Promise.resolve(buildStockRun(data)),
+      );
+
+      const techPosition = buildPosition({
+        id: 'p-tech',
+        basket: 'STOCKS_TECH_AI',
+        principalAmount: new Prisma.Decimal(1000),
+      });
+      prisma.investmentPosition.findMany.mockResolvedValue([techPosition]);
+      prisma.investmentPosition.update.mockResolvedValue(techPosition);
+
+      const results = await service.runDailyAccrual(
+        new Date('2026-09-02T04:00:00Z'),
+      );
+
+      // dailyReturnPct ≈ 3 + 0.6/365 ≈ 3.00164 ; 1000 * that / 100 ≈ 30.0164
+      expect(results).toHaveLength(1);
+      expect(results[0].yieldAmount.greaterThan(30)).toBe(true);
+      expect(results[0].yieldAmount.lessThan(30.1)).toBe(true);
+    });
+
+    it('reuses an existing StockBasketRun for the same (day, basket) instead of recomputing it', async () => {
+      treasuryBotService.runDailySimulation.mockResolvedValue(
+        buildTreasuryRun(),
+      );
+      prisma.stockBasketRun.findUnique.mockResolvedValue(buildStockRun());
       prisma.investmentPosition.findMany.mockResolvedValue([]);
 
       await service.runDailyAccrual(new Date('2026-09-02T04:00:00Z'));
@@ -339,7 +383,7 @@ describe('InvestmentService', () => {
       expect(prisma.stockBasketRun.create).not.toHaveBeenCalled();
     });
 
-    it('degrades gracefully (neutral market signal, not a blocked accrual) when the stock signal is unavailable', async () => {
+    it('degrades gracefully (neutral market signal, not a blocked accrual) when a stock signal is unavailable', async () => {
       treasuryBotService.runDailySimulation.mockResolvedValue(
         buildTreasuryRun(),
       );
@@ -363,17 +407,20 @@ describe('InvestmentService', () => {
           },
         ]
       >;
-      const createCall = calls[0][0];
-      expect(createCall.data.marketSignalPct.toString()).toBe('0');
-      // Toujours la baseline dividende (2.5/365), jamais un rendement bloqué à zéro.
-      expect(createCall.data.dailyReturnPct.greaterThan(0)).toBe(true);
+      expect(calls).toHaveLength(STOCK_SUB_BASKET_IDS.length);
+      for (const [createCall] of calls) {
+        expect(createCall.data.marketSignalPct.toString()).toBe('0');
+        // Toujours la baseline dividende du panier, jamais un rendement bloqué à zéro.
+        expect(createCall.data.dailyReturnPct.greaterThan(0)).toBe(true);
+      }
     });
 
     it('keeps going when one position fails to accrue, without losing the others', async () => {
       treasuryBotService.runDailySimulation.mockResolvedValue(
         buildTreasuryRun(),
       );
-      prisma.stockBasketRun.findUnique.mockResolvedValue(buildStockRun());
+      mockNoExistingStockRuns();
+      stockMarketDataService.getBasketMarketSignal.mockResolvedValue(0);
       const okPosition = buildPosition({ id: 'ok' });
       const badPosition = buildPosition({ id: 'bad' });
       prisma.investmentPosition.findMany.mockResolvedValue([

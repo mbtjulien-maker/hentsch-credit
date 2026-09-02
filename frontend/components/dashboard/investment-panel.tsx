@@ -20,6 +20,7 @@ import { InvestmentAdvisorDialog } from "@/components/dashboard/investment-advis
 import {
   api,
   ApiError,
+  INVESTMENT_BASKETS,
   type InvestmentAssets,
   type InvestmentBasket,
   type InvestmentBasketRate,
@@ -31,7 +32,6 @@ import {
 } from "@/lib/api";
 import { formatUsd } from "@/lib/format";
 
-const BASKETS: InvestmentBasket[] = ["RWA_STRATEGY", "STOCKS"];
 const QUICK_FRACTIONS = [0.25, 0.5, 0.75, 1] as const;
 
 // Convertit une série de rendements quotidiens réels (%) en indice de croissance
@@ -406,8 +406,8 @@ export function InvestmentPanel({
         />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        {BASKETS.map((basket) => (
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {INVESTMENT_BASKETS.map((basket) => (
           <BasketCard
             key={basket}
             basket={basket}

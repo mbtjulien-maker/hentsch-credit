@@ -1,7 +1,8 @@
 import { Injectable, Logger, Optional } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
-  STOCK_BASKET_TICKERS,
+  STOCK_SUB_BASKETS,
+  StockSubBasket,
   StockTicker,
 } from './stock-market-data.constants';
 
@@ -17,13 +18,14 @@ interface FinnhubQuote {
 }
 
 // Fournisseur de données de marché ACTIONS — pendant de MarketDataService (crypto/RWA)
-// pour le panier STOCKS du produit "investissement direct" (cf. §2H CLAUDE.md). Finnhub
-// plutôt qu'Alpha Vantage : plan gratuit avec une limite d'appels par minute large (60/min)
-// suffisante pour interroger les 5 tickers du panier à chaque passage du cron quotidien
-// (cf. STOCK_BASKET_TICKERS), contre 5 requêtes/minute et 25/jour chez Alpha Vantage
-// (insuffisant pour ce volume). Nécessite une clé gratuite (FINNHUB_API_KEY, cf.
-// .env.example) : sans elle, le service se dégrade gracieusement (signal indisponible)
-// plutôt que d'échouer bruyamment — même philosophie que MarketDataService.
+// pour les 5 paniers d'actions du produit "investissement direct" (cf. §2H CLAUDE.md,
+// STOCK_SUB_BASKETS). Finnhub plutôt qu'Alpha Vantage : plan gratuit avec une limite
+// d'appels par minute large (60/min) suffisante pour interroger les ~16 tickers distincts
+// (avec chevauchement entre paniers) à chaque passage du cron quotidien, contre 5
+// requêtes/minute et 25/jour chez Alpha Vantage (insuffisant pour ce volume). Nécessite
+// une clé gratuite (FINNHUB_API_KEY, cf. .env.example) : sans elle, le service se dégrade
+// gracieusement (signal indisponible) plutôt que d'échouer bruyamment — même philosophie
+// que MarketDataService.
 @Injectable()
 export class StockMarketDataService {
   private readonly logger = new Logger(StockMarketDataService.name);
@@ -65,18 +67,23 @@ export class StockMarketDataService {
     }
   }
 
-  // Cours + variation réels de chaque action du panier — pendant, par ticker, de
+  // Cours + variation réels de chaque action d'un panier donné — pendant, par ticker, de
   // MarketDataService.getMarketOverview() pour les cryptos/RWA. Consommé par GET
-  // /investment/assets (cf. InvestmentController) pour détailler le panier STOCKS au
-  // client, et par getBasketMarketSignal ci-dessous pour la moyenne utilisée à
-  // l'accrual — un seul et même jeu d'appels Finnhub, jamais deux logiques séparées qui
-  // pourraient diverger. Ne renvoie que les tickers réellement disponibles (une panne
-  // partielle n'empêche pas d'afficher les autres).
-  async getBasketQuotes(): Promise<
-    { ticker: StockTicker; price: number; changePct: number }[]
-  > {
+  // /investment/assets (cf. InvestmentController) pour détailler le panier au client, et
+  // par getBasketMarketSignal ci-dessous pour la moyenne utilisée à l'accrual — un seul
+  // et même jeu d'appels Finnhub par panier, jamais deux logiques séparées qui pourraient
+  // diverger. Ne renvoie que les tickers réellement disponibles (une panne partielle
+  // n'empêche pas d'afficher les autres).
+  async getBasketQuotes(
+    basket: StockSubBasket,
+  ): Promise<{ ticker: StockTicker; price: number; changePct: number }[]> {
+    // Casté explicitement : `tickers` est un tuple littéral différent par panier
+    // (STOCK_SUB_BASKETS est `as const`), et TS ne distribue pas .map() proprement sur
+    // une indexation par union de clés — sans cette annotation, `ticker` retomberait
+    // silencieusement sur `any` dans le callback ci-dessous.
+    const tickers: readonly StockTicker[] = STOCK_SUB_BASKETS[basket].tickers;
     const quotes = await Promise.all(
-      STOCK_BASKET_TICKERS.map(async (ticker) => {
+      tickers.map(async (ticker) => {
         const quote = await this.getQuote(ticker);
         return quote && quote.dp !== null
           ? { ticker, price: quote.c, changePct: quote.dp }
@@ -89,16 +96,16 @@ export class StockMarketDataService {
     );
   }
 
-  // Variation quotidienne moyenne (%) du panier — pendant de
+  // Variation quotidienne moyenne (%) d'un panier — pendant de
   // TreasuryBotService.computeMarketSignal pour les actions, consommé par
-  // InvestmentService pour calculer le rendement du jour du panier STOCKS (cf.
+  // InvestmentService pour calculer le rendement du jour de ce panier (cf.
   // StockBasketRun). Une panne partielle (un ticker en échec) ne bloque pas les autres :
   // la moyenne porte sur les tickers réellement disponibles. `null` uniquement si AUCUN
   // ticker n'a répondu (clé absente ou panne totale de Finnhub) — jamais un signal
   // fabriqué (0 ou autre) dans ce cas, pour que l'appelant sache distinguer "marché neutre
   // aujourd'hui" de "donnée indisponible".
-  async getBasketMarketSignal(): Promise<number | null> {
-    const quotes = await this.getBasketQuotes();
+  async getBasketMarketSignal(basket: StockSubBasket): Promise<number | null> {
+    const quotes = await this.getBasketQuotes(basket);
     if (quotes.length === 0) {
       return null;
     }

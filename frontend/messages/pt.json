@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Investimento direto",
-    "directInvestmentIntro": "Um investimento distinto do crédito: duas cestas à escolha, um rendimento diário que pode ser negativo.",
+    "directInvestmentIntro": "Um investimento distinto do crédito: várias cestas à escolha, um rendimento diário que pode ser negativo.",
     "directInvestmentItems": {
       "rwa": {
         "label": "Estratégia RWA",
@@ -1581,6 +1581,22 @@
         "STOCKS": {
           "title": "Cesta de ações",
           "description": "Cinco ações cotadas com um dividendo historicamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        },
+        "STOCKS_CONSERVATIVE": {
+          "title": "Cesta Conservadora",
+          "description": "Focado na preservação do capital e no pagamento de dividendos estáveis: Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway."
+        },
+        "STOCKS_BALANCED": {
+          "title": "Cesta Equilibrada",
+          "description": "Uma combinação de gigantes tecnológicos e do setor de saúde: Microsoft, Apple, Eli Lilly, Amazon."
+        },
+        "STOCKS_TECH_AI": {
+          "title": "Cesta Tech & IA",
+          "description": "Focado nas empresas líderes do mercado de inteligência artificial: NVIDIA, Broadcom, Meta Platforms, Alphabet."
+        },
+        "STOCKS_MOMENTUM": {
+          "title": "Cesta Momentum IA e Armazenamento",
+          "description": "Empresas com a maior aceleração recente de receita: Micron, SanDisk, Dell Technologies, Palantir."
         }
       },
       "assetsTable": {
@@ -1611,7 +1627,11 @@
           "basketLabel": "Cesta",
           "basket": {
             "RWA_STRATEGY": "Estratégia RWA",
-            "STOCKS": "Cesta de ações"
+            "STOCKS": "Cesta de ações",
+            "STOCKS_CONSERVATIVE": "Cesta Conservadora",
+            "STOCKS_BALANCED": "Cesta Equilibrada",
+            "STOCKS_TECH_AI": "Cesta Tech & IA",
+            "STOCKS_MOMENTUM": "Cesta Momentum IA e Armazenamento"
           },
           "amountLabel": "Montante a investir",
           "balanceHint": "Saldo disponível: {balance}",
@@ -1659,10 +1679,14 @@
             "dynamic": {
               "title": "Perfil dinâmico",
               "description": "Uma repartição que privilegia a cesta de ações, mais exposta às variações do mercado."
+            },
+            "veryDynamic": {
+              "title": "Perfil muito dinâmico",
+              "description": "Uma repartição que empurra fortemente a exposição para a cesta de ações mais volátil, em busca do maior rendimento potencial."
             }
           },
           "allocationRwa": "Estratégia RWA: {pct}%",
-          "allocationStocks": "Cesta de ações: {pct}%",
+          "allocationStock": "{basket}: {pct}%",
           "disclaimer": "Uma sugestão indicativa baseada nas suas respostas, nunca um conselho de investimento personalizado nem uma alocação aplicada automaticamente — cabe-lhe a si decidir e investir os montantes da sua escolha."
         },
         "faq": {
@@ -1708,11 +1732,11 @@
     "eyebrow": "Um terceiro produto",
     "title": "Investimento direto",
     "description": "Um investimento, não um empréstimo: imobilize fundos do seu saldo disponível para um rendimento diário que acompanha o mercado, sem garantia nem crédito emitido.",
-    "basketsTitle": "Duas cestas à escolha",
+    "basketsTitle": "Seis cestas à escolha",
     "steps": {
       "choose": {
         "title": "Escolher uma cesta",
-        "description": "Estratégia RWA (metais industriais e matérias-primas tokenizados) ou uma cesta de 5 ações cotadas: dois perfis de rendimento à escolha."
+        "description": "Estratégia RWA (metais industriais e matérias-primas tokenizados) ou uma de cinco cestas de ações, da mais prudente à mais dinâmica: vários perfis de rendimento à escolha."
       },
       "deposit": {
         "title": "Colocar fundos",
@@ -1737,6 +1761,26 @@
         "title": "Cesta de ações",
         "description": "Cinco ações cotadas com um dividendo historicamente regular: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
         "rate": "2,5 %/ano indicativo + variação da cesta"
+      },
+      "stocksConservative": {
+        "title": "Cesta Conservadora",
+        "description": "Focado na preservação do capital e no pagamento de dividendos estáveis.",
+        "rate": "2,1 %/ano indicativo + variação da cesta"
+      },
+      "stocksBalanced": {
+        "title": "Cesta Equilibrada",
+        "description": "Combinação ideal de gigantes tecnológicos e do setor de saúde.",
+        "rate": "0,5 %/ano indicativo + variação da cesta"
+      },
+      "stocksTechAi": {
+        "title": "Cesta Tech & IA",
+        "description": "Focado nas empresas líderes do mercado de inteligência artificial.",
+        "rate": "0,6 %/ano indicativo + variação da cesta"
+      },
+      "stocksMomentum": {
+        "title": "Cesta Momentum IA e Armazenamento",
+        "description": "Empresas com a maior aceleração recente de receita.",
+        "rate": "0,5 %/ano indicativo + variação da cesta"
       }
     },
     "riskTitle": "Um investimento real, um risco real",

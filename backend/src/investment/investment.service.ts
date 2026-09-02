@@ -12,7 +12,11 @@ import { NoActiveInvestmentException } from '../common/exceptions/financial.exce
 import { LedgerService } from '../ledger/ledger.service';
 import { PrismaService } from '../prisma/prisma.service';
 import { StockMarketDataService } from '../stock-market-data/stock-market-data.service';
-import { STOCK_BASKET_DIVIDEND_YIELD_PCT } from '../stock-market-data/stock-market-data.constants';
+import {
+  STOCK_SUB_BASKET_IDS,
+  STOCK_SUB_BASKETS,
+  StockSubBasket,
+} from '../stock-market-data/stock-market-data.constants';
 import { TreasuryBotService } from '../treasury-bot/treasury-bot.service';
 
 const DAYS_PER_YEAR = 365;
@@ -30,12 +34,13 @@ export interface AccrualResult {
 }
 
 // Investissement direct (cf. §2H CLAUDE.md) : le client place des fonds réels depuis son
-// solde disponible dans l'un des deux paniers (RWA_STRATEGY ou STOCKS), ouvert aux
-// comptes PARTICULIER et BUSINESS (contrairement au crédit direct, réservé BUSINESS) —
-// aucun gage, aucun crédit émis, un placement à part entière avec un vrai risque de perte
-// (le rendement quotidien peut être négatif). Un seul dépôt/retrait par passage : pas de
-// retrait partiel à ce stade (cf. NoActiveInvestmentException), le client retire toujours
-// l'intégralité de sa position sur un panier donné.
+// solde disponible dans l'un des 6 paniers (RWA_STRATEGY ou l'un des 5 paniers STOCKS*,
+// cf. STOCK_SUB_BASKETS), ouvert aux comptes PARTICULIER et BUSINESS (contrairement au
+// crédit direct, réservé BUSINESS) — aucun gage, aucun crédit émis, un placement à part
+// entière avec un vrai risque de perte (le rendement quotidien peut être négatif). Un
+// seul dépôt/retrait par passage : pas de retrait partiel à ce stade (cf.
+// NoActiveInvestmentException), le client retire toujours l'intégralité de sa position
+// sur un panier donné.
 @Injectable()
 export class InvestmentService {
   private readonly logger = new Logger(InvestmentService.name);
@@ -145,16 +150,32 @@ export class InvestmentService {
     });
   }
 
-  // Historique réel du rendement quotidien du panier STOCKS (cf. StockBasketRun) — pendant
-  // de TreasuryBotService.getHistory() pour la stratégie RWA. Consommé par
+  // Historique réel du rendement quotidien d'un panier STOCKS* (cf. StockBasketRun) —
+  // pendant de TreasuryBotService.getHistory() pour la stratégie RWA. Consommé par
   // GET /investment/history pour tracer une tendance (cf. MiniSparkline côté frontend) à
   // partir de vraies valeurs déjà persistées jour après jour, jamais recalculées à la volée.
-  async getStockBasketHistory(limit = 30): Promise<StockBasketRun[]> {
+  async getStockBasketHistory(
+    basket: StockSubBasket,
+    limit = 30,
+  ): Promise<StockBasketRun[]> {
     const rows = await this.prisma.stockBasketRun.findMany({
+      where: { basket },
       orderBy: { runDate: 'desc' },
       take: limit,
     });
     return rows.reverse();
+  }
+
+  // Dernier passage connu d'un panier STOCKS* (cf. GET /investment/rates) — lit la même
+  // table déjà persistée par l'accrual quotidien plutôt que d'appeler Finnhub en direct à
+  // chaque consultation du panneau client (5 paniers × un appel Finnhub par ticker à
+  // chaque chargement de page serait coûteux et non nécessaire : le rendement du jour ne
+  // change qu'une fois par cron).
+  async getLatestStockBasketRun(
+    basket: StockSubBasket,
+  ): Promise<StockBasketRun | null> {
+    const rows = await this.getStockBasketHistory(basket, 1);
+    return rows[0] ?? null;
   }
 
   // Tourne quotidiennement, décalé après le bot de trésorerie (3h) et la génération des
@@ -169,7 +190,17 @@ export class InvestmentService {
     // date, donc l'appeler ici garantit que la ligne du jour existe quel que soit l'ordre
     // réel d'exécution des deux crons, sans dupliquer le calcul des 3 piliers.
     const rwaRun = await this.treasuryBotService.runDailySimulation(now);
-    const stockRun = await this.recordStockBasketRun(runDate);
+
+    // Un passage (upsert idempotent) par panier STOCKS* — chacun a sa propre composition
+    // et donc sa propre baseline dividende + signal de marché réel (cf.
+    // recordStockBasketRun), jamais un seul chiffre partagé entre les 5.
+    const stockRunsByBasket = new Map<InvestmentBasket, StockBasketRun>();
+    for (const basket of STOCK_SUB_BASKET_IDS) {
+      stockRunsByBasket.set(
+        basket,
+        await this.recordStockBasketRun(runDate, basket),
+      );
+    }
 
     const positions = await this.prisma.investmentPosition.findMany({
       where: { status: 'ACTIVE' },
@@ -180,7 +211,7 @@ export class InvestmentService {
       const dailyReturnPct =
         position.basket === 'RWA_STRATEGY'
           ? rwaRun.blendedReturnPct
-          : stockRun.dailyReturnPct;
+          : stockRunsByBasket.get(position.basket)!.dailyReturnPct;
       // Une position en échec ne doit jamais bloquer l'accrual des autres (même
       // discipline que CollateralYieldService.runDailyAccrual).
       try {
@@ -233,35 +264,39 @@ export class InvestmentService {
     };
   }
 
-  // Calcule et journalise (upsert par jour, jamais recalculé à la relecture) le
-  // rendement quotidien réel du panier STOCKS — pendant de
-  // TreasuryBotService.recordRun, en plus simple (pas de ventilation par pilier ni de NAV
-  // cumulée, cf. schema.prisma). Signal indisponible (clé Finnhub absente ou panne
-  // totale) -> rendement neutre (0) pour ce jour plutôt qu'un accrual bloqué : dégradation
-  // gracieuse cohérente avec le reste du produit, mais jamais un signal de marché fabriqué.
-  private async recordStockBasketRun(runDate: Date): Promise<StockBasketRun> {
+  // Calcule et journalise (upsert par (jour, panier), jamais recalculé à la relecture) le
+  // rendement quotidien réel d'un panier STOCKS* — pendant de TreasuryBotService.recordRun,
+  // en plus simple (pas de ventilation par pilier ni de NAV cumulée, cf. schema.prisma).
+  // Signal indisponible (clé Finnhub absente ou panne totale) -> rendement neutre (0) pour
+  // ce jour plutôt qu'un accrual bloqué : dégradation gracieuse cohérente avec le reste du
+  // produit, mais jamais un signal de marché fabriqué.
+  private async recordStockBasketRun(
+    runDate: Date,
+    basket: StockSubBasket,
+  ): Promise<StockBasketRun> {
     const existing = await this.prisma.stockBasketRun.findUnique({
-      where: { runDate },
+      where: { runDate_basket: { runDate, basket } },
     });
     if (existing) {
       return existing;
     }
 
     const marketSignalPct =
-      await this.stockMarketDataService.getBasketMarketSignal();
+      await this.stockMarketDataService.getBasketMarketSignal(basket);
     if (marketSignalPct === null) {
       this.logger.warn(
-        `Signal de marché actions indisponible pour ${runDate.toISOString()} — rendement neutre appliqué au panier STOCKS ce jour-là.`,
+        `Signal de marché actions indisponible pour le panier ${basket} le ${runDate.toISOString()} — rendement neutre appliqué ce jour-là.`,
       );
     }
 
     const dividendBaselinePerDay =
-      STOCK_BASKET_DIVIDEND_YIELD_PCT.dividedBy(DAYS_PER_YEAR);
+      STOCK_SUB_BASKETS[basket].dividendYieldPct.dividedBy(DAYS_PER_YEAR);
     const dailyReturnPct = dividendBaselinePerDay.plus(marketSignalPct ?? 0);
 
     return this.prisma.stockBasketRun.create({
       data: {
         runDate,
+        basket,
         marketSignalPct: new Prisma.Decimal(marketSignalPct ?? 0),
         dailyReturnPct,
       },

@@ -134,8 +134,9 @@ enum TransactionType {
   // sur le crédit déjà utilisé (cf. CreditPositionStatus.LIQUIDATED).
   LIQUIDATION
   // Investissement direct (cf. §2H CLAUDE.md, InvestmentService) — placement de fonds
-  // réels dans un panier (RWA_STRATEGY ou STOCKS, cf. InvestmentBasket), distinct du gage
-  // crypto : débite/crédite directement availableBalance, jamais lockedCollateral.
+  // réels dans l'un des paniers (cf. InvestmentBasket : RWA_STRATEGY ou l'un des 5
+  // paniers STOCKS*), distinct du gage crypto : débite/crédite directement
+  // availableBalance, jamais lockedCollateral.
   INVESTMENT_DEPOSIT
   INVESTMENT_WITHDRAWAL
   // Accrual quotidien du rendement réel du panier choisi, appliqué au principal de la
@@ -710,14 +711,24 @@ model TreasuryBotRun {
 
 // Investissement direct (cf. §2H CLAUDE.md, InvestmentService) — le client choisit un
 // panier au dépôt (RWA_STRATEGY : même stratégie que TreasuryBotService, désormais
-// ouverte au capital client réel en plus du capital notionnel interne ; STOCKS : panier
-// d'actions cotées réelles, cf. StockMarketDataService) et place des fonds réels depuis
-// son solde disponible — contrairement au gage crypto (§2A), rien n'est verrouillé en
-// garantie d'un crédit, c'est un placement à part entière, avec un vrai risque de perte
-// (le rendement quotidien peut être négatif un jour de marché défavorable).
+// ouverte au capital client réel en plus du capital notionnel interne ; les 5 paniers
+// STOCKS* : chacun un sous-ensemble d'actions cotées réelles, cf. StockMarketDataService,
+// STOCK_SUB_BASKETS) et place des fonds réels depuis son solde disponible — contrairement
+// au gage crypto (§2A), rien n'est verrouillé en garantie d'un crédit, c'est un placement
+// à part entière, avec un vrai risque de perte (le rendement quotidien peut être négatif
+// un jour de marché défavorable).
+// STOCKS (historique, dividendes blue chip) et les 4 paniers ajoutés à l'entrée #27 du
+// journal (CONSERVATIVE/BALANCED/TECH_AI/MOMENTUM) coexistent volontairement, sans
+// remplacement ni fusion — un chevauchement de titres entre STOCKS et
+// STOCKS_CONSERVATIVE (JNJ, PG, KO communs aux deux) est assumé, chaque panier reste une
+// sélection indépendante.
 enum InvestmentBasket {
   RWA_STRATEGY
   STOCKS
+  STOCKS_CONSERVATIVE
+  STOCKS_BALANCED
+  STOCKS_TECH_AI
+  STOCKS_MOMENTUM
 }
 
 enum InvestmentPositionStatus {
@@ -749,26 +760,31 @@ model InvestmentPosition {
   @@map("investment_positions")
 }
 
-// Rendement quotidien réel du panier d'actions (cf. StockMarketDataService,
-// STOCK_BASKET_TICKERS) — pendant de TreasuryBotRun pour le panier STOCKS : une ligne par
-// jour (upsert si le job est redéclenché le même jour), jamais recalculée à la volée lors
-// de l'accrual pour rester déterministe (le cours d'une action varie en continu dans la
-// journée, contrairement à un accrual qui doit produire le même résultat à chaque relecture).
+// Rendement quotidien réel d'un panier d'actions (cf. StockMarketDataService,
+// STOCK_SUB_BASKETS) — pendant de TreasuryBotRun pour les paniers RWA : une ligne par
+// (jour, panier) (upsert si le job est redéclenché le même jour pour le même panier),
+// jamais recalculée à la volée lors de l'accrual pour rester déterministe (le cours d'une
+// action varie en continu dans la journée, contrairement à un accrual qui doit produire
+// le même résultat à chaque relecture). `basket` distingue les 5 paniers actions
+// (STOCKS/STOCKS_CONSERVATIVE/STOCKS_BALANCED/STOCKS_TECH_AI/STOCKS_MOMENTUM) depuis
+// l'entrée #27 du journal — jamais RWA_STRATEGY, qui a sa propre table (TreasuryBotRun).
+// Défaut STOCKS conservé pour les lignes déjà écrites avant l'ajout de cette colonne.
 model StockBasketRun {
-  id      String   @id @default(uuid())
-  runDate DateTime @db.Date
+  id      String           @id @default(uuid())
+  runDate DateTime         @db.Date
+  basket  InvestmentBasket @default(STOCKS)
 
   // Moyenne réelle de la variation quotidienne (%) des tickers du panier (Finnhub) — le
   // seul chiffre non fabriqué de ce modèle.
   marketSignalPct Decimal @db.Decimal(9, 6)
-  // STOCK_BASKET_DIVIDEND_YIELD_PCT / 365 + marketSignalPct — baseline dividende
-  // indicatif (hypothèse de stratégie, comme PILLAR_TARGET_APY_PCT pour la RWA, jamais
-  // une donnée de marché) + variation réelle du jour, appliqué tel quel aux positions
-  // STOCKS ce jour-là (cf. InvestmentService.accrueYieldForPosition).
+  // Baseline dividende indicatif du panier (STOCK_SUB_BASKETS[basket].dividendYieldPct /
+  // 365, hypothèse de stratégie éditoriale, comme PILLAR_TARGET_APY_PCT pour la RWA,
+  // jamais une donnée de marché) + marketSignalPct — appliqué tel quel aux positions de
+  // ce panier ce jour-là (cf. InvestmentService.accrueYieldForPosition).
   dailyReturnPct Decimal @db.Decimal(9, 6)
 
   createdAt DateTime @default(now())
 
-  @@unique([runDate])
+  @@unique([runDate, basket])
   @@map("stock_basket_runs")
 }

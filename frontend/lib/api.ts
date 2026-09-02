@@ -208,8 +208,27 @@ export interface DirectCreditRates {
 
 // Investissement direct (cf. §2H CLAUDE.md) — ouvert aux comptes PARTICULIER et BUSINESS
 // (contrairement au crédit direct, réservé BUSINESS), un placement à part entière depuis
-// le solde disponible, sans gage ni crédit émis.
-export type InvestmentBasket = "RWA_STRATEGY" | "STOCKS";
+// le solde disponible, sans gage ni crédit émis. STOCKS est le panier d'origine ; les 4
+// autres (CONSERVATIVE/BALANCED/TECH_AI/MOMENTUM) ont été ajoutés à l'entrée #27 du
+// journal, chacun avec sa propre composition de titres et son propre profil de risque —
+// aucune hiérarchie ni remplacement entre eux.
+export type InvestmentBasket =
+  | "RWA_STRATEGY"
+  | "STOCKS"
+  | "STOCKS_CONSERVATIVE"
+  | "STOCKS_BALANCED"
+  | "STOCKS_TECH_AI"
+  | "STOCKS_MOMENTUM";
+
+export const INVESTMENT_BASKETS: InvestmentBasket[] = [
+  "RWA_STRATEGY",
+  "STOCKS",
+  "STOCKS_CONSERVATIVE",
+  "STOCKS_BALANCED",
+  "STOCKS_TECH_AI",
+  "STOCKS_MOMENTUM",
+];
+
 export type InvestmentPositionStatus = "ACTIVE" | "CLOSED";
 
 export interface InvestmentPosition {
@@ -238,11 +257,9 @@ export interface InvestmentBasketRate {
   riskLevel: number;
 }
 
-export interface InvestmentRates {
+export type InvestmentRates = {
   minAmountUsd: string;
-  RWA_STRATEGY: InvestmentBasketRate;
-  STOCKS: InvestmentBasketRate;
-}
+} & Record<InvestmentBasket, InvestmentBasketRate>;
 
 // Historique réel du rendement quotidien de chaque panier (cf. GET /investment/history)
 // — la même série que celle réellement appliquée par l'accrual quotidien, jamais un point
@@ -254,10 +271,7 @@ export interface InvestmentHistoryPoint {
   returnPct: string;
 }
 
-export interface InvestmentHistory {
-  RWA_STRATEGY: InvestmentHistoryPoint[];
-  STOCKS: InvestmentHistoryPoint[];
-}
+export type InvestmentHistory = Record<InvestmentBasket, InvestmentHistoryPoint[]>;
 
 // Détail des actifs réellement impliqués dans chaque panier (cf. GET /investment/assets)
 // — au-delà du rendement agrégé de InvestmentRates ci-dessus, pour montrer concrètement
@@ -280,10 +294,9 @@ export interface StockBasketAsset {
   changePct: number;
 }
 
-export interface InvestmentAssets {
+export type InvestmentAssets = {
   RWA_STRATEGY: { assets: RwaBasketAsset[] };
-  STOCKS: { assets: StockBasketAsset[] };
-}
+} & Record<Exclude<InvestmentBasket, "RWA_STRATEGY">, { assets: StockBasketAsset[] }>;
 
 export interface RepayCreditResult {
   balance: LedgerBalance;

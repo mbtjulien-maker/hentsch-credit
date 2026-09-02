@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Direktinvestition",
-    "directInvestmentIntro": "Eine Geldanlage, getrennt vom Kredit: zwei Körbe zur Wahl, eine Tagesrendite, die negativ sein kann.",
+    "directInvestmentIntro": "Eine Geldanlage, getrennt vom Kredit: mehrere Körbe zur Wahl, eine Tagesrendite, die negativ sein kann.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA-Strategie",
@@ -1581,6 +1581,22 @@
         "STOCKS": {
           "title": "Aktienkorb",
           "description": "Fünf notierte Aktien mit historisch regelmäßiger Dividende (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        },
+        "STOCKS_CONSERVATIVE": {
+          "title": "Konservativer Korb",
+          "description": "Fokus auf Kapitalerhalt und stabile Dividendenausschüttungen: Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway."
+        },
+        "STOCKS_BALANCED": {
+          "title": "Ausgewogener Korb",
+          "description": "Eine Mischung aus Technologiegiganten und dem Gesundheitssektor: Microsoft, Apple, Eli Lilly, Amazon."
+        },
+        "STOCKS_TECH_AI": {
+          "title": "Tech-&-KI-Korb",
+          "description": "Fokussiert auf die führenden Unternehmen im Markt für künstliche Intelligenz: NVIDIA, Broadcom, Meta Platforms, Alphabet."
+        },
+        "STOCKS_MOMENTUM": {
+          "title": "Momentum-Korb KI & Storage",
+          "description": "Unternehmen mit der stärksten jüngsten Umsatzbeschleunigung: Micron, SanDisk, Dell Technologies, Palantir."
         }
       },
       "assetsTable": {
@@ -1611,7 +1627,11 @@
           "basketLabel": "Korb",
           "basket": {
             "RWA_STRATEGY": "RWA-Strategie",
-            "STOCKS": "Aktienkorb"
+            "STOCKS": "Aktienkorb",
+            "STOCKS_CONSERVATIVE": "Konservativer Korb",
+            "STOCKS_BALANCED": "Ausgewogener Korb",
+            "STOCKS_TECH_AI": "Tech-&-KI-Korb",
+            "STOCKS_MOMENTUM": "Momentum-Korb KI & Storage"
           },
           "amountLabel": "Anzulegender Betrag",
           "balanceHint": "Verfügbares Guthaben: {balance}",
@@ -1659,10 +1679,14 @@
             "dynamic": {
               "title": "Dynamisches Profil",
               "description": "Eine Aufteilung, die den Aktienkorb bevorzugt, stärker den Marktbewegungen ausgesetzt."
+            },
+            "veryDynamic": {
+              "title": "Sehr dynamisches Profil",
+              "description": "Eine Aufteilung, die die Exponierung stark in Richtung des volatilsten Aktienkorbs verschiebt, auf der Suche nach der höchstmöglichen Rendite."
             }
           },
           "allocationRwa": "RWA-Strategie: {pct}%",
-          "allocationStocks": "Aktienkorb: {pct}%",
+          "allocationStock": "{basket}: {pct}%",
           "disclaimer": "Ein indikativer Vorschlag auf Basis Ihrer Antworten, niemals eine persönliche Anlageberatung noch eine automatisch angewendete Aufteilung — die Entscheidung und die Anlage der gewählten Beträge liegen bei Ihnen."
         },
         "faq": {
@@ -1708,11 +1732,11 @@
     "eyebrow": "Ein drittes Produkt",
     "title": "Direktinvestition",
     "description": "Eine Geldanlage, kein Darlehen: Legen Sie Mittel aus Ihrem verfügbaren Guthaben für eine Tagesrendite an, die dem Markt folgt, ohne Sicherheit und ohne gewährten Kredit.",
-    "basketsTitle": "Zwei Körbe zur Wahl",
+    "basketsTitle": "Sechs Körbe zur Wahl",
     "steps": {
       "choose": {
         "title": "Einen Korb wählen",
-        "description": "RWA-Strategie (tokenisierte Industriemetalle und Rohstoffe) oder ein Korb aus 5 notierten Aktien: zwei Renditeprofile zur Wahl."
+        "description": "RWA-Strategie (tokenisierte Industriemetalle und Rohstoffe) oder einer von fünf Aktienkörben, vom konservativsten bis zum dynamischsten: mehrere Renditeprofile zur Wahl."
       },
       "deposit": {
         "title": "Mittel anlegen",
@@ -1737,6 +1761,26 @@
         "title": "Aktienkorb",
         "description": "Fünf notierte Aktien mit historisch regelmäßiger Dividende: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
         "rate": "2,5 %/Jahr indikativ + Entwicklung des Korbs"
+      },
+      "stocksConservative": {
+        "title": "Konservativer Korb",
+        "description": "Fokus auf Kapitalerhalt und stabile Dividendenausschüttungen.",
+        "rate": "2,1 %/Jahr indikativ + Entwicklung des Korbs"
+      },
+      "stocksBalanced": {
+        "title": "Ausgewogener Korb",
+        "description": "Optimale Kombination aus Technologiegiganten und dem Gesundheitssektor.",
+        "rate": "0,5 %/Jahr indikativ + Entwicklung des Korbs"
+      },
+      "stocksTechAi": {
+        "title": "Tech-&-KI-Korb",
+        "description": "Fokussiert auf die führenden Unternehmen im Markt für künstliche Intelligenz.",
+        "rate": "0,6 %/Jahr indikativ + Entwicklung des Korbs"
+      },
+      "stocksMomentum": {
+        "title": "Momentum-Korb KI & Storage",
+        "description": "Unternehmen mit der stärksten jüngsten Umsatzbeschleunigung.",
+        "rate": "0,5 %/Jahr indikativ + Entwicklung des Korbs"
       }
     },
     "riskTitle": "Eine echte Geldanlage, ein echtes Risiko",

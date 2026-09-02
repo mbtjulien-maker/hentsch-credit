@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Directe belegging",
-    "directInvestmentIntro": "Een belegging los van krediet: twee manden naar keuze, een dagrendement dat negatief kan zijn.",
+    "directInvestmentIntro": "Een belegging los van krediet: meerdere manden naar keuze, een dagrendement dat negatief kan zijn.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA-strategie",
@@ -1581,6 +1581,22 @@
         "STOCKS": {
           "title": "Aandelenmand",
           "description": "Vijf beursgenoteerde aandelen met historisch een regelmatig dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        },
+        "STOCKS_CONSERVATIVE": {
+          "title": "Conservatieve mand",
+          "description": "Gericht op kapitaalbehoud en stabiele dividenduitkeringen: Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway."
+        },
+        "STOCKS_BALANCED": {
+          "title": "Evenwichtige mand",
+          "description": "Een combinatie van technologiegiganten en de gezondheidssector: Microsoft, Apple, Eli Lilly, Amazon."
+        },
+        "STOCKS_TECH_AI": {
+          "title": "Tech & AI-mand",
+          "description": "Gericht op de toonaangevende bedrijven in de markt voor kunstmatige intelligentie: NVIDIA, Broadcom, Meta Platforms, Alphabet."
+        },
+        "STOCKS_MOMENTUM": {
+          "title": "Momentum-mand AI & Storage",
+          "description": "Bedrijven met de sterkste recente omzetversnelling: Micron, SanDisk, Dell Technologies, Palantir."
         }
       },
       "assetsTable": {
@@ -1611,7 +1627,11 @@
           "basketLabel": "Mand",
           "basket": {
             "RWA_STRATEGY": "RWA-strategie",
-            "STOCKS": "Aandelenmand"
+            "STOCKS": "Aandelenmand",
+            "STOCKS_CONSERVATIVE": "Conservatieve mand",
+            "STOCKS_BALANCED": "Evenwichtige mand",
+            "STOCKS_TECH_AI": "Tech & AI-mand",
+            "STOCKS_MOMENTUM": "Momentum-mand AI & Storage"
           },
           "amountLabel": "Te beleggen bedrag",
           "balanceHint": "Beschikbaar saldo: {balance}",
@@ -1659,10 +1679,14 @@
             "dynamic": {
               "title": "Dynamisch profiel",
               "description": "Een verdeling die de aandelenmand bevoordeelt, sterker blootgesteld aan marktbewegingen."
+            },
+            "veryDynamic": {
+              "title": "Zeer dynamisch profiel",
+              "description": "Een verdeling die de blootstelling sterk verschuift naar de meest volatiele aandelenmand, op zoek naar het hoogst mogelijke rendement."
             }
           },
           "allocationRwa": "RWA-strategie: {pct}%",
-          "allocationStocks": "Aandelenmand: {pct}%",
+          "allocationStock": "{basket}: {pct}%",
           "disclaimer": "Een indicatieve suggestie op basis van uw antwoorden, nooit persoonlijk beleggingsadvies noch een automatisch toegepaste verdeling — het is aan u om te beslissen en zelf de bedragen van uw keuze te beleggen."
         },
         "faq": {
@@ -1708,11 +1732,11 @@
     "eyebrow": "Een derde product",
     "title": "Directe belegging",
     "description": "Een belegging, geen lening: zet middelen van uw beschikbare saldo vast voor een dagrendement dat de markt volgt, zonder onderpand en zonder verstrekt krediet.",
-    "basketsTitle": "Twee manden om uit te kiezen",
+    "basketsTitle": "Zes manden om uit te kiezen",
     "steps": {
       "choose": {
         "title": "Kies een mand",
-        "description": "RWA-strategie (getokeniseerde industriële metalen en grondstoffen) of een mand van 5 beursgenoteerde aandelen: twee rendementsprofielen naar keuze."
+        "description": "RWA-strategie (getokeniseerde industriële metalen en grondstoffen) of een van vijf aandelenmanden, van de meest voorzichtige tot de meest dynamische: meerdere rendementsprofielen naar keuze."
       },
       "deposit": {
         "title": "Middelen plaatsen",
@@ -1737,6 +1761,26 @@
         "title": "Aandelenmand",
         "description": "Vijf beursgenoteerde aandelen met historisch een regelmatig dividend: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
         "rate": "2,5%/jaar indicatief + ontwikkeling van de mand"
+      },
+      "stocksConservative": {
+        "title": "Conservatieve mand",
+        "description": "Gericht op kapitaalbehoud en stabiele dividenduitkeringen.",
+        "rate": "2,1%/jaar indicatief + ontwikkeling van de mand"
+      },
+      "stocksBalanced": {
+        "title": "Evenwichtige mand",
+        "description": "Optimale combinatie van technologiegiganten en de gezondheidssector.",
+        "rate": "0,5%/jaar indicatief + ontwikkeling van de mand"
+      },
+      "stocksTechAi": {
+        "title": "Tech & AI-mand",
+        "description": "Gericht op de toonaangevende bedrijven in de markt voor kunstmatige intelligentie.",
+        "rate": "0,6%/jaar indicatief + ontwikkeling van de mand"
+      },
+      "stocksMomentum": {
+        "title": "Momentum-mand AI & Storage",
+        "description": "Bedrijven met de sterkste recente omzetversnelling.",
+        "rate": "0,5%/jaar indicatief + ontwikkeling van de mand"
       }
     },
     "riskTitle": "Een echte belegging, een echt risico",

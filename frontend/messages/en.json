@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Direct investment",
-    "directInvestmentIntro": "A placement distinct from credit: two baskets to choose from, a daily return that can be negative.",
+    "directInvestmentIntro": "A placement distinct from credit: several baskets to choose from, a daily return that can be negative.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA strategy",
@@ -1581,6 +1581,22 @@
         "STOCKS": {
           "title": "Stock basket",
           "description": "Five listed stocks with a historically regular dividend (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        },
+        "STOCKS_CONSERVATIVE": {
+          "title": "Conservative basket",
+          "description": "Focused on capital preservation and stable dividend payouts: Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway."
+        },
+        "STOCKS_BALANCED": {
+          "title": "Balanced basket",
+          "description": "A mix of technology giants and the healthcare sector: Microsoft, Apple, Eli Lilly, Amazon."
+        },
+        "STOCKS_TECH_AI": {
+          "title": "Tech & AI basket",
+          "description": "Targets the leading companies in the artificial intelligence market: NVIDIA, Broadcom, Meta Platforms, Alphabet."
+        },
+        "STOCKS_MOMENTUM": {
+          "title": "AI & Storage Momentum basket",
+          "description": "Companies showing the strongest recent revenue acceleration: Micron, SanDisk, Dell Technologies, Palantir."
         }
       },
       "assetsTable": {
@@ -1611,7 +1627,11 @@
           "basketLabel": "Basket",
           "basket": {
             "RWA_STRATEGY": "RWA strategy",
-            "STOCKS": "Stock basket"
+            "STOCKS": "Stock basket",
+            "STOCKS_CONSERVATIVE": "Conservative basket",
+            "STOCKS_BALANCED": "Balanced basket",
+            "STOCKS_TECH_AI": "Tech & AI basket",
+            "STOCKS_MOMENTUM": "AI & Storage Momentum basket"
           },
           "amountLabel": "Amount to invest",
           "balanceHint": "Available balance: {balance}",
@@ -1659,10 +1679,14 @@
             "dynamic": {
               "title": "Dynamic profile",
               "description": "An allocation that favors the stock basket, more exposed to market movements."
+            },
+            "veryDynamic": {
+              "title": "Very dynamic profile",
+              "description": "An allocation that pushes exposure heavily toward the most volatile stock basket, chasing the highest potential return."
             }
           },
           "allocationRwa": "RWA strategy: {pct}%",
-          "allocationStocks": "Stock basket: {pct}%",
+          "allocationStock": "{basket}: {pct}%",
           "disclaimer": "An indicative suggestion based on your answers, never personalized investment advice nor an allocation applied automatically — it's up to you to decide and invest the amounts you choose."
         },
         "faq": {
@@ -1708,11 +1732,11 @@
     "eyebrow": "A third product",
     "title": "Direct investment",
     "description": "A placement, not a loan: lock up funds from your available balance for a daily return that tracks the market, with no collateral and no credit issued.",
-    "basketsTitle": "Two baskets to choose from",
+    "basketsTitle": "Six baskets to choose from",
     "steps": {
       "choose": {
         "title": "Choose a basket",
-        "description": "RWA strategy (tokenized industrial metals and commodities) or a basket of 5 listed stocks: two return profiles to choose from."
+        "description": "RWA strategy (tokenized industrial metals and commodities) or one of five stock baskets, from the most conservative to the most aggressive: several return profiles to choose from."
       },
       "deposit": {
         "title": "Place funds",
@@ -1737,6 +1761,26 @@
         "title": "Stock basket",
         "description": "Five listed stocks with a historically regular dividend: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
         "rate": "2.5%/year indicative + the basket's movement"
+      },
+      "stocksConservative": {
+        "title": "Conservative basket",
+        "description": "Focused on capital preservation and stable dividend payouts.",
+        "rate": "2.1%/year indicative + the basket's movement"
+      },
+      "stocksBalanced": {
+        "title": "Balanced basket",
+        "description": "An optimal combination of technology giants and the healthcare sector.",
+        "rate": "0.5%/year indicative + the basket's movement"
+      },
+      "stocksTechAi": {
+        "title": "Tech & AI basket",
+        "description": "Targets the leading companies in the artificial intelligence market.",
+        "rate": "0.6%/year indicative + the basket's movement"
+      },
+      "stocksMomentum": {
+        "title": "AI & Storage Momentum basket",
+        "description": "Companies showing the strongest recent revenue acceleration.",
+        "rate": "0.5%/year indicative + the basket's movement"
       }
     },
     "riskTitle": "A real placement, a real risk",

@@ -14,12 +14,18 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { InvestmentBasket, InvestmentRates } from "@/lib/api";
+import { INVESTMENT_BASKETS, type InvestmentBasket, type InvestmentRates } from "@/lib/api";
 import { formatUsd } from "@/lib/format";
 
 const HORIZONS_MONTHS = [3, 6, 12, 60] as const;
-const BASKETS: InvestmentBasket[] = ["RWA_STRATEGY", "STOCKS"];
 
 // Simulateur de projection — même principe que les simulateurs de crédit existants
 // (§2F CLAUDE.md, useEstimatedYield/RepaymentProjection) : un objectif ANNUEL indicatif
@@ -49,22 +55,22 @@ function SimulatorTab({
     <div className="flex flex-col gap-4">
       <div className="grid gap-2">
         <Label>{t("simulator.basketLabel")}</Label>
-        <div className="flex gap-2">
-          {BASKETS.map((b) => (
-            <button
-              key={b}
-              type="button"
-              onClick={() => setBasket(b)}
-              className={`flex-1 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
-                basket === b
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {t(`simulator.basket.${b}`)}
-            </button>
-          ))}
-        </div>
+        <Select value={basket} onValueChange={(v) => v && setBasket(v as InvestmentBasket)}>
+          <SelectTrigger className="w-full">
+            <SelectValue>
+              {(value: InvestmentBasket | null) =>
+                value ? t(`simulator.basket.${value}`) : null
+              }
+            </SelectValue>
+          </SelectTrigger>
+          <SelectContent>
+            {INVESTMENT_BASKETS.map((b) => (
+              <SelectItem key={b} value={b}>
+                {t(`simulator.basket.${b}`)}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="grid gap-2">
@@ -124,15 +130,30 @@ function SimulatorTab({
   );
 }
 
-// Questionnaire d'appétence au risque — 3 questions, score 1-3 par réponse, somme sur 9.
-// Débouche sur une suggestion d'allocation entre les deux paniers, jamais exécutée
-// automatiquement (cf. quiz.disclaimer) : le client reste seul décisionnaire, il applique
-// lui-même le montant suggéré via les champs de dépôt des cartes ci-dessus.
+// Questionnaire d'appétence au risque — 3 questions, score 1-3 par réponse, somme sur
+// 3-9. Débouche sur une suggestion d'allocation entre RWA_STRATEGY et un panier d'actions
+// précis, jamais exécutée automatiquement (cf. quiz.disclaimer) : le client reste seul
+// décisionnaire, il applique lui-même le montant suggéré via les champs de dépôt des
+// cartes ci-dessus.
 const QUIZ_QUESTIONS = [
   { key: "horizon", options: ["short", "medium", "long"] },
   { key: "reaction", options: ["sell", "wait", "buy"] },
   { key: "goal", options: ["preserve", "balance", "grow"] },
 ] as const;
+
+type RiskProfile = "prudent" | "balanced" | "dynamic" | "veryDynamic";
+
+// Le panier d'actions suggéré par profil parcourt le spectre de risque des 4 paniers
+// introduits à l'entrée #27 du journal (1,5 → 4,8, cf. RISK_LEVEL côté backend) — le
+// panier STOCKS d'origine (risque 4, chevauchant STOCKS_TECH_AI) n'est volontairement
+// jamais suggéré ici : ces 4 paniers ont été conçus pour ce gradient, contrairement au
+// panier historique.
+const RISK_PROFILE_STOCK_BASKET: Record<RiskProfile, InvestmentBasket> = {
+  prudent: "STOCKS_CONSERVATIVE",
+  balanced: "STOCKS_BALANCED",
+  dynamic: "STOCKS_TECH_AI",
+  veryDynamic: "STOCKS_MOMENTUM",
+};
 
 function RiskQuizTab() {
   const t = useTranslations("Dashboard.investment.advisor");
@@ -141,18 +162,21 @@ function RiskQuizTab() {
   const answeredAll = QUIZ_QUESTIONS.every((q) => answers[q.key] != null);
   const totalScore = Object.values(answers).reduce((sum, v) => sum + v, 0);
 
-  let profile: "prudent" | "balanced" | "dynamic" | null = null;
+  let profile: RiskProfile | null = null;
   let allocation: { rwa: number; stocks: number } | null = null;
   if (answeredAll) {
     if (totalScore <= 4) {
       profile = "prudent";
       allocation = { rwa: 80, stocks: 20 };
-    } else if (totalScore <= 7) {
+    } else if (totalScore <= 6) {
       profile = "balanced";
       allocation = { rwa: 50, stocks: 50 };
-    } else {
+    } else if (totalScore <= 8) {
       profile = "dynamic";
       allocation = { rwa: 30, stocks: 70 };
+    } else {
+      profile = "veryDynamic";
+      allocation = { rwa: 15, stocks: 85 };
     }
   }
 
@@ -189,7 +213,12 @@ function RiskQuizTab() {
           <p className="mt-1 text-xs text-muted-foreground">{t(`quiz.result.${profile}.description`)}</p>
           <div className="mt-2 flex items-center gap-4 text-sm">
             <span className="font-medium">{t("quiz.allocationRwa", { pct: allocation.rwa })}</span>
-            <span className="font-medium">{t("quiz.allocationStocks", { pct: allocation.stocks })}</span>
+            <span className="font-medium">
+              {t("quiz.allocationStock", {
+                basket: t(`simulator.basket.${RISK_PROFILE_STOCK_BASKET[profile]}`),
+                pct: allocation.stocks,
+              })}
+            </span>
           </div>
         </div>
       )}

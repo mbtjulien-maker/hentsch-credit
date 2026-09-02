@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Inversión directa",
-    "directInvestmentIntro": "Una inversión distinta del crédito: dos canastas a elegir, un rendimiento diario que puede ser negativo.",
+    "directInvestmentIntro": "Una inversión distinta del crédito: varias canastas a elegir, un rendimiento diario que puede ser negativo.",
     "directInvestmentItems": {
       "rwa": {
         "label": "Estrategia RWA",
@@ -1581,6 +1581,22 @@
         "STOCKS": {
           "title": "Canasta de acciones",
           "description": "Cinco acciones cotizadas con un dividendo históricamente regular (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        },
+        "STOCKS_CONSERVATIVE": {
+          "title": "Canasta Conservadora",
+          "description": "Centrado en la preservación del capital y el pago de dividendos estables: Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway."
+        },
+        "STOCKS_BALANCED": {
+          "title": "Canasta Equilibrada",
+          "description": "Una combinación de gigantes tecnológicos y el sector salud: Microsoft, Apple, Eli Lilly, Amazon."
+        },
+        "STOCKS_TECH_AI": {
+          "title": "Canasta Tech & IA",
+          "description": "Centrado en las empresas líderes del mercado de la inteligencia artificial: NVIDIA, Broadcom, Meta Platforms, Alphabet."
+        },
+        "STOCKS_MOMENTUM": {
+          "title": "Canasta Momentum IA y Almacenamiento",
+          "description": "Empresas con la mayor aceleración reciente de ingresos: Micron, SanDisk, Dell Technologies, Palantir."
         }
       },
       "assetsTable": {
@@ -1611,7 +1627,11 @@
           "basketLabel": "Canasta",
           "basket": {
             "RWA_STRATEGY": "Estrategia RWA",
-            "STOCKS": "Canasta de acciones"
+            "STOCKS": "Canasta de acciones",
+            "STOCKS_CONSERVATIVE": "Canasta Conservadora",
+            "STOCKS_BALANCED": "Canasta Equilibrada",
+            "STOCKS_TECH_AI": "Canasta Tech & IA",
+            "STOCKS_MOMENTUM": "Canasta Momentum IA y Almacenamiento"
           },
           "amountLabel": "Importe a invertir",
           "balanceHint": "Saldo disponible: {balance}",
@@ -1659,10 +1679,14 @@
             "dynamic": {
               "title": "Perfil dinámico",
               "description": "Una asignación que favorece la canasta de acciones, más expuesta a las variaciones del mercado."
+            },
+            "veryDynamic": {
+              "title": "Perfil muy dinámico",
+              "description": "Una asignación que empuja fuertemente la exposición hacia la canasta de acciones más volátil, en busca del mayor rendimiento potencial."
             }
           },
           "allocationRwa": "Estrategia RWA: {pct}%",
-          "allocationStocks": "Canasta de acciones: {pct}%",
+          "allocationStock": "{basket}: {pct}%",
           "disclaimer": "Una sugerencia indicativa basada en tus respuestas, nunca un consejo de inversión personalizado ni una asignación aplicada automáticamente: a ti te corresponde decidir e invertir tú mismo los importes que elijas."
         },
         "faq": {
@@ -1708,11 +1732,11 @@
     "eyebrow": "Un tercer producto",
     "title": "Inversión directa",
     "description": "Una inversión, no un préstamo: inmoviliza fondos de tu saldo disponible para obtener un rendimiento diario que sigue el mercado, sin garantía ni crédito emitido.",
-    "basketsTitle": "Dos canastas a elegir",
+    "basketsTitle": "Seis canastas a elegir",
     "steps": {
       "choose": {
         "title": "Elegir una canasta",
-        "description": "Estrategia RWA (metales industriales y materias primas tokenizados) o una canasta de 5 acciones cotizadas: dos perfiles de rendimiento a elegir."
+        "description": "Estrategia RWA (metales industriales y materias primas tokenizados) o una de cinco canastas de acciones, de la más prudente a la más dinámica: varios perfiles de rendimiento a elegir."
       },
       "deposit": {
         "title": "Colocar fondos",
@@ -1737,6 +1761,26 @@
         "title": "Canasta de acciones",
         "description": "Cinco acciones cotizadas con un dividendo históricamente regular: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
         "rate": "2,5 %/año indicativo + variación de la canasta"
+      },
+      "stocksConservative": {
+        "title": "Canasta Conservadora",
+        "description": "Centrado en la preservación del capital y el pago de dividendos estables.",
+        "rate": "2,1 %/año indicativo + variación de la canasta"
+      },
+      "stocksBalanced": {
+        "title": "Canasta Equilibrada",
+        "description": "Combinación óptima de gigantes tecnológicos y el sector salud.",
+        "rate": "0,5 %/año indicativo + variación de la canasta"
+      },
+      "stocksTechAi": {
+        "title": "Canasta Tech & IA",
+        "description": "Centrado en las empresas líderes del mercado de la inteligencia artificial.",
+        "rate": "0,6 %/año indicativo + variación de la canasta"
+      },
+      "stocksMomentum": {
+        "title": "Canasta Momentum IA y Almacenamiento",
+        "description": "Empresas con la mayor aceleración reciente de ingresos.",
+        "rate": "0,5 %/año indicativo + variación de la canasta"
       }
     },
     "riskTitle": "Una inversión real, un riesgo real",

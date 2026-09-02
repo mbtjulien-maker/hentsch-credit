@@ -61,8 +61,17 @@ export default async function InvestissementDirectPage({ params }: { params: Pro
         </div>
 
         <h2 className="mt-14 text-xl font-semibold text-foreground">{t("basketsTitle")}</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          {(["rwa", "stocks"] as const).map((key) => (
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {(
+            [
+              "rwa",
+              "stocks",
+              "stocksConservative",
+              "stocksBalanced",
+              "stocksTechAi",
+              "stocksMomentum",
+            ] as const
+          ).map((key) => (
             <div key={key} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
               <h3 className="text-sm font-semibold text-foreground">{t(`baskets.${key}.title`)}</h3>
               <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{t(`baskets.${key}.description`)}</p>

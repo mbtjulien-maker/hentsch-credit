@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Direktinvestering",
-    "directInvestmentIntro": "En placering skild från kredit: två korgar att välja mellan, en daglig avkastning som kan vara negativ.",
+    "directInvestmentIntro": "En placering skild från kredit: flera korgar att välja mellan, en daglig avkastning som kan vara negativ.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA-strategi",
@@ -1581,6 +1581,22 @@
         "STOCKS": {
           "title": "Aktiekorg",
           "description": "Fem börsnoterade aktier med historiskt regelbunden utdelning (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+        },
+        "STOCKS_CONSERVATIVE": {
+          "title": "Konservativ korg",
+          "description": "Fokuserad på kapitalbevarande och stabila utdelningar: Coca-Cola, Johnson & Johnson, Procter & Gamble, Berkshire Hathaway."
+        },
+        "STOCKS_BALANCED": {
+          "title": "Balanserad korg",
+          "description": "En kombination av teknikjättar och hälsovårdssektorn: Microsoft, Apple, Eli Lilly, Amazon."
+        },
+        "STOCKS_TECH_AI": {
+          "title": "Tech & AI-korg",
+          "description": "Fokuserad på de ledande företagen inom marknaden för artificiell intelligens: NVIDIA, Broadcom, Meta Platforms, Alphabet."
+        },
+        "STOCKS_MOMENTUM": {
+          "title": "Momentum-korg AI & lagring",
+          "description": "Företag med den starkaste senaste intäktsaccelerationen: Micron, SanDisk, Dell Technologies, Palantir."
         }
       },
       "assetsTable": {
@@ -1611,7 +1627,11 @@
           "basketLabel": "Korg",
           "basket": {
             "RWA_STRATEGY": "RWA-strategi",
-            "STOCKS": "Aktiekorg"
+            "STOCKS": "Aktiekorg",
+            "STOCKS_CONSERVATIVE": "Konservativ korg",
+            "STOCKS_BALANCED": "Balanserad korg",
+            "STOCKS_TECH_AI": "Tech & AI-korg",
+            "STOCKS_MOMENTUM": "Momentum-korg AI & lagring"
           },
           "amountLabel": "Belopp att placera",
           "balanceHint": "Tillgängligt saldo: {balance}",
@@ -1659,10 +1679,14 @@
             "dynamic": {
               "title": "Dynamisk profil",
               "description": "En fördelning som gynnar aktiekorgen, mer exponerad för marknadsrörelser."
+            },
+            "veryDynamic": {
+              "title": "Mycket dynamisk profil",
+              "description": "En fördelning som starkt driver exponeringen mot den mest volatila aktiekorgen, i jakt på den högsta potentiella avkastningen."
             }
           },
           "allocationRwa": "RWA-strategi: {pct}%",
-          "allocationStocks": "Aktiekorg: {pct}%",
+          "allocationStock": "{basket}: {pct}%",
           "disclaimer": "Ett vägledande förslag baserat på dina svar, aldrig personlig investeringsrådgivning eller en automatiskt tillämpad fördelning — det är upp till dig att besluta och själv placera de belopp du väljer."
         },
         "faq": {
@@ -1708,11 +1732,11 @@
     "eyebrow": "En tredje produkt",
     "title": "Direktinvestering",
     "description": "En placering, inte ett lån: bind medel från ditt tillgängliga saldo för en daglig avkastning som följer marknaden, utan säkerhet och utan beviljad kredit.",
-    "basketsTitle": "Två korgar att välja mellan",
+    "basketsTitle": "Sex korgar att välja mellan",
     "steps": {
       "choose": {
         "title": "Välj en korg",
-        "description": "RWA-strategi (tokeniserade industrimetaller och råvaror) eller en korg med 5 börsnoterade aktier: två avkastningsprofiler att välja mellan."
+        "description": "RWA-strategi (tokeniserade industrimetaller och råvaror) eller en av fem aktiekorgar, från den mest försiktiga till den mest dynamiska: flera avkastningsprofiler att välja mellan."
       },
       "deposit": {
         "title": "Placera medel",
@@ -1737,6 +1761,26 @@
         "title": "Aktiekorg",
         "description": "Fem börsnoterade aktier med historiskt regelbunden utdelning: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
         "rate": "2,5 %/år vägledande + korgens utveckling"
+      },
+      "stocksConservative": {
+        "title": "Konservativ korg",
+        "description": "Fokuserad på kapitalbevarande och stabila utdelningar.",
+        "rate": "2,1 %/år vägledande + korgens utveckling"
+      },
+      "stocksBalanced": {
+        "title": "Balanserad korg",
+        "description": "Optimal kombination av teknikjättar och hälsovårdssektorn.",
+        "rate": "0,5 %/år vägledande + korgens utveckling"
+      },
+      "stocksTechAi": {
+        "title": "Tech & AI-korg",
+        "description": "Fokuserad på de ledande företagen inom marknaden för artificiell intelligens.",
+        "rate": "0,6 %/år vägledande + korgens utveckling"
+      },
+      "stocksMomentum": {
+        "title": "Momentum-korg AI & lagring",
+        "description": "Företag med den starkaste senaste intäktsaccelerationen.",
+        "rate": "0,5 %/år vägledande + korgens utveckling"
       }
     },
     "riskTitle": "En riktig placering, en riktig risk",

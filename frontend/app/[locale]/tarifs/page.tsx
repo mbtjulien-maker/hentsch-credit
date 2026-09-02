@@ -1,4 +1,4 @@
-import { Coins, Landmark, Lock, Percent, ShieldAlert, ShieldCheck, Timer } from "lucide-react";
+import { Coins, Landmark, LineChart, Lock, Percent, ShieldAlert, ShieldCheck, Timer, TrendingUp } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -35,6 +35,14 @@ export default async function TarifsPage({ params }: { params: Promise<{ locale:
     { key: "positionDuration", icon: Timer, label: t("items.positionDuration.label"), value: t("items.positionDuration.value"), detail: t("items.positionDuration.detail") },
     { key: "automaticRepayment", icon: ShieldCheck, label: t("items.automaticRepayment.label"), value: t("items.automaticRepayment.value"), detail: t("items.automaticRepayment.detail") },
     { key: "liquidationThresholds", icon: ShieldAlert, label: t("items.liquidationThresholds.label"), value: "30% · 50%", detail: t("items.liquidationThresholds.detail") },
+  ];
+
+  // Investissement direct (§2H CLAUDE.md) — mêmes constantes que le backend
+  // (backend/src/investment/investment.constants.ts), duplication assumée côté
+  // marketing (même principe que PRICING ci-dessus pour le crédit gagé).
+  const DIRECT_INVESTMENT_ITEMS = [
+    { key: "rwa", icon: LineChart, label: t("directInvestmentItems.rwa.label"), value: t("directInvestmentItems.rwa.value"), detail: t("directInvestmentItems.rwa.detail") },
+    { key: "stocks", icon: TrendingUp, label: t("directInvestmentItems.stocks.label"), value: t("directInvestmentItems.stocks.value"), detail: t("directInvestmentItems.stocks.detail") },
   ];
 
   const FAQ_ITEMS = (["earlyRepayment", "negotiable", "currencyDifference"] as const).map((key) => ({
@@ -113,6 +121,27 @@ export default async function TarifsPage({ params }: { params: Promise<{ locale:
               </Link>
             ),
           })}
+        </p>
+
+        <h2 className="mt-10 text-xl font-semibold text-foreground">{t("directInvestmentTitle")}</h2>
+        <p className="mt-1 text-sm text-muted-foreground">{t("directInvestmentIntro")}</p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {DIRECT_INVESTMENT_ITEMS.map((item) => (
+            <div key={item.key} className="flex flex-col rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
+              <div className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-600 text-white">
+                <item.icon className="size-4.5" />
+              </div>
+              <div className="mt-3 text-xl font-semibold tabular-nums text-foreground">{item.value}</div>
+              <h3 className="mt-0.5 text-sm font-semibold text-foreground/80">{item.label}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground/80">{item.detail}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-2 text-xs text-muted-foreground/80">
+          {t("directInvestmentNote")}{" "}
+          <Link href="/investissement-direct" className="font-medium text-foreground/80 underline underline-offset-2">
+            {t("directInvestmentLinkLabel")}
+          </Link>
         </p>
 
         <h2 className="mt-10 text-xl font-semibold text-foreground">{t("faqTitle")}</h2>

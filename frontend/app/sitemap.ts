@@ -15,6 +15,7 @@ const PUBLIC_ROUTES = [
   { path: "/strategie-rwa", priority: 0.7, changeFrequency: "monthly" },
   { path: "/marche", priority: 0.6, changeFrequency: "daily" },
   { path: "/tarifs", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/investissement-direct", priority: 0.8, changeFrequency: "monthly" },
   { path: "/demande-de-compte", priority: 0.9, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
   { path: "/faq", priority: 0.6, changeFrequency: "monthly" },

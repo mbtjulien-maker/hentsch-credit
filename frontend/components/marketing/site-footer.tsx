@@ -49,6 +49,7 @@ export async function SiteFooter() {
     { href: "/strategie-rwa", label: t("columns.platform.rwaStrategy") },
     { href: "/marche", label: t("columns.platform.market") },
     { href: "/tarifs", label: t("columns.platform.pricing") },
+    { href: "/investissement-direct", label: t("columns.platform.directInvestment") },
     { href: "/demande-de-compte", label: t("columns.platform.requestAccount") },
   ] as const;
 

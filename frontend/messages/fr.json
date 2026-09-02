@@ -12,7 +12,8 @@
       "rendement": "Rendement",
       "strategieRwa": "Stratégie RWA",
       "marche": "Marché",
-      "tarifs": "Tarifs"
+      "tarifs": "Tarifs",
+      "investissementDirect": "Investissement"
     },
     "connexionShort": "Connexion",
     "connexionLong": "Accéder à mon compte"
@@ -26,6 +27,7 @@
         "rwaStrategy": "Stratégie RWA",
         "market": "Marché",
         "pricing": "Tarifs",
+        "directInvestment": "Investissement direct",
         "requestAccount": "Demander un compte"
       },
       "help": {
@@ -84,6 +86,10 @@
       "market": {
         "title": "Le marché en direct",
         "description": "Les cours des actifs acceptés en garantie, en temps réel."
+      },
+      "investment": {
+        "title": "Investissement direct",
+        "description": "Un placement réel, sans gage ni crédit — stratégie RWA ou panier d'actions, au choix."
       }
     },
     "stats": {
@@ -375,6 +381,13 @@
       "item3": "le risque de contrepartie et le risque opérationnel liés aux établissements dépositaires et prestataires de garde tiers mentionnés en section 5 ;",
       "item4": "le risque réglementaire lié à l'évolution du cadre juridique applicable aux actifs numériques et aux stablecoins.",
       "body": "Les présentes conditions ne constituent ni un conseil en investissement, ni une recommandation d'achat, de vente ou de détention d'un quelconque actif numérique."
+    },
+    "s16": {
+      "title": "16. Investissement direct",
+      "intro": "Distinct du crédit gagé (section 4) et du crédit direct, l'investissement direct est un placement : le client immobilise des fonds depuis son solde disponible en échange d'un rendement, sans qu'aucun crédit ne soit émis ni qu'aucune garantie ne soit constituée.",
+      "body1": "Le capital placé n'est ni garanti ni assuré. Le rendement quotidien appliqué reflète une donnée de marché réelle et peut être négatif, ce qui peut réduire la valeur de la position en deçà du capital initialement placé. Les objectifs de rendement indicatifs communiqués au client ne constituent en aucun cas un engagement de performance.",
+      "body2": "Le rendement du panier « Stratégie RWA » reprend la performance réelle de la stratégie de trésorerie de l'exploitant sur les métaux industriels et matières premières tokenisés ; celui du panier « Actions » reprend la variation réelle d'un panier d'actions cotées, mesurée via un fournisseur de données de marché tiers.",
+      "body3": "Le client peut demander le retrait intégral de sa position à tout moment, sans préavis ni pénalité ; aucun retrait partiel n'est proposé à ce stade."
     },
     "s12": {
       "title": "12. Résiliation",
@@ -683,6 +696,7 @@
       "rwaStrategy": "Stratégie RWA",
       "market": "Marché",
       "pricing": "Tarifs",
+      "directInvestment": "Investissement direct",
       "requestAccount": "Demander un compte",
       "login": "Connexion",
       "contact": "Contactez-nous",
@@ -702,6 +716,7 @@
       "balance": "Solde",
       "market": "Marché",
       "credit": "Crédit",
+      "investment": "Investissement",
       "cards": "Cartes",
       "history": "Historique",
       "profile": "Profil",
@@ -1082,7 +1097,23 @@
         "question": "Pourquoi le taux diffère-t-il entre USD et EUR ?",
         "answer": "Chaque devise applique son propre taux de référence monétaire (SOFR pour l'USD, EURIBOR pour l'EUR) avant d'y ajouter la même prime de risque de 8,5 points, d'où l'écart de 1,5 point entre les deux."
       }
-    }
+    },
+    "directInvestmentTitle": "Investissement direct",
+    "directInvestmentIntro": "Un placement réel, distinct du crédit — deux paniers au choix, un rendement quotidien réel qui peut être négatif.",
+    "directInvestmentItems": {
+      "rwa": {
+        "label": "Stratégie RWA",
+        "value": "8,58 %/an indicatif",
+        "detail": "Même stratégie de trésorerie que la banque sur les métaux industriels et matières premières tokenisés."
+      },
+      "stocks": {
+        "label": "Panier d'actions",
+        "value": "2,5 %/an indicatif",
+        "detail": "Dividende indicatif + variation réelle de 5 actions cotées (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      }
+    },
+    "directInvestmentNote": "Retrait intégral possible à tout moment, sans préavis ni pénalité. Ces objectifs de rendement sont indicatifs et ne constituent jamais une garantie de performance.",
+    "directInvestmentLinkLabel": "En savoir plus."
   },
   "DashboardShell": {
     "sidebar": {
@@ -1556,5 +1587,64 @@
     "XPD": "Palladium tokenisé",
     "XCU": "Cuivre tokenisé",
     "WTI": "Pétrole synthétique (WTI)"
+  },
+  "DirectInvestment": {
+    "meta": {
+      "title": "Investissement direct",
+      "description": "Placez des fonds dans la stratégie RWA de la banque ou un panier d'actions réelles — un vrai placement, sans gage ni crédit, avec un rendement quotidien réel."
+    },
+    "eyebrow": "Un troisième produit",
+    "title": "Investissement direct",
+    "description": "Un placement réel, pas un emprunt : immobilisez des fonds depuis votre solde disponible pour un rendement quotidien réel, sans gage ni crédit émis.",
+    "basketsTitle": "Deux paniers au choix",
+    "steps": {
+      "choose": {
+        "title": "Choisir un panier",
+        "description": "Stratégie RWA (métaux industriels et matières premières tokenisés) ou panier de 5 actions cotées réelles — deux profils de rendement au choix."
+      },
+      "deposit": {
+        "title": "Placer des fonds",
+        "description": "Depuis votre solde disponible, sans minimum élevé ni durée imposée."
+      },
+      "accrue": {
+        "title": "Rendement quotidien composé",
+        "description": "Calculé chaque jour à partir d'une donnée de marché réelle, jamais fabriquée — il peut être négatif un jour de marché défavorable."
+      },
+      "withdraw": {
+        "title": "Retrait à tout moment",
+        "description": "Le capital et le rendement accumulé sont reversés intégralement sur votre solde disponible, sans préavis."
+      }
+    },
+    "baskets": {
+      "rwa": {
+        "title": "Stratégie RWA",
+        "description": "Même stratégie de trésorerie que la banque sur les métaux industriels et matières premières tokenisés (platine, palladium, cuivre, pétrole synthétique) — désormais ouverte à votre capital.",
+        "rate": "8,58 %/an indicatif"
+      },
+      "stocks": {
+        "title": "Panier d'actions",
+        "description": "Cinq actions cotées réelles versant historiquement un dividende régulier : Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/an indicatif + variation réelle du panier"
+      }
+    },
+    "riskTitle": "Un vrai placement, un vrai risque",
+    "riskBody": "Contrairement au rendement du gage crypto, qui ne rembourse jamais que sur plus-value, l'investissement direct peut perdre de la valeur : le rendement quotidien reflète une donnée de marché réelle et peut être négatif. Les objectifs de rendement indicatifs affichés ne constituent en aucun cas une garantie de performance.",
+    "faqTitle": "Questions fréquentes",
+    "faq": {
+      "guarantee": {
+        "question": "Le rendement affiché est-il garanti ?",
+        "answer": "Non. C'est un objectif indicatif basé sur une hypothèse de stratégie ; le rendement réellement appliqué chaque jour dépend d'une donnée de marché réelle et peut être négatif."
+      },
+      "withdraw": {
+        "question": "Puis-je retirer mes fonds à tout moment ?",
+        "answer": "Oui, sans préavis ni pénalité. Le retrait est toujours intégral (capital + rendement accumulé) ; le retrait partiel n'est pas proposé à ce stade."
+      },
+      "difference": {
+        "question": "Quelle est la différence avec le crédit gagé ?",
+        "answer": "Le crédit gagé vous prête de l'argent contre un gage. L'investissement direct, à l'inverse, immobilise votre propre argent en échange d'un rendement — aucun crédit n'est émis, aucune garantie n'est requise."
+      }
+    },
+    "ctaLogin": "Accéder à mon compte",
+    "ctaNoAccount": "Pas encore de compte ? Demander l'ouverture d'un compte"
   }
 }

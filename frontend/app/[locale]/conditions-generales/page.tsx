@@ -102,6 +102,17 @@ export default async function ConditionsGeneralesPage({ params }: { params: Prom
         <p>{t("s11.body")}</p>
       </LegalSection>
 
+      {/* Investissement direct (§2H CLAUDE.md) — troisième produit, distinct du crédit
+          gagé (section 4) et du crédit direct : un placement réel, pas un emprunt.
+          Placée juste après la section Risques (générale, orientée gage crypto) pour
+          couvrir le risque spécifique de ce produit (perte réelle sur capital placé). */}
+      <LegalSection title={t("s16.title")}>
+        <p>{t("s16.intro")}</p>
+        <p>{t("s16.body1")}</p>
+        <p>{t("s16.body2")}</p>
+        <p>{t("s16.body3")}</p>
+      </LegalSection>
+
       <LegalSection title={t("s12.title")}>
         <p>{t("s12.body")}</p>
       </LegalSection>

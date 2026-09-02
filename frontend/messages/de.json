@@ -12,7 +12,8 @@
       "rendement": "Rendite",
       "strategieRwa": "RWA-Strategie",
       "marche": "Markt",
-      "tarifs": "Preise"
+      "tarifs": "Preise",
+      "investissementDirect": "Investition"
     },
     "connexionShort": "Anmelden",
     "connexionLong": "Zu meinem Konto"
@@ -26,6 +27,7 @@
         "rwaStrategy": "RWA-Strategie",
         "market": "Markt",
         "pricing": "Preise",
+        "directInvestment": "Direktinvestition",
         "requestAccount": "Konto beantragen"
       },
       "help": {
@@ -84,6 +86,10 @@
       "market": {
         "title": "Der Markt live",
         "description": "Die Kurse der als Sicherheit akzeptierten Vermögenswerte, in Echtzeit."
+      },
+      "investment": {
+        "title": "Direktinvestition",
+        "description": "Eine echte Geldanlage, ohne Sicherheit oder Kredit — RWA-Strategie oder ein Aktienkorb, nach Wahl."
       }
     },
     "stats": {
@@ -375,6 +381,13 @@
       "item3": "das Gegenparteirisiko und das operationelle Risiko im Zusammenhang mit den in Abschnitt 5 genannten Verwahrstellen und Drittverwahrungsdienstleistern;",
       "item4": "das regulatorische Risiko im Zusammenhang mit der Entwicklung des für digitale Vermögenswerte und Stablecoins geltenden Rechtsrahmens.",
       "body": "Die vorliegenden Bedingungen stellen weder eine Anlageberatung noch eine Empfehlung zum Kauf, Verkauf oder Halten eines digitalen Vermögenswerts dar."
+    },
+    "s16": {
+      "title": "16. Direktinvestition",
+      "intro": "Im Unterschied zum besicherten Kredit (Abschnitt 4) und zum Direktkredit ist die Direktinvestition eine Geldanlage: Der Kunde legt Mittel aus seinem verfügbaren Guthaben im Austausch für eine Rendite an, ohne dass ein Kredit gewährt oder eine Sicherheit gestellt wird.",
+      "body1": "Das angelegte Kapital ist weder garantiert noch versichert. Die angewendete Tagesrendite spiegelt reale Marktdaten wider und kann negativ sein, was den Wert der Position unter das ursprünglich angelegte Kapital senken kann. Die dem Kunden mitgeteilten indikativen Renditeziele stellen keinesfalls eine Performancezusage dar.",
+      "body2": "Die Rendite des Korbs „RWA-Strategie“ spiegelt die reale Performance der Treasury-Strategie des Betreibers auf tokenisierte Industriemetalle und Rohstoffe wider; die des Korbs „Aktien“ spiegelt die reale Entwicklung eines Korbs notierter Aktien wider, gemessen über einen externen Marktdatenanbieter.",
+      "body3": "Der Kunde kann die vollständige Auszahlung seiner Position jederzeit verlangen, ohne Kündigungsfrist oder Gebühr; eine teilweise Auszahlung wird derzeit nicht angeboten."
     },
     "s12": {
       "title": "12. Kündigung",
@@ -683,6 +696,7 @@
       "rwaStrategy": "RWA-Strategie",
       "market": "Markt",
       "pricing": "Preise",
+      "directInvestment": "Direktinvestition",
       "requestAccount": "Konto beantragen",
       "login": "Anmelden",
       "contact": "Kontaktieren Sie uns",
@@ -702,6 +716,7 @@
       "balance": "Saldo",
       "market": "Markt",
       "credit": "Kredit",
+      "investment": "Investition",
       "cards": "Karten",
       "history": "Verlauf",
       "profile": "Profil",
@@ -1082,7 +1097,23 @@
         "question": "Warum unterscheidet sich der Satz zwischen USD und EUR?",
         "answer": "Jede Währung wendet ihren eigenen monetären Referenzsatz an (SOFR für USD, EURIBOR für EUR), bevor dieselbe Risikoprämie von 8,5 Punkten hinzugefügt wird, daher der Unterschied von 1,5 Punkten zwischen beiden."
       }
-    }
+    },
+    "directInvestmentTitle": "Direktinvestition",
+    "directInvestmentIntro": "Eine echte Geldanlage, getrennt vom Kredit — zwei Körbe zur Wahl, eine echte Tagesrendite, die negativ sein kann.",
+    "directInvestmentItems": {
+      "rwa": {
+        "label": "RWA-Strategie",
+        "value": "8,58 %/Jahr indikativ",
+        "detail": "Dieselbe Treasury-Strategie wie die der Bank auf tokenisierte Industriemetalle und Rohstoffe."
+      },
+      "stocks": {
+        "label": "Aktienkorb",
+        "value": "2,5 %/Jahr indikativ",
+        "detail": "Indikative Dividende + reale Entwicklung von 5 notierten Aktien (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      }
+    },
+    "directInvestmentNote": "Vollständige Auszahlung jederzeit möglich, ohne Kündigungsfrist oder Gebühr. Diese Renditeziele sind indikativ und stellen niemals eine Performancegarantie dar.",
+    "directInvestmentLinkLabel": "Mehr erfahren."
   },
   "DashboardShell": {
     "sidebar": {
@@ -1556,5 +1587,64 @@
     "XPD": "Tokenisiertes Palladium",
     "XCU": "Tokenisiertes Kupfer",
     "WTI": "Synthetisches Öl (WTI)"
+  },
+  "DirectInvestment": {
+    "meta": {
+      "title": "Direktinvestition",
+      "description": "Legen Sie Mittel in der RWA-Strategie der Bank oder einem Korb echter Aktien an — eine echte Geldanlage, ohne Sicherheit oder Kredit, mit einer echten Tagesrendite."
+    },
+    "eyebrow": "Ein drittes Produkt",
+    "title": "Direktinvestition",
+    "description": "Eine echte Geldanlage, kein Darlehen: Legen Sie Mittel aus Ihrem verfügbaren Guthaben für eine echte Tagesrendite an, ohne Sicherheit und ohne gewährten Kredit.",
+    "basketsTitle": "Zwei Körbe zur Wahl",
+    "steps": {
+      "choose": {
+        "title": "Einen Korb wählen",
+        "description": "RWA-Strategie (tokenisierte Industriemetalle und Rohstoffe) oder ein Korb aus 5 echten notierten Aktien — zwei Renditeprofile zur Wahl."
+      },
+      "deposit": {
+        "title": "Mittel anlegen",
+        "description": "Aus Ihrem verfügbaren Guthaben, ohne hohen Mindestbetrag oder vorgegebene Laufzeit."
+      },
+      "accrue": {
+        "title": "Zusammengesetzte Tagesrendite",
+        "description": "Täglich aus echten Marktdaten berechnet, niemals erfunden — an einem ungünstigen Markttag kann sie negativ sein."
+      },
+      "withdraw": {
+        "title": "Jederzeit auszahlbar",
+        "description": "Kapital und aufgelaufene Rendite werden vollständig auf Ihr verfügbares Guthaben zurückgezahlt, ohne Kündigungsfrist."
+      }
+    },
+    "baskets": {
+      "rwa": {
+        "title": "RWA-Strategie",
+        "description": "Dieselbe Treasury-Strategie wie die der Bank auf tokenisierte Industriemetalle und Rohstoffe (Platin, Palladium, Kupfer, synthetisches Öl) — jetzt für Ihr Kapital geöffnet.",
+        "rate": "8,58 %/Jahr indikativ"
+      },
+      "stocks": {
+        "title": "Aktienkorb",
+        "description": "Fünf echte notierte Aktien mit historisch regelmäßiger Dividende: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/Jahr indikativ + reale Entwicklung des Korbs"
+      }
+    },
+    "riskTitle": "Eine echte Geldanlage, ein echtes Risiko",
+    "riskBody": "Im Gegensatz zur Rendite der Krypto-Sicherheit, die nur bei realem Kursgewinn zurückzahlt, kann die Direktinvestition an Wert verlieren: Die Tagesrendite spiegelt reale Marktdaten wider und kann negativ sein. Die angezeigten indikativen Renditeziele stellen keinesfalls eine Performancegarantie dar.",
+    "faqTitle": "Häufig gestellte Fragen",
+    "faq": {
+      "guarantee": {
+        "question": "Ist die angezeigte Rendite garantiert?",
+        "answer": "Nein. Es handelt sich um ein indikatives Ziel auf Basis einer Strategieannahme; die tatsächlich täglich angewendete Rendite hängt von echten Marktdaten ab und kann negativ sein."
+      },
+      "withdraw": {
+        "question": "Kann ich meine Mittel jederzeit abheben?",
+        "answer": "Ja, ohne Kündigungsfrist oder Gebühr. Die Auszahlung erfolgt immer vollständig (Kapital + aufgelaufene Rendite); eine Teilauszahlung wird derzeit nicht angeboten."
+      },
+      "difference": {
+        "question": "Was ist der Unterschied zum besicherten Kredit?",
+        "answer": "Der besicherte Kredit leiht Ihnen Geld gegen eine Sicherheit. Die Direktinvestition legt umgekehrt Ihr eigenes Geld im Austausch für eine Rendite an — es wird kein Kredit gewährt, keine Sicherheit ist erforderlich."
+      }
+    },
+    "ctaLogin": "Zu meinem Konto",
+    "ctaNoAccount": "Noch kein Konto? Kontoeröffnung beantragen"
   }
 }

@@ -46,6 +46,7 @@ export default async function PlanDuSitePage({ params }: { params: Promise<{ loc
         { href: "/strategie-rwa", label: t("links.rwaStrategy") },
         { href: "/marche", label: t("links.market") },
         { href: "/tarifs", label: t("links.pricing") },
+        { href: "/investissement-direct", label: t("links.directInvestment") },
       ],
     },
     {
@@ -97,6 +98,7 @@ export default async function PlanDuSitePage({ params }: { params: Promise<{ loc
         { href: "/dashboard/solde", label: t("clientLinks.balance") },
         { href: "/dashboard/marche", label: t("clientLinks.market") },
         { href: "/dashboard/credit", label: t("clientLinks.credit") },
+        { href: "/dashboard/investissement", label: t("clientLinks.investment") },
         { href: "/dashboard/cartes", label: t("clientLinks.cards") },
         { href: "/dashboard/historique", label: t("clientLinks.history") },
         { href: "/dashboard/profil", label: t("clientLinks.profile") },

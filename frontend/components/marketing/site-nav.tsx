@@ -16,6 +16,7 @@ export async function SiteNav() {
     { href: "/comment-ca-marche", label: t("links.commentCaMarche") },
     { href: "/rendement", label: t("links.rendement") },
     { href: "/strategie-rwa", label: t("links.strategieRwa") },
+    { href: "/investissement-direct", label: t("links.investissementDirect") },
     { href: "/marche", label: t("links.marche") },
     { href: "/tarifs", label: t("links.tarifs") },
   ] as const;
@@ -32,12 +33,12 @@ export async function SiteNav() {
             <span className="hidden truncate text-xs text-muted-foreground sm:block">{t("tagline")}</span>
           </div>
         </Link>
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-4 xl:gap-5 lg:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="whitespace-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>

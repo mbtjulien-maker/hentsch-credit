@@ -12,7 +12,8 @@
       "rendement": "Yield",
       "strategieRwa": "RWA strategy",
       "marche": "Market",
-      "tarifs": "Pricing"
+      "tarifs": "Pricing",
+      "investissementDirect": "Investment"
     },
     "connexionShort": "Login",
     "connexionLong": "Access my account"
@@ -26,6 +27,7 @@
         "rwaStrategy": "RWA strategy",
         "market": "Market",
         "pricing": "Pricing",
+        "directInvestment": "Direct investment",
         "requestAccount": "Request an account"
       },
       "help": {
@@ -84,6 +86,10 @@
       "market": {
         "title": "The live market",
         "description": "The prices of assets accepted as collateral, in real time."
+      },
+      "investment": {
+        "title": "Direct investment",
+        "description": "A real placement, no collateral or credit — RWA strategy or a stock basket, your choice."
       }
     },
     "stats": {
@@ -375,6 +381,13 @@
       "item3": "counterparty risk and operational risk linked to the depositary institutions and third-party custody providers mentioned in section 5;",
       "item4": "regulatory risk linked to changes in the legal framework applicable to digital assets and stablecoins.",
       "body": "These terms constitute neither investment advice nor a recommendation to buy, sell or hold any digital asset."
+    },
+    "s16": {
+      "title": "16. Direct investment",
+      "intro": "Distinct from collateralized credit (section 4) and direct credit, direct investment is a placement: the client locks up funds from their available balance in exchange for a return, with no credit issued and no collateral required.",
+      "body1": "The capital placed is neither guaranteed nor insured. The daily return applied reflects real market data and can be negative, which may reduce the position's value below the capital originally placed. The indicative return targets communicated to the client are never a performance commitment.",
+      "body2": "The return on the “RWA strategy” basket reflects the operator's real treasury-strategy performance on tokenized industrial metals and commodities; the return on the “Stocks” basket reflects the real movement of a basket of listed stocks, measured via a third-party market data provider.",
+      "body3": "The client may request the full withdrawal of their position at any time, with no notice or penalty; no partial withdrawal is offered at this stage."
     },
     "s12": {
       "title": "12. Termination",
@@ -683,6 +696,7 @@
       "rwaStrategy": "RWA strategy",
       "market": "Market",
       "pricing": "Pricing",
+      "directInvestment": "Direct investment",
       "requestAccount": "Request an account",
       "login": "Login",
       "contact": "Contact us",
@@ -702,6 +716,7 @@
       "balance": "Balance",
       "market": "Market",
       "credit": "Credit",
+      "investment": "Investment",
       "cards": "Cards",
       "history": "History",
       "profile": "Profile",
@@ -1082,7 +1097,23 @@
         "question": "Why does the rate differ between USD and EUR?",
         "answer": "Each currency applies its own monetary reference rate (SOFR for USD, EURIBOR for EUR) before adding the same 8.5-point risk premium, hence the 1.5-point gap between the two."
       }
-    }
+    },
+    "directInvestmentTitle": "Direct investment",
+    "directInvestmentIntro": "A real placement, distinct from credit — two baskets to choose from, a real daily return that can be negative.",
+    "directInvestmentItems": {
+      "rwa": {
+        "label": "RWA strategy",
+        "value": "8.58%/year indicative",
+        "detail": "The same treasury strategy as the bank's own, on tokenized industrial metals and commodities."
+      },
+      "stocks": {
+        "label": "Stock basket",
+        "value": "2.5%/year indicative",
+        "detail": "Indicative dividend + the real movement of 5 listed stocks (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      }
+    },
+    "directInvestmentNote": "Full withdrawal available at any time, no notice or penalty. These return targets are indicative and never a performance guarantee.",
+    "directInvestmentLinkLabel": "Learn more."
   },
   "DashboardShell": {
     "sidebar": {
@@ -1556,5 +1587,64 @@
     "XPD": "Tokenized palladium",
     "XCU": "Tokenized copper",
     "WTI": "Synthetic oil (WTI)"
+  },
+  "DirectInvestment": {
+    "meta": {
+      "title": "Direct investment",
+      "description": "Place funds in the bank's RWA strategy or a basket of real stocks — a real placement, no collateral or credit, with a real daily return."
+    },
+    "eyebrow": "A third product",
+    "title": "Direct investment",
+    "description": "A real placement, not a loan: lock up funds from your available balance for a real daily return, with no collateral and no credit issued.",
+    "basketsTitle": "Two baskets to choose from",
+    "steps": {
+      "choose": {
+        "title": "Choose a basket",
+        "description": "RWA strategy (tokenized industrial metals and commodities) or a basket of 5 real listed stocks — two return profiles to choose from."
+      },
+      "deposit": {
+        "title": "Place funds",
+        "description": "From your available balance, with no high minimum or imposed term."
+      },
+      "accrue": {
+        "title": "Compounded daily return",
+        "description": "Calculated every day from real market data, never fabricated — it can be negative on an unfavorable market day."
+      },
+      "withdraw": {
+        "title": "Withdraw anytime",
+        "description": "Capital and accrued return are paid back in full to your available balance, with no notice."
+      }
+    },
+    "baskets": {
+      "rwa": {
+        "title": "RWA strategy",
+        "description": "The same treasury strategy as the bank's own, on tokenized industrial metals and commodities (platinum, palladium, copper, synthetic oil) — now open to your capital.",
+        "rate": "8.58%/year indicative"
+      },
+      "stocks": {
+        "title": "Stock basket",
+        "description": "Five real listed stocks with a historically regular dividend: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2.5%/year indicative + the basket's real movement"
+      }
+    },
+    "riskTitle": "A real placement, a real risk",
+    "riskBody": "Unlike the collateral's yield, which only ever repays on real upside, direct investment can lose value: the daily return reflects real market data and can be negative. The indicative return targets shown are never a performance guarantee.",
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "guarantee": {
+        "question": "Is the displayed return guaranteed?",
+        "answer": "No. It's an indicative target based on a strategy assumption; the return actually applied each day depends on real market data and can be negative."
+      },
+      "withdraw": {
+        "question": "Can I withdraw my funds at any time?",
+        "answer": "Yes, with no notice or penalty. Withdrawal is always full (capital + accrued return); partial withdrawal isn't offered at this stage."
+      },
+      "difference": {
+        "question": "What's the difference with collateralized credit?",
+        "answer": "Collateralized credit lends you money against collateral. Direct investment, conversely, locks up your own money in exchange for a return — no credit is issued, no collateral is required."
+      }
+    },
+    "ctaLogin": "Access my account",
+    "ctaNoAccount": "Don't have an account yet? Request an account"
   }
 }

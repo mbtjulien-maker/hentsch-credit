@@ -12,7 +12,8 @@
       "rendement": "Rendimento",
       "strategieRwa": "Estratégia RWA",
       "marche": "Mercado",
-      "tarifs": "Tarifários"
+      "tarifs": "Tarifários",
+      "investissementDirect": "Investimento"
     },
     "connexionShort": "Iniciar sessão",
     "connexionLong": "Aceder à minha conta"
@@ -26,6 +27,7 @@
         "rwaStrategy": "Estratégia RWA",
         "market": "Mercado",
         "pricing": "Tarifários",
+        "directInvestment": "Investimento direto",
         "requestAccount": "Solicitar uma conta"
       },
       "help": {
@@ -84,6 +86,10 @@
       "market": {
         "title": "O mercado em direto",
         "description": "As cotações dos ativos aceites como garantia, em tempo real."
+      },
+      "investment": {
+        "title": "Investimento direto",
+        "description": "Um investimento real, sem garantia nem crédito — estratégia RWA ou uma cesta de ações, à escolha."
       }
     },
     "stats": {
@@ -375,6 +381,13 @@
       "item3": "o risco de contraparte e o risco operacional ligados às instituições depositárias e prestadores de custódia terceiros mencionados na secção 5;",
       "item4": "o risco regulatório ligado à evolução do quadro jurídico aplicável aos ativos digitais e aos stablecoins.",
       "body": "As presentes condições não constituem nem um aconselhamento de investimento, nem uma recomendação de compra, venda ou detenção de qualquer ativo digital."
+    },
+    "s16": {
+      "title": "16. Investimento direto",
+      "intro": "Distinto do crédito com garantia (secção 4) e do crédito direto, o investimento direto é uma aplicação: o cliente imobiliza fundos do seu saldo disponível em troca de um rendimento, sem que seja emitido qualquer crédito nem constituída qualquer garantia.",
+      "body1": "O capital investido não é garantido nem segurado. O rendimento diário aplicado reflete um dado de mercado real e pode ser negativo, o que pode reduzir o valor da posição abaixo do capital inicialmente investido. Os objetivos de rendimento indicativos comunicados ao cliente nunca constituem um compromisso de desempenho.",
+      "body2": "O rendimento da cesta «Estratégia RWA» reflete o desempenho real da estratégia de tesouraria do operador sobre metais industriais e matérias-primas tokenizados; o da cesta «Ações» reflete a variação real de uma cesta de ações cotadas, medida através de um fornecedor terceiro de dados de mercado.",
+      "body3": "O cliente pode solicitar o levantamento total da sua posição a qualquer momento, sem aviso prévio nem penalização; não é oferecido levantamento parcial nesta fase."
     },
     "s12": {
       "title": "12. Resolução",
@@ -683,6 +696,7 @@
       "rwaStrategy": "Estratégia RWA",
       "market": "Mercado",
       "pricing": "Tarifários",
+      "directInvestment": "Investimento direto",
       "requestAccount": "Solicitar uma conta",
       "login": "Iniciar sessão",
       "contact": "Contacte-nos",
@@ -702,6 +716,7 @@
       "balance": "Saldo",
       "market": "Mercado",
       "credit": "Crédito",
+      "investment": "Investimento",
       "cards": "Cartões",
       "history": "Histórico",
       "profile": "Perfil",
@@ -1082,7 +1097,23 @@
         "question": "Por que a taxa difere entre USD e EUR?",
         "answer": "Cada divisa aplica a sua própria taxa de referência monetária (SOFR para o USD, EURIBOR para o EUR) antes de lhe adicionar o mesmo prémio de risco de 8,5 pontos, daí a diferença de 1,5 pontos entre ambas."
       }
-    }
+    },
+    "directInvestmentTitle": "Investimento direto",
+    "directInvestmentIntro": "Um investimento real, distinto do crédito — duas cestas à escolha, um rendimento diário real que pode ser negativo.",
+    "directInvestmentItems": {
+      "rwa": {
+        "label": "Estratégia RWA",
+        "value": "8,58 %/ano indicativo",
+        "detail": "A mesma estratégia de tesouraria do banco sobre metais industriais e matérias-primas tokenizados."
+      },
+      "stocks": {
+        "label": "Cesta de ações",
+        "value": "2,5 %/ano indicativo",
+        "detail": "Dividendo indicativo + variação real de 5 ações cotadas (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      }
+    },
+    "directInvestmentNote": "Levantamento total disponível a qualquer momento, sem aviso prévio nem penalização. Estes objetivos de rendimento são indicativos e nunca constituem uma garantia de desempenho.",
+    "directInvestmentLinkLabel": "Saber mais."
   },
   "DashboardShell": {
     "sidebar": {
@@ -1556,5 +1587,64 @@
     "XPD": "Paládio tokenizado",
     "XCU": "Cobre tokenizado",
     "WTI": "Petróleo sintético (WTI)"
+  },
+  "DirectInvestment": {
+    "meta": {
+      "title": "Investimento direto",
+      "description": "Coloque fundos na estratégia RWA do banco ou numa cesta de ações reais — um investimento real, sem garantia nem crédito, com um rendimento diário real."
+    },
+    "eyebrow": "Um terceiro produto",
+    "title": "Investimento direto",
+    "description": "Um investimento real, não um empréstimo: imobilize fundos do seu saldo disponível para um rendimento diário real, sem garantia nem crédito emitido.",
+    "basketsTitle": "Duas cestas à escolha",
+    "steps": {
+      "choose": {
+        "title": "Escolher uma cesta",
+        "description": "Estratégia RWA (metais industriais e matérias-primas tokenizados) ou uma cesta de 5 ações cotadas reais — dois perfis de rendimento à escolha."
+      },
+      "deposit": {
+        "title": "Colocar fundos",
+        "description": "A partir do seu saldo disponível, sem mínimo elevado nem prazo imposto."
+      },
+      "accrue": {
+        "title": "Rendimento diário composto",
+        "description": "Calculado todos os dias a partir de um dado de mercado real, nunca inventado — pode ser negativo num dia de mercado desfavorável."
+      },
+      "withdraw": {
+        "title": "Levantamento a qualquer momento",
+        "description": "O capital e o rendimento acumulado são devolvidos na íntegra ao seu saldo disponível, sem aviso prévio."
+      }
+    },
+    "baskets": {
+      "rwa": {
+        "title": "Estratégia RWA",
+        "description": "A mesma estratégia de tesouraria do banco sobre metais industriais e matérias-primas tokenizados (platina, paládio, cobre, petróleo sintético) — agora aberta ao seu capital.",
+        "rate": "8,58 %/ano indicativo"
+      },
+      "stocks": {
+        "title": "Cesta de ações",
+        "description": "Cinco ações cotadas reais com um dividendo historicamente regular: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/ano indicativo + variação real da cesta"
+      }
+    },
+    "riskTitle": "Um investimento real, um risco real",
+    "riskBody": "Ao contrário do rendimento da garantia cripto, que só é reembolsado sobre mais-valia real, o investimento direto pode perder valor: o rendimento diário reflete um dado de mercado real e pode ser negativo. Os objetivos de rendimento indicativos apresentados nunca constituem uma garantia de desempenho.",
+    "faqTitle": "Perguntas frequentes",
+    "faq": {
+      "guarantee": {
+        "question": "O rendimento apresentado é garantido?",
+        "answer": "Não. É um objetivo indicativo baseado numa hipótese de estratégia; o rendimento efetivamente aplicado todos os dias depende de um dado de mercado real e pode ser negativo."
+      },
+      "withdraw": {
+        "question": "Posso levantar os meus fundos a qualquer momento?",
+        "answer": "Sim, sem aviso prévio nem penalização. O levantamento é sempre total (capital + rendimento acumulado); o levantamento parcial não está disponível nesta fase."
+      },
+      "difference": {
+        "question": "Qual é a diferença em relação ao crédito com garantia?",
+        "answer": "O crédito com garantia empresta-lhe dinheiro contra uma garantia. O investimento direto, pelo contrário, imobiliza o seu próprio dinheiro em troca de um rendimento — não é emitido qualquer crédito, não é exigida qualquer garantia."
+      }
+    },
+    "ctaLogin": "Aceder à minha conta",
+    "ctaNoAccount": "Ainda não tem conta? Solicitar a abertura de uma conta"
   }
 }

@@ -12,7 +12,8 @@
       "rendement": "Avkastning",
       "strategieRwa": "RWA-strategi",
       "marche": "Marknad",
-      "tarifs": "Priser"
+      "tarifs": "Priser",
+      "investissementDirect": "Investering"
     },
     "connexionShort": "Logga in",
     "connexionLong": "Till mitt konto"
@@ -26,6 +27,7 @@
         "rwaStrategy": "RWA-strategi",
         "market": "Marknad",
         "pricing": "Priser",
+        "directInvestment": "Direktinvestering",
         "requestAccount": "Ansök om konto"
       },
       "help": {
@@ -84,6 +86,10 @@
       "market": {
         "title": "Marknaden i realtid",
         "description": "Kurserna för de tillgångar som accepteras som säkerhet, i realtid."
+      },
+      "investment": {
+        "title": "Direktinvestering",
+        "description": "En riktig placering, utan säkerhet eller kredit — RWA-strategi eller en aktiekorg, valfritt."
       }
     },
     "stats": {
@@ -375,6 +381,13 @@
       "item3": "motpartsrisken och den operativa risken kopplad till de förvaringsinstitut och tredjeparts förvaringsleverantörer som nämns i avsnitt 5;",
       "item4": "regelverksrisken kopplad till utvecklingen av det rättsliga ramverket som gäller för digitala tillgångar och stablecoins.",
       "body": "Dessa villkor utgör varken investeringsrådgivning eller en rekommendation att köpa, sälja eller inneha någon digital tillgång."
+    },
+    "s16": {
+      "title": "16. Direktinvestering",
+      "intro": "Till skillnad från den säkerställda krediten (avsnitt 4) och direktkrediten är direktinvesteringen en placering: kunden binder medel från sitt tillgängliga saldo i utbyte mot en avkastning, utan att någon kredit beviljas eller säkerhet krävs.",
+      "body1": "Det placerade kapitalet är varken garanterat eller försäkrat. Den tillämpade dagliga avkastningen speglar verklig marknadsdata och kan vara negativ, vilket kan minska positionens värde under det ursprungligen placerade kapitalet. De vägledande avkastningsmål som meddelas kunden utgör aldrig ett resultatåtagande.",
+      "body2": "Avkastningen för korgen ”RWA-strategi” speglar den verkliga prestandan för operatörens likviditetsstrategi på tokeniserade industrimetaller och råvaror; avkastningen för korgen ”Aktier” speglar den verkliga utvecklingen för en korg av börsnoterade aktier, mätt via en extern leverantör av marknadsdata.",
+      "body3": "Kunden kan när som helst begära fullständigt uttag av sin position, utan uppsägningstid eller avgift; delvis uttag erbjuds inte i detta skede."
     },
     "s12": {
       "title": "12. Uppsägning",
@@ -683,6 +696,7 @@
       "rwaStrategy": "RWA-strategi",
       "market": "Marknad",
       "pricing": "Priser",
+      "directInvestment": "Direktinvestering",
       "requestAccount": "Ansök om konto",
       "login": "Logga in",
       "contact": "Kontakta oss",
@@ -702,6 +716,7 @@
       "balance": "Saldo",
       "market": "Marknad",
       "credit": "Kredit",
+      "investment": "Investering",
       "cards": "Kort",
       "history": "Historik",
       "profile": "Profil",
@@ -1082,7 +1097,23 @@
         "question": "Varför skiljer sig räntan mellan USD och EUR?",
         "answer": "Varje valuta tillämpar sin egen monetära referensränta (SOFR för USD, EURIBOR för EUR) innan samma riskpremie på 8,5 punkter läggs till, därav skillnaden på 1,5 punkter mellan de två."
       }
-    }
+    },
+    "directInvestmentTitle": "Direktinvestering",
+    "directInvestmentIntro": "En riktig placering, skild från kredit — två korgar att välja mellan, en verklig daglig avkastning som kan vara negativ.",
+    "directInvestmentItems": {
+      "rwa": {
+        "label": "RWA-strategi",
+        "value": "8,58 %/år vägledande",
+        "detail": "Samma likviditetsstrategi som banken själv använder på tokeniserade industrimetaller och råvaror."
+      },
+      "stocks": {
+        "label": "Aktiekorg",
+        "value": "2,5 %/år vägledande",
+        "detail": "Vägledande utdelning + verklig utveckling för 5 börsnoterade aktier (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      }
+    },
+    "directInvestmentNote": "Fullständigt uttag möjligt när som helst, utan uppsägningstid eller avgift. Dessa avkastningsmål är vägledande och utgör aldrig en resultatgaranti.",
+    "directInvestmentLinkLabel": "Läs mer."
   },
   "DashboardShell": {
     "sidebar": {
@@ -1556,5 +1587,64 @@
     "XPD": "Tokeniserad palladium",
     "XCU": "Tokeniserad koppar",
     "WTI": "Syntetisk olja (WTI)"
+  },
+  "DirectInvestment": {
+    "meta": {
+      "title": "Direktinvestering",
+      "description": "Placera medel i bankens RWA-strategi eller en korg med verkliga aktier — en riktig placering, utan säkerhet eller kredit, med en verklig daglig avkastning."
+    },
+    "eyebrow": "En tredje produkt",
+    "title": "Direktinvestering",
+    "description": "En riktig placering, inte ett lån: bind medel från ditt tillgängliga saldo för en verklig daglig avkastning, utan säkerhet och utan beviljad kredit.",
+    "basketsTitle": "Två korgar att välja mellan",
+    "steps": {
+      "choose": {
+        "title": "Välj en korg",
+        "description": "RWA-strategi (tokeniserade industrimetaller och råvaror) eller en korg med 5 verkliga börsnoterade aktier — två avkastningsprofiler att välja mellan."
+      },
+      "deposit": {
+        "title": "Placera medel",
+        "description": "Från ditt tillgängliga saldo, utan högt minimibelopp eller påtvingad löptid."
+      },
+      "accrue": {
+        "title": "Sammansatt daglig avkastning",
+        "description": "Beräknas varje dag utifrån verklig marknadsdata, aldrig påhittad — kan vara negativ en ogynnsam marknadsdag."
+      },
+      "withdraw": {
+        "title": "Uttag när som helst",
+        "description": "Kapital och upplupen avkastning återbetalas i sin helhet till ditt tillgängliga saldo, utan uppsägningstid."
+      }
+    },
+    "baskets": {
+      "rwa": {
+        "title": "RWA-strategi",
+        "description": "Samma likviditetsstrategi som banken själv använder på tokeniserade industrimetaller och råvaror (platina, palladium, koppar, syntetisk olja) — nu öppen för ditt kapital.",
+        "rate": "8,58 %/år vägledande"
+      },
+      "stocks": {
+        "title": "Aktiekorg",
+        "description": "Fem verkliga börsnoterade aktier med historiskt regelbunden utdelning: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/år vägledande + korgens verkliga utveckling"
+      }
+    },
+    "riskTitle": "En riktig placering, en riktig risk",
+    "riskBody": "Till skillnad från avkastningen på kryptosäkerheten, som endast återbetalas vid verklig värdeökning, kan direktinvesteringen förlora i värde: den dagliga avkastningen speglar verklig marknadsdata och kan vara negativ. De visade vägledande avkastningsmålen utgör aldrig en resultatgaranti.",
+    "faqTitle": "Vanliga frågor",
+    "faq": {
+      "guarantee": {
+        "question": "Är den visade avkastningen garanterad?",
+        "answer": "Nej. Det är ett vägledande mål baserat på ett strategiantagande; den avkastning som faktiskt tillämpas varje dag beror på verklig marknadsdata och kan vara negativ."
+      },
+      "withdraw": {
+        "question": "Kan jag ta ut mina medel när som helst?",
+        "answer": "Ja, utan uppsägningstid eller avgift. Uttaget är alltid fullständigt (kapital + upplupen avkastning); delvis uttag erbjuds inte i detta skede."
+      },
+      "difference": {
+        "question": "Vad är skillnaden mot säkerställd kredit?",
+        "answer": "Säkerställd kredit lånar ut pengar mot säkerhet. Direktinvesteringen binder tvärtom dina egna pengar i utbyte mot en avkastning — ingen kredit beviljas, ingen säkerhet krävs."
+      }
+    },
+    "ctaLogin": "Till mitt konto",
+    "ctaNoAccount": "Har du inget konto än? Ansök om ett konto"
   }
 }

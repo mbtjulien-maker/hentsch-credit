@@ -2,6 +2,7 @@ import Image from "next/image";
 import {
   ArrowRight,
   Layers,
+  LineChart,
   Percent,
   ShieldCheck,
   Sparkles,
@@ -53,6 +54,9 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
     { icon: Sparkles, title: t("teasers.yield.title"), description: t("teasers.yield.description"), href: "/rendement" },
     { icon: Layers, title: t("teasers.rwa.title"), description: t("teasers.rwa.description"), href: "/strategie-rwa" },
     { icon: TrendingUp, title: t("teasers.market.title"), description: t("teasers.market.description"), href: "/marche" },
+    // Troisième produit de la plateforme (§2H CLAUDE.md) — même traitement que les
+    // autres cartes ci-dessus : un aperçu court renvoyant vers sa propre page dédiée.
+    { icon: LineChart, title: t("teasers.investment.title"), description: t("teasers.investment.description"), href: "/investissement-direct" },
   ] as const;
 
   return (
@@ -133,7 +137,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
           <h2 className="text-2xl font-semibold text-foreground">{t("discoverTitle")}</h2>
           <p className="mt-2 text-muted-foreground">{t("discoverDescription")}</p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {SECTION_TEASERS.map((teaser) => (
             <SectionTeaserCard key={teaser.href} {...teaser} />
           ))}

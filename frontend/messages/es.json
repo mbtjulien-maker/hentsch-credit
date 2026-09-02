@@ -12,7 +12,8 @@
       "rendement": "Rendimiento",
       "strategieRwa": "Estrategia RWA",
       "marche": "Mercado",
-      "tarifs": "Tarifas"
+      "tarifs": "Tarifas",
+      "investissementDirect": "Inversión"
     },
     "connexionShort": "Iniciar sesión",
     "connexionLong": "Acceder a mi cuenta"
@@ -26,6 +27,7 @@
         "rwaStrategy": "Estrategia RWA",
         "market": "Mercado",
         "pricing": "Tarifas",
+        "directInvestment": "Inversión directa",
         "requestAccount": "Solicitar una cuenta"
       },
       "help": {
@@ -84,6 +86,10 @@
       "market": {
         "title": "El mercado en directo",
         "description": "Las cotizaciones de los activos aceptados como garantía, en tiempo real."
+      },
+      "investment": {
+        "title": "Inversión directa",
+        "description": "Una inversión real, sin garantía ni crédito — estrategia RWA o una canasta de acciones, a elegir."
       }
     },
     "stats": {
@@ -375,6 +381,13 @@
       "item3": "el riesgo de contraparte y el riesgo operativo vinculados a las entidades depositarias y proveedores de custodia terceros mencionados en la sección 5;",
       "item4": "el riesgo regulatorio vinculado a la evolución del marco jurídico aplicable a los activos digitales y a los stablecoins.",
       "body": "Las presentes condiciones no constituyen ni un asesoramiento de inversión, ni una recomendación de compra, venta o tenencia de ningún activo digital."
+    },
+    "s16": {
+      "title": "16. Inversión directa",
+      "intro": "Distinta del crédito con garantía (sección 4) y del crédito directo, la inversión directa es una colocación: el cliente inmoviliza fondos de su saldo disponible a cambio de un rendimiento, sin que se emita ningún crédito ni se constituya ninguna garantía.",
+      "body1": "El capital invertido no está garantizado ni asegurado. El rendimiento diario aplicado refleja un dato de mercado real y puede ser negativo, lo que puede reducir el valor de la posición por debajo del capital inicialmente invertido. Los objetivos de rendimiento indicativos comunicados al cliente nunca constituyen un compromiso de rentabilidad.",
+      "body2": "El rendimiento de la canasta «Estrategia RWA» refleja el desempeño real de la estrategia de tesorería del operador sobre metales industriales y materias primas tokenizados; el de la canasta «Acciones» refleja la variación real de una canasta de acciones cotizadas, medida a través de un proveedor externo de datos de mercado.",
+      "body3": "El cliente puede solicitar el retiro total de su posición en cualquier momento, sin aviso previo ni penalización; no se ofrece retiro parcial en esta etapa."
     },
     "s12": {
       "title": "12. Resolución",
@@ -683,6 +696,7 @@
       "rwaStrategy": "Estrategia RWA",
       "market": "Mercado",
       "pricing": "Tarifas",
+      "directInvestment": "Inversión directa",
       "requestAccount": "Solicitar una cuenta",
       "login": "Iniciar sesión",
       "contact": "Contáctenos",
@@ -702,6 +716,7 @@
       "balance": "Saldo",
       "market": "Mercado",
       "credit": "Crédito",
+      "investment": "Inversión",
       "cards": "Tarjetas",
       "history": "Historial",
       "profile": "Perfil",
@@ -1082,7 +1097,23 @@
         "question": "¿Por qué la tasa difiere entre USD y EUR?",
         "answer": "Cada divisa aplica su propia tasa de referencia monetaria (SOFR para el USD, EURIBOR para el EUR) antes de añadirle la misma prima de riesgo de 8,5 puntos, de ahí la diferencia de 1,5 puntos entre ambas."
       }
-    }
+    },
+    "directInvestmentTitle": "Inversión directa",
+    "directInvestmentIntro": "Una inversión real, distinta del crédito — dos canastas a elegir, un rendimiento diario real que puede ser negativo.",
+    "directInvestmentItems": {
+      "rwa": {
+        "label": "Estrategia RWA",
+        "value": "8,58 %/año indicativo",
+        "detail": "La misma estrategia de tesorería del banco sobre metales industriales y materias primas tokenizados."
+      },
+      "stocks": {
+        "label": "Canasta de acciones",
+        "value": "2,5 %/año indicativo",
+        "detail": "Dividendo indicativo + variación real de 5 acciones cotizadas (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      }
+    },
+    "directInvestmentNote": "Retiro total disponible en cualquier momento, sin aviso previo ni penalización. Estos objetivos de rendimiento son indicativos y nunca constituyen una garantía de rentabilidad.",
+    "directInvestmentLinkLabel": "Más información."
   },
   "DashboardShell": {
     "sidebar": {
@@ -1556,5 +1587,64 @@
     "XPD": "Paladio tokenizado",
     "XCU": "Cobre tokenizado",
     "WTI": "Petróleo sintético (WTI)"
+  },
+  "DirectInvestment": {
+    "meta": {
+      "title": "Inversión directa",
+      "description": "Coloca fondos en la estrategia RWA del banco o en una canasta de acciones reales — una inversión real, sin garantía ni crédito, con un rendimiento diario real."
+    },
+    "eyebrow": "Un tercer producto",
+    "title": "Inversión directa",
+    "description": "Una inversión real, no un préstamo: inmoviliza fondos de tu saldo disponible para obtener un rendimiento diario real, sin garantía ni crédito emitido.",
+    "basketsTitle": "Dos canastas a elegir",
+    "steps": {
+      "choose": {
+        "title": "Elegir una canasta",
+        "description": "Estrategia RWA (metales industriales y materias primas tokenizados) o una canasta de 5 acciones cotizadas reales — dos perfiles de rendimiento a elegir."
+      },
+      "deposit": {
+        "title": "Colocar fondos",
+        "description": "Desde tu saldo disponible, sin un mínimo elevado ni un plazo impuesto."
+      },
+      "accrue": {
+        "title": "Rendimiento diario compuesto",
+        "description": "Calculado cada día a partir de un dato de mercado real, nunca inventado — puede ser negativo en un día de mercado desfavorable."
+      },
+      "withdraw": {
+        "title": "Retiro en cualquier momento",
+        "description": "El capital y el rendimiento acumulado se abonan íntegramente a tu saldo disponible, sin aviso previo."
+      }
+    },
+    "baskets": {
+      "rwa": {
+        "title": "Estrategia RWA",
+        "description": "La misma estrategia de tesorería del banco sobre metales industriales y materias primas tokenizados (platino, paladio, cobre, petróleo sintético) — ahora abierta a tu capital.",
+        "rate": "8,58 %/año indicativo"
+      },
+      "stocks": {
+        "title": "Canasta de acciones",
+        "description": "Cinco acciones cotizadas reales con un dividendo históricamente regular: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5 %/año indicativo + variación real de la canasta"
+      }
+    },
+    "riskTitle": "Una inversión real, un riesgo real",
+    "riskBody": "A diferencia del rendimiento del gage cripto, que solo se reembolsa sobre plusvalía real, la inversión directa puede perder valor: el rendimiento diario refleja un dato de mercado real y puede ser negativo. Los objetivos de rendimiento indicativos mostrados nunca constituyen una garantía de rentabilidad.",
+    "faqTitle": "Preguntas frecuentes",
+    "faq": {
+      "guarantee": {
+        "question": "¿El rendimiento mostrado está garantizado?",
+        "answer": "No. Es un objetivo indicativo basado en una hipótesis de estrategia; el rendimiento realmente aplicado cada día depende de un dato de mercado real y puede ser negativo."
+      },
+      "withdraw": {
+        "question": "¿Puedo retirar mis fondos en cualquier momento?",
+        "answer": "Sí, sin aviso previo ni penalización. El retiro es siempre total (capital + rendimiento acumulado); el retiro parcial no está disponible en esta etapa."
+      },
+      "difference": {
+        "question": "¿Cuál es la diferencia con el crédito con garantía?",
+        "answer": "El crédito con garantía te presta dinero a cambio de una garantía. La inversión directa, al contrario, inmoviliza tu propio dinero a cambio de un rendimiento — no se emite ningún crédito, no se requiere ninguna garantía."
+      }
+    },
+    "ctaLogin": "Acceder a mi cuenta",
+    "ctaNoAccount": "¿Aún no tiene cuenta? Solicitar la apertura de una cuenta"
   }
 }

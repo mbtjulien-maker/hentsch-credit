@@ -12,7 +12,8 @@
       "rendement": "Rendement",
       "strategieRwa": "RWA-strategie",
       "marche": "Markt",
-      "tarifs": "Tarieven"
+      "tarifs": "Tarieven",
+      "investissementDirect": "Beleggen"
     },
     "connexionShort": "Inloggen",
     "connexionLong": "Naar mijn account"
@@ -26,6 +27,7 @@
         "rwaStrategy": "RWA-strategie",
         "market": "Markt",
         "pricing": "Tarieven",
+        "directInvestment": "Directe belegging",
         "requestAccount": "Account aanvragen"
       },
       "help": {
@@ -84,6 +86,10 @@
       "market": {
         "title": "De markt live",
         "description": "De koersen van de als onderpand geaccepteerde activa, in real time."
+      },
+      "investment": {
+        "title": "Directe belegging",
+        "description": "Een echte belegging, zonder onderpand of krediet — RWA-strategie of een aandelenmand, naar keuze."
       }
     },
     "stats": {
@@ -375,6 +381,13 @@
       "item3": "het tegenpartijrisico en het operationele risico verbonden aan de in sectie 5 genoemde bewaarinstellingen en externe bewaardienstverleners;",
       "item4": "het regelgevingsrisico verbonden aan de ontwikkeling van het juridisch kader dat van toepassing is op digitale activa en stablecoins.",
       "body": "Deze voorwaarden vormen noch beleggingsadvies, noch een aanbeveling om enig digitaal activum te kopen, verkopen of aan te houden."
+    },
+    "s16": {
+      "title": "16. Directe belegging",
+      "intro": "In tegenstelling tot het gedekte krediet (sectie 4) en het directe krediet is de directe belegging een plaatsing: de klant zet middelen van zijn beschikbare saldo vast in ruil voor een rendement, zonder dat er krediet wordt verstrekt of onderpand wordt vereist.",
+      "body1": "Het belegde kapitaal is niet gegarandeerd of verzekerd. Het toegepaste dagrendement weerspiegelt reële marktgegevens en kan negatief zijn, wat de waarde van de positie onder het oorspronkelijk belegde kapitaal kan doen dalen. De aan de klant meegedeelde indicatieve rendementsdoelen vormen nooit een prestatietoezegging.",
+      "body2": "Het rendement van de mand „RWA-strategie” weerspiegelt de reële prestatie van de treasurystrategie van de exploitant op getokeniseerde industriële metalen en grondstoffen; dat van de mand „Aandelen” weerspiegelt de reële ontwikkeling van een mand beursgenoteerde aandelen, gemeten via een externe marktgegevensleverancier.",
+      "body3": "De klant kan op elk moment de volledige opname van zijn positie aanvragen, zonder opzegtermijn of boete; een gedeeltelijke opname wordt in dit stadium niet aangeboden."
     },
     "s12": {
       "title": "12. Beëindiging",
@@ -683,6 +696,7 @@
       "rwaStrategy": "RWA-strategie",
       "market": "Markt",
       "pricing": "Tarieven",
+      "directInvestment": "Directe belegging",
       "requestAccount": "Account aanvragen",
       "login": "Inloggen",
       "contact": "Neem contact op",
@@ -702,6 +716,7 @@
       "balance": "Saldo",
       "market": "Markt",
       "credit": "Krediet",
+      "investment": "Beleggen",
       "cards": "Kaarten",
       "history": "Geschiedenis",
       "profile": "Profiel",
@@ -1082,7 +1097,23 @@
         "question": "Waarom verschilt het tarief tussen USD en EUR?",
         "answer": "Elke valuta past haar eigen monetaire referentierente toe (SOFR voor USD, EURIBOR voor EUR) voordat dezelfde risicopremie van 8,5 punten wordt toegevoegd, vandaar het verschil van 1,5 punten tussen beide."
       }
-    }
+    },
+    "directInvestmentTitle": "Directe belegging",
+    "directInvestmentIntro": "Een echte belegging, los van krediet — twee manden naar keuze, een reëel dagrendement dat negatief kan zijn.",
+    "directInvestmentItems": {
+      "rwa": {
+        "label": "RWA-strategie",
+        "value": "8,58%/jaar indicatief",
+        "detail": "Dezelfde treasurystrategie als die van de bank, op getokeniseerde industriële metalen en grondstoffen."
+      },
+      "stocks": {
+        "label": "Aandelenmand",
+        "value": "2,5%/jaar indicatief",
+        "detail": "Indicatief dividend + reële ontwikkeling van 5 beursgenoteerde aandelen (Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola)."
+      }
+    },
+    "directInvestmentNote": "Volledige opname op elk moment mogelijk, zonder opzegtermijn of boete. Deze rendementsdoelen zijn indicatief en vormen nooit een prestatiegarantie.",
+    "directInvestmentLinkLabel": "Meer weten."
   },
   "DashboardShell": {
     "sidebar": {
@@ -1556,5 +1587,64 @@
     "XPD": "Getokeniseerd palladium",
     "XCU": "Getokeniseerd koper",
     "WTI": "Synthetische olie (WTI)"
+  },
+  "DirectInvestment": {
+    "meta": {
+      "title": "Directe belegging",
+      "description": "Plaats middelen in de RWA-strategie van de bank of een mand echte aandelen — een echte belegging, zonder onderpand of krediet, met een reëel dagrendement."
+    },
+    "eyebrow": "Een derde product",
+    "title": "Directe belegging",
+    "description": "Een echte belegging, geen lening: zet middelen van uw beschikbare saldo vast voor een reëel dagrendement, zonder onderpand en zonder verstrekt krediet.",
+    "basketsTitle": "Twee manden om uit te kiezen",
+    "steps": {
+      "choose": {
+        "title": "Kies een mand",
+        "description": "RWA-strategie (getokeniseerde industriële metalen en grondstoffen) of een mand van 5 echte beursgenoteerde aandelen — twee rendementsprofielen naar keuze."
+      },
+      "deposit": {
+        "title": "Middelen plaatsen",
+        "description": "Vanaf uw beschikbare saldo, zonder hoog minimum of opgelegde looptijd."
+      },
+      "accrue": {
+        "title": "Samengesteld dagrendement",
+        "description": "Elke dag berekend op basis van reële marktgegevens, nooit verzonnen — kan negatief zijn op een ongunstige marktdag."
+      },
+      "withdraw": {
+        "title": "Op elk moment opnemen",
+        "description": "Kapitaal en opgebouwd rendement worden volledig terugbetaald op uw beschikbare saldo, zonder opzegtermijn."
+      }
+    },
+    "baskets": {
+      "rwa": {
+        "title": "RWA-strategie",
+        "description": "Dezelfde treasurystrategie als die van de bank, op getokeniseerde industriële metalen en grondstoffen (platina, palladium, koper, synthetische olie) — nu open voor uw kapitaal.",
+        "rate": "8,58%/jaar indicatief"
+      },
+      "stocks": {
+        "title": "Aandelenmand",
+        "description": "Vijf echte beursgenoteerde aandelen met historisch een regelmatig dividend: Apple, Microsoft, Johnson & Johnson, Procter & Gamble, Coca-Cola.",
+        "rate": "2,5%/jaar indicatief + reële ontwikkeling van de mand"
+      }
+    },
+    "riskTitle": "Een echte belegging, een echt risico",
+    "riskBody": "In tegenstelling tot het rendement van het crypto-onderpand, dat alleen terugbetaalt bij reële waardestijging, kan de directe belegging aan waarde verliezen: het dagrendement weerspiegelt reële marktgegevens en kan negatief zijn. De getoonde indicatieve rendementsdoelen vormen nooit een prestatiegarantie.",
+    "faqTitle": "Veelgestelde vragen",
+    "faq": {
+      "guarantee": {
+        "question": "Is het getoonde rendement gegarandeerd?",
+        "answer": "Nee. Het is een indicatief doel op basis van een strategieaanname; het dagelijks daadwerkelijk toegepaste rendement hangt af van reële marktgegevens en kan negatief zijn."
+      },
+      "withdraw": {
+        "question": "Kan ik mijn middelen op elk moment opnemen?",
+        "answer": "Ja, zonder opzegtermijn of boete. De opname is altijd volledig (kapitaal + opgebouwd rendement); gedeeltelijke opname wordt in dit stadium niet aangeboden."
+      },
+      "difference": {
+        "question": "Wat is het verschil met gedekt krediet?",
+        "answer": "Gedekt krediet leent u geld tegen onderpand. Directe belegging daarentegen zet uw eigen geld vast in ruil voor een rendement — er wordt geen krediet verstrekt, er is geen onderpand vereist."
+      }
+    },
+    "ctaLogin": "Naar mijn account",
+    "ctaNoAccount": "Nog geen account? Een account aanvragen"
   }
 }

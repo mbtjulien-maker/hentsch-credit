@@ -208,4 +208,68 @@ export class LedgerService {
 
     return this.getBalance(userId, tx);
   }
+
+  // Wallet investissement (cf. §2H CLAUDE.md entrée #31) — solde SÉPARÉ
+  // d'availableBalance, dédié aux 6 paniers perpétuels et aux 6 plans à échéance fixe.
+  // Ces deux méthodes sont appelées par InvestmentService/FixedTermPlanService à la place
+  // de credit/debitAvailableBalance ; jamais alimenté directement par un dépôt on-chain.
+  async creditInvestmentBalance(
+    tx: Prisma.TransactionClient,
+    userId: string,
+    amount: Prisma.Decimal,
+  ): Promise<LedgerBalance> {
+    const result = await tx.ledgerBalance.updateMany({
+      where: { userId },
+      data: { investmentBalance: { increment: amount } },
+    });
+
+    if (result.count === 0) {
+      throw new LedgerNotFoundException(userId);
+    }
+
+    return this.getBalance(userId, tx);
+  }
+
+  async debitInvestmentBalance(
+    tx: Prisma.TransactionClient,
+    userId: string,
+    amount: Prisma.Decimal,
+  ): Promise<LedgerBalance> {
+    const result = await tx.ledgerBalance.updateMany({
+      where: { userId, investmentBalance: { gte: amount } },
+      data: { investmentBalance: { decrement: amount } },
+    });
+
+    if (result.count === 0) {
+      const existing = await tx.ledgerBalance.findUnique({ where: { userId } });
+      if (!existing) {
+        throw new LedgerNotFoundException(userId);
+      }
+      throw new InsufficientFundsException(userId);
+    }
+
+    return this.getBalance(userId, tx);
+  }
+
+  // Seul moyen d'alimenter ou de vider le wallet investissement (cf. §6 entrée #31) —
+  // virement interne instantané, sans frais, entre availableBalance et
+  // investmentBalance. Atomique : les deux mouvements ou aucun (même transaction Prisma
+  // que l'appelant, cf. InvestmentWalletController).
+  async transferToInvestmentWallet(
+    tx: Prisma.TransactionClient,
+    userId: string,
+    amount: Prisma.Decimal,
+  ): Promise<LedgerBalance> {
+    await this.debitAvailableBalance(tx, userId, amount);
+    return this.creditInvestmentBalance(tx, userId, amount);
+  }
+
+  async transferFromInvestmentWallet(
+    tx: Prisma.TransactionClient,
+    userId: string,
+    amount: Prisma.Decimal,
+  ): Promise<LedgerBalance> {
+    await this.debitInvestmentBalance(tx, userId, amount);
+    return this.creditAvailableBalance(tx, userId, amount);
+  }
 }

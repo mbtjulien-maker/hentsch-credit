@@ -121,11 +121,13 @@ function buildCreditRequest(overrides: Record<string, unknown> = {}) {
 
 describe('AdminClientsService', () => {
   let prisma: {
-    user: { findMany: jest.Mock; findUnique: jest.Mock };
+    user: { findMany: jest.Mock; findUnique: jest.Mock; update: jest.Mock };
     clientProfile: { upsert: jest.Mock };
     address: { upsert: jest.Mock };
     employment: { upsert: jest.Mock };
     financialSnapshot: { upsert: jest.Mock };
+    identityDocument: { upsert: jest.Mock };
+    amlProfile: { upsert: jest.Mock };
     clientNote: { create: jest.Mock; findMany: jest.Mock };
     $transaction: jest.Mock;
   };
@@ -133,11 +135,13 @@ describe('AdminClientsService', () => {
 
   beforeEach(() => {
     prisma = {
-      user: { findMany: jest.fn(), findUnique: jest.fn() },
+      user: { findMany: jest.fn(), findUnique: jest.fn(), update: jest.fn() },
       clientProfile: { upsert: jest.fn() },
       address: { upsert: jest.fn() },
       employment: { upsert: jest.fn() },
       financialSnapshot: { upsert: jest.fn() },
+      identityDocument: { upsert: jest.fn() },
+      amlProfile: { upsert: jest.fn() },
       clientNote: { create: jest.fn(), findMany: jest.fn() },
       $transaction: jest.fn((ops: unknown[]) => Promise.all(ops)),
     };
@@ -162,7 +166,12 @@ describe('AdminClientsService', () => {
     it('includes dossierStatus/contract alongside the summary, computed from the same real request', async () => {
       prisma.user.findMany.mockResolvedValue([
         buildUser({
-          creditRequests: [buildCreditRequest({ status: 'FULFILLED', creditPosition: { status: 'ACTIVE' } })],
+          creditRequests: [
+            buildCreditRequest({
+              status: 'FULFILLED',
+              creditPosition: { status: 'ACTIVE' },
+            }),
+          ],
         }),
       ]);
 
@@ -188,7 +197,9 @@ describe('AdminClientsService', () => {
           ? [
               buildCreditRequest({
                 status: requestStatus,
-                creditPosition: positionStatus ? { status: positionStatus } : null,
+                creditPosition: positionStatus
+                  ? { status: positionStatus }
+                  : null,
               }),
             ]
           : [];
@@ -527,6 +538,68 @@ describe('AdminClientsService', () => {
       });
       expect(notes[0].author).toBe('admin@hhentsch.com');
       expect(notes[0].content).toBe('Dossier complet.');
+    });
+  });
+
+  // "Avis de conformité : Validé / Refusé" (cf. §6 entrée #33 CLAUDE.md) — jusqu'à cette
+  // entrée, aucune route ne permettait de faire passer User.kycStatus de PENDING à
+  // VERIFIED/REJECTED en dehors du seed de démo.
+  describe('decideKyc', () => {
+    it('validates a dossier: sets AmlProfile.reviewDecision AND User.kycStatus to VERIFIED together', async () => {
+      prisma.user.findUnique.mockResolvedValue(
+        buildUser({ kycStatus: 'PENDING' }),
+      );
+      prisma.amlProfile.upsert.mockResolvedValue({});
+      prisma.user.update.mockResolvedValue({});
+
+      await service.decideKyc(
+        'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
+        'admin-1',
+        { decision: 'VALIDE', riskLevel: 'FAIBLE' },
+      );
+
+      expect(prisma.amlProfile.upsert).toHaveBeenCalledWith(
+        expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          update: expect.objectContaining({
+            reviewDecision: 'VALIDE',
+            riskLevel: 'FAIBLE',
+            reviewedByUserId: 'admin-1',
+          }),
+        }),
+      );
+      expect(prisma.user.update).toHaveBeenCalledWith({
+        where: { id: 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' },
+        data: { kycStatus: 'VERIFIED' },
+      });
+    });
+
+    it('rejects a dossier: sets User.kycStatus to REJECTED', async () => {
+      prisma.user.findUnique.mockResolvedValue(
+        buildUser({ kycStatus: 'PENDING' }),
+      );
+      prisma.amlProfile.upsert.mockResolvedValue({});
+      prisma.user.update.mockResolvedValue({});
+
+      await service.decideKyc(
+        'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
+        'admin-1',
+        { decision: 'REFUSE' },
+      );
+
+      expect(prisma.user.update).toHaveBeenCalledWith({
+        where: { id: 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee' },
+        data: { kycStatus: 'REJECTED' },
+      });
+    });
+
+    it('throws ClientNotFoundException for a non-client user', async () => {
+      prisma.user.findUnique.mockResolvedValue(null);
+
+      await expect(
+        service.decideKyc('missing', 'admin-1', { decision: 'VALIDE' }),
+      ).rejects.toThrow(ClientNotFoundException);
+      expect(prisma.amlProfile.upsert).not.toHaveBeenCalled();
     });
   });
 });

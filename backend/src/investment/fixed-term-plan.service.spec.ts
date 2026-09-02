@@ -16,6 +16,7 @@ function buildBalance(overrides: Partial<LedgerBalance> = {}): LedgerBalance {
     lockedCollateral: new Prisma.Decimal(0),
     grantedCredit: new Prisma.Decimal(0),
     usedCredit: new Prisma.Decimal(0),
+    investmentBalance: new Prisma.Decimal(0),
     updatedAt: new Date(),
     ...overrides,
   };
@@ -87,8 +88,8 @@ describe('FixedTermPlanService', () => {
     transaction: { create: jest.Mock };
   };
   let ledgerService: {
-    debitAvailableBalance: jest.Mock;
-    creditAvailableBalance: jest.Mock;
+    debitInvestmentBalance: jest.Mock;
+    creditInvestmentBalance: jest.Mock;
   };
   let treasuryBotService: {
     runDailySimulation: jest.Mock;
@@ -115,8 +116,8 @@ describe('FixedTermPlanService', () => {
       transaction: { create: jest.fn() },
     };
     ledgerService = {
-      debitAvailableBalance: jest.fn(),
-      creditAvailableBalance: jest.fn(),
+      debitInvestmentBalance: jest.fn(),
+      creditInvestmentBalance: jest.fn(),
     };
     treasuryBotService = {
       runDailySimulation: jest.fn(),
@@ -208,7 +209,7 @@ describe('FixedTermPlanService', () => {
       );
       const after = new Date();
 
-      const [, , debitAmount] = ledgerService.debitAvailableBalance.mock
+      const [, , debitAmount] = ledgerService.debitInvestmentBalance.mock
         .calls[0] as [unknown, unknown, Prisma.Decimal];
       expect(debitAmount.toString()).toBe('500');
 
@@ -266,7 +267,7 @@ describe('FixedTermPlanService', () => {
       await expect(
         service.deposit('user-1', 'RWA_METALS_12M', '0'),
       ).rejects.toThrow(InvalidAmountException);
-      expect(ledgerService.debitAvailableBalance).not.toHaveBeenCalled();
+      expect(ledgerService.debitInvestmentBalance).not.toHaveBeenCalled();
     });
   });
 
@@ -319,7 +320,7 @@ describe('FixedTermPlanService', () => {
       const balance = buildBalance({
         availableBalance: new Prisma.Decimal(1035),
       });
-      ledgerService.creditAvailableBalance.mockResolvedValue(balance);
+      ledgerService.creditInvestmentBalance.mockResolvedValue(balance);
 
       const results = await service.settleMaturedPositions(
         new Date('2026-06-01'),
@@ -348,14 +349,14 @@ describe('FixedTermPlanService', () => {
         maturityDate: new Date('2026-01-01'),
       });
       prisma.fixedTermPosition.findMany.mockResolvedValue([position]);
-      ledgerService.creditAvailableBalance.mockResolvedValue(buildBalance());
+      ledgerService.creditInvestmentBalance.mockResolvedValue(buildBalance());
 
       const results = await service.settleMaturedPositions(
         new Date('2026-06-01'),
       );
 
       expect(results[0].payoutAmount.toString()).toBe('0');
-      const [, , creditedAmount] = ledgerService.creditAvailableBalance.mock
+      const [, , creditedAmount] = ledgerService.creditInvestmentBalance.mock
         .calls[0] as [unknown, string, Prisma.Decimal];
       expect(creditedAmount.toString()).toBe('0');
     });
@@ -380,7 +381,7 @@ describe('FixedTermPlanService', () => {
         badPosition,
         okPosition,
       ]);
-      ledgerService.creditAvailableBalance.mockResolvedValue(buildBalance());
+      ledgerService.creditInvestmentBalance.mockResolvedValue(buildBalance());
       tx.fixedTermPosition.update.mockImplementation(
         ({ where }: { where: { id: string } }) => {
           if (where.id === 'bad') {

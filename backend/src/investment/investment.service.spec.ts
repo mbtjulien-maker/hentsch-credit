@@ -18,6 +18,7 @@ function buildBalance(overrides: Partial<LedgerBalance> = {}): LedgerBalance {
     lockedCollateral: new Prisma.Decimal(0),
     grantedCredit: new Prisma.Decimal(0),
     usedCredit: new Prisma.Decimal(0),
+    investmentBalance: new Prisma.Decimal(0),
     updatedAt: new Date(),
     ...overrides,
   };
@@ -89,8 +90,10 @@ describe('InvestmentService', () => {
     transaction: { create: jest.Mock };
   };
   let ledgerService: {
-    debitAvailableBalance: jest.Mock;
-    creditAvailableBalance: jest.Mock;
+    debitInvestmentBalance: jest.Mock;
+    creditInvestmentBalance: jest.Mock;
+    transferToInvestmentWallet: jest.Mock;
+    transferFromInvestmentWallet: jest.Mock;
   };
   let treasuryBotService: {
     runDailySimulation: jest.Mock;
@@ -120,8 +123,10 @@ describe('InvestmentService', () => {
       stockBasketRun: { findUnique: jest.fn(), create: jest.fn() },
     };
     ledgerService = {
-      debitAvailableBalance: jest.fn(),
-      creditAvailableBalance: jest.fn(),
+      debitInvestmentBalance: jest.fn(),
+      creditInvestmentBalance: jest.fn(),
+      transferToInvestmentWallet: jest.fn(),
+      transferFromInvestmentWallet: jest.fn(),
     };
     treasuryBotService = {
       runDailySimulation: jest.fn(),
@@ -150,7 +155,7 @@ describe('InvestmentService', () => {
 
       const result = await service.deposit('user-1', 'RWA_STRATEGY', '500');
 
-      const [, , debitAmount] = ledgerService.debitAvailableBalance.mock
+      const [, , debitAmount] = ledgerService.debitInvestmentBalance.mock
         .calls[0] as [unknown, unknown, Prisma.Decimal];
       expect(debitAmount.toString()).toBe('500');
       expect(tx.investmentPosition.create).toHaveBeenCalledWith({
@@ -198,7 +203,60 @@ describe('InvestmentService', () => {
       await expect(service.deposit('user-1', 'STOCKS', '0')).rejects.toThrow(
         InvalidAmountException,
       );
-      expect(ledgerService.debitAvailableBalance).not.toHaveBeenCalled();
+      expect(ledgerService.debitInvestmentBalance).not.toHaveBeenCalled();
+    });
+  });
+
+  // Wallet investissement (cf. §2H CLAUDE.md entrée #31) — seul moyen d'alimenter ou de
+  // vider investmentBalance, jamais un dépôt on-chain/bancaire direct dessus.
+  describe('transferToWallet / transferFromWallet', () => {
+    it('transferToWallet moves funds via LedgerService and journals INVESTMENT_WALLET_TRANSFER_IN', async () => {
+      const balance = buildBalance({
+        investmentBalance: new Prisma.Decimal('100'),
+      });
+      ledgerService.transferToInvestmentWallet.mockResolvedValue(balance);
+
+      const result = await service.transferToWallet('user-1', '100');
+
+      const [, userIdArg, amountArg] = ledgerService.transferToInvestmentWallet
+        .mock.calls[0] as [unknown, string, Prisma.Decimal];
+      expect(userIdArg).toBe('user-1');
+      expect(amountArg.toString()).toBe('100');
+      expect(tx.transaction.create).toHaveBeenCalledWith({
+        data: {
+          userId: 'user-1',
+          type: 'INVESTMENT_WALLET_TRANSFER_IN',
+          amount: expect.anything() as unknown,
+          status: 'COMPLETED',
+        },
+      });
+      expect(result).toBe(balance);
+    });
+
+    it('transferFromWallet moves funds via LedgerService and journals INVESTMENT_WALLET_TRANSFER_OUT', async () => {
+      const balance = buildBalance({
+        availableBalance: new Prisma.Decimal('50'),
+      });
+      ledgerService.transferFromInvestmentWallet.mockResolvedValue(balance);
+
+      const result = await service.transferFromWallet('user-1', '50');
+
+      expect(tx.transaction.create).toHaveBeenCalledWith({
+        data: {
+          userId: 'user-1',
+          type: 'INVESTMENT_WALLET_TRANSFER_OUT',
+          amount: expect.anything() as unknown,
+          status: 'COMPLETED',
+        },
+      });
+      expect(result).toBe(balance);
+    });
+
+    it('rejects a non-positive transfer amount before touching the ledger', async () => {
+      await expect(service.transferToWallet('user-1', '0')).rejects.toThrow(
+        InvalidAmountException,
+      );
+      expect(ledgerService.transferToInvestmentWallet).not.toHaveBeenCalled();
     });
   });
 
@@ -212,12 +270,12 @@ describe('InvestmentService', () => {
       const balance = buildBalance({
         availableBalance: new Prisma.Decimal(1050),
       });
-      ledgerService.creditAvailableBalance.mockResolvedValue(balance);
+      ledgerService.creditInvestmentBalance.mockResolvedValue(balance);
 
       const result = await service.withdraw('user-1', 'RWA_STRATEGY');
 
-      const [, userIdArg, amountArg] = ledgerService.creditAvailableBalance.mock
-        .calls[0] as [unknown, string, Prisma.Decimal];
+      const [, userIdArg, amountArg] = ledgerService.creditInvestmentBalance
+        .mock.calls[0] as [unknown, string, Prisma.Decimal];
       expect(userIdArg).toBe('user-1');
       expect(amountArg.toString()).toBe('1050');
       expect(tx.investmentPosition.update).toHaveBeenCalledWith({
@@ -234,7 +292,7 @@ describe('InvestmentService', () => {
       await expect(service.withdraw('user-1', 'STOCKS')).rejects.toThrow(
         NoActiveInvestmentException,
       );
-      expect(ledgerService.creditAvailableBalance).not.toHaveBeenCalled();
+      expect(ledgerService.creditInvestmentBalance).not.toHaveBeenCalled();
     });
   });
 

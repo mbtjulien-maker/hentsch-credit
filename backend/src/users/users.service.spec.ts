@@ -7,6 +7,8 @@ describe('UsersService', () => {
     clientProfile: { upsert: jest.Mock };
     address: { upsert: jest.Mock };
     employment: { upsert: jest.Mock };
+    identityDocument: { upsert: jest.Mock };
+    amlProfile: { upsert: jest.Mock };
     $transaction: jest.Mock;
   };
   let service: UsersService;
@@ -17,6 +19,8 @@ describe('UsersService', () => {
       clientProfile: { upsert: jest.fn() },
       address: { upsert: jest.fn() },
       employment: { upsert: jest.fn() },
+      identityDocument: { upsert: jest.fn() },
+      amlProfile: { upsert: jest.fn() },
       $transaction: jest.fn((ops: unknown[]) => Promise.all(ops)),
     };
     service = new UsersService(prisma as never);
@@ -238,6 +242,101 @@ describe('UsersService', () => {
       expect(calls[0][0].update.verified).toBe(false);
       expect(result.employment?.employer).toBe('Acme');
       expect(result.employment?.annualIncome).toBe(60000);
+    });
+  });
+
+  // Pièce d'identité déclarée (cf. §6 entrée #33 CLAUDE.md) — même principe que
+  // updateAddresses/updateEmployment ci-dessus pour `verified`.
+  describe('updateIdentityDocument', () => {
+    it('upserts the identity document, forcing verified to false', async () => {
+      prisma.identityDocument.upsert.mockResolvedValue({});
+      prisma.user.findUnique.mockResolvedValue({
+        id: 'user-1',
+        clientProfile: null,
+        addresses: [],
+        employment: null,
+        identityDocument: {
+          documentType: 'CNI',
+          documentNumber: 'AB123456',
+          issuingAuthority: null,
+          issuePlace: null,
+          issueDate: null,
+          expiryDate: null,
+          identityCheckMethod: null,
+          proofOfAddressType: null,
+          proofOfAddressIssuer: null,
+          verified: false,
+        },
+        amlProfile: null,
+      });
+
+      const result = await service.updateIdentityDocument('user-1', {
+        documentType: 'CNI',
+        documentNumber: 'AB123456',
+      });
+
+      const calls = prisma.identityDocument.upsert.mock
+        .calls as unknown as Array<
+        [{ create: { verified: boolean }; update: { verified: boolean } }]
+      >;
+      expect(calls[0][0].create.verified).toBe(false);
+      expect(calls[0][0].update.verified).toBe(false);
+      expect(result.identityDocument?.documentNumber).toBe('AB123456');
+    });
+  });
+
+  // Soumission du profil de conformité LCB-FT avec attestation (cf. §6 entrée #33) —
+  // horodate attestedAt et réinitialise le volet admin à chaque (re)soumission.
+  describe('submitAmlProfile', () => {
+    it('stamps attestedAt and resets the admin review fields on submission', async () => {
+      prisma.amlProfile.upsert.mockResolvedValue({});
+      prisma.user.findUnique.mockResolvedValue({
+        id: 'user-1',
+        clientProfile: null,
+        addresses: [],
+        employment: null,
+        identityDocument: null,
+        amlProfile: {
+          isPoliticallyExposed: false,
+          fundsOrigin: ['EPARGNE'],
+          fundsOriginOther: null,
+          relationshipPurpose: ['COMPTE_COURANT'],
+          attestedAt: new Date('2026-09-02T00:00:00Z'),
+          attestationCity: 'Genève',
+          riskLevel: null,
+          reviewDecision: null,
+          reviewedAt: null,
+        },
+      });
+
+      await service.submitAmlProfile('user-1', {
+        isPoliticallyExposed: false,
+        fundsOrigin: ['EPARGNE'],
+        relationshipPurpose: ['COMPTE_COURANT'],
+        attestationCity: 'Genève',
+        confirmAttestation: true,
+      });
+
+      const calls = prisma.amlProfile.upsert.mock.calls as unknown as Array<
+        [
+          {
+            create: { attestedAt: Date; riskLevel: null; reviewDecision: null };
+            update: { attestedAt: Date; riskLevel: null; reviewDecision: null };
+          },
+        ]
+      >;
+      expect(calls[0][0].create.attestedAt).toBeInstanceOf(Date);
+      expect(calls[0][0].update.riskLevel).toBeNull();
+      expect(calls[0][0].update.reviewDecision).toBeNull();
+    });
+
+    it('rejects a submission whose attestation was not confirmed', async () => {
+      await expect(
+        service.submitAmlProfile('user-1', {
+          confirmAttestation: false,
+        }),
+      ).rejects.toThrow();
+      expect(prisma.amlProfile.upsert).not.toHaveBeenCalled();
     });
   });
 });

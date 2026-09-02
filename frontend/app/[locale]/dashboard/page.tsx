@@ -4,10 +4,10 @@ import { AlertTriangle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
-import { BalanceCards } from "@/components/dashboard/balance-cards";
 import { CardsSection } from "@/components/dashboard/cards-section";
 import { CreditForm } from "@/components/dashboard/credit-form";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
+import { HomeBalanceOverview } from "@/components/dashboard/home-balance-overview";
 import { MarketView } from "@/components/dashboard/market-view";
 import { ProfileSection } from "@/components/dashboard/profile-section";
 import { SupportSection } from "@/components/dashboard/support-section";
@@ -56,7 +56,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <BalanceCards summary={balance.data} />
+      <HomeBalanceOverview summary={balance.data} />
       <WalletActions summary={balance.data} userId={balance.selectedUserId} onSuccess={triggerRefresh} />
 
       <MarketView />

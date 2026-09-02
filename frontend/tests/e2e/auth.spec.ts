@@ -15,7 +15,10 @@ test.describe("Connexion", () => {
     await page.getByRole("button", { name: "Se connecter" }).click();
 
     await expect(page).toHaveURL(/\/dashboard/);
-    await expect(page.getByText("Solde global")).toBeVisible();
+    // Vue d'ensemble de l'accueil — exactement 3 soldes (wallet principal, crédit,
+    // investissement), cf. HomeBalanceOverview ; "Solde global"/"Gage verrouillé"
+    // restent affichés sur /dashboard/solde uniquement (cf. BalanceCards).
+    await expect(page.getByText("Solde principal", { exact: true })).toBeVisible();
   });
 
   test("un mot de passe incorrect affiche une erreur générique, reste sur /login", async ({ page }) => {

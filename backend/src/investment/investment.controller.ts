@@ -20,6 +20,7 @@ import {
 } from './investment.constants';
 import { DepositInvestmentDto } from './dto/deposit-investment.dto';
 import { DepositFixedTermDto } from './dto/deposit-fixed-term.dto';
+import { TransferInvestmentWalletDto } from './dto/transfer-investment-wallet.dto';
 import { WithdrawInvestmentDto } from './dto/withdraw-investment.dto';
 import { InvestmentService } from './investment.service';
 import { FixedTermPlanService } from './fixed-term-plan.service';
@@ -45,6 +46,29 @@ export class InvestmentController {
     private readonly stockMarketDataService: StockMarketDataService,
     private readonly marketDataService: MarketDataService,
   ) {}
+
+  // Wallet investissement (cf. §2H CLAUDE.md entrée #31) — virement interne, seul moyen
+  // d'alimenter ou de vider le solde dédié aux paniers/plans ci-dessous. Jamais un dépôt
+  // on-chain/bancaire direct : ceux-ci créditent toujours availableBalance (mêmes
+  // adresses de dépôt et actifs acceptés qu'avant).
+  @Post('wallet/transfer-in')
+  transferToWallet(
+    @Body() dto: TransferInvestmentWalletDto,
+    @CurrentUser() currentUser: AuthenticatedUser,
+  ) {
+    return this.investmentService.transferToWallet(currentUser.id, dto.amount);
+  }
+
+  @Post('wallet/transfer-out')
+  transferFromWallet(
+    @Body() dto: TransferInvestmentWalletDto,
+    @CurrentUser() currentUser: AuthenticatedUser,
+  ) {
+    return this.investmentService.transferFromWallet(
+      currentUser.id,
+      dto.amount,
+    );
+  }
 
   @Post('deposit')
   deposit(

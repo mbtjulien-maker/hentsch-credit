@@ -8,6 +8,7 @@ import {
   Briefcase,
   ClipboardCheck,
   CreditCard,
+  FileCheck2,
   HandCoins,
   History,
   LayoutGrid,
@@ -109,6 +110,7 @@ export function Sidebar() {
     { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
     { href: "/dashboard/historique", label: t("client.history"), icon: History },
     { href: "/dashboard/profil", label: t("client.profile"), icon: User },
+    { href: "/dashboard/kyc", label: t("client.kyc"), icon: FileCheck2 },
     { href: "/dashboard/support", label: t("client.support"), icon: LifeBuoy },
   ];
 
@@ -176,6 +178,7 @@ export function MobileNav() {
     { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
     { href: "/dashboard/historique", label: t("client.history"), icon: History },
     { href: "/dashboard/profil", label: t("client.profile"), icon: User },
+    { href: "/dashboard/kyc", label: t("client.kyc"), icon: FileCheck2 },
     { href: "/dashboard/support", label: t("client.support"), icon: LifeBuoy },
   ];
   const BACKOFFICE_SECTIONS: NavSection[] = [

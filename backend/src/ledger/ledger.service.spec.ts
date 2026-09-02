@@ -15,6 +15,7 @@ function buildBalance(overrides: Partial<LedgerBalance> = {}): LedgerBalance {
     lockedCollateral: new Prisma.Decimal(0),
     grantedCredit: new Prisma.Decimal(0),
     usedCredit: new Prisma.Decimal(0),
+    investmentBalance: new Prisma.Decimal(0),
     updatedAt: new Date(),
     ...overrides,
   };
@@ -345,6 +346,113 @@ describe('LedgerService', () => {
           new Prisma.Decimal('500'),
         ),
       ).rejects.toBeInstanceOf(LedgerNotFoundException);
+    });
+  });
+
+  // Wallet investissement (cf. §2H CLAUDE.md entrée #31) — solde SÉPARÉ
+  // d'availableBalance, alimenté uniquement par virement interne (jamais un dépôt
+  // on-chain/bancaire direct).
+  describe('creditInvestmentBalance / debitInvestmentBalance', () => {
+    const tx = () => prisma as never;
+
+    it('atomically increments investmentBalance, never availableBalance', async () => {
+      prisma.ledgerBalance.updateMany.mockResolvedValue({ count: 1 });
+      const updated = buildBalance({
+        investmentBalance: new Prisma.Decimal('100'),
+      });
+      prisma.ledgerBalance.findUnique.mockResolvedValue(updated);
+
+      const result = await service.creditInvestmentBalance(
+        tx(),
+        'user-1',
+        new Prisma.Decimal('100'),
+      );
+
+      expect(prisma.ledgerBalance.updateMany).toHaveBeenCalledWith({
+        where: { userId: 'user-1' },
+        data: { investmentBalance: { increment: new Prisma.Decimal('100') } },
+      });
+      expect(result).toEqual(updated);
+    });
+
+    it('debitInvestmentBalance throws InsufficientFundsException rather than allow investmentBalance to go negative', async () => {
+      prisma.ledgerBalance.updateMany.mockResolvedValue({ count: 0 });
+      prisma.ledgerBalance.findUnique.mockResolvedValue(buildBalance());
+
+      await expect(
+        service.debitInvestmentBalance(
+          tx(),
+          'user-1',
+          new Prisma.Decimal('9999'),
+        ),
+      ).rejects.toBeInstanceOf(InsufficientFundsException);
+    });
+  });
+
+  describe('transferToInvestmentWallet / transferFromInvestmentWallet', () => {
+    const tx = () => prisma as never;
+
+    it('transferToInvestmentWallet debits availableBalance and credits investmentBalance by the same amount', async () => {
+      prisma.ledgerBalance.updateMany.mockResolvedValue({ count: 1 });
+      prisma.ledgerBalance.findUnique.mockResolvedValue(
+        buildBalance({ investmentBalance: new Prisma.Decimal('50') }),
+      );
+
+      await service.transferToInvestmentWallet(
+        tx(),
+        'user-1',
+        new Prisma.Decimal('50'),
+      );
+
+      expect(prisma.ledgerBalance.updateMany).toHaveBeenCalledWith({
+        where: {
+          userId: 'user-1',
+          availableBalance: { gte: new Prisma.Decimal('50') },
+        },
+        data: { availableBalance: { decrement: new Prisma.Decimal('50') } },
+      });
+      expect(prisma.ledgerBalance.updateMany).toHaveBeenCalledWith({
+        where: { userId: 'user-1' },
+        data: { investmentBalance: { increment: new Prisma.Decimal('50') } },
+      });
+    });
+
+    it('transferToInvestmentWallet fails without crediting investmentBalance when availableBalance is insufficient', async () => {
+      prisma.ledgerBalance.updateMany.mockResolvedValueOnce({ count: 0 });
+      prisma.ledgerBalance.findUnique.mockResolvedValue(buildBalance());
+
+      await expect(
+        service.transferToInvestmentWallet(
+          tx(),
+          'user-1',
+          new Prisma.Decimal('9999'),
+        ),
+      ).rejects.toBeInstanceOf(InsufficientFundsException);
+      // Un seul updateMany appelé (le débit, qui a échoué) — jamais le crédit ensuite.
+      expect(prisma.ledgerBalance.updateMany).toHaveBeenCalledTimes(1);
+    });
+
+    it('transferFromInvestmentWallet debits investmentBalance and credits availableBalance by the same amount', async () => {
+      prisma.ledgerBalance.updateMany.mockResolvedValue({ count: 1 });
+      prisma.ledgerBalance.findUnique.mockResolvedValue(buildBalance());
+
+      await service.transferFromInvestmentWallet(
+        tx(),
+        'user-1',
+        new Prisma.Decimal('20'),
+      );
+
+      expect(prisma.ledgerBalance.updateMany).toHaveBeenCalledWith({
+        where: {
+          userId: 'user-1',
+          investmentBalance: { gte: new Prisma.Decimal('20') },
+        },
+        data: { investmentBalance: { decrement: new Prisma.Decimal('20') } },
+      });
+      expect(prisma.ledgerBalance.updateMany).toHaveBeenCalledWith({
+        where: { userId: 'user-1' },
+        data: { availableBalance: { increment: new Prisma.Decimal('20') } },
+      });
     });
   });
 });

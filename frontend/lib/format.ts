@@ -1,3 +1,5 @@
+import type { Chain } from "@/lib/api";
+
 const currencyFormatter = new Intl.NumberFormat("fr-FR", {
   style: "currency",
   currency: "USD",
@@ -104,6 +106,9 @@ export const CHAIN_LABELS: Record<string, string> = {
   ARBITRUM: "Arbitrum",
   TRON: "Tron",
   SOLANA: "Solana",
+  // Ajouté pour KAG (cf. §6 entrée #32 CLAUDE.md) — seul actif dont une vraie adresse de
+  // dépôt a été fournie sur ce réseau, cf. CURRENCY_CHAINS.
+  BSC: "BNB Smart Chain",
 };
 
 export const CURRENCY_LABELS: Record<string, string> = {
@@ -126,9 +131,11 @@ export const CURRENCY_LABELS: Record<string, string> = {
 };
 
 // Réseaux disponibles pour chaque actif — détermine les options du sélecteur de réseau
-// une fois l'actif choisi (pas l'inverse). Tous les actifs proposés (cf. CURRENCY_GROUPS)
-// ne sont disponibles que sur Ethereum pour l'instant.
-export const CURRENCY_CHAINS: Record<string, readonly (typeof EVM_CHAINS)[number][]> = {
+// une fois l'actif choisi (pas l'inverse). Ethereum par défaut pour tous, sauf KAG : seul
+// actif dont une vraie adresse de dépôt a été fournie, sur BNB Smart Chain (cf. §6
+// entrée #32 CLAUDE.md) — Ethereum retiré pour KAG plutôt que de laisser un réseau sans
+// vraie adresse de réception dans le sélecteur.
+export const CURRENCY_CHAINS: Record<string, readonly Chain[]> = {
   DAI: EVM_CHAINS,
   USDC: EVM_CHAINS,
   USDT: EVM_CHAINS,
@@ -136,11 +143,7 @@ export const CURRENCY_CHAINS: Record<string, readonly (typeof EVM_CHAINS)[number
   XAUT: EVM_CHAINS,
   ETH: EVM_CHAINS,
   SHIB: EVM_CHAINS,
-  KAG: EVM_CHAINS,
-  XPT: EVM_CHAINS,
-  XPD: EVM_CHAINS,
-  XCU: EVM_CHAINS,
-  WTI: EVM_CHAINS,
+  KAG: ["BSC"],
 };
 
 // Regroupements affichés dans les sélecteurs — reflètent la logique de valorisation
@@ -156,16 +159,27 @@ export const CURRENCY_CHAINS: Record<string, readonly (typeof EVM_CHAINS)[number
 // industriels/matières premières portent en plus un objectif de rendement indicatif de la
 // stratégie de trésorerie de la banque (cf. targetApyRangePct, jamais une garantie) — voir
 // la section "Notre stratégie d'investissement RWA" de la page d'accueil pour le détail.
+const INDUSTRIAL_RWA_GROUP_LABEL =
+  "Métaux industriels & matières premières tokenisés (objectif indicatif 8-14% APY)";
+
 export const CURRENCY_GROUPS: { label: string; currencies: readonly string[] }[] = [
   { label: "Stablecoins USD (valorisés 1:1)", currencies: ["DAI", "USDC", "USDT"] },
   { label: "Stablecoin EUR (cours spot en direct)", currencies: ["DEURO"] },
   { label: "Métaux précieux (génèrent un rendement)", currencies: ["XAUT", "KAG"] },
   { label: "Cryptomonnaies (ETH génère un rendement)", currencies: ["ETH", "SHIB"] },
-  {
-    label: "Métaux industriels & matières premières tokenisés (objectif indicatif 8-14% APY)",
-    currencies: ["XPT", "XPD", "XCU", "WTI"],
-  },
+  { label: INDUSTRIAL_RWA_GROUP_LABEL, currencies: ["XPT", "XPD", "XCU", "WTI"] },
 ];
+
+// Sélecteur de DÉPÔT uniquement (cf. §6 entrée #32 CLAUDE.md) — même liste que
+// CURRENCY_GROUPS, moins le groupe métaux industriels/matières premières tokenisés :
+// aucune vraie adresse de réception n'a été fournie pour ces actifs (contrairement à
+// KAG, cf. CURRENCY_CHAINS), donc pas de dépôt direct proposé pour eux tant que ce n'est
+// pas le cas — jamais un flux présenté comme réel sans adresse réelle derrière. Ces
+// actifs restent acceptés en garantie (marché, stratégie RWA) et retirables normalement
+// (cf. CURRENCY_GROUPS, utilisé tel quel par WithdrawDialog) : seul le dépôt est concerné.
+export const DEPOSIT_CURRENCY_GROUPS = CURRENCY_GROUPS.filter(
+  (group) => group.label !== INDUSTRIAL_RWA_GROUP_LABEL,
+);
 
 const priceFormatter = new Intl.NumberFormat("fr-FR", {
   style: "currency",

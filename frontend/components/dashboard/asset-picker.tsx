@@ -59,9 +59,22 @@ function ArbitrumIcon({ className }: { className?: string }) {
   );
 }
 
+function BscIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="12" fill="#F0B90B" />
+      <path
+        d="m12 5.5 2 2-4.9 4.9-2-2Zm-6.5 4.5 2 2-2 2-2-2Zm13 0 2 2-2 2-2-2ZM12 12.6l2 2-2 2-2-2Zm0 4.4 2 2-2 2-2-2Z"
+        fill="#fff"
+      />
+    </svg>
+  );
+}
+
 export function ChainIcon({ chain, className = "size-5 shrink-0" }: { chain: string; className?: string }) {
   if (chain === "POLYGON") return <PolygonIcon className={className} />;
   if (chain === "ARBITRUM") return <ArbitrumIcon className={className} />;
+  if (chain === "BSC") return <BscIcon className={className} />;
   return <EthereumIcon className={className} />;
 }
 
@@ -113,14 +126,24 @@ function useAssetLogos(): Record<string, string> {
 // Sélecteur d'actif — liste groupée par logique de valorisation (cf. CURRENCY_GROUPS),
 // avec le vrai logo de chaque actif. Remplace un <select> par des lignes cliquables :
 // c'est le premier choix du flux de dépôt/retrait, celui qui détermine les réseaux
-// ensuite proposés (cf. ChainList).
-export function AssetList({ value, onChange }: { value: string; onChange: (value: string) => void }) {
+// ensuite proposés (cf. ChainList). `groups` optionnel (défaut CURRENCY_GROUPS, utilisé
+// par WithdrawDialog) — DepositDialog passe DEPOSIT_CURRENCY_GROUPS, qui exclut les
+// actifs sans vraie adresse de dépôt (cf. §6 entrée #32 CLAUDE.md).
+export function AssetList({
+  value,
+  onChange,
+  groups = CURRENCY_GROUPS,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  groups?: { label: string; currencies: readonly string[] }[];
+}) {
   const currencyLabel = useCurrencyLabel();
   const logos = useAssetLogos();
 
   return (
     <div className="flex max-h-64 flex-col gap-3 overflow-y-auto pr-1">
-      {CURRENCY_GROUPS.map((group) => (
+      {groups.map((group) => (
         <div key={group.label}>
           <p className="mb-1.5 px-1 text-[11px] font-medium tracking-wide text-muted-foreground uppercase">
             {group.label}

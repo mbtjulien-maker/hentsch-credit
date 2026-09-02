@@ -14,7 +14,9 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { assertSelfOrAdmin } from '../auth/ownership.util';
 import { UpdateOwnAddressesDto } from './dto/update-own-addresses.dto';
 import { UpdateOwnEmploymentDto } from './dto/update-own-employment.dto';
+import { UpdateOwnIdentityDocumentDto } from './dto/update-own-identity-document.dto';
 import { UpdateOwnProfileDto } from './dto/update-own-profile.dto';
+import { SubmitOwnAmlProfileDto } from './dto/submit-own-aml-profile.dto';
 import { UsersService } from './users.service';
 
 // Profil affiché ET modifiable côté client authentifié (cf. app/dashboard/profil),
@@ -68,5 +70,27 @@ export class UserProfileController {
   ) {
     assertSelfOrAdmin(currentUser, userId);
     return this.usersService.updateEmployment(userId, dto);
+  }
+
+  @Patch('identity-document')
+  updateIdentityDocument(
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @Body() dto: UpdateOwnIdentityDocumentDto,
+    @CurrentUser() currentUser: AuthenticatedUser,
+  ) {
+    assertSelfOrAdmin(currentUser, userId);
+    return this.usersService.updateIdentityDocument(userId, dto);
+  }
+
+  // Dernière étape du dossier KYC (cf. dossier papier §6) — soumission avec attestation
+  // "Lu et approuvé" obligatoire (cf. SubmitOwnAmlProfileDto.confirmAttestation).
+  @Patch('aml')
+  submitAmlProfile(
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @Body() dto: SubmitOwnAmlProfileDto,
+    @CurrentUser() currentUser: AuthenticatedUser,
+  ) {
+    assertSelfOrAdmin(currentUser, userId);
+    return this.usersService.submitAmlProfile(userId, dto);
   }
 }

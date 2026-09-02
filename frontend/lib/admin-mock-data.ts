@@ -3,6 +3,22 @@
 // Operations" premium, cf. brief. Tout est déterministe (aucun Math.random()/Date.now()
 // au niveau module) pour éviter tout écart d'hydratation SSR/CSR.
 
+// Types du dossier KYC (cf. §6 entrée #33 CLAUDE.md) réutilisés tels quels depuis
+// lib/api.ts — une seule définition, jamais dupliquée entre la fiche réelle et celle-ci.
+import type {
+  AmlRiskLevel,
+  FundsOrigin,
+  IdentityCheckMethod,
+  IdentityDocumentType,
+  IncomeBracket,
+  KycDocumentCategory,
+  KycReviewDecision,
+  NetWorthBracket,
+  ProfessionalStatus,
+  ProofOfAddressType,
+  RelationshipPurpose,
+} from "@/lib/api";
+
 export type RiskLevel = "LOW" | "MEDIUM" | "HIGH";
 export type AccountStatusAdmin = "ACTIVE" | "SUSPENDED" | "CLOSED" | "PENDING";
 export type KycStatusAdmin = "VERIFIED" | "PENDING" | "REJECTED" | "INCOMPLETE";
@@ -60,6 +76,7 @@ export const DECISION_STATUS_LABELS: Record<DecisionStatus, string> = {
 export interface AdminAddress {
   label: "Domicile" | "Fiscale" | "Postale" | "Professionnelle";
   street: string;
+  addressLine2?: string | null;
   city: string;
   postalCode: string;
   country: string;
@@ -167,6 +184,13 @@ export interface AdminClient {
     dependents: number;
     phone: string;
     email: string;
+    usageLastName?: string | null;
+    birthCountry?: string | null;
+    gender?: "M" | "F" | "AUTRE" | null;
+    secondNationality?: string | null;
+    taxResidenceCountry?: string | null;
+    additionalTaxResidence?: string | null;
+    taxIdNumber?: string | null;
   };
 
   addresses: AdminAddress[];
@@ -174,6 +198,7 @@ export interface AdminClient {
   employment: {
     isIndependent: boolean;
     status: string;
+    professionalStatus?: ProfessionalStatus | null;
     employer?: string;
     sector?: string;
     role?: string;
@@ -181,10 +206,53 @@ export interface AdminClient {
     annualIncome: number;
     monthlyIncome: number;
     contractType?: string;
+    annualIncomeBracket?: IncomeBracket | null;
+    netWorthBracket?: NetWorthBracket | null;
     verified: boolean;
     activity?: string;
     turnover?: number;
     netResult?: number;
+  };
+
+  // Dossier KYC déclaratif (cf. §6 entrée #33) — présent uniquement sur une fiche réelle
+  // (cf. lib/api.ts), optionnel pour ne pas casser les clients de démonstration.
+  kycDossier?: {
+    identityDocument: {
+      documentType: IdentityDocumentType | null;
+      documentNumber: string | null;
+      issuingAuthority: string | null;
+      issuePlace: string | null;
+      issueDate: string | null;
+      expiryDate: string | null;
+      identityCheckMethod: IdentityCheckMethod | null;
+      proofOfAddressType: ProofOfAddressType | null;
+      proofOfAddressIssuer: string | null;
+      proofOfAddressDate: string | null;
+      verified: boolean;
+    };
+    aml: {
+      isPoliticallyExposed: boolean | null;
+      fundsOrigin: FundsOrigin[];
+      fundsOriginOther: string | null;
+      relationshipPurpose: RelationshipPurpose[];
+      attestedAt: string | null;
+      attestationCity: string | null;
+      riskLevel: AmlRiskLevel | null;
+      reviewDecision: KycReviewDecision | null;
+      reviewedBy: string | null;
+      reviewedAt: string | null;
+    };
+    // Fichiers réellement téléversés (cf. §6 entrée #36 CLAUDE.md) — métadonnées seules.
+    documents: {
+      id: string;
+      category: KycDocumentCategory;
+      fileName: string;
+      mimeType: string;
+      fileSize: number;
+      uploadedAt: string | null;
+      verified: boolean;
+      verifiedAt: string | null;
+    }[];
   };
 
   financials: {

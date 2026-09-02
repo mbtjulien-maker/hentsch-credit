@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CreditSimulator, CREDIT_RATIO, YieldAssetPicker } from "@/components/dashboard/credit-simulator";
 import { RepaymentProjection } from "@/components/dashboard/repayment-projection";
 import { InstallmentSchedule } from "@/components/dashboard/installment-schedule";
+import { TermsAcceptance } from "@/components/dashboard/terms-acceptance";
 import { useCreditRates } from "@/lib/use-credit-rates";
 import { useEstimatedYield, resolveEstimatedYield } from "@/lib/use-estimated-yield";
 import { useCreditRequests } from "@/lib/use-credit-requests";
@@ -183,12 +184,13 @@ function NewRequestForm({
   const [yieldAsset, setYieldAsset] = useState<AcceptedCurrency | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
   const rates = useCreditRates();
   const yieldEstimate = useEstimatedYield();
   const estimatedYieldPct = resolveEstimatedYield(yieldEstimate, yieldAsset);
 
   const parsedAmount = Number(amount);
-  const isValid = canSubmit && amount.trim() !== "" && parsedAmount > 0;
+  const isValid = canSubmit && amount.trim() !== "" && parsedAmount > 0 && acceptedTerms;
 
   const simulatedAmount = Math.max(parsedAmount || 0, 0);
   const simulatedCreditIssued = simulatedAmount * CREDIT_RATIO;
@@ -204,6 +206,7 @@ function NewRequestForm({
     try {
       await api.createCreditRequest(parsedAmount.toFixed(6), currency);
       setAmount("");
+      setAcceptedTerms(false);
       await onSubmitted();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t("genericError"));
@@ -255,10 +258,13 @@ function NewRequestForm({
       )}
 
       {canSubmit ? (
-        <Button type="submit" disabled={!isValid || submitting}>
-          {submitting && <Loader2 className="size-4 animate-spin" />}
-          {t("submitRequest")}
-        </Button>
+        <>
+          <TermsAcceptance variant="credit" accepted={acceptedTerms} onAcceptedChange={setAcceptedTerms} disabled={submitting} />
+          <Button type="submit" disabled={!isValid || submitting}>
+            {submitting && <Loader2 className="size-4 animate-spin" />}
+            {t("submitRequest")}
+          </Button>
+        </>
       ) : (
         <p className="text-xs text-muted-foreground">{t("simulationOnlyNote")}</p>
       )}

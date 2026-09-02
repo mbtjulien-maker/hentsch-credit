@@ -34,7 +34,8 @@ export interface AccrualResult {
 }
 
 // Investissement direct (cf. §2H CLAUDE.md) : le client place des fonds réels depuis son
-// solde disponible dans l'un des 6 paniers (RWA_STRATEGY ou l'un des 5 paniers STOCKS*,
+// wallet investissement (cf. §2H CLAUDE.md entrée #31, LedgerBalance.investmentBalance)
+// dans l'un des 6 paniers (RWA_STRATEGY ou l'un des 5 paniers STOCKS*,
 // cf. STOCK_SUB_BASKETS), ouvert aux comptes PARTICULIER et BUSINESS (contrairement au
 // crédit direct, réservé BUSINESS) — aucun gage, aucun crédit émis, un placement à part
 // entière avec un vrai risque de perte (le rendement quotidien peut être négatif). Un
@@ -52,6 +53,56 @@ export class InvestmentService {
     private readonly stockMarketDataService: StockMarketDataService,
   ) {}
 
+  // Virement interne entre availableBalance et le wallet investissement (cf. §2H
+  // CLAUDE.md entrée #31) — seul moyen d'alimenter ou de vider ce dernier, jamais un
+  // dépôt on-chain/bancaire direct dessus (les mêmes adresses de dépôt et actifs acceptés
+  // continuent tous de créditer availableBalance comme avant). Instantané, sans frais.
+  async transferToWallet(
+    userId: string,
+    amount: Prisma.Decimal.Value,
+  ): Promise<LedgerBalance> {
+    const value = toPositiveDecimal(amount);
+    return this.prisma.$transaction(async (tx) => {
+      const balance = await this.ledgerService.transferToInvestmentWallet(
+        tx,
+        userId,
+        value,
+      );
+      await tx.transaction.create({
+        data: {
+          userId,
+          type: 'INVESTMENT_WALLET_TRANSFER_IN',
+          amount: value,
+          status: 'COMPLETED',
+        },
+      });
+      return balance;
+    });
+  }
+
+  async transferFromWallet(
+    userId: string,
+    amount: Prisma.Decimal.Value,
+  ): Promise<LedgerBalance> {
+    const value = toPositiveDecimal(amount);
+    return this.prisma.$transaction(async (tx) => {
+      const balance = await this.ledgerService.transferFromInvestmentWallet(
+        tx,
+        userId,
+        value,
+      );
+      await tx.transaction.create({
+        data: {
+          userId,
+          type: 'INVESTMENT_WALLET_TRANSFER_OUT',
+          amount: value,
+          status: 'COMPLETED',
+        },
+      });
+      return balance;
+    });
+  }
+
   async deposit(
     userId: string,
     basket: InvestmentBasket,
@@ -60,7 +111,7 @@ export class InvestmentService {
     const value = toPositiveDecimal(amount);
 
     return this.prisma.$transaction(async (tx) => {
-      await this.ledgerService.debitAvailableBalance(tx, userId, value);
+      await this.ledgerService.debitInvestmentBalance(tx, userId, value);
 
       const existing = await tx.investmentPosition.findFirst({
         where: { userId, basket, status: 'ACTIVE' },
@@ -88,7 +139,7 @@ export class InvestmentService {
     });
   }
 
-  // Retrait complet : verse principalAmount + accruedYield sur le solde disponible et
+  // Retrait complet : verse principalAmount + accruedYield sur le wallet investissement et
   // clôture la position. Pas de retrait partiel à ce stade — un client qui veut réduire
   // son exposition retire tout puis, s'il le souhaite, redépose un montant moindre.
   async withdraw(
@@ -107,7 +158,7 @@ export class InvestmentService {
         position.accruedYield,
       );
 
-      const balance = await this.ledgerService.creditAvailableBalance(
+      const balance = await this.ledgerService.creditInvestmentBalance(
         tx,
         userId,
         withdrawnAmount,

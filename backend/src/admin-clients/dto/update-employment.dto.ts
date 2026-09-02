@@ -1,5 +1,6 @@
 import {
   IsBoolean,
+  IsIn,
   IsNumber,
   IsOptional,
   IsString,
@@ -7,6 +8,11 @@ import {
   MaxLength,
   Min,
 } from 'class-validator';
+import {
+  INCOME_BRACKETS,
+  NET_WORTH_BRACKETS,
+  PROFESSIONAL_STATUSES,
+} from '../../common/kyc.constants';
 
 export class UpdateEmploymentDto {
   @IsOptional()
@@ -17,6 +23,10 @@ export class UpdateEmploymentDto {
   @IsString()
   @MaxLength(100)
   status?: string;
+
+  @IsOptional()
+  @IsIn(PROFESSIONAL_STATUSES)
+  professionalStatus?: (typeof PROFESSIONAL_STATUSES)[number];
 
   @IsOptional()
   @IsString()
@@ -75,4 +85,12 @@ export class UpdateEmploymentDto {
   @Min(-1_000_000_000)
   @Max(1_000_000_000)
   netResult?: number;
+
+  @IsOptional()
+  @IsIn(INCOME_BRACKETS)
+  annualIncomeBracket?: (typeof INCOME_BRACKETS)[number];
+
+  @IsOptional()
+  @IsIn(NET_WORTH_BRACKETS)
+  netWorthBracket?: (typeof NET_WORTH_BRACKETS)[number];
 }

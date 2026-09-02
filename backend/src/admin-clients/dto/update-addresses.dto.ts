@@ -18,6 +18,11 @@ export class AddressEntryDto {
   @MaxLength(200)
   street: string;
 
+  @IsOptional()
+  @IsString()
+  @MaxLength(200)
+  addressLine2?: string;
+
   @IsString()
   @MaxLength(100)
   city: string;

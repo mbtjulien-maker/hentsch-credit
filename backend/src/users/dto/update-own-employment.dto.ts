@@ -1,5 +1,6 @@
 import {
   IsBoolean,
+  IsIn,
   IsNumber,
   IsOptional,
   IsString,
@@ -7,6 +8,11 @@ import {
   MaxLength,
   Min,
 } from 'class-validator';
+import {
+  INCOME_BRACKETS,
+  NET_WORTH_BRACKETS,
+  PROFESSIONAL_STATUSES,
+} from '../../common/kyc.constants';
 
 // Auto-service — mêmes champs que UpdateEmploymentDto (admin-clients), sans `verified`
 // (seul un admin peut certifier une situation professionnelle vérifiée, cf.
@@ -23,6 +29,13 @@ export class UpdateOwnEmploymentDto {
   @IsString()
   @MaxLength(100)
   status?: string;
+
+  // Statut professionnel du dossier KYC papier (SALARIE/FONCTIONNAIRE/INDEPENDANT/
+  // DIRIGEANT/RETRAITE/ETUDIANT/SANS_EMPLOI) — plus fin que `status` en texte libre
+  // ci-dessus, cf. §6 entrée #33.
+  @IsOptional()
+  @IsIn(PROFESSIONAL_STATUSES)
+  professionalStatus?: (typeof PROFESSIONAL_STATUSES)[number];
 
   @IsOptional()
   @IsString()
@@ -65,4 +78,14 @@ export class UpdateOwnEmploymentDto {
   @IsString()
   @MaxLength(150)
   activity?: string;
+
+  // Tranches déclaratives (revenus annuels nets / patrimoine global estimé) du dossier
+  // KYC papier — cf. §6 entrée #33, distinctes du montant exact `annualIncome` ci-dessus.
+  @IsOptional()
+  @IsIn(INCOME_BRACKETS)
+  annualIncomeBracket?: (typeof INCOME_BRACKETS)[number];
+
+  @IsOptional()
+  @IsIn(NET_WORTH_BRACKETS)
+  netWorthBracket?: (typeof NET_WORTH_BRACKETS)[number];
 }

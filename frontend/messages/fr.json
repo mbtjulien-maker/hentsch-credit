@@ -101,7 +101,20 @@
     },
     "closingTitle": "Prêt à débloquer votre pouvoir d'achat ?",
     "closingDescription": "Plateforme réservée à une clientèle restreinte. Notre équipe étudie chaque dossier avant d'accorder l'accès.",
-    "closingCta": "Demander l'ouverture d'un compte"
+    "closingCta": "Demander l'ouverture d'un compte",
+    "investmentHero": {
+      "badge": "Investissement direct · Ouvert aux comptes vérifiés",
+      "titleLine1": "Votre capital, mis au travail,",
+      "titleHighlight": "sans jamais servir de gage",
+      "subtitle": "Six stratégies au choix — de la trésorerie RWA aux paniers d'actions technologiques — avec un rendement quotidien réel, jamais fabriqué.",
+      "statValue": "8-14 %",
+      "statCaption": "objectif indicatif de rendement annuel, stratégie RWA",
+      "statDisclaimer": "Objectif indicatif, jamais une garantie",
+      "ctaDiscover": "Découvrir l'investissement",
+      "basketsBadge": "Six stratégies",
+      "basketsTitle": "Un gradient de risque, pas une case unique",
+      "basketsSubtitle": "Du plus prudent au plus dynamique, chaque panier a son propre objectif indicatif."
+    }
   },
   "HowItWorks": {
     "meta": {
@@ -1151,7 +1164,8 @@
         "cards": "Cartes",
         "history": "Historique",
         "profile": "Profil",
-        "support": "Support"
+        "support": "Support",
+        "kyc": "Vérification KYC"
       },
       "backoffice": {
         "label": "Back-office",
@@ -1170,7 +1184,22 @@
   },
   "Dashboard": {
     "home": {
-      "loadError": "Impossible de charger le tableau de bord"
+      "loadError": "Impossible de charger le tableau de bord",
+      "overview": {
+        "mainWallet": {
+          "title": "Solde principal",
+          "description": "Solde disponible sur votre wallet principal, hors gage et hors wallet investissement."
+        },
+        "credit": {
+          "title": "Crédit",
+          "description": "{available} restant · {used} utilisé",
+          "descriptionNoCredit": "Aucune ligne active, demandez un crédit depuis Crédit."
+        },
+        "investment": {
+          "title": "Investissement",
+          "description": "Solde du wallet investissement, alimenté par virement interne depuis votre solde principal."
+        }
+      }
     },
     "balanceCards": {
       "depositBalance": {
@@ -1315,7 +1344,9 @@
         "INVESTMENT_YIELD_ACCRUAL": "Rendement d'investissement",
         "FIXED_TERM_DEPOSIT": "Dépôt à échéance fixe",
         "FIXED_TERM_YIELD_ACCRUAL": "Rendement à échéance fixe",
-        "FIXED_TERM_MATURITY_PAYOUT": "Règlement à échéance"
+        "FIXED_TERM_MATURITY_PAYOUT": "Règlement à échéance",
+        "INVESTMENT_WALLET_TRANSFER_IN": "Virement vers le wallet investissement",
+        "INVESTMENT_WALLET_TRANSFER_OUT": "Virement depuis le wallet investissement"
       },
       "transactionStatus": {
         "PENDING": "En attente",
@@ -1776,6 +1807,194 @@
         "confirmLock": "Confirmer le blocage",
         "cancel": "Annuler",
         "depositSuccess": "Dépôt effectué : vos fonds sont bloqués jusqu'à l'échéance du plan."
+      },
+      "wallet": {
+        "title": "Wallet investissement",
+        "description": "Un solde séparé du solde principal, dédié à vos placements. Alimentez-le par virement interne depuis votre solde principal — mêmes adresses de dépôt et actifs acceptés, inchangés.",
+        "mainBalance": "Solde principal",
+        "walletBalance": "Wallet investissement",
+        "directionIn": "Vers le wallet",
+        "directionOut": "Depuis le wallet",
+        "amountPlaceholder": "Montant en $US",
+        "transfer": "Transférer",
+        "quickMax": "MAX",
+        "insufficientBalance": "Solde insuffisant",
+        "transferInSuccess": "Fonds transférés vers le wallet investissement.",
+        "transferOutSuccess": "Fonds rapatriés vers le solde principal."
+      },
+      "tabs": {
+        "baskets": "Paniers",
+        "fixedTerm": "Plans à échéance fixe",
+        "myPlacements": "Mes placements"
+      },
+      "myPlacements": {
+        "title": "Placements actifs",
+        "maturedTitle": "Placements réglés",
+        "empty": "Aucun placement en cours pour le moment.",
+        "freeWithdrawal": "Retrait libre à tout moment",
+        "daysRemaining": "{days, plural, =0 {Échéance aujourd'hui} one {# jour restant} other {# jours restants}}",
+        "maturityDate": "Échéance",
+        "estimatedReturn": "Objectif à l'échéance"
+      }
+    },
+    "kycDossier": {
+      "title": "Dossier KYC",
+      "description": "Complétez et soumettez votre dossier d'identification pour l'ouverture de compte — inspiré du formulaire réglementaire LCB-FT.",
+      "genericError": "Une erreur est survenue.",
+      "saveSuccess": "Dossier enregistré.",
+      "submitSuccess": "Dossier soumis pour vérification.",
+      "notSubmittedNote": "Dossier non soumis — complétez les sections ci-dessous puis validez l'attestation.",
+      "pendingReviewNote": "Dossier soumis le {date}, en attente de vérification par un conseiller.",
+      "reviewedValidNote": "Dossier validé le {date}.",
+      "reviewedRejectedNote": "Dossier refusé le {date} — merci de le compléter à nouveau.",
+      "decisionLabels": {
+        "VALIDE": "Validé",
+        "REFUSE": "Refusé"
+      },
+      "riskLabels": {
+        "FAIBLE": "Risque faible",
+        "STANDARD": "Risque standard",
+        "ELEVE": "Risque élevé"
+      },
+      "sections": {
+        "civil": "État civil",
+        "address": "Coordonnées et résidence fiscale",
+        "employment": "Situation socio-professionnelle",
+        "documents": "Pièces justificatives",
+        "compliance": "Conformité LCB-FT et attestation"
+      },
+      "firstName": "Prénom",
+      "lastName": "Nom de naissance",
+      "usageLastName": "Nom d'usage (facultatif)",
+      "dateOfBirth": "Date de naissance",
+      "gender": "Sexe",
+      "genderLabels": {
+        "M": "Masculin",
+        "F": "Féminin",
+        "AUTRE": "Autre"
+      },
+      "maritalStatus": "Situation de famille",
+      "placeOfBirth": "Ville de naissance",
+      "birthCountry": "Pays de naissance",
+      "nationality": "Nationalité",
+      "secondNationality": "Seconde nationalité (facultatif)",
+      "phone": "Téléphone",
+      "street": "Adresse du domicile",
+      "addressLine2": "Complément d'adresse",
+      "postalCode": "Code postal",
+      "city": "Ville",
+      "country": "Pays",
+      "taxResidenceCountry": "Pays de résidence fiscale",
+      "taxIdNumber": "Numéro fiscal (NIF/SPI)",
+      "additionalTaxResidence": "Résidence fiscale additionnelle (FATCA/CRS)",
+      "professionalStatus": "Statut professionnel",
+      "professionalStatusLabels": {
+        "SALARIE": "Salarié / Cadre",
+        "FONCTIONNAIRE": "Fonctionnaire",
+        "INDEPENDANT": "Indépendant / TNS",
+        "DIRIGEANT": "Dirigeant d'entreprise",
+        "RETRAITE": "Retraité",
+        "ETUDIANT": "Étudiant",
+        "SANS_EMPLOI": "Sans emploi / Autre"
+      },
+      "activity": "Activité",
+      "employer": "Employeur",
+      "role": "Poste",
+      "sector": "Secteur d'activité",
+      "seniority": "Ancienneté",
+      "annualIncomeBracket": "Tranche de revenus annuels nets",
+      "selectPlaceholder": "Sélectionner…",
+      "incomeBracketLabels": {
+        "LT_20K": "< 20 000 €",
+        "B20K_50K": "20k - 50k €",
+        "B50K_100K": "50k - 100k €",
+        "B100K_250K": "100k - 250k €",
+        "GT_250K": "> 250 000 €"
+      },
+      "netWorthBracket": "Patrimoine global estimé",
+      "netWorthBracketLabels": {
+        "LT_100K": "< 100k €",
+        "B100K_500K": "100k - 500k €",
+        "B500K_1M": "500k - 1M €",
+        "GT_1M": "> 1M €"
+      },
+      "documentVerified": "Vérifié",
+      "documentNotVerified": "Non vérifié",
+      "documentsNote": "Les métadonnées ci-dessous sont déclaratives ; les fichiers ci-dessous (JPEG, PNG ou PDF, 5 Mo max) sont réellement téléversés et stockés.",
+      "documentType": "Type de pièce d'identité",
+      "documentTypeLabels": {
+        "CNI": "Carte Nationale d'Identité",
+        "PASSEPORT": "Passeport biométrique",
+        "TITRE_SEJOUR": "Titre de séjour / Résidence"
+      },
+      "documentNumber": "Numéro de la pièce",
+      "issuingAuthority": "Autorité de délivrance",
+      "issuePlace": "Lieu de délivrance",
+      "issueDate": "Délivrée le",
+      "expiryDate": "Expire le",
+      "identityCheckMethod": "Modalité de contrôle d'identité",
+      "identityCheckMethodLabels": {
+        "FACE_A_FACE": "Présentation physique (agence)",
+        "PVID": "Vidéo-identification certifiée",
+        "EIDAS": "Identification électronique eIDAS"
+      },
+      "proofOfAddressType": "Justificatif de domicile",
+      "proofOfAddressTypeLabels": {
+        "FACTURE": "Facture électricité/gaz/eau",
+        "AVIS_IMPOSITION": "Avis d'imposition récent",
+        "QUITTANCE": "Quittance de loyer"
+      },
+      "proofOfAddressIssuer": "Émetteur du justificatif",
+      "save": "Enregistrer",
+      "isPoliticallyExposed": "Personne Politiquement Exposée (PPE)",
+      "yes": "Oui",
+      "no": "Non",
+      "fundsOrigin": "Origine des fonds / patrimoine initial",
+      "fundsOriginLabels": {
+        "REVENUS_PROFESSIONNELS": "Revenus professionnels",
+        "EPARGNE": "Épargne personnelle",
+        "VENTE_BIENS": "Vente de biens",
+        "HERITAGE": "Héritage / Donation",
+        "DIVIDENDES": "Dividendes / Cession d'entreprise",
+        "AUTRE": "Autre"
+      },
+      "fundsOriginOther": "Préciser",
+      "relationshipPurpose": "Objet et nature de la relation d'affaires",
+      "relationshipPurposeLabels": {
+        "COMPTE_COURANT": "Compte courant et moyens de paiement",
+        "PLACEMENT": "Placement, épargne et gestion de patrimoine",
+        "FINANCEMENT": "Financement / Crédit",
+        "OPERATIONS_INTERNATIONALES": "Opérations internationales régulières"
+      },
+      "attestationCity": "Fait à",
+      "attestationText": "Je certifie sur l'honneur l'exactitude des informations déclarées ci-dessus (« Lu et approuvé »).",
+      "attestationRequired": "Cochez l'attestation pour soumettre le dossier.",
+      "submitDossier": "Soumettre le dossier",
+      "maritalStatusLabels": {
+        "CELIBATAIRE": "Célibataire",
+        "MARIE": "Marié(e)",
+        "PACSE": "Pacsé(e)",
+        "DIVORCE": "Divorcé(e)",
+        "VEUF": "Veuf(ve)"
+      },
+      "proofOfAddressDate": "Date du document",
+      "identityFrontLabel": "Pièce d'identité (recto)",
+      "identityBackLabel": "Pièce d'identité (verso, si applicable)",
+      "proofOfAddressFileLabel": "Fichier du justificatif de domicile",
+      "noFileUploaded": "Aucun fichier téléversé.",
+      "uploadFile": "Téléverser",
+      "replaceFile": "Remplacer",
+      "removeFile": "Supprimer le fichier"
+    },
+    "termsAcceptance": {
+      "readFull": "Lire les CGU complètes →",
+      "credit": {
+        "summary": "En soumettant cette demande, vous mettez le montant indiqué en gage : un crédit de 350% de ce montant vous est accordé, au taux de 13,5%/an (USD) ou 12%/an (EUR), avec 2% de frais d'origination prélevés à l'émission. Le gage reste bloqué tant que le crédit utilisé n'est pas intégralement remboursé, et peut être liquidé automatiquement si sa valeur chute de 50% depuis son entrée (alerte dès 30%) — le crédit déjà utilisé resterait alors dû, même après liquidation du gage.",
+        "checkboxLabel": "J'ai lu et j'accepte les Conditions Générales d'Utilisation relatives au crédit gagé."
+      },
+      "investment": {
+        "summary": "En confirmant ce placement, vous reconnaissez qu'il s'agit d'un investissement réel, jamais un gage : le capital placé n'est pas garanti et peut perdre de la valeur si le rendement quotidien du panier ou du plan choisi est négatif. Les objectifs de rendement affichés sont indicatifs, jamais une garantie de performance.",
+        "checkboxLabel": "J'ai lu et j'accepte les Conditions Générales d'Utilisation relatives à l'investissement direct."
       }
     }
   },

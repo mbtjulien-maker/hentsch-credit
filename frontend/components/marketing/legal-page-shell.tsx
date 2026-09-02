@@ -51,9 +51,13 @@ export async function LegalPageShell({
 }
 
 // Bloc de section réutilisé par les 3 pages — titre + contenu, espacement cohérent.
-export function LegalSection({ title, children }: { title: string; children: ReactNode }) {
+// `id` optionnel : permet un lien d'ancrage direct (ex. /conditions-generales#s4) depuis
+// un résumé de conditions affiché ailleurs dans le produit (cf. TermsAcceptance,
+// components/dashboard/terms-acceptance.tsx) — sans id, la section reste identique à
+// avant (repli implicite sur la position dans le flux de la page).
+export function LegalSection({ id, title, children }: { id?: string; title: string; children: ReactNode }) {
   return (
-    <section className="border-t border-border/60 py-6 first:border-t-0 first:pt-0">
+    <section id={id} className="scroll-mt-20 border-t border-border/60 py-6 first:border-t-0 first:pt-0">
       <h2 className="text-base font-semibold text-foreground">{title}</h2>
       <div className="mt-2 space-y-3 text-sm leading-relaxed text-muted-foreground">{children}</div>
     </section>

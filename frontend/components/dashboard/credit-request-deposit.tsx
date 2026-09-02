@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { AssetList, ChainList, useAssetSelection } from "@/components/dashboard/asset-picker";
 import { api, ApiError, type AcceptedCurrency, type Chain, type CreditRequest } from "@/lib/api";
-import { formatUsd } from "@/lib/format";
+import { DEPOSIT_CURRENCY_GROUPS, formatUsd } from "@/lib/format";
 import { GLASS_CARD_CLASS } from "@/lib/utils";
 
 // Génération de l'adresse de dépôt dédiée à une demande de crédit approuvée — vit dans
@@ -83,7 +83,7 @@ export function ApprovedCreditRequestDeposit({
           <div className="flex flex-col gap-3">
             <div className="grid gap-2">
               <Label>{t("assetLabel")}</Label>
-              <AssetList value={currency} onChange={setCurrency} />
+              <AssetList value={currency} onChange={setCurrency} groups={DEPOSIT_CURRENCY_GROUPS} />
             </div>
             <div className="grid gap-2">
               <Label>{t("networkLabel")}</Label>

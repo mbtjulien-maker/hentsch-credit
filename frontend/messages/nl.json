@@ -101,7 +101,20 @@
     },
     "closingTitle": "Klaar om uw koopkracht vrij te maken?",
     "closingDescription": "Platform voorbehouden aan een beperkte klantenkring. Ons team beoordeelt elke aanvraag voordat toegang wordt verleend.",
-    "closingCta": "Een account aanvragen"
+    "closingCta": "Een account aanvragen",
+    "investmentHero": {
+      "badge": "Directe belegging · Open voor geverifieerde rekeningen",
+      "titleLine1": "Uw kapitaal, aan het werk gezet,",
+      "titleHighlight": "nooit als onderpand gebruikt",
+      "subtitle": "Zes strategieën om uit te kiezen — van RWA-treasury tot techaandelenmanden — met een echt dagelijks rendement, nooit verzonnen.",
+      "statValue": "8-14%",
+      "statCaption": "indicatieve jaarlijkse rendementsdoelstelling, RWA-strategie",
+      "statDisclaimer": "Indicatieve doelstelling, nooit een garantie",
+      "ctaDiscover": "Ontdek beleggen",
+      "basketsBadge": "Zes strategieën",
+      "basketsTitle": "Een risicogradiënt, geen eenheidsworst",
+      "basketsSubtitle": "Van het meest voorzichtige tot het meest dynamische, elke mand heeft haar eigen indicatieve doelstelling."
+    }
   },
   "HowItWorks": {
     "meta": {
@@ -1151,7 +1164,8 @@
         "cards": "Kaarten",
         "history": "Geschiedenis",
         "profile": "Profiel",
-        "support": "Ondersteuning"
+        "support": "Ondersteuning",
+        "kyc": "KYC-verificatie"
       },
       "backoffice": {
         "label": "Back-office",
@@ -1170,7 +1184,22 @@
   },
   "Dashboard": {
     "home": {
-      "loadError": "Dashboard kan niet worden geladen"
+      "loadError": "Dashboard kan niet worden geladen",
+      "overview": {
+        "mainWallet": {
+          "title": "Hoofdwallet",
+          "description": "Beschikbaar saldo op uw hoofdwallet, exclusief onderpand en de beleggingswallet."
+        },
+        "credit": {
+          "title": "Krediet",
+          "description": "{available} resterend · {used} gebruikt",
+          "descriptionNoCredit": "Nog geen actieve kredietlijn — vraag krediet aan via het tabblad Krediet."
+        },
+        "investment": {
+          "title": "Belegging",
+          "description": "Saldo van de beleggingswallet, gevoed door interne overboeking vanuit uw hoofdsaldo."
+        }
+      }
     },
     "balanceCards": {
       "depositBalance": {
@@ -1315,7 +1344,9 @@
         "INVESTMENT_YIELD_ACCRUAL": "Investeringsrendement",
         "FIXED_TERM_DEPOSIT": "Storting vaste looptijd",
         "FIXED_TERM_YIELD_ACCRUAL": "Rendement vaste looptijd",
-        "FIXED_TERM_MATURITY_PAYOUT": "Afwikkeling bij vervaldatum"
+        "FIXED_TERM_MATURITY_PAYOUT": "Afwikkeling bij vervaldatum",
+        "INVESTMENT_WALLET_TRANSFER_IN": "Overboeking naar beleggingswallet",
+        "INVESTMENT_WALLET_TRANSFER_OUT": "Overboeking vanuit beleggingswallet"
       },
       "transactionStatus": {
         "PENDING": "In behandeling",
@@ -1776,6 +1807,194 @@
         "confirmLock": "Blokkering bevestigen",
         "cancel": "Annuleren",
         "depositSuccess": "Storting uitgevoerd: uw geld is geblokkeerd tot de vervaldatum van het plan."
+      },
+      "wallet": {
+        "title": "Investeringswallet",
+        "description": "Een saldo los van uw hoofdsaldo, gewijd aan uw beleggingen. Vul het aan via een interne overboeking vanuit uw hoofdsaldo — dezelfde stortingsadressen en geaccepteerde activa, ongewijzigd.",
+        "mainBalance": "Hoofdsaldo",
+        "walletBalance": "Investeringswallet",
+        "directionIn": "Naar de wallet",
+        "directionOut": "Vanuit de wallet",
+        "amountPlaceholder": "Bedrag in $US",
+        "transfer": "Overboeken",
+        "quickMax": "MAX",
+        "insufficientBalance": "Onvoldoende saldo",
+        "transferInSuccess": "Geld overgeboekt naar de investeringswallet.",
+        "transferOutSuccess": "Geld teruggeboekt naar het hoofdsaldo."
+      },
+      "tabs": {
+        "baskets": "Manden",
+        "fixedTerm": "Vastetermijnplannen",
+        "myPlacements": "Mijn beleggingen"
+      },
+      "myPlacements": {
+        "title": "Actieve beleggingen",
+        "maturedTitle": "Afgewikkelde beleggingen",
+        "empty": "Op dit moment geen lopende beleggingen.",
+        "freeWithdrawal": "Op elk moment vrij opneembaar",
+        "daysRemaining": "{days, plural, =0 {Vervalt vandaag} one {nog # dag} other {nog # dagen}}",
+        "maturityDate": "Vervaldatum",
+        "estimatedReturn": "Doel bij vervaldatum"
+      }
+    },
+    "kycDossier": {
+      "title": "KYC-dossier",
+      "description": "Vul uw identificatiedossier voor de rekeningopening in en dien het in — geïnspireerd op het reglementaire AML/CFT-formulier.",
+      "genericError": "Er is een fout opgetreden.",
+      "saveSuccess": "Dossier opgeslagen.",
+      "submitSuccess": "Dossier ingediend ter controle.",
+      "notSubmittedNote": "Dossier nog niet ingediend — vul de onderstaande secties in en bevestig de verklaring.",
+      "pendingReviewNote": "Ingediend op {date}, wacht op beoordeling door een adviseur.",
+      "reviewedValidNote": "Goedgekeurd op {date}.",
+      "reviewedRejectedNote": "Afgewezen op {date} — vul het dossier opnieuw in.",
+      "decisionLabels": {
+        "VALIDE": "Goedgekeurd",
+        "REFUSE": "Afgewezen"
+      },
+      "riskLabels": {
+        "FAIBLE": "Laag risico",
+        "STANDARD": "Standaardrisico",
+        "ELEVE": "Hoog risico"
+      },
+      "sections": {
+        "civil": "Burgerlijke staat",
+        "address": "Contactgegevens en fiscale woonplaats",
+        "employment": "Arbeidssituatie",
+        "documents": "Bewijsstukken",
+        "compliance": "AML/CFT-naleving en verklaring"
+      },
+      "firstName": "Voornaam",
+      "lastName": "Geboortenaam",
+      "usageLastName": "Gebruiksnaam (optioneel)",
+      "dateOfBirth": "Geboortedatum",
+      "gender": "Geslacht",
+      "genderLabels": {
+        "M": "Man",
+        "F": "Vrouw",
+        "AUTRE": "Anders"
+      },
+      "maritalStatus": "Burgerlijke staat",
+      "placeOfBirth": "Geboorteplaats",
+      "birthCountry": "Geboorteland",
+      "nationality": "Nationaliteit",
+      "secondNationality": "Tweede nationaliteit (optioneel)",
+      "phone": "Telefoon",
+      "street": "Woonadres",
+      "addressLine2": "Adrestoevoeging",
+      "postalCode": "Postcode",
+      "city": "Stad",
+      "country": "Land",
+      "taxResidenceCountry": "Land van fiscale woonplaats",
+      "taxIdNumber": "Fiscaal identificatienummer",
+      "additionalTaxResidence": "Aanvullende fiscale woonplaats (FATCA/CRS)",
+      "professionalStatus": "Beroepsstatus",
+      "professionalStatusLabels": {
+        "SALARIE": "Werknemer",
+        "FONCTIONNAIRE": "Ambtenaar",
+        "INDEPENDANT": "Zelfstandige",
+        "DIRIGEANT": "Bedrijfsleider",
+        "RETRAITE": "Gepensioneerd",
+        "ETUDIANT": "Student",
+        "SANS_EMPLOI": "Werkloos / anders"
+      },
+      "activity": "Activiteit",
+      "employer": "Werkgever",
+      "role": "Functie",
+      "sector": "Sector",
+      "seniority": "Anciënniteit",
+      "annualIncomeBracket": "Netto jaarinkomen (bandbreedte)",
+      "selectPlaceholder": "Selecteren…",
+      "incomeBracketLabels": {
+        "LT_20K": "< € 20.000",
+        "B20K_50K": "€ 20k - 50k",
+        "B50K_100K": "€ 50k - 100k",
+        "B100K_250K": "€ 100k - 250k",
+        "GT_250K": "> € 250.000"
+      },
+      "netWorthBracket": "Geschat totaal vermogen",
+      "netWorthBracketLabels": {
+        "LT_100K": "< € 100k",
+        "B100K_500K": "€ 100k - 500k",
+        "B500K_1M": "€ 500k - 1 mln",
+        "GT_1M": "> € 1 mln"
+      },
+      "documentVerified": "Geverifieerd",
+      "documentNotVerified": "Niet geverifieerd",
+      "documentsNote": "Onderstaande metadata is declaratief; onderstaande bestanden (JPEG, PNG of PDF, max. 5 MB) worden daadwerkelijk geüpload en opgeslagen.",
+      "documentType": "Type identiteitsdocument",
+      "documentTypeLabels": {
+        "CNI": "Nationale identiteitskaart",
+        "PASSEPORT": "Biometrisch paspoort",
+        "TITRE_SEJOUR": "Verblijfsvergunning"
+      },
+      "documentNumber": "Documentnummer",
+      "issuingAuthority": "Uitgevende autoriteit",
+      "issuePlace": "Plaats van afgifte",
+      "issueDate": "Afgegeven op",
+      "expiryDate": "Verloopt op",
+      "identityCheckMethod": "Methode van identiteitscontrole",
+      "identityCheckMethodLabels": {
+        "FACE_A_FACE": "Persoonlijk (kantoor)",
+        "PVID": "Gecertificeerde video-identificatie",
+        "EIDAS": "Elektronische eIDAS-identificatie"
+      },
+      "proofOfAddressType": "Bewijs van adres",
+      "proofOfAddressTypeLabels": {
+        "FACTURE": "Energierekening",
+        "AVIS_IMPOSITION": "Recente belastingaanslag",
+        "QUITTANCE": "Huurkwitantie"
+      },
+      "proofOfAddressIssuer": "Uitgever van het document",
+      "save": "Opslaan",
+      "isPoliticallyExposed": "Politiek Prominent Persoon (PEP)",
+      "yes": "Ja",
+      "no": "Nee",
+      "fundsOrigin": "Herkomst van de middelen / beginvermogen",
+      "fundsOriginLabels": {
+        "REVENUS_PROFESSIONNELS": "Beroepsinkomen",
+        "EPARGNE": "Persoonlijke spaargelden",
+        "VENTE_BIENS": "Verkoop van bezittingen",
+        "HERITAGE": "Erfenis / schenking",
+        "DIVIDENDES": "Dividenden / bedrijfsverkoop",
+        "AUTRE": "Anders"
+      },
+      "fundsOriginOther": "Specificeren",
+      "relationshipPurpose": "Doel en aard van de zakelijke relatie",
+      "relationshipPurposeLabels": {
+        "COMPTE_COURANT": "Lopende rekening en dagelijkse betalingen",
+        "PLACEMENT": "Beleggen, sparen en vermogensbeheer",
+        "FINANCEMENT": "Financiering / krediet",
+        "OPERATIONS_INTERNATIONALES": "Regelmatige internationale transacties"
+      },
+      "attestationCity": "Opgemaakt te",
+      "attestationText": "Ik verklaar dat de hierboven verstrekte informatie juist is (“Gelezen en goedgekeurd”).",
+      "attestationRequired": "Vink de verklaring aan om het dossier in te dienen.",
+      "submitDossier": "Dossier indienen",
+      "maritalStatusLabels": {
+        "CELIBATAIRE": "Ongehuwd",
+        "MARIE": "Gehuwd",
+        "PACSE": "Geregistreerd partnerschap",
+        "DIVORCE": "Gescheiden",
+        "VEUF": "Weduwe/weduwnaar"
+      },
+      "proofOfAddressDate": "Datum van het document",
+      "identityFrontLabel": "Identiteitsdocument (voorzijde)",
+      "identityBackLabel": "Identiteitsdocument (achterzijde, indien van toepassing)",
+      "proofOfAddressFileLabel": "Bestand van het adresbewijs",
+      "noFileUploaded": "Nog geen bestand geüpload.",
+      "uploadFile": "Uploaden",
+      "replaceFile": "Vervangen",
+      "removeFile": "Bestand verwijderen"
+    },
+    "termsAcceptance": {
+      "readFull": "Lees de volledige voorwaarden →",
+      "credit": {
+        "summary": "Door deze aanvraag in te dienen, geeft u het vermelde bedrag in onderpand: er wordt u een krediet van 350% van dat bedrag toegekend, tegen 13,5%/jaar (USD) of 12%/jaar (EUR), met 2% afsluitkosten bij uitgifte. Het onderpand blijft geblokkeerd totdat het gebruikte krediet volledig is terugbetaald, en kan automatisch worden geliquideerd als de waarde ervan met 50% daalt ten opzichte van de instapwaarde (waarschuwing vanaf 30%) — reeds gebruikt krediet blijft ook na liquidatie van het onderpand verschuldigd.",
+        "checkboxLabel": "Ik heb de Algemene Voorwaarden voor het onderpandkrediet gelezen en ga ermee akkoord."
+      },
+      "investment": {
+        "summary": "Door deze belegging te bevestigen, erkent u dat het om een echte belegging gaat, nooit een onderpand: het belegde kapitaal is niet gegarandeerd en kan waarde verliezen als het dagrendement van de gekozen mand of het plan negatief is. Getoonde rendementsdoelen zijn indicatief, nooit een garantie op prestaties.",
+        "checkboxLabel": "Ik heb de Algemene Voorwaarden voor directe belegging gelezen en ga ermee akkoord."
       }
     }
   },

@@ -63,7 +63,7 @@ export interface FixedTermMaturityResult {
 // retrait anticipé (choix produit explicite, cf. journal), contrairement au retrait libre
 // des paniers perpétuels. Le rendement quotidien composé peut être négatif (vrai risque
 // de perte, même principe que les paniers) ; à l'échéance, principal + rendement accru
-// sont automatiquement reversés sur le solde disponible par le cron quotidien, sans geste
+// sont automatiquement reversés sur le wallet investissement par le cron quotidien, sans geste
 // du client.
 @Injectable()
 export class FixedTermPlanService {
@@ -157,7 +157,7 @@ export class FixedTermPlanService {
     );
 
     return this.prisma.$transaction(async (tx) => {
-      await this.ledgerService.debitAvailableBalance(tx, userId, value);
+      await this.ledgerService.debitInvestmentBalance(tx, userId, value);
 
       const position = await tx.fixedTermPosition.create({
         data: { userId, plan, principalAmount: value, maturityDate },
@@ -306,8 +306,9 @@ export class FixedTermPlanService {
   ): Promise<FixedTermMaturityResult> {
     return this.prisma.$transaction(async (tx) => {
       // Plancher à 0 : un règlement automatique sans validation humaine ne doit jamais
-      // débiter davantage le compte (cf. LedgerService.creditAvailableBalance, qui
-      // incrémente tel quel — un montant négatif déciderait silencieusement). Un
+      // débiter davantage le wallet investissement (cf. LedgerService
+      // .creditInvestmentBalance, qui incrémente tel quel — un montant négatif
+      // décrémenterait silencieusement). Un
       // enchaînement de très mauvais jours pourrait en théorie faire tomber
       // principal + rendement accru sous zéro ; dans ce cas, le client ne récupère rien
       // plutôt que d'être débité davantage.
@@ -316,7 +317,7 @@ export class FixedTermPlanService {
       );
       const payoutAmount = Prisma.Decimal.max(rawPayout, 0);
 
-      const balance = await this.ledgerService.creditAvailableBalance(
+      const balance = await this.ledgerService.creditInvestmentBalance(
         tx,
         position.userId,
         payoutAmount,

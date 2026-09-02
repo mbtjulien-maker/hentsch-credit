@@ -101,7 +101,20 @@
     },
     "closingTitle": "Redo att frigöra din köpkraft?",
     "closingDescription": "Plattform förbehållen en begränsad kundkrets. Vårt team granskar varje ansökan innan tillgång beviljas.",
-    "closingCta": "Ansök om ett konto"
+    "closingCta": "Ansök om ett konto",
+    "investmentHero": {
+      "badge": "Direktinvestering · Öppen för verifierade konton",
+      "titleLine1": "Ditt kapital, i arbete,",
+      "titleHighlight": "aldrig använt som säkerhet",
+      "subtitle": "Sex strategier att välja mellan — från RWA-treasury till korgar med teknikaktier — med en verklig daglig avkastning, aldrig hittad på.",
+      "statValue": "8-14 %",
+      "statCaption": "indikativt årligt avkastningsmål, RWA-strategi",
+      "statDisclaimer": "Indikativt mål, aldrig en garanti",
+      "ctaDiscover": "Upptäck investering",
+      "basketsBadge": "Sex strategier",
+      "basketsTitle": "En riskgradient, inte en enda ruta",
+      "basketsSubtitle": "Från den mest försiktiga till den mest dynamiska har varje korg sitt eget indikativa mål."
+    }
   },
   "HowItWorks": {
     "meta": {
@@ -1151,7 +1164,8 @@
         "cards": "Kort",
         "history": "Historik",
         "profile": "Profil",
-        "support": "Support"
+        "support": "Support",
+        "kyc": "KYC-verifiering"
       },
       "backoffice": {
         "label": "Back-office",
@@ -1170,7 +1184,22 @@
   },
   "Dashboard": {
     "home": {
-      "loadError": "Det gick inte att läsa in kontrollpanelen"
+      "loadError": "Det gick inte att läsa in kontrollpanelen",
+      "overview": {
+        "mainWallet": {
+          "title": "Huvudplånbok",
+          "description": "Tillgängligt saldo i din huvudplånbok, exklusive säkerhet och investeringsplånboken."
+        },
+        "credit": {
+          "title": "Kredit",
+          "description": "{available} kvar · {used} använt",
+          "descriptionNoCredit": "Ingen aktiv kreditlinje ännu — ansök om kredit under fliken Kredit."
+        },
+        "investment": {
+          "title": "Investering",
+          "description": "Saldo i investeringsplånboken, fylls på via intern överföring från ditt huvudsaldo."
+        }
+      }
     },
     "balanceCards": {
       "depositBalance": {
@@ -1315,7 +1344,9 @@
         "INVESTMENT_YIELD_ACCRUAL": "Investeringsavkastning",
         "FIXED_TERM_DEPOSIT": "Insättning fast löptid",
         "FIXED_TERM_YIELD_ACCRUAL": "Avkastning fast löptid",
-        "FIXED_TERM_MATURITY_PAYOUT": "Reglering vid förfall"
+        "FIXED_TERM_MATURITY_PAYOUT": "Reglering vid förfall",
+        "INVESTMENT_WALLET_TRANSFER_IN": "Överföring till investeringsplånbok",
+        "INVESTMENT_WALLET_TRANSFER_OUT": "Överföring från investeringsplånbok"
       },
       "transactionStatus": {
         "PENDING": "Väntande",
@@ -1776,6 +1807,194 @@
         "confirmLock": "Bekräfta låsningen",
         "cancel": "Avbryt",
         "depositSuccess": "Insättning genomförd: dina medel är låsta till planens förfallodag."
+      },
+      "wallet": {
+        "title": "Investeringsplånbok",
+        "description": "Ett saldo skilt från ditt huvudsaldo, avsett för dina placeringar. Fyll på det via en intern överföring från ditt huvudsaldo — samma insättningsadresser och godkända tillgångar, oförändrat.",
+        "mainBalance": "Huvudsaldo",
+        "walletBalance": "Investeringsplånbok",
+        "directionIn": "Till plånboken",
+        "directionOut": "Från plånboken",
+        "amountPlaceholder": "Belopp i $US",
+        "transfer": "Överför",
+        "quickMax": "MAX",
+        "insufficientBalance": "Otillräckligt saldo",
+        "transferInSuccess": "Medel överförda till investeringsplånboken.",
+        "transferOutSuccess": "Medel återförda till huvudsaldot."
+      },
+      "tabs": {
+        "baskets": "Korgar",
+        "fixedTerm": "Fasta löptidsplaner",
+        "myPlacements": "Mina placeringar"
+      },
+      "myPlacements": {
+        "title": "Aktiva placeringar",
+        "maturedTitle": "Reglerade placeringar",
+        "empty": "Inga pågående placeringar för tillfället.",
+        "freeWithdrawal": "Fritt uttag när som helst",
+        "daysRemaining": "{days, plural, =0 {Förfaller idag} one {# dag kvar} other {# dagar kvar}}",
+        "maturityDate": "Förfallodag",
+        "estimatedReturn": "Mål vid förfall"
+      }
+    },
+    "kycDossier": {
+      "title": "KYC-dossier",
+      "description": "Fyll i och skicka in din identifieringsdossier för kontoöppning — inspirerad av det regulatoriska AML/CFT-formuläret.",
+      "genericError": "Ett fel uppstod.",
+      "saveSuccess": "Dossiern sparad.",
+      "submitSuccess": "Dossiern inskickad för granskning.",
+      "notSubmittedNote": "Dossiern har inte skickats in ännu — fyll i avsnitten nedan och bekräfta intyget.",
+      "pendingReviewNote": "Inskickad {date}, väntar på granskning av en rådgivare.",
+      "reviewedValidNote": "Godkänd {date}.",
+      "reviewedRejectedNote": "Avvisad {date} — fyll i den igen.",
+      "decisionLabels": {
+        "VALIDE": "Godkänd",
+        "REFUSE": "Avvisad"
+      },
+      "riskLabels": {
+        "FAIBLE": "Låg risk",
+        "STANDARD": "Standardrisk",
+        "ELEVE": "Hög risk"
+      },
+      "sections": {
+        "civil": "Personuppgifter",
+        "address": "Kontaktuppgifter och skatterättslig hemvist",
+        "employment": "Yrkessituation",
+        "documents": "Styrkande handlingar",
+        "compliance": "AML/CFT-efterlevnad och intygande"
+      },
+      "firstName": "Förnamn",
+      "lastName": "Efternamn vid födsel",
+      "usageLastName": "Nuvarande efternamn (valfritt)",
+      "dateOfBirth": "Födelsedatum",
+      "gender": "Kön",
+      "genderLabels": {
+        "M": "Man",
+        "F": "Kvinna",
+        "AUTRE": "Annat"
+      },
+      "maritalStatus": "Civilstånd",
+      "placeOfBirth": "Födelseort",
+      "birthCountry": "Födelseland",
+      "nationality": "Nationalitet",
+      "secondNationality": "Andra nationalitet (valfritt)",
+      "phone": "Telefon",
+      "street": "Hemadress",
+      "addressLine2": "Adressrad 2",
+      "postalCode": "Postnummer",
+      "city": "Ort",
+      "country": "Land",
+      "taxResidenceCountry": "Land för skatterättslig hemvist",
+      "taxIdNumber": "Skatteregistreringsnummer",
+      "additionalTaxResidence": "Ytterligare skatterättslig hemvist (FATCA/CRS)",
+      "professionalStatus": "Yrkesstatus",
+      "professionalStatusLabels": {
+        "SALARIE": "Anställd",
+        "FONCTIONNAIRE": "Statstjänsteman",
+        "INDEPENDANT": "Egenföretagare",
+        "DIRIGEANT": "Företagsledare",
+        "RETRAITE": "Pensionär",
+        "ETUDIANT": "Student",
+        "SANS_EMPLOI": "Arbetslös / annat"
+      },
+      "activity": "Verksamhet",
+      "employer": "Arbetsgivare",
+      "role": "Befattning",
+      "sector": "Bransch",
+      "seniority": "Anställningstid",
+      "annualIncomeBracket": "Nettoårsinkomst (intervall)",
+      "selectPlaceholder": "Välj…",
+      "incomeBracketLabels": {
+        "LT_20K": "< 20 000 €",
+        "B20K_50K": "20k - 50k €",
+        "B50K_100K": "50k - 100k €",
+        "B100K_250K": "100k - 250k €",
+        "GT_250K": "> 250 000 €"
+      },
+      "netWorthBracket": "Uppskattad total förmögenhet",
+      "netWorthBracketLabels": {
+        "LT_100K": "< 100k €",
+        "B100K_500K": "100k - 500k €",
+        "B500K_1M": "500k - 1M €",
+        "GT_1M": "> 1M €"
+      },
+      "documentVerified": "Verifierad",
+      "documentNotVerified": "Ej verifierad",
+      "documentsNote": "Metadatan nedan är deklarativ; filerna nedan (JPEG, PNG eller PDF, max 5 MB) laddas faktiskt upp och lagras.",
+      "documentType": "Typ av identitetshandling",
+      "documentTypeLabels": {
+        "CNI": "Nationellt identitetskort",
+        "PASSEPORT": "Biometriskt pass",
+        "TITRE_SEJOUR": "Uppehållstillstånd"
+      },
+      "documentNumber": "Dokumentnummer",
+      "issuingAuthority": "Utfärdande myndighet",
+      "issuePlace": "Utfärdandeort",
+      "issueDate": "Utfärdat den",
+      "expiryDate": "Giltigt till",
+      "identityCheckMethod": "Metod för identitetskontroll",
+      "identityCheckMethodLabels": {
+        "FACE_A_FACE": "Personligt möte (kontor)",
+        "PVID": "Certifierad videoidentifiering",
+        "EIDAS": "Elektronisk eIDAS-identifiering"
+      },
+      "proofOfAddressType": "Adressbevis",
+      "proofOfAddressTypeLabels": {
+        "FACTURE": "El-/gas-/vattenräkning",
+        "AVIS_IMPOSITION": "Aktuellt skattebesked",
+        "QUITTANCE": "Hyreskvitto"
+      },
+      "proofOfAddressIssuer": "Utfärdare av dokumentet",
+      "save": "Spara",
+      "isPoliticallyExposed": "Person i politiskt utsatt ställning (PEP)",
+      "yes": "Ja",
+      "no": "Nej",
+      "fundsOrigin": "Medlens ursprung / initial förmögenhet",
+      "fundsOriginLabels": {
+        "REVENUS_PROFESSIONNELS": "Yrkesinkomst",
+        "EPARGNE": "Personligt sparande",
+        "VENTE_BIENS": "Försäljning av tillgångar",
+        "HERITAGE": "Arv / gåva",
+        "DIVIDENDES": "Utdelning / försäljning av bolag",
+        "AUTRE": "Annat"
+      },
+      "fundsOriginOther": "Ange",
+      "relationshipPurpose": "Syfte och art av affärsförbindelsen",
+      "relationshipPurposeLabels": {
+        "COMPTE_COURANT": "Löpande konto och vardagliga betalningar",
+        "PLACEMENT": "Placering, sparande och förmögenhetsförvaltning",
+        "FINANCEMENT": "Finansiering / kredit",
+        "OPERATIONS_INTERNATIONALES": "Regelbundna internationella transaktioner"
+      },
+      "attestationCity": "Undertecknat i",
+      "attestationText": "Jag intygar att ovanstående uppgifter är korrekta (”Läst och godkänt”).",
+      "attestationRequired": "Bocka i intyget för att skicka in dossiern.",
+      "submitDossier": "Skicka in dossier",
+      "maritalStatusLabels": {
+        "CELIBATAIRE": "Ogift",
+        "MARIE": "Gift",
+        "PACSE": "Registrerat partnerskap",
+        "DIVORCE": "Skild",
+        "VEUF": "Änka/änkling"
+      },
+      "proofOfAddressDate": "Dokumentets datum",
+      "identityFrontLabel": "Identitetshandling (framsida)",
+      "identityBackLabel": "Identitetshandling (baksida, om tillämpligt)",
+      "proofOfAddressFileLabel": "Fil för adressbevis",
+      "noFileUploaded": "Ingen fil uppladdad ännu.",
+      "uploadFile": "Ladda upp",
+      "replaceFile": "Ersätt",
+      "removeFile": "Ta bort fil"
+    },
+    "termsAcceptance": {
+      "readFull": "Läs de fullständiga villkoren →",
+      "credit": {
+        "summary": "Genom att skicka in denna ansökan ställer du det angivna beloppet som säkerhet: en kredit på 350% av det beloppet beviljas till 13,5%/år (USD) eller 12%/år (EUR), med en uppläggningsavgift på 2% som tas ut vid utbetalning. Säkerheten förblir låst tills använd kredit är helt återbetald, och kan likvideras automatiskt om dess värde faller 50% från ingångsvärdet (varning från 30%) — redan använd kredit skulle fortfarande vara skyldig även efter att säkerheten likviderats.",
+        "checkboxLabel": "Jag har läst och godkänner villkoren för den säkerställda krediten."
+      },
+      "investment": {
+        "summary": "Genom att bekräfta denna placering bekräftar du att det är en verklig investering, aldrig en säkerhet: det placerade kapitalet är inte garanterat och kan minska i värde om den valda korgens eller planens dagliga avkastning är negativ. Visade avkastningsmål är indikativa, aldrig en prestationsgaranti.",
+        "checkboxLabel": "Jag har läst och godkänner villkoren för direktinvestering."
       }
     }
   },

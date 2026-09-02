@@ -17,45 +17,53 @@ const DEV_PASSWORD = 'ChangeMe123!';
 const DEV_ADMIN_TOTP_SECRET = 'PWVYTOPKBCVRGSRT4YCNT3YC7QQDUGXZ';
 
 // Adresses de dépôt "pool" gérées par la banque (CLAUDE.md — pas propres à un client,
-// cf. ManagedDepositAddress). Réseau Ethereum uniquement pour l'instant.
+// cf. ManagedDepositAddress). Réseau Ethereum par défaut, sauf pour un actif dont une
+// vraie adresse a été fournie sur un autre réseau (cf. §6 entrée #32 : KAG sur BNB Smart
+// Chain). Les métaux industriels/matières premières tokenisés (XPT/XPD/XCU/WTI) n'ont
+// volontairement PAS d'entrée ici : aucune vraie adresse de réception n'a été fournie
+// pour eux — ils restent des actifs acceptés en garantie (valorisation, stratégie RWA,
+// marché) mais ne sont plus proposés au dépôt direct tant qu'une vraie adresse n'existe
+// pas, cohérent avec le principe du projet de ne jamais présenter une donnée fabriquée
+// comme réelle.
 const MANAGED_DEPOSIT_ADDRESSES: {
-  currency:
-    | 'USDT'
-    | 'USDC'
-    | 'XAUT'
-    | 'DEURO'
-    | 'ETH'
-    | 'SHIB'
-    | 'KAG'
-    | 'XPT'
-    | 'XPD'
-    | 'XCU'
-    | 'WTI';
+  currency: 'USDT' | 'USDC' | 'XAUT' | 'DEURO' | 'ETH' | 'SHIB' | 'KAG';
+  chain: 'ETHEREUM' | 'BSC';
   address: string;
 }[] = [
-  { currency: 'USDT', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'USDC', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'XAUT', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'DEURO', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'ETH', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'SHIB', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'KAG', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'XPT', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'XPD', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'XCU', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
-  { currency: 'WTI', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
+  { currency: 'USDT', chain: 'ETHEREUM', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
+  { currency: 'USDC', chain: 'ETHEREUM', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
+  { currency: 'XAUT', chain: 'ETHEREUM', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
+  { currency: 'DEURO', chain: 'ETHEREUM', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
+  { currency: 'ETH', chain: 'ETHEREUM', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
+  { currency: 'SHIB', chain: 'ETHEREUM', address: '0x3b688A6285f44C95489A5464495eCe963E112C36' },
+  // Vraie adresse de réception fournie par la banque pour KAG, sur BNB Smart Chain —
+  // seul actif de la liste avec une vraie adresse à ce jour (les autres restent le
+  // placeholder de dev 0x3b68...C36, jamais présenté comme réel).
+  { currency: 'KAG', chain: 'BSC', address: '0x55D53AB5a09359BB11341a33c80e9aBedb6D287b' },
 ];
 
 async function main() {
   const passwordHash = await hashPassword(DEV_PASSWORD);
 
-  for (const { currency, address } of MANAGED_DEPOSIT_ADDRESSES) {
+  for (const { currency, chain, address } of MANAGED_DEPOSIT_ADDRESSES) {
     await prisma.managedDepositAddress.upsert({
-      where: { chain_currency: { chain: 'ETHEREUM', currency } },
+      where: { chain_currency: { chain, currency } },
       update: { address },
-      create: { chain: 'ETHEREUM', currency, address },
+      create: { chain, currency, address },
     });
   }
+
+  // Retire les entrées devenues obsolètes d'un seed précédent : KAG sur Ethereum
+  // (déplacé vers BSC ci-dessus) et les métaux industriels/matières premières
+  // tokenisés, qui n'ont plus de vraie adresse de dépôt (cf. commentaire ci-dessus).
+  await prisma.managedDepositAddress.deleteMany({
+    where: {
+      OR: [
+        { currency: 'KAG', chain: 'ETHEREUM' },
+        { currency: { in: ['XPT', 'XPD', 'XCU', 'WTI'] } },
+      ],
+    },
+  });
 
   // Client 1 : KYC vérifié, avec gage/crédit actif — scénario de référence CLAUDE.md §2B
   // Dépôt 2000$, crédit accordé 350% => 7000$, pouvoir d'achat total 9000$.

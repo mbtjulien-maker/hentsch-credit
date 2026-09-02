@@ -15,6 +15,7 @@ import { CreditRequestsModule } from './credit-requests/credit-requests.module';
 import { DepositIntentsModule } from './deposit-intents/deposit-intents.module';
 import { DirectCreditModule } from './direct-credit/direct-credit.module';
 import { InvestmentModule } from './investment/investment.module';
+import { KycDocumentsModule } from './kyc-documents/kyc-documents.module';
 import { LedgerModule } from './ledger/ledger.module';
 import { MarketDataModule } from './market-data/market-data.module';
 import { PaymentsModule } from './payments/payments.module';
@@ -55,6 +56,7 @@ import { WithdrawalModule } from './withdrawal/withdrawal.module';
     ClientWalletsModule,
     TreasuryBotModule,
     InvestmentModule,
+    KycDocumentsModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],

@@ -47,6 +47,10 @@ enum Chain {
   ARBITRUM
   TRON
   SOLANA
+  // BNB Smart Chain — ajouté pour KAG (cf. §6 entrée #32 CLAUDE.md), seul actif dont une
+  // vraie adresse de dépôt a été fournie sur ce réseau. Ethereum reste le seul réseau
+  // proposé pour tous les autres actifs (cf. CLAUDE.md §2A).
+  BSC
 }
 
 // Actifs acceptés en garantie. USDS/DAI/USDE/PYUSD/USDT/USDC sont des stablecoins
@@ -135,8 +139,9 @@ enum TransactionType {
   LIQUIDATION
   // Investissement direct (cf. §2H CLAUDE.md, InvestmentService) — placement de fonds
   // réels dans l'un des paniers (cf. InvestmentBasket : RWA_STRATEGY ou l'un des 5
-  // paniers STOCKS*), distinct du gage crypto : débite/crédite directement
-  // availableBalance, jamais lockedCollateral.
+  // paniers STOCKS*), distinct du gage crypto : débite/crédite le wallet investissement
+  // (LedgerBalance.investmentBalance, cf. entrée #31), jamais availableBalance ni
+  // lockedCollateral directement.
   INVESTMENT_DEPOSIT
   INVESTMENT_WITHDRAWAL
   // Accrual quotidien du rendement réel du panier choisi, appliqué au principal de la
@@ -145,14 +150,21 @@ enum TransactionType {
   INVESTMENT_YIELD_ACCRUAL
   // Plans à échéance fixe (cf. §2H CLAUDE.md entrée #30, FixedTermPosition) — DEUXIÈME
   // mode de placement, bloqué jusqu'à l'échéance (aucun retrait anticipé, contrairement à
-  // INVESTMENT_WITHDRAWAL). FIXED_TERM_DEPOSIT débite availableBalance au dépôt ;
+  // INVESTMENT_WITHDRAWAL). FIXED_TERM_DEPOSIT débite le wallet investissement au dépôt ;
   // FIXED_TERM_YIELD_ACCRUAL journalise l'accrual quotidien (composé, jamais versé avant
   // l'échéance) ; FIXED_TERM_MATURITY_PAYOUT crédite principalAmount + accruedYield sur
-  // availableBalance à l'échéance, déclenché automatiquement par le cron (jamais un geste
-  // du client, contrairement à un retrait).
+  // le wallet investissement à l'échéance, déclenché automatiquement par le cron (jamais
+  // un geste du client, contrairement à un retrait).
   FIXED_TERM_DEPOSIT
   FIXED_TERM_YIELD_ACCRUAL
   FIXED_TERM_MATURITY_PAYOUT
+  // Virement interne entre availableBalance et LedgerBalance.investmentBalance (cf. §2H
+  // CLAUDE.md entrée #31, LedgerService.transferToInvestmentWallet/
+  // transferFromInvestmentWallet) — seul moyen d'alimenter ou de vider le wallet
+  // investissement, jamais un dépôt on-chain/bancaire direct dessus. _IN débite
+  // availableBalance et crédite investmentBalance ; _OUT fait l'inverse.
+  INVESTMENT_WALLET_TRANSFER_IN
+  INVESTMENT_WALLET_TRANSFER_OUT
 }
 
 enum TransactionStatus {
@@ -254,6 +266,15 @@ model User {
   financialSnapshot FinancialSnapshot?
   notes             ClientNote[]       @relation("ClientNotes")
   authoredNotes     ClientNote[]       @relation("AuthoredNotes")
+  // Dossier KYC (cf. §6 entrée #33) — pièce d'identité déclarée et profil de conformité
+  // LCB-FT, tous deux 1:1 avec ce User, distincts de clientProfile/addresses/employment
+  // ci-dessus (préexistants) mais construits sur le même principe d'auto-déclaration.
+  identityDocument    IdentityDocument?
+  amlProfile          AmlProfile?  @relation("AmlProfileOwner")
+  amlProfilesReviewed AmlProfile[] @relation("AmlProfileReviewedBy")
+  // Fichiers réellement téléversés à l'appui du dossier (cf. §6 entrée #36) — au plus un
+  // par (userId, category), cf. KycDocument.
+  kycDocuments        KycDocument[]
 
   // Wallet interne "personnel" de suivi (cf. ClientManagedWallet ci-dessous) — pas une
   // adresse blockchain, une identité de compte stable côté back-office.
@@ -363,6 +384,15 @@ model LedgerBalance {
   lockedCollateral Decimal  @default(0) @db.Decimal(18, 6)
   grantedCredit    Decimal  @default(0) @db.Decimal(18, 6)
   usedCredit       Decimal  @default(0) @db.Decimal(18, 6)
+  // Wallet investissement (cf. §2H CLAUDE.md entrée #31) — solde SÉPARÉ
+  // d'`availableBalance`, dédié aux 6 paniers perpétuels et aux 6 plans à échéance fixe.
+  // Alimenté uniquement par virement interne depuis `availableBalance`
+  // (`LedgerService.transferToInvestmentWallet`/`transferFromInvestmentWallet`) — les
+  // dépôts on-chain/bancaires réels continuent tous de créditer `availableBalance` via les
+  // mêmes adresses de dépôt et actifs acceptés qu'aujourd'hui, jamais directement ce
+  // champ. Les dépôts/retraits/accruals du module investissement débitent/créditent
+  // désormais ce solde plutôt qu'`availableBalance`.
+  investmentBalance Decimal @default(0) @db.Decimal(18, 6)
   updatedAt        DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -596,14 +626,31 @@ model Transaction {
 model ClientProfile {
   id            String     @id @default(uuid())
   userId        String     @unique
-  firstName     String?
-  lastName      String?
-  dateOfBirth   DateTime?
-  placeOfBirth  String?
-  nationality   String?
-  maritalStatus String?
-  dependents    Int?
-  phone         String?
+  // `lastName` reste le nom de naissance (nom légal) — `usageLastName` couvre le nom
+  // d'usage/d'épouse le cas échéant (cf. dossier KYC papier, §6 entrée #33), distinct et
+  // optionnel : la plupart des clients n'en ont pas.
+  firstName      String?
+  lastName       String?
+  usageLastName  String?
+  dateOfBirth    DateTime?
+  // Ville de naissance — pays de naissance sur un champ séparé (birthCountry) : le
+  // dossier KYC papier les distingue (une ville peut exister dans plusieurs pays).
+  placeOfBirth       String?
+  birthCountry       String?
+  gender             String?
+  nationality        String?
+  // Seconde nationalité (double nationalité) — jamais obligatoire, cf. dossier KYC papier.
+  secondNationality  String?
+  maritalStatus      String?
+  dependents         Int?
+  phone              String?
+  // Résidence fiscale et identifiant fiscal (NIF/SPI, exigence FATCA/CRS) — distincts de
+  // l'adresse de domicile (cf. Address) : un client peut résider fiscalement ailleurs que
+  // son domicile principal. `additionalTaxResidence` couvre une résidence fiscale
+  // supplémentaire déclarée (texte libre, jamais vérifiée par un tiers — cf. §6 entrée #33).
+  taxResidenceCountry    String?
+  additionalTaxResidence String?
+  taxIdNumber            String?
   clientType    ClientType @default(PARTICULIER)
   updatedAt     DateTime   @updatedAt
 
@@ -619,6 +666,9 @@ model Address {
   userId        String
   label         AddressLabel
   street        String
+  // Complément d'adresse (lieu-dit, boîte postale…) — cf. dossier KYC papier, §6
+  // entrée #33 : distinct de `street`, jamais obligatoire.
+  addressLine2  String?
   city          String
   postalCode    String
   country       String
@@ -640,6 +690,12 @@ model Employment {
   userId        String   @unique
   isIndependent Boolean  @default(false)
   status        String?
+  // Statut professionnel déclaratif (SALARIE/FONCTIONNAIRE/INDEPENDANT/DIRIGEANT/
+  // RETRAITE/ETUDIANT/SANS_EMPLOI, cf. dossier KYC papier, §6 entrée #33) — plus fin que
+  // le booléen `isIndependent` ci-dessus (conservé pour compat, dérivable de ce champ),
+  // valeurs listées côté DTO plutôt qu'un enum Prisma (cohérence avec `status`/
+  // `contractType`, déjà des chaînes libres validées côté application).
+  professionalStatus String?
   employer      String?
   sector        String?
   role          String?
@@ -647,6 +703,13 @@ model Employment {
   annualIncome  Decimal? @db.Decimal(18, 2)
   monthlyIncome Decimal? @db.Decimal(18, 2)
   contractType  String?
+  // Tranches déclaratives du dossier KYC papier (revenus annuels nets / patrimoine
+  // global estimé) — des fourchettes, pas des montants exacts, distinctes des colonnes
+  // `annualIncome` ci-dessus et des données détaillées de `FinancialSnapshot` (réservées
+  // au back-office) : ce sont les deux seules cases à cocher du dossier papier qui
+  // n'avaient pas déjà d'équivalent dans le schéma.
+  annualIncomeBracket String?
+  netWorthBracket     String?
   verified      Boolean  @default(false)
   // Champs spécifiques à un client indépendant (isIndependent = true) — nuls sinon.
   activity      String?
@@ -657,6 +720,137 @@ model Employment {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("employments")
+}
+
+// Pièce d'identité et justificatif de domicile déclarés par le client (cf. dossier KYC
+// papier §4, §6 entrée #33) — les métadonnées ci-dessous restent déclaratives, comme le
+// reste de l'auto-déclaration (§2H CLAUDE.md entrée #24) : aucun fournisseur KYC/OCR
+// tiers n'est branché sur ce projet (cf. §3), donc aucune vérification automatique du
+// contenu. Le VRAI fichier (recto/verso de la pièce, justificatif de domicile) est en
+// revanche réellement téléversé et stocké depuis l'entrée #36 — cf. modèle KycDocument
+// ci-dessous, distinct de celui-ci : ce n'est jamais une vérification documentaire
+// automatique, seulement un stockage réel consultable par un conseiller. `verified`/
+// `verifiedAt` suivent le même principe que `Address.verified`/`Employment.verified` :
+// forcés à false par le service à chaque écriture du client, recontrôlés uniquement par
+// un admin (cf. UsersService, AdminClientsService).
+model IdentityDocument {
+  id     String @id @default(uuid())
+  userId String @unique
+
+  // CNI | PASSEPORT | TITRE_SEJOUR (cf. IDENTITY_DOCUMENT_TYPES, valeurs en constante
+  // plutôt qu'un enum Prisma — même choix que Employment.status).
+  documentType     String?
+  documentNumber   String?
+  issuingAuthority String?
+  issuePlace       String?
+  issueDate        DateTime?
+  expiryDate       DateTime?
+  // FACE_A_FACE | PVID | EIDAS (modalité de contrôle d'identité déclarée).
+  identityCheckMethod String?
+  // FACTURE | AVIS_IMPOSITION | QUITTANCE (justificatif de domicile déclaré). Le dossier
+  // KYC papier libelle ce champ "Intitulé / Émetteur [Nom de l'émetteur ET date du
+  // document]" — proofOfAddressDate couvre la date manquante à l'entrée #33 (trouvée
+  // lors d'une relecture stricte ligne à ligne du document, cf. §6 entrée #35).
+  proofOfAddressType   String?
+  proofOfAddressIssuer String?
+  proofOfAddressDate   DateTime?
+
+  verified   Boolean   @default(false)
+  verifiedAt DateTime?
+  updatedAt  DateTime  @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("identity_documents")
+}
+
+// Profil de conformité LCB-FT/PPE (cf. dossier KYC papier §5-6, §6 entrée #33) —
+// déclaratif côté client (comme IdentityDocument ci-dessus), avec un volet strictement
+// admin en miroir du "Cadre réservé à la banque" du dossier papier : `riskLevel` et la
+// décision de conformité ne sont jamais écrits par le client (même principe que
+// `ClientProfile.clientType`/`verified` ailleurs, cf. §2H entrée #24) — c'est ici que se
+// prend enfin la décision qui manquait entièrement au produit jusqu'à cette entrée :
+// aucune route n'existait pour faire passer un `User.kycStatus` de PENDING à VERIFIED/
+// REJECTED en dehors du seed (cf. §6 entrée #33 pour le détail du constat).
+model AmlProfile {
+  id     String @id @default(uuid())
+  userId String @unique
+
+  isPoliticallyExposed Boolean?
+  // Origine des fonds / patrimoine initial — plusieurs cases cochables au dossier papier
+  // (REVENUS_PROFESSIONNELS, EPARGNE, VENTE_BIENS, HERITAGE, DIVIDENDES, AUTRE), stockées
+  // en tableau Postgres natif plutôt qu'une table de jointure séparée : jamais interrogées
+  // indépendamment les unes des autres, toujours lues/écrites comme un bloc déclaratif.
+  fundsOrigin      String[]
+  fundsOriginOther String?
+  // Objet et nature de la relation d'affaires — même logique multi-sélection
+  // (COMPTE_COURANT, PLACEMENT, FINANCEMENT, OPERATIONS_INTERNATIONALES).
+  relationshipPurpose String[]
+
+  // Attestation "Lu et approuvé" du client (cf. dossier papier §6) — horodatage de
+  // soumission du dossier, jamais modifié après coup par le client (une nouvelle
+  // soumission le réécrit, ce qui repasse aussi `reviewDecision` à null ci-dessous : un
+  // dossier modifié redevient un dossier non réexaminé).
+  attestedAt      DateTime?
+  attestationCity String?
+
+  // --- Réservé admin (miroir du "Cadre réservé à la banque" du dossier papier) ---
+  // FAIBLE | STANDARD | ELEVE — jamais calculé automatiquement (même principe éditorial
+  // que RISK_LEVEL en §2H), une appréciation humaine du conseiller.
+  riskLevel        String?
+  // VALIDE | REFUSE — reflété sur User.kycStatus par le même appel (cf.
+  // AdminClientsService.decideKyc), jamais désynchronisé des deux côtés.
+  reviewDecision   String?
+  reviewedByUserId String?
+  reviewedAt       DateTime?
+
+  updatedAt DateTime @updatedAt
+
+  user       User  @relation("AmlProfileOwner", fields: [userId], references: [id], onDelete: Cascade)
+  reviewedBy User? @relation("AmlProfileReviewedBy", fields: [reviewedByUserId], references: [id])
+
+  @@map("aml_profiles")
+}
+
+// Catégorie du fichier téléversé — une pièce d'identité a un recto et, pour une carte
+// d'identité, un verso ; le justificatif de domicile est une troisième catégorie
+// distincte. Correspond aux 2-3 documents demandés par le dossier KYC papier §4.
+enum KycDocumentCategory {
+  IDENTITY_FRONT
+  IDENTITY_BACK
+  PROOF_OF_ADDRESS
+}
+
+// Fichier réellement téléversé par le client à l'appui de son dossier KYC (cf. §6
+// entrée #36 CLAUDE.md) — contrairement à `IdentityDocument` ci-dessus (purement
+// déclaratif, métadonnées seulement), ce modèle stocke le VRAI contenu binaire du
+// fichier en base (colonne `data`, cf. Bytes) : aucun service de stockage tiers (S3 ou
+// équivalent) n'est branché sur ce projet, donc pas de solution "cloud" fictive — la
+// base de données est le seul stockage réel et vérifiable disponible ici. Au plus un
+// fichier par (userId, category) : un nouvel envoi remplace le précédent plutôt que de
+// s'accumuler, et remet `verified` à false (même principe que le reste de
+// l'auto-déclaration KYC). `data` n'est jamais renvoyé par l'endpoint de liste
+// (métadonnées seules) — uniquement par l'endpoint de téléchargement dédié, guardé
+// comme le reste du dossier (assertSelfOrAdmin côté client, AdminGuard côté back-office).
+model KycDocument {
+  id       String              @id @default(uuid())
+  userId   String
+  category KycDocumentCategory
+
+  fileName String
+  mimeType String
+  fileSize Int
+  data     Bytes
+
+  uploadedAt DateTime  @default(now())
+  verified   Boolean   @default(false)
+  verifiedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, category])
+  @@index([userId])
+  @@map("kyc_documents")
 }
 
 // Déclaration financière — revenus/charges/patrimoine/passifs stockés en JSON structuré

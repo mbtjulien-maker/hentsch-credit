@@ -15,9 +15,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MiniSparkline } from "@/components/marketing/performance-chart";
 import { InvestmentAdvisorDialog } from "@/components/dashboard/investment-advisor-dialog";
 import { FixedTermPlansSection } from "@/components/dashboard/fixed-term-plans-section";
+import { InvestmentWalletCard } from "@/components/dashboard/investment-wallet-card";
+import { MyPlacementsSection } from "@/components/dashboard/my-placements-section";
+import { TermsAcceptance } from "@/components/dashboard/terms-acceptance";
 import {
   api,
   ApiError,
@@ -157,6 +161,7 @@ function BasketCard({
 }) {
   const t = useTranslations("Dashboard.investment");
   const [amount, setAmount] = useState("");
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const dailyPct =
     basket === "RWA_STRATEGY" ? rate?.latestDailyReturnPct : rate?.latestMarketSignalPct;
@@ -170,7 +175,7 @@ function BasketCard({
   const minAmount = 10;
   const exceedsBalance = availableBalance != null && parsedAmount > availableBalance;
   const belowMinimum = amount.trim() !== "" && parsedAmount > 0 && parsedAmount < minAmount;
-  const isValidAmount = parsedAmount > 0 && !exceedsBalance && !belowMinimum;
+  const isValidAmount = parsedAmount > 0 && !exceedsBalance && !belowMinimum && acceptedTerms;
 
   const sparklinePoints = buildReturnIndex(history);
 
@@ -243,6 +248,7 @@ function BasketCard({
         )}
 
         <div className="flex flex-col gap-1.5">
+          <TermsAcceptance variant="investment" accepted={acceptedTerms} onAcceptedChange={setAcceptedTerms} disabled={busy} />
           <div className="flex gap-2">
             <Input
               type="number"
@@ -257,7 +263,10 @@ function BasketCard({
               type="button"
               disabled={busy || !isValidAmount}
               onClick={() => {
-                void onDeposit(basket, amount).then(() => setAmount(""));
+                void onDeposit(basket, amount).then(() => {
+                  setAmount("");
+                  setAcceptedTerms(false);
+                });
               }}
             >
               {busy ? <Loader2 className="size-4 animate-spin" /> : t("deposit")}
@@ -322,9 +331,15 @@ export function InvestmentPanel({
   const [history, setHistory] = useState<InvestmentHistory | null>(null);
   const [fixedTermPlans, setFixedTermPlans] = useState<FixedTermPlan[] | null>(null);
   const [fixedTermPositions, setFixedTermPositions] = useState<FixedTermPosition[]>([]);
-  const [availableBalance, setAvailableBalance] = useState<number | null>(null);
+  // Wallet investissement (cf. §2H CLAUDE.md entrée #31) — solde SÉPARÉ du solde
+  // principal : les paniers/plans ci-dessous débitent/créditent walletBalance, jamais
+  // mainBalance directement. mainBalance ne sert plus qu'à alimenter le formulaire de
+  // virement interne (cf. InvestmentWalletCard).
+  const [mainBalance, setMainBalance] = useState<number | null>(null);
+  const [walletBalance, setWalletBalance] = useState<number | null>(null);
   const [busyBasket, setBusyBasket] = useState<InvestmentBasket | null>(null);
   const [busyPlan, setBusyPlan] = useState<FixedTermPlanId | null>(null);
+  const [busyWallet, setBusyWallet] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   function refreshFixedTermPositions() {
@@ -334,6 +349,18 @@ export function InvestmentPanel({
       .catch(() => {
         // Purement informatif — la section reste utilisable sans l'historique des
         // positions (le dépôt lui-même reste possible).
+      });
+  }
+
+  function refreshBalances() {
+    api
+      .getBalance(userId)
+      .then((b) => {
+        setMainBalance(Number(b.balance.availableBalance));
+        setWalletBalance(Number(b.balance.investmentBalance));
+      })
+      .catch(() => {
+        // Purement informatif — sans le solde, les raccourcis restent simplement masqués.
       });
   }
 
@@ -380,13 +407,16 @@ export function InvestmentPanel({
       .catch(() => {
         // Purement informatif — voir refreshFixedTermPositions ci-dessus.
       });
-    // Solde disponible réel — utilisé uniquement pour les raccourcis 25/50/75/MAX et la
-    // validation en temps réel, jamais affiché comme un chiffre en soi ici (déjà visible
-    // sur /dashboard/solde et l'accueil).
+    // Soldes réels — mainBalance/walletBalance, utilisés pour le virement interne
+    // (InvestmentWalletCard) et pour les raccourcis 25/50/75/MAX des paniers/plans
+    // (désormais sur walletBalance, jamais mainBalance directement).
     api
       .getBalance(userId)
       .then((b) => {
-        if (!ignore) setAvailableBalance(Number(b.balance.availableBalance));
+        if (!ignore) {
+          setMainBalance(Number(b.balance.availableBalance));
+          setWalletBalance(Number(b.balance.investmentBalance));
+        }
       })
       .catch(() => {
         // Purement informatif — sans le solde, les raccourcis restent simplement masqués.
@@ -407,6 +437,9 @@ export function InvestmentPanel({
       await api.depositInvestment(basket, Number(amount).toFixed(6));
       toast.success(t("depositSuccess"));
       onSuccess();
+      // Débite le wallet investissement (§2H CLAUDE.md entrée #31) — jamais rafraîchi
+      // automatiquement par onSuccess() (qui ne rafraîchit que les positions côté page).
+      refreshBalances();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
@@ -421,16 +454,7 @@ export function InvestmentPanel({
       await api.depositFixedTerm(plan, Number(amount).toFixed(6));
       toast.success(t("fixedTermPlans.depositSuccess"));
       refreshFixedTermPositions();
-      // Solde débité immédiatement — jamais rafraîchi automatiquement par onSuccess()
-      // (qui ne rafraîchit que les paniers perpétuels côté page), donc relu ici pour que
-      // les raccourcis 25/50/75/MAX et la validation reflètent tout de suite le nouveau
-      // solde disponible.
-      api
-        .getBalance(userId)
-        .then((b) => setAvailableBalance(Number(b.balance.availableBalance)))
-        .catch(() => {
-          // Purement informatif.
-        });
+      refreshBalances();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
@@ -445,10 +469,31 @@ export function InvestmentPanel({
       const result = await api.withdrawInvestment(basket);
       toast.success(t("withdrawSuccess", { amount: formatUsd(result.withdrawnAmount) }));
       onSuccess();
+      refreshBalances();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
       setBusyBasket(null);
+    }
+  }
+
+  async function handleWalletTransfer(direction: "in" | "out", amount: string) {
+    setBusyWallet(true);
+    setError(null);
+    try {
+      const value = Number(amount).toFixed(6);
+      if (direction === "in") {
+        await api.transferToInvestmentWallet(value);
+        toast.success(t("wallet.transferInSuccess"));
+      } else {
+        await api.transferFromInvestmentWallet(value);
+        toast.success(t("wallet.transferOutSuccess"));
+      }
+      refreshBalances();
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : t("genericError"));
+    } finally {
+      setBusyWallet(false);
     }
   }
 
@@ -460,38 +505,65 @@ export function InvestmentPanel({
         </Alert>
       )}
 
+      <InvestmentWalletCard
+        mainBalance={mainBalance}
+        walletBalance={walletBalance}
+        busy={busyWallet}
+        onTransfer={handleWalletTransfer}
+      />
+
       <div className="flex justify-end">
         <InvestmentAdvisorDialog
           rates={rates}
           plans={fixedTermPlans}
-          availableBalance={availableBalance}
+          availableBalance={walletBalance}
         />
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {INVESTMENT_BASKETS.map((basket) => (
-          <BasketCard
-            key={basket}
-            basket={basket}
-            rate={rates?.[basket] ?? null}
-            assets={assets?.[basket]?.assets ?? []}
-            history={history?.[basket] ?? []}
-            position={activePositions.get(basket) ?? null}
-            availableBalance={availableBalance}
-            busy={busyBasket === basket}
-            onDeposit={handleDeposit}
-            onWithdraw={handleWithdraw}
-          />
-        ))}
-      </div>
+      <Tabs defaultValue="baskets">
+        <TabsList>
+          <TabsTrigger value="baskets">{t("tabs.baskets")}</TabsTrigger>
+          <TabsTrigger value="fixedTerm">{t("tabs.fixedTerm")}</TabsTrigger>
+          <TabsTrigger value="myPlacements">{t("tabs.myPlacements")}</TabsTrigger>
+        </TabsList>
 
-      <FixedTermPlansSection
-        plans={fixedTermPlans}
-        positions={fixedTermPositions}
-        availableBalance={availableBalance}
-        busyPlan={busyPlan}
-        onDeposit={handleDepositFixedTerm}
-      />
+        <TabsContent value="baskets" className="pt-4">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            {INVESTMENT_BASKETS.map((basket) => (
+              <BasketCard
+                key={basket}
+                basket={basket}
+                rate={rates?.[basket] ?? null}
+                assets={assets?.[basket]?.assets ?? []}
+                history={history?.[basket] ?? []}
+                position={activePositions.get(basket) ?? null}
+                availableBalance={walletBalance}
+                busy={busyBasket === basket}
+                onDeposit={handleDeposit}
+                onWithdraw={handleWithdraw}
+              />
+            ))}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="fixedTerm" className="pt-4">
+          <FixedTermPlansSection
+            plans={fixedTermPlans}
+            positions={fixedTermPositions}
+            availableBalance={walletBalance}
+            busyPlan={busyPlan}
+            onDeposit={handleDepositFixedTerm}
+          />
+        </TabsContent>
+
+        <TabsContent value="myPlacements" className="pt-4">
+          <MyPlacementsSection
+            basketPositions={activePositions}
+            fixedTermPositions={fixedTermPositions}
+            fixedTermPlans={fixedTermPlans}
+          />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }

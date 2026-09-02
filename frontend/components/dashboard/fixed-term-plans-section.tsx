@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { RiskBadge } from "@/components/dashboard/investment-panel";
+import { TermsAcceptance } from "@/components/dashboard/terms-acceptance";
 import type { FixedTermPlan, FixedTermPosition } from "@/lib/api";
 import { formatDate, formatUsd } from "@/lib/format";
 
@@ -87,6 +88,7 @@ function PlanCard({
   const locale = useLocale();
   const [amount, setAmount] = useState("");
   const [confirming, setConfirming] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const latestSignal = plan.latestSignalPct != null ? Number(plan.latestSignalPct) : null;
   const parsedAmount = Number(amount);
@@ -96,9 +98,11 @@ function PlanCard({
   const maturityPreview = computeMaturityPreview(plan.horizonMonths);
 
   async function handleConfirm() {
+    if (!acceptedTerms) return;
     setConfirming(false);
     await onDeposit(plan.id, amount);
     setAmount("");
+    setAcceptedTerms(false);
   }
 
   return (
@@ -194,11 +198,21 @@ function PlanCard({
                 })}
               </p>
             </div>
+            <TermsAcceptance variant="investment" accepted={acceptedTerms} onAcceptedChange={setAcceptedTerms} disabled={busy} />
             <div className="flex gap-2">
-              <Button type="button" size="sm" disabled={busy} onClick={() => void handleConfirm()}>
+              <Button type="button" size="sm" disabled={busy || !acceptedTerms} onClick={() => void handleConfirm()}>
                 {busy ? <Loader2 className="size-4 animate-spin" /> : t("fixedTermPlans.confirmLock")}
               </Button>
-              <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setConfirming(false)}>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                disabled={busy}
+                onClick={() => {
+                  setConfirming(false);
+                  setAcceptedTerms(false);
+                }}
+              >
                 {t("fixedTermPlans.cancel")}
               </Button>
             </div>

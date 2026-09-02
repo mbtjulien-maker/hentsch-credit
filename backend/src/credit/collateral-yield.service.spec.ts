@@ -42,6 +42,7 @@ function buildBalance(overrides: Partial<LedgerBalance> = {}): LedgerBalance {
     lockedCollateral: new Prisma.Decimal('2500'),
     grantedCredit: new Prisma.Decimal('3750'),
     usedCredit: new Prisma.Decimal('3750'),
+    investmentBalance: new Prisma.Decimal(0),
     updatedAt: new Date(),
     ...overrides,
   };

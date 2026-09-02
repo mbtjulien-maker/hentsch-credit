@@ -166,7 +166,7 @@ export function ClientDetailView({
           {tab === "personal" && <PersonalTab client={client} onClientUpdated={onClientUpdated} />}
           {tab === "financial" && <FinancialTab client={client} onClientUpdated={onClientUpdated} />}
           {tab === "documents" && <DocumentsTab client={client} />}
-          {tab === "kyc" && <KycTab client={client} />}
+          {tab === "kyc" && <KycTab client={client} onClientUpdated={onClientUpdated} />}
           {tab === "risk" && <RiskDecisionTab client={client} />}
           {tab === "contract" && <ContractTab client={client} />}
           {tab === "history" && <HistoryTab client={client} />}

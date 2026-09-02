@@ -43,7 +43,7 @@ export default async function ConditionsGeneralesPage({ params }: { params: Prom
         <p>{t("s3.body")}</p>
       </LegalSection>
 
-      <LegalSection title={t("s4.title")}>
+      <LegalSection id="s4" title={t("s4.title")}>
         <p>{t.rich("s4.body1", { b: bold })}</p>
         <p className="rounded-lg bg-muted px-3 py-2 font-mono text-xs text-foreground/80">{t("s4.formula")}</p>
         <p>{t("s4.body2")}</p>
@@ -106,7 +106,7 @@ export default async function ConditionsGeneralesPage({ params }: { params: Prom
           gagé (section 4) et du crédit direct : un placement réel, pas un emprunt.
           Placée juste après la section Risques (générale, orientée gage crypto) pour
           couvrir le risque spécifique de ce produit (perte réelle sur capital placé). */}
-      <LegalSection title={t("s16.title")}>
+      <LegalSection id="s16" title={t("s16.title")}>
         <p>{t("s16.intro")}</p>
         <p>{t("s16.body1")}</p>
         <p>{t("s16.body2")}</p>

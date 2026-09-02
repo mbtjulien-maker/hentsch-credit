@@ -1,12 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import {
   Address,
+  AmlProfile,
   ClientNote,
   ClientProfile,
   CreditPosition,
   CreditRequest,
   Employment,
   FinancialSnapshot,
+  IdentityDocument,
   LedgerBalance,
   Prisma,
   Transaction,
@@ -20,6 +22,9 @@ import { UpdateClientProfileDto } from './dto/update-client-profile.dto';
 import { UpdateAddressesDto } from './dto/update-addresses.dto';
 import { UpdateEmploymentDto } from './dto/update-employment.dto';
 import { UpdateFinancialsDto } from './dto/update-financials.dto';
+import { UpdateIdentityDocumentDto } from './dto/update-identity-document.dto';
+import { UpdateAmlProfileDto } from './dto/update-aml-profile.dto';
+import { DecideKycDto } from './dto/decide-kyc.dto';
 import { CreateNoteDto } from './dto/create-note.dto';
 
 // Le système réel n'a ni durée/taux/produit sur CreditRequest (juste le gage demandé —
@@ -45,11 +50,28 @@ const DOSSIER_STEPS = [
 const CONTRACT_STEP_INDEX = 5;
 const DISBURSEMENT_STEP_INDEX = 6;
 
+// Métadonnées seules (jamais la colonne `data`, cf. KycDocumentsService.list) — même
+// principe de sélection explicite que list(), pas un include complet du modèle qui
+// ramènerait le contenu binaire dans ce payload JSON.
+type KycDocumentMeta = {
+  id: string;
+  category: string;
+  fileName: string;
+  mimeType: string;
+  fileSize: number;
+  uploadedAt: Date;
+  verified: boolean;
+  verifiedAt: Date | null;
+};
+
 type UserWithRelations = User & {
   clientProfile?: ClientProfile | null;
   addresses?: Address[];
   employment?: Employment | null;
   financialSnapshot?: FinancialSnapshot | null;
+  identityDocument?: IdentityDocument | null;
+  amlProfile?: (AmlProfile & { reviewedBy?: { email: string } | null }) | null;
+  kycDocuments?: KycDocumentMeta[];
   ledgerBalance?: LedgerBalance | null;
   wallets?: Wallet[];
   creditRequests?: (CreditRequest & {
@@ -280,6 +302,20 @@ export class AdminClientsService {
       addresses: true,
       employment: true,
       financialSnapshot: true,
+      identityDocument: true,
+      amlProfile: { include: { reviewedBy: { select: { email: true } } } },
+      kycDocuments: {
+        select: {
+          id: true,
+          category: true,
+          fileName: true,
+          mimeType: true,
+          fileSize: true,
+          uploadedAt: true,
+          verified: true,
+          verifiedAt: true,
+        },
+      },
       ledgerBalance: true,
       wallets: true,
       creditRequests: {
@@ -301,12 +337,19 @@ export class AdminClientsService {
     const data = {
       firstName: dto.firstName,
       lastName: dto.lastName,
+      usageLastName: dto.usageLastName,
       dateOfBirth: dto.dateOfBirth ? new Date(dto.dateOfBirth) : undefined,
       placeOfBirth: dto.placeOfBirth,
+      birthCountry: dto.birthCountry,
+      gender: dto.gender,
       nationality: dto.nationality,
+      secondNationality: dto.secondNationality,
       maritalStatus: dto.maritalStatus,
       dependents: dto.dependents,
       phone: dto.phone,
+      taxResidenceCountry: dto.taxResidenceCountry,
+      additionalTaxResidence: dto.additionalTaxResidence,
+      taxIdNumber: dto.taxIdNumber,
       clientType: dto.clientType,
     };
     await this.prisma.clientProfile.upsert({
@@ -357,6 +400,87 @@ export class AdminClientsService {
       create: { userId, ...data },
       update: data,
     });
+    return this.getDetail(userId);
+  }
+
+  // Saisie back-office de la pièce d'identité (cf. dossier KYC papier §4, §6 entrée #33)
+  // — pour un conseiller qui saisit un dossier reçu hors-ligne, ou qui certifie une pièce
+  // déjà déclarée par le client (`verified: true`, seul ce chemin peut le faire).
+  async updateIdentityDocument(userId: string, dto: UpdateIdentityDocumentDto) {
+    await this.assertClientExists(userId);
+    const data = {
+      documentType: dto.documentType,
+      documentNumber: dto.documentNumber,
+      issuingAuthority: dto.issuingAuthority,
+      issuePlace: dto.issuePlace,
+      issueDate: dto.issueDate ? new Date(dto.issueDate) : undefined,
+      expiryDate: dto.expiryDate ? new Date(dto.expiryDate) : undefined,
+      identityCheckMethod: dto.identityCheckMethod,
+      proofOfAddressType: dto.proofOfAddressType,
+      proofOfAddressIssuer: dto.proofOfAddressIssuer,
+      proofOfAddressDate: dto.proofOfAddressDate
+        ? new Date(dto.proofOfAddressDate)
+        : undefined,
+      verified: dto.verified,
+    };
+    await this.prisma.identityDocument.upsert({
+      where: { userId },
+      create: { userId, ...data },
+      update: data,
+    });
+    return this.getDetail(userId);
+  }
+
+  // Édition back-office du volet déclaratif du profil de conformité LCB-FT — ne touche
+  // jamais `riskLevel`/`reviewDecision` (cf. decideKyc ci-dessous, seul chemin autorisé).
+  async updateAmlProfile(userId: string, dto: UpdateAmlProfileDto) {
+    await this.assertClientExists(userId);
+    const data = {
+      isPoliticallyExposed: dto.isPoliticallyExposed,
+      fundsOrigin: dto.fundsOrigin,
+      fundsOriginOther: dto.fundsOriginOther,
+      relationshipPurpose: dto.relationshipPurpose,
+      attestationCity: dto.attestationCity,
+    };
+    await this.prisma.amlProfile.upsert({
+      where: { userId },
+      create: { userId, ...data },
+      update: data,
+    });
+    return this.getDetail(userId);
+  }
+
+  // "Avis de conformité : Validé / Refusé" (cf. dossier KYC papier §6, "Cadre réservé à
+  // la banque") — jusqu'à cette entrée (§6 CLAUDE.md #33), aucune route n'existait pour
+  // faire passer User.kycStatus de PENDING à VERIFIED/REJECTED en dehors du seed de démo.
+  // Répercute la décision aux DEUX endroits dans la même transaction (AmlProfile.
+  // riskLevel/reviewDecision/reviewedByUserId/reviewedAt ET User.kycStatus) : ce sont
+  // deux vues du même fait, jamais désynchronisées.
+  async decideKyc(userId: string, reviewerId: string, dto: DecideKycDto) {
+    await this.assertClientExists(userId);
+    const kycStatus = dto.decision === 'VALIDE' ? 'VERIFIED' : 'REJECTED';
+    await this.prisma.$transaction([
+      this.prisma.amlProfile.upsert({
+        where: { userId },
+        create: {
+          userId,
+          riskLevel: dto.riskLevel,
+          reviewDecision: dto.decision,
+          reviewedByUserId: reviewerId,
+          reviewedAt: new Date(),
+        },
+        update: {
+          riskLevel: dto.riskLevel,
+          reviewDecision: dto.decision,
+          reviewedByUserId: reviewerId,
+          reviewedAt: new Date(),
+        },
+      }),
+      this.prisma.user.update({
+        where: { id: userId },
+        data: { kycStatus },
+      }),
+    ]);
     return this.getDetail(userId);
   }
 
@@ -416,7 +540,11 @@ export class AdminClientsService {
     // présentation du dossier, jamais dupliquée entre liste et détail.
     const creditRequest = this.presentCreditRequest(user, request, position);
     const dossierStatus = buildDossierStatus(request);
-    const contract = this.presentContract(creditRequest, dossierStatus, request);
+    const contract = this.presentContract(
+      creditRequest,
+      dossierStatus,
+      request,
+    );
 
     return {
       id: clientCode(user.id),
@@ -517,11 +645,19 @@ export class AdminClientsService {
         dependents: profile?.dependents ?? 0,
         phone: profile?.phone ?? 'Non renseigné',
         email: user.email,
+        usageLastName: profile?.usageLastName ?? null,
+        birthCountry: profile?.birthCountry ?? null,
+        gender: profile?.gender ?? null,
+        secondNationality: profile?.secondNationality ?? null,
+        taxResidenceCountry: profile?.taxResidenceCountry ?? null,
+        additionalTaxResidence: profile?.additionalTaxResidence ?? null,
+        taxIdNumber: profile?.taxIdNumber ?? null,
       },
 
       addresses: (user.addresses ?? []).map((a) => ({
         label: a.label.charAt(0) + a.label.slice(1).toLowerCase(),
         street: a.street,
+        addressLine2: a.addressLine2 ?? null,
         city: a.city,
         postalCode: a.postalCode,
         country: a.country,
@@ -534,6 +670,7 @@ export class AdminClientsService {
       employment: {
         isIndependent: employment?.isIndependent ?? false,
         status: employment?.status ?? 'Non renseigné',
+        professionalStatus: employment?.professionalStatus ?? null,
         employer: employment?.employer ?? undefined,
         sector: employment?.sector ?? undefined,
         role: employment?.role ?? undefined,
@@ -541,6 +678,8 @@ export class AdminClientsService {
         annualIncome: Number(employment?.annualIncome ?? 0),
         monthlyIncome: Number(employment?.monthlyIncome ?? 0),
         contractType: employment?.contractType ?? undefined,
+        annualIncomeBracket: employment?.annualIncomeBracket ?? null,
+        netWorthBracket: employment?.netWorthBracket ?? null,
         verified: employment?.verified ?? false,
         activity: employment?.activity ?? undefined,
         turnover: employment?.turnover
@@ -549,6 +688,54 @@ export class AdminClientsService {
         netResult: employment?.netResult
           ? Number(employment.netResult)
           : undefined,
+      },
+
+      // Dossier KYC déclaratif complet (cf. §6 entrée #33) — pièce d'identité et profil
+      // de conformité LCB-FT tels que déclarés par le client (ou saisis par un
+      // conseiller), distinct du bloc `kyc` ci-dessous qui reste le résumé synthétique
+      // "statuts de vérification" déjà consommé par l'onglet KYC/Conformité.
+      kycDossier: {
+        identityDocument: {
+          documentType: user.identityDocument?.documentType ?? null,
+          documentNumber: user.identityDocument?.documentNumber ?? null,
+          issuingAuthority: user.identityDocument?.issuingAuthority ?? null,
+          issuePlace: user.identityDocument?.issuePlace ?? null,
+          issueDate: fmtDate(user.identityDocument?.issueDate),
+          expiryDate: fmtDate(user.identityDocument?.expiryDate),
+          identityCheckMethod:
+            user.identityDocument?.identityCheckMethod ?? null,
+          proofOfAddressType: user.identityDocument?.proofOfAddressType ?? null,
+          proofOfAddressIssuer:
+            user.identityDocument?.proofOfAddressIssuer ?? null,
+          proofOfAddressDate: fmtDate(
+            user.identityDocument?.proofOfAddressDate,
+          ),
+          verified: user.identityDocument?.verified ?? false,
+        },
+        aml: {
+          isPoliticallyExposed: user.amlProfile?.isPoliticallyExposed ?? null,
+          fundsOrigin: user.amlProfile?.fundsOrigin ?? [],
+          fundsOriginOther: user.amlProfile?.fundsOriginOther ?? null,
+          relationshipPurpose: user.amlProfile?.relationshipPurpose ?? [],
+          attestedAt: fmtDate(user.amlProfile?.attestedAt),
+          attestationCity: user.amlProfile?.attestationCity ?? null,
+          riskLevel: user.amlProfile?.riskLevel ?? null,
+          reviewDecision: user.amlProfile?.reviewDecision ?? null,
+          reviewedBy: user.amlProfile?.reviewedBy?.email ?? null,
+          reviewedAt: fmtDate(user.amlProfile?.reviewedAt),
+        },
+        // Fichiers réellement téléversés (cf. §6 entrée #36) — métadonnées seules,
+        // jamais le contenu binaire dans ce payload (cf. KycDocumentMeta ci-dessus).
+        documents: (user.kycDocuments ?? []).map((d) => ({
+          id: d.id,
+          category: d.category,
+          fileName: d.fileName,
+          mimeType: d.mimeType,
+          fileSize: d.fileSize,
+          uploadedAt: fmtDate(d.uploadedAt),
+          verified: d.verified,
+          verifiedAt: fmtDate(d.verifiedAt),
+        })),
       },
 
       financials: {
@@ -621,13 +808,24 @@ export class AdminClientsService {
               ? 'REJECTED'
               : 'TO_VERIFY',
         biometric: user.kycStatus === 'VERIFIED' ? 'VERIFIED' : 'PENDING',
+        // `amlProfile.reviewedAt` (horodatage réel de l'avis de conformité, cf.
+        // decideKyc) plutôt que `user.updatedAt` (qui bouge sur n'importe quel champ du
+        // User, y compris sans rapport avec le KYC — verrouillage de compte, 2FA…).
         verifiedAt:
-          user.kycStatus === 'VERIFIED' ? fmtDate(user.updatedAt) : null,
+          user.kycStatus === 'VERIFIED'
+            ? (fmtDate(user.amlProfile?.reviewedAt) ?? fmtDate(user.updatedAt))
+            : null,
         status: user.kycStatus,
-        alerts:
-          user.kycStatus === 'REJECTED'
+        alerts: [
+          ...(user.kycStatus === 'REJECTED'
             ? ['Vérification KYC refusée — dossier à réexaminer.']
-            : [],
+            : []),
+          ...(user.amlProfile?.isPoliticallyExposed
+            ? [
+                'Client déclaré comme Personne Politiquement Exposée (PPE) — vigilance renforcée requise.',
+              ]
+            : []),
+        ],
       },
 
       riskScoring,

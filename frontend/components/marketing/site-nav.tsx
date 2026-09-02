@@ -82,7 +82,7 @@ export function SiteNav() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-border/80 bg-card/70 backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:gap-6">
         <Link href="/" className="flex min-w-0 shrink items-center gap-3">
           <Image src="/brand/hentsch-mark.png" alt="" width={500} height={500} className="size-10 shrink-0 rounded-lg" />
           <div className="min-w-0">
@@ -95,7 +95,7 @@ export function SiteNav() {
         <nav
           ref={navRef}
           onMouseLeave={() => positionPill(pathname)}
-          className="relative hidden items-center gap-3 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-2.5 py-1.5 lg:flex"
+          className="relative hidden items-center gap-4 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1.5 lg:flex"
         >
           {/* Fond coulissant — un seul élément partagé, jamais un par lien : c'est ce qui
               produit l'effet de glissement (transition sur left/width) plutôt qu'un
@@ -129,15 +129,15 @@ export function SiteNav() {
           ))}
         </nav>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <LanguageSwitcher />
-          <ThemeToggle />
           <Link
             href="/login"
-            className="shrink-0 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 px-3 py-2 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md sm:px-4"
+            className="shrink-0 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md sm:text-sm"
           >
             <span className="sm:hidden">{t("connexionShort")}</span>
             <span className="hidden sm:inline">{t("connexionLong")}</span>
           </Link>
+          <LanguageSwitcher />
+          <ThemeToggle />
         </div>
       </div>
     </header>

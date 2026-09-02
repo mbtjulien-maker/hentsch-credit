@@ -101,7 +101,20 @@
     },
     "closingTitle": "Bereit, Ihre Kaufkraft freizuschalten?",
     "closingDescription": "Plattform nur für einen eingeschränkten Kundenkreis. Unser Team prüft jeden Antrag, bevor der Zugang gewährt wird.",
-    "closingCta": "Kontoeröffnung beantragen"
+    "closingCta": "Kontoeröffnung beantragen",
+    "investmentHero": {
+      "badge": "Direktanlage · Offen für verifizierte Konten",
+      "titleLine1": "Ihr Kapital arbeitet,",
+      "titleHighlight": "ohne je als Sicherheit zu dienen",
+      "subtitle": "Sechs Strategien zur Auswahl — von der RWA-Treasury bis zu Tech-Aktienkörben — mit einer echten täglichen Rendite, nie erfunden.",
+      "statValue": "8-14 %",
+      "statCaption": "indikatives Jahresrenditeziel, RWA-Strategie",
+      "statDisclaimer": "Indikatives Ziel, niemals eine Garantie",
+      "ctaDiscover": "Investition entdecken",
+      "basketsBadge": "Sechs Strategien",
+      "basketsTitle": "Ein Risikogradient, keine Einheitslösung",
+      "basketsSubtitle": "Vom vorsichtigsten bis zum dynamischsten Korb hat jeder sein eigenes indikatives Ziel."
+    }
   },
   "HowItWorks": {
     "meta": {
@@ -1151,7 +1164,8 @@
         "cards": "Karten",
         "history": "Verlauf",
         "profile": "Profil",
-        "support": "Support"
+        "support": "Support",
+        "kyc": "KYC-Verifizierung"
       },
       "backoffice": {
         "label": "Back-office",
@@ -1170,7 +1184,22 @@
   },
   "Dashboard": {
     "home": {
-      "loadError": "Dashboard konnte nicht geladen werden"
+      "loadError": "Dashboard konnte nicht geladen werden",
+      "overview": {
+        "mainWallet": {
+          "title": "Haupt-Wallet",
+          "description": "Verfügbares Guthaben Ihrer Haupt-Wallet, ohne Sicherheit und ohne Investment-Wallet."
+        },
+        "credit": {
+          "title": "Kredit",
+          "description": "{available} verbleibend · {used} genutzt",
+          "descriptionNoCredit": "Noch keine aktive Linie — beantragen Sie einen Kredit im Bereich Kredit."
+        },
+        "investment": {
+          "title": "Investition",
+          "description": "Guthaben der Investment-Wallet, aufgefüllt per interner Überweisung von Ihrem Hauptguthaben."
+        }
+      }
     },
     "balanceCards": {
       "depositBalance": {
@@ -1315,7 +1344,9 @@
         "INVESTMENT_YIELD_ACCRUAL": "Investment-Rendite",
         "FIXED_TERM_DEPOSIT": "Festlaufzeit-Einzahlung",
         "FIXED_TERM_YIELD_ACCRUAL": "Festlaufzeit-Rendite",
-        "FIXED_TERM_MATURITY_PAYOUT": "Abrechnung bei Fälligkeit"
+        "FIXED_TERM_MATURITY_PAYOUT": "Abrechnung bei Fälligkeit",
+        "INVESTMENT_WALLET_TRANSFER_IN": "Überweisung in die Investment-Wallet",
+        "INVESTMENT_WALLET_TRANSFER_OUT": "Überweisung aus der Investment-Wallet"
       },
       "transactionStatus": {
         "PENDING": "Ausstehend",
@@ -1776,6 +1807,194 @@
         "confirmLock": "Sperrung bestätigen",
         "cancel": "Abbrechen",
         "depositSuccess": "Einzahlung erfolgt: Ihre Mittel sind bis zur Fälligkeit des Plans gesperrt."
+      },
+      "wallet": {
+        "title": "Investment-Wallet",
+        "description": "Ein vom Hauptguthaben getrenntes Guthaben, das Ihren Anlagen gewidmet ist. Füllen Sie es per interner Überweisung aus Ihrem Hauptguthaben auf — dieselben Einzahlungsadressen und akzeptierten Vermögenswerte, unverändert.",
+        "mainBalance": "Hauptguthaben",
+        "walletBalance": "Investment-Wallet",
+        "directionIn": "Zum Wallet",
+        "directionOut": "Vom Wallet",
+        "amountPlaceholder": "Betrag in $US",
+        "transfer": "Überweisen",
+        "quickMax": "MAX",
+        "insufficientBalance": "Unzureichendes Guthaben",
+        "transferInSuccess": "Mittel auf das Investment-Wallet übertragen.",
+        "transferOutSuccess": "Mittel zurück auf das Hauptguthaben übertragen."
+      },
+      "tabs": {
+        "baskets": "Körbe",
+        "fixedTerm": "Festlaufzeit-Pläne",
+        "myPlacements": "Meine Anlagen"
+      },
+      "myPlacements": {
+        "title": "Aktive Anlagen",
+        "maturedTitle": "Abgerechnete Anlagen",
+        "empty": "Derzeit keine laufenden Anlagen.",
+        "freeWithdrawal": "Jederzeit frei kündbar",
+        "daysRemaining": "{days, plural, =0 {Fällig heute} one {noch # Tag} other {noch # Tage}}",
+        "maturityDate": "Fälligkeit",
+        "estimatedReturn": "Ziel bei Fälligkeit"
+      }
+    },
+    "kycDossier": {
+      "title": "KYC-Dossier",
+      "description": "Vervollständigen und übermitteln Sie Ihr Identifizierungsdossier zur Kontoeröffnung — angelehnt an das regulatorische AML/CFT-Formular.",
+      "genericError": "Ein Fehler ist aufgetreten.",
+      "saveSuccess": "Dossier gespeichert.",
+      "submitSuccess": "Dossier zur Prüfung eingereicht.",
+      "notSubmittedNote": "Dossier noch nicht eingereicht — füllen Sie die untenstehenden Abschnitte aus und bestätigen Sie die Erklärung.",
+      "pendingReviewNote": "Eingereicht am {date}, Prüfung durch einen Berater steht noch aus.",
+      "reviewedValidNote": "Genehmigt am {date}.",
+      "reviewedRejectedNote": "Abgelehnt am {date} — bitte erneut vervollständigen.",
+      "decisionLabels": {
+        "VALIDE": "Genehmigt",
+        "REFUSE": "Abgelehnt"
+      },
+      "riskLabels": {
+        "FAIBLE": "Geringes Risiko",
+        "STANDARD": "Standardrisiko",
+        "ELEVE": "Hohes Risiko"
+      },
+      "sections": {
+        "civil": "Personenstand",
+        "address": "Kontaktdaten und steuerlicher Wohnsitz",
+        "employment": "Berufliche Situation",
+        "documents": "Belege",
+        "compliance": "AML/CFT-Konformität und Erklärung"
+      },
+      "firstName": "Vorname",
+      "lastName": "Geburtsname",
+      "usageLastName": "Gebrauchsname (optional)",
+      "dateOfBirth": "Geburtsdatum",
+      "gender": "Geschlecht",
+      "genderLabels": {
+        "M": "Männlich",
+        "F": "Weiblich",
+        "AUTRE": "Andere"
+      },
+      "maritalStatus": "Familienstand",
+      "placeOfBirth": "Geburtsort",
+      "birthCountry": "Geburtsland",
+      "nationality": "Staatsangehörigkeit",
+      "secondNationality": "Zweite Staatsangehörigkeit (optional)",
+      "phone": "Telefon",
+      "street": "Wohnadresse",
+      "addressLine2": "Adresszusatz",
+      "postalCode": "Postleitzahl",
+      "city": "Stadt",
+      "country": "Land",
+      "taxResidenceCountry": "Land des steuerlichen Wohnsitzes",
+      "taxIdNumber": "Steueridentifikationsnummer",
+      "additionalTaxResidence": "Zusätzlicher steuerlicher Wohnsitz (FATCA/CRS)",
+      "professionalStatus": "Berufsstatus",
+      "professionalStatusLabels": {
+        "SALARIE": "Angestellt",
+        "FONCTIONNAIRE": "Beamter",
+        "INDEPENDANT": "Selbstständig",
+        "DIRIGEANT": "Unternehmensleiter",
+        "RETRAITE": "Rentner",
+        "ETUDIANT": "Student",
+        "SANS_EMPLOI": "Arbeitslos / Sonstiges"
+      },
+      "activity": "Tätigkeit",
+      "employer": "Arbeitgeber",
+      "role": "Position",
+      "sector": "Branche",
+      "seniority": "Betriebszugehörigkeit",
+      "annualIncomeBracket": "Netto-Jahreseinkommen (Bandbreite)",
+      "selectPlaceholder": "Auswählen…",
+      "incomeBracketLabels": {
+        "LT_20K": "< 20.000 €",
+        "B20K_50K": "20.000 - 50.000 €",
+        "B50K_100K": "50.000 - 100.000 €",
+        "B100K_250K": "100.000 - 250.000 €",
+        "GT_250K": "> 250.000 €"
+      },
+      "netWorthBracket": "Geschätztes Gesamtvermögen",
+      "netWorthBracketLabels": {
+        "LT_100K": "< 100.000 €",
+        "B100K_500K": "100.000 - 500.000 €",
+        "B500K_1M": "500.000 - 1 Mio. €",
+        "GT_1M": "> 1 Mio. €"
+      },
+      "documentVerified": "Verifiziert",
+      "documentNotVerified": "Nicht verifiziert",
+      "documentsNote": "Die untenstehenden Metadaten sind deklarativ; die untenstehenden Dateien (JPEG, PNG oder PDF, max. 5 MB) werden tatsächlich hochgeladen und gespeichert.",
+      "documentType": "Art des Ausweisdokuments",
+      "documentTypeLabels": {
+        "CNI": "Personalausweis",
+        "PASSEPORT": "Biometrischer Reisepass",
+        "TITRE_SEJOUR": "Aufenthaltstitel"
+      },
+      "documentNumber": "Dokumentennummer",
+      "issuingAuthority": "Ausstellende Behörde",
+      "issuePlace": "Ausstellungsort",
+      "issueDate": "Ausgestellt am",
+      "expiryDate": "Gültig bis",
+      "identityCheckMethod": "Art der Identitätsprüfung",
+      "identityCheckMethodLabels": {
+        "FACE_A_FACE": "Persönlich vor Ort",
+        "PVID": "Zertifizierte Video-Identifizierung",
+        "EIDAS": "Elektronische eIDAS-Identifizierung"
+      },
+      "proofOfAddressType": "Wohnsitznachweis",
+      "proofOfAddressTypeLabels": {
+        "FACTURE": "Strom-/Gas-/Wasserrechnung",
+        "AVIS_IMPOSITION": "Aktueller Steuerbescheid",
+        "QUITTANCE": "Mietquittung"
+      },
+      "proofOfAddressIssuer": "Aussteller des Dokuments",
+      "save": "Speichern",
+      "isPoliticallyExposed": "Politisch exponierte Person (PEP)",
+      "yes": "Ja",
+      "no": "Nein",
+      "fundsOrigin": "Herkunft der Mittel / Anfangsvermögen",
+      "fundsOriginLabels": {
+        "REVENUS_PROFESSIONNELS": "Berufseinkommen",
+        "EPARGNE": "Persönliche Ersparnisse",
+        "VENTE_BIENS": "Verkauf von Vermögenswerten",
+        "HERITAGE": "Erbschaft / Schenkung",
+        "DIVIDENDES": "Dividenden / Unternehmensverkauf",
+        "AUTRE": "Sonstiges"
+      },
+      "fundsOriginOther": "Bitte angeben",
+      "relationshipPurpose": "Zweck und Art der Geschäftsbeziehung",
+      "relationshipPurposeLabels": {
+        "COMPTE_COURANT": "Girokonto und laufende Zahlungen",
+        "PLACEMENT": "Anlage, Sparen und Vermögensverwaltung",
+        "FINANCEMENT": "Finanzierung / Kredit",
+        "OPERATIONS_INTERNATIONALES": "Regelmäßige internationale Transaktionen"
+      },
+      "attestationCity": "Ausgestellt in",
+      "attestationText": "Ich bestätige die Richtigkeit der oben angegebenen Informationen („Gelesen und genehmigt“).",
+      "attestationRequired": "Bestätigen Sie die Erklärung, um das Dossier einzureichen.",
+      "submitDossier": "Dossier einreichen",
+      "maritalStatusLabels": {
+        "CELIBATAIRE": "Ledig",
+        "MARIE": "Verheiratet",
+        "PACSE": "Eingetragene Partnerschaft",
+        "DIVORCE": "Geschieden",
+        "VEUF": "Verwitwet"
+      },
+      "proofOfAddressDate": "Dokumentdatum",
+      "identityFrontLabel": "Ausweisdokument (Vorderseite)",
+      "identityBackLabel": "Ausweisdokument (Rückseite, falls zutreffend)",
+      "proofOfAddressFileLabel": "Datei des Wohnsitznachweises",
+      "noFileUploaded": "Noch keine Datei hochgeladen.",
+      "uploadFile": "Hochladen",
+      "replaceFile": "Ersetzen",
+      "removeFile": "Datei entfernen"
+    },
+    "termsAcceptance": {
+      "readFull": "Vollständige AGB lesen →",
+      "credit": {
+        "summary": "Mit dieser Anfrage verpfänden Sie den angegebenen Betrag als Sicherheit: Es wird Ihnen ein Kredit in Höhe von 350% dieses Betrags zu 13,5%/Jahr (USD) bzw. 12%/Jahr (EUR) gewährt, zuzüglich 2% Bearbeitungsgebühr bei Auszahlung. Die Sicherheit bleibt gesperrt, bis der genutzte Kredit vollständig zurückgezahlt ist, und kann automatisch liquidiert werden, wenn ihr Wert seit Einbuchung um 50% fällt (Warnung ab 30%) — bereits genutzter Kredit bliebe auch nach Liquidation der Sicherheit geschuldet.",
+        "checkboxLabel": "Ich habe die AGB zum besicherten Kredit gelesen und stimme ihnen zu."
+      },
+      "investment": {
+        "summary": "Mit Bestätigung dieser Anlage erkennen Sie an, dass es sich um eine echte Investition handelt, niemals um eine Sicherheit: Das angelegte Kapital ist nicht garantiert und kann an Wert verlieren, wenn die Tagesrendite des gewählten Korbs oder Plans negativ ist. Angezeigte Renditeziele sind indikativ, niemals eine Performance-Garantie.",
+        "checkboxLabel": "Ich habe die AGB zur Direktanlage gelesen und stimme ihnen zu."
       }
     }
   },

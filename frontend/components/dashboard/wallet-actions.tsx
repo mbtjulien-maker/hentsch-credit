@@ -36,7 +36,7 @@ import {
   type ManagedDepositAddress,
   type WithdrawalRequest,
 } from "@/lib/api";
-import { CHAIN_LABELS, formatUsd } from "@/lib/format";
+import { CHAIN_LABELS, DEPOSIT_CURRENCY_GROUPS, formatUsd } from "@/lib/format";
 import { useCurrencyLabel } from "@/lib/use-currency-label";
 import { isSepaEligibleIban, isValidBic, isValidIban } from "@/lib/iban";
 
@@ -259,7 +259,7 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
           <div className="flex flex-col gap-4">
             <div className="grid gap-2">
               <Label>{t("deposit.assetLabel")}</Label>
-              <AssetList value={currency} onChange={setCurrency} />
+              <AssetList value={currency} onChange={setCurrency} groups={DEPOSIT_CURRENCY_GROUPS} />
             </div>
             <div className="grid gap-2">
               <Label>{t("deposit.networkLabel")}</Label>

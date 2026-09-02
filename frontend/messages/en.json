@@ -101,7 +101,20 @@
     },
     "closingTitle": "Ready to unlock your purchasing power?",
     "closingDescription": "Platform reserved for a limited clientele. Our team reviews every application before granting access.",
-    "closingCta": "Request an account"
+    "closingCta": "Request an account",
+    "investmentHero": {
+      "badge": "Direct investment · Open to verified accounts",
+      "titleLine1": "Your capital, put to work,",
+      "titleHighlight": "never used as collateral",
+      "subtitle": "Six strategies to choose from — from RWA treasury to tech-stock baskets — with a real daily return, never fabricated.",
+      "statValue": "8-14%",
+      "statCaption": "indicative annual return target, RWA strategy",
+      "statDisclaimer": "Indicative target, never a guarantee",
+      "ctaDiscover": "Discover investment",
+      "basketsBadge": "Six strategies",
+      "basketsTitle": "A risk gradient, not a single box",
+      "basketsSubtitle": "From the most conservative to the most dynamic, each basket has its own indicative target."
+    }
   },
   "HowItWorks": {
     "meta": {
@@ -1151,7 +1164,8 @@
         "cards": "Cards",
         "history": "History",
         "profile": "Profile",
-        "support": "Support"
+        "support": "Support",
+        "kyc": "KYC verification"
       },
       "backoffice": {
         "label": "Back-office",
@@ -1170,7 +1184,22 @@
   },
   "Dashboard": {
     "home": {
-      "loadError": "Unable to load the dashboard"
+      "loadError": "Unable to load the dashboard",
+      "overview": {
+        "mainWallet": {
+          "title": "Main wallet",
+          "description": "Available balance on your main wallet, excluding collateral and the investment wallet."
+        },
+        "credit": {
+          "title": "Credit",
+          "description": "{available} remaining · {used} used",
+          "descriptionNoCredit": "No active line yet — request credit from the Credit tab."
+        },
+        "investment": {
+          "title": "Investment",
+          "description": "Investment wallet balance, funded by internal transfer from your main balance."
+        }
+      }
     },
     "balanceCards": {
       "depositBalance": {
@@ -1315,7 +1344,9 @@
         "INVESTMENT_YIELD_ACCRUAL": "Investment yield",
         "FIXED_TERM_DEPOSIT": "Fixed-term deposit",
         "FIXED_TERM_YIELD_ACCRUAL": "Fixed-term yield",
-        "FIXED_TERM_MATURITY_PAYOUT": "Maturity payout"
+        "FIXED_TERM_MATURITY_PAYOUT": "Maturity payout",
+        "INVESTMENT_WALLET_TRANSFER_IN": "Transfer to investment wallet",
+        "INVESTMENT_WALLET_TRANSFER_OUT": "Transfer from investment wallet"
       },
       "transactionStatus": {
         "PENDING": "Pending",
@@ -1776,6 +1807,194 @@
         "confirmLock": "Confirm lock-up",
         "cancel": "Cancel",
         "depositSuccess": "Deposit made: your funds are locked until the plan's maturity."
+      },
+      "wallet": {
+        "title": "Investment wallet",
+        "description": "A balance separate from your main balance, dedicated to your placements. Fund it via internal transfer from your main balance — same deposit addresses and accepted assets, unchanged.",
+        "mainBalance": "Main balance",
+        "walletBalance": "Investment wallet",
+        "directionIn": "To the wallet",
+        "directionOut": "From the wallet",
+        "amountPlaceholder": "Amount in $US",
+        "transfer": "Transfer",
+        "quickMax": "MAX",
+        "insufficientBalance": "Insufficient balance",
+        "transferInSuccess": "Funds transferred to the investment wallet.",
+        "transferOutSuccess": "Funds moved back to the main balance."
+      },
+      "tabs": {
+        "baskets": "Baskets",
+        "fixedTerm": "Fixed-term plans",
+        "myPlacements": "My placements"
+      },
+      "myPlacements": {
+        "title": "Active placements",
+        "maturedTitle": "Settled placements",
+        "empty": "No placements in progress at the moment.",
+        "freeWithdrawal": "Free withdrawal at any time",
+        "daysRemaining": "{days, plural, =0 {Matures today} one {# day remaining} other {# days remaining}}",
+        "maturityDate": "Maturity",
+        "estimatedReturn": "Target at maturity"
+      }
+    },
+    "kycDossier": {
+      "title": "KYC file",
+      "description": "Complete and submit your identification file for account opening — inspired by the AML/CFT regulatory form.",
+      "genericError": "Something went wrong.",
+      "saveSuccess": "File saved.",
+      "submitSuccess": "File submitted for review.",
+      "notSubmittedNote": "File not submitted yet — fill in the sections below, then confirm the attestation.",
+      "pendingReviewNote": "Submitted on {date}, awaiting review by an advisor.",
+      "reviewedValidNote": "Approved on {date}.",
+      "reviewedRejectedNote": "Rejected on {date} — please complete it again.",
+      "decisionLabels": {
+        "VALIDE": "Approved",
+        "REFUSE": "Rejected"
+      },
+      "riskLabels": {
+        "FAIBLE": "Low risk",
+        "STANDARD": "Standard risk",
+        "ELEVE": "High risk"
+      },
+      "sections": {
+        "civil": "Personal details",
+        "address": "Contact details and tax residence",
+        "employment": "Employment situation",
+        "documents": "Supporting documents",
+        "compliance": "AML/CFT compliance and attestation"
+      },
+      "firstName": "First name",
+      "lastName": "Birth surname",
+      "usageLastName": "Usage surname (optional)",
+      "dateOfBirth": "Date of birth",
+      "gender": "Gender",
+      "genderLabels": {
+        "M": "Male",
+        "F": "Female",
+        "AUTRE": "Other"
+      },
+      "maritalStatus": "Marital status",
+      "placeOfBirth": "City of birth",
+      "birthCountry": "Country of birth",
+      "nationality": "Nationality",
+      "secondNationality": "Second nationality (optional)",
+      "phone": "Phone",
+      "street": "Home address",
+      "addressLine2": "Address line 2",
+      "postalCode": "Postal code",
+      "city": "City",
+      "country": "Country",
+      "taxResidenceCountry": "Country of tax residence",
+      "taxIdNumber": "Tax ID number",
+      "additionalTaxResidence": "Additional tax residence (FATCA/CRS)",
+      "professionalStatus": "Employment status",
+      "professionalStatusLabels": {
+        "SALARIE": "Employee",
+        "FONCTIONNAIRE": "Civil servant",
+        "INDEPENDANT": "Self-employed",
+        "DIRIGEANT": "Company director",
+        "RETRAITE": "Retired",
+        "ETUDIANT": "Student",
+        "SANS_EMPLOI": "Unemployed / other"
+      },
+      "activity": "Activity",
+      "employer": "Employer",
+      "role": "Position",
+      "sector": "Sector",
+      "seniority": "Seniority",
+      "annualIncomeBracket": "Net annual income bracket",
+      "selectPlaceholder": "Select…",
+      "incomeBracketLabels": {
+        "LT_20K": "< $20,000",
+        "B20K_50K": "$20k - $50k",
+        "B50K_100K": "$50k - $100k",
+        "B100K_250K": "$100k - $250k",
+        "GT_250K": "> $250,000"
+      },
+      "netWorthBracket": "Estimated net worth",
+      "netWorthBracketLabels": {
+        "LT_100K": "< $100k",
+        "B100K_500K": "$100k - $500k",
+        "B500K_1M": "$500k - $1M",
+        "GT_1M": "> $1M"
+      },
+      "documentVerified": "Verified",
+      "documentNotVerified": "Not verified",
+      "documentsNote": "The metadata below is declarative; the files below (JPEG, PNG or PDF, 5 MB max) are actually uploaded and stored.",
+      "documentType": "ID document type",
+      "documentTypeLabels": {
+        "CNI": "National ID card",
+        "PASSEPORT": "Biometric passport",
+        "TITRE_SEJOUR": "Residence permit"
+      },
+      "documentNumber": "Document number",
+      "issuingAuthority": "Issuing authority",
+      "issuePlace": "Place of issue",
+      "issueDate": "Issued on",
+      "expiryDate": "Expires on",
+      "identityCheckMethod": "Identity check method",
+      "identityCheckMethodLabels": {
+        "FACE_A_FACE": "In-branch, face to face",
+        "PVID": "Certified video identification",
+        "EIDAS": "eIDAS electronic identification"
+      },
+      "proofOfAddressType": "Proof of address",
+      "proofOfAddressTypeLabels": {
+        "FACTURE": "Utility bill",
+        "AVIS_IMPOSITION": "Recent tax notice",
+        "QUITTANCE": "Rent receipt"
+      },
+      "proofOfAddressIssuer": "Document issuer",
+      "save": "Save",
+      "isPoliticallyExposed": "Politically Exposed Person (PEP)",
+      "yes": "Yes",
+      "no": "No",
+      "fundsOrigin": "Source of funds / initial wealth",
+      "fundsOriginLabels": {
+        "REVENUS_PROFESSIONNELS": "Employment income",
+        "EPARGNE": "Personal savings",
+        "VENTE_BIENS": "Sale of assets",
+        "HERITAGE": "Inheritance / gift",
+        "DIVIDENDES": "Dividends / sale of business",
+        "AUTRE": "Other"
+      },
+      "fundsOriginOther": "Please specify",
+      "relationshipPurpose": "Purpose and nature of the business relationship",
+      "relationshipPurposeLabels": {
+        "COMPTE_COURANT": "Current account and everyday payments",
+        "PLACEMENT": "Investment, savings and wealth management",
+        "FINANCEMENT": "Financing / credit",
+        "OPERATIONS_INTERNATIONALES": "Regular international transactions"
+      },
+      "attestationCity": "Signed in",
+      "attestationText": "I certify that the information declared above is accurate (“Read and approved”).",
+      "attestationRequired": "Check the attestation to submit the file.",
+      "submitDossier": "Submit file",
+      "maritalStatusLabels": {
+        "CELIBATAIRE": "Single",
+        "MARIE": "Married",
+        "PACSE": "Civil partnership",
+        "DIVORCE": "Divorced",
+        "VEUF": "Widowed"
+      },
+      "proofOfAddressDate": "Document date",
+      "identityFrontLabel": "ID document (front)",
+      "identityBackLabel": "ID document (back, if applicable)",
+      "proofOfAddressFileLabel": "Proof of address file",
+      "noFileUploaded": "No file uploaded yet.",
+      "uploadFile": "Upload",
+      "replaceFile": "Replace",
+      "removeFile": "Remove file"
+    },
+    "termsAcceptance": {
+      "readFull": "Read the full Terms →",
+      "credit": {
+        "summary": "By submitting this request, you pledge the stated amount as collateral: credit equal to 350% of that amount is granted at 13.5%/yr (USD) or 12%/yr (EUR), with a 2% origination fee charged at issuance. The collateral stays locked until used credit is repaid in full, and can be automatically liquidated if its value drops 50% from entry (warning from 30%) — credit already used would still be owed even after the collateral is liquidated.",
+        "checkboxLabel": "I have read and agree to the Terms of Service governing collateralized credit."
+      },
+      "investment": {
+        "summary": "By confirming this placement, you acknowledge it is a real investment, never collateral: the capital placed is not guaranteed and can lose value if the chosen basket's or plan's daily return is negative. Displayed return targets are indicative, never a performance guarantee.",
+        "checkboxLabel": "I have read and agree to the Terms of Service governing direct investment."
       }
     }
   },

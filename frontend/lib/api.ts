@@ -6,7 +6,7 @@ export type KycStatus = "PENDING" | "VERIFIED" | "REJECTED";
 
 export type CardStatus = "PENDING" | "ACTIVE" | "BLOCKED" | "CLOSED";
 
-export type Chain = "ETHEREUM" | "POLYGON" | "ARBITRUM" | "TRON" | "SOLANA";
+export type Chain = "ETHEREUM" | "POLYGON" | "ARBITRUM" | "TRON" | "SOLANA" | "BSC";
 
 export type AcceptedCurrency =
   | "USDS"
@@ -120,6 +120,12 @@ export interface LedgerBalance {
   lockedCollateral: string;
   grantedCredit: string;
   usedCredit: string;
+  // Wallet investissement (cf. §2H CLAUDE.md entrée #31) — solde SÉPARÉ
+  // d'availableBalance, dédié aux 6 paniers perpétuels et aux 6 plans à échéance fixe.
+  // Alimenté uniquement par virement interne (cf. api.transferToInvestmentWallet), jamais
+  // par un dépôt on-chain/bancaire direct. N'entre jamais dans le calcul du Pouvoir
+  // d'Achat Total (§2A CLAUDE.md) : un placement, ni un gage ni un crédit.
+  investmentBalance: string;
   updatedAt: string;
 }
 
@@ -586,18 +592,26 @@ export interface AdminNoteRecord {
 export interface UpdateClientProfileInput {
   firstName?: string;
   lastName?: string;
+  usageLastName?: string;
   dateOfBirth?: string;
   placeOfBirth?: string;
+  birthCountry?: string;
+  gender?: "M" | "F" | "AUTRE";
   nationality?: string;
+  secondNationality?: string;
   maritalStatus?: string;
   dependents?: number;
   phone?: string;
+  taxResidenceCountry?: string;
+  additionalTaxResidence?: string;
+  taxIdNumber?: string;
   clientType?: "PARTICULIER" | "INDEPENDANT" | "ENTREPRISE";
 }
 
 export interface AdminAddressInput {
   label: "DOMICILE" | "FISCALE" | "POSTALE" | "PROFESSIONNELLE";
   street: string;
+  addressLine2?: string;
   city: string;
   postalCode: string;
   country: string;
@@ -606,9 +620,22 @@ export interface AdminAddressInput {
   verified?: boolean;
 }
 
+export type ProfessionalStatus =
+  | "SALARIE"
+  | "FONCTIONNAIRE"
+  | "INDEPENDANT"
+  | "DIRIGEANT"
+  | "RETRAITE"
+  | "ETUDIANT"
+  | "SANS_EMPLOI";
+
+export type IncomeBracket = "LT_20K" | "B20K_50K" | "B50K_100K" | "B100K_250K" | "GT_250K";
+export type NetWorthBracket = "LT_100K" | "B100K_500K" | "B500K_1M" | "GT_1M";
+
 export interface UpdateEmploymentInput {
   isIndependent?: boolean;
   status?: string;
+  professionalStatus?: ProfessionalStatus;
   employer?: string;
   sector?: string;
   role?: string;
@@ -620,6 +647,65 @@ export interface UpdateEmploymentInput {
   activity?: string;
   turnover?: number;
   netResult?: number;
+  annualIncomeBracket?: IncomeBracket;
+  netWorthBracket?: NetWorthBracket;
+}
+
+export type MaritalStatus = "CELIBATAIRE" | "MARIE" | "PACSE" | "DIVORCE" | "VEUF";
+export type IdentityDocumentType = "CNI" | "PASSEPORT" | "TITRE_SEJOUR";
+export type IdentityCheckMethod = "FACE_A_FACE" | "PVID" | "EIDAS";
+export type ProofOfAddressType = "FACTURE" | "AVIS_IMPOSITION" | "QUITTANCE";
+export type FundsOrigin =
+  | "REVENUS_PROFESSIONNELS"
+  | "EPARGNE"
+  | "VENTE_BIENS"
+  | "HERITAGE"
+  | "DIVIDENDES"
+  | "AUTRE";
+export type RelationshipPurpose =
+  | "COMPTE_COURANT"
+  | "PLACEMENT"
+  | "FINANCEMENT"
+  | "OPERATIONS_INTERNATIONALES";
+export type AmlRiskLevel = "FAIBLE" | "STANDARD" | "ELEVE";
+export type KycReviewDecision = "VALIDE" | "REFUSE";
+
+export interface IdentityDocumentInput {
+  documentType?: IdentityDocumentType;
+  documentNumber?: string;
+  issuingAuthority?: string;
+  issuePlace?: string;
+  issueDate?: string;
+  expiryDate?: string;
+  identityCheckMethod?: IdentityCheckMethod;
+  proofOfAddressType?: ProofOfAddressType;
+  proofOfAddressIssuer?: string;
+  proofOfAddressDate?: string;
+}
+
+// Fichiers réellement téléversés à l'appui du dossier KYC (cf. §6 entrée #36 CLAUDE.md)
+// — distinct d'IdentityDocumentInput ci-dessus (purement déclaratif, métadonnées
+// seulement) : ce sont ici de vrais fichiers stockés côté serveur.
+export type KycDocumentCategory = "IDENTITY_FRONT" | "IDENTITY_BACK" | "PROOF_OF_ADDRESS";
+
+export interface KycDocumentSummary {
+  id: string;
+  category: KycDocumentCategory;
+  fileName: string;
+  mimeType: string;
+  fileSize: number;
+  uploadedAt: string;
+  verified: boolean;
+  verifiedAt: string | null;
+}
+
+export interface SubmitAmlProfileInput {
+  isPoliticallyExposed?: boolean;
+  fundsOrigin?: FundsOrigin[];
+  fundsOriginOther?: string;
+  relationshipPurpose?: RelationshipPurpose[];
+  attestationCity?: string;
+  confirmAttestation: boolean;
 }
 
 export interface UpdateFinancialsInput {
@@ -658,6 +744,7 @@ export interface UpdateFinancialsInput {
 export interface ClientProfileAddress {
   label: "DOMICILE" | "FISCALE" | "POSTALE" | "PROFESSIONNELLE";
   street: string;
+  addressLine2: string | null;
   city: string;
   postalCode: string;
   country: string;
@@ -669,6 +756,7 @@ export interface ClientProfileAddress {
 export interface ClientProfileEmployment {
   isIndependent: boolean;
   status: string | null;
+  professionalStatus: ProfessionalStatus | null;
   employer: string | null;
   sector: string | null;
   role: string | null;
@@ -676,24 +764,61 @@ export interface ClientProfileEmployment {
   annualIncome: number | null;
   monthlyIncome: number | null;
   contractType: string | null;
+  annualIncomeBracket: IncomeBracket | null;
+  netWorthBracket: NetWorthBracket | null;
   verified: boolean;
   activity: string | null;
   turnover: number | null;
   netResult: number | null;
 }
 
+export interface ClientProfileIdentityDocument {
+  documentType: IdentityDocumentType | null;
+  documentNumber: string | null;
+  issuingAuthority: string | null;
+  issuePlace: string | null;
+  issueDate: string | null;
+  expiryDate: string | null;
+  identityCheckMethod: IdentityCheckMethod | null;
+  proofOfAddressType: ProofOfAddressType | null;
+  proofOfAddressIssuer: string | null;
+  proofOfAddressDate: string | null;
+  verified: boolean;
+}
+
+export interface ClientProfileAml {
+  isPoliticallyExposed: boolean | null;
+  fundsOrigin: FundsOrigin[];
+  fundsOriginOther: string | null;
+  relationshipPurpose: RelationshipPurpose[];
+  attestedAt: string | null;
+  attestationCity: string | null;
+  riskLevel: AmlRiskLevel | null;
+  reviewDecision: KycReviewDecision | null;
+  reviewedAt: string | null;
+}
+
 export interface ClientProfileView {
   firstName: string | null;
   lastName: string | null;
+  usageLastName: string | null;
   phone: string | null;
   dateOfBirth: string | null;
   placeOfBirth: string | null;
+  birthCountry: string | null;
+  gender: "M" | "F" | "AUTRE" | null;
   nationality: string | null;
+  secondNationality: string | null;
   maritalStatus: string | null;
   dependents: number | null;
+  taxResidenceCountry: string | null;
+  additionalTaxResidence: string | null;
+  taxIdNumber: string | null;
   clientType: "PARTICULIER" | "INDEPENDANT" | "ENTREPRISE";
   addresses: ClientProfileAddress[];
   employment: ClientProfileEmployment | null;
+  identityDocument: ClientProfileIdentityDocument | null;
+  aml: ClientProfileAml | null;
 }
 
 // Auto-déclaration client (cf. UserProfileController PATCH/PUT) — sous-ensemble des
@@ -701,17 +826,27 @@ export interface ClientProfileView {
 export interface UpdateOwnProfileInput {
   firstName?: string;
   lastName?: string;
+  usageLastName?: string;
   dateOfBirth?: string;
   placeOfBirth?: string;
+  birthCountry?: string;
+  gender?: "M" | "F" | "AUTRE";
   nationality?: string;
-  maritalStatus?: string;
+  secondNationality?: string;
+  // Choix fermé du dossier KYC papier (cf. §6 entrée #35 CLAUDE.md), contrairement à
+  // UpdateClientProfileInput (admin, ci-dessus) resté en texte libre pour compat.
+  maritalStatus?: MaritalStatus;
   dependents?: number;
   phone?: string;
+  taxResidenceCountry?: string;
+  additionalTaxResidence?: string;
+  taxIdNumber?: string;
 }
 
 export interface UpdateOwnAddressInput {
   label: ClientProfileAddress["label"];
   street: string;
+  addressLine2?: string;
   city: string;
   postalCode: string;
   country: string;
@@ -722,6 +857,7 @@ export interface UpdateOwnAddressInput {
 export interface UpdateOwnEmploymentInput {
   isIndependent?: boolean;
   status?: string;
+  professionalStatus?: ProfessionalStatus;
   employer?: string;
   sector?: string;
   role?: string;
@@ -730,6 +866,8 @@ export interface UpdateOwnEmploymentInput {
   monthlyIncome?: number;
   contractType?: string;
   activity?: string;
+  annualIncomeBracket?: IncomeBracket;
+  netWorthBracket?: NetWorthBracket;
 }
 
 export class ApiError extends Error {
@@ -756,6 +894,22 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     throw new ApiError(body?.message ?? `Requête échouée (${res.status})`, res.status);
   }
 
+  return res.json() as Promise<T>;
+}
+
+// Distinct de `request()` : un envoi multipart/form-data ne doit JAMAIS fixer
+// Content-Type à la main (le navigateur y ajoute le boundary lui-même à partir du
+// FormData) — request() force `application/json`, inutilisable ici.
+async function uploadFile<T>(path: string, formData: FormData): Promise<T> {
+  const res = await fetch(`${API_URL}${path}`, {
+    method: "POST",
+    credentials: "include",
+    body: formData,
+  });
+  if (!res.ok) {
+    const body = await res.json().catch(() => null);
+    throw new ApiError(body?.message ?? `Requête échouée (${res.status})`, res.status);
+  }
   return res.json() as Promise<T>;
 }
 
@@ -815,6 +969,37 @@ export const api = {
       method: "PATCH",
       body: JSON.stringify(data),
     }),
+  updateUserIdentityDocument: (userId: string, data: IdentityDocumentInput) =>
+    request<ClientProfileView>(`/users/${userId}/profile/identity-document`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    }),
+  // Dernière étape du dossier KYC — attestation "Lu et approuvé" obligatoire
+  // (`confirmAttestation: true`, cf. SubmitOwnAmlProfileDto côté backend).
+  submitUserAmlProfile: (userId: string, data: SubmitAmlProfileInput) =>
+    request<ClientProfileView>(`/users/${userId}/profile/aml`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    }),
+  // Fichiers KYC réels (cf. §6 entrée #36) — listUserKycDocuments ne renvoie jamais le
+  // contenu binaire (métadonnées seules) ; getKycDocumentDownloadUrl construit l'URL de
+  // téléchargement direct (consommée via <a href> plutôt que fetch : le cookie de
+  // session, SameSite=Lax, n'accompagne qu'une vraie navigation, pas un appel AJAX
+  // cross-origin — cf. AuthController).
+  listUserKycDocuments: (userId: string) =>
+    request<KycDocumentSummary[]>(`/users/${userId}/profile/documents`),
+  uploadUserKycDocument: (userId: string, category: KycDocumentCategory, file: File) => {
+    const formData = new FormData();
+    formData.append("category", category);
+    formData.append("file", file);
+    return uploadFile<KycDocumentSummary[]>(`/users/${userId}/profile/documents`, formData);
+  },
+  deleteUserKycDocument: (userId: string, documentId: string) =>
+    request<KycDocumentSummary[]>(`/users/${userId}/profile/documents/${documentId}`, {
+      method: "DELETE",
+    }),
+  getKycDocumentDownloadUrl: (userId: string, documentId: string) =>
+    `${API_URL}/users/${userId}/profile/documents/${documentId}/download`,
   getManagedWallet: (userId: string) =>
     request<ClientManagedWalletView>(`/users/${userId}/managed-wallet`),
   getMarketPrices: () => request<MarketOverviewEntry[]>("/market/prices"),
@@ -877,6 +1062,18 @@ export const api = {
     }),
   listFixedTermPositions: (userId: string) =>
     request<FixedTermPosition[]>(`/users/${userId}/fixed-term-positions`),
+  // Wallet investissement (cf. §2H CLAUDE.md entrée #31) — virement interne instantané,
+  // seul moyen d'alimenter ou de vider investmentBalance.
+  transferToInvestmentWallet: (amount: string) =>
+    request<LedgerBalance>("/investment/wallet/transfer-in", {
+      method: "POST",
+      body: JSON.stringify({ amount }),
+    }),
+  transferFromInvestmentWallet: (amount: string) =>
+    request<LedgerBalance>("/investment/wallet/transfer-out", {
+      method: "POST",
+      body: JSON.stringify({ amount }),
+    }),
   // userId n'est plus envoyé : dérivé côté serveur du cookie de session (JwtAuthGuard).
   createCreditRequest: (collateralAmount: string, currency: AccountCurrency) =>
     request<CreditRequest>("/credit-requests", {
@@ -1027,6 +1224,53 @@ export const api = {
     request<AdminClient>(`/admin/clients/${userId}/financials`, {
       method: "PATCH",
       body: JSON.stringify(dto),
+    }),
+  updateAdminClientIdentityDocument: (
+    userId: string,
+    dto: IdentityDocumentInput & { verified?: boolean },
+  ) =>
+    request<AdminClient>(`/admin/clients/${userId}/identity-document`, {
+      method: "PATCH",
+      body: JSON.stringify(dto),
+    }),
+  updateAdminClientAmlProfile: (
+    userId: string,
+    dto: {
+      isPoliticallyExposed?: boolean;
+      fundsOrigin?: FundsOrigin[];
+      fundsOriginOther?: string;
+      relationshipPurpose?: RelationshipPurpose[];
+      attestationCity?: string;
+    },
+  ) =>
+    request<AdminClient>(`/admin/clients/${userId}/aml-profile`, {
+      method: "PATCH",
+      body: JSON.stringify(dto),
+    }),
+  // "Avis de conformité : Validé / Refusé" — répercute aussi User.kycStatus côté backend
+  // (cf. AdminClientsService.decideKyc).
+  decideClientKyc: (
+    userId: string,
+    dto: { decision: KycReviewDecision; riskLevel?: AmlRiskLevel },
+  ) =>
+    request<AdminClient>(`/admin/clients/${userId}/kyc-decision`, {
+      method: "POST",
+      body: JSON.stringify(dto),
+    }),
+  // Fichiers KYC réels côté back-office — même stockage que listUserKycDocuments,
+  // jamais une seconde source (cf. AdminClientsController, KycDocumentsService partagé).
+  listAdminClientKycDocuments: (userId: string) =>
+    request<KycDocumentSummary[]>(`/admin/clients/${userId}/documents`),
+  getAdminKycDocumentDownloadUrl: (userId: string, documentId: string) =>
+    `${API_URL}/admin/clients/${userId}/documents/${documentId}/download`,
+  setAdminKycDocumentVerified: (userId: string, documentId: string, verified: boolean) =>
+    request<KycDocumentSummary[]>(`/admin/clients/${userId}/documents/${documentId}`, {
+      method: "PATCH",
+      body: JSON.stringify({ verified }),
+    }),
+  deleteAdminKycDocument: (userId: string, documentId: string) =>
+    request<KycDocumentSummary[]>(`/admin/clients/${userId}/documents/${documentId}`, {
+      method: "DELETE",
     }),
   listAdminClientNotes: (userId: string) =>
     request<AdminNoteRecord[]>(`/admin/clients/${userId}/notes`),

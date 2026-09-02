@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Direktinvestition",
-        "description": "Eine echte Geldanlage, ohne Sicherheit oder Kredit — RWA-Strategie oder ein Aktienkorb, nach Wahl."
+        "description": "Eine echte Geldanlage, ohne Sicherheit oder Kredit: RWA-Strategie oder ein Aktienkorb, nach Wahl."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Direktinvestition",
-    "directInvestmentIntro": "Eine echte Geldanlage, getrennt vom Kredit — zwei Körbe zur Wahl, eine echte Tagesrendite, die negativ sein kann.",
+    "directInvestmentIntro": "Eine echte Geldanlage, getrennt vom Kredit: zwei Körbe zur Wahl, eine echte Tagesrendite, die negativ sein kann.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA-Strategie",
@@ -1217,7 +1217,7 @@
         "accountHolderLabel": "Kontoinhaber",
         "ibanLabel": "IBAN",
         "ibanInvalid": "Ungültige IBAN.",
-        "ibanNotSepa": "Diese IBAN gehört zu keinem Land des SEPA-Raums — nutzen Sie stattdessen eine SWIFT-Überweisung.",
+        "ibanNotSepa": "Diese IBAN gehört zu keinem Land des SEPA-Raums. Nutzen Sie stattdessen eine SWIFT-Überweisung.",
         "bicLabel": "BIC / SWIFT-Code",
         "bicOptionalNote": "Optional bei einer SEPA-Überweisung: die IBAN genügt.",
         "bicRequiredNote": "Erforderlich bei einer SWIFT-Überweisung.",
@@ -1505,7 +1505,7 @@
       "accessDeniedTitle": "Nur für Business-Konten",
       "accessDeniedBody": "Der Direktkredit finanziert berufliche Projekte und steht nur Business-Konten zur Verfügung. Das aktuell angemeldete Konto ist ein Privatkonto.",
       "ratesTitle": "Aktuelle Konditionen",
-      "ratesDescription": "Fünf deklarative Kriterien, alle verpflichtend — die Entscheidung wird bei Einreichung automatisch berechnet, keine Warteschlange.",
+      "ratesDescription": "Fünf deklarative Kriterien, alle verpflichtend. Die Entscheidung wird bei Einreichung automatisch berechnet, keine Warteschlange.",
       "ratesInterestRate": "Zinssatz",
       "ratesOriginationFee": "Bearbeitungsgebühr",
       "ratesTerm": "Laufzeit",
@@ -1516,7 +1516,7 @@
       "ratesMaxDsr": "Max. Schuldendienstquote",
       "ratesMinGuarantee": "Mindestsicherheit",
       "formTitle": "Antrag auf Direktkredit",
-      "formDescription": "Beschreiben Sie Ihr Projekt und Ihre angegebene finanzielle Situation — die Entscheidung erscheint sofort darunter.",
+      "formDescription": "Beschreiben Sie Ihr Projekt und Ihre angegebene finanzielle Situation. Die Entscheidung erscheint sofort darunter.",
       "companyName": "Firmenname",
       "registrationNumber": "Registernummer",
       "sector": "Branche",
@@ -1528,13 +1528,13 @@
       "declaredMonthlyExpenses": "Angegebene monatliche Ausgaben",
       "guaranteeOffered": "Angebotene Rückzahlungssicherheit",
       "guaranteeNote": "Bargeld, betrieblicher Vermögenswert, persönliche Bürgschaft… deklarativ, in diesem Stadium nicht hinterlegt.",
-      "disclaimer": "Diese Angaben sind selbst deklariert und werden in diesem Stadium nicht von Dritten geprüft (kein Einkommensprüfungsanbieter angebunden) — die Entscheidung beruht ausschließlich auf Ihren hier gemachten Angaben.",
+      "disclaimer": "Diese Angaben sind selbst deklariert und werden in diesem Stadium nicht von Dritten geprüft (kein Einkommensprüfungsanbieter angebunden). Die Entscheidung beruht ausschließlich auf Ihren hier gemachten Angaben.",
       "submit": "Meine Förderfähigkeit prüfen",
       "genericError": "Ein Fehler ist aufgetreten.",
       "resultEligible": "Förderfähig",
       "resultIneligible": "Nicht förderfähig",
       "resultEligibleNote": "Alle fünf Kriterien sind erfüllt. Ein Berater wird sich für die nächsten Schritte melden.",
-      "resultIneligibleNote": "Mindestens ein Kriterium ist nicht erfüllt — die Details unten zeigen, welches.",
+      "resultIneligibleNote": "Mindestens ein Kriterium ist nicht erfüllt: die Details unten zeigen, welches.",
       "threshold": "Schwelle",
       "resultEstimate": "Zur Orientierung: {rate}%/Jahr, geschätzte Monatsrate {payment}.",
       "historyTitle": "Meine Anträge",
@@ -1546,7 +1546,7 @@
     },
     "investment": {
       "title": "Direktinvestition",
-      "intro": "Legen Sie Mittel aus Ihrem verfügbaren Guthaben in einem der folgenden Körbe an — eine echte Geldanlage, ohne Sicherheit oder Kredit, mit einer echten Tagesrendite, die an einem ungünstigen Markttag negativ sein kann. Vollständige Auszahlung jederzeit möglich.",
+      "intro": "Legen Sie Mittel aus Ihrem verfügbaren Guthaben in einem der folgenden Körbe an: eine echte Geldanlage, ohne Sicherheit oder Kredit, mit einer echten Tagesrendite, die an einem ungünstigen Markttag negativ sein kann. Vollständige Auszahlung jederzeit möglich.",
       "indicativeAnnual": "Indikatives Jahresziel",
       "latestDaily": "Letzte reale Tagesrendite",
       "principal": "Angelegtes Kapital",
@@ -1591,7 +1591,7 @@
   "DirectInvestment": {
     "meta": {
       "title": "Direktinvestition",
-      "description": "Legen Sie Mittel in der RWA-Strategie der Bank oder einem Korb echter Aktien an — eine echte Geldanlage, ohne Sicherheit oder Kredit, mit einer echten Tagesrendite."
+      "description": "Legen Sie Mittel in der RWA-Strategie der Bank oder einem Korb echter Aktien an: eine echte Geldanlage, ohne Sicherheit oder Kredit, mit einer echten Tagesrendite."
     },
     "eyebrow": "Ein drittes Produkt",
     "title": "Direktinvestition",
@@ -1600,7 +1600,7 @@
     "steps": {
       "choose": {
         "title": "Einen Korb wählen",
-        "description": "RWA-Strategie (tokenisierte Industriemetalle und Rohstoffe) oder ein Korb aus 5 echten notierten Aktien — zwei Renditeprofile zur Wahl."
+        "description": "RWA-Strategie (tokenisierte Industriemetalle und Rohstoffe) oder ein Korb aus 5 echten notierten Aktien: zwei Renditeprofile zur Wahl."
       },
       "deposit": {
         "title": "Mittel anlegen",
@@ -1608,7 +1608,7 @@
       },
       "accrue": {
         "title": "Zusammengesetzte Tagesrendite",
-        "description": "Täglich aus echten Marktdaten berechnet, niemals erfunden — an einem ungünstigen Markttag kann sie negativ sein."
+        "description": "Täglich aus echten Marktdaten berechnet, niemals erfunden. An einem ungünstigen Markttag kann sie negativ sein."
       },
       "withdraw": {
         "title": "Jederzeit auszahlbar",
@@ -1618,7 +1618,7 @@
     "baskets": {
       "rwa": {
         "title": "RWA-Strategie",
-        "description": "Dieselbe Treasury-Strategie wie die der Bank auf tokenisierte Industriemetalle und Rohstoffe (Platin, Palladium, Kupfer, synthetisches Öl) — jetzt für Ihr Kapital geöffnet.",
+        "description": "Dieselbe Treasury-Strategie wie die der Bank auf tokenisierte Industriemetalle und Rohstoffe (Platin, Palladium, Kupfer, synthetisches Öl), jetzt für Ihr Kapital geöffnet.",
         "rate": "8,58 %/Jahr indikativ"
       },
       "stocks": {
@@ -1641,7 +1641,7 @@
       },
       "difference": {
         "question": "Was ist der Unterschied zum besicherten Kredit?",
-        "answer": "Der besicherte Kredit leiht Ihnen Geld gegen eine Sicherheit. Die Direktinvestition legt umgekehrt Ihr eigenes Geld im Austausch für eine Rendite an — es wird kein Kredit gewährt, keine Sicherheit ist erforderlich."
+        "answer": "Der besicherte Kredit leiht Ihnen Geld gegen eine Sicherheit. Die Direktinvestition legt umgekehrt Ihr eigenes Geld im Austausch für eine Rendite an: es wird kein Kredit gewährt, keine Sicherheit ist erforderlich."
       }
     },
     "ctaLogin": "Zu meinem Konto",

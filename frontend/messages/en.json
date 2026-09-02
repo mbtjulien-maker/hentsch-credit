@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Direct investment",
-        "description": "A real placement, no collateral or credit — RWA strategy or a stock basket, your choice."
+        "description": "A real placement, no collateral or credit: RWA strategy or a stock basket, your choice."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Direct investment",
-    "directInvestmentIntro": "A real placement, distinct from credit — two baskets to choose from, a real daily return that can be negative.",
+    "directInvestmentIntro": "A real placement, distinct from credit: two baskets to choose from, a real daily return that can be negative.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA strategy",
@@ -1217,7 +1217,7 @@
         "accountHolderLabel": "Account holder",
         "ibanLabel": "IBAN",
         "ibanInvalid": "Invalid IBAN.",
-        "ibanNotSepa": "This IBAN isn't from a SEPA-zone country — use a SWIFT transfer instead.",
+        "ibanNotSepa": "This IBAN isn't from a SEPA-zone country. Use a SWIFT transfer instead.",
         "bicLabel": "BIC / SWIFT code",
         "bicOptionalNote": "Optional for a SEPA transfer: the IBAN is enough.",
         "bicRequiredNote": "Required for a SWIFT transfer.",
@@ -1505,7 +1505,7 @@
       "accessDeniedTitle": "Business accounts only",
       "accessDeniedBody": "Direct credit finances professional projects and is only available to business accounts. The account currently signed in is an individual account.",
       "ratesTitle": "Current terms",
-      "ratesDescription": "Five declarative criteria, all mandatory — the decision is computed automatically on submission, no queue.",
+      "ratesDescription": "Five declarative criteria, all mandatory. The decision is computed automatically on submission, no queue.",
       "ratesInterestRate": "Interest rate",
       "ratesOriginationFee": "Origination fee",
       "ratesTerm": "Term",
@@ -1516,7 +1516,7 @@
       "ratesMaxDsr": "Max. debt-service ratio",
       "ratesMinGuarantee": "Minimum guarantee",
       "formTitle": "Direct credit application",
-      "formDescription": "Describe your project and your declared financial situation — the decision appears immediately below.",
+      "formDescription": "Describe your project and your declared financial situation. The decision appears immediately below.",
       "companyName": "Company name",
       "registrationNumber": "Registration number",
       "sector": "Sector",
@@ -1528,13 +1528,13 @@
       "declaredMonthlyExpenses": "Declared monthly expenses",
       "guaranteeOffered": "Repayment guarantee offered",
       "guaranteeNote": "Cash, professional asset, personal guarantee… declarative, not locked at this stage.",
-      "disclaimer": "This information is self-declared and not verified by a third party at this stage (no income-verification provider is connected) — the decision is based solely on what you enter here.",
+      "disclaimer": "This information is self-declared and not verified by a third party at this stage (no income-verification provider is connected). The decision is based solely on what you enter here.",
       "submit": "Check my eligibility",
       "genericError": "An error occurred.",
       "resultEligible": "Eligible",
       "resultIneligible": "Not eligible",
       "resultEligibleNote": "All five criteria are met. An advisor will contact you about next steps.",
-      "resultIneligibleNote": "At least one criterion isn't met — the detail below shows which one.",
+      "resultIneligibleNote": "At least one criterion isn't met: the detail below shows which one.",
       "threshold": "threshold",
       "resultEstimate": "For reference: {rate}%/yr, estimated monthly payment {payment}.",
       "historyTitle": "My requests",
@@ -1546,7 +1546,7 @@
     },
     "investment": {
       "title": "Direct investment",
-      "intro": "Place funds from your available balance into one of the baskets below — a real investment, no collateral or credit involved, with a real daily return that can be negative on an unfavorable market day. Full withdrawal available at any time.",
+      "intro": "Place funds from your available balance into one of the baskets below: a real investment, no collateral or credit involved, with a real daily return that can be negative on an unfavorable market day. Full withdrawal available at any time.",
       "indicativeAnnual": "Indicative annual target",
       "latestDaily": "Latest real daily return",
       "principal": "Capital invested",
@@ -1591,7 +1591,7 @@
   "DirectInvestment": {
     "meta": {
       "title": "Direct investment",
-      "description": "Place funds in the bank's RWA strategy or a basket of real stocks — a real placement, no collateral or credit, with a real daily return."
+      "description": "Place funds in the bank's RWA strategy or a basket of real stocks: a real placement, no collateral or credit, with a real daily return."
     },
     "eyebrow": "A third product",
     "title": "Direct investment",
@@ -1600,7 +1600,7 @@
     "steps": {
       "choose": {
         "title": "Choose a basket",
-        "description": "RWA strategy (tokenized industrial metals and commodities) or a basket of 5 real listed stocks — two return profiles to choose from."
+        "description": "RWA strategy (tokenized industrial metals and commodities) or a basket of 5 real listed stocks: two return profiles to choose from."
       },
       "deposit": {
         "title": "Place funds",
@@ -1608,7 +1608,7 @@
       },
       "accrue": {
         "title": "Compounded daily return",
-        "description": "Calculated every day from real market data, never fabricated — it can be negative on an unfavorable market day."
+        "description": "Calculated every day from real market data, never fabricated. It can be negative on an unfavorable market day."
       },
       "withdraw": {
         "title": "Withdraw anytime",
@@ -1618,7 +1618,7 @@
     "baskets": {
       "rwa": {
         "title": "RWA strategy",
-        "description": "The same treasury strategy as the bank's own, on tokenized industrial metals and commodities (platinum, palladium, copper, synthetic oil) — now open to your capital.",
+        "description": "The same treasury strategy as the bank's own, on tokenized industrial metals and commodities (platinum, palladium, copper, synthetic oil), now open to your capital.",
         "rate": "8.58%/year indicative"
       },
       "stocks": {
@@ -1641,7 +1641,7 @@
       },
       "difference": {
         "question": "What's the difference with collateralized credit?",
-        "answer": "Collateralized credit lends you money against collateral. Direct investment, conversely, locks up your own money in exchange for a return — no credit is issued, no collateral is required."
+        "answer": "Collateralized credit lends you money against collateral. Direct investment, conversely, locks up your own money in exchange for a return: no credit is issued, no collateral is required."
       }
     },
     "ctaLogin": "Access my account",

@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Directe belegging",
-        "description": "Een echte belegging, zonder onderpand of krediet — RWA-strategie of een aandelenmand, naar keuze."
+        "description": "Een echte belegging, zonder onderpand of krediet: RWA-strategie of een aandelenmand, naar keuze."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Directe belegging",
-    "directInvestmentIntro": "Een echte belegging, los van krediet — twee manden naar keuze, een reëel dagrendement dat negatief kan zijn.",
+    "directInvestmentIntro": "Een echte belegging, los van krediet: twee manden naar keuze, een reëel dagrendement dat negatief kan zijn.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA-strategie",
@@ -1217,7 +1217,7 @@
         "accountHolderLabel": "Rekeninghouder",
         "ibanLabel": "IBAN",
         "ibanInvalid": "Ongeldige IBAN.",
-        "ibanNotSepa": "Deze IBAN behoort niet tot een land in de SEPA-zone — gebruik een SWIFT-overschrijving.",
+        "ibanNotSepa": "Deze IBAN behoort niet tot een land in de SEPA-zone. Gebruik een SWIFT-overschrijving.",
         "bicLabel": "BIC / SWIFT-code",
         "bicOptionalNote": "Optioneel bij een SEPA-overschrijving: de IBAN volstaat.",
         "bicRequiredNote": "Verplicht bij een SWIFT-overschrijving.",
@@ -1505,7 +1505,7 @@
       "accessDeniedTitle": "Alleen voor zakelijke accounts",
       "accessDeniedBody": "Direct krediet financiert zakelijke projecten en is alleen beschikbaar voor zakelijke accounts. Het momenteel aangemelde account is een particulier account.",
       "ratesTitle": "Huidige voorwaarden",
-      "ratesDescription": "Vijf declaratieve criteria, allemaal verplicht — de beslissing wordt automatisch berekend bij indiening, geen wachtrij.",
+      "ratesDescription": "Vijf declaratieve criteria, allemaal verplicht. De beslissing wordt automatisch berekend bij indiening, geen wachtrij.",
       "ratesInterestRate": "Rentetarief",
       "ratesOriginationFee": "Afsluitkosten",
       "ratesTerm": "Looptijd",
@@ -1516,7 +1516,7 @@
       "ratesMaxDsr": "Max. schuldendienstratio",
       "ratesMinGuarantee": "Minimale garantie",
       "formTitle": "Aanvraag direct krediet",
-      "formDescription": "Beschrijf uw project en uw opgegeven financiële situatie — de beslissing verschijnt direct hieronder.",
+      "formDescription": "Beschrijf uw project en uw opgegeven financiële situatie. De beslissing verschijnt direct hieronder.",
       "companyName": "Bedrijfsnaam",
       "registrationNumber": "Registratienummer",
       "sector": "Sector",
@@ -1528,13 +1528,13 @@
       "declaredMonthlyExpenses": "Opgegeven maandelijkse kosten",
       "guaranteeOffered": "Aangeboden terugbetalingsgarantie",
       "guaranteeNote": "Contanten, zakelijk actief, persoonlijke borgstelling… declaratief, in dit stadium niet vastgezet.",
-      "disclaimer": "Deze gegevens zijn zelf opgegeven en worden in dit stadium niet door een derde partij geverifieerd (er is geen inkomensverificatie-aanbieder gekoppeld) — de beslissing is uitsluitend gebaseerd op wat u hier invult.",
+      "disclaimer": "Deze gegevens zijn zelf opgegeven en worden in dit stadium niet door een derde partij geverifieerd (er is geen inkomensverificatie-aanbieder gekoppeld). De beslissing is uitsluitend gebaseerd op wat u hier invult.",
       "submit": "Mijn geschiktheid controleren",
       "genericError": "Er is een fout opgetreden.",
       "resultEligible": "In aanmerking",
       "resultIneligible": "Niet in aanmerking",
       "resultEligibleNote": "Aan alle vijf criteria is voldaan. Een adviseur neemt contact op voor de vervolgstappen.",
-      "resultIneligibleNote": "Aan minstens één criterium is niet voldaan — het detail hieronder toont welk.",
+      "resultIneligibleNote": "Aan minstens één criterium is niet voldaan: het detail hieronder toont welk.",
       "threshold": "drempel",
       "resultEstimate": "Ter indicatie: {rate}%/jaar, geschatte maandelijkse termijn {payment}.",
       "historyTitle": "Mijn aanvragen",
@@ -1546,7 +1546,7 @@
     },
     "investment": {
       "title": "Directe belegging",
-      "intro": "Plaats geld van uw beschikbare saldo in een van onderstaande manden — een echte belegging, zonder onderpand of krediet, met een reëel dagelijks rendement dat op een ongunstige marktdag negatief kan zijn. Volledige opname op elk moment mogelijk.",
+      "intro": "Plaats geld van uw beschikbare saldo in een van onderstaande manden: een echte belegging, zonder onderpand of krediet, met een reëel dagelijks rendement dat op een ongunstige marktdag negatief kan zijn. Volledige opname op elk moment mogelijk.",
       "indicativeAnnual": "Indicatief jaarlijks doel",
       "latestDaily": "Laatste reële dagrendement",
       "principal": "Belegd kapitaal",
@@ -1591,7 +1591,7 @@
   "DirectInvestment": {
     "meta": {
       "title": "Directe belegging",
-      "description": "Plaats middelen in de RWA-strategie van de bank of een mand echte aandelen — een echte belegging, zonder onderpand of krediet, met een reëel dagrendement."
+      "description": "Plaats middelen in de RWA-strategie van de bank of een mand echte aandelen: een echte belegging, zonder onderpand of krediet, met een reëel dagrendement."
     },
     "eyebrow": "Een derde product",
     "title": "Directe belegging",
@@ -1600,7 +1600,7 @@
     "steps": {
       "choose": {
         "title": "Kies een mand",
-        "description": "RWA-strategie (getokeniseerde industriële metalen en grondstoffen) of een mand van 5 echte beursgenoteerde aandelen — twee rendementsprofielen naar keuze."
+        "description": "RWA-strategie (getokeniseerde industriële metalen en grondstoffen) of een mand van 5 echte beursgenoteerde aandelen: twee rendementsprofielen naar keuze."
       },
       "deposit": {
         "title": "Middelen plaatsen",
@@ -1608,7 +1608,7 @@
       },
       "accrue": {
         "title": "Samengesteld dagrendement",
-        "description": "Elke dag berekend op basis van reële marktgegevens, nooit verzonnen — kan negatief zijn op een ongunstige marktdag."
+        "description": "Elke dag berekend op basis van reële marktgegevens, nooit verzonnen. Kan negatief zijn op een ongunstige marktdag."
       },
       "withdraw": {
         "title": "Op elk moment opnemen",
@@ -1618,7 +1618,7 @@
     "baskets": {
       "rwa": {
         "title": "RWA-strategie",
-        "description": "Dezelfde treasurystrategie als die van de bank, op getokeniseerde industriële metalen en grondstoffen (platina, palladium, koper, synthetische olie) — nu open voor uw kapitaal.",
+        "description": "Dezelfde treasurystrategie als die van de bank, op getokeniseerde industriële metalen en grondstoffen (platina, palladium, koper, synthetische olie), nu open voor uw kapitaal.",
         "rate": "8,58%/jaar indicatief"
       },
       "stocks": {
@@ -1641,7 +1641,7 @@
       },
       "difference": {
         "question": "Wat is het verschil met gedekt krediet?",
-        "answer": "Gedekt krediet leent u geld tegen onderpand. Directe belegging daarentegen zet uw eigen geld vast in ruil voor een rendement — er wordt geen krediet verstrekt, er is geen onderpand vereist."
+        "answer": "Gedekt krediet leent u geld tegen onderpand. Directe belegging zet daarentegen uw eigen geld vast in ruil voor een rendement: er wordt geen krediet verstrekt, er is geen onderpand vereist."
       }
     },
     "ctaLogin": "Naar mijn account",

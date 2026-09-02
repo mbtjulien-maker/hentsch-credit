@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Investissement direct",
-        "description": "Un placement réel, sans gage ni crédit — stratégie RWA ou panier d'actions, au choix."
+        "description": "Un placement réel, sans gage ni crédit : stratégie RWA ou panier d'actions, au choix."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Investissement direct",
-    "directInvestmentIntro": "Un placement réel, distinct du crédit — deux paniers au choix, un rendement quotidien réel qui peut être négatif.",
+    "directInvestmentIntro": "Un placement réel, distinct du crédit : deux paniers au choix, un rendement quotidien réel qui peut être négatif.",
     "directInvestmentItems": {
       "rwa": {
         "label": "Stratégie RWA",
@@ -1217,7 +1217,7 @@
         "accountHolderLabel": "Titulaire du compte",
         "ibanLabel": "IBAN",
         "ibanInvalid": "IBAN invalide.",
-        "ibanNotSepa": "Cet IBAN n'appartient pas à un pays de la zone SEPA — utilisez un virement SWIFT.",
+        "ibanNotSepa": "Cet IBAN n'appartient pas à un pays de la zone SEPA. Utilisez un virement SWIFT.",
         "bicLabel": "BIC / SWIFT",
         "bicOptionalNote": "Facultatif pour un virement SEPA : l'IBAN suffit.",
         "bicRequiredNote": "Obligatoire pour un virement SWIFT.",
@@ -1505,7 +1505,7 @@
       "accessDeniedTitle": "Section réservée aux comptes business",
       "accessDeniedBody": "Le crédit direct finance des projets professionnels et n'est accessible qu'aux comptes business. Le compte actuellement connecté est un compte particulier.",
       "ratesTitle": "Conditions actuelles",
-      "ratesDescription": "Cinq critères déclaratifs, tous obligatoires — la décision est calculée automatiquement à la soumission, sans file d'attente.",
+      "ratesDescription": "Cinq critères déclaratifs, tous obligatoires. La décision est calculée automatiquement à la soumission, sans file d'attente.",
       "ratesInterestRate": "Taux d'intérêt",
       "ratesOriginationFee": "Frais d'origination",
       "ratesTerm": "Durée",
@@ -1516,7 +1516,7 @@
       "ratesMaxDsr": "Ratio d'endettement max.",
       "ratesMinGuarantee": "Garantie minimale",
       "formTitle": "Demande de crédit direct",
-      "formDescription": "Renseignez votre projet et votre situation financière déclarée — la décision s'affiche immédiatement ci-dessous.",
+      "formDescription": "Renseignez votre projet et votre situation financière déclarée. La décision s'affiche immédiatement ci-dessous.",
       "companyName": "Nom de l'entreprise",
       "registrationNumber": "Numéro d'immatriculation",
       "sector": "Secteur d'activité",
@@ -1528,13 +1528,13 @@
       "declaredMonthlyExpenses": "Charges mensuelles déclarées",
       "guaranteeOffered": "Garantie de remboursement proposée",
       "guaranteeNote": "Espèces, actif professionnel, caution personnelle… déclaratif, non verrouillé à ce stade.",
-      "disclaimer": "Ces informations sont auto-déclarées et ne sont pas vérifiées par un tiers à ce stade (aucun fournisseur de vérification de revenus n'est branché) — la décision se fonde uniquement sur ce que vous indiquez ici.",
+      "disclaimer": "Ces informations sont auto-déclarées et ne sont pas vérifiées par un tiers à ce stade (aucun fournisseur de vérification de revenus n'est branché). La décision se fonde uniquement sur ce que vous indiquez ici.",
       "submit": "Vérifier mon éligibilité",
       "genericError": "Une erreur est survenue.",
       "resultEligible": "Éligible",
       "resultIneligible": "Non éligible",
       "resultEligibleNote": "Les cinq critères sont remplis. Un conseiller vous recontactera pour la suite du dossier.",
-      "resultIneligibleNote": "Au moins un critère n'est pas rempli — le détail ci-dessous indique lequel.",
+      "resultIneligibleNote": "Au moins un critère n'est pas rempli : le détail ci-dessous indique lequel.",
       "threshold": "seuil",
       "resultEstimate": "À titre indicatif : {rate}%/an, mensualité estimée {payment}.",
       "historyTitle": "Mes demandes",
@@ -1546,7 +1546,7 @@
     },
     "investment": {
       "title": "Investissement direct",
-      "intro": "Placez des fonds depuis votre solde disponible dans l'un des paniers ci-dessous — un vrai placement, sans gage ni crédit, avec un rendement quotidien réel qui peut être négatif un jour de marché défavorable. Retrait intégral possible à tout moment.",
+      "intro": "Placez des fonds depuis votre solde disponible dans l'un des paniers ci-dessous : un vrai placement, sans gage ni crédit, avec un rendement quotidien réel qui peut être négatif un jour de marché défavorable. Retrait intégral possible à tout moment.",
       "indicativeAnnual": "Objectif indicatif annuel",
       "latestDaily": "Dernier rendement quotidien réel",
       "principal": "Capital placé",
@@ -1591,7 +1591,7 @@
   "DirectInvestment": {
     "meta": {
       "title": "Investissement direct",
-      "description": "Placez des fonds dans la stratégie RWA de la banque ou un panier d'actions réelles — un vrai placement, sans gage ni crédit, avec un rendement quotidien réel."
+      "description": "Placez des fonds dans la stratégie RWA de la banque ou un panier d'actions réelles : un vrai placement, sans gage ni crédit, avec un rendement quotidien réel."
     },
     "eyebrow": "Un troisième produit",
     "title": "Investissement direct",
@@ -1600,7 +1600,7 @@
     "steps": {
       "choose": {
         "title": "Choisir un panier",
-        "description": "Stratégie RWA (métaux industriels et matières premières tokenisés) ou panier de 5 actions cotées réelles — deux profils de rendement au choix."
+        "description": "Stratégie RWA (métaux industriels et matières premières tokenisés) ou panier de 5 actions cotées réelles : deux profils de rendement au choix."
       },
       "deposit": {
         "title": "Placer des fonds",
@@ -1608,7 +1608,7 @@
       },
       "accrue": {
         "title": "Rendement quotidien composé",
-        "description": "Calculé chaque jour à partir d'une donnée de marché réelle, jamais fabriquée — il peut être négatif un jour de marché défavorable."
+        "description": "Calculé chaque jour à partir d'une donnée de marché réelle, jamais fabriquée. Il peut être négatif un jour de marché défavorable."
       },
       "withdraw": {
         "title": "Retrait à tout moment",
@@ -1618,7 +1618,7 @@
     "baskets": {
       "rwa": {
         "title": "Stratégie RWA",
-        "description": "Même stratégie de trésorerie que la banque sur les métaux industriels et matières premières tokenisés (platine, palladium, cuivre, pétrole synthétique) — désormais ouverte à votre capital.",
+        "description": "Même stratégie de trésorerie que la banque sur les métaux industriels et matières premières tokenisés (platine, palladium, cuivre, pétrole synthétique), désormais ouverte à votre capital.",
         "rate": "8,58 %/an indicatif"
       },
       "stocks": {
@@ -1641,7 +1641,7 @@
       },
       "difference": {
         "question": "Quelle est la différence avec le crédit gagé ?",
-        "answer": "Le crédit gagé vous prête de l'argent contre un gage. L'investissement direct, à l'inverse, immobilise votre propre argent en échange d'un rendement — aucun crédit n'est émis, aucune garantie n'est requise."
+        "answer": "Le crédit gagé vous prête de l'argent contre un gage. L'investissement direct, à l'inverse, immobilise votre propre argent en échange d'un rendement : aucun crédit n'est émis, aucune garantie n'est requise."
       }
     },
     "ctaLogin": "Accéder à mon compte",

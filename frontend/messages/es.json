@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Inversión directa",
-        "description": "Una inversión real, sin garantía ni crédito — estrategia RWA o una canasta de acciones, a elegir."
+        "description": "Una inversión real, sin garantía ni crédito: estrategia RWA o una canasta de acciones, a elegir."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Inversión directa",
-    "directInvestmentIntro": "Una inversión real, distinta del crédito — dos canastas a elegir, un rendimiento diario real que puede ser negativo.",
+    "directInvestmentIntro": "Una inversión real, distinta del crédito: dos canastas a elegir, un rendimiento diario real que puede ser negativo.",
     "directInvestmentItems": {
       "rwa": {
         "label": "Estrategia RWA",
@@ -1217,7 +1217,7 @@
         "accountHolderLabel": "Titular de la cuenta",
         "ibanLabel": "IBAN",
         "ibanInvalid": "IBAN no válido.",
-        "ibanNotSepa": "Este IBAN no pertenece a un país de la zona SEPA — utilice una transferencia SWIFT.",
+        "ibanNotSepa": "Este IBAN no pertenece a un país de la zona SEPA. Utilice una transferencia SWIFT.",
         "bicLabel": "Código BIC / SWIFT",
         "bicOptionalNote": "Opcional para una transferencia SEPA: el IBAN es suficiente.",
         "bicRequiredNote": "Obligatorio para una transferencia SWIFT.",
@@ -1505,7 +1505,7 @@
       "accessDeniedTitle": "Solo cuentas empresa",
       "accessDeniedBody": "El crédito directo financia proyectos profesionales y solo está disponible para cuentas empresa. La cuenta conectada actualmente es una cuenta particular.",
       "ratesTitle": "Condiciones actuales",
-      "ratesDescription": "Cinco criterios declarativos, todos obligatorios — la decisión se calcula automáticamente al enviar la solicitud, sin cola de espera.",
+      "ratesDescription": "Cinco criterios declarativos, todos obligatorios. La decisión se calcula automáticamente al enviar la solicitud, sin cola de espera.",
       "ratesInterestRate": "Tipo de interés",
       "ratesOriginationFee": "Comisión de apertura",
       "ratesTerm": "Duración",
@@ -1516,7 +1516,7 @@
       "ratesMaxDsr": "Ratio de endeudamiento máx.",
       "ratesMinGuarantee": "Garantía mínima",
       "formTitle": "Solicitud de crédito directo",
-      "formDescription": "Indique su proyecto y su situación financiera declarada — la decisión aparece de inmediato a continuación.",
+      "formDescription": "Indique su proyecto y su situación financiera declarada. La decisión aparece de inmediato a continuación.",
       "companyName": "Nombre de la empresa",
       "registrationNumber": "Número de registro",
       "sector": "Sector de actividad",
@@ -1528,13 +1528,13 @@
       "declaredMonthlyExpenses": "Gastos mensuales declarados",
       "guaranteeOffered": "Garantía de reembolso propuesta",
       "guaranteeNote": "Efectivo, activo profesional, aval personal… declarativo, no bloqueado en esta etapa.",
-      "disclaimer": "Esta información es autodeclarada y no está verificada por un tercero en esta etapa (no hay ningún proveedor de verificación de ingresos conectado) — la decisión se basa únicamente en lo que indique aquí.",
+      "disclaimer": "Esta información es autodeclarada y no está verificada por un tercero en esta etapa (no hay ningún proveedor de verificación de ingresos conectado). La decisión se basa únicamente en lo que indique aquí.",
       "submit": "Comprobar mi elegibilidad",
       "genericError": "Se produjo un error.",
       "resultEligible": "Elegible",
       "resultIneligible": "No elegible",
       "resultEligibleNote": "Se cumplen los cinco criterios. Un asesor se pondrá en contacto para los siguientes pasos.",
-      "resultIneligibleNote": "Al menos un criterio no se cumple — el detalle siguiente indica cuál.",
+      "resultIneligibleNote": "Al menos un criterio no se cumple: el detalle siguiente indica cuál.",
       "threshold": "umbral",
       "resultEstimate": "A título indicativo: {rate}%/año, cuota mensual estimada {payment}.",
       "historyTitle": "Mis solicitudes",
@@ -1546,7 +1546,7 @@
     },
     "investment": {
       "title": "Inversión directa",
-      "intro": "Coloca fondos de tu saldo disponible en una de las siguientes canastas — una inversión real, sin garantía ni crédito, con un rendimiento diario real que puede ser negativo en un día de mercado desfavorable. Retiro total disponible en cualquier momento.",
+      "intro": "Coloca fondos de tu saldo disponible en una de las siguientes canastas: una inversión real, sin garantía ni crédito, con un rendimiento diario real que puede ser negativo en un día de mercado desfavorable. Retiro total disponible en cualquier momento.",
       "indicativeAnnual": "Objetivo anual indicativo",
       "latestDaily": "Último rendimiento diario real",
       "principal": "Capital invertido",
@@ -1591,7 +1591,7 @@
   "DirectInvestment": {
     "meta": {
       "title": "Inversión directa",
-      "description": "Coloca fondos en la estrategia RWA del banco o en una canasta de acciones reales — una inversión real, sin garantía ni crédito, con un rendimiento diario real."
+      "description": "Coloca fondos en la estrategia RWA del banco o en una canasta de acciones reales: una inversión real, sin garantía ni crédito, con un rendimiento diario real."
     },
     "eyebrow": "Un tercer producto",
     "title": "Inversión directa",
@@ -1600,7 +1600,7 @@
     "steps": {
       "choose": {
         "title": "Elegir una canasta",
-        "description": "Estrategia RWA (metales industriales y materias primas tokenizados) o una canasta de 5 acciones cotizadas reales — dos perfiles de rendimiento a elegir."
+        "description": "Estrategia RWA (metales industriales y materias primas tokenizados) o una canasta de 5 acciones cotizadas reales: dos perfiles de rendimiento a elegir."
       },
       "deposit": {
         "title": "Colocar fondos",
@@ -1608,7 +1608,7 @@
       },
       "accrue": {
         "title": "Rendimiento diario compuesto",
-        "description": "Calculado cada día a partir de un dato de mercado real, nunca inventado — puede ser negativo en un día de mercado desfavorable."
+        "description": "Calculado cada día a partir de un dato de mercado real, nunca inventado. Puede ser negativo en un día de mercado desfavorable."
       },
       "withdraw": {
         "title": "Retiro en cualquier momento",
@@ -1618,7 +1618,7 @@
     "baskets": {
       "rwa": {
         "title": "Estrategia RWA",
-        "description": "La misma estrategia de tesorería del banco sobre metales industriales y materias primas tokenizados (platino, paladio, cobre, petróleo sintético) — ahora abierta a tu capital.",
+        "description": "La misma estrategia de tesorería del banco sobre metales industriales y materias primas tokenizados (platino, paladio, cobre, petróleo sintético), ahora abierta a tu capital.",
         "rate": "8,58 %/año indicativo"
       },
       "stocks": {
@@ -1641,7 +1641,7 @@
       },
       "difference": {
         "question": "¿Cuál es la diferencia con el crédito con garantía?",
-        "answer": "El crédito con garantía te presta dinero a cambio de una garantía. La inversión directa, al contrario, inmoviliza tu propio dinero a cambio de un rendimiento — no se emite ningún crédito, no se requiere ninguna garantía."
+        "answer": "El crédito con garantía te presta dinero a cambio de una garantía. La inversión directa, al contrario, inmoviliza tu propio dinero a cambio de un rendimiento: no se emite ningún crédito, no se requiere ninguna garantía."
       }
     },
     "ctaLogin": "Acceder a mi cuenta",

@@ -89,7 +89,7 @@
       },
       "investment": {
         "title": "Direktinvestering",
-        "description": "En riktig placering, utan säkerhet eller kredit — RWA-strategi eller en aktiekorg, valfritt."
+        "description": "En riktig placering, utan säkerhet eller kredit: RWA-strategi eller en aktiekorg, valfritt."
       }
     },
     "stats": {
@@ -1099,7 +1099,7 @@
       }
     },
     "directInvestmentTitle": "Direktinvestering",
-    "directInvestmentIntro": "En riktig placering, skild från kredit — två korgar att välja mellan, en verklig daglig avkastning som kan vara negativ.",
+    "directInvestmentIntro": "En riktig placering, skild från kredit: två korgar att välja mellan, en verklig daglig avkastning som kan vara negativ.",
     "directInvestmentItems": {
       "rwa": {
         "label": "RWA-strategi",
@@ -1217,7 +1217,7 @@
         "accountHolderLabel": "Kontoinnehavare",
         "ibanLabel": "IBAN",
         "ibanInvalid": "Ogiltigt IBAN.",
-        "ibanNotSepa": "Detta IBAN tillhör inte ett land inom SEPA-området — använd en SWIFT-överföring istället.",
+        "ibanNotSepa": "Detta IBAN tillhör inte ett land inom SEPA-området. Använd en SWIFT-överföring istället.",
         "bicLabel": "BIC-/SWIFT-kod",
         "bicOptionalNote": "Valfritt för en SEPA-överföring: IBAN räcker.",
         "bicRequiredNote": "Obligatoriskt för en SWIFT-överföring.",
@@ -1505,7 +1505,7 @@
       "accessDeniedTitle": "Endast för företagskonton",
       "accessDeniedBody": "Direktkredit finansierar affärsprojekt och är endast tillgängligt för företagskonton. Kontot som är inloggat just nu är ett privatkonto.",
       "ratesTitle": "Nuvarande villkor",
-      "ratesDescription": "Fem deklarativa kriterier, alla obligatoriska — beslutet beräknas automatiskt vid inlämning, ingen kö.",
+      "ratesDescription": "Fem deklarativa kriterier, alla obligatoriska. Beslutet beräknas automatiskt vid inlämning, ingen kö.",
       "ratesInterestRate": "Räntesats",
       "ratesOriginationFee": "Uppläggningsavgift",
       "ratesTerm": "Löptid",
@@ -1516,7 +1516,7 @@
       "ratesMaxDsr": "Max. skuldkvot",
       "ratesMinGuarantee": "Lägsta säkerhet",
       "formTitle": "Ansökan om direktkredit",
-      "formDescription": "Beskriv ditt projekt och din deklarerade ekonomiska situation — beslutet visas direkt nedan.",
+      "formDescription": "Beskriv ditt projekt och din deklarerade ekonomiska situation. Beslutet visas direkt nedan.",
       "companyName": "Företagsnamn",
       "registrationNumber": "Organisationsnummer",
       "sector": "Bransch",
@@ -1528,13 +1528,13 @@
       "declaredMonthlyExpenses": "Deklarerade månadskostnader",
       "guaranteeOffered": "Erbjuden återbetalningsgaranti",
       "guaranteeNote": "Kontanter, verksamhetstillgång, personlig borgen… deklarativt, inte låst i detta skede.",
-      "disclaimer": "Denna information är självdeklarerad och verifieras inte av tredje part i detta skede (ingen leverantör för inkomstverifiering är ansluten) — beslutet grundas enbart på vad du anger här.",
+      "disclaimer": "Denna information är självdeklarerad och verifieras inte av tredje part i detta skede (ingen leverantör för inkomstverifiering är ansluten). Beslutet grundas enbart på vad du anger här.",
       "submit": "Kontrollera min behörighet",
       "genericError": "Ett fel uppstod.",
       "resultEligible": "Behörig",
       "resultIneligible": "Inte behörig",
       "resultEligibleNote": "Alla fem kriterier är uppfyllda. En rådgivare kontaktar dig om nästa steg.",
-      "resultIneligibleNote": "Minst ett kriterium är inte uppfyllt — detaljerna nedan visar vilket.",
+      "resultIneligibleNote": "Minst ett kriterium är inte uppfyllt: detaljerna nedan visar vilket.",
       "threshold": "tröskelvärde",
       "resultEstimate": "Som vägledning: {rate}%/år, uppskattad månadsbetalning {payment}.",
       "historyTitle": "Mina ansökningar",
@@ -1546,7 +1546,7 @@
     },
     "investment": {
       "title": "Direktinvestering",
-      "intro": "Placera medel från ditt tillgängliga saldo i en av korgarna nedan — en riktig placering, utan säkerhet eller kredit, med en verklig daglig avkastning som kan vara negativ en ogynnsam marknadsdag. Fullständigt uttag möjligt när som helst.",
+      "intro": "Placera medel från ditt tillgängliga saldo i en av korgarna nedan: en riktig placering, utan säkerhet eller kredit, med en verklig daglig avkastning som kan vara negativ en ogynnsam marknadsdag. Fullständigt uttag möjligt när som helst.",
       "indicativeAnnual": "Vägledande årsmål",
       "latestDaily": "Senaste verkliga dagsavkastning",
       "principal": "Investerat kapital",
@@ -1591,7 +1591,7 @@
   "DirectInvestment": {
     "meta": {
       "title": "Direktinvestering",
-      "description": "Placera medel i bankens RWA-strategi eller en korg med verkliga aktier — en riktig placering, utan säkerhet eller kredit, med en verklig daglig avkastning."
+      "description": "Placera medel i bankens RWA-strategi eller en korg med verkliga aktier: en riktig placering, utan säkerhet eller kredit, med en verklig daglig avkastning."
     },
     "eyebrow": "En tredje produkt",
     "title": "Direktinvestering",
@@ -1600,7 +1600,7 @@
     "steps": {
       "choose": {
         "title": "Välj en korg",
-        "description": "RWA-strategi (tokeniserade industrimetaller och råvaror) eller en korg med 5 verkliga börsnoterade aktier — två avkastningsprofiler att välja mellan."
+        "description": "RWA-strategi (tokeniserade industrimetaller och råvaror) eller en korg med 5 verkliga börsnoterade aktier: två avkastningsprofiler att välja mellan."
       },
       "deposit": {
         "title": "Placera medel",
@@ -1608,7 +1608,7 @@
       },
       "accrue": {
         "title": "Sammansatt daglig avkastning",
-        "description": "Beräknas varje dag utifrån verklig marknadsdata, aldrig påhittad — kan vara negativ en ogynnsam marknadsdag."
+        "description": "Beräknas varje dag utifrån verklig marknadsdata, aldrig påhittad. Kan vara negativ en ogynnsam marknadsdag."
       },
       "withdraw": {
         "title": "Uttag när som helst",
@@ -1618,7 +1618,7 @@
     "baskets": {
       "rwa": {
         "title": "RWA-strategi",
-        "description": "Samma likviditetsstrategi som banken själv använder på tokeniserade industrimetaller och råvaror (platina, palladium, koppar, syntetisk olja) — nu öppen för ditt kapital.",
+        "description": "Samma likviditetsstrategi som banken själv använder på tokeniserade industrimetaller och råvaror (platina, palladium, koppar, syntetisk olja), nu öppen för ditt kapital.",
         "rate": "8,58 %/år vägledande"
       },
       "stocks": {
@@ -1641,7 +1641,7 @@
       },
       "difference": {
         "question": "Vad är skillnaden mot säkerställd kredit?",
-        "answer": "Säkerställd kredit lånar ut pengar mot säkerhet. Direktinvesteringen binder tvärtom dina egna pengar i utbyte mot en avkastning — ingen kredit beviljas, ingen säkerhet krävs."
+        "answer": "Säkerställd kredit lånar ut pengar mot säkerhet. Direktinvesteringen binder tvärtom dina egna pengar i utbyte mot en avkastning: ingen kredit beviljas, ingen säkerhet krävs."
       }
     },
     "ctaLogin": "Till mitt konto",

@@ -1331,7 +1331,22 @@
       "kycStatus": "KYC-Status",
       "memberSince": "Kunde seit",
       "depositAddresses": "Einzahlungsadressen (Krypto)",
-      "noWallets": "Bisher keine Adresse generiert."
+      "noWallets": "Bisher keine Adresse generiert.",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "dateOfBirth": "Geburtsdatum",
+      "nationality": "Staatsangehörigkeit",
+      "street": "Straße",
+      "postalCode": "Postleitzahl",
+      "city": "Stadt",
+      "country": "Land",
+      "sector": "Branche",
+      "seniority": "Betriebszugehörigkeit",
+      "independent": "Selbstständig",
+      "employed": "Angestellt",
+      "save": "Meine Angaben speichern",
+      "saveSuccess": "Angaben gespeichert.",
+      "selfDeclaredNote": "Diese Angaben sind selbst deklariert und jederzeit änderbar; eine bereits von einem Berater geprüfte Adresse oder berufliche Situation gilt nach einer Änderung wieder als zu überprüfen."
     },
     "supportSection": {
       "title": "Support kontaktieren",

@@ -1331,7 +1331,22 @@
       "kycStatus": "KYC-status",
       "memberSince": "Kund sedan",
       "depositAddresses": "Insättningsadresser (krypto)",
-      "noWallets": "Ingen adress genererad ännu."
+      "noWallets": "Ingen adress genererad ännu.",
+      "firstName": "Förnamn",
+      "lastName": "Efternamn",
+      "dateOfBirth": "Födelsedatum",
+      "nationality": "Nationalitet",
+      "street": "Gata",
+      "postalCode": "Postnummer",
+      "city": "Ort",
+      "country": "Land",
+      "sector": "Bransch",
+      "seniority": "Anställningstid",
+      "independent": "Egenföretagare",
+      "employed": "Anställd",
+      "save": "Spara mina uppgifter",
+      "saveSuccess": "Uppgifterna har sparats.",
+      "selfDeclaredNote": "Denna information är självdeklarerad och kan ändras när som helst; en adress eller anställningssituation som redan verifierats av en rådgivare måste verifieras på nytt så snart du ändrar den."
     },
     "supportSection": {
       "title": "Kontakta support",

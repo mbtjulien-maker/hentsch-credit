@@ -1331,7 +1331,22 @@
       "kycStatus": "KYC-status",
       "memberSince": "Klant sinds",
       "depositAddresses": "Stortingsadressen (crypto)",
-      "noWallets": "Nog geen adres gegenereerd."
+      "noWallets": "Nog geen adres gegenereerd.",
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "dateOfBirth": "Geboortedatum",
+      "nationality": "Nationaliteit",
+      "street": "Straat",
+      "postalCode": "Postcode",
+      "city": "Plaats",
+      "country": "Land",
+      "sector": "Sector",
+      "seniority": "Anciënniteit",
+      "independent": "Zelfstandige",
+      "employed": "Werknemer",
+      "save": "Mijn gegevens opslaan",
+      "saveSuccess": "Gegevens opgeslagen.",
+      "selfDeclaredNote": "Deze gegevens zijn zelf opgegeven en op elk moment aan te passen; een adres of arbeidssituatie die al door een adviseur is geverifieerd, moet na wijziging opnieuw worden geverifieerd."
     },
     "supportSection": {
       "title": "Contact opnemen met support",

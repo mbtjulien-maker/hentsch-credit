@@ -585,6 +585,42 @@ export interface ClientProfileView {
   employment: ClientProfileEmployment | null;
 }
 
+// Auto-déclaration client (cf. UserProfileController PATCH/PUT) — sous-ensemble des
+// champs admin (jamais `clientType`/`verified`, cf. backend/src/users/dto/update-own-*).
+export interface UpdateOwnProfileInput {
+  firstName?: string;
+  lastName?: string;
+  dateOfBirth?: string;
+  placeOfBirth?: string;
+  nationality?: string;
+  maritalStatus?: string;
+  dependents?: number;
+  phone?: string;
+}
+
+export interface UpdateOwnAddressInput {
+  label: ClientProfileAddress["label"];
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  residenceType?: string;
+  since?: string;
+}
+
+export interface UpdateOwnEmploymentInput {
+  isIndependent?: boolean;
+  status?: string;
+  employer?: string;
+  sector?: string;
+  role?: string;
+  seniority?: string;
+  annualIncome?: number;
+  monthlyIncome?: number;
+  contractType?: string;
+  activity?: string;
+}
+
 export class ApiError extends Error {
   constructor(
     message: string,
@@ -650,6 +686,24 @@ export const api = {
   listCards: (userId: string) => request<CardRecord[]>(`/users/${userId}/cards`),
   listWallets: (userId: string) => request<WalletRecord[]>(`/wallets/${userId}`),
   getUserProfile: (userId: string) => request<ClientProfileView>(`/users/${userId}/profile`),
+  // Auto-déclaration client — chaque appel renvoie le profil complet rafraîchi (même vue
+  // que getUserProfile ci-dessus), pratique pour resynchroniser l'écran après coup sans
+  // un 4e aller-retour.
+  updateUserProfile: (userId: string, data: UpdateOwnProfileInput) =>
+    request<ClientProfileView>(`/users/${userId}/profile`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    }),
+  updateUserAddresses: (userId: string, addresses: UpdateOwnAddressInput[]) =>
+    request<ClientProfileView>(`/users/${userId}/profile/addresses`, {
+      method: "PUT",
+      body: JSON.stringify({ addresses }),
+    }),
+  updateUserEmployment: (userId: string, data: UpdateOwnEmploymentInput) =>
+    request<ClientProfileView>(`/users/${userId}/profile/employment`, {
+      method: "PATCH",
+      body: JSON.stringify(data),
+    }),
   getManagedWallet: (userId: string) =>
     request<ClientManagedWalletView>(`/users/${userId}/managed-wallet`),
   getMarketPrices: () => request<MarketOverviewEntry[]>("/market/prices"),

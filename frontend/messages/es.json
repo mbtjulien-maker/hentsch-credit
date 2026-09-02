@@ -1331,7 +1331,22 @@
       "kycStatus": "Estado KYC",
       "memberSince": "Cliente desde",
       "depositAddresses": "Direcciones de depósito (cripto)",
-      "noWallets": "Aún no se ha generado ninguna dirección."
+      "noWallets": "Aún no se ha generado ninguna dirección.",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "dateOfBirth": "Fecha de nacimiento",
+      "nationality": "Nacionalidad",
+      "street": "Calle",
+      "postalCode": "Código postal",
+      "city": "Ciudad",
+      "country": "País",
+      "sector": "Sector de actividad",
+      "seniority": "Antigüedad",
+      "independent": "Autónomo",
+      "employed": "Asalariado",
+      "save": "Guardar mi información",
+      "saveSuccess": "Información guardada.",
+      "selfDeclaredNote": "Esta información es autodeclarada y se puede modificar en cualquier momento; una dirección o situación laboral ya verificada por un asesor vuelve a quedar pendiente de verificación en cuanto la modifiques."
     },
     "supportSection": {
       "title": "Contactar con soporte",

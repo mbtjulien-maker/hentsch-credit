@@ -1331,7 +1331,22 @@
       "kycStatus": "KYC status",
       "memberSince": "Client since",
       "depositAddresses": "Deposit addresses (crypto)",
-      "noWallets": "No address generated yet."
+      "noWallets": "No address generated yet.",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "dateOfBirth": "Date of birth",
+      "nationality": "Nationality",
+      "street": "Street",
+      "postalCode": "Postal code",
+      "city": "City",
+      "country": "Country",
+      "sector": "Sector",
+      "seniority": "Seniority",
+      "independent": "Self-employed",
+      "employed": "Employed",
+      "save": "Save my information",
+      "saveSuccess": "Information saved.",
+      "selfDeclaredNote": "This information is self-declared and can be updated at any time; an address or employment situation already verified by an advisor becomes pending re-verification once you change it."
     },
     "supportSection": {
       "title": "Contact support",

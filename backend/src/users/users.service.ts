@@ -1,6 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Address, ClientProfile, Employment, User } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
+import { UpdateOwnAddressesDto } from './dto/update-own-addresses.dto';
+import { UpdateOwnEmploymentDto } from './dto/update-own-employment.dto';
+import { UpdateOwnProfileDto } from './dto/update-own-profile.dto';
 
 export interface ClientProfileAddressView {
   label: Address['label'];
@@ -101,6 +104,67 @@ export class UsersService {
         ? this.presentEmployment(user.employment)
         : null,
     };
+  }
+
+  // Auto-service — même noyau que AdminClientsService.updateProfile, mais retourne la
+  // vue client restreinte (getProfile) plutôt que la fiche 360 complète, et n'accepte pas
+  // `clientType` (cf. UpdateOwnProfileDto). Upsert : un compte fraîchement créé n'a pas
+  // encore de ClientProfile (cf. AccountRequestsService.approve).
+  async updateProfile(
+    userId: string,
+    dto: UpdateOwnProfileDto,
+  ): Promise<ClientProfileView> {
+    const data = {
+      firstName: dto.firstName,
+      lastName: dto.lastName,
+      dateOfBirth: dto.dateOfBirth ? new Date(dto.dateOfBirth) : undefined,
+      placeOfBirth: dto.placeOfBirth,
+      nationality: dto.nationality,
+      maritalStatus: dto.maritalStatus,
+      dependents: dto.dependents,
+      phone: dto.phone,
+    };
+    await this.prisma.clientProfile.upsert({
+      where: { userId },
+      create: { userId, ...data },
+      update: data,
+    });
+    return this.getProfile(userId);
+  }
+
+  // Remplacement en bloc (au plus une par label, cf. @@unique([userId, label]) sur
+  // Address) — même principe que la version admin. `verified` forcé à false ici, sur la
+  // création COMME sur la mise à jour : une adresse qu'un admin avait certifiée perd sa
+  // certification dès que le client la modifie lui-même, jusqu'à nouvelle vérification.
+  async updateAddresses(
+    userId: string,
+    dto: UpdateOwnAddressesDto,
+  ): Promise<ClientProfileView> {
+    await this.prisma.$transaction(
+      dto.addresses.map((a) =>
+        this.prisma.address.upsert({
+          where: { userId_label: { userId, label: a.label } },
+          create: { userId, ...a, verified: false },
+          update: { ...a, verified: false },
+        }),
+      ),
+    );
+    return this.getProfile(userId);
+  }
+
+  // Même logique que updateAddresses ci-dessus pour `verified` : jamais certifiée par
+  // l'auto-déclaration du client, toujours remise à false dès qu'il modifie sa situation.
+  async updateEmployment(
+    userId: string,
+    dto: UpdateOwnEmploymentDto,
+  ): Promise<ClientProfileView> {
+    const data = { ...dto, verified: false };
+    await this.prisma.employment.upsert({
+      where: { userId },
+      create: { userId, ...data },
+      update: data,
+    });
+    return this.getProfile(userId);
   }
 
   private presentEmployment(e: Employment): ClientProfileEmploymentView {

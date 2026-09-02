@@ -1645,6 +1645,8 @@
         },
         "simulator": {
           "basketLabel": "Basket",
+          "basketGroupLabel": "Perpetual baskets",
+          "planGroupLabel": "Fixed-term plans",
           "basket": {
             "RWA_STRATEGY": "RWA strategy",
             "STOCKS": "Stock basket",
@@ -1721,6 +1723,42 @@
           "liquidity": {
             "question": "Can I get my funds back at any time?",
             "answer": "Yes, with no notice or penalty. Withdrawal is always full (capital + accrued return); partial withdrawal isn't offered at this stage."
+          }
+        }
+      },
+      "fixedTermPlans": {
+        "title": "Fixed-term plans",
+        "intro": "Fixed-term simulations (3, 6, or 12 months), calculated from the real dividend yield of the underlying assets. Purely illustrative: no real deposit is offered on these plans at this stage — use the simulator above to project the gain.",
+        "periodReturn": "Indicative return over {horizon}",
+        "annualizedEquivalent": "Annualized equivalent",
+        "horizon": {
+          "months": "{months} months",
+          "year": "1 year"
+        },
+        "plan": {
+          "TREASURY_3M": {
+            "title": "Dynamic Treasury",
+            "description": "Short-duration formula based on defensive dividend stocks (Coca-Cola, Procter & Gamble, Johnson & Johnson) and exposure to the RWA strategy on tokenized industrial metals."
+          },
+          "SEMICONDUCTORS_6M": {
+            "title": "Chips & AI Memory",
+            "description": "Optimized for the semiannual cycles of server and data-storage orders (Micron, SanDisk, Dell Technologies)."
+          },
+          "CORE_BALANCED_12M": {
+            "title": "Core Balanced",
+            "description": "A balanced combination of safe-haven stocks and technology giants (Microsoft, Apple, Eli Lilly, Berkshire Hathaway)."
+          },
+          "RWA_METALS_12M": {
+            "title": "RWA & Metals Strategy",
+            "description": "The same treasury strategy as the bank's own, backed by tokenized industrial metals and commodities (platinum, palladium, copper, synthetic oil)."
+          },
+          "AI_MEGACAPS_12M": {
+            "title": "AI & Cloud Leaders",
+            "description": "Direct exposure to the world's artificial intelligence and cloud giants (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+          },
+          "ALPHA_MOMENTUM_12M": {
+            "title": "Alpha Momentum",
+            "description": "Seeks performance from companies with the strongest recent acceleration (Palantir, Dell Technologies, Micron, SanDisk)."
           }
         }
       }

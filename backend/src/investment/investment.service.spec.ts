@@ -96,7 +96,10 @@ describe('InvestmentService', () => {
     runDailySimulation: jest.Mock;
     getHistory: jest.Mock;
   };
-  let stockMarketDataService: { getBasketMarketSignal: jest.Mock };
+  let stockMarketDataService: {
+    getBasketMarketSignal: jest.Mock;
+    getSignalForTickers: jest.Mock;
+  };
   let service: InvestmentService;
 
   beforeEach(() => {
@@ -124,7 +127,10 @@ describe('InvestmentService', () => {
       runDailySimulation: jest.fn(),
       getHistory: jest.fn(),
     };
-    stockMarketDataService = { getBasketMarketSignal: jest.fn() };
+    stockMarketDataService = {
+      getBasketMarketSignal: jest.fn(),
+      getSignalForTickers: jest.fn(),
+    };
 
     service = new InvestmentService(
       prisma as never,
@@ -442,6 +448,70 @@ describe('InvestmentService', () => {
 
       expect(results).toHaveLength(1);
       expect(results[0].positionId).toBe('ok');
+    });
+  });
+
+  describe('getFixedTermPlans', () => {
+    it('returns all 6 plans, each with an id, horizon, and computed indicative return', async () => {
+      treasuryBotService.getHistory.mockResolvedValue([
+        buildTreasuryRun({ blendedReturnPct: new Prisma.Decimal('0.02') }),
+      ]);
+      stockMarketDataService.getSignalForTickers.mockResolvedValue(0.1);
+
+      const plans = await service.getFixedTermPlans();
+
+      expect(plans.map((p) => p.id)).toEqual([
+        'TREASURY_3M',
+        'SEMICONDUCTORS_6M',
+        'CORE_BALANCED_12M',
+        'RWA_METALS_12M',
+        'AI_MEGACAPS_12M',
+        'ALPHA_MOMENTUM_12M',
+      ]);
+      for (const plan of plans) {
+        expect(Number(plan.annualizedPct)).toBeGreaterThanOrEqual(0);
+        expect(Number(plan.periodPct)).toBeGreaterThanOrEqual(0);
+      }
+    });
+
+    it('never uses the client-provided hand-picked target (e.g. 25%/an for Alpha Momentum) — recomputes from real per-ticker dividend yields instead', async () => {
+      treasuryBotService.getHistory.mockResolvedValue([buildTreasuryRun()]);
+      stockMarketDataService.getSignalForTickers.mockResolvedValue(0);
+
+      const plans = await service.getFixedTermPlans();
+      const alphaMomentum = plans.find((p) => p.id === 'ALPHA_MOMENTUM_12M')!;
+
+      // PLTR(0) + DELL(1.6) + MU(0.45) + SNDK(0), moyenne = 0.5125, jamais 25.
+      expect(Number(alphaMomentum.annualizedPct)).toBeCloseTo(0.51, 1);
+      expect(Number(alphaMomentum.annualizedPct)).toBeLessThan(1);
+    });
+
+    it('a 100%-RWA plan (RWA_METALS_12M) reuses INDICATIVE_ANNUAL_YIELD_PCT.RWA_STRATEGY and the real TreasuryBotRun signal, never a separate ticker', async () => {
+      treasuryBotService.getHistory.mockResolvedValue([
+        buildTreasuryRun({ blendedReturnPct: new Prisma.Decimal('0.03') }),
+      ]);
+      stockMarketDataService.getSignalForTickers.mockResolvedValue(null);
+
+      const plans = await service.getFixedTermPlans();
+      const rwaPlan = plans.find((p) => p.id === 'RWA_METALS_12M')!;
+
+      expect(rwaPlan.tickers).toEqual([]);
+      expect(rwaPlan.includesRwa).toBe(true);
+      // Aucun ticker interrogé pour un plan 100% RWA.
+      expect(
+        stockMarketDataService.getSignalForTickers,
+      ).not.toHaveBeenCalledWith([]);
+      expect(rwaPlan.latestSignalPct).toBe('0.0300');
+    });
+
+    it('degrades gracefully to a null signal when neither the stock tickers nor the RWA run are available, without blocking the other plans', async () => {
+      treasuryBotService.getHistory.mockResolvedValue([]);
+      stockMarketDataService.getSignalForTickers.mockResolvedValue(null);
+
+      const plans = await service.getFixedTermPlans();
+
+      expect(plans.every((p) => p.latestSignalPct === null)).toBe(true);
+      expect(plans).toHaveLength(6);
     });
   });
 });

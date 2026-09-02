@@ -17,10 +17,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { MiniSparkline } from "@/components/marketing/performance-chart";
 import { InvestmentAdvisorDialog } from "@/components/dashboard/investment-advisor-dialog";
+import { FixedTermPlansSection } from "@/components/dashboard/fixed-term-plans-section";
 import {
   api,
   ApiError,
   INVESTMENT_BASKETS,
+  type FixedTermPlan,
   type InvestmentAssets,
   type InvestmentBasket,
   type InvestmentBasketRate,
@@ -48,19 +50,22 @@ function buildReturnIndex(points: { date: string; returnPct: string }[]) {
 }
 
 // Classification indicative (1-5, cf. RISK_LEVEL côté backend) — jamais un score calculé
-// en direct, une hypothèse de stratégie éditoriale affichée à titre informatif.
-function riskLabel(level: number, t: ReturnType<typeof useTranslations>): string {
+// en direct, une hypothèse de stratégie éditoriale affichée à titre informatif. Seuil
+// médian élargi à 3,5 (plutôt que l'égalité stricte === 3) depuis l'introduction des
+// plans à échéance fixe (§2H CLAUDE.md entrée #29), dont les scores de risque (2,5/3,5)
+// ne tombent pas exactement sur les paliers entiers des 6 paniers perpétuels.
+export function riskLabel(level: number, t: ReturnType<typeof useTranslations>): string {
   if (level <= 2) return t("risk.low");
-  if (level === 3) return t("risk.medium");
+  if (level <= 3.5) return t("risk.medium");
   return t("risk.high");
 }
 
-function RiskBadge({ level }: { level: number }) {
+export function RiskBadge({ level }: { level: number }) {
   const t = useTranslations("Dashboard.investment");
   const colorClass =
     level <= 2
       ? "border-primary/40 text-primary"
-      : level === 3
+      : level <= 3.5
         ? "border-amber-500/40 text-amber-600 dark:text-amber-400"
         : "border-destructive/40 text-destructive";
   return (
@@ -313,6 +318,7 @@ export function InvestmentPanel({
   const [rates, setRates] = useState<InvestmentRates | null>(null);
   const [assets, setAssets] = useState<InvestmentAssets | null>(null);
   const [history, setHistory] = useState<InvestmentHistory | null>(null);
+  const [fixedTermPlans, setFixedTermPlans] = useState<FixedTermPlan[] | null>(null);
   const [availableBalance, setAvailableBalance] = useState<number | null>(null);
   const [busyBasket, setBusyBasket] = useState<InvestmentBasket | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -342,6 +348,15 @@ export function InvestmentPanel({
       })
       .catch(() => {
         // Purement informatif — le panneau reste utilisable sans la tendance.
+      });
+    api
+      .getFixedTermPlans()
+      .then((p) => {
+        if (!ignore) setFixedTermPlans(p);
+      })
+      .catch(() => {
+        // Purement informatif — les paniers perpétuels restent utilisables sans les
+        // plans à échéance fixe (section masquée si absente, cf. FixedTermPlansSection).
       });
     // Solde disponible réel — utilisé uniquement pour les raccourcis 25/50/75/MAX et la
     // validation en temps réel, jamais affiché comme un chiffre en soi ici (déjà visible
@@ -402,6 +417,7 @@ export function InvestmentPanel({
       <div className="flex justify-end">
         <InvestmentAdvisorDialog
           rates={rates}
+          plans={fixedTermPlans}
           availableBalance={availableBalance}
         />
       </div>
@@ -422,6 +438,8 @@ export function InvestmentPanel({
           />
         ))}
       </div>
+
+      <FixedTermPlansSection plans={fixedTermPlans} />
     </div>
   );
 }

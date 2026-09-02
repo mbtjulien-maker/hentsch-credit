@@ -1645,6 +1645,8 @@
         },
         "simulator": {
           "basketLabel": "Mand",
+          "basketGroupLabel": "Doorlopende manden",
+          "planGroupLabel": "Vastetermijnplannen",
           "basket": {
             "RWA_STRATEGY": "RWA-strategie",
             "STOCKS": "Aandelenmand",
@@ -1721,6 +1723,42 @@
           "liquidity": {
             "question": "Kan ik mijn geld op elk moment terugkrijgen?",
             "answer": "Ja, zonder opzegtermijn of boete. De opname is altijd volledig (kapitaal + opgebouwd rendement); gedeeltelijke opname wordt in dit stadium niet aangeboden."
+          }
+        }
+      },
+      "fixedTermPlans": {
+        "title": "Vastetermijnplannen",
+        "intro": "Simulaties met vaste looptijd (3, 6 of 12 maanden), berekend op basis van het reële dividendrendement van de onderliggende activa. Puur illustratief: voor deze plannen wordt momenteel geen echte storting aangeboden — gebruik de simulator hierboven om de winst te projecteren.",
+        "periodReturn": "Indicatief rendement over {horizon}",
+        "annualizedEquivalent": "Geannualiseerd equivalent",
+        "horizon": {
+          "months": "{months} maanden",
+          "year": "1 jaar"
+        },
+        "plan": {
+          "TREASURY_3M": {
+            "title": "Treasury Dynamic",
+            "description": "Kortlopende formule op basis van defensieve dividendaandelen (Coca-Cola, Procter & Gamble, Johnson & Johnson) en blootstelling aan de RWA-strategie op getokeniseerde industriële metalen."
+          },
+          "SEMICONDUCTORS_6M": {
+            "title": "Chips & AI-opslag",
+            "description": "Geoptimaliseerd voor de halfjaarlijkse bestelcycli van servers en dataopslag (Micron, SanDisk, Dell Technologies)."
+          },
+          "CORE_BALANCED_12M": {
+            "title": "Core Balanced",
+            "description": "Evenwichtige combinatie van veilige havens en technologiegiganten (Microsoft, Apple, Eli Lilly, Berkshire Hathaway)."
+          },
+          "RWA_METALS_12M": {
+            "title": "RWA- & Metalenstrategie",
+            "description": "Dezelfde treasurystrategie als die van de bank, gesteund door getokeniseerde industriële metalen en grondstoffen (platina, palladium, koper, synthetische olie)."
+          },
+          "AI_MEGACAPS_12M": {
+            "title": "AI- & Cloudleiders",
+            "description": "Directe blootstelling aan de wereldwijde giganten van kunstmatige intelligentie en cloud (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+          },
+          "ALPHA_MOMENTUM_12M": {
+            "title": "Alpha Momentum",
+            "description": "Zoekt rendement bij bedrijven met de sterkste recente versnelling (Palantir, Dell Technologies, Micron, SanDisk)."
           }
         }
       }

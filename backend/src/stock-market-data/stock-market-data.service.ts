@@ -39,7 +39,10 @@ export class StockMarketDataService {
     return this.configService?.get<string>('FINNHUB_API_KEY') || undefined;
   }
 
-  private async getQuote(ticker: StockTicker): Promise<FinnhubQuote | null> {
+  // Type volontairement `string` (pas `StockTicker`) : ce n'est qu'un constructeur d'URL,
+  // réutilisé aussi bien pour les tickers d'un panier (typés) que pour un ticker
+  // quelconque d'un plan à échéance fixe (cf. getQuotesForTickers, FIXED_TERM_PLANS).
+  private async getQuote(ticker: string): Promise<FinnhubQuote | null> {
     if (!this.apiKey) {
       return null;
     }
@@ -106,6 +109,40 @@ export class StockMarketDataService {
   // aujourd'hui" de "donnée indisponible".
   async getBasketMarketSignal(basket: StockSubBasket): Promise<number | null> {
     const quotes = await this.getBasketQuotes(basket);
+    if (quotes.length === 0) {
+      return null;
+    }
+    return quotes.reduce((sum, q) => sum + q.changePct, 0) / quotes.length;
+  }
+
+  // Variante générique de getBasketQuotes pour une liste de tickers arbitraire, pas liée
+  // à un panier de STOCK_SUB_BASKETS — utilisée par les plans à échéance fixe
+  // (FIXED_TERM_PLANS), qui recomposent librement des tickers empruntés à plusieurs
+  // paniers. Même comportement : dégradation gracieuse par ticker, jamais un cours
+  // fabriqué.
+  async getQuotesForTickers(
+    tickers: readonly string[],
+  ): Promise<{ ticker: string; price: number; changePct: number }[]> {
+    const quotes = await Promise.all(
+      tickers.map(async (ticker) => {
+        const quote = await this.getQuote(ticker);
+        return quote && quote.dp !== null
+          ? { ticker, price: quote.c, changePct: quote.dp }
+          : null;
+      }),
+    );
+    return quotes.filter(
+      (q): q is { ticker: string; price: number; changePct: number } =>
+        q !== null,
+    );
+  }
+
+  // Pendant de getBasketMarketSignal pour une liste de tickers arbitraire (cf.
+  // getQuotesForTickers) — `null` uniquement si aucun des tickers demandés n'a répondu.
+  async getSignalForTickers(
+    tickers: readonly string[],
+  ): Promise<number | null> {
+    const quotes = await this.getQuotesForTickers(tickers);
     if (quotes.length === 0) {
       return null;
     }

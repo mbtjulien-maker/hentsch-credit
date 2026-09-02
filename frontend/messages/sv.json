@@ -1645,6 +1645,8 @@
         },
         "simulator": {
           "basketLabel": "Korg",
+          "basketGroupLabel": "Löpande korgar",
+          "planGroupLabel": "Fasta löptidsplaner",
           "basket": {
             "RWA_STRATEGY": "RWA-strategi",
             "STOCKS": "Aktiekorg",
@@ -1721,6 +1723,42 @@
           "liquidity": {
             "question": "Kan jag få tillbaka mina medel när som helst?",
             "answer": "Ja, utan uppsägningstid eller avgift. Uttaget är alltid fullständigt (kapital + upplupen avkastning); delvis uttag erbjuds inte i detta skede."
+          }
+        }
+      },
+      "fixedTermPlans": {
+        "title": "Fasta löptidsplaner",
+        "intro": "Simuleringar med fast löptid (3, 6 eller 12 månader), beräknade utifrån den reella utdelningsavkastningen för de underliggande tillgångarna. Rent illustrativt: ingen verklig insättning erbjuds för dessa planer i nuläget — använd simulatorn ovan för att projicera vinsten.",
+        "periodReturn": "Vägledande avkastning över {horizon}",
+        "annualizedEquivalent": "Årlig motsvarighet",
+        "horizon": {
+          "months": "{months} månader",
+          "year": "1 år"
+        },
+        "plan": {
+          "TREASURY_3M": {
+            "title": "Treasury Dynamic",
+            "description": "Kortsiktig formel baserad på defensiva utdelningsaktier (Coca-Cola, Procter & Gamble, Johnson & Johnson) och exponering mot RWA-strategin på tokeniserade industrimetaller."
+          },
+          "SEMICONDUCTORS_6M": {
+            "title": "Chips & AI-lagring",
+            "description": "Optimerad för de halvårsvisa beställningscyklerna för servrar och datalagring (Micron, SanDisk, Dell Technologies)."
+          },
+          "CORE_BALANCED_12M": {
+            "title": "Core Balanced",
+            "description": "Balanserad kombination av trygga tillgångar och teknikjättar (Microsoft, Apple, Eli Lilly, Berkshire Hathaway)."
+          },
+          "RWA_METALS_12M": {
+            "title": "RWA- & Metallstrategi",
+            "description": "Samma likviditetsstrategi som banken själv använder, stödd av tokeniserade industrimetaller och råvaror (platina, palladium, koppar, syntetisk olja)."
+          },
+          "AI_MEGACAPS_12M": {
+            "title": "AI- & Molnledare",
+            "description": "Direkt exponering mot de globala jättarna inom artificiell intelligens och molntjänster (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+          },
+          "ALPHA_MOMENTUM_12M": {
+            "title": "Alpha Momentum",
+            "description": "Söker avkastning i företag med den starkaste senaste accelerationen (Palantir, Dell Technologies, Micron, SanDisk)."
           }
         }
       }

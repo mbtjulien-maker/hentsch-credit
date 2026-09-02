@@ -1645,6 +1645,8 @@
         },
         "simulator": {
           "basketLabel": "Panier",
+          "basketGroupLabel": "Paniers perpétuels",
+          "planGroupLabel": "Plans à échéance fixe",
           "basket": {
             "RWA_STRATEGY": "Stratégie RWA",
             "STOCKS": "Panier d'actions",
@@ -1721,6 +1723,42 @@
           "liquidity": {
             "question": "Puis-je récupérer mes fonds à tout moment ?",
             "answer": "Oui, sans préavis ni pénalité. Le retrait est toujours intégral (capital + rendement accumulé) ; le retrait partiel n'est pas proposé à ce stade."
+          }
+        }
+      },
+      "fixedTermPlans": {
+        "title": "Plans à échéance fixe",
+        "intro": "Des simulations à échéance fixe (3, 6 ou 12 mois), calculées à partir du rendement de dividende réel des actifs sous-jacents. Purement illustratif : aucun dépôt réel n'est proposé sur ces plans à ce stade — utilisez le simulateur ci-dessus pour en projeter le gain.",
+        "periodReturn": "Rendement indicatif sur {horizon}",
+        "annualizedEquivalent": "Équivalent annualisé",
+        "horizon": {
+          "months": "{months} mois",
+          "year": "1 an"
+        },
+        "plan": {
+          "TREASURY_3M": {
+            "title": "Trésorerie Dynamic",
+            "description": "Formule courte durée basée sur des actions défensives à dividendes (Coca-Cola, Procter & Gamble, Johnson & Johnson) et une exposition à la stratégie RWA sur les métaux industriels tokenisés."
+          },
+          "SEMICONDUCTORS_6M": {
+            "title": "Puces & Mémoire IA",
+            "description": "Optimisé sur les cycles semestriels de commandes de serveurs et de stockage de données (Micron, SanDisk, Dell Technologies)."
+          },
+          "CORE_BALANCED_12M": {
+            "title": "Core Balanced",
+            "description": "Combinaison équilibrée de valeurs refuges et de géants technologiques (Microsoft, Apple, Eli Lilly, Berkshire Hathaway)."
+          },
+          "RWA_METALS_12M": {
+            "title": "Stratégie RWA & Métaux",
+            "description": "Même stratégie de trésorerie que la banque, appuyée sur les métaux industriels et matières premières tokenisés (platine, palladium, cuivre, pétrole synthétique)."
+          },
+          "AI_MEGACAPS_12M": {
+            "title": "Leaders IA & Cloud",
+            "description": "Exposition directe aux géants mondiaux de l'intelligence artificielle et du cloud (NVIDIA, Broadcom, Meta Platforms, Alphabet)."
+          },
+          "ALPHA_MOMENTUM_12M": {
+            "title": "Alpha Momentum",
+            "description": "Recherche de performance sur les entreprises à la plus forte accélération récente (Palantir, Dell Technologies, Micron, SanDisk)."
           }
         }
       }

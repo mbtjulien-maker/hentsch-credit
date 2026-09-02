@@ -298,6 +298,40 @@ export type InvestmentAssets = {
   RWA_STRATEGY: { assets: RwaBasketAsset[] };
 } & Record<Exclude<InvestmentBasket, "RWA_STRATEGY">, { assets: StockBasketAsset[] }>;
 
+// Plans à échéance fixe (cf. §2H CLAUDE.md entrée #29, GET /investment/fixed-term-plans)
+// — un DEUXIÈME mode de placement, purement illustratif (aucun dépôt réel, aucune
+// position persistée), distinct des 6 paniers perpétuels ci-dessus. `annualizedPct`/
+// `periodPct` sont recalculés côté backend à partir des rendements de dividende réels des
+// composants du plan, jamais le chiffre initialement proposé par le client (jusqu'à
+// 25%/an) — cf. FIXED_TERM_PLANS côté backend.
+export type FixedTermPlanId =
+  | "TREASURY_3M"
+  | "SEMICONDUCTORS_6M"
+  | "CORE_BALANCED_12M"
+  | "RWA_METALS_12M"
+  | "AI_MEGACAPS_12M"
+  | "ALPHA_MOMENTUM_12M";
+
+export const FIXED_TERM_PLAN_IDS: FixedTermPlanId[] = [
+  "TREASURY_3M",
+  "SEMICONDUCTORS_6M",
+  "CORE_BALANCED_12M",
+  "RWA_METALS_12M",
+  "AI_MEGACAPS_12M",
+  "ALPHA_MOMENTUM_12M",
+];
+
+export interface FixedTermPlan {
+  id: FixedTermPlanId;
+  horizonMonths: number;
+  riskScore: number;
+  tickers: string[];
+  includesRwa: boolean;
+  annualizedPct: string;
+  periodPct: string;
+  latestSignalPct: string | null;
+}
+
 export interface RepayCreditResult {
   balance: LedgerBalance;
   collateralUnlocked: boolean;
@@ -802,6 +836,8 @@ export const api = {
   getInvestmentRates: () => request<InvestmentRates>("/investment/rates"),
   getInvestmentAssets: () => request<InvestmentAssets>("/investment/assets"),
   getInvestmentHistory: () => request<InvestmentHistory>("/investment/history"),
+  getFixedTermPlans: () =>
+    request<FixedTermPlan[]>("/investment/fixed-term-plans"),
   depositInvestment: (basket: InvestmentBasket, amount: string) =>
     request<InvestmentPosition>("/investment/deposit", {
       method: "POST",

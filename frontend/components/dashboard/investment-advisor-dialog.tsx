@@ -17,58 +17,136 @@ import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { INVESTMENT_BASKETS, type InvestmentBasket, type InvestmentRates } from "@/lib/api";
+import {
+  FIXED_TERM_PLAN_IDS,
+  INVESTMENT_BASKETS,
+  type FixedTermPlan,
+  type InvestmentBasket,
+  type InvestmentRates,
+} from "@/lib/api";
 import { formatUsd } from "@/lib/format";
 
 const HORIZONS_MONTHS = [3, 6, 12, 60] as const;
 
+// Sélection du simulateur — soit l'un des 6 paniers perpétuels (dépôt/retrait réels),
+// soit l'un des 6 plans à échéance fixe ajoutés à l'entrée #29 du journal (purement
+// illustratifs, aucun dépôt réel). Encodée en une seule chaîne ("basket:X"/"plan:Y") pour
+// tenir dans un unique <Select>, plutôt que deux sélecteurs séparés.
+type SimSelection =
+  | { kind: "basket"; id: InvestmentBasket }
+  | { kind: "plan"; id: FixedTermPlan["id"] };
+
+function encodeSelection(sel: SimSelection): string {
+  return `${sel.kind}:${sel.id}`;
+}
+
+function decodeSelection(value: string): SimSelection {
+  const [kind, id] = value.split(":");
+  return kind === "plan"
+    ? { kind: "plan", id: id as FixedTermPlan["id"] }
+    : { kind: "basket", id: id as InvestmentBasket };
+}
+
 // Simulateur de projection — même principe que les simulateurs de crédit existants
 // (§2F CLAUDE.md, useEstimatedYield/RepaymentProjection) : un objectif ANNUEL indicatif
-// déjà affiché ailleurs (GET /investment/rates), converti en taux mensuel équivalent puis
-// composé sur l'horizon choisi. Jamais un chiffre garanti — même disclaimer que partout
-// ailleurs sur ce produit (cf. simulator.disclaimer).
+// déjà affiché ailleurs (GET /investment/rates ou /investment/fixed-term-plans), converti
+// en taux mensuel équivalent puis composé sur l'horizon choisi. Jamais un chiffre garanti
+// — même disclaimer que partout ailleurs sur ce produit (cf. simulator.disclaimer).
 function SimulatorTab({
   rates,
+  plans,
   availableBalance,
 }: {
   rates: InvestmentRates | null;
+  plans: FixedTermPlan[] | null;
   availableBalance: number | null;
 }) {
   const t = useTranslations("Dashboard.investment.advisor");
-  const [basket, setBasket] = useState<InvestmentBasket>("RWA_STRATEGY");
+  // Les titres de plan vivent sous Dashboard.investment.fixedTermPlans (partagés avec
+  // FixedTermPlansSection, cf. investment-panel.tsx), pas sous .advisor — traducteur
+  // séparé plutôt que de dupliquer ces 6 titres dans le namespace advisor.
+  const tInvestment = useTranslations("Dashboard.investment");
+  const [selection, setSelection] = useState<SimSelection>({
+    kind: "basket",
+    id: "RWA_STRATEGY",
+  });
   const [amount, setAmount] = useState("1000");
   const [months, setMonths] = useState<number>(12);
 
-  const annualPct = rates ? Number(rates[basket].indicativeAnnualPct) : null;
+  const selectedPlan =
+    selection.kind === "plan" ? plans?.find((p) => p.id === selection.id) ?? null : null;
+  const annualPct =
+    selection.kind === "basket"
+      ? rates
+        ? Number(rates[selection.id].indicativeAnnualPct)
+        : null
+      : selectedPlan
+        ? Number(selectedPlan.annualizedPct)
+        : null;
   const principal = Number(amount) || 0;
   const monthlyRate = annualPct != null ? Math.pow(1 + annualPct / 100, 1 / 12) - 1 : null;
   const projected =
     monthlyRate != null && principal > 0 ? principal * Math.pow(1 + monthlyRate, months) : null;
   const gain = projected != null ? projected - principal : null;
 
+  function handleSelectionChange(value: string) {
+    const next = decodeSelection(value);
+    setSelection(next);
+    // Un plan à échéance fixe a une durée propre (3/6/12 mois) — la présélectionner
+    // évite au client de devoir la retrouver manuellement dans les boutons ci-dessous
+    // (cf. demande client : "calculer la projection exacte du gain sur ces durées").
+    if (next.kind === "plan") {
+      const plan = plans?.find((p) => p.id === next.id);
+      if (plan) setMonths(plan.horizonMonths);
+    }
+  }
+
   return (
     <div className="flex flex-col gap-4">
       <div className="grid gap-2">
         <Label>{t("simulator.basketLabel")}</Label>
-        <Select value={basket} onValueChange={(v) => v && setBasket(v as InvestmentBasket)}>
+        <Select value={encodeSelection(selection)} onValueChange={(v) => v && handleSelectionChange(v)}>
           <SelectTrigger className="w-full">
             <SelectValue>
-              {(value: InvestmentBasket | null) =>
-                value ? t(`simulator.basket.${value}`) : null
-              }
+              {(value: string | null) => {
+                if (!value) return null;
+                const decoded = decodeSelection(value);
+                return decoded.kind === "basket"
+                  ? t(`simulator.basket.${decoded.id}`)
+                  : tInvestment(`fixedTermPlans.plan.${decoded.id}.title`);
+              }}
             </SelectValue>
           </SelectTrigger>
           <SelectContent>
-            {INVESTMENT_BASKETS.map((b) => (
-              <SelectItem key={b} value={b}>
-                {t(`simulator.basket.${b}`)}
-              </SelectItem>
-            ))}
+            <SelectGroup>
+              <SelectLabel>{t("simulator.basketGroupLabel")}</SelectLabel>
+              {INVESTMENT_BASKETS.map((b) => (
+                <SelectItem key={b} value={encodeSelection({ kind: "basket", id: b })}>
+                  {t(`simulator.basket.${b}`)}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+            {plans && plans.length > 0 && (
+              <>
+                <SelectSeparator />
+                <SelectGroup>
+                  <SelectLabel>{t("simulator.planGroupLabel")}</SelectLabel>
+                  {FIXED_TERM_PLAN_IDS.map((id) => (
+                    <SelectItem key={id} value={encodeSelection({ kind: "plan", id })}>
+                      {tInvestment(`fixedTermPlans.plan.${id}.title`)}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </>
+            )}
           </SelectContent>
         </Select>
       </div>
@@ -253,9 +331,11 @@ function FaqTab() {
 // jamais une donnée ou une capacité qui n'existe pas réellement).
 export function InvestmentAdvisorDialog({
   rates,
+  plans,
   availableBalance,
 }: {
   rates: InvestmentRates | null;
+  plans: FixedTermPlan[] | null;
   availableBalance: number | null;
 }) {
   const t = useTranslations("Dashboard.investment.advisor");
@@ -284,7 +364,7 @@ export function InvestmentAdvisorDialog({
             <TabsTrigger value="faq">{t("tabs.faq")}</TabsTrigger>
           </TabsList>
           <TabsContent value="simulator" className="max-h-[50vh] overflow-y-auto pt-4">
-            <SimulatorTab rates={rates} availableBalance={availableBalance} />
+            <SimulatorTab rates={rates} plans={plans} availableBalance={availableBalance} />
           </TabsContent>
           <TabsContent value="quiz" className="max-h-[50vh] overflow-y-auto pt-4">
             <RiskQuizTab />

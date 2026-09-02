@@ -158,4 +158,36 @@ describe('StockMarketDataService', () => {
       expect(quotes).toEqual([]);
     });
   });
+
+  // Variante générique pour une liste de tickers arbitraire (cf. FIXED_TERM_PLANS, qui
+  // recompose librement des tickers empruntés à plusieurs paniers) — même comportement
+  // que getBasketQuotes/getBasketMarketSignal, testé ici indépendamment de tout panier.
+  describe('getQuotesForTickers / getSignalForTickers', () => {
+    it('queries exactly the tickers requested, regardless of any basket', async () => {
+      const service = new StockMarketDataService(withKey('test-key'));
+      const requested = ['KO', 'MSFT', 'NVDA'];
+      fetchSpy.mockImplementation((input: Parameters<typeof fetch>[0]) => {
+        const url = urlOf(input);
+        const index = requested.findIndex((t) => url.includes(`symbol=${t}`));
+        return Promise.resolve(
+          jsonResponse({ c: 100 + index, pc: 99, dp: index }),
+        );
+      });
+
+      const quotes = await service.getQuotesForTickers(requested);
+
+      expect(quotes).toHaveLength(3);
+      const signal = await service.getSignalForTickers(requested);
+      expect(signal).toBeCloseTo((0 + 1 + 2) / 3, 6);
+    });
+
+    it('returns null (never a fabricated 0) when none of the requested tickers respond', async () => {
+      const service = new StockMarketDataService(withKey('test-key'));
+      fetchSpy.mockRejectedValue(new Error('network down'));
+
+      const signal = await service.getSignalForTickers(['PLTR', 'SNDK']);
+
+      expect(signal).toBeNull();
+    });
+  });
 });

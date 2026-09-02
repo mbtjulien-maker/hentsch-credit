@@ -182,6 +182,15 @@ export class InvestmentController {
 
     return assets;
   }
+
+  // Plans à échéance fixe (cf. §2H CLAUDE.md entrée #29) — un DEUXIÈME mode de placement,
+  // purement illustratif : aucun dépôt réel, aucune position persistée, contrairement aux
+  // 6 paniers ci-dessus. Consommé par le simulateur (InvestmentAdvisorDialog) et par une
+  // section dédiée du dashboard pour projeter un gain sur une durée fixe (3/6/12 mois).
+  @Get('fixed-term-plans')
+  async getFixedTermPlans() {
+    return this.investmentService.getFixedTermPlans();
+  }
 }
 
 @UseGuards(JwtAuthGuard)

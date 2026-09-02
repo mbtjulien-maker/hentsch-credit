@@ -1309,7 +1309,13 @@
         "INTEREST_PAYMENT": "Intérêts payés",
         "CARD_TOPUP": "Recharge par carte",
         "YIELD_REPAYMENT": "Remboursement par rendement du gage",
-        "LIQUIDATION": "Liquidation"
+        "LIQUIDATION": "Liquidation",
+        "INVESTMENT_DEPOSIT": "Dépôt investissement",
+        "INVESTMENT_WITHDRAWAL": "Retrait investissement",
+        "INVESTMENT_YIELD_ACCRUAL": "Rendement d'investissement",
+        "FIXED_TERM_DEPOSIT": "Dépôt à échéance fixe",
+        "FIXED_TERM_YIELD_ACCRUAL": "Rendement à échéance fixe",
+        "FIXED_TERM_MATURITY_PAYOUT": "Règlement à échéance"
       },
       "transactionStatus": {
         "PENDING": "En attente",

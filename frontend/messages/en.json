@@ -1309,7 +1309,13 @@
         "INTEREST_PAYMENT": "Interest paid",
         "CARD_TOPUP": "Card top-up",
         "YIELD_REPAYMENT": "Repayment via collateral yield",
-        "LIQUIDATION": "Liquidation"
+        "LIQUIDATION": "Liquidation",
+        "INVESTMENT_DEPOSIT": "Investment deposit",
+        "INVESTMENT_WITHDRAWAL": "Investment withdrawal",
+        "INVESTMENT_YIELD_ACCRUAL": "Investment yield",
+        "FIXED_TERM_DEPOSIT": "Fixed-term deposit",
+        "FIXED_TERM_YIELD_ACCRUAL": "Fixed-term yield",
+        "FIXED_TERM_MATURITY_PAYOUT": "Maturity payout"
       },
       "transactionStatus": {
         "PENDING": "Pending",

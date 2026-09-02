@@ -1309,7 +1309,13 @@
         "INTEREST_PAYMENT": "Gezahlte Zinsen",
         "CARD_TOPUP": "Kartenaufladung",
         "YIELD_REPAYMENT": "Rückzahlung durch Rendite der Sicherheit",
-        "LIQUIDATION": "Liquidation"
+        "LIQUIDATION": "Liquidation",
+        "INVESTMENT_DEPOSIT": "Investment-Einzahlung",
+        "INVESTMENT_WITHDRAWAL": "Investment-Auszahlung",
+        "INVESTMENT_YIELD_ACCRUAL": "Investment-Rendite",
+        "FIXED_TERM_DEPOSIT": "Festlaufzeit-Einzahlung",
+        "FIXED_TERM_YIELD_ACCRUAL": "Festlaufzeit-Rendite",
+        "FIXED_TERM_MATURITY_PAYOUT": "Abrechnung bei Fälligkeit"
       },
       "transactionStatus": {
         "PENDING": "Ausstehend",

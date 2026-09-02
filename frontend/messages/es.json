@@ -1309,7 +1309,13 @@
         "INTEREST_PAYMENT": "Intereses pagados",
         "CARD_TOPUP": "Recarga con tarjeta",
         "YIELD_REPAYMENT": "Reembolso por rendimiento de la garantía",
-        "LIQUIDATION": "Liquidación"
+        "LIQUIDATION": "Liquidación",
+        "INVESTMENT_DEPOSIT": "Depósito de inversión",
+        "INVESTMENT_WITHDRAWAL": "Retiro de inversión",
+        "INVESTMENT_YIELD_ACCRUAL": "Rendimiento de inversión",
+        "FIXED_TERM_DEPOSIT": "Depósito a plazo fijo",
+        "FIXED_TERM_YIELD_ACCRUAL": "Rendimiento a plazo fijo",
+        "FIXED_TERM_MATURITY_PAYOUT": "Liquidación al vencimiento"
       },
       "transactionStatus": {
         "PENDING": "Pendiente",

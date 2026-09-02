@@ -1309,7 +1309,13 @@
         "INTEREST_PAYMENT": "Betald ränta",
         "CARD_TOPUP": "Påfyllning via kort",
         "YIELD_REPAYMENT": "Återbetalning via avkastning på säkerheten",
-        "LIQUIDATION": "Likvidation"
+        "LIQUIDATION": "Likvidation",
+        "INVESTMENT_DEPOSIT": "Investeringsinsättning",
+        "INVESTMENT_WITHDRAWAL": "Investeringsuttag",
+        "INVESTMENT_YIELD_ACCRUAL": "Investeringsavkastning",
+        "FIXED_TERM_DEPOSIT": "Insättning fast löptid",
+        "FIXED_TERM_YIELD_ACCRUAL": "Avkastning fast löptid",
+        "FIXED_TERM_MATURITY_PAYOUT": "Reglering vid förfall"
       },
       "transactionStatus": {
         "PENDING": "Väntande",

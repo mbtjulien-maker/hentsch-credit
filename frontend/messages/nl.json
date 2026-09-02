@@ -1309,7 +1309,13 @@
         "INTEREST_PAYMENT": "Betaalde rente",
         "CARD_TOPUP": "Opwaardering per kaart",
         "YIELD_REPAYMENT": "Terugbetaling via rendement van het onderpand",
-        "LIQUIDATION": "Liquidatie"
+        "LIQUIDATION": "Liquidatie",
+        "INVESTMENT_DEPOSIT": "Investeringsstorting",
+        "INVESTMENT_WITHDRAWAL": "Investeringsopname",
+        "INVESTMENT_YIELD_ACCRUAL": "Investeringsrendement",
+        "FIXED_TERM_DEPOSIT": "Storting vaste looptijd",
+        "FIXED_TERM_YIELD_ACCRUAL": "Rendement vaste looptijd",
+        "FIXED_TERM_MATURITY_PAYOUT": "Afwikkeling bij vervaldatum"
       },
       "transactionStatus": {
         "PENDING": "In behandeling",

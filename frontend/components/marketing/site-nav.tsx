@@ -95,19 +95,22 @@ export function SiteNav() {
         <nav
           ref={navRef}
           onMouseLeave={() => positionPill(pathname)}
-          className="relative hidden items-center gap-3 rounded-full border border-border/60 bg-muted/30 px-2.5 py-1.5 lg:flex"
+          className="relative hidden items-center gap-3 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-2.5 py-1.5 lg:flex"
         >
           {/* Fond coulissant — un seul élément partagé, jamais un par lien : c'est ce qui
               produit l'effet de glissement (transition sur left/width) plutôt qu'un
               fondu discontinu d'un highlight à l'autre. Invisible tant qu'aucun lien n'est
               actif ni survolé (ex. page d'accueil, hors de NAV_LINK_KEYS). Position de
               départ (left/width à 0) neutralisée par la transition dès le premier
-              positionnement réel dans useLayoutEffect. Plus opaque que le fond de piste
-              (bg-muted plein contre bg-muted/30 sur <nav>) pour rester visible par-dessus. */}
+              positionnement réel dans useLayoutEffect. Même teinte cyan que la piste
+              (cf. <nav> ci-dessus) mais nettement plus saturée pour rester visible
+              par-dessus — cyan-400 est déjà la couleur de marque du site (cf. le dégradé
+              cyan→fuchsia du CTA "Accéder à mon compte" et du hero), pas une couleur
+              ajoutée au hasard. */}
           <span
             ref={pillRef}
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 top-1/2 h-8 w-0 -translate-y-1/2 rounded-full bg-muted opacity-0 transition-[left,width,opacity] duration-300 ease-out"
+            className="pointer-events-none absolute inset-y-0 top-1/2 h-8 w-0 -translate-y-1/2 rounded-full bg-cyan-400/25 opacity-0 transition-[left,width,opacity] duration-300 ease-out"
           />
           {NAV_LINKS.map((link) => (
             <Link

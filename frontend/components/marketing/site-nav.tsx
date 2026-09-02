@@ -95,14 +95,15 @@ export function SiteNav() {
         <nav
           ref={navRef}
           onMouseLeave={() => positionPill(pathname)}
-          className="relative hidden items-center gap-4 xl:gap-5 lg:flex"
+          className="relative hidden items-center gap-3 rounded-full border border-border/60 bg-muted/30 px-2.5 py-1.5 lg:flex"
         >
           {/* Fond coulissant — un seul élément partagé, jamais un par lien : c'est ce qui
               produit l'effet de glissement (transition sur left/width) plutôt qu'un
               fondu discontinu d'un highlight à l'autre. Invisible tant qu'aucun lien n'est
               actif ni survolé (ex. page d'accueil, hors de NAV_LINK_KEYS). Position de
               départ (left/width à 0) neutralisée par la transition dès le premier
-              positionnement réel dans useLayoutEffect. */}
+              positionnement réel dans useLayoutEffect. Plus opaque que le fond de piste
+              (bg-muted plein contre bg-muted/30 sur <nav>) pour rester visible par-dessus. */}
           <span
             ref={pillRef}
             aria-hidden

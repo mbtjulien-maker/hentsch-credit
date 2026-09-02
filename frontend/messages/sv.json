@@ -1728,7 +1728,7 @@
       },
       "fixedTermPlans": {
         "title": "Fasta löptidsplaner",
-        "intro": "Simuleringar med fast löptid (3, 6 eller 12 månader), beräknade utifrån den reella utdelningsavkastningen för de underliggande tillgångarna. Rent illustrativt: ingen verklig insättning erbjuds för dessa planer i nuläget — använd simulatorn ovan för att projicera vinsten.",
+        "intro": "Placera medel med fast löptid (3, 6 eller 12 månader), med ett avkastningsmål beräknat utifrån den reella utdelningsavkastningen för de underliggande tillgångarna. Dina medel låses till förfallodagen: inget förtida uttag är möjligt.",
         "periodReturn": "Vägledande avkastning över {horizon}",
         "annualizedEquivalent": "Årlig motsvarighet",
         "horizon": {
@@ -1760,7 +1760,16 @@
             "title": "Alpha Momentum",
             "description": "Söker avkastning i företag med den starkaste senaste accelerationen (Palantir, Dell Technologies, Micron, SanDisk)."
           }
-        }
+        },
+        "positionActive": "Aktiv",
+        "positionMatured": "Reglerad",
+        "maturityDate": "Förfallodag",
+        "maturedAt": "Reglerad den",
+        "yourPositions": "Dina placeringar i denna plan",
+        "lockWarning": "{amount} låses till {date}. Inget förtida uttag är möjligt: medlen betalas automatiskt tillbaka till ditt tillgängliga saldo vid förfall.",
+        "confirmLock": "Bekräfta låsningen",
+        "cancel": "Avbryt",
+        "depositSuccess": "Insättning genomförd: dina medel är låsta till planens förfallodag."
       }
     }
   },

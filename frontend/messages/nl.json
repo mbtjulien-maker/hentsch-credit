@@ -1728,7 +1728,7 @@
       },
       "fixedTermPlans": {
         "title": "Vastetermijnplannen",
-        "intro": "Simulaties met vaste looptijd (3, 6 of 12 maanden), berekend op basis van het reële dividendrendement van de onderliggende activa. Puur illustratief: voor deze plannen wordt momenteel geen echte storting aangeboden — gebruik de simulator hierboven om de winst te projecteren.",
+        "intro": "Plaats geld voor een vaste looptijd (3, 6 of 12 maanden), met een rendementsdoel berekend op basis van het reële dividendrendement van de onderliggende activa. Uw geld wordt geblokkeerd tot de vervaldatum: vervroegde opname is niet mogelijk.",
         "periodReturn": "Indicatief rendement over {horizon}",
         "annualizedEquivalent": "Geannualiseerd equivalent",
         "horizon": {
@@ -1760,7 +1760,16 @@
             "title": "Alpha Momentum",
             "description": "Zoekt rendement bij bedrijven met de sterkste recente versnelling (Palantir, Dell Technologies, Micron, SanDisk)."
           }
-        }
+        },
+        "positionActive": "Actief",
+        "positionMatured": "Afgewikkeld",
+        "maturityDate": "Vervaldatum",
+        "maturedAt": "Afgewikkeld op",
+        "yourPositions": "Uw posities in dit plan",
+        "lockWarning": "{amount} wordt geblokkeerd tot {date}. Vervroegde opname is niet mogelijk: het geld wordt bij vervaldatum automatisch teruggestort op uw beschikbare saldo.",
+        "confirmLock": "Blokkering bevestigen",
+        "cancel": "Annuleren",
+        "depositSuccess": "Storting uitgevoerd: uw geld is geblokkeerd tot de vervaldatum van het plan."
       }
     }
   },

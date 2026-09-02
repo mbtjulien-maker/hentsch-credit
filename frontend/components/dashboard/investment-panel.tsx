@@ -23,6 +23,8 @@ import {
   ApiError,
   INVESTMENT_BASKETS,
   type FixedTermPlan,
+  type FixedTermPlanId,
+  type FixedTermPosition,
   type InvestmentAssets,
   type InvestmentBasket,
   type InvestmentBasketRate,
@@ -319,9 +321,21 @@ export function InvestmentPanel({
   const [assets, setAssets] = useState<InvestmentAssets | null>(null);
   const [history, setHistory] = useState<InvestmentHistory | null>(null);
   const [fixedTermPlans, setFixedTermPlans] = useState<FixedTermPlan[] | null>(null);
+  const [fixedTermPositions, setFixedTermPositions] = useState<FixedTermPosition[]>([]);
   const [availableBalance, setAvailableBalance] = useState<number | null>(null);
   const [busyBasket, setBusyBasket] = useState<InvestmentBasket | null>(null);
+  const [busyPlan, setBusyPlan] = useState<FixedTermPlanId | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  function refreshFixedTermPositions() {
+    api
+      .listFixedTermPositions(userId)
+      .then(setFixedTermPositions)
+      .catch(() => {
+        // Purement informatif — la section reste utilisable sans l'historique des
+        // positions (le dépôt lui-même reste possible).
+      });
+  }
 
   useEffect(() => {
     let ignore = false;
@@ -358,6 +372,14 @@ export function InvestmentPanel({
         // Purement informatif — les paniers perpétuels restent utilisables sans les
         // plans à échéance fixe (section masquée si absente, cf. FixedTermPlansSection).
       });
+    api
+      .listFixedTermPositions(userId)
+      .then((p) => {
+        if (!ignore) setFixedTermPositions(p);
+      })
+      .catch(() => {
+        // Purement informatif — voir refreshFixedTermPositions ci-dessus.
+      });
     // Solde disponible réel — utilisé uniquement pour les raccourcis 25/50/75/MAX et la
     // validation en temps réel, jamais affiché comme un chiffre en soi ici (déjà visible
     // sur /dashboard/solde et l'accueil).
@@ -389,6 +411,30 @@ export function InvestmentPanel({
       setError(err instanceof ApiError ? err.message : t("genericError"));
     } finally {
       setBusyBasket(null);
+    }
+  }
+
+  async function handleDepositFixedTerm(plan: FixedTermPlanId, amount: string) {
+    setBusyPlan(plan);
+    setError(null);
+    try {
+      await api.depositFixedTerm(plan, Number(amount).toFixed(6));
+      toast.success(t("fixedTermPlans.depositSuccess"));
+      refreshFixedTermPositions();
+      // Solde débité immédiatement — jamais rafraîchi automatiquement par onSuccess()
+      // (qui ne rafraîchit que les paniers perpétuels côté page), donc relu ici pour que
+      // les raccourcis 25/50/75/MAX et la validation reflètent tout de suite le nouveau
+      // solde disponible.
+      api
+        .getBalance(userId)
+        .then((b) => setAvailableBalance(Number(b.balance.availableBalance)))
+        .catch(() => {
+          // Purement informatif.
+        });
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : t("genericError"));
+    } finally {
+      setBusyPlan(null);
     }
   }
 
@@ -439,7 +485,13 @@ export function InvestmentPanel({
         ))}
       </div>
 
-      <FixedTermPlansSection plans={fixedTermPlans} />
+      <FixedTermPlansSection
+        plans={fixedTermPlans}
+        positions={fixedTermPositions}
+        availableBalance={availableBalance}
+        busyPlan={busyPlan}
+        onDeposit={handleDepositFixedTerm}
+      />
     </div>
   );
 }

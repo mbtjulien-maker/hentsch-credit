@@ -18,43 +18,12 @@ import {
   StockSubBasket,
 } from '../stock-market-data/stock-market-data.constants';
 import { TreasuryBotService } from '../treasury-bot/treasury-bot.service';
-import { INDICATIVE_ANNUAL_YIELD_PCT } from './investment.constants';
-import {
-  FIXED_TERM_PLAN_IDS,
-  FIXED_TERM_PLANS,
-  FixedTermPlanId,
-  TICKER_DIVIDEND_YIELD_PCT,
-} from './fixed-term-plan.constants';
 
 const DAYS_PER_YEAR = 365;
-const MONTHS_PER_YEAR = 12;
 
 export interface WithdrawResult {
   balance: LedgerBalance;
   withdrawnAmount: Prisma.Decimal;
-}
-
-// Vue calculée d'un plan à échéance fixe (cf. FIXED_TERM_PLANS, GET
-// /investment/fixed-term-plans) — purement informatif, jamais persisté : recalculé à
-// chaque appel à partir de constantes éditoriales (dividende par ticker, objectif RWA) et
-// d'un signal de marché relu en direct (Finnhub / dernier TreasuryBotRun), jamais un
-// chiffre fourni tel quel par le client.
-export interface FixedTermPlanView {
-  id: FixedTermPlanId;
-  horizonMonths: number;
-  riskScore: number;
-  tickers: string[];
-  includesRwa: boolean;
-  // Objectif annualisé indicatif (moyenne des rendements de dividende réels des
-  // composants du plan, + l'objectif RWA le cas échéant) — jamais une garantie.
-  annualizedPct: string;
-  // Le même objectif, composé sur la durée réelle du plan (horizonMonths) — ce que le
-  // client verrait affiché sur la carte du plan ("X% sur 3 mois", pas seulement "/an").
-  periodPct: string;
-  // Signal de marché réel du jour pour les composants du plan (Finnhub pour les tickers,
-  // dernier TreasuryBotRun.blendedReturnPct pour la composante RWA) — `null` si aucun
-  // composant n'a pu être interrogé, jamais un chiffre fabriqué.
-  latestSignalPct: string | null;
 }
 
 export interface AccrualResult {
@@ -207,72 +176,6 @@ export class InvestmentService {
   ): Promise<StockBasketRun | null> {
     const rows = await this.getStockBasketHistory(basket, 1);
     return rows[0] ?? null;
-  }
-
-  // Plans à échéance fixe (cf. §2H CLAUDE.md entrée #29, GET /investment/fixed-term-plans)
-  // — un DEUXIÈME mode de placement, purement illustratif (aucun dépôt réel, jamais
-  // persisté ici), à côté des 6 paniers perpétuels ci-dessus. Pour chaque plan :
-  // l'objectif annualisé est la moyenne des rendements de dividende réels de ses
-  // composants (TICKER_DIVIDEND_YIELD_PCT) + l'objectif indicatif RWA le cas échéant
-  // (INDICATIVE_ANNUAL_YIELD_PCT.RWA_STRATEGY) — jamais le chiffre fourni tel quel par le
-  // client (cf. commentaire de FIXED_TERM_PLANS). `periodPct` compose ce même objectif
-  // sur la durée réelle du plan. `latestSignalPct` reste un vrai signal du jour (Finnhub
-  // + dernier TreasuryBotRun), jamais recalculé à partir de l'objectif indicatif.
-  async getFixedTermPlans(): Promise<FixedTermPlanView[]> {
-    const [latestRwaRun] = await this.treasuryBotService.getHistory(1);
-    const rwaSignal = latestRwaRun
-      ? Number(latestRwaRun.blendedReturnPct)
-      : null;
-
-    return Promise.all(
-      FIXED_TERM_PLAN_IDS.map(async (id) => {
-        const plan = FIXED_TERM_PLANS[id];
-        const tickers: string[] = [...plan.tickers];
-
-        const componentYields = tickers.map(
-          (ticker) => TICKER_DIVIDEND_YIELD_PCT[ticker],
-        );
-        if (plan.includesRwa) {
-          componentYields.push(INDICATIVE_ANNUAL_YIELD_PCT.RWA_STRATEGY);
-        }
-        const annualPct = componentYields
-          .reduce((sum, y) => sum.plus(y), new Prisma.Decimal(0))
-          .dividedBy(componentYields.length);
-        const annualPctNumber = annualPct.toNumber();
-        const periodPct =
-          (Math.pow(
-            1 + annualPctNumber / 100,
-            plan.horizonMonths / MONTHS_PER_YEAR,
-          ) -
-            1) *
-          100;
-
-        const stockSignal =
-          tickers.length > 0
-            ? await this.stockMarketDataService.getSignalForTickers(tickers)
-            : null;
-        const signals = [
-          stockSignal,
-          plan.includesRwa ? rwaSignal : null,
-        ].filter((s): s is number => s !== null);
-        const latestSignalPct =
-          signals.length > 0
-            ? signals.reduce((sum, s) => sum + s, 0) / signals.length
-            : null;
-
-        return {
-          id,
-          horizonMonths: plan.horizonMonths,
-          riskScore: plan.riskScore,
-          tickers,
-          includesRwa: plan.includesRwa,
-          annualizedPct: annualPct.toDecimalPlaces(2).toString(),
-          periodPct: periodPct.toFixed(2),
-          latestSignalPct:
-            latestSignalPct != null ? latestSignalPct.toFixed(4) : null,
-        };
-      }),
-    );
   }
 
   // Tourne quotidiennement, décalé après le bot de trésorerie (3h) et la génération des

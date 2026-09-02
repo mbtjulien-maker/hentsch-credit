@@ -143,6 +143,16 @@ enum TransactionType {
   // position (composé jour après jour) — jamais versé sur availableBalance tant que le
   // client n'a pas retiré sa position (cf. InvestmentService.withdraw).
   INVESTMENT_YIELD_ACCRUAL
+  // Plans à échéance fixe (cf. §2H CLAUDE.md entrée #30, FixedTermPosition) — DEUXIÈME
+  // mode de placement, bloqué jusqu'à l'échéance (aucun retrait anticipé, contrairement à
+  // INVESTMENT_WITHDRAWAL). FIXED_TERM_DEPOSIT débite availableBalance au dépôt ;
+  // FIXED_TERM_YIELD_ACCRUAL journalise l'accrual quotidien (composé, jamais versé avant
+  // l'échéance) ; FIXED_TERM_MATURITY_PAYOUT crédite principalAmount + accruedYield sur
+  // availableBalance à l'échéance, déclenché automatiquement par le cron (jamais un geste
+  // du client, contrairement à un retrait).
+  FIXED_TERM_DEPOSIT
+  FIXED_TERM_YIELD_ACCRUAL
+  FIXED_TERM_MATURITY_PAYOUT
 }
 
 enum TransactionStatus {
@@ -222,6 +232,12 @@ model User {
   // gage. Plusieurs lignes possibles dans le temps (une par cycle dépôt→retrait, comme
   // CreditPosition), au plus une ACTIVE par (userId, basket).
   investmentPositions   InvestmentPosition[]
+  // Plans à échéance fixe (cf. §2H CLAUDE.md entrée #30) — DEUXIÈME mode de placement,
+  // distinct des positions perpétuelles ci-dessus : chaque dépôt crée sa propre ligne
+  // (jamais cumulée à une position existante, contrairement à InvestmentPosition), avec
+  // sa propre date de maturité. Plusieurs positions ACTIVE possibles simultanément sur le
+  // même plan, chacune verrouillée jusqu'à sa propre échéance.
+  fixedTermPositions    FixedTermPosition[]
   // Renseigné uniquement si ce compte a été créé via une demande d'ouverture approuvée
   // (cf. AccountOpeningRequest) — traçabilité, jamais réutilisé pour recalculer quoi que
   // ce soit. Les comptes de seed n'en ont pas.
@@ -787,4 +803,68 @@ model StockBasketRun {
 
   @@unique([runDate, basket])
   @@map("stock_basket_runs")
+}
+
+// Plans à échéance fixe (cf. §2H CLAUDE.md entrée #29/#30, FIXED_TERM_PLANS côté backend)
+// — DEUXIÈME mode de placement, distinct des 6 paniers perpétuels ci-dessus. Chaque plan
+// recompose librement des tickers déjà couverts par les paniers (parfois mélangés entre
+// eux, ou avec la stratégie RWA) sur une durée fixe (3/6/12 mois) — plus de détail dans
+// backend/src/investment/fixed-term-plan.constants.ts.
+enum FixedTermPlanId {
+  TREASURY_3M
+  SEMICONDUCTORS_6M
+  CORE_BALANCED_12M
+  RWA_METALS_12M
+  AI_MEGACAPS_12M
+  ALPHA_MOMENTUM_12M
+}
+
+enum FixedTermPositionStatus {
+  ACTIVE
+  MATURED
+}
+
+// Une position par dépôt (jamais cumulée à une position existante, contrairement à
+// InvestmentPosition) — chaque tranche a sa propre échéance, verrouillée dès le dépôt
+// (cf. §6 entrée #30 : aucun retrait anticipé, choix produit explicite du client).
+// `accruedYield` composé quotidiennement comme InvestmentPosition (peut être négatif —
+// même vrai risque de perte, le rendement affiché n'est jamais garanti), versé sur
+// availableBalance uniquement à l'échéance (cf. InvestmentService.runFixedTermMaturities).
+model FixedTermPosition {
+  id     String                  @id @default(uuid())
+  userId String
+  plan   FixedTermPlanId
+
+  principalAmount Decimal                 @default(0) @db.Decimal(18, 6)
+  accruedYield    Decimal                 @default(0) @db.Decimal(18, 6)
+  status          FixedTermPositionStatus @default(ACTIVE)
+
+  createdAt    DateTime  @default(now())
+  maturityDate DateTime
+  maturedAt    DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([maturityDate])
+  @@map("fixed_term_positions")
+}
+
+// Rendement quotidien réel d'un plan à échéance fixe — pendant de StockBasketRun, même
+// principe (baseline dividende éditoriale des composants du plan + variation réelle du
+// marché ce jour-là, cf. InvestmentService.getFixedTermPlans/recordFixedTermPlanRun),
+// une ligne par (jour, plan).
+model FixedTermPlanRun {
+  id      String          @id @default(uuid())
+  runDate DateTime        @db.Date
+  plan    FixedTermPlanId
+
+  marketSignalPct Decimal @db.Decimal(9, 6)
+  dailyReturnPct  Decimal @db.Decimal(9, 6)
+
+  createdAt DateTime @default(now())
+
+  @@unique([runDate, plan])
+  @@map("fixed_term_plan_runs")
 }

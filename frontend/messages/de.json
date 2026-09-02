@@ -1728,7 +1728,7 @@
       },
       "fixedTermPlans": {
         "title": "Festlaufzeit-Pläne",
-        "intro": "Simulationen mit fester Laufzeit (3, 6 oder 12 Monate), berechnet aus der realen Dividendenrendite der zugrunde liegenden Vermögenswerte. Rein illustrativ: Für diese Pläne wird derzeit keine echte Einzahlung angeboten — nutzen Sie den Simulator oben, um den Gewinn zu projizieren.",
+        "intro": "Legen Sie Mittel für eine feste Laufzeit an (3, 6 oder 12 Monate), mit einem Renditeziel, das aus der realen Dividendenrendite der zugrunde liegenden Vermögenswerte berechnet wird. Ihre Mittel sind bis zur Fälligkeit gesperrt: eine vorzeitige Auszahlung ist nicht möglich.",
         "periodReturn": "Indikative Rendite über {horizon}",
         "annualizedEquivalent": "Annualisiertes Äquivalent",
         "horizon": {
@@ -1760,7 +1760,16 @@
             "title": "Alpha Momentum",
             "description": "Sucht Performance bei Unternehmen mit der stärksten jüngsten Beschleunigung (Palantir, Dell Technologies, Micron, SanDisk)."
           }
-        }
+        },
+        "positionActive": "Aktiv",
+        "positionMatured": "Abgerechnet",
+        "maturityDate": "Fälligkeit",
+        "maturedAt": "Abgerechnet am",
+        "yourPositions": "Ihre Positionen in diesem Plan",
+        "lockWarning": "{amount} werden bis zum {date} gesperrt. Eine vorzeitige Auszahlung ist nicht möglich: die Mittel werden bei Fälligkeit automatisch auf Ihr verfügbares Guthaben zurückgezahlt.",
+        "confirmLock": "Sperrung bestätigen",
+        "cancel": "Abbrechen",
+        "depositSuccess": "Einzahlung erfolgt: Ihre Mittel sind bis zur Fälligkeit des Plans gesperrt."
       }
     }
   },

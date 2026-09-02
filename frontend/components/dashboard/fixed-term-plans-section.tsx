@@ -1,25 +1,105 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { Loader2, Lock } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { RiskBadge } from "@/components/dashboard/investment-panel";
-import type { FixedTermPlan } from "@/lib/api";
+import type { FixedTermPlan, FixedTermPosition } from "@/lib/api";
+import { formatDate, formatUsd } from "@/lib/format";
 
-// Plans à échéance fixe (cf. §2H CLAUDE.md entrée #29) — un DEUXIÈME mode de placement,
-// purement illustratif : à la différence des paniers ci-dessus (dépôt/retrait réels), ces
-// cartes n'ont volontairement aucun bouton de dépôt — aucun produit à échéance fixe n'est
-// réellement proposé au dépôt à ce stade (cf. GET /investment/fixed-term-plans, jamais de
-// position persistée). Le rendement affiché est recalculé côté backend à partir des
-// rendements de dividende réels des composants du plan, jamais le chiffre initialement
-// envisagé (jusqu'à 25 %/an) — la mention "illustratif" ci-dessous n'est pas cosmétique.
+const QUICK_FRACTIONS = [0.25, 0.5, 0.75, 1] as const;
+const MIN_AMOUNT = 10;
+
+// Plans à échéance fixe (cf. §2H CLAUDE.md entrée #30) — DEUXIÈME mode de placement,
+// réellement souscriptible (contrairement à la version illustrative de l'entrée #29) mais
+// **bloqué jusqu'à l'échéance dès la confirmation** : aucun retrait anticipé n'existe côté
+// backend. D'où l'étape de confirmation explicite ci-dessous plutôt qu'un bouton "Placer"
+// immédiat comme sur les paniers perpétuels (BasketCard) — le client doit voir la date de
+// blocage avant de valider, pas la découvrir après coup.
 function horizonLabel(months: number, t: ReturnType<typeof useTranslations>): string {
   return months === 12 ? t("fixedTermPlans.horizon.year") : t("fixedTermPlans.horizon.months", { months });
 }
 
-function PlanCard({ plan }: { plan: FixedTermPlan }) {
+function computeMaturityPreview(horizonMonths: number): Date {
+  const date = new Date();
+  date.setMonth(date.getMonth() + horizonMonths);
+  return date;
+}
+
+function PositionRow({ position }: { position: FixedTermPosition }) {
   const t = useTranslations("Dashboard.investment");
+  const locale = useLocale();
+  const principal = Number(position.principalAmount);
+  const accruedYield = Number(position.accruedYield);
+  const totalValue = principal + accruedYield;
+
+  return (
+    <div className="flex flex-col gap-1 rounded-lg border border-border/60 p-2.5 text-xs">
+      <div className="flex items-center justify-between">
+        <span className="font-medium text-foreground">{formatUsd(totalValue)}</span>
+        <Badge
+          variant="outline"
+          className={
+            position.status === "ACTIVE"
+              ? "border-amber-500/40 text-amber-600 dark:text-amber-400"
+              : "border-primary/40 text-primary"
+          }
+        >
+          {position.status === "ACTIVE" ? t("fixedTermPlans.positionActive") : t("fixedTermPlans.positionMatured")}
+        </Badge>
+      </div>
+      <div className="flex items-center justify-between text-muted-foreground">
+        <span>{t("principal")}</span>
+        <span className="tabular-nums">{formatUsd(principal)}</span>
+      </div>
+      <div className="flex items-center justify-between text-muted-foreground">
+        <span>{t("accruedYield")}</span>
+        <span className={`tabular-nums ${accruedYield < 0 ? "text-destructive" : ""}`}>
+          {formatUsd(accruedYield)}
+        </span>
+      </div>
+      <div className="flex items-center justify-between text-muted-foreground">
+        <span>{position.status === "ACTIVE" ? t("fixedTermPlans.maturityDate") : t("fixedTermPlans.maturedAt")}</span>
+        <span>{formatDate(position.status === "ACTIVE" ? position.maturityDate : position.maturedAt!, locale)}</span>
+      </div>
+    </div>
+  );
+}
+
+function PlanCard({
+  plan,
+  positions,
+  availableBalance,
+  busy,
+  onDeposit,
+}: {
+  plan: FixedTermPlan;
+  positions: FixedTermPosition[];
+  availableBalance: number | null;
+  busy: boolean;
+  onDeposit: (plan: FixedTermPlan["id"], amount: string) => Promise<void>;
+}) {
+  const t = useTranslations("Dashboard.investment");
+  const locale = useLocale();
+  const [amount, setAmount] = useState("");
+  const [confirming, setConfirming] = useState(false);
+
   const latestSignal = plan.latestSignalPct != null ? Number(plan.latestSignalPct) : null;
+  const parsedAmount = Number(amount);
+  const exceedsBalance = availableBalance != null && parsedAmount > availableBalance;
+  const belowMinimum = amount.trim() !== "" && parsedAmount > 0 && parsedAmount < MIN_AMOUNT;
+  const isValidAmount = parsedAmount > 0 && !exceedsBalance && !belowMinimum;
+  const maturityPreview = computeMaturityPreview(plan.horizonMonths);
+
+  async function handleConfirm() {
+    setConfirming(false);
+    await onDeposit(plan.id, amount);
+    setAmount("");
+  }
 
   return (
     <Card>
@@ -35,7 +115,7 @@ function PlanCard({ plan }: { plan: FixedTermPlan }) {
         </div>
         <CardDescription>{t(`fixedTermPlans.plan.${plan.id}.description`)}</CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col gap-2">
+      <CardContent className="flex flex-col gap-3">
         <div className="flex items-center justify-between text-sm">
           <span className="text-muted-foreground">
             {t("fixedTermPlans.periodReturn", { horizon: horizonLabel(plan.horizonMonths, t) })}
@@ -57,12 +137,91 @@ function PlanCard({ plan }: { plan: FixedTermPlan }) {
             </span>
           </div>
         )}
+
+        {positions.length > 0 && (
+          <div className="flex flex-col gap-1.5">
+            <p className="text-xs font-medium text-muted-foreground">{t("fixedTermPlans.yourPositions")}</p>
+            {positions.map((position) => (
+              <PositionRow key={position.id} position={position} />
+            ))}
+          </div>
+        )}
+
+        {!confirming ? (
+          <div className="flex flex-col gap-1.5">
+            <div className="flex gap-2">
+              <Input
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder={t("amountPlaceholder")}
+                value={amount}
+                disabled={busy}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+              <Button type="button" disabled={busy || !isValidAmount} onClick={() => setConfirming(true)}>
+                {busy ? <Loader2 className="size-4 animate-spin" /> : t("deposit")}
+              </Button>
+            </div>
+
+            {availableBalance != null && availableBalance > 0 && (
+              <div className="flex gap-1.5">
+                {QUICK_FRACTIONS.map((fraction) => (
+                  <button
+                    key={fraction}
+                    type="button"
+                    disabled={busy}
+                    onClick={() => setAmount((availableBalance * fraction).toFixed(2))}
+                    className="rounded-md border border-border/60 px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    {fraction === 1 ? t("quickMax") : `${fraction * 100}%`}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {exceedsBalance && <p className="text-xs text-destructive">{t("insufficientBalance")}</p>}
+            {belowMinimum && <p className="text-xs text-destructive">{t("belowMinimum", { min: MIN_AMOUNT })}</p>}
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2 rounded-lg border border-amber-500/40 bg-amber-500/5 p-3">
+            <div className="flex items-start gap-2">
+              <Lock className="mt-0.5 size-3.5 shrink-0 text-amber-600 dark:text-amber-400" />
+              <p className="text-xs leading-relaxed text-foreground">
+                {t("fixedTermPlans.lockWarning", {
+                  amount: formatUsd(parsedAmount),
+                  date: formatDate(maturityPreview.toISOString(), locale),
+                })}
+              </p>
+            </div>
+            <div className="flex gap-2">
+              <Button type="button" size="sm" disabled={busy} onClick={() => void handleConfirm()}>
+                {busy ? <Loader2 className="size-4 animate-spin" /> : t("fixedTermPlans.confirmLock")}
+              </Button>
+              <Button type="button" size="sm" variant="outline" disabled={busy} onClick={() => setConfirming(false)}>
+                {t("fixedTermPlans.cancel")}
+              </Button>
+            </div>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
 }
 
-export function FixedTermPlansSection({ plans }: { plans: FixedTermPlan[] | null }) {
+export function FixedTermPlansSection({
+  plans,
+  positions,
+  availableBalance,
+  busyPlan,
+  onDeposit,
+}: {
+  plans: FixedTermPlan[] | null;
+  positions: FixedTermPosition[];
+  availableBalance: number | null;
+  busyPlan: FixedTermPlan["id"] | null;
+  onDeposit: (plan: FixedTermPlan["id"], amount: string) => Promise<void>;
+}) {
   const t = useTranslations("Dashboard.investment");
 
   if (!plans || plans.length === 0) return null;
@@ -75,7 +234,14 @@ export function FixedTermPlansSection({ plans }: { plans: FixedTermPlan[] | null
       </div>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {plans.map((plan) => (
-          <PlanCard key={plan.id} plan={plan} />
+          <PlanCard
+            key={plan.id}
+            plan={plan}
+            positions={positions.filter((p) => p.plan === plan.id)}
+            availableBalance={availableBalance}
+            busy={busyPlan === plan.id}
+            onDeposit={onDeposit}
+          />
         ))}
       </div>
     </div>

@@ -1728,7 +1728,7 @@
       },
       "fixedTermPlans": {
         "title": "Plans à échéance fixe",
-        "intro": "Des simulations à échéance fixe (3, 6 ou 12 mois), calculées à partir du rendement de dividende réel des actifs sous-jacents. Purement illustratif : aucun dépôt réel n'est proposé sur ces plans à ce stade — utilisez le simulateur ci-dessus pour en projeter le gain.",
+        "intro": "Placez des fonds sur une durée fixe (3, 6 ou 12 mois), avec un objectif de rendement calculé à partir du rendement de dividende réel des actifs sous-jacents. Vos fonds sont bloqués jusqu'à l'échéance : aucun retrait anticipé n'est possible.",
         "periodReturn": "Rendement indicatif sur {horizon}",
         "annualizedEquivalent": "Équivalent annualisé",
         "horizon": {
@@ -1760,7 +1760,16 @@
             "title": "Alpha Momentum",
             "description": "Recherche de performance sur les entreprises à la plus forte accélération récente (Palantir, Dell Technologies, Micron, SanDisk)."
           }
-        }
+        },
+        "positionActive": "Actif",
+        "positionMatured": "Réglé",
+        "maturityDate": "Échéance",
+        "maturedAt": "Réglé le",
+        "yourPositions": "Vos placements sur ce plan",
+        "lockWarning": "{amount} seront bloqués jusqu'au {date}. Aucun retrait anticipé n'est possible : les fonds seront automatiquement reversés sur votre solde disponible à l'échéance.",
+        "confirmLock": "Confirmer le blocage",
+        "cancel": "Annuler",
+        "depositSuccess": "Dépôt effectué : vos fonds sont bloqués jusqu'à l'échéance du plan."
       }
     }
   },

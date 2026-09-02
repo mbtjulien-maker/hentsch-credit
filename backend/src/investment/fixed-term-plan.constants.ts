@@ -1,4 +1,6 @@
-import { Prisma } from '@prisma/client';
+import { FixedTermPlanId, Prisma } from '@prisma/client';
+
+export type { FixedTermPlanId };
 
 // Rendement de dividende annuel indicatif PAR TICKER — approximation éditoriale du
 // rendement de dividende réel de chaque titre (comme STOCK_SUB_BASKETS[basket]
@@ -39,7 +41,15 @@ export const TICKER_DIVIDEND_YIELD_PCT: Record<string, Prisma.Decimal> = {
 // cf. InvestmentService.getFixedTermPlans) N'EST PAS le chiffre fourni par le client —
 // celui-ci était saisi à la main (jusqu'à 25%/an), recalculé ici à partir de la moyenne
 // des rendements de dividende réels des composants du plan, jamais un objectif garanti.
-export const FIXED_TERM_PLANS = {
+export const FIXED_TERM_PLANS: Record<
+  FixedTermPlanId,
+  {
+    horizonMonths: number;
+    riskScore: number;
+    tickers: readonly string[];
+    includesRwa: boolean;
+  }
+> = {
   TREASURY_3M: {
     horizonMonths: 3,
     riskScore: 2.5,
@@ -76,9 +86,7 @@ export const FIXED_TERM_PLANS = {
     tickers: ['PLTR', 'DELL', 'MU', 'SNDK'] as const,
     includesRwa: false,
   },
-} as const;
-
-export type FixedTermPlanId = keyof typeof FIXED_TERM_PLANS;
+};
 
 export const FIXED_TERM_PLAN_IDS = Object.keys(
   FIXED_TERM_PLANS,

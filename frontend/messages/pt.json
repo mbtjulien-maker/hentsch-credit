@@ -1728,7 +1728,7 @@
       },
       "fixedTermPlans": {
         "title": "Planos a prazo fixo",
-        "intro": "Simulações a prazo fixo (3, 6 ou 12 meses), calculadas a partir do rendimento de dividendo real dos ativos subjacentes. Puramente ilustrativo: nenhum depósito real é oferecido nestes planos nesta fase — use o simulador acima para projetar o ganho.",
+        "intro": "Coloque fundos a prazo fixo (3, 6 ou 12 meses), com um objetivo de rendimento calculado a partir do rendimento de dividendo real dos ativos subjacentes. Os seus fundos ficam bloqueados até ao vencimento: não é possível nenhum levantamento antecipado.",
         "periodReturn": "Rendimento indicativo em {horizon}",
         "annualizedEquivalent": "Equivalente anualizado",
         "horizon": {
@@ -1760,7 +1760,16 @@
             "title": "Alpha Momentum",
             "description": "Procura desempenho nas empresas com maior aceleração recente (Palantir, Dell Technologies, Micron, SanDisk)."
           }
-        }
+        },
+        "positionActive": "Ativo",
+        "positionMatured": "Liquidado",
+        "maturityDate": "Vencimento",
+        "maturedAt": "Liquidado em",
+        "yourPositions": "As suas posições neste plano",
+        "lockWarning": "{amount} ficarão bloqueados até {date}. Não é possível nenhum levantamento antecipado: os fundos são automaticamente devolvidos ao seu saldo disponível no vencimento.",
+        "confirmLock": "Confirmar o bloqueio",
+        "cancel": "Cancelar",
+        "depositSuccess": "Depósito efetuado: os seus fundos estão bloqueados até ao vencimento do plano."
       }
     }
   },

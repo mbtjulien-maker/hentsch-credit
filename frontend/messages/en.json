@@ -1728,7 +1728,7 @@
       },
       "fixedTermPlans": {
         "title": "Fixed-term plans",
-        "intro": "Fixed-term simulations (3, 6, or 12 months), calculated from the real dividend yield of the underlying assets. Purely illustrative: no real deposit is offered on these plans at this stage — use the simulator above to project the gain.",
+        "intro": "Place funds for a fixed term (3, 6, or 12 months), with a return target calculated from the real dividend yield of the underlying assets. Your funds are locked until maturity: no early withdrawal is possible.",
         "periodReturn": "Indicative return over {horizon}",
         "annualizedEquivalent": "Annualized equivalent",
         "horizon": {
@@ -1760,7 +1760,16 @@
             "title": "Alpha Momentum",
             "description": "Seeks performance from companies with the strongest recent acceleration (Palantir, Dell Technologies, Micron, SanDisk)."
           }
-        }
+        },
+        "positionActive": "Active",
+        "positionMatured": "Settled",
+        "maturityDate": "Maturity",
+        "maturedAt": "Settled on",
+        "yourPositions": "Your positions on this plan",
+        "lockWarning": "{amount} will be locked until {date}. No early withdrawal is possible: funds are automatically paid back to your available balance at maturity.",
+        "confirmLock": "Confirm lock-up",
+        "cancel": "Cancel",
+        "depositSuccess": "Deposit made: your funds are locked until the plan's maturity."
       }
     }
   },

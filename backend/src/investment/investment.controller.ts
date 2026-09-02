@@ -19,8 +19,10 @@ import {
   RISK_LEVEL,
 } from './investment.constants';
 import { DepositInvestmentDto } from './dto/deposit-investment.dto';
+import { DepositFixedTermDto } from './dto/deposit-fixed-term.dto';
 import { WithdrawInvestmentDto } from './dto/withdraw-investment.dto';
 import { InvestmentService } from './investment.service';
+import { FixedTermPlanService } from './fixed-term-plan.service';
 import { MarketDataService } from '../market-data/market-data.service';
 import {
   STOCK_NAMES,
@@ -38,6 +40,7 @@ import { TreasuryBotService } from '../treasury-bot/treasury-bot.service';
 export class InvestmentController {
   constructor(
     private readonly investmentService: InvestmentService,
+    private readonly fixedTermPlanService: FixedTermPlanService,
     private readonly treasuryBotService: TreasuryBotService,
     private readonly stockMarketDataService: StockMarketDataService,
     private readonly marketDataService: MarketDataService,
@@ -183,13 +186,30 @@ export class InvestmentController {
     return assets;
   }
 
-  // Plans à échéance fixe (cf. §2H CLAUDE.md entrée #29) — un DEUXIÈME mode de placement,
-  // purement illustratif : aucun dépôt réel, aucune position persistée, contrairement aux
-  // 6 paniers ci-dessus. Consommé par le simulateur (InvestmentAdvisorDialog) et par une
-  // section dédiée du dashboard pour projeter un gain sur une durée fixe (3/6/12 mois).
+  // Plans à échéance fixe (cf. §2H CLAUDE.md entrée #30) — un DEUXIÈME mode de placement,
+  // à côté des 6 paniers ci-dessus : réellement souscriptible via POST fixed-term/deposit
+  // ci-dessous, mais bloqué jusqu'à l'échéance (aucun retrait anticipé). Consommé par le
+  // simulateur (InvestmentAdvisorDialog), une section dédiée du dashboard, et le
+  // formulaire de dépôt lui-même (objectif affiché avant confirmation).
   @Get('fixed-term-plans')
   async getFixedTermPlans() {
-    return this.investmentService.getFixedTermPlans();
+    return this.fixedTermPlanService.getFixedTermPlans();
+  }
+
+  // Dépôt à échéance fixe — verrouillé jusqu'à la maturité dès la confirmation (§6 entrée
+  // #30) : contrairement à POST /investment/deposit, aucun endpoint de retrait n'existe
+  // pour ce mode. Chaque dépôt crée sa propre position (jamais cumulé), avec sa propre
+  // date de maturité calculée à l'instant du dépôt.
+  @Post('fixed-term/deposit')
+  depositFixedTerm(
+    @Body() dto: DepositFixedTermDto,
+    @CurrentUser() currentUser: AuthenticatedUser,
+  ) {
+    return this.fixedTermPlanService.deposit(
+      currentUser.id,
+      dto.plan,
+      dto.amount,
+    );
   }
 }
 
@@ -227,5 +247,40 @@ export class AdminInvestmentPositionsController {
   @Post('accrual/run')
   runAccrual() {
     return this.investmentService.runDailyAccrual();
+  }
+}
+
+@UseGuards(JwtAuthGuard)
+@Controller('users/:userId/fixed-term-positions')
+export class UserFixedTermPositionsController {
+  constructor(private readonly fixedTermPlanService: FixedTermPlanService) {}
+
+  @Get()
+  list(
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @CurrentUser() currentUser: AuthenticatedUser,
+  ) {
+    assertSelfOrAdmin(currentUser, userId);
+    return this.fixedTermPlanService.listForUser(userId);
+  }
+}
+
+// Lecture seule back-office — pendant de AdminInvestmentPositionsController pour les
+// plans à échéance fixe.
+@UseGuards(JwtAuthGuard, AdminGuard)
+@Controller('admin/fixed-term-positions')
+export class AdminFixedTermPositionsController {
+  constructor(private readonly fixedTermPlanService: FixedTermPlanService) {}
+
+  @Get()
+  list() {
+    return this.fixedTermPlanService.listAll();
+  }
+
+  // Déclenchement manuel du passage d'accrual + règlement des échéances (cf.
+  // FixedTermPlanService.runDailyAccrual, qui tourne aussi quotidiennement via @Cron).
+  @Post('accrual/run')
+  runAccrual() {
+    return this.fixedTermPlanService.runDailyAccrual();
   }
 }

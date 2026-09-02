@@ -298,12 +298,13 @@ export type InvestmentAssets = {
   RWA_STRATEGY: { assets: RwaBasketAsset[] };
 } & Record<Exclude<InvestmentBasket, "RWA_STRATEGY">, { assets: StockBasketAsset[] }>;
 
-// Plans à échéance fixe (cf. §2H CLAUDE.md entrée #29, GET /investment/fixed-term-plans)
-// — un DEUXIÈME mode de placement, purement illustratif (aucun dépôt réel, aucune
-// position persistée), distinct des 6 paniers perpétuels ci-dessus. `annualizedPct`/
-// `periodPct` sont recalculés côté backend à partir des rendements de dividende réels des
-// composants du plan, jamais le chiffre initialement proposé par le client (jusqu'à
-// 25%/an) — cf. FIXED_TERM_PLANS côté backend.
+// Plans à échéance fixe (cf. §2H CLAUDE.md entrée #30, GET /investment/fixed-term-plans)
+// — DEUXIÈME mode de placement, distinct des 6 paniers perpétuels ci-dessus : réellement
+// souscriptible (POST /investment/fixed-term/deposit), mais bloqué jusqu'à l'échéance —
+// aucun retrait anticipé, contrairement aux paniers. `annualizedPct`/`periodPct` sont
+// recalculés côté backend à partir des rendements de dividende réels des composants du
+// plan, jamais le chiffre initialement proposé par le client (jusqu'à 25%/an) — cf.
+// FIXED_TERM_PLANS côté backend.
 export type FixedTermPlanId =
   | "TREASURY_3M"
   | "SEMICONDUCTORS_6M"
@@ -330,6 +331,23 @@ export interface FixedTermPlan {
   annualizedPct: string;
   periodPct: string;
   latestSignalPct: string | null;
+}
+
+export type FixedTermPositionStatus = "ACTIVE" | "MATURED";
+
+// Une position par dépôt (jamais cumulée à une position existante, contrairement à
+// InvestmentPosition) — chaque tranche a sa propre échéance. `maturedAt` renseigné
+// uniquement une fois réglée automatiquement par le cron (jamais un retrait du client).
+export interface FixedTermPosition {
+  id: string;
+  userId: string;
+  plan: FixedTermPlanId;
+  principalAmount: string;
+  accruedYield: string;
+  status: FixedTermPositionStatus;
+  createdAt: string;
+  maturityDate: string;
+  maturedAt: string | null;
 }
 
 export interface RepayCreditResult {
@@ -850,6 +868,15 @@ export const api = {
     }),
   listInvestmentPositions: (userId: string) =>
     request<InvestmentPosition[]>(`/users/${userId}/investment-positions`),
+  // Bloqué jusqu'à l'échéance dès la confirmation (§6 entrée #30) — aucun endpoint de
+  // retrait n'existe pour ce mode, contrairement à withdrawInvestment ci-dessus.
+  depositFixedTerm: (plan: FixedTermPlanId, amount: string) =>
+    request<FixedTermPosition>("/investment/fixed-term/deposit", {
+      method: "POST",
+      body: JSON.stringify({ plan, amount }),
+    }),
+  listFixedTermPositions: (userId: string) =>
+    request<FixedTermPosition[]>(`/users/${userId}/fixed-term-positions`),
   // userId n'est plus envoyé : dérivé côté serveur du cookie de session (JwtAuthGuard).
   createCreditRequest: (collateralAmount: string, currency: AccountCurrency) =>
     request<CreditRequest>("/credit-requests", {

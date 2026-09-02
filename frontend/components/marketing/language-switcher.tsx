@@ -62,19 +62,23 @@ export function LanguageSwitcher({ className }: { className?: string }) {
 
   return (
     <DropdownMenu>
+      {/* Onglet rond, drapeau seul — convention déjà répandue (Booking, GitHub) pour un
+          sélecteur de langue compact : économise l'espace du libellé complet
+          ("Français"…) dans un en-tête déjà chargé (SiteNav/DashboardHeader), le nom de
+          la langue restant lisible au survol (title) et dans le menu déroulant ouvert. */}
       <DropdownMenuTrigger
         render={
           <button
             type="button"
             disabled={isPending}
             aria-label="Changer de langue"
+            title={LOCALE_LABELS[locale]}
             className={cn(
-              "flex items-center gap-1.5 rounded-lg border border-border/80 bg-card px-2.5 py-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground",
+              "flex size-9 shrink-0 items-center justify-center rounded-full border border-border/80 bg-card text-base leading-none transition-colors hover:border-border hover:bg-muted",
               className,
             )}
           >
-            <span aria-hidden className="text-sm leading-none">{LOCALE_FLAGS[locale]}</span>
-            <span className="hidden sm:inline">{LOCALE_LABELS[locale]}</span>
+            <span aria-hidden>{LOCALE_FLAGS[locale]}</span>
           </button>
         }
       />

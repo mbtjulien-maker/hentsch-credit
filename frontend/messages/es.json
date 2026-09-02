@@ -1835,7 +1835,9 @@
         "daysRemaining": "{days, plural, =0 {Vence hoy} one {# día restante} other {# días restantes}}",
         "maturityDate": "Vencimiento",
         "estimatedReturn": "Objetivo al vencimiento"
-      }
+      },
+      "confirmDepositRecap": "{amount} se colocarán en la cesta «{basket}» — retiro íntegro posible en cualquier momento, a diferencia de un plan a plazo fijo.",
+      "confirmDeposit": "Confirmar la colocación"
     },
     "kycDossier": {
       "title": "Expediente KYC",

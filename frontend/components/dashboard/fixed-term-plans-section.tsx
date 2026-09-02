@@ -7,10 +7,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { RiskBadge } from "@/components/dashboard/investment-panel";
+import { riskAccentClasses, RiskBadge } from "@/components/dashboard/investment-panel";
 import { TermsAcceptance } from "@/components/dashboard/terms-acceptance";
 import type { FixedTermPlan, FixedTermPosition } from "@/lib/api";
 import { formatDate, formatUsd } from "@/lib/format";
+import { cn } from "@/lib/utils";
 
 const QUICK_FRACTIONS = [0.25, 0.5, 0.75, 1] as const;
 const MIN_AMOUNT = 10;
@@ -105,8 +106,10 @@ function PlanCard({
     setAcceptedTerms(false);
   }
 
+  const accent = riskAccentClasses(plan.riskScore);
+
   return (
-    <Card>
+    <Card className={cn("border-l-4", accent.border)}>
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
           <CardTitle className="text-base">{t(`fixedTermPlans.plan.${plan.id}.title`)}</CardTitle>
@@ -119,12 +122,15 @@ function PlanCard({
         </div>
         <CardDescription>{t(`fixedTermPlans.plan.${plan.id}.description`)}</CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col gap-3">
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-muted-foreground">
+      <CardContent className="flex flex-col gap-4">
+        {/* Info capitale mise en avant — même traitement que BasketCard (retour client :
+            "tout est très collé, fais varier les couleurs pour bien sortir les infos
+            capitales sur chaque plan"). */}
+        <div className={cn("flex items-center justify-between rounded-lg px-3 py-2.5", accent.chipBg)}>
+          <span className="text-xs font-medium text-muted-foreground">
             {t("fixedTermPlans.periodReturn", { horizon: horizonLabel(plan.horizonMonths, t) })}
           </span>
-          <span className="font-semibold tabular-nums">{plan.periodPct}%</span>
+          <span className={cn("text-xl font-bold tabular-nums", accent.chipText)}>{plan.periodPct}%</span>
         </div>
         <div className="flex items-center justify-between text-sm">
           <span className="text-muted-foreground">{t("fixedTermPlans.annualizedEquivalent")}</span>
@@ -246,7 +252,7 @@ export function FixedTermPlansSection({
         <h2 className="text-base font-semibold text-foreground">{t("fixedTermPlans.title")}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{t("fixedTermPlans.intro")}</p>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {plans.map((plan) => (
           <PlanCard
             key={plan.id}

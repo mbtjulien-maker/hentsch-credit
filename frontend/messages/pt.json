@@ -1835,7 +1835,9 @@
         "daysRemaining": "{days, plural, =0 {Vence hoje} one {# dia restante} other {# dias restantes}}",
         "maturityDate": "Vencimento",
         "estimatedReturn": "Objetivo no vencimento"
-      }
+      },
+      "confirmDepositRecap": "{amount} serão colocados no cabaz «{basket}» — levantamento integral possível a qualquer momento, ao contrário de um plano a prazo fixo.",
+      "confirmDeposit": "Confirmar a colocação"
     },
     "kycDossier": {
       "title": "Processo KYC",

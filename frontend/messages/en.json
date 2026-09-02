@@ -1835,7 +1835,9 @@
         "daysRemaining": "{days, plural, =0 {Matures today} one {# day remaining} other {# days remaining}}",
         "maturityDate": "Maturity",
         "estimatedReturn": "Target at maturity"
-      }
+      },
+      "confirmDepositRecap": "{amount} will be placed in the \"{basket}\" basket — full withdrawal is possible at any time, unlike a fixed-term plan.",
+      "confirmDeposit": "Confirm placement"
     },
     "kycDossier": {
       "title": "KYC file",

@@ -1835,7 +1835,9 @@
         "daysRemaining": "{days, plural, =0 {Fällig heute} one {noch # Tag} other {noch # Tage}}",
         "maturityDate": "Fälligkeit",
         "estimatedReturn": "Ziel bei Fälligkeit"
-      }
+      },
+      "confirmDepositRecap": "{amount} werden im Korb „{basket}“ angelegt — jederzeit vollständig abhebbar, im Gegensatz zu einem Festlaufzeitplan.",
+      "confirmDeposit": "Anlage bestätigen"
     },
     "kycDossier": {
       "title": "KYC-Dossier",

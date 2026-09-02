@@ -1835,7 +1835,9 @@
         "daysRemaining": "{days, plural, =0 {Förfaller idag} one {# dag kvar} other {# dagar kvar}}",
         "maturityDate": "Förfallodag",
         "estimatedReturn": "Mål vid förfall"
-      }
+      },
+      "confirmDepositRecap": "{amount} kommer att placeras i korgen \"{basket}\" — fullständigt uttag möjligt när som helst, till skillnad från en plan med fast löptid.",
+      "confirmDeposit": "Bekräfta placeringen"
     },
     "kycDossier": {
       "title": "KYC-dossier",

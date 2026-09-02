@@ -1835,7 +1835,9 @@
         "daysRemaining": "{days, plural, =0 {Échéance aujourd'hui} one {# jour restant} other {# jours restants}}",
         "maturityDate": "Échéance",
         "estimatedReturn": "Objectif à l'échéance"
-      }
+      },
+      "confirmDepositRecap": "{amount} seront placés sur le panier « {basket} » — retrait intégral possible à tout moment, contrairement à un plan à échéance fixe.",
+      "confirmDeposit": "Confirmer le placement"
     },
     "kycDossier": {
       "title": "Dossier KYC",

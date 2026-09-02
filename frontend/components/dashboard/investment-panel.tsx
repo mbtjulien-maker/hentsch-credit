@@ -15,7 +15,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MiniSparkline } from "@/components/marketing/performance-chart";
 import { InvestmentAdvisorDialog } from "@/components/dashboard/investment-advisor-dialog";
 import { FixedTermPlansSection } from "@/components/dashboard/fixed-term-plans-section";
@@ -39,6 +39,7 @@ import {
   type StockBasketAsset,
 } from "@/lib/api";
 import { formatUsd } from "@/lib/format";
+import { cn } from "@/lib/utils";
 
 const QUICK_FRACTIONS = [0.25, 0.5, 0.75, 1] as const;
 
@@ -64,6 +65,29 @@ export function riskLabel(level: number, t: ReturnType<typeof useTranslations>):
   if (level <= 2) return t("risk.low");
   if (level <= 3.5) return t("risk.medium");
   return t("risk.high");
+}
+
+// Palette partagée par les paniers perpétuels (BasketCard) et les plans à échéance fixe
+// (FixedTermPlansSection) — un liseré de couleur à gauche de chaque carte plus un fond
+// distinct pour le chiffre d'objectif indicatif, pour que le niveau de risque et le
+// rendement se distinguent au premier coup d'œil dans une grille de plusieurs cartes
+// serrées les unes contre les autres (retour client : "tout est très collé").
+export function riskAccentClasses(level: number): {
+  border: string;
+  chipBg: string;
+  chipText: string;
+} {
+  if (level <= 2) {
+    return { border: "border-l-primary", chipBg: "bg-primary/10", chipText: "text-primary" };
+  }
+  if (level <= 3.5) {
+    return {
+      border: "border-l-amber-500",
+      chipBg: "bg-amber-500/10",
+      chipText: "text-amber-600 dark:text-amber-400",
+    };
+  }
+  return { border: "border-l-destructive", chipBg: "bg-destructive/10", chipText: "text-destructive" };
 }
 
 export function RiskBadge({ level }: { level: number }) {
@@ -161,6 +185,7 @@ function BasketCard({
 }) {
   const t = useTranslations("Dashboard.investment");
   const [amount, setAmount] = useState("");
+  const [confirming, setConfirming] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const dailyPct =
@@ -175,12 +200,22 @@ function BasketCard({
   const minAmount = 10;
   const exceedsBalance = availableBalance != null && parsedAmount > availableBalance;
   const belowMinimum = amount.trim() !== "" && parsedAmount > 0 && parsedAmount < minAmount;
-  const isValidAmount = parsedAmount > 0 && !exceedsBalance && !belowMinimum && acceptedTerms;
+  const isValidAmount = parsedAmount > 0 && !exceedsBalance && !belowMinimum;
 
   const sparklinePoints = buildReturnIndex(history);
 
+  async function handleConfirm() {
+    if (!acceptedTerms) return;
+    setConfirming(false);
+    await onDeposit(basket, amount);
+    setAmount("");
+    setAcceptedTerms(false);
+  }
+
+  const accent = riskAccentClasses(rate?.riskLevel ?? 3);
+
   return (
-    <Card>
+    <Card className={cn("border-l-4", accent.border)}>
       <CardHeader>
         <div className="flex items-center justify-between gap-2">
           <CardTitle className="text-base">{t(`basket.${basket}.title`)}</CardTitle>
@@ -188,15 +223,13 @@ function BasketCard({
         </div>
         <CardDescription>{t(`basket.${basket}.description`)}</CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
-        <div>
-          <p className="mb-1.5 text-xs font-medium text-muted-foreground">{t("assetsTable.title")}</p>
-          <AssetsTable assets={assets} />
-        </div>
-
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-muted-foreground">{t("indicativeAnnual")}</span>
-          <span className="font-semibold tabular-nums">
+      <CardContent className="flex flex-col gap-5">
+        {/* Info capitale de la carte, mise en avant en tête plutôt que noyée dans une
+            liste de lignes toutes au même poids visuel (retour client : "tout est très
+            collé, fais varier les couleurs pour bien sortir les infos capitales"). */}
+        <div className={cn("flex items-center justify-between rounded-lg px-3 py-2.5", accent.chipBg)}>
+          <span className="text-xs font-medium text-muted-foreground">{t("indicativeAnnual")}</span>
+          <span className={cn("text-xl font-bold tabular-nums", accent.chipText)}>
             {rate ? `${rate.indicativeAnnualPct}%/an` : "—"}
           </span>
         </div>
@@ -224,6 +257,11 @@ function BasketCard({
           </div>
         )}
 
+        <div className="border-t border-border/60 pt-4">
+          <p className="mb-1.5 text-xs font-medium text-muted-foreground">{t("assetsTable.title")}</p>
+          <AssetsTable assets={assets} />
+        </div>
+
         {position && (
           <div className="flex flex-col gap-1 rounded-lg border border-border/60 p-3">
             <div className="flex items-center justify-between text-sm">
@@ -247,57 +285,78 @@ function BasketCard({
           </div>
         )}
 
-        <div className="flex flex-col gap-1.5">
-          <TermsAcceptance variant="investment" accepted={acceptedTerms} onAcceptedChange={setAcceptedTerms} disabled={busy} />
-          <div className="flex gap-2">
-            <Input
-              type="number"
-              min="0"
-              step="0.01"
-              placeholder={t("amountPlaceholder")}
-              value={amount}
-              disabled={busy}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-            <Button
-              type="button"
-              disabled={busy || !isValidAmount}
-              onClick={() => {
-                void onDeposit(basket, amount).then(() => {
-                  setAmount("");
-                  setAcceptedTerms(false);
-                });
-              }}
-            >
-              {busy ? <Loader2 className="size-4 animate-spin" /> : t("deposit")}
-            </Button>
-          </div>
-
-          {/* Raccourcis 25/50/75/MAX — calculés sur le vrai solde disponible du client
-              (cf. availableBalance, passé par InvestmentPanel), jamais une valeur devinée. */}
-          {availableBalance != null && availableBalance > 0 && (
-            <div className="flex gap-1.5">
-              {QUICK_FRACTIONS.map((fraction) => (
-                <button
-                  key={fraction}
-                  type="button"
-                  disabled={busy}
-                  onClick={() => setAmount((availableBalance * fraction).toFixed(2))}
-                  className="rounded-md border border-border/60 px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
-                >
-                  {fraction === 1 ? t("quickMax") : `${fraction * 100}%`}
-                </button>
-              ))}
+        {!confirming ? (
+          <div className="flex flex-col gap-1.5">
+            <div className="flex gap-2">
+              <Input
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder={t("amountPlaceholder")}
+                value={amount}
+                disabled={busy}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+              <Button type="button" disabled={busy || !isValidAmount} onClick={() => setConfirming(true)}>
+                {busy ? <Loader2 className="size-4 animate-spin" /> : t("deposit")}
+              </Button>
             </div>
-          )}
 
-          {exceedsBalance && (
-            <p className="text-xs text-destructive">{t("insufficientBalance")}</p>
-          )}
-          {belowMinimum && (
-            <p className="text-xs text-destructive">{t("belowMinimum", { min: minAmount })}</p>
-          )}
-        </div>
+            {/* Raccourcis 25/50/75/MAX — calculés sur le vrai solde disponible du client
+                (cf. availableBalance, passé par InvestmentPanel), jamais une valeur devinée. */}
+            {availableBalance != null && availableBalance > 0 && (
+              <div className="flex gap-1.5">
+                {QUICK_FRACTIONS.map((fraction) => (
+                  <button
+                    key={fraction}
+                    type="button"
+                    disabled={busy}
+                    onClick={() => setAmount((availableBalance * fraction).toFixed(2))}
+                    className="rounded-md border border-border/60 px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    {fraction === 1 ? t("quickMax") : `${fraction * 100}%`}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {exceedsBalance && (
+              <p className="text-xs text-destructive">{t("insufficientBalance")}</p>
+            )}
+            {belowMinimum && (
+              <p className="text-xs text-destructive">{t("belowMinimum", { min: minAmount })}</p>
+            )}
+          </div>
+        ) : (
+          // Étape de confirmation explicite — la case CGU n'apparaît qu'ici, une fois que
+          // le client a manifesté l'intention de placer un montant précis, jamais avant
+          // (demande client) : même principe que la confirmation de blocage des plans à
+          // échéance fixe (FixedTermPlansSection), adapté ici à un placement librement
+          // retirable plutôt qu'à un blocage.
+          <div className="flex flex-col gap-2 rounded-lg border border-primary/30 bg-primary/5 p-3">
+            <p className="text-xs leading-relaxed text-foreground">
+              {t("confirmDepositRecap", { amount: formatUsd(parsedAmount), basket: t(`basket.${basket}.title`) })}
+            </p>
+            <TermsAcceptance variant="investment" accepted={acceptedTerms} onAcceptedChange={setAcceptedTerms} disabled={busy} />
+            <div className="flex gap-2">
+              <Button type="button" size="sm" disabled={busy || !acceptedTerms} onClick={() => void handleConfirm()}>
+                {busy ? <Loader2 className="size-4 animate-spin" /> : t("confirmDeposit")}
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                disabled={busy}
+                onClick={() => {
+                  setConfirming(false);
+                  setAcceptedTerms(false);
+                }}
+              >
+                {t("fixedTermPlans.cancel")}
+              </Button>
+            </div>
+          </div>
+        )}
 
         {position && (
           <Button
@@ -341,6 +400,7 @@ export function InvestmentPanel({
   const [busyPlan, setBusyPlan] = useState<FixedTermPlanId | null>(null);
   const [busyWallet, setBusyWallet] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"baskets" | "fixedTerm" | "myPlacements">("baskets");
 
   function refreshFixedTermPositions() {
     api
@@ -520,15 +580,21 @@ export function InvestmentPanel({
         />
       </div>
 
-      <Tabs defaultValue="baskets">
+      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as typeof activeTab)}>
         <TabsList>
           <TabsTrigger value="baskets">{t("tabs.baskets")}</TabsTrigger>
           <TabsTrigger value="fixedTerm">{t("tabs.fixedTerm")}</TabsTrigger>
           <TabsTrigger value="myPlacements">{t("tabs.myPlacements")}</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="baskets" className="pt-4">
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {/* Rendu conditionnel manuel plutôt que <TabsContent> (Base UI Panel) : le panneau
+            précédent restait affiché indéfiniment après un changement d'onglet (bug
+            constaté en direct — la détection de fin de transition de la bibliothèque
+            n'aboutit jamais quand aucune transition CSS réelle n'est appliquée au
+            panneau), rendant "Plans à échéance fixe" impossible à distinguer/sélectionner
+            visuellement. Un simple `value === activeTab` contrôlé ici est fiable à 100%. */}
+        {activeTab === "baskets" && (
+          <div className="grid gap-5 pt-4 sm:grid-cols-2 xl:grid-cols-3">
             {INVESTMENT_BASKETS.map((basket) => (
               <BasketCard
                 key={basket}
@@ -544,25 +610,29 @@ export function InvestmentPanel({
               />
             ))}
           </div>
-        </TabsContent>
+        )}
 
-        <TabsContent value="fixedTerm" className="pt-4">
-          <FixedTermPlansSection
-            plans={fixedTermPlans}
-            positions={fixedTermPositions}
-            availableBalance={walletBalance}
-            busyPlan={busyPlan}
-            onDeposit={handleDepositFixedTerm}
-          />
-        </TabsContent>
+        {activeTab === "fixedTerm" && (
+          <div className="pt-4">
+            <FixedTermPlansSection
+              plans={fixedTermPlans}
+              positions={fixedTermPositions}
+              availableBalance={walletBalance}
+              busyPlan={busyPlan}
+              onDeposit={handleDepositFixedTerm}
+            />
+          </div>
+        )}
 
-        <TabsContent value="myPlacements" className="pt-4">
-          <MyPlacementsSection
-            basketPositions={activePositions}
-            fixedTermPositions={fixedTermPositions}
-            fixedTermPlans={fixedTermPlans}
-          />
-        </TabsContent>
+        {activeTab === "myPlacements" && (
+          <div className="pt-4">
+            <MyPlacementsSection
+              basketPositions={activePositions}
+              fixedTermPositions={fixedTermPositions}
+              fixedTermPlans={fixedTermPlans}
+            />
+          </div>
+        )}
       </Tabs>
     </div>
   );

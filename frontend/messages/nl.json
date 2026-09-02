@@ -1835,7 +1835,9 @@
         "daysRemaining": "{days, plural, =0 {Vervalt vandaag} one {nog # dag} other {nog # dagen}}",
         "maturityDate": "Vervaldatum",
         "estimatedReturn": "Doel bij vervaldatum"
-      }
+      },
+      "confirmDepositRecap": "{amount} wordt geplaatst in de mand \"{basket}\" — volledige opname mogelijk op elk moment, in tegenstelling tot een vastrentend plan.",
+      "confirmDeposit": "Belegging bevestigen"
     },
     "kycDossier": {
       "title": "KYC-dossier",

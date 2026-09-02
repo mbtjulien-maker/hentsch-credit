@@ -13,7 +13,11 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { assertSelfOrAdmin } from '../auth/ownership.util';
 import { AdminGuard } from '../common/guards/admin.guard';
 import { KycVerifiedGuard } from '../common/guards/kyc-verified.guard';
-import { INDICATIVE_ANNUAL_YIELD_PCT } from './investment.constants';
+import {
+  INDICATIVE_ANNUAL_YIELD_PCT,
+  MIN_INVESTMENT_AMOUNT_USD,
+  RISK_LEVEL,
+} from './investment.constants';
 import { DepositInvestmentDto } from './dto/deposit-investment.dto';
 import { WithdrawInvestmentDto } from './dto/withdraw-investment.dto';
 import { InvestmentService } from './investment.service';
@@ -69,17 +73,45 @@ export class InvestmentController {
     ]);
 
     return {
+      minAmountUsd: MIN_INVESTMENT_AMOUNT_USD.toString(),
       RWA_STRATEGY: {
         indicativeAnnualPct:
           INDICATIVE_ANNUAL_YIELD_PCT.RWA_STRATEGY.toString(),
         latestDailyReturnPct:
           latestRwaRun[0]?.blendedReturnPct.toString() ?? null,
+        riskLevel: RISK_LEVEL.RWA_STRATEGY,
       },
       STOCKS: {
         indicativeAnnualPct: INDICATIVE_ANNUAL_YIELD_PCT.STOCKS.toString(),
         latestMarketSignalPct:
           latestStockRun !== null ? latestStockRun.toString() : null,
+        riskLevel: RISK_LEVEL.STOCKS,
       },
+    };
+  }
+
+  // Historique réel du rendement quotidien de chaque panier (30 derniers jours) — pas un
+  // cours d'actif, mais la même série que celle réellement appliquée par
+  // InvestmentService.runDailyAccrual à chaque position active. Sert de base à une
+  // tendance visuelle (cf. MiniSparkline côté frontend), jamais un point de donnée
+  // fabriqué : un panier trop récent (moins de 2 points) renvoie un tableau court plutôt
+  // qu'une série interpolée.
+  @Get('history')
+  async getHistory() {
+    const [rwaRuns, stockRuns] = await Promise.all([
+      this.treasuryBotService.getHistory(30),
+      this.investmentService.getStockBasketHistory(30),
+    ]);
+
+    return {
+      RWA_STRATEGY: rwaRuns.map((run) => ({
+        date: run.runDate.toISOString(),
+        returnPct: run.blendedReturnPct.toString(),
+      })),
+      STOCKS: stockRuns.map((run) => ({
+        date: run.runDate.toISOString(),
+        returnPct: run.dailyReturnPct.toString(),
+      })),
     };
   }
 

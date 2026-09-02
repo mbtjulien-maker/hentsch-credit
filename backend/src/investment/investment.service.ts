@@ -145,6 +145,18 @@ export class InvestmentService {
     });
   }
 
+  // Historique réel du rendement quotidien du panier STOCKS (cf. StockBasketRun) — pendant
+  // de TreasuryBotService.getHistory() pour la stratégie RWA. Consommé par
+  // GET /investment/history pour tracer une tendance (cf. MiniSparkline côté frontend) à
+  // partir de vraies valeurs déjà persistées jour après jour, jamais recalculées à la volée.
+  async getStockBasketHistory(limit = 30): Promise<StockBasketRun[]> {
+    const rows = await this.prisma.stockBasketRun.findMany({
+      orderBy: { runDate: 'desc' },
+      take: limit,
+    });
+    return rows.reverse();
+  }
+
   // Tourne quotidiennement, décalé après le bot de trésorerie (3h) et la génération des
   // rendements de gage (1h) — reste appelable directement (déclenchement manuel
   // back-office, tests) indépendamment du calendrier.

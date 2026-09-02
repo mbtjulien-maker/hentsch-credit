@@ -1588,6 +1588,97 @@
         "asset": "Actief",
         "price": "Koers",
         "change": "Verandering"
+      },
+      "quickMax": "MAX",
+      "insufficientBalance": "Onvoldoende beschikbaar saldo.",
+      "belowMinimum": "Minimumbedrag: {min} US$.",
+      "risk": {
+        "low": "Voorzichtig",
+        "medium": "Gematigd",
+        "high": "Dynamisch",
+        "label": "Risico {level}/{max} · {description}"
+      },
+      "advisor": {
+        "trigger": "Mijn rendement simuleren",
+        "title": "Beleggingssimulator",
+        "description": "Een rekenmachine en een vragenlijst om u te helpen kiezen — nooit persoonlijk advies, noch een conversationele AI.",
+        "tabs": {
+          "simulator": "Simulator",
+          "quiz": "Mijn profiel",
+          "faq": "Vragen"
+        },
+        "simulator": {
+          "basketLabel": "Mand",
+          "basket": {
+            "RWA_STRATEGY": "RWA-strategie",
+            "STOCKS": "Aandelenmand"
+          },
+          "amountLabel": "Te beleggen bedrag",
+          "balanceHint": "Beschikbaar saldo: {balance}",
+          "horizonLabel": "Horizon",
+          "horizonMonths": "{months} maanden",
+          "horizonYears": "{years, plural, one {# jaar} other {# jaar}}",
+          "projectedValue": "Geprojecteerde waarde",
+          "projectedGain": "Geprojecteerde winst",
+          "disclaimer": "Projectie op basis van het huidige indicatieve rendementsdoel, samengesteld over de gekozen periode. Nooit een garantie: het werkelijke rendement hangt af van de markt en kan lager, nul of negatief zijn."
+        },
+        "quiz": {
+          "horizon": {
+            "question": "Voor hoelang bent u van plan uw geld belegd te laten?",
+            "options": {
+              "short": "Minder dan 6 maanden",
+              "medium": "Tussen 6 maanden en 2 jaar",
+              "long": "Meer dan 2 jaar"
+            }
+          },
+          "reaction": {
+            "question": "Uw belegging verliest binnen een week 10% van zijn waarde. U...",
+            "options": {
+              "sell": "Neemt onmiddellijk op om het verlies te beperken",
+              "wait": "Wacht af zonder iets te veranderen",
+              "buy": "Grijpt de kans aan om meer te beleggen"
+            }
+          },
+          "goal": {
+            "question": "Wat is uw hoofddoel?",
+            "options": {
+              "preserve": "Vooral mijn kapitaal behouden",
+              "balance": "Een evenwicht tussen veiligheid en rendement",
+              "grow": "Het rendement maximaliseren, ook als dat risico's inhoudt"
+            }
+          },
+          "result": {
+            "prudent": {
+              "title": "Voorzichtig profiel",
+              "description": "Een verdeling die de RWA-strategie bevoordeelt, minder blootgesteld aan dagelijkse marktschommelingen."
+            },
+            "balanced": {
+              "title": "Evenwichtig profiel",
+              "description": "Een gelijke verdeling tussen de twee manden, om hun rendementsprofielen te combineren."
+            },
+            "dynamic": {
+              "title": "Dynamisch profiel",
+              "description": "Een verdeling die de aandelenmand bevoordeelt, sterker blootgesteld aan reële marktbewegingen."
+            }
+          },
+          "allocationRwa": "RWA-strategie: {pct}%",
+          "allocationStocks": "Aandelenmand: {pct}%",
+          "disclaimer": "Een indicatieve suggestie op basis van uw antwoorden, nooit persoonlijk beleggingsadvies noch een automatisch toegepaste verdeling — het is aan u om te beslissen en zelf de bedragen van uw keuze te beleggen."
+        },
+        "faq": {
+          "difference": {
+            "question": "Wat is het verschil tussen de twee manden?",
+            "answer": "De RWA-strategie weerspiegelt de treasurystrategie van de bank op getokeniseerde industriële metalen en grondstoffen, met een gedempt rendement. De aandelenmand neemt volledig deel aan de reële ontwikkeling van 5 beursgenoteerde aandelen, met een potentieel hoger maar volatieler rendement."
+          },
+          "guarantee": {
+            "question": "Is mijn kapitaal gegarandeerd?",
+            "answer": "Nee. Het is een echte belegging: het dagrendement kan negatief zijn en de waarde van uw positie onder het belegde kapitaal doen dalen."
+          },
+          "liquidity": {
+            "question": "Kan ik mijn geld op elk moment terugkrijgen?",
+            "answer": "Ja, zonder opzegtermijn of boete. De opname is altijd volledig (kapitaal + opgebouwd rendement); gedeeltelijke opname wordt in dit stadium niet aangeboden."
+          }
+        }
       }
     }
   },

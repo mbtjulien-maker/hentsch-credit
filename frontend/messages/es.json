@@ -1588,6 +1588,97 @@
         "asset": "Activo",
         "price": "Precio",
         "change": "Variación"
+      },
+      "quickMax": "MÁX",
+      "insufficientBalance": "Saldo disponible insuficiente.",
+      "belowMinimum": "Importe mínimo: {min} $US.",
+      "risk": {
+        "low": "Prudente",
+        "medium": "Moderado",
+        "high": "Dinámico",
+        "label": "Riesgo {level}/{max} · {description}"
+      },
+      "advisor": {
+        "trigger": "Simular mis ganancias",
+        "title": "Simulador de inversión",
+        "description": "Una calculadora y un cuestionario para ayudarte a decidir: nunca un consejo personalizado ni una IA conversacional.",
+        "tabs": {
+          "simulator": "Simulador",
+          "quiz": "Mi perfil",
+          "faq": "Preguntas"
+        },
+        "simulator": {
+          "basketLabel": "Canasta",
+          "basket": {
+            "RWA_STRATEGY": "Estrategia RWA",
+            "STOCKS": "Canasta de acciones"
+          },
+          "amountLabel": "Importe a invertir",
+          "balanceHint": "Saldo disponible: {balance}",
+          "horizonLabel": "Horizonte",
+          "horizonMonths": "{months} meses",
+          "horizonYears": "{years, plural, one {# año} other {# años}}",
+          "projectedValue": "Valor proyectado",
+          "projectedGain": "Ganancia proyectada",
+          "disclaimer": "Proyección basada en el objetivo de rendimiento indicativo actual, compuesto durante el periodo elegido. Nunca es una garantía: el rendimiento real depende del mercado y puede ser inferior, nulo o negativo."
+        },
+        "quiz": {
+          "horizon": {
+            "question": "¿Durante cuánto tiempo piensas mantener tus fondos invertidos?",
+            "options": {
+              "short": "Menos de 6 meses",
+              "medium": "Entre 6 meses y 2 años",
+              "long": "Más de 2 años"
+            }
+          },
+          "reaction": {
+            "question": "Tu inversión pierde un 10% de su valor en una semana. Tú...",
+            "options": {
+              "sell": "Retiras inmediatamente para limitar la pérdida",
+              "wait": "Esperas sin cambiar nada",
+              "buy": "Aprovechas para invertir más"
+            }
+          },
+          "goal": {
+            "question": "¿Cuál es tu objetivo principal?",
+            "options": {
+              "preserve": "Preservar mi capital ante todo",
+              "balance": "Un equilibrio entre seguridad y rendimiento",
+              "grow": "Maximizar el rendimiento, aunque implique asumir riesgos"
+            }
+          },
+          "result": {
+            "prudent": {
+              "title": "Perfil prudente",
+              "description": "Una asignación que favorece la estrategia RWA, menos expuesta a las variaciones diarias del mercado."
+            },
+            "balanced": {
+              "title": "Perfil equilibrado",
+              "description": "Un reparto igual entre las dos canastas, para combinar sus perfiles de rendimiento."
+            },
+            "dynamic": {
+              "title": "Perfil dinámico",
+              "description": "Una asignación que favorece la canasta de acciones, más expuesta a las variaciones reales del mercado."
+            }
+          },
+          "allocationRwa": "Estrategia RWA: {pct}%",
+          "allocationStocks": "Canasta de acciones: {pct}%",
+          "disclaimer": "Una sugerencia indicativa basada en tus respuestas, nunca un consejo de inversión personalizado ni una asignación aplicada automáticamente: a ti te corresponde decidir e invertir tú mismo los importes que elijas."
+        },
+        "faq": {
+          "difference": {
+            "question": "¿Cuál es la diferencia entre las dos canastas?",
+            "answer": "La estrategia RWA reproduce la estrategia de tesorería del banco sobre metales industriales y materias primas tokenizados, con un rendimiento amortiguado. La canasta de acciones participa plenamente en la variación real de 5 acciones cotizadas, con un rendimiento potencialmente mayor pero más volátil."
+          },
+          "guarantee": {
+            "question": "¿Mi capital está garantizado?",
+            "answer": "No. Es una inversión real: el rendimiento diario puede ser negativo y reducir el valor de tu posición por debajo del capital invertido."
+          },
+          "liquidity": {
+            "question": "¿Puedo recuperar mis fondos en cualquier momento?",
+            "answer": "Sí, sin aviso previo ni penalización. El retiro es siempre total (capital + rendimiento acumulado); el retiro parcial no está disponible en esta etapa."
+          }
+        }
       }
     }
   },

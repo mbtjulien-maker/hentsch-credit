@@ -1588,6 +1588,97 @@
         "asset": "Vermögenswert",
         "price": "Kurs",
         "change": "Veränderung"
+      },
+      "quickMax": "MAX",
+      "insufficientBalance": "Verfügbares Guthaben nicht ausreichend.",
+      "belowMinimum": "Mindestbetrag: {min} US$.",
+      "risk": {
+        "low": "Vorsichtig",
+        "medium": "Moderat",
+        "high": "Dynamisch",
+        "label": "Risiko {level}/{max} · {description}"
+      },
+      "advisor": {
+        "trigger": "Meine Rendite simulieren",
+        "title": "Anlagesimulator",
+        "description": "Ein Rechner und ein Fragebogen, die Ihnen bei der Entscheidung helfen — niemals eine persönliche Beratung oder eine konversationelle KI.",
+        "tabs": {
+          "simulator": "Simulator",
+          "quiz": "Mein Profil",
+          "faq": "Fragen"
+        },
+        "simulator": {
+          "basketLabel": "Korb",
+          "basket": {
+            "RWA_STRATEGY": "RWA-Strategie",
+            "STOCKS": "Aktienkorb"
+          },
+          "amountLabel": "Anzulegender Betrag",
+          "balanceHint": "Verfügbares Guthaben: {balance}",
+          "horizonLabel": "Anlagehorizont",
+          "horizonMonths": "{months} Monate",
+          "horizonYears": "{years, plural, one {# Jahr} other {# Jahre}}",
+          "projectedValue": "Prognostizierter Wert",
+          "projectedGain": "Prognostizierter Gewinn",
+          "disclaimer": "Prognose basierend auf dem aktuellen indikativen Renditeziel, verzinst über den gewählten Zeitraum. Niemals eine Garantie: Die tatsächliche Rendite hängt vom Markt ab und kann niedriger, null oder negativ ausfallen."
+        },
+        "quiz": {
+          "horizon": {
+            "question": "Für welchen Zeithorizont planen Sie, Ihre Mittel angelegt zu lassen?",
+            "options": {
+              "short": "Weniger als 6 Monate",
+              "medium": "Zwischen 6 Monaten und 2 Jahren",
+              "long": "Mehr als 2 Jahre"
+            }
+          },
+          "reaction": {
+            "question": "Ihre Anlage verliert innerhalb einer Woche 10% ihres Wertes. Sie...",
+            "options": {
+              "sell": "Heben sofort ab, um den Verlust zu begrenzen",
+              "wait": "Warten ab, ohne etwas zu ändern",
+              "buy": "Nutzen die Gelegenheit, um mehr anzulegen"
+            }
+          },
+          "goal": {
+            "question": "Was ist Ihr Hauptziel?",
+            "options": {
+              "preserve": "Mein Kapital vor allem erhalten",
+              "balance": "Ein Gleichgewicht zwischen Sicherheit und Rendite",
+              "grow": "Die Rendite maximieren, auch auf das Risiko hin"
+            }
+          },
+          "result": {
+            "prudent": {
+              "title": "Vorsichtiges Profil",
+              "description": "Eine Aufteilung, die die RWA-Strategie bevorzugt, weniger den täglichen Marktschwankungen ausgesetzt."
+            },
+            "balanced": {
+              "title": "Ausgewogenes Profil",
+              "description": "Eine gleichmäßige Aufteilung zwischen den beiden Körben, um ihre Renditeprofile zu kombinieren."
+            },
+            "dynamic": {
+              "title": "Dynamisches Profil",
+              "description": "Eine Aufteilung, die den Aktienkorb bevorzugt, stärker den realen Marktbewegungen ausgesetzt."
+            }
+          },
+          "allocationRwa": "RWA-Strategie: {pct}%",
+          "allocationStocks": "Aktienkorb: {pct}%",
+          "disclaimer": "Ein indikativer Vorschlag auf Basis Ihrer Antworten, niemals eine persönliche Anlageberatung noch eine automatisch angewendete Aufteilung — die Entscheidung und die Anlage der gewählten Beträge liegen bei Ihnen."
+        },
+        "faq": {
+          "difference": {
+            "question": "Was ist der Unterschied zwischen den beiden Körben?",
+            "answer": "Die RWA-Strategie spiegelt die Treasury-Strategie der Bank auf tokenisierte Industriemetalle und Rohstoffe wider, mit einer gedämpften Rendite. Der Aktienkorb nimmt voll an der realen Entwicklung von 5 notierten Aktien teil, mit potenziell höherer, aber volatilerer Rendite."
+          },
+          "guarantee": {
+            "question": "Ist mein Kapital garantiert?",
+            "answer": "Nein. Es handelt sich um eine echte Geldanlage: Die Tagesrendite kann negativ sein und den Wert Ihrer Position unter das angelegte Kapital senken."
+          },
+          "liquidity": {
+            "question": "Kann ich meine Mittel jederzeit zurückerhalten?",
+            "answer": "Ja, ohne Kündigungsfrist oder Gebühr. Die Auszahlung erfolgt immer vollständig (Kapital + aufgelaufene Rendite); eine Teilauszahlung wird derzeit nicht angeboten."
+          }
+        }
       }
     }
   },

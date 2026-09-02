@@ -1588,6 +1588,97 @@
         "asset": "Actif",
         "price": "Cours",
         "change": "Variation"
+      },
+      "quickMax": "MAX",
+      "insufficientBalance": "Solde disponible insuffisant.",
+      "belowMinimum": "Montant minimum : {min} $US.",
+      "risk": {
+        "low": "Prudent",
+        "medium": "Modéré",
+        "high": "Dynamique",
+        "label": "Risque {level}/{max} · {description}"
+      },
+      "advisor": {
+        "trigger": "Simuler mes gains",
+        "title": "Simulateur d'investissement",
+        "description": "Un calculateur et un questionnaire pour vous aider à choisir — jamais un conseil personnalisé, ni une intelligence artificielle conversationnelle.",
+        "tabs": {
+          "simulator": "Simulateur",
+          "quiz": "Mon profil",
+          "faq": "Questions"
+        },
+        "simulator": {
+          "basketLabel": "Panier",
+          "basket": {
+            "RWA_STRATEGY": "Stratégie RWA",
+            "STOCKS": "Panier d'actions"
+          },
+          "amountLabel": "Montant à placer",
+          "balanceHint": "Solde disponible : {balance}",
+          "horizonLabel": "Horizon",
+          "horizonMonths": "{months} mois",
+          "horizonYears": "{years, plural, one {# an} other {# ans}}",
+          "projectedValue": "Valeur projetée",
+          "projectedGain": "Gain projeté",
+          "disclaimer": "Projection basée sur l'objectif de rendement indicatif actuel, composé sur la durée choisie. Ce n'est jamais une garantie : le rendement réel dépend du marché et peut être inférieur, nul ou négatif."
+        },
+        "quiz": {
+          "horizon": {
+            "question": "Sur quel horizon comptez-vous laisser vos fonds placés ?",
+            "options": {
+              "short": "Moins de 6 mois",
+              "medium": "Entre 6 mois et 2 ans",
+              "long": "Plus de 2 ans"
+            }
+          },
+          "reaction": {
+            "question": "Votre placement perd 10% de sa valeur en une semaine. Vous...",
+            "options": {
+              "sell": "Retirez immédiatement pour limiter la perte",
+              "wait": "Attendez sans rien changer",
+              "buy": "En profitez pour placer davantage"
+            }
+          },
+          "goal": {
+            "question": "Quel est votre objectif principal ?",
+            "options": {
+              "preserve": "Préserver mon capital avant tout",
+              "balance": "Un équilibre entre sécurité et rendement",
+              "grow": "Maximiser le rendement, quitte à prendre des risques"
+            }
+          },
+          "result": {
+            "prudent": {
+              "title": "Profil prudent",
+              "description": "Une répartition qui privilégie la stratégie RWA, moins exposée aux variations quotidiennes du marché."
+            },
+            "balanced": {
+              "title": "Profil équilibré",
+              "description": "Une répartition égale entre les deux paniers, pour combiner leurs profils de rendement."
+            },
+            "dynamic": {
+              "title": "Profil dynamique",
+              "description": "Une répartition qui privilégie le panier d'actions, plus exposé aux variations réelles du marché."
+            }
+          },
+          "allocationRwa": "Stratégie RWA : {pct}%",
+          "allocationStocks": "Panier d'actions : {pct}%",
+          "disclaimer": "Une suggestion indicative basée sur vos réponses, jamais un conseil en investissement personnalisé ni une allocation appliquée automatiquement — à vous de décider et de placer vous-même les montants de votre choix."
+        },
+        "faq": {
+          "difference": {
+            "question": "Quelle est la différence entre les deux paniers ?",
+            "answer": "La stratégie RWA reprend la stratégie de trésorerie de la banque sur les métaux industriels et matières premières tokenisés, avec un rendement amorti. Le panier d'actions participe pleinement à la variation réelle de 5 actions cotées, avec un rendement potentiellement plus élevé mais plus volatile."
+          },
+          "guarantee": {
+            "question": "Mon capital est-il garanti ?",
+            "answer": "Non. C'est un vrai placement : le rendement quotidien peut être négatif et réduire la valeur de votre position en dessous du capital placé."
+          },
+          "liquidity": {
+            "question": "Puis-je récupérer mes fonds à tout moment ?",
+            "answer": "Oui, sans préavis ni pénalité. Le retrait est toujours intégral (capital + rendement accumulé) ; le retrait partiel n'est pas proposé à ce stade."
+          }
+        }
       }
     }
   },

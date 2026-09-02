@@ -1588,6 +1588,97 @@
         "asset": "Tillgång",
         "price": "Kurs",
         "change": "Förändring"
+      },
+      "quickMax": "MAX",
+      "insufficientBalance": "Otillräckligt tillgängligt saldo.",
+      "belowMinimum": "Minimibelopp: {min} US$.",
+      "risk": {
+        "low": "Försiktig",
+        "medium": "Måttlig",
+        "high": "Dynamisk",
+        "label": "Risk {level}/{max} · {description}"
+      },
+      "advisor": {
+        "trigger": "Simulera min avkastning",
+        "title": "Investeringssimulator",
+        "description": "En kalkylator och ett frågeformulär som hjälper dig att bestämma dig — aldrig personlig rådgivning eller en konversations-AI.",
+        "tabs": {
+          "simulator": "Simulator",
+          "quiz": "Min profil",
+          "faq": "Frågor"
+        },
+        "simulator": {
+          "basketLabel": "Korg",
+          "basket": {
+            "RWA_STRATEGY": "RWA-strategi",
+            "STOCKS": "Aktiekorg"
+          },
+          "amountLabel": "Belopp att placera",
+          "balanceHint": "Tillgängligt saldo: {balance}",
+          "horizonLabel": "Horisont",
+          "horizonMonths": "{months} månader",
+          "horizonYears": "{years, plural, one {# år} other {# år}}",
+          "projectedValue": "Prognostiserat värde",
+          "projectedGain": "Prognostiserad vinst",
+          "disclaimer": "Prognos baserad på det nuvarande vägledande avkastningsmålet, sammansatt över den valda perioden. Aldrig en garanti: den faktiska avkastningen beror på marknaden och kan vara lägre, noll eller negativ."
+        },
+        "quiz": {
+          "horizon": {
+            "question": "Hur länge planerar du att låta dina medel vara placerade?",
+            "options": {
+              "short": "Mindre än 6 månader",
+              "medium": "Mellan 6 månader och 2 år",
+              "long": "Mer än 2 år"
+            }
+          },
+          "reaction": {
+            "question": "Din placering förlorar 10% av sitt värde på en vecka. Du...",
+            "options": {
+              "sell": "Tar ut omedelbart för att begränsa förlusten",
+              "wait": "Väntar utan att ändra något",
+              "buy": "Passar på att placera mer"
+            }
+          },
+          "goal": {
+            "question": "Vad är ditt huvudmål?",
+            "options": {
+              "preserve": "Bevara mitt kapital framför allt",
+              "balance": "En balans mellan säkerhet och avkastning",
+              "grow": "Maximera avkastningen, även om det innebär risker"
+            }
+          },
+          "result": {
+            "prudent": {
+              "title": "Försiktig profil",
+              "description": "En fördelning som gynnar RWA-strategin, mindre exponerad för dagliga marknadssvängningar."
+            },
+            "balanced": {
+              "title": "Balanserad profil",
+              "description": "En jämn fördelning mellan de två korgarna, för att kombinera deras avkastningsprofiler."
+            },
+            "dynamic": {
+              "title": "Dynamisk profil",
+              "description": "En fördelning som gynnar aktiekorgen, mer exponerad för verkliga marknadsrörelser."
+            }
+          },
+          "allocationRwa": "RWA-strategi: {pct}%",
+          "allocationStocks": "Aktiekorg: {pct}%",
+          "disclaimer": "Ett vägledande förslag baserat på dina svar, aldrig personlig investeringsrådgivning eller en automatiskt tillämpad fördelning — det är upp till dig att besluta och själv placera de belopp du väljer."
+        },
+        "faq": {
+          "difference": {
+            "question": "Vad är skillnaden mellan de två korgarna?",
+            "answer": "RWA-strategin speglar bankens egen likviditetsstrategi på tokeniserade industrimetaller och råvaror, med en dämpad avkastning. Aktiekorgen deltar fullt ut i den verkliga utvecklingen för 5 börsnoterade aktier, med en potentiellt högre men mer volatil avkastning."
+          },
+          "guarantee": {
+            "question": "Är mitt kapital garanterat?",
+            "answer": "Nej. Det är en riktig placering: den dagliga avkastningen kan vara negativ och minska värdet på din position under det placerade kapitalet."
+          },
+          "liquidity": {
+            "question": "Kan jag få tillbaka mina medel när som helst?",
+            "answer": "Ja, utan uppsägningstid eller avgift. Uttaget är alltid fullständigt (kapital + upplupen avkastning); delvis uttag erbjuds inte i detta skede."
+          }
+        }
       }
     }
   },

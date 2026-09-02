@@ -232,11 +232,31 @@ export interface InvestmentBasketRate {
   // STOCKS seulement — dernière variation moyenne réelle du panier d'actions (Finnhub).
   // null sans FINNHUB_API_KEY ou en cas de panne totale du fournisseur.
   latestMarketSignalPct?: string | null;
+  // Classification indicative (1-5, cf. RISK_LEVEL côté backend) — une hypothèse de
+  // stratégie éditoriale, jamais un score calculé en direct à partir d'une volatilité
+  // mesurée.
+  riskLevel: number;
 }
 
 export interface InvestmentRates {
+  minAmountUsd: string;
   RWA_STRATEGY: InvestmentBasketRate;
   STOCKS: InvestmentBasketRate;
+}
+
+// Historique réel du rendement quotidien de chaque panier (cf. GET /investment/history)
+// — la même série que celle réellement appliquée par l'accrual quotidien, jamais un point
+// fabriqué. Sert de base à une tendance visuelle (cf. MiniSparkline), pas un cours
+// d'actif : composée en un indice de croissance cumulée côté frontend (cf.
+// buildReturnIndex dans investment-panel.tsx), pas affichée telle quelle.
+export interface InvestmentHistoryPoint {
+  date: string;
+  returnPct: string;
+}
+
+export interface InvestmentHistory {
+  RWA_STRATEGY: InvestmentHistoryPoint[];
+  STOCKS: InvestmentHistoryPoint[];
 }
 
 // Détail des actifs réellement impliqués dans chaque panier (cf. GET /investment/assets)
@@ -768,6 +788,7 @@ export const api = {
   // createCreditRequest ci-dessous.
   getInvestmentRates: () => request<InvestmentRates>("/investment/rates"),
   getInvestmentAssets: () => request<InvestmentAssets>("/investment/assets"),
+  getInvestmentHistory: () => request<InvestmentHistory>("/investment/history"),
   depositInvestment: (basket: InvestmentBasket, amount: string) =>
     request<InvestmentPosition>("/investment/deposit", {
       method: "POST",

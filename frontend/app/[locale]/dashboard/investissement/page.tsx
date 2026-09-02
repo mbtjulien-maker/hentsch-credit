@@ -15,7 +15,7 @@ import { api } from "@/lib/api";
 export default function InvestmentPage() {
   const t = useTranslations("Dashboard.investment");
   const { authLoading, triggerRefresh } = useDashboard();
-  const { data: positions, loading, error } = useSectionData((userId) =>
+  const { data: positions, loading, error, selectedUserId } = useSectionData((userId) =>
     api.listInvestmentPositions(userId),
   );
 
@@ -31,7 +31,7 @@ export default function InvestmentPage() {
     );
   }
 
-  if (loading || !positions) {
+  if (loading || !positions || !selectedUserId) {
     return <Skeleton className="h-96 w-full" />;
   }
 
@@ -45,7 +45,7 @@ export default function InvestmentPage() {
           {t("intro")}
         </CardContent>
       </Card>
-      <InvestmentPanel positions={positions} onSuccess={triggerRefresh} />
+      <InvestmentPanel userId={selectedUserId} positions={positions} onSuccess={triggerRefresh} />
     </div>
   );
 }

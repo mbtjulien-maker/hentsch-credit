@@ -22,3 +22,15 @@ export const INDICATIVE_ANNUAL_YIELD_PCT = {
     .toDecimalPlaces(2),
   STOCKS: STOCK_BASKET_DIVIDEND_YIELD_PCT,
 } as const;
+
+// Classification indicative du risque (échelle 1-5, jamais un score calculé en direct à
+// partir d'une volatilité mesurée — une hypothèse de stratégie éditoriale, comme
+// INDICATIVE_ANNUAL_YIELD_PCT, affichée au client avant placement). RWA_STRATEGY combine
+// 3 piliers d'amplitude de risque croissante (cf. PILLAR_MARKET_SENSITIVITY,
+// treasury-bot.constants.ts) mais reste amortie (sensibilité 0,05 à 0,35 seulement) ;
+// STOCKS participe pleinement (sensibilité 1, cf. STOCK_MARKET_SENSITIVITY) à la
+// variation réelle d'un panier d'actions, donc plus exposé au jour le jour.
+export const RISK_LEVEL: Record<'RWA_STRATEGY' | 'STOCKS', number> = {
+  RWA_STRATEGY: 2,
+  STOCKS: 4,
+};

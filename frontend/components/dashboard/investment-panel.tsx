@@ -5,6 +5,7 @@ import { Loader2, TrendingDown, TrendingUp } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,12 +15,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { MiniSparkline } from "@/components/marketing/performance-chart";
+import { InvestmentAdvisorDialog } from "@/components/dashboard/investment-advisor-dialog";
 import {
   api,
   ApiError,
   type InvestmentAssets,
   type InvestmentBasket,
   type InvestmentBasketRate,
+  type InvestmentHistory,
   type InvestmentPosition,
   type InvestmentRates,
   type RwaBasketAsset,
@@ -28,6 +32,43 @@ import {
 import { formatUsd } from "@/lib/format";
 
 const BASKETS: InvestmentBasket[] = ["RWA_STRATEGY", "STOCKS"];
+const QUICK_FRACTIONS = [0.25, 0.5, 0.75, 1] as const;
+
+// Convertit une série de rendements quotidiens réels (%) en indice de croissance
+// cumulée (base 100) — MiniSparkline attend une progression de valeur, pas un
+// pourcentage brut par point ; c'est la même composition que
+// InvestmentService.accrueYieldForPosition côté backend (jamais un point fabriqué,
+// seulement recalculé pour l'affichage à partir de vrais rendements déjà persistés).
+function buildReturnIndex(points: { date: string; returnPct: string }[]) {
+  let index = 100;
+  return points.map((p) => {
+    index = index * (1 + Number(p.returnPct) / 100);
+    return { t: new Date(p.date).getTime(), usd: index };
+  });
+}
+
+// Classification indicative (1-5, cf. RISK_LEVEL côté backend) — jamais un score calculé
+// en direct, une hypothèse de stratégie éditoriale affichée à titre informatif.
+function riskLabel(level: number, t: ReturnType<typeof useTranslations>): string {
+  if (level <= 2) return t("risk.low");
+  if (level === 3) return t("risk.medium");
+  return t("risk.high");
+}
+
+function RiskBadge({ level }: { level: number }) {
+  const t = useTranslations("Dashboard.investment");
+  const colorClass =
+    level <= 2
+      ? "border-primary/40 text-primary"
+      : level === 3
+        ? "border-amber-500/40 text-amber-600 dark:text-amber-400"
+        : "border-destructive/40 text-destructive";
+  return (
+    <Badge variant="outline" className={colorClass}>
+      {t("risk.label", { level, max: 5, description: riskLabel(level, t) })}
+    </Badge>
+  );
+}
 
 // Détail des actifs réellement impliqués dans le panier — au-delà du rendement agrégé
 // affiché plus bas, pour que le client voie concrètement la composition de la stratégie
@@ -90,7 +131,9 @@ function BasketCard({
   basket,
   rate,
   assets,
+  history,
   position,
+  availableBalance,
   busy,
   onDeposit,
   onWithdraw,
@@ -98,7 +141,9 @@ function BasketCard({
   basket: InvestmentBasket;
   rate: InvestmentBasketRate | null;
   assets: (RwaBasketAsset | StockBasketAsset)[];
+  history: { date: string; returnPct: string }[];
   position: InvestmentPosition | null;
+  availableBalance: number | null;
   busy: boolean;
   onDeposit: (basket: InvestmentBasket, amount: string) => Promise<void>;
   onWithdraw: (basket: InvestmentBasket) => Promise<void>;
@@ -114,10 +159,21 @@ function BasketCard({
   const accruedYield = position ? Number(position.accruedYield) : 0;
   const totalValue = principal + accruedYield;
 
+  const parsedAmount = Number(amount);
+  const minAmount = 10;
+  const exceedsBalance = availableBalance != null && parsedAmount > availableBalance;
+  const belowMinimum = amount.trim() !== "" && parsedAmount > 0 && parsedAmount < minAmount;
+  const isValidAmount = parsedAmount > 0 && !exceedsBalance && !belowMinimum;
+
+  const sparklinePoints = buildReturnIndex(history);
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">{t(`basket.${basket}.title`)}</CardTitle>
+        <div className="flex items-center justify-between gap-2">
+          <CardTitle className="text-base">{t(`basket.${basket}.title`)}</CardTitle>
+          {rate && <RiskBadge level={rate.riskLevel} />}
+        </div>
         <CardDescription>{t(`basket.${basket}.description`)}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
@@ -136,18 +192,23 @@ function BasketCard({
         {dailyPct != null && (
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">{t("latestDaily")}</span>
-            <span
-              className={`flex items-center gap-1 font-semibold tabular-nums ${
-                dailyPctIsNegative ? "text-destructive" : "text-primary"
-              }`}
-            >
-              {dailyPctIsNegative ? (
-                <TrendingDown className="size-3.5" />
-              ) : (
-                <TrendingUp className="size-3.5" />
+            <div className="flex items-center gap-2">
+              {sparklinePoints.length >= 2 && (
+                <MiniSparkline points={sparklinePoints} width={56} height={22} />
               )}
-              {dailyPct}%
-            </span>
+              <span
+                className={`flex items-center gap-1 font-semibold tabular-nums ${
+                  dailyPctIsNegative ? "text-destructive" : "text-primary"
+                }`}
+              >
+                {dailyPctIsNegative ? (
+                  <TrendingDown className="size-3.5" />
+                ) : (
+                  <TrendingUp className="size-3.5" />
+                )}
+                {dailyPct}%
+              </span>
+            </div>
           </div>
         )}
 
@@ -174,25 +235,52 @@ function BasketCard({
           </div>
         )}
 
-        <div className="flex gap-2">
-          <Input
-            type="number"
-            min="0"
-            step="0.01"
-            placeholder={t("amountPlaceholder")}
-            value={amount}
-            disabled={busy}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-          <Button
-            type="button"
-            disabled={busy || !(Number(amount) > 0)}
-            onClick={() => {
-              void onDeposit(basket, amount).then(() => setAmount(""));
-            }}
-          >
-            {busy ? <Loader2 className="size-4 animate-spin" /> : t("deposit")}
-          </Button>
+        <div className="flex flex-col gap-1.5">
+          <div className="flex gap-2">
+            <Input
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder={t("amountPlaceholder")}
+              value={amount}
+              disabled={busy}
+              onChange={(e) => setAmount(e.target.value)}
+            />
+            <Button
+              type="button"
+              disabled={busy || !isValidAmount}
+              onClick={() => {
+                void onDeposit(basket, amount).then(() => setAmount(""));
+              }}
+            >
+              {busy ? <Loader2 className="size-4 animate-spin" /> : t("deposit")}
+            </Button>
+          </div>
+
+          {/* Raccourcis 25/50/75/MAX — calculés sur le vrai solde disponible du client
+              (cf. availableBalance, passé par InvestmentPanel), jamais une valeur devinée. */}
+          {availableBalance != null && availableBalance > 0 && (
+            <div className="flex gap-1.5">
+              {QUICK_FRACTIONS.map((fraction) => (
+                <button
+                  key={fraction}
+                  type="button"
+                  disabled={busy}
+                  onClick={() => setAmount((availableBalance * fraction).toFixed(2))}
+                  className="rounded-md border border-border/60 px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
+                >
+                  {fraction === 1 ? t("quickMax") : `${fraction * 100}%`}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {exceedsBalance && (
+            <p className="text-xs text-destructive">{t("insufficientBalance")}</p>
+          )}
+          {belowMinimum && (
+            <p className="text-xs text-destructive">{t("belowMinimum", { min: minAmount })}</p>
+          )}
         </div>
 
         {position && (
@@ -213,15 +301,19 @@ function BasketCard({
 }
 
 export function InvestmentPanel({
+  userId,
   positions,
   onSuccess,
 }: {
+  userId: string;
   positions: InvestmentPosition[];
   onSuccess: () => void;
 }) {
   const t = useTranslations("Dashboard.investment");
   const [rates, setRates] = useState<InvestmentRates | null>(null);
   const [assets, setAssets] = useState<InvestmentAssets | null>(null);
+  const [history, setHistory] = useState<InvestmentHistory | null>(null);
+  const [availableBalance, setAvailableBalance] = useState<number | null>(null);
   const [busyBasket, setBusyBasket] = useState<InvestmentBasket | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -243,10 +335,29 @@ export function InvestmentPanel({
       .catch(() => {
         // Purement informatif — le panneau reste utilisable sans le détail des actifs.
       });
+    api
+      .getInvestmentHistory()
+      .then((h) => {
+        if (!ignore) setHistory(h);
+      })
+      .catch(() => {
+        // Purement informatif — le panneau reste utilisable sans la tendance.
+      });
+    // Solde disponible réel — utilisé uniquement pour les raccourcis 25/50/75/MAX et la
+    // validation en temps réel, jamais affiché comme un chiffre en soi ici (déjà visible
+    // sur /dashboard/solde et l'accueil).
+    api
+      .getBalance(userId)
+      .then((b) => {
+        if (!ignore) setAvailableBalance(Number(b.balance.availableBalance));
+      })
+      .catch(() => {
+        // Purement informatif — sans le solde, les raccourcis restent simplement masqués.
+      });
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [userId]);
 
   const activePositions = new Map(
     positions.filter((p) => p.status === "ACTIVE").map((p) => [p.basket, p]),
@@ -287,6 +398,14 @@ export function InvestmentPanel({
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
+
+      <div className="flex justify-end">
+        <InvestmentAdvisorDialog
+          rates={rates}
+          availableBalance={availableBalance}
+        />
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         {BASKETS.map((basket) => (
           <BasketCard
@@ -294,7 +413,9 @@ export function InvestmentPanel({
             basket={basket}
             rate={rates?.[basket] ?? null}
             assets={assets?.[basket]?.assets ?? []}
+            history={history?.[basket] ?? []}
             position={activePositions.get(basket) ?? null}
+            availableBalance={availableBalance}
             busy={busyBasket === basket}
             onDeposit={handleDeposit}
             onWithdraw={handleWithdraw}

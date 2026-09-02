@@ -1588,6 +1588,97 @@
         "asset": "Asset",
         "price": "Price",
         "change": "Change"
+      },
+      "quickMax": "MAX",
+      "insufficientBalance": "Insufficient available balance.",
+      "belowMinimum": "Minimum amount: ${min}.",
+      "risk": {
+        "low": "Conservative",
+        "medium": "Moderate",
+        "high": "Dynamic",
+        "label": "Risk {level}/{max} · {description}"
+      },
+      "advisor": {
+        "trigger": "Simulate my returns",
+        "title": "Investment simulator",
+        "description": "A calculator and a questionnaire to help you decide — never personalized advice, nor a conversational AI.",
+        "tabs": {
+          "simulator": "Simulator",
+          "quiz": "My profile",
+          "faq": "Questions"
+        },
+        "simulator": {
+          "basketLabel": "Basket",
+          "basket": {
+            "RWA_STRATEGY": "RWA strategy",
+            "STOCKS": "Stock basket"
+          },
+          "amountLabel": "Amount to invest",
+          "balanceHint": "Available balance: {balance}",
+          "horizonLabel": "Horizon",
+          "horizonMonths": "{months} months",
+          "horizonYears": "{years, plural, one {# year} other {# years}}",
+          "projectedValue": "Projected value",
+          "projectedGain": "Projected gain",
+          "disclaimer": "Projection based on the current indicative return target, compounded over the chosen period. Never a guarantee: the actual return depends on the market and can be lower, nil, or negative."
+        },
+        "quiz": {
+          "horizon": {
+            "question": "Over what horizon do you plan to keep your funds invested?",
+            "options": {
+              "short": "Less than 6 months",
+              "medium": "Between 6 months and 2 years",
+              "long": "More than 2 years"
+            }
+          },
+          "reaction": {
+            "question": "Your investment loses 10% of its value in a week. You...",
+            "options": {
+              "sell": "Withdraw immediately to limit the loss",
+              "wait": "Wait without changing anything",
+              "buy": "Take the opportunity to invest more"
+            }
+          },
+          "goal": {
+            "question": "What's your main goal?",
+            "options": {
+              "preserve": "Preserve my capital above all",
+              "balance": "A balance between safety and return",
+              "grow": "Maximize return, even if it means taking risks"
+            }
+          },
+          "result": {
+            "prudent": {
+              "title": "Conservative profile",
+              "description": "An allocation that favors the RWA strategy, less exposed to daily market swings."
+            },
+            "balanced": {
+              "title": "Balanced profile",
+              "description": "An equal split between the two baskets, to combine their return profiles."
+            },
+            "dynamic": {
+              "title": "Dynamic profile",
+              "description": "An allocation that favors the stock basket, more exposed to real market movements."
+            }
+          },
+          "allocationRwa": "RWA strategy: {pct}%",
+          "allocationStocks": "Stock basket: {pct}%",
+          "disclaimer": "An indicative suggestion based on your answers, never personalized investment advice nor an allocation applied automatically — it's up to you to decide and invest the amounts you choose."
+        },
+        "faq": {
+          "difference": {
+            "question": "What's the difference between the two baskets?",
+            "answer": "The RWA strategy mirrors the bank's own treasury strategy on tokenized industrial metals and commodities, with a dampened return. The stock basket fully participates in the real movement of 5 listed stocks, with a potentially higher but more volatile return."
+          },
+          "guarantee": {
+            "question": "Is my capital guaranteed?",
+            "answer": "No. It's a real investment: the daily return can be negative and reduce your position's value below the capital invested."
+          },
+          "liquidity": {
+            "question": "Can I get my funds back at any time?",
+            "answer": "Yes, with no notice or penalty. Withdrawal is always full (capital + accrued return); partial withdrawal isn't offered at this stage."
+          }
+        }
       }
     }
   },

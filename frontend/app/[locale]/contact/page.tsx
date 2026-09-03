@@ -85,7 +85,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <p className="text-sm leading-relaxed text-muted-foreground">
             {t.rich("noAccount", {
               link: (chunks) => (
-                <Link href="/demande-de-compte" className="font-medium text-foreground/80 underline underline-offset-2 hover:text-foreground">
+                <Link href="/inscription" className="font-medium text-foreground/80 underline underline-offset-2 hover:text-foreground">
                   {chunks}
                 </Link>
               ),

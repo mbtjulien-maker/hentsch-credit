@@ -53,7 +53,7 @@ export default async function PlanDuSitePage({ params }: { params: Promise<{ loc
       icon: UserPlus,
       title: t("groups.account.title"),
       links: [
-        { href: "/demande-de-compte", label: t("links.requestAccount") },
+        { href: "/inscription", label: t("links.requestAccount") },
         { href: "/login", label: t("links.login") },
       ],
     },

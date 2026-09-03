@@ -6,6 +6,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { InviteCodesSection } from "@/components/admin/invite-codes-section";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
 import {
   api,
@@ -122,6 +123,8 @@ export default function AccountRequestsQueuePage() {
 
   return (
     <div className="flex flex-col gap-4">
+      <InviteCodesSection />
+
       {justApproved && (
         <Alert className="border-primary/30 bg-primary/5">
           <AlertTitle>Compte créé pour {justApproved.request.email}</AlertTitle>
@@ -156,10 +159,12 @@ export default function AccountRequestsQueuePage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Demandes d&apos;ouverture de compte</CardTitle>
+          <CardTitle>Demandes d&apos;ouverture de compte (historique)</CardTitle>
           <CardDescription>
-            Validez ou rejetez les demandes reçues via le formulaire public. Valider crée
-            immédiatement le compte du client et génère son mot de passe temporaire.
+            Ancien formulaire public, remplacé par les codes d&apos;invitation ci-dessus —
+            cette file ne reçoit plus de nouvelles demandes, elle reste consultable pour les
+            dossiers déjà soumis. Valider crée immédiatement le compte du client et génère
+            son mot de passe temporaire.
           </CardDescription>
           {capacity && (
             <div className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">

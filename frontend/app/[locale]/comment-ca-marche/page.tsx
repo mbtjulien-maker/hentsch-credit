@@ -121,7 +121,7 @@ export default async function CommentCaMarchePage({ params }: { params: Promise<
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
           </Link>
           <Link
-            href="/demande-de-compte"
+            href="/inscription"
             className="rounded-lg border border-border/80 bg-card px-5 py-3 text-sm font-medium text-foreground/80 shadow-sm transition-colors hover:border-border hover:text-foreground"
           >
             {t("ctaNoAccount")}

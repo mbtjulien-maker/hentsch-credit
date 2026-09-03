@@ -134,7 +134,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
               </Link>
             </div>
             <Link
-              href="/demande-de-compte"
+              href="/inscription"
               className="text-sm text-slate-300 underline underline-offset-2 hover:text-white"
             >
               {t("ctaNoAccount")}
@@ -244,7 +244,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
         <h2 className="text-2xl font-semibold text-foreground">{t("closingTitle")}</h2>
         <p className="mt-2 text-muted-foreground">{t("closingDescription")}</p>
         <Link
-          href="/demande-de-compte"
+          href="/inscription"
           className="group mt-5 inline-flex items-center gap-2 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
         >
           {t("closingCta")}

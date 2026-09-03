@@ -25,6 +25,12 @@ function buildContentSecurityPolicy(): string {
     "form-action 'self'",
     "frame-ancestors 'none'",
     `connect-src 'self' ${apiOrigin}`,
+    // blob: — prévisualisation du dossier KYC régénéré en PDF avant inscription (cf. §6
+    // CLAUDE.md entrée #41, InviteSignupWizard) : le PDF binaire reçu de l'API est
+    // affiché via URL.createObjectURL dans un <iframe>, jamais une URL distante — sans
+    // cette directive explicite, default-src bloque le chargement (violation constatée en
+    // direct : "Framing ... violates ... default-src 'self'").
+    "frame-src 'self' blob:",
     // s2.coinmarketcap.com : logos d'actifs (MarketDataService), seule image externe
     // réellement chargée par le frontend. data: pour le QR code TOTP (généré en mémoire,
     // jamais servi par une URL) et les icônes inline.

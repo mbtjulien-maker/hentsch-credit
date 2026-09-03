@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeftRight, Loader2, Wallet } from "lucide-react";
+import { ArrowLeftRight, Loader2, Wallet, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -30,6 +30,7 @@ export function InvestmentWalletCard({
   onTransfer: (direction: Direction, amount: string) => Promise<void>;
 }) {
   const t = useTranslations("Dashboard.investment.wallet");
+  const [open, setOpen] = useState(false);
   const [direction, setDirection] = useState<Direction>("in");
   const [amount, setAmount] = useState("");
 
@@ -41,6 +42,7 @@ export function InvestmentWalletCard({
   async function handleTransfer() {
     await onTransfer(direction, amount);
     setAmount("");
+    setOpen(false);
   }
 
   return (
@@ -68,72 +70,97 @@ export function InvestmentWalletCard({
           </div>
         </div>
 
-        <div className="flex flex-col gap-1.5">
-          <div className="flex gap-1.5">
-            <button
-              type="button"
-              onClick={() => setDirection("in")}
-              className={`flex-1 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
-                direction === "in"
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {t("directionIn")}
-            </button>
-            <button
-              type="button"
-              onClick={() => setDirection("out")}
-              className={`flex-1 rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
-                direction === "out"
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {t("directionOut")}
-            </button>
-          </div>
-
-          <div className="flex gap-2">
-            <Input
-              type="number"
-              min="0"
-              step="0.01"
-              placeholder={t("amountPlaceholder")}
-              value={amount}
-              disabled={busy}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-            <Button type="button" disabled={busy || !isValidAmount} onClick={() => void handleTransfer()}>
-              {busy ? (
-                <Loader2 className="size-4 animate-spin" />
-              ) : (
-                <>
-                  <ArrowLeftRight className="size-4" />
-                  {t("transfer")}
-                </>
-              )}
-            </Button>
-          </div>
-
-          {sourceBalance != null && sourceBalance > 0 && (
-            <div className="flex gap-1.5">
-              {QUICK_FRACTIONS.map((fraction) => (
+        {/* Réduit à un petit bouton par défaut (retour client : "l'option de transfert
+            doit être un petit bouton réduit") — le formulaire complet (sens, montant,
+            raccourcis) ne s'ouvre qu'à la demande, plutôt que d'occuper en permanence de
+            l'espace sous les deux soldes. */}
+        {!open ? (
+          <Button type="button" variant="outline" size="sm" className="self-start" onClick={() => setOpen(true)}>
+            <ArrowLeftRight className="size-3.5" />
+            {t("transfer")}
+          </Button>
+        ) : (
+          <div className="flex flex-col gap-1.5 rounded-lg border border-border/60 p-3">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex gap-1.5">
                 <button
-                  key={fraction}
                   type="button"
-                  disabled={busy}
-                  onClick={() => setAmount((sourceBalance * fraction).toFixed(2))}
-                  className="rounded-md border border-border/60 px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
+                  onClick={() => setDirection("in")}
+                  className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+                    direction === "in"
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border text-muted-foreground hover:text-foreground"
+                  }`}
                 >
-                  {fraction === 1 ? t("quickMax") : `${fraction * 100}%`}
+                  {t("directionIn")}
                 </button>
-              ))}
+                <button
+                  type="button"
+                  onClick={() => setDirection("out")}
+                  className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+                    direction === "out"
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {t("directionOut")}
+                </button>
+              </div>
+              <button
+                type="button"
+                aria-label={t("cancel")}
+                disabled={busy}
+                onClick={() => {
+                  setOpen(false);
+                  setAmount("");
+                }}
+                className="rounded-md p-1 text-muted-foreground transition-colors hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
+              >
+                <X className="size-4" />
+              </button>
             </div>
-          )}
 
-          {exceedsSource && <p className="text-xs text-destructive">{t("insufficientBalance")}</p>}
-        </div>
+            <div className="flex gap-2">
+              <Input
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder={t("amountPlaceholder")}
+                value={amount}
+                disabled={busy}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+              <Button type="button" disabled={busy || !isValidAmount} onClick={() => void handleTransfer()}>
+                {busy ? (
+                  <Loader2 className="size-4 animate-spin" />
+                ) : (
+                  <>
+                    <ArrowLeftRight className="size-4" />
+                    {t("transfer")}
+                  </>
+                )}
+              </Button>
+            </div>
+
+            {sourceBalance != null && sourceBalance > 0 && (
+              <div className="flex gap-1.5">
+                {QUICK_FRACTIONS.map((fraction) => (
+                  <button
+                    key={fraction}
+                    type="button"
+                    disabled={busy}
+                    onClick={() => setAmount((sourceBalance * fraction).toFixed(2))}
+                    className="rounded-md border border-border/60 px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
+                  >
+                    {fraction === 1 ? t("quickMax") : `${fraction * 100}%`}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {exceedsSource && <p className="text-xs text-destructive">{t("insufficientBalance")}</p>}
+          </div>
+        )}
       </CardContent>
     </Card>
   );

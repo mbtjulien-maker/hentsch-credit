@@ -28,10 +28,15 @@ export function DashboardHeader() {
             <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
           </div>
         </Link>
-        <div className="flex items-center gap-2">
-          <LanguageSwitcher />
-          <ThemeToggle />
+        <div className="flex items-center gap-3">
+          {/* Nom du client mis en avant, langue/thème repoussés dans le coin à droite
+              (retour client) — AccountMenu passe donc en tête de ce groupe plutôt qu'en
+              dernier. */}
           <AccountMenu />
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
       {selectedUser && <MobileNav />}

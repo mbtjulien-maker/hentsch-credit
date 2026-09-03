@@ -14,6 +14,7 @@ import {
   LayoutGrid,
   LifeBuoy,
   LineChart,
+  LogOut,
   ShieldCheck,
   TrendingUp,
   User,
@@ -55,6 +56,23 @@ function NavLink({ href, label, icon: Icon, isActive, localized = true }: NavSec
   );
 }
 
+// Pendant de SidebarLogoutButton pour le repli mobile — même gabarit pilule que NavLink,
+// en dernière position de la bande défilante (la sidebar verticale n'existe pas < lg).
+function MobileLogoutButton() {
+  const tMenu = useTranslations("Dashboard.accountMenu");
+  const { logout } = useDashboard();
+  return (
+    <button
+      type="button"
+      onClick={() => void logout()}
+      className="flex shrink-0 items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium whitespace-nowrap text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+    >
+      <LogOut className="size-3.5" />
+      {tMenu("logout")}
+    </button>
+  );
+}
+
 // Lien de la sidebar verticale — appuyé sur les tokens --sidebar-* (cf. app/globals.css) :
 // un fin liseré or à gauche + fond graphite très subtil marquent l'état actif, plutôt
 // qu'un bloc plein. Cohérent avec la sidebar de l'espace admin (même logique de liseré),
@@ -78,6 +96,25 @@ function SidebarNavLink({ href, label, icon: Icon, isActive, localized = true }:
       <Icon className={cn("size-4 shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground/70 group-hover:text-sidebar-primary/80")} />
       {label}
     </LinkComponent>
+  );
+}
+
+// Déconnexion — même gabarit visuel que SidebarNavLink (icône + libellé, même
+// espacement) pour rester cohérente avec les autres sections plutôt que ressortir comme
+// un contrôle à part (retour client : "le bouton déconnexion doit venir en bas à gauche
+// avec les autres sections", au lieu de la barre supérieure où il vivait jusqu'ici).
+function SidebarLogoutButton() {
+  const tMenu = useTranslations("Dashboard.accountMenu");
+  const { logout } = useDashboard();
+  return (
+    <button
+      type="button"
+      onClick={() => void logout()}
+      className="group flex w-full items-center gap-3 rounded-lg py-2 pr-3 pl-3.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-sidebar-accent/60 hover:text-sidebar-foreground"
+    >
+      <LogOut className="size-4 shrink-0 text-muted-foreground/70 group-hover:text-sidebar-primary/80" />
+      {tMenu("logout")}
+    </button>
   );
 }
 
@@ -139,19 +176,27 @@ export function Sidebar() {
         ))}
       </nav>
 
-      {isAdmin && (
-        <nav
-          aria-label={t("backofficeNavAriaLabel")}
-          className="mt-auto flex flex-col gap-1 border-t border-sidebar-border pt-5"
-        >
-          <span className="px-3.5 pb-1 text-[10.5px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-            {t("backoffice.label")}
-          </span>
-          {BACKOFFICE_SECTIONS.map((section) => (
-            <SidebarNavLink key={section.href} {...section} isActive={pathname === section.href} />
-          ))}
-        </nav>
-      )}
+      {/* Pousse tout ce qui suit (back-office éventuel + déconnexion) en bas de la
+          sidebar, quel que soit le rôle du compte — la déconnexion doit toujours rester
+          la dernière section, jamais isolée dans la barre supérieure (retour client). */}
+      <div className="mt-auto flex flex-col gap-1">
+        {isAdmin && (
+          <nav
+            aria-label={t("backofficeNavAriaLabel")}
+            className="flex flex-col gap-1 border-t border-sidebar-border pt-5 pb-1"
+          >
+            <span className="px-3.5 pb-1 text-[10.5px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
+              {t("backoffice.label")}
+            </span>
+            {BACKOFFICE_SECTIONS.map((section) => (
+              <SidebarNavLink key={section.href} {...section} isActive={pathname === section.href} />
+            ))}
+          </nav>
+        )}
+        <div className="border-t border-sidebar-border pt-1">
+          <SidebarLogoutButton />
+        </div>
+      </div>
     </aside>
   );
 }
@@ -196,6 +241,7 @@ export function MobileNav() {
       {allSections.map((section) => (
         <NavLink key={section.href} {...section} isActive={pathname === section.href} />
       ))}
+      <MobileLogoutButton />
     </nav>
   );
 }

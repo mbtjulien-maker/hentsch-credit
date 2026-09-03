@@ -15,7 +15,6 @@
       "tarifs": "Pricing",
       "investissementDirect": "Investment"
     },
-    "connexionShort": "Login",
     "connexionLong": "Access my account"
   },
   "Footer": {
@@ -500,31 +499,12 @@
     "eyebrow": "Access by invitation",
     "title": "Request an account",
     "description": "Platform reserved for a limited clientele. Leave us your details: our team reviews every application before granting access.",
-    "alreadyHaveAccount": "Already have an account? <link>Log in</link>"
-  },
-  "AccountRequestForm": {
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email",
-    "phone": "Phone (optional)",
-    "accountType": {
-      "label": "Account type",
-      "PARTICULIER": {
-        "title": "Individual",
-        "description": "Pledge digital assets, unlock a credit line."
-      },
-      "BUSINESS": {
-        "title": "Business / Startup / Professional",
-        "description": "Finance a professional project — access to collateral credit and, under conditions, direct credit."
-      }
-    },
-    "message": "Your project (optional)",
-    "messagePlaceholder": "Amount envisaged, assets involved, specific questions…",
-    "disclaimer": "By submitting this form, you agree that your information will be processed in accordance with our <link>privacy policy</link>. No account is created automatically: access is granted after your application has been reviewed and validated by our team.",
-    "submit": "Send my request",
-    "successTitle": "Your request has been submitted",
-    "successBody": "Our team is reviewing your application and will get back to you by email. Access to your client area is only granted once this validation is complete.",
-    "genericError": "Something went wrong."
+    "alreadyHaveAccount": "Already have an account? <link>Log in</link>",
+    "replaced": {
+      "title": "Form replaced",
+      "description": "Creating an account is now invitation-only. If you received a code from your advisor, use it below.",
+      "cta": "I have an invitation code"
+    }
   },
   "Faq": {
     "meta": {
@@ -710,7 +690,7 @@
       "market": "Market",
       "pricing": "Pricing",
       "directInvestment": "Direct investment",
-      "requestAccount": "Request an account",
+      "requestAccount": "Create my account",
       "login": "Login",
       "contact": "Contact us",
       "faq": "FAQ",
@@ -1199,6 +1179,15 @@
           "title": "Investment",
           "description": "Investment wallet balance, funded by internal transfer from your main balance."
         }
+      },
+      "kycPendingBanner": {
+        "title": "Verification in progress",
+        "description": "Your identity is being verified by an advisor. Deposits, withdrawals and credit requests remain locked until your file is approved.",
+        "cta": "Complete my KYC file"
+      },
+      "initialDepositBanner": {
+        "title": "Initial deposit required",
+        "description": "Opening your account requires an initial deposit of {required} — {deposited} received so far. Once reached, this capital is fully usable (withdrawal, collateral, spending) like any other deposit."
       }
     },
     "balanceCards": {
@@ -1252,7 +1241,11 @@
         "sentAmountNote": "Once the transfer is sent, declare it below so it appears in your history: an advisor validates it on receipt.",
         "declareButton": "I've sent the funds",
         "legacyAddressLabel": "Your deposit address",
-        "legacyNote": "Only send {currency} on {chain} to this address. The balance is credited after on-chain confirmation."
+        "legacyNote": "Only send {currency} on {chain} to this address. The balance is credited after on-chain confirmation.",
+        "descriptionCreditRequest": "Choose the asset and network to deposit the collateral for your approved credit request.",
+        "modeCreditRequest": "Credit request ({amount})",
+        "modeGeneral": "General deposit",
+        "creditRequestNote": "Only send {currency} on {chain} to this address. Deposit at least {amount}: credit is issued automatically upon receipt."
       },
       "withdraw": {
         "trigger": "Withdraw",
@@ -1275,7 +1268,8 @@
         "destinationLabel": "Destination address",
         "submit": "Confirm withdrawal",
         "successToast": "Withdrawal requested successfully."
-      }
+      },
+      "kycLockedNote": "Available once your identity has been verified by an advisor."
     },
     "marketView": {
       "dataProvider": "Data provided by CoinMarketCap",
@@ -1305,23 +1299,19 @@
         "yield": "Yield",
         "targetApyTitle": "Indicative target of the bank's treasury strategy on this asset, not a guarantee, has no effect on your credit calculation",
         "targetApy": "Target {min}-{max}% APY"
-      }
+      },
+      "searchPlaceholder": "Search for a stock or an asset...",
+      "clearSearch": "Clear search",
+      "noResults": "No results for \"{query}\".",
+      "assetsLabel": "Assets"
     },
     "cardsSection": {
       "title": "Virtual cards",
-      "description": "Visa/Mastercard issuance (Step 4 integration)",
-      "noCards": "No card issued for this account.",
-      "limit": "Limit {amount}",
-      "step4Note": "Available at Step 4 (Stripe Issuing / Marqeta integration)",
-      "issueCard": "Issue a card"
+      "description": "Issuance and management of your bank cards.",
+      "comingSoonTitle": "Coming soon",
+      "comingSoonDescription": "Visa/Mastercard issuance is not yet open on this account — check back soon."
     },
     "labels": {
-      "cardStatus": {
-        "PENDING": "Pending",
-        "ACTIVE": "Active",
-        "BLOCKED": "Blocked",
-        "CLOSED": "Closed"
-      },
       "kycStatus": {
         "PENDING": "KYC pending",
         "VERIFIED": "KYC verified",
@@ -1403,12 +1393,49 @@
       "employed": "Employed",
       "save": "Save my information",
       "saveSuccess": "Information saved.",
-      "selfDeclaredNote": "This information is self-declared and can be updated at any time; an address or employment situation already verified by an advisor becomes pending re-verification once you change it."
+      "selfDeclaredNote": "This information is self-declared and can be updated at any time; an address or employment situation already verified by an advisor becomes pending re-verification once you change it.",
+      "selectPlaceholder": "Select…",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Technology / Software",
+        "FINANCE_ASSURANCE": "Finance / Insurance",
+        "SANTE_PHARMACIE": "Healthcare / Pharma",
+        "COMMERCE_DETAIL": "Retail",
+        "INDUSTRIE_MANUFACTURE": "Industry / Manufacturing",
+        "IMMOBILIER_CONSTRUCTION": "Real Estate / Construction",
+        "AGRICULTURE_AGROALIMENTAIRE": "Agriculture / Agri-food",
+        "EDUCATION_FORMATION": "Education / Training",
+        "TRANSPORT_LOGISTIQUE": "Transport / Logistics",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Tourism / Hospitality / Restaurants",
+        "MEDIA_COMMUNICATION": "Media / Communication",
+        "ENERGIE_ENVIRONNEMENT": "Energy / Environment",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Professional Services / Consulting",
+        "ARTISANAT": "Craft trades",
+        "CULTURE_LOISIRS": "Culture / Leisure",
+        "ADMINISTRATION_PUBLIQUE": "Public Administration",
+        "AUTRE": "Other"
+      },
+      "companyRegistrationNumber": "Registration number (e.g. business ID)"
     },
     "supportSection": {
       "title": "Contact support",
       "description": "A question about your account, your collateral or a deposit?",
-      "liveChat": "Live chat (coming soon)"
+      "assistant": {
+        "trigger": "Support assistant",
+        "title": "Support assistant",
+        "disclaimer": "AI assistant (OpenAI) — a real conversational AI, which can make mistakes: double-check anything important.",
+        "unavailable": "AI assistant temporarily unavailable (key not configured on the back office) — please email us instead.",
+        "intro": "Ask your question below, or pick a common topic:",
+        "thinking": "The assistant is thinking…",
+        "placeholder": "Type your message…",
+        "genericError": "Something went wrong, please try again.",
+        "footnote": "AI-generated answers — for anything specific to your account, email us instead.",
+        "topics": {
+          "credit": "What's the interest rate on collateralized credit?",
+          "kyc": "How do I verify my identity?",
+          "withdrawal": "How does withdrawing funds work?",
+          "investment": "What's the difference between investing and collateralized credit?"
+        }
+      }
     },
     "transactionHistory": {
       "title": "Transaction history",
@@ -1425,7 +1452,8 @@
     "accountMenu": {
       "business": "Business",
       "admin": "Admin",
-      "logout": "Log out"
+      "logout": "Log out",
+      "verifiedBadge": "Verified identity"
     },
     "creditOverview": {
       "availableBalance": "Available balance",
@@ -1463,7 +1491,8 @@
       "repaymentHistory": "Repayment activity",
       "yieldRepaymentTag": "collateral yield",
       "repaySuccessToast": "Repayment completed successfully.",
-      "repayFullToast": "Full repayment completed: the collateral has been released."
+      "repayFullToast": "Full repayment completed: the collateral has been released.",
+      "kycLockedNote": "Simulation only: available once your identity has been verified by an advisor."
     },
     "creditSimulator": {
       "amountLabel": "Planned collateral amount (USD)",
@@ -1529,29 +1558,20 @@
     "assetPicker": {
       "onlyNetworkAvailable": "Only network available for this asset"
     },
-    "creditRequestDeposit": {
-      "genericError": "Something went wrong.",
-      "title": "Credit request approved, deposit pending",
-      "description": "{amount} ({currency}) to deposit for the credit to be issued automatically.",
-      "yourDepositAddress": "Your deposit address",
-      "addressNote": "Only send {currency} on {chain} to this address. Deposit at least {amount}: the credit is issued automatically on receipt.",
-      "assetLabel": "Asset",
-      "networkLabel": "Network",
-      "generateButton": "Generate deposit address"
-    },
     "authLoadError": {
       "title": "Unable to verify your session"
     },
     "soldePage": {
       "topupConfirmedTitle": "Card top-up confirmed",
       "topupConfirmedDescription": "The available balance below reflects the top-up.",
-      "loadError": "Unable to load the balance"
+      "loadError": "Unable to load the balance",
+      "creditRequestPendingBanner": {
+        "title": "Approved credit request, deposit pending",
+        "description": "{amount} ({currency}) to deposit for the credit to be issued automatically — use the \"Deposit\" button below."
+      }
     },
     "creditPage": {
       "loadError": "Unable to load the credit line"
-    },
-    "cardsPage": {
-      "loadError": "Unable to load the cards"
     },
     "historyPage": {
       "loadError": "Unable to load the history"
@@ -1820,7 +1840,8 @@
         "quickMax": "MAX",
         "insufficientBalance": "Insufficient balance",
         "transferInSuccess": "Funds transferred to the investment wallet.",
-        "transferOutSuccess": "Funds moved back to the main balance."
+        "transferOutSuccess": "Funds moved back to the main balance.",
+        "cancel": "Cancel"
       },
       "tabs": {
         "baskets": "Baskets",
@@ -1986,7 +2007,27 @@
       "noFileUploaded": "No file uploaded yet.",
       "uploadFile": "Upload",
       "replaceFile": "Replace",
-      "removeFile": "Remove file"
+      "removeFile": "Remove file",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Technology / Software",
+        "FINANCE_ASSURANCE": "Finance / Insurance",
+        "SANTE_PHARMACIE": "Healthcare / Pharma",
+        "COMMERCE_DETAIL": "Retail",
+        "INDUSTRIE_MANUFACTURE": "Industry / Manufacturing",
+        "IMMOBILIER_CONSTRUCTION": "Real Estate / Construction",
+        "AGRICULTURE_AGROALIMENTAIRE": "Agriculture / Agri-food",
+        "EDUCATION_FORMATION": "Education / Training",
+        "TRANSPORT_LOGISTIQUE": "Transport / Logistics",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Tourism / Hospitality / Restaurants",
+        "MEDIA_COMMUNICATION": "Media / Communication",
+        "ENERGIE_ENVIRONNEMENT": "Energy / Environment",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Professional Services / Consulting",
+        "ARTISANAT": "Craft trades",
+        "CULTURE_LOISIRS": "Culture / Leisure",
+        "ADMINISTRATION_PUBLIQUE": "Public Administration",
+        "AUTRE": "Other"
+      },
+      "companyRegistrationNumber": "Registration number (e.g. business ID)"
     },
     "termsAcceptance": {
       "readFull": "Read the full Terms →",
@@ -2092,9 +2133,103 @@
       "difference": {
         "question": "What's the difference with collateralized credit?",
         "answer": "Collateralized credit lends you money against collateral. Direct investment, conversely, locks up your own money in exchange for a return: no credit is issued, no collateral is required."
+      },
+      "wallet": {
+        "question": "Why a separate balance to invest?",
+        "answer": "The investment wallet stays distinct from your main balance (the one for collateralized credit) for clear traceability. You transfer funds into it internally, never a direct on-chain deposit into this wallet."
+      },
+      "fixedTermLock": {
+        "question": "Can I withdraw a fixed-term plan before maturity?",
+        "answer": "No, no early withdrawal is possible once the deposit is confirmed — funds (principal + accrued return) are automatically paid out at the chosen maturity, with no action needed from you."
+      },
+      "howComputed": {
+        "question": "How is the displayed return calculated?",
+        "answer": "For stock baskets: an indicative dividend target specific to the basket, plus the real market move that day. For the RWA strategy: the average of 3 treasury pillars (arbitrage, collateralized lending, liquidity provision)."
+      },
+      "riskLevels": {
+        "question": "What does the displayed risk level mean?",
+        "answer": "An indicative classification on a scale of 1 to 5 (an editorial assumption, never a score calculated live from measured volatility), from the most conservative to the most dynamic — it helps you compare baskets and plans against each other."
       }
     },
     "ctaLogin": "Access my account",
-    "ctaNoAccount": "Don't have an account yet? Request an account"
+    "ctaNoAccount": "Have an invitation code? Create my account",
+    "basketsIntro": "Each basket has its own composition, its own risk level and its own indicative return target — no hierarchy between them, some overlap in holdings between baskets is expected.",
+    "compositionLabel": "Composition:",
+    "rwaLearnMore": "See the 3 pillars of the strategy in detail",
+    "mechanism": {
+      "title": "How the return works",
+      "intro": "No return shown on this page is a made-up figure: every basket and plan relies on real prices and explicit dividend assumptions, recalculated every day.",
+      "accrual": {
+        "title": "Daily compounded return",
+        "body": "Each day, the return applied combines an indicative dividend target specific to the basket and the real market move that day (real prices, never an invented figure). It's added to the previous day's capital before the next day's calculation — and can be negative on an unfavorable day."
+      },
+      "wallet": {
+        "title": "A dedicated investment balance",
+        "body": "Invested funds come from an investment wallet separate from your main balance. You transfer money into it internally before you can invest it — never a direct on-chain deposit into this wallet."
+      },
+      "twoModes": {
+        "title": "Two ways to invest",
+        "body": "The six baskets below can be withdrawn in full at any time, with no notice. The six fixed-term plans, on the other hand, lock funds until their maturity (3, 6 or 12 months) — no early withdrawal possible, in exchange for a predefined composition."
+      }
+    },
+    "fixedTermTitle": "Six fixed-term plans",
+    "fixedTermIntro": "A second way to invest, alongside the baskets above: each plan combines holdings already covered by our baskets (sometimes mixed together, or with exposure to the RWA strategy), locked until the chosen maturity.",
+    "fixedTermNote": "Actually available to subscribe from your client area, once your account is open — no early withdrawal is possible once the deposit is confirmed.",
+    "indicativeSuffix": "indicative"
+  },
+  "InviteSignup": {
+    "meta": {
+      "title": "Create my account — invitation code",
+      "description": "Enter your invitation code to create your Hentsch Credit account and complete your KYC file step by step."
+    },
+    "eyebrow": "Invitation-only access",
+    "title": "Create my account",
+    "description": "Hentsch Credit operates on an invitation-only basis. Enter the code sent by your advisor to create your account and complete your file, one step at a time.",
+    "progress": "Step {step} of {total}",
+    "alreadyHaveAccount": "Already have an account? <link>Sign in</link>",
+    "genericError": "Something went wrong, please try again.",
+    "steps": {
+      "code": "Invitation code",
+      "credentials": "Credentials",
+      "aml": "AML/CFT compliance",
+      "recap": "Summary"
+    },
+    "code": {
+      "label": "Invitation code",
+      "placeholder": "XXXX-XXXX-YYYY",
+      "hint": "Sent by your advisor — single use, valid for 24h after it is generated.",
+      "cta": "Validate code",
+      "accountTypeNote": "This code opens a {type} account",
+      "accountTypeParticulier": "personal",
+      "accountTypeBusiness": "professional (Business)",
+      "expiresNote": "single use"
+    },
+    "credentials": {
+      "email": "Email address",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "passwordTooShort": "8 characters minimum.",
+      "passwordMismatch": "Passwords don't match."
+    },
+    "employment": {
+      "annualIncome": "Declared annual income"
+    },
+    "identity": {
+      "fileUploadNote": "These fields are declarative. You'll be able to upload your files (ID, proof of address) once your account is created, from KYC Verification."
+    },
+    "nav": {
+      "back": "Back",
+      "next": "Next",
+      "submit": "Create my account"
+    },
+    "recap": {
+      "intro": "Here is your file as it will be submitted, regenerated from the information you just entered. Review it before confirming.",
+      "generate": "Generate summary",
+      "generating": "Generating summary…",
+      "regenerate": "Regenerate",
+      "confirmLabel": "I confirm the information above is accurate and I approve creating my account.",
+      "successTitle": "Account created successfully",
+      "successDescription": "Welcome! Your account {email} has been created, your KYC file is under review. Redirecting to your dashboard…"
+    }
   }
 }

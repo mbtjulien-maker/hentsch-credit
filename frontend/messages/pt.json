@@ -15,7 +15,6 @@
       "tarifs": "Tarifários",
       "investissementDirect": "Investimento"
     },
-    "connexionShort": "Iniciar sessão",
     "connexionLong": "Aceder à minha conta"
   },
   "Footer": {
@@ -500,31 +499,12 @@
     "eyebrow": "Acesso por convite",
     "title": "Solicitar a abertura de uma conta",
     "description": "Plataforma reservada a uma clientela restrita. Deixe-nos os seus dados: a nossa equipa analisa cada processo antes de conceder o acesso.",
-    "alreadyHaveAccount": "Já tem uma conta? <link>Iniciar sessão</link>"
-  },
-  "AccountRequestForm": {
-    "firstName": "Nome próprio",
-    "lastName": "Apelido",
-    "email": "E-mail",
-    "phone": "Telefone (opcional)",
-    "accountType": {
-      "label": "Tipo de conta",
-      "PARTICULIER": {
-        "title": "Particular",
-        "description": "Penhora ativos digitais, desbloqueia uma linha de crédito."
-      },
-      "BUSINESS": {
-        "title": "Empresa / Startup / Profissional",
-        "description": "Financia um projeto profissional — acesso ao crédito garantido e, sob condições, ao crédito direto."
-      }
-    },
-    "message": "O seu projeto (opcional)",
-    "messagePlaceholder": "Montante previsto, ativos em causa, questões específicas…",
-    "disclaimer": "Ao submeter este formulário, aceita que as suas informações sejam tratadas em conformidade com a nossa <link>política de privacidade</link>. Nenhuma conta é criada automaticamente: o acesso é concedido após análise e validação do seu processo pela nossa equipa.",
-    "submit": "Enviar o meu pedido",
-    "successTitle": "O seu pedido foi transmitido com sucesso",
-    "successBody": "A nossa equipa analisa o seu processo e entrará em contacto por e-mail. O acesso à sua área de cliente só é concedido depois de concluída esta validação.",
-    "genericError": "Ocorreu um erro."
+    "alreadyHaveAccount": "Já tem uma conta? <link>Iniciar sessão</link>",
+    "replaced": {
+      "title": "Formulário substituído",
+      "description": "Criar uma conta é agora feito apenas por convite. Se recebeu um código do seu consultor, utilize-o abaixo.",
+      "cta": "Tenho um código de convite"
+    }
   },
   "Faq": {
     "meta": {
@@ -710,7 +690,7 @@
       "market": "Mercado",
       "pricing": "Tarifários",
       "directInvestment": "Investimento direto",
-      "requestAccount": "Solicitar uma conta",
+      "requestAccount": "Criar a minha conta",
       "login": "Iniciar sessão",
       "contact": "Contacte-nos",
       "faq": "Perguntas frequentes",
@@ -1199,6 +1179,15 @@
           "title": "Investimento",
           "description": "Saldo da carteira de investimento, alimentado por transferência interna a partir do seu saldo principal."
         }
+      },
+      "kycPendingBanner": {
+        "title": "Verificação em curso",
+        "description": "A sua identidade está a ser verificada por um consultor. O depósito, o levantamento e o pedido de crédito permanecem bloqueados até à aprovação do seu processo.",
+        "cta": "Completar o meu dossiê KYC"
+      },
+      "initialDepositBanner": {
+        "title": "Depósito inicial necessário",
+        "description": "A abertura da sua conta exige um depósito inicial de {required} — {deposited} recebido até agora. Uma vez atingido, este capital fica totalmente utilizável (levantamento, garantia, despesa) como qualquer outro depósito."
       }
     },
     "balanceCards": {
@@ -1252,7 +1241,11 @@
         "sentAmountNote": "Assim que o envio for efetuado, declare-o abaixo para que apareça no seu histórico: um consultor valida-o após receção.",
         "declareButton": "Enviei os fundos",
         "legacyAddressLabel": "O seu endereço de depósito",
-        "legacyNote": "Envie apenas {currency} na {chain} para este endereço. O saldo é creditado após confirmação on-chain."
+        "legacyNote": "Envie apenas {currency} na {chain} para este endereço. O saldo é creditado após confirmação on-chain.",
+        "descriptionCreditRequest": "Escolha o ativo e a rede para depositar a garantia do seu pedido de crédito aprovado.",
+        "modeCreditRequest": "Pedido de crédito ({amount})",
+        "modeGeneral": "Depósito geral",
+        "creditRequestNote": "Envie apenas {currency} em {chain} para este endereço. Deposite pelo menos {amount}: o crédito é emitido automaticamente após a receção."
       },
       "withdraw": {
         "trigger": "Levantar",
@@ -1275,7 +1268,8 @@
         "destinationLabel": "Endereço de destino",
         "submit": "Confirmar o levantamento",
         "successToast": "Levantamento solicitado com sucesso."
-      }
+      },
+      "kycLockedNote": "Disponível assim que a sua identidade for verificada por um consultor."
     },
     "marketView": {
       "dataProvider": "Dados fornecidos pela CoinMarketCap",
@@ -1305,23 +1299,19 @@
         "yield": "Rendimento",
         "targetApyTitle": "Objetivo indicativo da estratégia de tesouraria do banco sobre este ativo, não é uma garantia, sem efeito no cálculo do seu crédito",
         "targetApy": "Objetivo {min}-{max}% APY"
-      }
+      },
+      "searchPlaceholder": "Pesquisar uma ação ou um ativo...",
+      "clearSearch": "Limpar pesquisa",
+      "noResults": "Sem resultados para «{query}».",
+      "assetsLabel": "Ativos"
     },
     "cardsSection": {
       "title": "Cartões virtuais",
-      "description": "Emissão Visa/Mastercard (integração Etapa 4)",
-      "noCards": "Nenhum cartão emitido para esta conta.",
-      "limit": "Limite {amount}",
-      "step4Note": "Disponível na Etapa 4 (integração Stripe Issuing / Marqeta)",
-      "issueCard": "Emitir um cartão"
+      "description": "Emissão e gestão dos seus cartões bancários.",
+      "comingSoonTitle": "Brevemente disponível",
+      "comingSoonDescription": "A emissão de cartões Visa/Mastercard ainda não está disponível nesta conta — volte em breve."
     },
     "labels": {
-      "cardStatus": {
-        "PENDING": "Pendente",
-        "ACTIVE": "Ativo",
-        "BLOCKED": "Bloqueado",
-        "CLOSED": "Encerrado"
-      },
       "kycStatus": {
         "PENDING": "KYC pendente",
         "VERIFIED": "KYC verificado",
@@ -1403,12 +1393,49 @@
       "employed": "Assalariado",
       "save": "Guardar as minhas informações",
       "saveSuccess": "Informações guardadas.",
-      "selfDeclaredNote": "Estas informações são autodeclaradas e podem ser alteradas a qualquer momento; um endereço ou situação profissional já verificados por um consultor voltam a aguardar verificação assim que os alterar."
+      "selfDeclaredNote": "Estas informações são autodeclaradas e podem ser alteradas a qualquer momento; um endereço ou situação profissional já verificados por um consultor voltam a aguardar verificação assim que os alterar.",
+      "selectPlaceholder": "Selecionar…",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Tecnologia / Software",
+        "FINANCE_ASSURANCE": "Finanças / Seguros",
+        "SANTE_PHARMACIE": "Saúde / Farmácia",
+        "COMMERCE_DETAIL": "Comércio a retalho",
+        "INDUSTRIE_MANUFACTURE": "Indústria / Manufatura",
+        "IMMOBILIER_CONSTRUCTION": "Imobiliário / Construção",
+        "AGRICULTURE_AGROALIMENTAIRE": "Agricultura / Agroalimentar",
+        "EDUCATION_FORMATION": "Educação / Formação",
+        "TRANSPORT_LOGISTIQUE": "Transporte / Logística",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Turismo / Hotelaria / Restauração",
+        "MEDIA_COMMUNICATION": "Media / Comunicação",
+        "ENERGIE_ENVIRONNEMENT": "Energia / Ambiente",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Serviços profissionais / Consultoria",
+        "ARTISANAT": "Artesanato",
+        "CULTURE_LOISIRS": "Cultura / Lazer",
+        "ADMINISTRATION_PUBLIQUE": "Administração pública",
+        "AUTRE": "Outro"
+      },
+      "companyRegistrationNumber": "Número de registo (ex. NIPC)"
     },
     "supportSection": {
       "title": "Contactar o suporte",
       "description": "Alguma questão sobre a sua conta, a sua garantia ou um depósito?",
-      "liveChat": "Chat em direto (brevemente disponível)"
+      "assistant": {
+        "trigger": "Assistente de suporte",
+        "title": "Assistente de suporte",
+        "disclaimer": "Assistente de IA (OpenAI) — uma IA conversacional real, que pode cometer erros: verifique as informações importantes.",
+        "unavailable": "Assistente de IA momentaneamente indisponível (chave não configurada no back office) — escreva-nos por e-mail.",
+        "intro": "Coloque a sua pergunta abaixo, ou escolha um tema frequente:",
+        "thinking": "O assistente está a pensar…",
+        "placeholder": "Escreva a sua mensagem…",
+        "genericError": "Ocorreu um erro, tente novamente.",
+        "footnote": "Respostas geradas por IA — para algo específico da sua conta, escreva-nos por e-mail.",
+        "topics": {
+          "credit": "Qual é a taxa de juro do crédito com garantia?",
+          "kyc": "Como verifico a minha identidade?",
+          "withdrawal": "Como funciona o levantamento de fundos?",
+          "investment": "Qual é a diferença entre investimento e crédito com garantia?"
+        }
+      }
     },
     "transactionHistory": {
       "title": "Histórico de transações",
@@ -1425,7 +1452,8 @@
     "accountMenu": {
       "business": "Empresa",
       "admin": "Admin",
-      "logout": "Terminar sessão"
+      "logout": "Terminar sessão",
+      "verifiedBadge": "Identidade verificada"
     },
     "creditOverview": {
       "availableBalance": "Saldo disponível",
@@ -1463,7 +1491,8 @@
       "repaymentHistory": "Evolução do reembolso",
       "yieldRepaymentTag": "rendimento da garantia",
       "repaySuccessToast": "Reembolso efetuado com sucesso.",
-      "repayFullToast": "Reembolso integral efetuado: a garantia foi libertada."
+      "repayFullToast": "Reembolso integral efetuado: a garantia foi libertada.",
+      "kycLockedNote": "Apenas simulação: disponível assim que a sua identidade for verificada por um consultor."
     },
     "creditSimulator": {
       "amountLabel": "Montante de garantia previsto (USD)",
@@ -1529,29 +1558,20 @@
     "assetPicker": {
       "onlyNetworkAvailable": "Única rede disponível para este ativo"
     },
-    "creditRequestDeposit": {
-      "genericError": "Ocorreu um erro.",
-      "title": "Pedido de crédito aprovado, depósito pendente",
-      "description": "{amount} ({currency}) a depositar para que o crédito seja emitido automaticamente.",
-      "yourDepositAddress": "O seu endereço de depósito",
-      "addressNote": "Envie apenas {currency} na {chain} para este endereço. Deposite pelo menos {amount}: o crédito é emitido automaticamente após receção.",
-      "assetLabel": "Ativo",
-      "networkLabel": "Rede",
-      "generateButton": "Gerar endereço de depósito"
-    },
     "authLoadError": {
       "title": "Não foi possível verificar a sua sessão"
     },
     "soldePage": {
       "topupConfirmedTitle": "Recarga por cartão confirmada",
       "topupConfirmedDescription": "O saldo disponível abaixo reflete a recarga.",
-      "loadError": "Não foi possível carregar o saldo"
+      "loadError": "Não foi possível carregar o saldo",
+      "creditRequestPendingBanner": {
+        "title": "Pedido de crédito aprovado, depósito pendente",
+        "description": "{amount} ({currency}) a depositar para que o crédito seja emitido automaticamente — utilize o botão «Depositar» abaixo."
+      }
     },
     "creditPage": {
       "loadError": "Não foi possível carregar a linha de crédito"
-    },
-    "cardsPage": {
-      "loadError": "Não foi possível carregar os cartões"
     },
     "historyPage": {
       "loadError": "Não foi possível carregar o histórico"
@@ -1820,7 +1840,8 @@
         "quickMax": "MAX",
         "insufficientBalance": "Saldo insuficiente",
         "transferInSuccess": "Fundos transferidos para o wallet de investimento.",
-        "transferOutSuccess": "Fundos devolvidos ao saldo principal."
+        "transferOutSuccess": "Fundos devolvidos ao saldo principal.",
+        "cancel": "Cancelar"
       },
       "tabs": {
         "baskets": "Cestas",
@@ -1986,7 +2007,27 @@
       "noFileUploaded": "Ainda nenhum ficheiro carregado.",
       "uploadFile": "Carregar",
       "replaceFile": "Substituir",
-      "removeFile": "Remover ficheiro"
+      "removeFile": "Remover ficheiro",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Tecnologia / Software",
+        "FINANCE_ASSURANCE": "Finanças / Seguros",
+        "SANTE_PHARMACIE": "Saúde / Farmácia",
+        "COMMERCE_DETAIL": "Comércio a retalho",
+        "INDUSTRIE_MANUFACTURE": "Indústria / Manufatura",
+        "IMMOBILIER_CONSTRUCTION": "Imobiliário / Construção",
+        "AGRICULTURE_AGROALIMENTAIRE": "Agricultura / Agroalimentar",
+        "EDUCATION_FORMATION": "Educação / Formação",
+        "TRANSPORT_LOGISTIQUE": "Transporte / Logística",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Turismo / Hotelaria / Restauração",
+        "MEDIA_COMMUNICATION": "Media / Comunicação",
+        "ENERGIE_ENVIRONNEMENT": "Energia / Ambiente",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Serviços profissionais / Consultoria",
+        "ARTISANAT": "Artesanato",
+        "CULTURE_LOISIRS": "Cultura / Lazer",
+        "ADMINISTRATION_PUBLIQUE": "Administração pública",
+        "AUTRE": "Outro"
+      },
+      "companyRegistrationNumber": "Número de registo (ex. NIPC)"
     },
     "termsAcceptance": {
       "readFull": "Ler os Termos completos →",
@@ -2092,9 +2133,103 @@
       "difference": {
         "question": "Qual é a diferença em relação ao crédito com garantia?",
         "answer": "O crédito com garantia empresta-lhe dinheiro contra uma garantia. O investimento direto, pelo contrário, imobiliza o seu próprio dinheiro em troca de um rendimento: não é emitido qualquer crédito, não é exigida qualquer garantia."
+      },
+      "wallet": {
+        "question": "Porquê um saldo separado para investir?",
+        "answer": "A carteira de investimento mantém-se distinta do seu saldo principal (o do crédito com garantia) para uma rastreabilidade clara. Transfere fundos para lá internamente, nunca um depósito on-chain direto nesta carteira."
+      },
+      "fixedTermLock": {
+        "question": "Posso levantar um plano a prazo fixo antes do vencimento?",
+        "answer": "Não, não é possível qualquer levantamento antecipado assim que o depósito for confirmado — os fundos (capital + rendimento acumulado) são automaticamente devolvidos no vencimento escolhido, sem qualquer ação da sua parte."
+      },
+      "howComputed": {
+        "question": "Como é calculado o rendimento apresentado?",
+        "answer": "Para os cabazes de ações: um objetivo de dividendo indicativo próprio do cabaz, mais a variação real do mercado nesse dia. Para a estratégia RWA: a média de 3 pilares de tesouraria (arbitragem, empréstimo com garantia, fornecimento de liquidez)."
+      },
+      "riskLevels": {
+        "question": "O que significa o nível de risco apresentado?",
+        "answer": "Uma classificação indicativa numa escala de 1 a 5 (uma hipótese editorial, nunca uma pontuação calculada em tempo real sobre uma volatilidade medida), do mais prudente ao mais dinâmico — ajuda-o a comparar cabazes e planos entre si."
       }
     },
     "ctaLogin": "Aceder à minha conta",
-    "ctaNoAccount": "Ainda não tem conta? Solicitar a abertura de uma conta"
+    "ctaNoAccount": "Tem um código de convite? Criar a minha conta",
+    "basketsIntro": "Cada cabaz tem a sua própria composição, o seu próprio nível de risco e o seu próprio objetivo de rendimento indicativo — sem hierarquia entre eles, alguma sobreposição de títulos entre cabazes é assumida.",
+    "compositionLabel": "Composição:",
+    "rwaLearnMore": "Ver o detalhe dos 3 pilares da estratégia",
+    "mechanism": {
+      "title": "Como funciona o rendimento",
+      "intro": "Nenhum rendimento apresentado nesta página é um valor inventado: cada cabaz e cada plano assentam em cotações reais e em pressupostos de dividendo explícitos, recalculados todos os dias.",
+      "accrual": {
+        "title": "Rendimento diário composto",
+        "body": "Todos os dias, o rendimento aplicado combina um objetivo de dividendo indicativo próprio do cabaz com a variação real do mercado nesse dia (cotações reais, nunca um valor inventado). É somado ao capital do dia anterior antes do cálculo do dia seguinte — e pode ser negativo num dia desfavorável."
+      },
+      "wallet": {
+        "title": "Um saldo dedicado ao investimento",
+        "body": "Os fundos investidos provêm de uma carteira de investimento separada do seu saldo principal. Transfere dinheiro para lá internamente antes de o poder investir — nunca um depósito on-chain direto nesta carteira."
+      },
+      "twoModes": {
+        "title": "Duas formas de investir",
+        "body": "Os seis cabazes abaixo podem ser levantados na íntegra a qualquer momento, sem aviso prévio. Os seis planos a prazo fixo, por sua vez, bloqueiam os fundos até ao seu vencimento (3, 6 ou 12 meses) — sem possibilidade de levantamento antecipado, em troca de uma composição predefinida."
+      }
+    },
+    "fixedTermTitle": "Seis planos a prazo fixo",
+    "fixedTermIntro": "Uma segunda forma de investir, a par dos cabazes acima: cada plano combina títulos já cobertos pelos nossos cabazes (por vezes misturados entre si, ou com exposição à estratégia RWA), bloqueados até ao vencimento escolhido.",
+    "fixedTermNote": "Efetivamente subscritível a partir da sua área de cliente, após a abertura da conta — não é possível qualquer levantamento antecipado assim que o depósito for confirmado.",
+    "indicativeSuffix": "indicativo"
+  },
+  "InviteSignup": {
+    "meta": {
+      "title": "Criar a minha conta — código de convite",
+      "description": "Introduza o seu código de convite para criar a sua conta Hentsch Credit e completar o seu dossiê KYC passo a passo."
+    },
+    "eyebrow": "Acesso apenas por convite",
+    "title": "Criar a minha conta",
+    "description": "A Hentsch Credit funciona apenas por convite. Introduza o código fornecido pelo seu consultor para criar a sua conta e completar o seu dossiê, passo a passo.",
+    "progress": "Passo {step} de {total}",
+    "alreadyHaveAccount": "Já tem uma conta? <link>Iniciar sessão</link>",
+    "genericError": "Ocorreu um erro, tente novamente.",
+    "steps": {
+      "code": "Código de convite",
+      "credentials": "Credenciais",
+      "aml": "Conformidade LCB-FT",
+      "recap": "Resumo"
+    },
+    "code": {
+      "label": "Código de convite",
+      "placeholder": "XXXX-XXXX-AAAA",
+      "hint": "Fornecido pelo seu consultor — uso único, válido 24h após a geração.",
+      "cta": "Validar código",
+      "accountTypeNote": "Este código abre uma conta {type}",
+      "accountTypeParticulier": "particular",
+      "accountTypeBusiness": "profissional (Business)",
+      "expiresNote": "uso único"
+    },
+    "credentials": {
+      "email": "Endereço de e-mail",
+      "password": "Palavra-passe",
+      "confirmPassword": "Confirmar palavra-passe",
+      "passwordTooShort": "Mínimo de 8 caracteres.",
+      "passwordMismatch": "As palavras-passe não coincidem."
+    },
+    "employment": {
+      "annualIncome": "Rendimento anual declarado"
+    },
+    "identity": {
+      "fileUploadNote": "Estes campos são declarativos. Poderá carregar os seus ficheiros (documento de identidade, comprovativo de morada) assim que a sua conta for criada, em Verificação KYC."
+    },
+    "nav": {
+      "back": "Anterior",
+      "next": "Seguinte",
+      "submit": "Criar a minha conta"
+    },
+    "recap": {
+      "intro": "Aqui está o seu dossiê tal como será submetido, regenerado a partir das informações que acabou de introduzir. Reveja-o antes de confirmar.",
+      "generate": "Gerar resumo",
+      "generating": "A gerar resumo…",
+      "regenerate": "Regenerar",
+      "confirmLabel": "Confirmo que as informações acima são exatas e aprovo a criação da minha conta.",
+      "successTitle": "Conta criada com sucesso",
+      "successDescription": "Bem-vindo/a! A sua conta {email} foi criada, o seu dossiê KYC está em análise. A redirecionar para o seu painel…"
+    }
   }
 }

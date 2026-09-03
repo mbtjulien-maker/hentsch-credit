@@ -15,7 +15,6 @@
       "tarifs": "Preise",
       "investissementDirect": "Investition"
     },
-    "connexionShort": "Anmelden",
     "connexionLong": "Zu meinem Konto"
   },
   "Footer": {
@@ -500,31 +499,12 @@
     "eyebrow": "Zugang auf Einladung",
     "title": "Kontoeröffnung beantragen",
     "description": "Plattform nur für einen eingeschränkten Kundenkreis. Hinterlassen Sie uns Ihre Kontaktdaten: Unser Team prüft jeden Antrag, bevor der Zugang gewährt wird.",
-    "alreadyHaveAccount": "Haben Sie bereits ein Konto? <link>Anmelden</link>"
-  },
-  "AccountRequestForm": {
-    "firstName": "Vorname",
-    "lastName": "Nachname",
-    "email": "E-Mail",
-    "phone": "Telefon (optional)",
-    "accountType": {
-      "label": "Kontotyp",
-      "PARTICULIER": {
-        "title": "Privatperson",
-        "description": "Digitale Vermögenswerte verpfänden, eine Kreditlinie freischalten."
-      },
-      "BUSINESS": {
-        "title": "Unternehmen / Startup / Freiberufler",
-        "description": "Finanziert ein berufliches Projekt — Zugang zum besicherten Kredit und, unter Bedingungen, zum Direktkredit."
-      }
-    },
-    "message": "Ihr Vorhaben (optional)",
-    "messagePlaceholder": "Geplanter Betrag, betroffene Vermögenswerte, besondere Fragen…",
-    "disclaimer": "Mit dem Absenden dieses Formulars stimmen Sie zu, dass Ihre Angaben gemäß unserer <link>Datenschutzrichtlinie</link> verarbeitet werden. Es wird kein Konto automatisch erstellt: Der Zugang wird nach Prüfung und Validierung Ihres Antrags durch unser Team gewährt.",
-    "submit": "Meinen Antrag senden",
-    "successTitle": "Ihr Antrag wurde erfolgreich übermittelt",
-    "successBody": "Unser Team prüft Ihren Antrag und meldet sich per E-Mail bei Ihnen. Der Zugang zu Ihrem Kundenbereich wird erst nach dieser Validierung gewährt.",
-    "genericError": "Ein Fehler ist aufgetreten."
+    "alreadyHaveAccount": "Haben Sie bereits ein Konto? <link>Anmelden</link>",
+    "replaced": {
+      "title": "Formular ersetzt",
+      "description": "Ein Konto wird jetzt nur noch auf Einladung erstellt. Wenn Sie einen Code von Ihrem Berater erhalten haben, verwenden Sie ihn unten.",
+      "cta": "Ich habe einen Einladungscode"
+    }
   },
   "Faq": {
     "meta": {
@@ -710,7 +690,7 @@
       "market": "Markt",
       "pricing": "Preise",
       "directInvestment": "Direktinvestition",
-      "requestAccount": "Konto beantragen",
+      "requestAccount": "Konto erstellen",
       "login": "Anmelden",
       "contact": "Kontaktieren Sie uns",
       "faq": "Häufige Fragen",
@@ -1199,6 +1179,15 @@
           "title": "Investition",
           "description": "Guthaben der Investment-Wallet, aufgefüllt per interner Überweisung von Ihrem Hauptguthaben."
         }
+      },
+      "kycPendingBanner": {
+        "title": "Verifizierung läuft",
+        "description": "Ihre Identität wird derzeit von einem Berater überprüft. Einzahlungen, Auszahlungen und Kreditanträge bleiben gesperrt, bis Ihre Unterlagen genehmigt wurden.",
+        "cta": "Meine KYC-Unterlagen vervollständigen"
+      },
+      "initialDepositBanner": {
+        "title": "Ersteinzahlung erforderlich",
+        "description": "Die Kontoeröffnung erfordert eine Ersteinzahlung von {required} — bisher {deposited} erhalten. Sobald erreicht, ist dieses Kapital vollständig nutzbar (Auszahlung, Sicherheit, Ausgabe) wie jede andere Einzahlung."
       }
     },
     "balanceCards": {
@@ -1252,7 +1241,11 @@
         "sentAmountNote": "Melden Sie die Überweisung nach dem Versand hier unten, damit sie in Ihrem Verlauf erscheint: ein Berater validiert sie bei Eingang.",
         "declareButton": "Ich habe das Geld gesendet",
         "legacyAddressLabel": "Ihre Einzahlungsadresse",
-        "legacyNote": "Senden Sie nur {currency} auf {chain} an diese Adresse. Das Guthaben wird nach On-Chain-Bestätigung gutgeschrieben."
+        "legacyNote": "Senden Sie nur {currency} auf {chain} an diese Adresse. Das Guthaben wird nach On-Chain-Bestätigung gutgeschrieben.",
+        "descriptionCreditRequest": "Wählen Sie den Vermögenswert und das Netzwerk, um die Sicherheit für Ihren genehmigten Kreditantrag einzuzahlen.",
+        "modeCreditRequest": "Kreditantrag ({amount})",
+        "modeGeneral": "Allgemeine Einzahlung",
+        "creditRequestNote": "Senden Sie nur {currency} auf {chain} an diese Adresse. Zahlen Sie mindestens {amount} ein: der Kredit wird bei Eingang automatisch vergeben."
       },
       "withdraw": {
         "trigger": "Abheben",
@@ -1275,7 +1268,8 @@
         "destinationLabel": "Zieladresse",
         "submit": "Abhebung bestätigen",
         "successToast": "Abhebung erfolgreich beantragt."
-      }
+      },
+      "kycLockedNote": "Verfügbar, sobald Ihre Identität von einem Berater verifiziert wurde."
     },
     "marketView": {
       "dataProvider": "Daten bereitgestellt von CoinMarketCap",
@@ -1305,23 +1299,19 @@
         "yield": "Rendite",
         "targetApyTitle": "Indikatives Ziel der Treasury-Strategie der Bank für diesen Vermögenswert, keine Garantie, ohne Auswirkung auf Ihre Kreditberechnung",
         "targetApy": "Ziel {min}-{max}% APY"
-      }
+      },
+      "searchPlaceholder": "Aktie oder Vermögenswert suchen...",
+      "clearSearch": "Suche löschen",
+      "noResults": "Keine Ergebnisse für „{query}“.",
+      "assetsLabel": "Vermögenswerte"
     },
     "cardsSection": {
       "title": "Virtuelle Karten",
-      "description": "Visa/Mastercard-Ausgabe (Integration Schritt 4)",
-      "noCards": "Für dieses Konto wurde keine Karte ausgestellt.",
-      "limit": "Limit {amount}",
-      "step4Note": "Verfügbar in Schritt 4 (Stripe Issuing / Marqeta Integration)",
-      "issueCard": "Karte ausstellen"
+      "description": "Ausgabe und Verwaltung Ihrer Bankkarten.",
+      "comingSoonTitle": "Demnächst verfügbar",
+      "comingSoonDescription": "Die Ausgabe von Visa-/Mastercard-Karten ist für dieses Konto noch nicht verfügbar — schauen Sie bald wieder vorbei."
     },
     "labels": {
-      "cardStatus": {
-        "PENDING": "Ausstehend",
-        "ACTIVE": "Aktiv",
-        "BLOCKED": "Gesperrt",
-        "CLOSED": "Geschlossen"
-      },
       "kycStatus": {
         "PENDING": "KYC ausstehend",
         "VERIFIED": "KYC verifiziert",
@@ -1403,12 +1393,49 @@
       "employed": "Angestellt",
       "save": "Meine Angaben speichern",
       "saveSuccess": "Angaben gespeichert.",
-      "selfDeclaredNote": "Diese Angaben sind selbst deklariert und jederzeit änderbar; eine bereits von einem Berater geprüfte Adresse oder berufliche Situation gilt nach einer Änderung wieder als zu überprüfen."
+      "selfDeclaredNote": "Diese Angaben sind selbst deklariert und jederzeit änderbar; eine bereits von einem Berater geprüfte Adresse oder berufliche Situation gilt nach einer Änderung wieder als zu überprüfen.",
+      "selectPlaceholder": "Auswählen…",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Technologie / Software",
+        "FINANCE_ASSURANCE": "Finanzen / Versicherung",
+        "SANTE_PHARMACIE": "Gesundheit / Pharma",
+        "COMMERCE_DETAIL": "Einzelhandel",
+        "INDUSTRIE_MANUFACTURE": "Industrie / Fertigung",
+        "IMMOBILIER_CONSTRUCTION": "Immobilien / Bauwesen",
+        "AGRICULTURE_AGROALIMENTAIRE": "Landwirtschaft / Agrarlebensmittel",
+        "EDUCATION_FORMATION": "Bildung / Weiterbildung",
+        "TRANSPORT_LOGISTIQUE": "Transport / Logistik",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Tourismus / Hotellerie / Gastronomie",
+        "MEDIA_COMMUNICATION": "Medien / Kommunikation",
+        "ENERGIE_ENVIRONNEMENT": "Energie / Umwelt",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Professionelle Dienstleistungen / Beratung",
+        "ARTISANAT": "Handwerk",
+        "CULTURE_LOISIRS": "Kultur / Freizeit",
+        "ADMINISTRATION_PUBLIQUE": "Öffentliche Verwaltung",
+        "AUTRE": "Sonstiges"
+      },
+      "companyRegistrationNumber": "Handelsregisternummer"
     },
     "supportSection": {
       "title": "Support kontaktieren",
       "description": "Eine Frage zu Ihrem Konto, Ihrer Sicherheit oder einer Einzahlung?",
-      "liveChat": "Live-Chat (demnächst verfügbar)"
+      "assistant": {
+        "trigger": "Support-Assistent",
+        "title": "Support-Assistent",
+        "disclaimer": "KI-Assistent (OpenAI) — eine echte konversationelle KI, die Fehler machen kann: wichtige Angaben bitte prüfen.",
+        "unavailable": "KI-Assistent vorübergehend nicht verfügbar (Schlüssel im Back-Office nicht konfiguriert) — schreiben Sie uns per E-Mail.",
+        "intro": "Stellen Sie unten Ihre Frage oder wählen Sie ein häufiges Thema:",
+        "thinking": "Der Assistent denkt nach…",
+        "placeholder": "Nachricht eingeben…",
+        "genericError": "Ein Fehler ist aufgetreten, bitte erneut versuchen.",
+        "footnote": "KI-generierte Antworten — für etwas Kontospezifisches schreiben Sie uns per E-Mail.",
+        "topics": {
+          "credit": "Wie hoch ist der Zinssatz beim besicherten Kredit?",
+          "kyc": "Wie verifiziere ich meine Identität?",
+          "withdrawal": "Wie funktioniert die Auszahlung von Geldern?",
+          "investment": "Was ist der Unterschied zwischen Investment und besichertem Kredit?"
+        }
+      }
     },
     "transactionHistory": {
       "title": "Transaktionsverlauf",
@@ -1425,7 +1452,8 @@
     "accountMenu": {
       "business": "Business",
       "admin": "Admin",
-      "logout": "Abmelden"
+      "logout": "Abmelden",
+      "verifiedBadge": "Verifizierte Identität"
     },
     "creditOverview": {
       "availableBalance": "Verfügbares Guthaben",
@@ -1463,7 +1491,8 @@
       "repaymentHistory": "Rückzahlungsverlauf",
       "yieldRepaymentTag": "Rendite der Sicherheit",
       "repaySuccessToast": "Rückzahlung erfolgreich durchgeführt.",
-      "repayFullToast": "Vollständige Rückzahlung durchgeführt: Die Sicherheit wurde freigegeben."
+      "repayFullToast": "Vollständige Rückzahlung durchgeführt: Die Sicherheit wurde freigegeben.",
+      "kycLockedNote": "Nur Simulation: verfügbar, sobald Ihre Identität von einem Berater verifiziert wurde."
     },
     "creditSimulator": {
       "amountLabel": "Geplanter Sicherheitenbetrag (USD)",
@@ -1529,29 +1558,20 @@
     "assetPicker": {
       "onlyNetworkAvailable": "Einziges verfügbares Netzwerk für diesen Vermögenswert"
     },
-    "creditRequestDeposit": {
-      "genericError": "Ein Fehler ist aufgetreten.",
-      "title": "Kreditantrag genehmigt, Einzahlung ausstehend",
-      "description": "{amount} ({currency}) einzuzahlen, damit der Kredit automatisch ausgegeben wird.",
-      "yourDepositAddress": "Ihre Einzahlungsadresse",
-      "addressNote": "Senden Sie nur {currency} auf {chain} an diese Adresse. Zahlen Sie mindestens {amount} ein: Der Kredit wird bei Eingang automatisch ausgegeben.",
-      "assetLabel": "Vermögenswert",
-      "networkLabel": "Netzwerk",
-      "generateButton": "Einzahlungsadresse generieren"
-    },
     "authLoadError": {
       "title": "Ihre Sitzung konnte nicht überprüft werden"
     },
     "soldePage": {
       "topupConfirmedTitle": "Kartenaufladung bestätigt",
       "topupConfirmedDescription": "Das unten angezeigte verfügbare Guthaben spiegelt die Aufladung wider.",
-      "loadError": "Guthaben konnte nicht geladen werden"
+      "loadError": "Guthaben konnte nicht geladen werden",
+      "creditRequestPendingBanner": {
+        "title": "Genehmigter Kreditantrag, Einzahlung ausstehend",
+        "description": "{amount} ({currency}) einzuzahlen, damit der Kredit automatisch vergeben wird — nutzen Sie unten die Schaltfläche „Einzahlen“."
+      }
     },
     "creditPage": {
       "loadError": "Kreditlinie konnte nicht geladen werden"
-    },
-    "cardsPage": {
-      "loadError": "Karten konnten nicht geladen werden"
     },
     "historyPage": {
       "loadError": "Verlauf konnte nicht geladen werden"
@@ -1820,7 +1840,8 @@
         "quickMax": "MAX",
         "insufficientBalance": "Unzureichendes Guthaben",
         "transferInSuccess": "Mittel auf das Investment-Wallet übertragen.",
-        "transferOutSuccess": "Mittel zurück auf das Hauptguthaben übertragen."
+        "transferOutSuccess": "Mittel zurück auf das Hauptguthaben übertragen.",
+        "cancel": "Abbrechen"
       },
       "tabs": {
         "baskets": "Körbe",
@@ -1986,7 +2007,27 @@
       "noFileUploaded": "Noch keine Datei hochgeladen.",
       "uploadFile": "Hochladen",
       "replaceFile": "Ersetzen",
-      "removeFile": "Datei entfernen"
+      "removeFile": "Datei entfernen",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Technologie / Software",
+        "FINANCE_ASSURANCE": "Finanzen / Versicherung",
+        "SANTE_PHARMACIE": "Gesundheit / Pharma",
+        "COMMERCE_DETAIL": "Einzelhandel",
+        "INDUSTRIE_MANUFACTURE": "Industrie / Fertigung",
+        "IMMOBILIER_CONSTRUCTION": "Immobilien / Bauwesen",
+        "AGRICULTURE_AGROALIMENTAIRE": "Landwirtschaft / Agrarlebensmittel",
+        "EDUCATION_FORMATION": "Bildung / Weiterbildung",
+        "TRANSPORT_LOGISTIQUE": "Transport / Logistik",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Tourismus / Hotellerie / Gastronomie",
+        "MEDIA_COMMUNICATION": "Medien / Kommunikation",
+        "ENERGIE_ENVIRONNEMENT": "Energie / Umwelt",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Professionelle Dienstleistungen / Beratung",
+        "ARTISANAT": "Handwerk",
+        "CULTURE_LOISIRS": "Kultur / Freizeit",
+        "ADMINISTRATION_PUBLIQUE": "Öffentliche Verwaltung",
+        "AUTRE": "Sonstiges"
+      },
+      "companyRegistrationNumber": "Handelsregisternummer"
     },
     "termsAcceptance": {
       "readFull": "Vollständige AGB lesen →",
@@ -2092,9 +2133,103 @@
       "difference": {
         "question": "Was ist der Unterschied zum besicherten Kredit?",
         "answer": "Der besicherte Kredit leiht Ihnen Geld gegen eine Sicherheit. Die Direktinvestition legt umgekehrt Ihr eigenes Geld im Austausch für eine Rendite an: es wird kein Kredit gewährt, keine Sicherheit ist erforderlich."
+      },
+      "wallet": {
+        "question": "Warum ein separates Guthaben zum Investieren?",
+        "answer": "Das Investment-Wallet bleibt aus Gründen der Nachvollziehbarkeit getrennt von Ihrem Hauptguthaben (dem für besicherten Kredit). Sie überweisen intern Geld dorthin, niemals eine direkte On-Chain-Einzahlung in dieses Wallet."
+      },
+      "fixedTermLock": {
+        "question": "Kann ich einen Festlaufzeitplan vor Fälligkeit abheben?",
+        "answer": "Nein, nach Bestätigung der Einzahlung ist keine vorzeitige Abhebung möglich — die Mittel (Kapital + aufgelaufene Rendite) werden bei der gewählten Fälligkeit automatisch ausgezahlt, ohne dass Sie etwas tun müssen."
+      },
+      "howComputed": {
+        "question": "Wie wird die angezeigte Rendite berechnet?",
+        "answer": "Für Aktienkörbe: ein für den Korb spezifisches indikatives Dividendenziel plus die reale Marktbewegung an diesem Tag. Für die RWA-Strategie: der Durchschnitt von 3 Treasury-Säulen (Arbitrage, besicherte Kreditvergabe, Liquiditätsbereitstellung)."
+      },
+      "riskLevels": {
+        "question": "Was bedeutet die angezeigte Risikostufe?",
+        "answer": "Eine indikative Einstufung auf einer Skala von 1 bis 5 (eine redaktionelle Annahme, nie ein live aus gemessener Volatilität berechneter Wert), vom vorsichtigsten bis zum dynamischsten — sie hilft Ihnen, Körbe und Pläne miteinander zu vergleichen."
       }
     },
     "ctaLogin": "Zu meinem Konto",
-    "ctaNoAccount": "Noch kein Konto? Kontoeröffnung beantragen"
+    "ctaNoAccount": "Sie haben einen Einladungscode? Konto erstellen",
+    "basketsIntro": "Jeder Korb hat seine eigene Zusammensetzung, sein eigenes Risikoniveau und sein eigenes indikatives Renditeziel — keine Hierarchie zwischen ihnen, eine gewisse Überschneidung der Titel zwischen einigen Körben ist bewusst in Kauf genommen.",
+    "compositionLabel": "Zusammensetzung:",
+    "rwaLearnMore": "Die 3 Säulen der Strategie im Detail ansehen",
+    "mechanism": {
+      "title": "Wie die Rendite funktioniert",
+      "intro": "Keine auf dieser Seite gezeigte Rendite ist ein erfundener Wert: Jeder Korb und jeder Plan stützt sich auf reale Kurse und explizite Dividendenannahmen, die täglich neu berechnet werden.",
+      "accrual": {
+        "title": "Täglich verzinste Rendite",
+        "body": "Jeden Tag kombiniert die angewandte Rendite ein für den Korb spezifisches indikatives Dividendenziel mit der realen Marktbewegung dieses Tages (echte Kurse, nie ein erfundener Wert). Sie wird dem Kapital des Vortages hinzugefügt, bevor die Berechnung des nächsten Tages erfolgt — und kann an einem ungünstigen Tag negativ sein."
+      },
+      "wallet": {
+        "title": "Ein eigenes Guthaben für Investments",
+        "body": "Angelegte Mittel stammen aus einem Investment-Wallet, das von Ihrem Hauptguthaben getrennt ist. Sie überweisen intern Geld dorthin, bevor Sie es anlegen können — niemals eine direkte On-Chain-Einzahlung in dieses Wallet."
+      },
+      "twoModes": {
+        "title": "Zwei Anlageformen",
+        "body": "Die sechs Körbe unten können jederzeit ohne Vorankündigung vollständig abgehoben werden. Die sechs Festlaufzeitpläne hingegen sperren die Mittel bis zu ihrer Fälligkeit (3, 6 oder 12 Monate) — keine vorzeitige Abhebung möglich, dafür eine vordefinierte Zusammensetzung."
+      }
+    },
+    "fixedTermTitle": "Sechs Festlaufzeitpläne",
+    "fixedTermIntro": "Eine zweite Anlageform neben den obigen Körben: Jeder Plan kombiniert Titel, die bereits in unseren Körben enthalten sind (manchmal miteinander gemischt oder mit Engagement in der RWA-Strategie), gesperrt bis zur gewählten Fälligkeit.",
+    "fixedTermNote": "Nach Kontoeröffnung tatsächlich über Ihren Kundenbereich zeichenbar — nach Bestätigung der Einzahlung ist keine vorzeitige Abhebung möglich.",
+    "indicativeSuffix": "indikativ"
+  },
+  "InviteSignup": {
+    "meta": {
+      "title": "Konto erstellen — Einladungscode",
+      "description": "Geben Sie Ihren Einladungscode ein, um Ihr Hentsch-Credit-Konto zu erstellen und Ihre KYC-Unterlagen Schritt für Schritt zu vervollständigen."
+    },
+    "eyebrow": "Zugang nur auf Einladung",
+    "title": "Konto erstellen",
+    "description": "Hentsch Credit funktioniert nur auf Einladung. Geben Sie den von Ihrem Berater übermittelten Code ein, um Ihr Konto zu erstellen und Ihre Unterlagen Schritt für Schritt zu vervollständigen.",
+    "progress": "Schritt {step} von {total}",
+    "alreadyHaveAccount": "Bereits ein Konto? <link>Anmelden</link>",
+    "genericError": "Ein Fehler ist aufgetreten, bitte erneut versuchen.",
+    "steps": {
+      "code": "Einladungscode",
+      "credentials": "Zugangsdaten",
+      "aml": "Geldwäsche-Compliance",
+      "recap": "Zusammenfassung"
+    },
+    "code": {
+      "label": "Einladungscode",
+      "placeholder": "XXXX-XXXX-JJJJ",
+      "hint": "Von Ihrem Berater übermittelt — einmalig gültig, 24h nach Erstellung.",
+      "cta": "Code bestätigen",
+      "accountTypeNote": "Dieser Code eröffnet ein {type}-Konto",
+      "accountTypeParticulier": "Privat",
+      "accountTypeBusiness": "Geschäfts (Business)",
+      "expiresNote": "Einmaliger Gebrauch"
+    },
+    "credentials": {
+      "email": "E-Mail-Adresse",
+      "password": "Passwort",
+      "confirmPassword": "Passwort bestätigen",
+      "passwordTooShort": "Mindestens 8 Zeichen.",
+      "passwordMismatch": "Die Passwörter stimmen nicht überein."
+    },
+    "employment": {
+      "annualIncome": "Angegebenes Jahreseinkommen"
+    },
+    "identity": {
+      "fileUploadNote": "Diese Felder sind deklarativ. Sie können Ihre Dateien (Ausweis, Wohnsitznachweis) nach der Kontoerstellung unter KYC-Verifizierung hochladen."
+    },
+    "nav": {
+      "back": "Zurück",
+      "next": "Weiter",
+      "submit": "Konto erstellen"
+    },
+    "recap": {
+      "intro": "Hier ist Ihre Unterlage, wie sie übermittelt wird, neu erstellt aus den soeben eingegebenen Angaben. Prüfen Sie sie vor der Bestätigung.",
+      "generate": "Zusammenfassung erstellen",
+      "generating": "Zusammenfassung wird erstellt…",
+      "regenerate": "Neu erstellen",
+      "confirmLabel": "Ich bestätige, dass die obigen Angaben korrekt sind, und stimme der Erstellung meines Kontos zu.",
+      "successTitle": "Konto erfolgreich erstellt",
+      "successDescription": "Willkommen! Ihr Konto {email} wurde erstellt, Ihre KYC-Unterlage wird geprüft. Weiterleitung zu Ihrem Dashboard…"
+    }
   }
 }

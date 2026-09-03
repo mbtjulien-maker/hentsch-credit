@@ -15,7 +15,6 @@
       "tarifs": "Tarieven",
       "investissementDirect": "Beleggen"
     },
-    "connexionShort": "Inloggen",
     "connexionLong": "Naar mijn account"
   },
   "Footer": {
@@ -500,31 +499,12 @@
     "eyebrow": "Toegang op uitnodiging",
     "title": "Een account aanvragen",
     "description": "Platform voorbehouden aan een beperkte klantenkring. Laat ons uw gegevens achter: ons team beoordeelt elke aanvraag voordat toegang wordt verleend.",
-    "alreadyHaveAccount": "Heeft u al een account? <link>Inloggen</link>"
-  },
-  "AccountRequestForm": {
-    "firstName": "Voornaam",
-    "lastName": "Achternaam",
-    "email": "E-mail",
-    "phone": "Telefoon (optioneel)",
-    "accountType": {
-      "label": "Type account",
-      "PARTICULIER": {
-        "title": "Particulier",
-        "description": "Verpand digitale activa, ontgrendel een kredietlijn."
-      },
-      "BUSINESS": {
-        "title": "Bedrijf / Startup / Zelfstandige",
-        "description": "Financiert een zakelijk project — toegang tot gedekt krediet en, onder voorwaarden, direct krediet."
-      }
-    },
-    "message": "Uw project (optioneel)",
-    "messagePlaceholder": "Beoogd bedrag, betrokken activa, specifieke vragen…",
-    "disclaimer": "Door dit formulier in te dienen, gaat u ermee akkoord dat uw gegevens worden verwerkt in overeenstemming met ons <link>privacybeleid</link>. Er wordt geen account automatisch aangemaakt: toegang wordt verleend na beoordeling en validatie van uw aanvraag door ons team.",
-    "submit": "Mijn aanvraag versturen",
-    "successTitle": "Uw aanvraag is verzonden",
-    "successBody": "Ons team beoordeelt uw aanvraag en neemt per e-mail contact met u op. Toegang tot uw klantomgeving wordt pas verleend nadat deze validatie is voltooid.",
-    "genericError": "Er is een fout opgetreden."
+    "alreadyHaveAccount": "Heeft u al een account? <link>Inloggen</link>",
+    "replaced": {
+      "title": "Formulier vervangen",
+      "description": "Een account aanmaken gebeurt nu uitsluitend op uitnodiging. Als u een code van uw adviseur heeft ontvangen, gebruikt u deze hieronder.",
+      "cta": "Ik heb een uitnodigingscode"
+    }
   },
   "Faq": {
     "meta": {
@@ -710,7 +690,7 @@
       "market": "Markt",
       "pricing": "Tarieven",
       "directInvestment": "Directe belegging",
-      "requestAccount": "Account aanvragen",
+      "requestAccount": "Account aanmaken",
       "login": "Inloggen",
       "contact": "Neem contact op",
       "faq": "Veelgestelde vragen",
@@ -1199,6 +1179,15 @@
           "title": "Belegging",
           "description": "Saldo van de beleggingswallet, gevoed door interne overboeking vanuit uw hoofdsaldo."
         }
+      },
+      "kycPendingBanner": {
+        "title": "Verificatie in behandeling",
+        "description": "Uw identiteit wordt momenteel geverifieerd door een adviseur. Storten, opnemen en kredietaanvragen blijven vergrendeld totdat uw dossier is goedgekeurd.",
+        "cta": "Mijn KYC-dossier aanvullen"
+      },
+      "initialDepositBanner": {
+        "title": "Eerste storting vereist",
+        "description": "Het openen van uw rekening vereist een eerste storting van {required} — tot nu toe {deposited} ontvangen. Eenmaal bereikt, is dit kapitaal volledig bruikbaar (opname, onderpand, uitgave) zoals elke andere storting."
       }
     },
     "balanceCards": {
@@ -1252,7 +1241,11 @@
         "sentAmountNote": "Meld de overboeking hieronder zodra deze is verstuurd, zodat ze in uw geschiedenis verschijnt: een adviseur valideert ze bij ontvangst.",
         "declareButton": "Ik heb de middelen verstuurd",
         "legacyAddressLabel": "Uw stortingsadres",
-        "legacyNote": "Stuur alleen {currency} op {chain} naar dit adres. Het saldo wordt gecrediteerd na on-chain bevestiging."
+        "legacyNote": "Stuur alleen {currency} op {chain} naar dit adres. Het saldo wordt gecrediteerd na on-chain bevestiging.",
+        "descriptionCreditRequest": "Kies het actief en het netwerk om het onderpand voor uw goedgekeurde kredietaanvraag te storten.",
+        "modeCreditRequest": "Kredietaanvraag ({amount})",
+        "modeGeneral": "Algemene storting",
+        "creditRequestNote": "Stuur alleen {currency} op {chain} naar dit adres. Stort minstens {amount}: het krediet wordt automatisch toegekend bij ontvangst."
       },
       "withdraw": {
         "trigger": "Opnemen",
@@ -1275,7 +1268,8 @@
         "destinationLabel": "Bestemmingsadres",
         "submit": "Opname bevestigen",
         "successToast": "Opname succesvol aangevraagd."
-      }
+      },
+      "kycLockedNote": "Beschikbaar zodra uw identiteit door een adviseur is geverifieerd."
     },
     "marketView": {
       "dataProvider": "Gegevens verstrekt door CoinMarketCap",
@@ -1305,23 +1299,19 @@
         "yield": "Rendement",
         "targetApyTitle": "Indicatief doel van de treasurystrategie van de bank voor dit activum, geen garantie, zonder effect op de berekening van uw krediet",
         "targetApy": "Doel {min}-{max}% APY"
-      }
+      },
+      "searchPlaceholder": "Zoek een aandeel of activum...",
+      "clearSearch": "Zoekopdracht wissen",
+      "noResults": "Geen resultaten voor \"{query}\".",
+      "assetsLabel": "Activa"
     },
     "cardsSection": {
       "title": "Virtuele kaarten",
-      "description": "Uitgifte Visa/Mastercard (integratie Stap 4)",
-      "noCards": "Voor dit account is geen kaart uitgegeven.",
-      "limit": "Limiet {amount}",
-      "step4Note": "Beschikbaar bij Stap 4 (Stripe Issuing / Marqeta-integratie)",
-      "issueCard": "Kaart uitgeven"
+      "description": "Uitgifte en beheer van uw bankkaarten.",
+      "comingSoonTitle": "Binnenkort beschikbaar",
+      "comingSoonDescription": "De uitgifte van Visa/Mastercard-kaarten is nog niet geopend voor dit account — kom binnenkort terug."
     },
     "labels": {
-      "cardStatus": {
-        "PENDING": "In behandeling",
-        "ACTIVE": "Actief",
-        "BLOCKED": "Geblokkeerd",
-        "CLOSED": "Gesloten"
-      },
       "kycStatus": {
         "PENDING": "KYC in behandeling",
         "VERIFIED": "KYC geverifieerd",
@@ -1403,12 +1393,49 @@
       "employed": "Werknemer",
       "save": "Mijn gegevens opslaan",
       "saveSuccess": "Gegevens opgeslagen.",
-      "selfDeclaredNote": "Deze gegevens zijn zelf opgegeven en op elk moment aan te passen; een adres of arbeidssituatie die al door een adviseur is geverifieerd, moet na wijziging opnieuw worden geverifieerd."
+      "selfDeclaredNote": "Deze gegevens zijn zelf opgegeven en op elk moment aan te passen; een adres of arbeidssituatie die al door een adviseur is geverifieerd, moet na wijziging opnieuw worden geverifieerd.",
+      "selectPlaceholder": "Selecteren…",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Technologie / Software",
+        "FINANCE_ASSURANCE": "Financiën / Verzekeringen",
+        "SANTE_PHARMACIE": "Gezondheid / Farmacie",
+        "COMMERCE_DETAIL": "Detailhandel",
+        "INDUSTRIE_MANUFACTURE": "Industrie / Productie",
+        "IMMOBILIER_CONSTRUCTION": "Vastgoed / Bouw",
+        "AGRICULTURE_AGROALIMENTAIRE": "Landbouw / Agrovoeding",
+        "EDUCATION_FORMATION": "Onderwijs / Opleiding",
+        "TRANSPORT_LOGISTIQUE": "Transport / Logistiek",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Toerisme / Horeca",
+        "MEDIA_COMMUNICATION": "Media / Communicatie",
+        "ENERGIE_ENVIRONNEMENT": "Energie / Milieu",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Professionele diensten / Advies",
+        "ARTISANAT": "Ambacht",
+        "CULTURE_LOISIRS": "Cultuur / Vrije tijd",
+        "ADMINISTRATION_PUBLIQUE": "Overheid",
+        "AUTRE": "Overig"
+      },
+      "companyRegistrationNumber": "Inschrijvingsnummer (bv. KvK)"
     },
     "supportSection": {
       "title": "Contact opnemen met support",
       "description": "Een vraag over uw account, uw onderpand of een storting?",
-      "liveChat": "Live chat (binnenkort beschikbaar)"
+      "assistant": {
+        "trigger": "Support-assistent",
+        "title": "Support-assistent",
+        "disclaimer": "AI-assistent (OpenAI) — een echte conversationele AI, die fouten kan maken: controleer belangrijke informatie.",
+        "unavailable": "AI-assistent tijdelijk niet beschikbaar (sleutel niet geconfigureerd bij de back office) — mail ons in plaats daarvan.",
+        "intro": "Stel hieronder uw vraag, of kies een veelvoorkomend onderwerp:",
+        "thinking": "De assistent denkt na…",
+        "placeholder": "Typ uw bericht…",
+        "genericError": "Er is een fout opgetreden, probeer het opnieuw.",
+        "footnote": "Door AI gegenereerde antwoorden — voor iets specifieks over uw account mailt u ons.",
+        "topics": {
+          "credit": "Wat is de rente op gedekt krediet?",
+          "kyc": "Hoe verifieer ik mijn identiteit?",
+          "withdrawal": "Hoe werkt het opnemen van geld?",
+          "investment": "Wat is het verschil tussen beleggen en gedekt krediet?"
+        }
+      }
     },
     "transactionHistory": {
       "title": "Transactiegeschiedenis",
@@ -1425,7 +1452,8 @@
     "accountMenu": {
       "business": "Zakelijk",
       "admin": "Admin",
-      "logout": "Uitloggen"
+      "logout": "Uitloggen",
+      "verifiedBadge": "Geverifieerde identiteit"
     },
     "creditOverview": {
       "availableBalance": "Beschikbaar saldo",
@@ -1463,7 +1491,8 @@
       "repaymentHistory": "Verloop van de terugbetaling",
       "yieldRepaymentTag": "rendement van het onderpand",
       "repaySuccessToast": "Aflossing succesvol uitgevoerd.",
-      "repayFullToast": "Volledige aflossing uitgevoerd: het onderpand is vrijgegeven."
+      "repayFullToast": "Volledige aflossing uitgevoerd: het onderpand is vrijgegeven.",
+      "kycLockedNote": "Alleen simulatie: beschikbaar zodra uw identiteit door een adviseur is geverifieerd."
     },
     "creditSimulator": {
       "amountLabel": "Gepland onderpandbedrag (USD)",
@@ -1529,29 +1558,20 @@
     "assetPicker": {
       "onlyNetworkAvailable": "Enige beschikbare netwerk voor dit activum"
     },
-    "creditRequestDeposit": {
-      "genericError": "Er is een fout opgetreden.",
-      "title": "Kredietaanvraag goedgekeurd, storting in afwachting",
-      "description": "{amount} ({currency}) te storten zodat het krediet automatisch wordt uitgegeven.",
-      "yourDepositAddress": "Uw stortingsadres",
-      "addressNote": "Stuur alleen {currency} op {chain} naar dit adres. Stort ten minste {amount}: het krediet wordt automatisch uitgegeven bij ontvangst.",
-      "assetLabel": "Activum",
-      "networkLabel": "Netwerk",
-      "generateButton": "Stortingsadres genereren"
-    },
     "authLoadError": {
       "title": "Uw sessie kan niet worden geverifieerd"
     },
     "soldePage": {
       "topupConfirmedTitle": "Kaartoplading bevestigd",
       "topupConfirmedDescription": "Het onderstaande beschikbare saldo weerspiegelt de oplading.",
-      "loadError": "Saldo kan niet worden geladen"
+      "loadError": "Saldo kan niet worden geladen",
+      "creditRequestPendingBanner": {
+        "title": "Goedgekeurde kredietaanvraag, storting in behandeling",
+        "description": "{amount} ({currency}) te storten zodat het krediet automatisch wordt toegekend — gebruik hieronder de knop \"Storten\"."
+      }
     },
     "creditPage": {
       "loadError": "Kredietlijn kan niet worden geladen"
-    },
-    "cardsPage": {
-      "loadError": "Kaarten kunnen niet worden geladen"
     },
     "historyPage": {
       "loadError": "Geschiedenis kan niet worden geladen"
@@ -1820,7 +1840,8 @@
         "quickMax": "MAX",
         "insufficientBalance": "Onvoldoende saldo",
         "transferInSuccess": "Geld overgeboekt naar de investeringswallet.",
-        "transferOutSuccess": "Geld teruggeboekt naar het hoofdsaldo."
+        "transferOutSuccess": "Geld teruggeboekt naar het hoofdsaldo.",
+        "cancel": "Annuleren"
       },
       "tabs": {
         "baskets": "Manden",
@@ -1986,7 +2007,27 @@
       "noFileUploaded": "Nog geen bestand geüpload.",
       "uploadFile": "Uploaden",
       "replaceFile": "Vervangen",
-      "removeFile": "Bestand verwijderen"
+      "removeFile": "Bestand verwijderen",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Technologie / Software",
+        "FINANCE_ASSURANCE": "Financiën / Verzekeringen",
+        "SANTE_PHARMACIE": "Gezondheid / Farmacie",
+        "COMMERCE_DETAIL": "Detailhandel",
+        "INDUSTRIE_MANUFACTURE": "Industrie / Productie",
+        "IMMOBILIER_CONSTRUCTION": "Vastgoed / Bouw",
+        "AGRICULTURE_AGROALIMENTAIRE": "Landbouw / Agrovoeding",
+        "EDUCATION_FORMATION": "Onderwijs / Opleiding",
+        "TRANSPORT_LOGISTIQUE": "Transport / Logistiek",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Toerisme / Horeca",
+        "MEDIA_COMMUNICATION": "Media / Communicatie",
+        "ENERGIE_ENVIRONNEMENT": "Energie / Milieu",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Professionele diensten / Advies",
+        "ARTISANAT": "Ambacht",
+        "CULTURE_LOISIRS": "Cultuur / Vrije tijd",
+        "ADMINISTRATION_PUBLIQUE": "Overheid",
+        "AUTRE": "Overig"
+      },
+      "companyRegistrationNumber": "Inschrijvingsnummer (bv. KvK)"
     },
     "termsAcceptance": {
       "readFull": "Lees de volledige voorwaarden →",
@@ -2092,9 +2133,103 @@
       "difference": {
         "question": "Wat is het verschil met gedekt krediet?",
         "answer": "Gedekt krediet leent u geld tegen onderpand. Directe belegging zet daarentegen uw eigen geld vast in ruil voor een rendement: er wordt geen krediet verstrekt, er is geen onderpand vereist."
+      },
+      "wallet": {
+        "question": "Waarom een apart saldo om te beleggen?",
+        "answer": "De beleggingswallet blijft gescheiden van uw hoofdsaldo (dat voor gedekt krediet) voor duidelijke traceerbaarheid. U maakt er intern geld naar over, nooit een directe on-chain storting in deze wallet."
+      },
+      "fixedTermLock": {
+        "question": "Kan ik een vastrentend plan vóór de looptijd opnemen?",
+        "answer": "Nee, zodra de storting is bevestigd is geen vervroegde opname mogelijk — de middelen (kapitaal + opgebouwd rendement) worden automatisch uitbetaald op de gekozen vervaldatum, zonder dat u iets hoeft te doen."
+      },
+      "howComputed": {
+        "question": "Hoe wordt het getoonde rendement berekend?",
+        "answer": "Voor aandelenmanden: een indicatief dividenddoel specifiek voor de mand, plus de werkelijke marktbeweging die dag. Voor de RWA-strategie: het gemiddelde van 3 treasury-pijlers (arbitrage, gedekte kredietverlening, liquiditeitsverschaffing)."
+      },
+      "riskLevels": {
+        "question": "Wat betekent het getoonde risiconiveau?",
+        "answer": "Een indicatieve classificatie op een schaal van 1 tot 5 (een redactionele aanname, nooit een live berekende score op basis van gemeten volatiliteit), van het meest voorzichtige tot het meest dynamische — het helpt u manden en plannen met elkaar te vergelijken."
       }
     },
     "ctaLogin": "Naar mijn account",
-    "ctaNoAccount": "Nog geen account? Een account aanvragen"
+    "ctaNoAccount": "Heeft u een uitnodigingscode? Account aanmaken",
+    "basketsIntro": "Elke mand heeft zijn eigen samenstelling, zijn eigen risiconiveau en zijn eigen indicatieve rendementsdoel — geen hiërarchie ertussen, enige overlap in posities tussen manden is bewust aanvaard.",
+    "compositionLabel": "Samenstelling:",
+    "rwaLearnMore": "Bekijk de 3 pijlers van de strategie in detail",
+    "mechanism": {
+      "title": "Hoe het rendement werkt",
+      "intro": "Geen enkel rendement op deze pagina is een verzonnen cijfer: elke mand en elk plan is gebaseerd op echte koersen en expliciete dividendveronderstellingen, elke dag opnieuw berekend.",
+      "accrual": {
+        "title": "Dagelijks samengesteld rendement",
+        "body": "Elke dag combineert het toegepaste rendement een indicatief dividenddoel specifiek voor de mand met de werkelijke marktbeweging die dag (echte koersen, nooit een verzonnen cijfer). Het wordt toegevoegd aan het kapitaal van de vorige dag vóór de berekening van de volgende dag — en kan negatief zijn op een ongunstige dag."
+      },
+      "wallet": {
+        "title": "Een apart saldo voor beleggen",
+        "body": "Belegde middelen komen uit een beleggingswallet die gescheiden is van uw hoofdsaldo. U maakt er intern geld naar over voordat u het kunt beleggen — nooit een directe on-chain storting in deze wallet."
+      },
+      "twoModes": {
+        "title": "Twee manieren om te beleggen",
+        "body": "De zes manden hieronder kunnen op elk moment volledig worden opgenomen, zonder opzegtermijn. De zes vastrentende plannen daarentegen vergrendelen de middelen tot hun looptijd (3, 6 of 12 maanden) — geen vervroegde opname mogelijk, in ruil voor een vooraf bepaalde samenstelling."
+      }
+    },
+    "fixedTermTitle": "Zes vastrentende plannen",
+    "fixedTermIntro": "Een tweede manier om te beleggen, naast de manden hierboven: elk plan combineert posities die al door onze manden worden gedekt (soms onderling gemengd, of met blootstelling aan de RWA-strategie), vergrendeld tot de gekozen looptijd.",
+    "fixedTermNote": "Daadwerkelijk af te sluiten vanuit uw klantomgeving, zodra uw account is geopend — geen vervroegde opname mogelijk zodra de storting is bevestigd.",
+    "indicativeSuffix": "indicatief"
+  },
+  "InviteSignup": {
+    "meta": {
+      "title": "Account aanmaken — uitnodigingscode",
+      "description": "Voer uw uitnodigingscode in om uw Hentsch Credit-account aan te maken en uw KYC-dossier stap voor stap aan te vullen."
+    },
+    "eyebrow": "Toegang alleen op uitnodiging",
+    "title": "Account aanmaken",
+    "description": "Hentsch Credit werkt uitsluitend op uitnodiging. Voer de code in die u van uw adviseur heeft ontvangen om uw account aan te maken en uw dossier stap voor stap aan te vullen.",
+    "progress": "Stap {step} van {total}",
+    "alreadyHaveAccount": "Heeft u al een account? <link>Inloggen</link>",
+    "genericError": "Er is een fout opgetreden, probeer het opnieuw.",
+    "steps": {
+      "code": "Uitnodigingscode",
+      "credentials": "Inloggegevens",
+      "aml": "AML/CFT-naleving",
+      "recap": "Samenvatting"
+    },
+    "code": {
+      "label": "Uitnodigingscode",
+      "placeholder": "XXXX-XXXX-JJJJ",
+      "hint": "Doorgegeven door uw adviseur — eenmalig te gebruiken, 24u geldig na aanmaak.",
+      "cta": "Code valideren",
+      "accountTypeNote": "Deze code opent een {type} account",
+      "accountTypeParticulier": "particulier",
+      "accountTypeBusiness": "zakelijk (Business)",
+      "expiresNote": "eenmalig gebruik"
+    },
+    "credentials": {
+      "email": "E-mailadres",
+      "password": "Wachtwoord",
+      "confirmPassword": "Wachtwoord bevestigen",
+      "passwordTooShort": "Minimaal 8 tekens.",
+      "passwordMismatch": "Wachtwoorden komen niet overeen."
+    },
+    "employment": {
+      "annualIncome": "Opgegeven jaarinkomen"
+    },
+    "identity": {
+      "fileUploadNote": "Deze velden zijn declaratief. U kunt uw bestanden (identiteitsbewijs, adresbewijs) uploaden zodra uw account is aangemaakt, via KYC-verificatie."
+    },
+    "nav": {
+      "back": "Vorige",
+      "next": "Volgende",
+      "submit": "Account aanmaken"
+    },
+    "recap": {
+      "intro": "Hier is uw dossier zoals het wordt ingediend, opnieuw opgebouwd uit de zojuist ingevoerde gegevens. Controleer het voordat u bevestigt.",
+      "generate": "Samenvatting genereren",
+      "generating": "Samenvatting wordt gegenereerd…",
+      "regenerate": "Opnieuw genereren",
+      "confirmLabel": "Ik bevestig dat bovenstaande informatie correct is en ga akkoord met het aanmaken van mijn account.",
+      "successTitle": "Account succesvol aangemaakt",
+      "successDescription": "Welkom! Uw account {email} is aangemaakt, uw KYC-dossier wordt beoordeeld. Doorverwijzen naar uw dashboard…"
+    }
   }
 }

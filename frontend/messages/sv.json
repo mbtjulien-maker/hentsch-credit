@@ -15,7 +15,6 @@
       "tarifs": "Priser",
       "investissementDirect": "Investering"
     },
-    "connexionShort": "Logga in",
     "connexionLong": "Till mitt konto"
   },
   "Footer": {
@@ -500,31 +499,12 @@
     "eyebrow": "Tillgång på inbjudan",
     "title": "Ansök om ett konto",
     "description": "Plattform förbehållen en begränsad kundkrets. Lämna dina uppgifter till oss: vårt team granskar varje ansökan innan tillgång beviljas.",
-    "alreadyHaveAccount": "Har du redan ett konto? <link>Logga in</link>"
-  },
-  "AccountRequestForm": {
-    "firstName": "Förnamn",
-    "lastName": "Efternamn",
-    "email": "E-post",
-    "phone": "Telefon (valfritt)",
-    "accountType": {
-      "label": "Kontotyp",
-      "PARTICULIER": {
-        "title": "Privatperson",
-        "description": "Pantsätt digitala tillgångar, lås upp en kreditlinje."
-      },
-      "BUSINESS": {
-        "title": "Företag / Startup / Yrkesverksamma",
-        "description": "Finansierar ett affärsprojekt — tillgång till säkerställd kredit och, under vissa villkor, direktkredit."
-      }
-    },
-    "message": "Ditt projekt (valfritt)",
-    "messagePlaceholder": "Planerat belopp, berörda tillgångar, specifika frågor…",
-    "disclaimer": "Genom att skicka in detta formulär godkänner du att dina uppgifter behandlas i enlighet med vår <link>integritetspolicy</link>. Inget konto skapas automatiskt: tillgång beviljas efter att ditt ärende har granskats och validerats av vårt team.",
-    "submit": "Skicka min ansökan",
-    "successTitle": "Din ansökan har skickats",
-    "successBody": "Vårt team granskar ditt ärende och återkommer via e-post. Tillgång till ditt kundområde beviljas först när denna validering är klar.",
-    "genericError": "Ett fel har inträffat."
+    "alreadyHaveAccount": "Har du redan ett konto? <link>Logga in</link>",
+    "replaced": {
+      "title": "Formuläret har ersatts",
+      "description": "Att skapa ett konto sker nu endast på inbjudan. Om du har fått en kod från din rådgivare, använd den nedan.",
+      "cta": "Jag har en inbjudningskod"
+    }
   },
   "Faq": {
     "meta": {
@@ -710,7 +690,7 @@
       "market": "Marknad",
       "pricing": "Priser",
       "directInvestment": "Direktinvestering",
-      "requestAccount": "Ansök om konto",
+      "requestAccount": "Skapa mitt konto",
       "login": "Logga in",
       "contact": "Kontakta oss",
       "faq": "Vanliga frågor",
@@ -1199,6 +1179,15 @@
           "title": "Investering",
           "description": "Saldo i investeringsplånboken, fylls på via intern överföring från ditt huvudsaldo."
         }
+      },
+      "kycPendingBanner": {
+        "title": "Verifiering pågår",
+        "description": "Din identitet granskas för närvarande av en rådgivare. Insättningar, uttag och kreditansökningar förblir låsta tills din akt har godkänts.",
+        "cta": "Komplettera min KYC-akt"
+      },
+      "initialDepositBanner": {
+        "title": "Första insättning krävs",
+        "description": "Att öppna ditt konto kräver en första insättning på {required} — {deposited} mottaget hittills. När den nås är kapitalet fullt användbart (uttag, säkerhet, utgift) som vilken annan insättning som helst."
       }
     },
     "balanceCards": {
@@ -1252,7 +1241,11 @@
         "sentAmountNote": "När överföringen har skickats, anmäl den nedan så att den visas i din historik: en rådgivare validerar den vid mottagandet.",
         "declareButton": "Jag har skickat medlen",
         "legacyAddressLabel": "Din insättningsadress",
-        "legacyNote": "Skicka endast {currency} på {chain} till denna adress. Saldot krediteras efter on-chain-bekräftelse."
+        "legacyNote": "Skicka endast {currency} på {chain} till denna adress. Saldot krediteras efter on-chain-bekräftelse.",
+        "descriptionCreditRequest": "Välj tillgång och nätverk för att sätta in säkerheten för din godkända kreditansökan.",
+        "modeCreditRequest": "Kreditansökan ({amount})",
+        "modeGeneral": "Allmän insättning",
+        "creditRequestNote": "Skicka endast {currency} på {chain} till denna adress. Sätt in minst {amount}: krediten utfärdas automatiskt vid mottagande."
       },
       "withdraw": {
         "trigger": "Ta ut",
@@ -1275,7 +1268,8 @@
         "destinationLabel": "Mottagaradress",
         "submit": "Bekräfta uttaget",
         "successToast": "Uttag begärt."
-      }
+      },
+      "kycLockedNote": "Tillgängligt när din identitet har verifierats av en rådgivare."
     },
     "marketView": {
       "dataProvider": "Data tillhandahålls av CoinMarketCap",
@@ -1305,23 +1299,19 @@
         "yield": "Avkastning",
         "targetApyTitle": "Indikativt mål för bankens treasurystrategi för denna tillgång, ingen garanti, utan effekt på beräkningen av din kredit",
         "targetApy": "Mål {min}-{max}% APY"
-      }
+      },
+      "searchPlaceholder": "Sök en aktie eller en tillgång...",
+      "clearSearch": "Rensa sökning",
+      "noResults": "Inga resultat för \"{query}\".",
+      "assetsLabel": "Tillgångar"
     },
     "cardsSection": {
       "title": "Virtuella kort",
-      "description": "Utfärdande av Visa/Mastercard (integration steg 4)",
-      "noCards": "Inget kort utfärdat för det här kontot.",
-      "limit": "Gräns {amount}",
-      "step4Note": "Tillgängligt i steg 4 (Stripe Issuing/Marqeta-integration)",
-      "issueCard": "Utfärda ett kort"
+      "description": "Utfärdande och hantering av dina bankkort.",
+      "comingSoonTitle": "Kommer snart",
+      "comingSoonDescription": "Utfärdande av Visa/Mastercard-kort är ännu inte öppet för detta konto — kom tillbaka snart."
     },
     "labels": {
-      "cardStatus": {
-        "PENDING": "Väntande",
-        "ACTIVE": "Aktivt",
-        "BLOCKED": "Spärrat",
-        "CLOSED": "Avslutat"
-      },
       "kycStatus": {
         "PENDING": "KYC väntande",
         "VERIFIED": "KYC verifierad",
@@ -1403,12 +1393,49 @@
       "employed": "Anställd",
       "save": "Spara mina uppgifter",
       "saveSuccess": "Uppgifterna har sparats.",
-      "selfDeclaredNote": "Denna information är självdeklarerad och kan ändras när som helst; en adress eller anställningssituation som redan verifierats av en rådgivare måste verifieras på nytt så snart du ändrar den."
+      "selfDeclaredNote": "Denna information är självdeklarerad och kan ändras när som helst; en adress eller anställningssituation som redan verifierats av en rådgivare måste verifieras på nytt så snart du ändrar den.",
+      "selectPlaceholder": "Välj…",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Teknik / Mjukvara",
+        "FINANCE_ASSURANCE": "Finans / Försäkring",
+        "SANTE_PHARMACIE": "Hälsa / Läkemedel",
+        "COMMERCE_DETAIL": "Detaljhandel",
+        "INDUSTRIE_MANUFACTURE": "Industri / Tillverkning",
+        "IMMOBILIER_CONSTRUCTION": "Fastigheter / Bygg",
+        "AGRICULTURE_AGROALIMENTAIRE": "Jordbruk / Livsmedel",
+        "EDUCATION_FORMATION": "Utbildning",
+        "TRANSPORT_LOGISTIQUE": "Transport / Logistik",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Turism / Hotell / Restaurang",
+        "MEDIA_COMMUNICATION": "Media / Kommunikation",
+        "ENERGIE_ENVIRONNEMENT": "Energi / Miljö",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Professionella tjänster / Konsult",
+        "ARTISANAT": "Hantverk",
+        "CULTURE_LOISIRS": "Kultur / Fritid",
+        "ADMINISTRATION_PUBLIQUE": "Offentlig förvaltning",
+        "AUTRE": "Övrigt"
+      },
+      "companyRegistrationNumber": "Organisationsnummer"
     },
     "supportSection": {
       "title": "Kontakta support",
       "description": "En fråga om ditt konto, din säkerhet eller en insättning?",
-      "liveChat": "Livechatt (kommer snart)"
+      "assistant": {
+        "trigger": "Supportassistent",
+        "title": "Supportassistent",
+        "disclaimer": "AI-assistent (OpenAI) — en verklig konversations-AI, som kan göra fel: kontrollera viktig information.",
+        "unavailable": "AI-assistenten är tillfälligt otillgänglig (nyckel inte konfigurerad i back office) — mejla oss istället.",
+        "intro": "Ställ din fråga nedan, eller välj ett vanligt ämne:",
+        "thinking": "Assistenten tänker…",
+        "placeholder": "Skriv ditt meddelande…",
+        "genericError": "Något gick fel, försök igen.",
+        "footnote": "AI-genererade svar — för något kontospecifikt, mejla oss istället.",
+        "topics": {
+          "credit": "Vad är räntan på säkerställd kredit?",
+          "kyc": "Hur verifierar jag min identitet?",
+          "withdrawal": "Hur fungerar uttag av medel?",
+          "investment": "Vad är skillnaden mellan investering och säkerställd kredit?"
+        }
+      }
     },
     "transactionHistory": {
       "title": "Transaktionshistorik",
@@ -1425,7 +1452,8 @@
     "accountMenu": {
       "business": "Företag",
       "admin": "Admin",
-      "logout": "Logga ut"
+      "logout": "Logga ut",
+      "verifiedBadge": "Verifierad identitet"
     },
     "creditOverview": {
       "availableBalance": "Tillgängligt saldo",
@@ -1463,7 +1491,8 @@
       "repaymentHistory": "Återbetalningens utveckling",
       "yieldRepaymentTag": "avkastning på säkerheten",
       "repaySuccessToast": "Återbetalning genomförd.",
-      "repayFullToast": "Fullständig återbetalning genomförd: säkerheten har frigjorts."
+      "repayFullToast": "Fullständig återbetalning genomförd: säkerheten har frigjorts.",
+      "kycLockedNote": "Endast simulering: tillgängligt när din identitet har verifierats av en rådgivare."
     },
     "creditSimulator": {
       "amountLabel": "Planerat säkerhetsbelopp (USD)",
@@ -1529,29 +1558,20 @@
     "assetPicker": {
       "onlyNetworkAvailable": "Enda tillgängliga nätverket för denna tillgång"
     },
-    "creditRequestDeposit": {
-      "genericError": "Ett fel har inträffat.",
-      "title": "Kreditansökan godkänd, insättning väntar",
-      "description": "{amount} ({currency}) att sätta in för att krediten ska utfärdas automatiskt.",
-      "yourDepositAddress": "Din insättningsadress",
-      "addressNote": "Skicka endast {currency} på {chain} till denna adress. Sätt in minst {amount}: krediten utfärdas automatiskt vid mottagandet.",
-      "assetLabel": "Tillgång",
-      "networkLabel": "Nätverk",
-      "generateButton": "Generera insättningsadress"
-    },
     "authLoadError": {
       "title": "Det gick inte att verifiera din session"
     },
     "soldePage": {
       "topupConfirmedTitle": "Kortpåfyllning bekräftad",
       "topupConfirmedDescription": "Det tillgängliga saldot nedan återspeglar påfyllningen.",
-      "loadError": "Det gick inte att läsa in saldot"
+      "loadError": "Det gick inte att läsa in saldot",
+      "creditRequestPendingBanner": {
+        "title": "Godkänd kreditansökan, insättning väntar",
+        "description": "{amount} ({currency}) att sätta in för att krediten ska utfärdas automatiskt — använd knappen \"Sätt in\" nedan."
+      }
     },
     "creditPage": {
       "loadError": "Det gick inte att läsa in kreditlinjen"
-    },
-    "cardsPage": {
-      "loadError": "Det gick inte att läsa in korten"
     },
     "historyPage": {
       "loadError": "Det gick inte att läsa in historiken"
@@ -1820,7 +1840,8 @@
         "quickMax": "MAX",
         "insufficientBalance": "Otillräckligt saldo",
         "transferInSuccess": "Medel överförda till investeringsplånboken.",
-        "transferOutSuccess": "Medel återförda till huvudsaldot."
+        "transferOutSuccess": "Medel återförda till huvudsaldot.",
+        "cancel": "Avbryt"
       },
       "tabs": {
         "baskets": "Korgar",
@@ -1986,7 +2007,27 @@
       "noFileUploaded": "Ingen fil uppladdad ännu.",
       "uploadFile": "Ladda upp",
       "replaceFile": "Ersätt",
-      "removeFile": "Ta bort fil"
+      "removeFile": "Ta bort fil",
+      "sectorLabels": {
+        "TECHNOLOGIE_LOGICIEL": "Teknik / Mjukvara",
+        "FINANCE_ASSURANCE": "Finans / Försäkring",
+        "SANTE_PHARMACIE": "Hälsa / Läkemedel",
+        "COMMERCE_DETAIL": "Detaljhandel",
+        "INDUSTRIE_MANUFACTURE": "Industri / Tillverkning",
+        "IMMOBILIER_CONSTRUCTION": "Fastigheter / Bygg",
+        "AGRICULTURE_AGROALIMENTAIRE": "Jordbruk / Livsmedel",
+        "EDUCATION_FORMATION": "Utbildning",
+        "TRANSPORT_LOGISTIQUE": "Transport / Logistik",
+        "TOURISME_HOTELLERIE_RESTAURATION": "Turism / Hotell / Restaurang",
+        "MEDIA_COMMUNICATION": "Media / Kommunikation",
+        "ENERGIE_ENVIRONNEMENT": "Energi / Miljö",
+        "SERVICES_PROFESSIONNELS_CONSEIL": "Professionella tjänster / Konsult",
+        "ARTISANAT": "Hantverk",
+        "CULTURE_LOISIRS": "Kultur / Fritid",
+        "ADMINISTRATION_PUBLIQUE": "Offentlig förvaltning",
+        "AUTRE": "Övrigt"
+      },
+      "companyRegistrationNumber": "Organisationsnummer"
     },
     "termsAcceptance": {
       "readFull": "Läs de fullständiga villkoren →",
@@ -2092,9 +2133,103 @@
       "difference": {
         "question": "Vad är skillnaden mot säkerställd kredit?",
         "answer": "Säkerställd kredit lånar ut pengar mot säkerhet. Direktinvesteringen binder tvärtom dina egna pengar i utbyte mot en avkastning: ingen kredit beviljas, ingen säkerhet krävs."
+      },
+      "wallet": {
+        "question": "Varför ett separat saldo för att investera?",
+        "answer": "Investeringsplånboken förblir separerad från ditt huvudsaldo (det för säkerställd kredit) för tydlig spårbarhet. Du överför medel dit internt, aldrig en direkt on-chain-insättning i denna plånbok."
+      },
+      "fixedTermLock": {
+        "question": "Kan jag ta ut en plan med fast löptid före förfall?",
+        "answer": "Nej, inget förtida uttag är möjligt när insättningen väl har bekräftats — medlen (kapital + upplupen avkastning) betalas automatiskt ut vid vald förfallodag, utan att du behöver göra något."
+      },
+      "howComputed": {
+        "question": "Hur beräknas den visade avkastningen?",
+        "answer": "För aktiekorgar: ett vägledande utdelningsmål specifikt för korgen, plus den verkliga marknadsrörelsen den dagen. För RWA-strategin: genomsnittet av 3 treasury-pelare (arbitrage, säkerställd utlåning, likviditetstillförsel)."
+      },
+      "riskLevels": {
+        "question": "Vad betyder den visade risknivån?",
+        "answer": "En vägledande klassificering på en skala från 1 till 5 (ett redaktionellt antagande, aldrig en poäng beräknad live utifrån uppmätt volatilitet), från den mest försiktiga till den mest dynamiska — den hjälper dig att jämföra korgar och planer med varandra."
       }
     },
     "ctaLogin": "Till mitt konto",
-    "ctaNoAccount": "Har du inget konto än? Ansök om ett konto"
+    "ctaNoAccount": "Har du en inbjudningskod? Skapa mitt konto",
+    "basketsIntro": "Varje korg har sin egen sammansättning, sin egen risknivå och sitt eget vägledande avkastningsmål — ingen hierarki mellan dem, viss överlappning av innehav mellan vissa korgar är avsiktlig.",
+    "compositionLabel": "Sammansättning:",
+    "rwaLearnMore": "Se detaljerna för strategins 3 pelare",
+    "mechanism": {
+      "title": "Hur avkastningen fungerar",
+      "intro": "Ingen avkastning som visas på denna sida är ett påhittat värde: varje korg och plan bygger på verkliga kurser och uttryckliga utdelningsantaganden, omräknade varje dag.",
+      "accrual": {
+        "title": "Daglig sammansatt avkastning",
+        "body": "Varje dag kombinerar den tillämpade avkastningen ett vägledande utdelningsmål specifikt för korgen med den verkliga marknadsrörelsen den dagen (verkliga kurser, aldrig ett påhittat värde). Den läggs till föregående dags kapital innan nästa dags beräkning — och kan vara negativ en ogynnsam dag."
+      },
+      "wallet": {
+        "title": "Ett eget saldo för investeringar",
+        "body": "Investerade medel kommer från en investeringsplånbok separerad från ditt huvudsaldo. Du överför pengar dit internt innan du kan investera dem — aldrig en direkt on-chain-insättning i denna plånbok."
+      },
+      "twoModes": {
+        "title": "Två sätt att investera",
+        "body": "De sex korgarna nedan kan tas ut i sin helhet när som helst, utan uppsägningstid. De sex planerna med fast löptid låser däremot medlen fram till förfall (3, 6 eller 12 månader) — inget förtida uttag möjligt, i utbyte mot en fördefinierad sammansättning."
+      }
+    },
+    "fixedTermTitle": "Sex planer med fast löptid",
+    "fixedTermIntro": "Ett andra sätt att investera, vid sidan av korgarna ovan: varje plan kombinerar innehav som redan täcks av våra korgar (ibland blandade med varandra, eller med exponering mot RWA-strategin), låsta fram till vald förfallodag.",
+    "fixedTermNote": "Verkligen möjlig att teckna från ditt kundområde, när ditt konto väl är öppnat — inget förtida uttag är möjligt när insättningen väl har bekräftats.",
+    "indicativeSuffix": "vägledande"
+  },
+  "InviteSignup": {
+    "meta": {
+      "title": "Skapa mitt konto — inbjudningskod",
+      "description": "Ange din inbjudningskod för att skapa ditt Hentsch Credit-konto och fylla i din KYC-akt steg för steg."
+    },
+    "eyebrow": "Endast på inbjudan",
+    "title": "Skapa mitt konto",
+    "description": "Hentsch Credit fungerar endast på inbjudan. Ange koden som din rådgivare har skickat för att skapa ditt konto och fylla i din akt, steg för steg.",
+    "progress": "Steg {step} av {total}",
+    "alreadyHaveAccount": "Har du redan ett konto? <link>Logga in</link>",
+    "genericError": "Något gick fel, försök igen.",
+    "steps": {
+      "code": "Inbjudningskod",
+      "credentials": "Inloggningsuppgifter",
+      "aml": "AML/CFT-efterlevnad",
+      "recap": "Sammanfattning"
+    },
+    "code": {
+      "label": "Inbjudningskod",
+      "placeholder": "XXXX-XXXX-ÅÅÅÅ",
+      "hint": "Skickad av din rådgivare — engångsbruk, giltig i 24 timmar efter att den skapats.",
+      "cta": "Validera kod",
+      "accountTypeNote": "Denna kod öppnar ett {type}-konto",
+      "accountTypeParticulier": "privat",
+      "accountTypeBusiness": "företags (Business)",
+      "expiresNote": "engångsbruk"
+    },
+    "credentials": {
+      "email": "E-postadress",
+      "password": "Lösenord",
+      "confirmPassword": "Bekräfta lösenord",
+      "passwordTooShort": "Minst 8 tecken.",
+      "passwordMismatch": "Lösenorden matchar inte."
+    },
+    "employment": {
+      "annualIncome": "Angiven årsinkomst"
+    },
+    "identity": {
+      "fileUploadNote": "Dessa fält är deklarativa. Du kan ladda upp dina filer (legitimation, adressbevis) när ditt konto har skapats, via KYC-verifiering."
+    },
+    "nav": {
+      "back": "Föregående",
+      "next": "Nästa",
+      "submit": "Skapa mitt konto"
+    },
+    "recap": {
+      "intro": "Här är din akt som den kommer att skickas in, återskapad från informationen du just angav. Granska den innan du bekräftar.",
+      "generate": "Generera sammanfattning",
+      "generating": "Genererar sammanfattning…",
+      "regenerate": "Generera igen",
+      "confirmLabel": "Jag bekräftar att informationen ovan är korrekt och godkänner att mitt konto skapas.",
+      "successTitle": "Kontot har skapats",
+      "successDescription": "Välkommen! Ditt konto {email} har skapats, din KYC-akt granskas. Omdirigerar till din instrumentpanel…"
+    }
   }
 }

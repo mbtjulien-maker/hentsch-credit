@@ -280,7 +280,39 @@ model User {
   // adresse blockchain, une identité de compte stable côté back-office.
   managedWallet ClientManagedWallet?
 
+  // Code d'invitation consommé à la création de ce compte (cf. §6 CLAUDE.md entrée #40,
+  // InviteCode ci-dessous) — `null` pour tout compte créé autrement (seed, ou l'ancien
+  // formulaire public "Demander l'ouverture d'un compte", conservé pour les demandes
+  // historiques mais plus proposé publiquement).
+  redeemedInviteCode InviteCode?
+
   @@map("users")
+}
+
+// Accès par invitation (cf. §6 CLAUDE.md entrée #40) — remplace le formulaire public
+// "Demander l'ouverture d'un compte" comme point d'entrée : un conseiller génère un code
+// à la demande pour un client précis (jamais un lot automatique), transmis hors-bande
+// (téléphone, e-mail...). Format `XXXX-XXXX-AAAA` (deux segments aléatoires + année en
+// cours) — cf. InviteCodesService.generateCode(). Usage unique, expire 24h après
+// génération ; les deux conditions sont calculées à la lecture (`usedAt`/`expiresAt`),
+// jamais un statut stocké qui pourrait dériver d'une horloge non rafraîchie.
+model InviteCode {
+  id          String      @id @default(uuid())
+  code        String      @unique
+  // Fixé par le conseiller à la génération (il connaît déjà le profil du client invité) —
+  // jamais redemandé au client lui-même pendant l'inscription, cf. §6 entrée #40.
+  accountType AccountType
+  // Note libre interne (ex. "Jean Dupont, contact du 02/09") — jamais montrée au client,
+  // purement pour que le back-office retrouve à qui un code a été destiné.
+  note        String?
+  createdAt   DateTime    @default(now())
+  expiresAt   DateTime
+  usedAt      DateTime?
+  usedByUserId String?    @unique
+  usedBy      User?       @relation(fields: [usedByUserId], references: [id])
+
+  @@index([code])
+  @@map("invite_codes")
 }
 
 enum AccountRequestStatus {
@@ -715,6 +747,11 @@ model Employment {
   activity      String?
   turnover      Decimal? @db.Decimal(18, 2)
   netResult     Decimal? @db.Decimal(18, 2)
+  // Numéro d'immatriculation de l'entreprise (ex. SIRET) — pertinent surtout pour un
+  // compte BUSINESS (cf. §6 CLAUDE.md entrée #46), mais laissé disponible à tout compte
+  // par simplicité de schéma (comme le reste d'Employment) plutôt que dupliqué par type
+  // de compte.
+  companyRegistrationNumber String?
   updatedAt     DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)

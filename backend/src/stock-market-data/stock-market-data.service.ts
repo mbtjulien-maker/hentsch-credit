@@ -1,6 +1,7 @@
 import { Injectable, Logger, Optional } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
+  STOCK_QUOTE_CACHE_TTL_MS,
   STOCK_SUB_BASKETS,
   StockSubBasket,
   StockTicker,
@@ -17,6 +18,11 @@ interface FinnhubQuote {
   dp: number | null;
 }
 
+interface QuoteCacheEntry {
+  quote: FinnhubQuote | null;
+  fetchedAt: number;
+}
+
 // Fournisseur de données de marché ACTIONS — pendant de MarketDataService (crypto/RWA)
 // pour les 5 paniers d'actions du produit "investissement direct" (cf. §2H CLAUDE.md,
 // STOCK_SUB_BASKETS). Finnhub plutôt qu'Alpha Vantage : plan gratuit avec une limite
@@ -29,6 +35,13 @@ interface FinnhubQuote {
 @Injectable()
 export class StockMarketDataService {
   private readonly logger = new Logger(StockMarketDataService.name);
+
+  // Cache par ticker (pas un seul cache global partagé, cf. le bug corrigé entrée #16 de
+  // CLAUDE.md sur MarketDataService) : les différents appelants (paniers d'investissement,
+  // plans à échéance fixe, bandeau défilant du marché) demandent des sous-ensembles de
+  // tickers qui se chevauchent largement — un cache par ticker mutualise ces
+  // chevauchements au lieu de refetcher, tout en isolant un ticker en échec des autres.
+  private readonly quoteCache = new Map<string, QuoteCacheEntry>();
 
   // configService optionnel uniquement pour permettre `new StockMarketDataService()` en
   // test unitaire sans DI Nest complète (cf. stock-market-data.service.spec.ts) — en
@@ -46,6 +59,10 @@ export class StockMarketDataService {
     if (!this.apiKey) {
       return null;
     }
+    const cached = this.quoteCache.get(ticker);
+    if (cached && Date.now() - cached.fetchedAt < STOCK_QUOTE_CACHE_TTL_MS) {
+      return cached.quote;
+    }
     try {
       const url = `${FINNHUB_API_BASE}/quote?symbol=${ticker}&token=${this.apiKey}`;
       const response = await fetch(url, { signal: AbortSignal.timeout(8000) });
@@ -56,16 +73,19 @@ export class StockMarketDataService {
       // Finnhub renvoie 200 avec des champs à 0 pour un ticker inconnu/marché fermé sans
       // historique — pas une erreur HTTP, donc filtré ici explicitement plutôt que de
       // laisser passer un signal fabriqué à partir de zéros.
-      if (typeof payload.dp !== 'number' || payload.c === 0) {
-        return null;
-      }
-      return payload;
+      const quote = typeof payload.dp !== 'number' || payload.c === 0 ? null : payload;
+      this.quoteCache.set(ticker, { quote, fetchedAt: Date.now() });
+      return quote;
     } catch (error) {
       this.logger.warn(
         `Échec de récupération du cours Finnhub pour ${ticker} : ${
           error instanceof Error ? error.message : String(error)
         }`,
       );
+      // Pas de mise en cache d'un échec réseau/timeout : contrairement à un ticker
+      // durablement invalide (filtré ci-dessus et mis en cache comme tel), une panne
+      // transitoire mérite d'être retentée au prochain appel plutôt que figée pour toute
+      // la durée du TTL.
       return null;
     }
   }

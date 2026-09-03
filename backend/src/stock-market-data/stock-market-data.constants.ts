@@ -81,3 +81,15 @@ export const STOCK_NAMES: Record<StockTicker, string> = {
 // PILLAR_MARKET_SENSITIVITY), un investissement direct en actions participe pleinement à
 // la variation réelle du panier, quel qu'il soit : sensibilité 1 (pas d'amortissement).
 export const STOCK_MARKET_SENSITIVITY = new Prisma.Decimal('1');
+
+// Durée de mise en cache d'un cours Finnhub par ticker (cf. StockMarketDataService).
+// Finnhub n'offre pas d'appel groupé sur le plan gratuit : une seule vue (GET
+// /market/stocks, ou le bandeau défilant de MarketView) déclenche autant de requêtes
+// HTTP que de tickers distincts (~16). Sans cache, chaque chargement de page et chaque
+// tour du polling frontend (45s, cf. REFRESH_INTERVAL_MS côté MarketView) refaisait
+// l'intégralité de ces appels — perceptible pour le client comme une lenteur au
+// chargement. Même valeur que PRICE_CACHE_TTL_MS (crypto, market-data.constants.ts) :
+// assez courte pour rester "temps réel", assez longue pour absorber un rechargement de
+// page ou un montage React en double (Strict Mode, dev uniquement) sans reformuler
+// l'appel Finnhub.
+export const STOCK_QUOTE_CACHE_TTL_MS = 30_000;

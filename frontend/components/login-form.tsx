@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { VaultWatermarkSvg } from "@/components/dashboard/vault-graphics";
 import { api, ApiError, loginRequiresTwoFactor } from "@/lib/api";
 
 // Connexion réelle — remplace l'ancien UserSwitcher (bascule libre entre comptes de
@@ -72,8 +71,22 @@ export function LoginForm() {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4">
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-        <VaultWatermarkSvg className="h-[550px] w-[550px] -rotate-12 text-muted-foreground/80 opacity-20" />
+      {/* Même photo réelle de coffre-fort que le hero de la vitrine publique et le
+          dashboard (cf. app/[locale]/page.tsx, app/[locale]/dashboard/layout.tsx) — mais
+          plus nette ici (opacité pleine, pas de voile plat à 78%) : la carte de connexion
+          porte déjà son propre fond opaque, seul le dégradé bas assure la lisibilité du
+          lien "Retour à l'accueil" posé directement sur la photo (retour client : "moins
+          flou et plus net" que le traitement du dashboard). */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Image
+          src="/brand/homepage-vault-bg.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/25 via-background/45 to-background/70" />
       </div>
 
       <Card className="relative z-10 w-full max-w-sm rounded-2xl border border-border/80 bg-card shadow-sm">

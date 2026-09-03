@@ -212,6 +212,7 @@ export interface AdminClient {
     activity?: string;
     turnover?: number;
     netResult?: number;
+    companyRegistrationNumber?: string;
   };
 
   // Dossier KYC déclaratif (cf. §6 entrée #33) — présent uniquement sur une fiche réelle

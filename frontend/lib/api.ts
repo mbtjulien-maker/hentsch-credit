@@ -59,6 +59,11 @@ export interface UserSummary {
   // Présent uniquement sur la réponse de GET /auth/me (cf. AuthController) — absent sur
   // les réponses de login/challenge, qui n'ont pas besoin de le renvoyer.
   twoFactorEnabled?: boolean;
+  // Idem — nom complet auto-déclaré (ClientProfile, cf. §6 CLAUDE.md entrée #24),
+  // `null` tant que le client n'a pas renseigné son profil : le frontend retombe alors
+  // sur l'email plutôt que d'afficher un nom vide.
+  firstName?: string | null;
+  lastName?: string | null;
 }
 
 // Réponse de POST /auth/login quand le compte a la 2FA activée — aucun cookie de session
@@ -105,6 +110,65 @@ export interface ApproveAccountRequestResult {
   temporaryPassword: string;
 }
 
+// Accès par invitation (cf. §6 CLAUDE.md entrée #40) — remplace le formulaire public
+// ci-dessus comme point d'entrée. `status` est calculé côté backend à la lecture, jamais
+// un statut stocké qui pourrait dériver de l'horloge du serveur.
+export type InviteCodeStatus = "ACTIVE" | "USED" | "EXPIRED";
+
+export interface InviteCode {
+  id: string;
+  code: string;
+  accountType: AccountType;
+  note: string | null;
+  createdAt: string;
+  expiresAt: string;
+  usedAt: string | null;
+  status: InviteCodeStatus;
+}
+
+export interface ValidateInviteCodeResult {
+  accountType: AccountType;
+  expiresAt: string;
+}
+
+// Étape "Récapitulatif" — même contenu que RedeemInviteCodeInput ci-dessous sans
+// code/password, plus accountType (fixé par le code, affiché en lecture seule sur le
+// dossier régénéré) : cf. PreviewKycDossierPdfDto côté backend.
+export interface PreviewKycDossierPdfInput {
+  email: string;
+  accountType: AccountType;
+  profile: UpdateOwnProfileInput;
+  address: UpdateOwnAddressInput;
+  employment: UpdateOwnEmploymentInput;
+  identityDocument: IdentityDocumentInput;
+  aml: SubmitAmlProfileInput;
+}
+
+// Assistant support réel (cf. §6 CLAUDE.md entrée #41) — Google Gemini, remplace
+// l'assistant scripté de l'entrée #39. Pas de session de conversation persistée côté
+// serveur : l'historique est renvoyé par le client à chaque appel (cf.
+// SendSupportChatMessageDto), le fil de discussion ne vit que dans le state React du
+// composant tant que le dialogue reste ouvert.
+export interface SupportChatTurn {
+  role: "user" | "model";
+  text: string;
+}
+
+export interface SupportChatStatus {
+  available: boolean;
+}
+
+export interface RedeemInviteCodeInput {
+  code: string;
+  email: string;
+  password: string;
+  profile: UpdateOwnProfileInput;
+  address: UpdateOwnAddressInput;
+  employment: UpdateOwnEmploymentInput;
+  identityDocument: IdentityDocumentInput;
+  aml: SubmitAmlProfileInput;
+}
+
 // Plafond réel de comptes clients (cf. MAX_CLIENT_ACCOUNTS côté backend) — used ne compte
 // que les comptes CLIENT réellement créés, jamais les demandes PENDING.
 export interface ClientAccountCapacity {
@@ -129,10 +193,21 @@ export interface LedgerBalance {
   updatedAt: string;
 }
 
+// Condition d'ouverture de compte (500 $ PARTICULIER / 1000 $ BUSINESS) — cf.
+// backend/src/users/user.constants.ts. `depositedUsd` cumule tous les dépôts réels
+// jamais reçus (DEPOSIT + CARD_TOPUP), jamais le solde courant : une fois `met: true`,
+// ça le reste pour toujours, même si le client dépense ou retire ensuite.
+export interface InitialDepositStatus {
+  requiredUsd: string;
+  depositedUsd: string;
+  met: boolean;
+}
+
 export interface BalanceSummary {
   balance: LedgerBalance;
   totalPurchasingPower: string;
   withdrawableBalance: string;
+  initialDeposit: InitialDepositStatus;
 }
 
 export interface CreditPosition {
@@ -429,6 +504,17 @@ export interface ManagedDepositAddress {
   updatedAt: string;
 }
 
+// Vue "actions" de la page Marché (cf. §6 CLAUDE.md entrée #44) — union dédupliquée des
+// tickers des 5 paniers d'actions du produit "investissement direct", mêmes cours réels
+// Finnhub déjà utilisés pour l'accrual des paniers. price/changePct valent `null` quand
+// Finnhub est indisponible pour ce ticker — jamais un chiffre fabriqué à la place.
+export interface StockMarketEntry {
+  ticker: string;
+  name: string;
+  price: number | null;
+  changePct: number | null;
+}
+
 export interface MarketOverviewEntry {
   id: string;
   symbol: string;
@@ -629,6 +715,28 @@ export type ProfessionalStatus =
   | "ETUDIANT"
   | "SANS_EMPLOI";
 
+// Secteurs d'activité — choix fermé côté auto-déclaration client (cf. §6 CLAUDE.md
+// entrée #46, backend/src/common/kyc.constants.ts BUSINESS_SECTORS), pertinent pour tout
+// compte (pas seulement BUSINESS).
+export type BusinessSector =
+  | "TECHNOLOGIE_LOGICIEL"
+  | "FINANCE_ASSURANCE"
+  | "SANTE_PHARMACIE"
+  | "COMMERCE_DETAIL"
+  | "INDUSTRIE_MANUFACTURE"
+  | "IMMOBILIER_CONSTRUCTION"
+  | "AGRICULTURE_AGROALIMENTAIRE"
+  | "EDUCATION_FORMATION"
+  | "TRANSPORT_LOGISTIQUE"
+  | "TOURISME_HOTELLERIE_RESTAURATION"
+  | "MEDIA_COMMUNICATION"
+  | "ENERGIE_ENVIRONNEMENT"
+  | "SERVICES_PROFESSIONNELS_CONSEIL"
+  | "ARTISANAT"
+  | "CULTURE_LOISIRS"
+  | "ADMINISTRATION_PUBLIQUE"
+  | "AUTRE";
+
 export type IncomeBracket = "LT_20K" | "B20K_50K" | "B50K_100K" | "B100K_250K" | "GT_250K";
 export type NetWorthBracket = "LT_100K" | "B100K_500K" | "B500K_1M" | "GT_1M";
 
@@ -649,6 +757,7 @@ export interface UpdateEmploymentInput {
   netResult?: number;
   annualIncomeBracket?: IncomeBracket;
   netWorthBracket?: NetWorthBracket;
+  companyRegistrationNumber?: string;
 }
 
 export type MaritalStatus = "CELIBATAIRE" | "MARIE" | "PACSE" | "DIVORCE" | "VEUF";
@@ -770,6 +879,7 @@ export interface ClientProfileEmployment {
   activity: string | null;
   turnover: number | null;
   netResult: number | null;
+  companyRegistrationNumber: string | null;
 }
 
 export interface ClientProfileIdentityDocument {
@@ -859,7 +969,7 @@ export interface UpdateOwnEmploymentInput {
   status?: string;
   professionalStatus?: ProfessionalStatus;
   employer?: string;
-  sector?: string;
+  sector?: BusinessSector;
   role?: string;
   seniority?: string;
   annualIncome?: number;
@@ -868,6 +978,7 @@ export interface UpdateOwnEmploymentInput {
   activity?: string;
   annualIncomeBracket?: IncomeBracket;
   netWorthBracket?: NetWorthBracket;
+  companyRegistrationNumber?: string;
 }
 
 export class ApiError extends Error {
@@ -1003,6 +1114,7 @@ export const api = {
   getManagedWallet: (userId: string) =>
     request<ClientManagedWalletView>(`/users/${userId}/managed-wallet`),
   getMarketPrices: () => request<MarketOverviewEntry[]>("/market/prices"),
+  getMarketStocks: () => request<StockMarketEntry[]>("/market/stocks"),
   getYieldHistory: () => request<AssetHistoryEntry[]>("/market/yield-history"),
   // Historique complet des 8 actifs réellement éligibles au rendement (cf.
   // YIELD_ELIGIBLE_CURRENCIES côté backend) — distinct de getYieldHistory ci-dessus, qui
@@ -1148,6 +1260,50 @@ export const api = {
     request<AccountOpeningRequest>(`/account-requests/${id}/reject`, {
       method: "POST",
     }),
+  // Accès par invitation (cf. §6 CLAUDE.md entrée #40) — remplace le formulaire
+  // d'ouverture de compte ci-dessus. Génération réservée au back-office (AdminGuard) ;
+  // validate/redeem/previewPdf sont publics (c'est justement le point d'entrée pour
+  // quelqu'un qui n'a pas encore de compte).
+  generateInviteCode: (data: { accountType: AccountType; note?: string }) =>
+    request<InviteCode>("/admin/invite-codes", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+  listInviteCodes: () => request<InviteCode[]>("/admin/invite-codes"),
+  validateInviteCode: (code: string) =>
+    request<ValidateInviteCodeResult>("/invite-codes/validate", {
+      method: "POST",
+      body: JSON.stringify({ code }),
+    }),
+  redeemInviteCode: (data: RedeemInviteCodeInput) =>
+    request<UserSummary>("/invite-codes/redeem", {
+      method: "POST",
+      body: JSON.stringify(data),
+    }),
+  // Étape "Récapitulatif" de l'assistant d'inscription — régénère le dossier KYC en PDF
+  // avec les données réellement saisies, pour relecture avant toute création de compte
+  // (cf. KycDossierPdfService). Réponse binaire, pas JSON : ne passe pas par request().
+  // Assistant support réel (Google Gemini, cf. §6 CLAUDE.md entrée #41) — réservé aux
+  // comptes authentifiés, contrairement aux fonctions ci-dessus.
+  getSupportChatStatus: () => request<SupportChatStatus>("/support-chat/status"),
+  sendSupportChatMessage: (history: SupportChatTurn[], message: string) =>
+    request<{ reply: string }>("/support-chat/message", {
+      method: "POST",
+      body: JSON.stringify({ history, message }),
+    }),
+  previewKycDossierPdf: async (data: PreviewKycDossierPdfInput): Promise<Blob> => {
+    const res = await fetch(`${API_URL}/invite-codes/preview-pdf`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => null);
+      throw new ApiError(body?.message ?? `Requête échouée (${res.status})`, res.status);
+    }
+    return res.blob();
+  },
   generateRequestDepositAddress: (id: string, chain: Chain, currency: AcceptedCurrency) =>
     request<WalletRecord>(`/credit-requests/${id}/deposit-address`, {
       method: "POST",

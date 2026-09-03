@@ -1,7 +1,8 @@
-import { LifeBuoy, Mail, MessageCircle } from "lucide-react";
+import { LifeBuoy, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { SupportAssistantDialog } from "@/components/dashboard/support-assistant-dialog";
 
 // Coordonnées de démonstration — à remplacer par le vrai canal de support de l'établissement.
 const SUPPORT_EMAIL = "support@cryptocreditbank.example";
@@ -27,10 +28,7 @@ export function SupportSection() {
           <Mail className="size-4" />
           {SUPPORT_EMAIL}
         </Button>
-        <Button variant="outline" className="justify-start" disabled>
-          <MessageCircle className="size-4" />
-          {t("liveChat")}
-        </Button>
+        <SupportAssistantDialog />
       </CardContent>
     </Card>
   );

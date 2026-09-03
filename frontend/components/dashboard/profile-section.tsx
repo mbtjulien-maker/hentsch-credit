@@ -9,18 +9,47 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useDashboard } from "@/components/dashboard/dashboard-context";
 import { CHAIN_LABELS } from "@/lib/format";
 import { useCurrencyLabel } from "@/lib/use-currency-label";
 import {
   api,
   ApiError,
+  type BusinessSector,
   type ClientManagedWalletView,
   type ClientProfileView,
   type KycStatus,
   type UserSummary,
   type WalletRecord,
 } from "@/lib/api";
+
+const BUSINESS_SECTORS: BusinessSector[] = [
+  "TECHNOLOGIE_LOGICIEL",
+  "FINANCE_ASSURANCE",
+  "SANTE_PHARMACIE",
+  "COMMERCE_DETAIL",
+  "INDUSTRIE_MANUFACTURE",
+  "IMMOBILIER_CONSTRUCTION",
+  "AGRICULTURE_AGROALIMENTAIRE",
+  "EDUCATION_FORMATION",
+  "TRANSPORT_LOGISTIQUE",
+  "TOURISME_HOTELLERIE_RESTAURATION",
+  "MEDIA_COMMUNICATION",
+  "ENERGIE_ENVIRONNEMENT",
+  "SERVICES_PROFESSIONNELS_CONSEIL",
+  "ARTISANAT",
+  "CULTURE_LOISIRS",
+  "ADMINISTRATION_PUBLIQUE",
+  "AUTRE",
+];
 
 function kycVariant(status: KycStatus): "default" | "secondary" | "destructive" {
   if (status === "VERIFIED") return "default";
@@ -38,6 +67,8 @@ function kycVariant(status: KycStatus): "default" | "secondary" | "destructive" 
 // bascule lecture/édition) : c'est un profil à compléter, pas une fiche à consulter.
 function IdentityForm({ userId }: { userId: string }) {
   const t = useTranslations("Dashboard.profileSection");
+  const { selectedUser } = useDashboard();
+  const isBusiness = selectedUser?.accountType === "BUSINESS";
   const firstNameId = useId();
   const lastNameId = useId();
   const dobId = useId();
@@ -50,9 +81,9 @@ function IdentityForm({ userId }: { userId: string }) {
   const employerId = useId();
   const activityId = useId();
   const roleId = useId();
-  const sectorId = useId();
   const seniorityId = useId();
   const annualIncomeId = useId();
+  const companyRegistrationNumberId = useId();
 
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -71,9 +102,10 @@ function IdentityForm({ userId }: { userId: string }) {
   const [employer, setEmployer] = useState("");
   const [activity, setActivity] = useState("");
   const [role, setRole] = useState("");
-  const [sector, setSector] = useState("");
+  const [sector, setSector] = useState<BusinessSector | "">("");
   const [seniority, setSeniority] = useState("");
   const [annualIncome, setAnnualIncome] = useState("");
+  const [companyRegistrationNumber, setCompanyRegistrationNumber] = useState("");
 
   function applyProfile(profile: ClientProfileView) {
     setFirstName(profile.firstName ?? "");
@@ -90,9 +122,14 @@ function IdentityForm({ userId }: { userId: string }) {
     setEmployer(profile.employment?.employer ?? "");
     setActivity(profile.employment?.activity ?? "");
     setRole(profile.employment?.role ?? "");
-    setSector(profile.employment?.sector ?? "");
+    setSector(
+      BUSINESS_SECTORS.includes(profile.employment?.sector as BusinessSector)
+        ? (profile.employment?.sector as BusinessSector)
+        : "",
+    );
     setSeniority(profile.employment?.seniority ?? "");
     setAnnualIncome(profile.employment?.annualIncome != null ? String(profile.employment.annualIncome) : "");
+    setCompanyRegistrationNumber(profile.employment?.companyRegistrationNumber ?? "");
   }
 
   useEffect(() => {
@@ -138,9 +175,10 @@ function IdentityForm({ userId }: { userId: string }) {
           employer: !isIndependent ? employer.trim() || undefined : undefined,
           activity: isIndependent ? activity.trim() || undefined : undefined,
           role: !isIndependent ? role.trim() || undefined : undefined,
-          sector: sector.trim() || undefined,
+          sector: sector || undefined,
           seniority: seniority.trim() || undefined,
           annualIncome: annualIncome.trim() !== "" ? Number(annualIncome) : undefined,
+          companyRegistrationNumber: isBusiness ? companyRegistrationNumber.trim() || undefined : undefined,
         }),
       ]);
       applyProfile(refreshed);
@@ -259,13 +297,33 @@ function IdentityForm({ userId }: { userId: string }) {
             </>
           )}
           <div className="flex flex-col gap-1">
-            <Label htmlFor={sectorId} className="text-xs text-muted-foreground">{t("sector")}</Label>
-            <Input id={sectorId} value={sector} onChange={(e) => setSector(e.target.value)} disabled={saving} />
+            <Label className="text-xs text-muted-foreground">{t("sector")}</Label>
+            <Select value={sector || undefined} onValueChange={(v) => setSector((v as BusinessSector) ?? "")} disabled={saving}>
+              <SelectTrigger className="w-full"><SelectValue placeholder={t("selectPlaceholder")} /></SelectTrigger>
+              <SelectContent>
+                {BUSINESS_SECTORS.map((value) => (
+                  <SelectItem key={value} value={value}>{t(`sectorLabels.${value}`)}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           <div className="flex flex-col gap-1">
             <Label htmlFor={seniorityId} className="text-xs text-muted-foreground">{t("seniority")}</Label>
             <Input id={seniorityId} value={seniority} onChange={(e) => setSeniority(e.target.value)} disabled={saving} />
           </div>
+          {isBusiness && (
+            <div className="col-span-2 flex flex-col gap-1">
+              <Label htmlFor={companyRegistrationNumberId} className="text-xs text-muted-foreground">
+                {t("companyRegistrationNumber")}
+              </Label>
+              <Input
+                id={companyRegistrationNumberId}
+                value={companyRegistrationNumber}
+                onChange={(e) => setCompanyRegistrationNumber(e.target.value)}
+                disabled={saving}
+              />
+            </div>
+          )}
           <div className="col-span-2 flex flex-col gap-1">
             <Label htmlFor={annualIncomeId} className="text-xs text-muted-foreground">{t("annualIncome")}</Label>
             <Input

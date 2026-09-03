@@ -29,10 +29,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useDashboard } from "@/components/dashboard/dashboard-context";
 import {
   api,
   ApiError,
   type AmlRiskLevel,
+  type BusinessSector,
   type ClientProfileView,
   type FundsOrigin,
   type IdentityCheckMethod,
@@ -50,6 +52,25 @@ import {
 import { formatDate } from "@/lib/format";
 
 const MARITAL_STATUSES: MaritalStatus[] = ["CELIBATAIRE", "MARIE", "PACSE", "DIVORCE", "VEUF"];
+const BUSINESS_SECTORS: BusinessSector[] = [
+  "TECHNOLOGIE_LOGICIEL",
+  "FINANCE_ASSURANCE",
+  "SANTE_PHARMACIE",
+  "COMMERCE_DETAIL",
+  "INDUSTRIE_MANUFACTURE",
+  "IMMOBILIER_CONSTRUCTION",
+  "AGRICULTURE_AGROALIMENTAIRE",
+  "EDUCATION_FORMATION",
+  "TRANSPORT_LOGISTIQUE",
+  "TOURISME_HOTELLERIE_RESTAURATION",
+  "MEDIA_COMMUNICATION",
+  "ENERGIE_ENVIRONNEMENT",
+  "SERVICES_PROFESSIONNELS_CONSEIL",
+  "ARTISANAT",
+  "CULTURE_LOISIRS",
+  "ADMINISTRATION_PUBLIQUE",
+  "AUTRE",
+];
 const PROFESSIONAL_STATUSES: ProfessionalStatus[] = [
   "SALARIE",
   "FONCTIONNAIRE",
@@ -250,6 +271,13 @@ function KycFileUploadRow({
 export function KycDossierSection({ userId }: { userId: string }) {
   const t = useTranslations("Dashboard.kycDossier");
   const locale = useLocale();
+  // Champs adaptés au modèle BUSINESS (cf. §6 CLAUDE.md entrée #46, retour client :
+  // "adapte les champs à renseigner en fonction du modèle business") — numéro
+  // d'immatriculation affiché uniquement pour ces comptes, le secteur d'activité (choix
+  // fermé ci-dessous) reste pertinent pour tout compte.
+  const { selectedUser } = useDashboard();
+  const isBusiness = selectedUser?.accountType === "BUSINESS";
+  const [companyRegistrationNumber, setCompanyRegistrationNumber] = useState("");
 
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -284,7 +312,7 @@ export function KycDossierSection({ userId }: { userId: string }) {
   const [employer, setEmployer] = useState("");
   const [activity, setActivity] = useState("");
   const [role, setRole] = useState("");
-  const [sector, setSector] = useState("");
+  const [sector, setSector] = useState<BusinessSector | "">("");
   const [seniority, setSeniority] = useState("");
   const [annualIncomeBracket, setAnnualIncomeBracket] = useState<IncomeBracket | "">("");
   const [netWorthBracket, setNetWorthBracket] = useState<NetWorthBracket | "">("");
@@ -350,7 +378,12 @@ export function KycDossierSection({ userId }: { userId: string }) {
     setEmployer(profile.employment?.employer ?? "");
     setActivity(profile.employment?.activity ?? "");
     setRole(profile.employment?.role ?? "");
-    setSector(profile.employment?.sector ?? "");
+    setSector(
+      BUSINESS_SECTORS.includes(profile.employment?.sector as BusinessSector)
+        ? (profile.employment?.sector as BusinessSector)
+        : "",
+    );
+    setCompanyRegistrationNumber(profile.employment?.companyRegistrationNumber ?? "");
     setSeniority(profile.employment?.seniority ?? "");
     setAnnualIncomeBracket(profile.employment?.annualIncomeBracket ?? "");
     setNetWorthBracket(profile.employment?.netWorthBracket ?? "");
@@ -474,7 +507,8 @@ export function KycDossierSection({ userId }: { userId: string }) {
           employer: !isIndependentStatus ? employer.trim() || undefined : undefined,
           activity: isIndependentStatus ? activity.trim() || undefined : undefined,
           role: !isIndependentStatus ? role.trim() || undefined : undefined,
-          sector: sector.trim() || undefined,
+          sector: sector || undefined,
+          companyRegistrationNumber: isBusiness ? companyRegistrationNumber.trim() || undefined : undefined,
           seniority: seniority.trim() || undefined,
           annualIncomeBracket: annualIncomeBracket || undefined,
           netWorthBracket: netWorthBracket || undefined,
@@ -543,7 +577,7 @@ export function KycDossierSection({ userId }: { userId: string }) {
   const employerId = useId();
   const activityId = useId();
   const roleId = useId();
-  const sectorId = useId();
+  const companyRegistrationNumberId = useId();
   const seniorityId = useId();
   const documentNumberId = useId();
   const issuingAuthorityId = useId();
@@ -748,13 +782,33 @@ export function KycDossierSection({ userId }: { userId: string }) {
                 </>
               )}
               <div className="flex flex-col gap-1">
-                <Label htmlFor={sectorId} className="text-xs text-muted-foreground">{t("sector")}</Label>
-                <Input id={sectorId} value={sector} onChange={(e) => setSector(e.target.value)} disabled={savingCore} />
+                <Label className="text-xs text-muted-foreground">{t("sector")}</Label>
+                <Select value={sector || undefined} onValueChange={(v) => setSector((v as BusinessSector) ?? "")} disabled={savingCore}>
+                  <SelectTrigger className="w-full"><SelectValue placeholder={t("selectPlaceholder")} /></SelectTrigger>
+                  <SelectContent>
+                    {BUSINESS_SECTORS.map((value) => (
+                      <SelectItem key={value} value={value}>{t(`sectorLabels.${value}`)}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <div className="flex flex-col gap-1">
                 <Label htmlFor={seniorityId} className="text-xs text-muted-foreground">{t("seniority")}</Label>
                 <Input id={seniorityId} value={seniority} onChange={(e) => setSeniority(e.target.value)} disabled={savingCore} />
               </div>
+              {isBusiness && (
+                <div className="col-span-2 flex flex-col gap-1">
+                  <Label htmlFor={companyRegistrationNumberId} className="text-xs text-muted-foreground">
+                    {t("companyRegistrationNumber")}
+                  </Label>
+                  <Input
+                    id={companyRegistrationNumberId}
+                    value={companyRegistrationNumber}
+                    onChange={(e) => setCompanyRegistrationNumber(e.target.value)}
+                    disabled={savingCore}
+                  />
+                </div>
+              )}
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="flex flex-col gap-1">

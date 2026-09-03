@@ -24,6 +24,8 @@ function buildBalance(overrides: Partial<LedgerBalance> = {}): LedgerBalance {
 describe('LedgerService', () => {
   let prisma: {
     ledgerBalance: { findUnique: jest.Mock; updateMany: jest.Mock };
+    user: { findUniqueOrThrow: jest.Mock };
+    transaction: { aggregate: jest.Mock };
     $queryRaw: jest.Mock;
   };
   let service: LedgerService;
@@ -31,6 +33,8 @@ describe('LedgerService', () => {
   beforeEach(() => {
     prisma = {
       ledgerBalance: { findUnique: jest.fn(), updateMany: jest.fn() },
+      user: { findUniqueOrThrow: jest.fn().mockResolvedValue({ accountType: 'PARTICULIER' }) },
+      transaction: { aggregate: jest.fn().mockResolvedValue({ _sum: { amount: null } }) },
       $queryRaw: jest.fn(),
     };
     service = new LedgerService(prisma as never);
@@ -257,6 +261,62 @@ describe('LedgerService', () => {
       expect(summary.balance).toEqual(balance);
       expect(summary.totalPurchasingPower.toString()).toBe('5000');
       expect(summary.withdrawableBalance.toString()).toBe('0');
+      expect(summary.initialDeposit.requiredUsd.toString()).toBe('500');
+      expect(summary.initialDeposit.depositedUsd.toString()).toBe('0');
+      expect(summary.initialDeposit.met).toBe(false);
+    });
+  });
+
+  describe('getInitialDepositStatus', () => {
+    it('requires 500 USD for a PARTICULIER account and reports unmet below it', async () => {
+      prisma.user.findUniqueOrThrow.mockResolvedValue({ accountType: 'PARTICULIER' });
+      prisma.transaction.aggregate.mockResolvedValue({ _sum: { amount: new Prisma.Decimal('300') } });
+
+      const status = await service.getInitialDepositStatus('user-1');
+
+      expect(status.requiredUsd.toString()).toBe('500');
+      expect(status.depositedUsd.toString()).toBe('300');
+      expect(status.met).toBe(false);
+    });
+
+    it('requires 1000 USD for a BUSINESS account and reports met once reached', async () => {
+      prisma.user.findUniqueOrThrow.mockResolvedValue({ accountType: 'BUSINESS' });
+      prisma.transaction.aggregate.mockResolvedValue({ _sum: { amount: new Prisma.Decimal('1000') } });
+
+      const status = await service.getInitialDepositStatus('user-1');
+
+      expect(status.requiredUsd.toString()).toBe('1000');
+      expect(status.met).toBe(true);
+    });
+
+    it('stays met even after spending/withdrawing below the threshold again (cumulative deposits, not current balance)', async () => {
+      // Le cumul de dépôts réels ne redescend jamais (aucune transaction DEPOSIT/CARD_TOPUP
+      // n'est jamais retirée du calcul) — seul le solde courant peut baisser ensuite.
+      prisma.user.findUniqueOrThrow.mockResolvedValue({ accountType: 'PARTICULIER' });
+      prisma.transaction.aggregate.mockResolvedValue({ _sum: { amount: new Prisma.Decimal('750') } });
+
+      const status = await service.getInitialDepositStatus('user-1');
+
+      expect(status.met).toBe(true);
+      expect(prisma.transaction.aggregate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            userId: 'user-1',
+            status: 'COMPLETED',
+            type: { in: ['DEPOSIT', 'CARD_TOPUP'] },
+          }),
+        }),
+      );
+    });
+
+    it('treats no deposit at all (null sum) as 0, never a fabricated or NaN value', async () => {
+      prisma.user.findUniqueOrThrow.mockResolvedValue({ accountType: 'PARTICULIER' });
+      prisma.transaction.aggregate.mockResolvedValue({ _sum: { amount: null } });
+
+      const status = await service.getInitialDepositStatus('user-1');
+
+      expect(status.depositedUsd.toString()).toBe('0');
+      expect(status.met).toBe(false);
     });
   });
 

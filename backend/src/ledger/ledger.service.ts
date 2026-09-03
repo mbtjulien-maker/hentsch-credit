@@ -1,5 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { LedgerBalance, Prisma } from '@prisma/client';
+import {
+  LedgerBalance,
+  Prisma,
+  TransactionStatus,
+  TransactionType,
+} from '@prisma/client';
 import {
   InsufficientFundsException,
   LedgerNotFoundException,
@@ -7,6 +12,7 @@ import {
   OverRepaymentException,
 } from '../common/exceptions/financial.exceptions';
 import { PrismaService } from '../prisma/prisma.service';
+import { INITIAL_DEPOSIT_REQUIREMENT_USD } from '../users/user.constants';
 
 type PrismaClientOrTx = PrismaService | Prisma.TransactionClient;
 
@@ -15,10 +21,22 @@ export interface RepaymentResult {
   collateralUnlocked: boolean;
 }
 
+// Condition d'ouverture de compte (cf. user.constants.ts) — `depositedUsd` cumule tous
+// les dépôts réels jamais reçus (DEPOSIT on-chain + CARD_TOPUP Mollie, `COMPLETED`
+// uniquement), jamais le solde courant : un client qui a atteint le seuil puis dépensé ou
+// retiré une partie de son capital reste `met: true` pour toujours, cohérent avec le
+// principe "réutilisable plus tard" (pas un plancher permanent, cf. INITIAL_DEPOSIT_REQUIREMENT_USD).
+export interface InitialDepositStatus {
+  requiredUsd: Prisma.Decimal;
+  depositedUsd: Prisma.Decimal;
+  met: boolean;
+}
+
 export interface BalanceSummary {
   balance: LedgerBalance;
   totalPurchasingPower: Prisma.Decimal;
   withdrawableBalance: Prisma.Decimal;
+  initialDeposit: InitialDepositStatus;
 }
 
 // Tenue de comptes du Master Ledger. Toute mutation de solde passe par ce service
@@ -61,10 +79,41 @@ export class LedgerService {
   // Vue agrégée consommée par le dashboard (Step 6) : solde brut + indicateurs calculés.
   async getBalanceSummary(userId: string): Promise<BalanceSummary> {
     const balance = await this.getBalance(userId);
+    const initialDeposit = await this.getInitialDepositStatus(userId);
     return {
       balance,
       totalPurchasingPower: this.calculateTotalPurchasingPower(balance),
       withdrawableBalance: this.getWithdrawableBalance(balance),
+      initialDeposit,
+    };
+  }
+
+  // Cf. INITIAL_DEPOSIT_REQUIREMENT_USD (user.constants.ts) — condition d'ouverture de
+  // compte, distincte du crédit gagé/direct : un cumul de dépôts réels à atteindre une
+  // seule fois, jamais recalculé à la baisse si le client dépense ou retire ensuite.
+  // `findUniqueOrThrow` est sûr ici : appelé uniquement après `getBalance` a réussi
+  // (ci-dessus), donc l'utilisateur existe forcément (LedgerBalance a une FK vers User).
+  async getInitialDepositStatus(userId: string): Promise<InitialDepositStatus> {
+    const [user, aggregate] = await Promise.all([
+      this.prisma.user.findUniqueOrThrow({
+        where: { id: userId },
+        select: { accountType: true },
+      }),
+      this.prisma.transaction.aggregate({
+        where: {
+          userId,
+          status: TransactionStatus.COMPLETED,
+          type: { in: [TransactionType.DEPOSIT, TransactionType.CARD_TOPUP] },
+        },
+        _sum: { amount: true },
+      }),
+    ]);
+    const requiredUsd = INITIAL_DEPOSIT_REQUIREMENT_USD[user.accountType];
+    const depositedUsd = new Prisma.Decimal(aggregate._sum.amount ?? 0);
+    return {
+      requiredUsd,
+      depositedUsd,
+      met: depositedUsd.gte(requiredUsd),
     };
   }
 

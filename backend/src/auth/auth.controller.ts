@@ -17,11 +17,9 @@ import { AdminGuard } from '../common/guards/admin.guard';
 import { PrismaService } from '../prisma/prisma.service';
 import { AuthService } from './auth.service';
 import { TwoFactorService } from './two-factor.service';
-import {
-  SESSION_COOKIE_NAME,
-  SESSION_DURATION_SECONDS,
-} from './auth.constants';
+import { SESSION_COOKIE_NAME } from './auth.constants';
 import { CurrentUser } from './decorators/current-user.decorator';
+import { setSessionCookie } from './session-cookie.util';
 import { LoginDto } from './dto/login.dto';
 import { TwoFactorChallengeDto } from './dto/two-factor-challenge.dto';
 import { TwoFactorCodeDto } from './dto/two-factor-code.dto';
@@ -38,13 +36,7 @@ export class AuthController {
   ) {}
 
   private setSessionCookie(res: Response, token: string) {
-    res.cookie(SESSION_COOKIE_NAME, token, {
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: this.configService.get('NODE_ENV') === 'production',
-      maxAge: SESSION_DURATION_SECONDS * 1000,
-      path: '/',
-    });
+    setSessionCookie(res, token, this.configService);
   }
 
   // Limite dédiée, plus stricte que le défaut global (cf. AppModule) : 5 tentatives par
@@ -154,9 +146,19 @@ export class AuthController {
         accountType: true,
         createdAt: true,
         twoFactorEnabled: true,
+        // Nom complet auto-déclaré (cf. ClientProfile, §6 entrée #24) — affiché dans la
+        // barre du dashboard à la place de l'email (retour client). `null` tant que le
+        // client n'a pas encore renseigné son profil : le frontend retombe alors sur
+        // l'email, jamais un nom inventé.
+        clientProfile: { select: { firstName: true, lastName: true } },
       },
     });
-    return user;
+    const { clientProfile, ...rest } = user;
+    return {
+      ...rest,
+      firstName: clientProfile?.firstName ?? null,
+      lastName: clientProfile?.lastName ?? null,
+    };
   }
 
   // ── Authentification à deux facteurs (TOTP) — réservée aux comptes ADMIN ──

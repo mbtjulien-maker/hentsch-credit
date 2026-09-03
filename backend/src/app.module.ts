@@ -15,11 +15,13 @@ import { CreditRequestsModule } from './credit-requests/credit-requests.module';
 import { DepositIntentsModule } from './deposit-intents/deposit-intents.module';
 import { DirectCreditModule } from './direct-credit/direct-credit.module';
 import { InvestmentModule } from './investment/investment.module';
+import { InviteCodesModule } from './invite-codes/invite-codes.module';
 import { KycDocumentsModule } from './kyc-documents/kyc-documents.module';
 import { LedgerModule } from './ledger/ledger.module';
 import { MarketDataModule } from './market-data/market-data.module';
 import { PaymentsModule } from './payments/payments.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { SupportChatModule } from './support-chat/support-chat.module';
 import { TransactionsModule } from './transactions/transactions.module';
 import { TreasuryBotModule } from './treasury-bot/treasury-bot.module';
 import { UsersModule } from './users/users.module';
@@ -57,6 +59,8 @@ import { WithdrawalModule } from './withdrawal/withdrawal.module';
     TreasuryBotModule,
     InvestmentModule,
     KycDocumentsModule,
+    InviteCodesModule,
+    SupportChatModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],

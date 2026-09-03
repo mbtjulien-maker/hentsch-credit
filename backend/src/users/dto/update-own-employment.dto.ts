@@ -9,6 +9,7 @@ import {
   Min,
 } from 'class-validator';
 import {
+  BUSINESS_SECTORS,
   INCOME_BRACKETS,
   NET_WORTH_BRACKETS,
   PROFESSIONAL_STATUSES,
@@ -42,10 +43,18 @@ export class UpdateOwnEmploymentDto {
   @MaxLength(150)
   employer?: string;
 
+  // Choix fermé (cf. §6 entrée #46) — pertinent pour tout compte, pas seulement BUSINESS
+  // (un salarié particulier a aussi un secteur d'activité).
+  @IsOptional()
+  @IsIn(BUSINESS_SECTORS)
+  sector?: (typeof BUSINESS_SECTORS)[number];
+
+  // Numéro d'immatriculation de l'entreprise (ex. SIRET) — pertinent surtout pour un
+  // compte BUSINESS (cf. §6 entrée #46), laissé disponible à tout compte par simplicité.
   @IsOptional()
   @IsString()
-  @MaxLength(100)
-  sector?: string;
+  @MaxLength(50)
+  companyRegistrationNumber?: string;
 
   @IsOptional()
   @IsString()

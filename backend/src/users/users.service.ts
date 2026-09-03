@@ -47,6 +47,7 @@ export interface ClientProfileEmploymentView {
   activity: string | null;
   turnover: number | null;
   netResult: number | null;
+  companyRegistrationNumber: string | null;
 }
 
 export interface ClientProfileIdentityDocumentView {
@@ -333,6 +334,7 @@ export class UsersService {
       activity: e.activity,
       turnover: e.turnover ? Number(e.turnover) : null,
       netResult: e.netResult ? Number(e.netResult) : null,
+      companyRegistrationNumber: e.companyRegistrationNumber,
     };
   }
 

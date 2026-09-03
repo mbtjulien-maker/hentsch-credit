@@ -90,3 +90,31 @@ export type AmlRiskLevel = (typeof AML_RISK_LEVELS)[number];
 
 export const KYC_REVIEW_DECISIONS = ['VALIDE', 'REFUSE'] as const;
 export type KycReviewDecision = (typeof KYC_REVIEW_DECISIONS)[number];
+
+// Secteurs d'activité — choix fermé (cf. §6 CLAUDE.md entrée #46, retour client : "une
+// multitude de secteurs d'activité") pour `Employment.sector`, contraint uniquement côté
+// auto-déclaration client (`UpdateOwnEmploymentDto`), jamais côté admin
+// (`UpdateEmploymentDto` reste en texte libre) — même principe que MARITAL_STATUSES
+// ci-dessus (§6 entrée #35) : ne jamais invalider une valeur historique déjà saisie par
+// un conseiller avant ce choix fermé. `Employment.sector` reste une colonne `String?` des
+// deux côtés, seule la validation d'entrée diffère.
+export const BUSINESS_SECTORS = [
+  'TECHNOLOGIE_LOGICIEL',
+  'FINANCE_ASSURANCE',
+  'SANTE_PHARMACIE',
+  'COMMERCE_DETAIL',
+  'INDUSTRIE_MANUFACTURE',
+  'IMMOBILIER_CONSTRUCTION',
+  'AGRICULTURE_AGROALIMENTAIRE',
+  'EDUCATION_FORMATION',
+  'TRANSPORT_LOGISTIQUE',
+  'TOURISME_HOTELLERIE_RESTAURATION',
+  'MEDIA_COMMUNICATION',
+  'ENERGIE_ENVIRONNEMENT',
+  'SERVICES_PROFESSIONNELS_CONSEIL',
+  'ARTISANAT',
+  'CULTURE_LOISIRS',
+  'ADMINISTRATION_PUBLIQUE',
+  'AUTRE',
+] as const;
+export type BusinessSector = (typeof BUSINESS_SECTORS)[number];

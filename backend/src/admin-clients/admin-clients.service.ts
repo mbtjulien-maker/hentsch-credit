@@ -688,6 +688,7 @@ export class AdminClientsService {
         netResult: employment?.netResult
           ? Number(employment.netResult)
           : undefined,
+        companyRegistrationNumber: employment?.companyRegistrationNumber ?? undefined,
       },
 
       // Dossier KYC déclaratif complet (cf. §6 entrée #33) — pièce d'identité et profil

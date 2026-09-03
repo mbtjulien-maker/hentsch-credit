@@ -74,6 +74,12 @@ export class UpdateEmploymentDto {
   @MaxLength(150)
   activity?: string;
 
+  // Numéro d'immatriculation de l'entreprise (ex. SIRET) — cf. §6 CLAUDE.md entrée #46.
+  @IsOptional()
+  @IsString()
+  @MaxLength(50)
+  companyRegistrationNumber?: string;
+
   @IsOptional()
   @IsNumber()
   @Min(0)

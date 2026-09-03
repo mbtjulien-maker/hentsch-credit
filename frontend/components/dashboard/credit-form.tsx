@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CreditSimulator, CREDIT_RATIO, YieldAssetPicker } from "@/components/dashboard/credit-simulator";
+import { useDashboard } from "@/components/dashboard/dashboard-context";
 import { RepaymentProjection } from "@/components/dashboard/repayment-projection";
 import { InstallmentSchedule } from "@/components/dashboard/installment-schedule";
 import { TermsAcceptance } from "@/components/dashboard/terms-acceptance";
@@ -33,10 +34,10 @@ import { GLASS_CARD_CLASS } from "@/lib/utils";
 // Le crédit se gère ici en deux temps stricts : (1) simuler/soumettre une demande, (2)
 // suivre/rembourser la position existante. La génération d'adresse de dépôt (que ce soit
 // pour un dépôt général ou pour honorer une demande approuvée) ne vit PAS ici — elle vit
-// exclusivement dans Solde (cf. app/dashboard/solde/page.tsx et
-// credit-request-deposit.tsx), pour ne pas mélanger "gérer mon crédit" et "gérer mon
-// portefeuille". Onglets contrôlés pour permettre au lien "faire une nouvelle demande"
-// (dans l'onglet Gérer) de rebasculer programmatiquement sur l'onglet Demander.
+// exclusivement dans le bouton "Déposer" du dialogue WalletActions (cf. §6 CLAUDE.md
+// entrée #45), pour ne pas mélanger "gérer mon crédit" et "gérer mon portefeuille".
+// Onglets contrôlés pour permettre au lien "faire une nouvelle demande" (dans l'onglet
+// Gérer) de rebasculer programmatiquement sur l'onglet Demander.
 export function CreditForm({
   summary,
   requestsState,
@@ -95,6 +96,8 @@ function CreditRequestPanel({
 }) {
   const t = useTranslations("Dashboard.creditForm");
   const { active, loading } = requestsState;
+  const { selectedUser } = useDashboard();
+  const isVerified = selectedUser?.kycStatus === "VERIFIED";
 
   if (loading) {
     return <p className="text-sm text-muted-foreground">{t("loading")}</p>;
@@ -110,7 +113,8 @@ function CreditRequestPanel({
   return (
     <NewRequestForm
       summary={summary}
-      canSubmit={!active}
+      canSubmit={!active && isVerified}
+      lockedNote={!isVerified ? t("kycLockedNote") : undefined}
       statusBanner={statusBanner}
       onSubmitted={requestsState.refetch}
     />
@@ -135,8 +139,9 @@ function PendingRequestStatus({ request }: { request: CreditRequest }) {
   );
 }
 
-// Demande approuvée : simple redirection vers Solde, où vit toute la logique de
-// génération d'adresse de dépôt (cf. credit-request-deposit.tsx) — aucune duplication ici.
+// Demande approuvée : simple redirection vers Solde, où le bouton "Déposer" (cf.
+// wallet-actions.tsx) détecte la demande et propose de générer son adresse de dépôt dédiée
+// — aucune duplication de cette logique ici.
 function ApprovedRequestStatus({ request }: { request: CreditRequest }) {
   const t = useTranslations("Dashboard.creditForm");
   const tLabels = useTranslations("Dashboard.labels");
@@ -170,11 +175,16 @@ function ApprovedRequestStatus({ request }: { request: CreditRequest }) {
 function NewRequestForm({
   summary,
   canSubmit,
+  lockedNote,
   statusBanner,
   onSubmitted,
 }: {
   summary: BalanceSummary;
   canSubmit: boolean;
+  // Remplace le message par défaut ("simulation uniquement, demande déjà en cours")
+  // quand le blocage vient d'une autre raison — ex. KYC non vérifié (cf. §6 CLAUDE.md
+  // entrée #41) — pour ne jamais afficher une explication fausse au client.
+  lockedNote?: string;
   statusBanner: ReactNode;
   onSubmitted: () => Promise<void> | void;
 }) {
@@ -266,7 +276,7 @@ function NewRequestForm({
           </Button>
         </>
       ) : (
-        <p className="text-xs text-muted-foreground">{t("simulationOnlyNote")}</p>
+        <p className="text-xs text-muted-foreground">{lockedNote ?? t("simulationOnlyNote")}</p>
       )}
     </form>
   );

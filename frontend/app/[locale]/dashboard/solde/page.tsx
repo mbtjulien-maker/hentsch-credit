@@ -2,16 +2,16 @@
 
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { AlertTriangle, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BalanceCards } from "@/components/dashboard/balance-cards";
-import { ApprovedCreditRequestDeposit } from "@/components/dashboard/credit-request-deposit";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
 import { useSectionData } from "@/components/dashboard/use-section-data";
 import { WalletActions } from "@/components/dashboard/wallet-actions";
 import { api } from "@/lib/api";
+import { formatUsd } from "@/lib/format";
 import { useCreditRequests } from "@/lib/use-credit-requests";
 
 // useSearchParams() force un bailout hors du rendu statique — isolé dans un enfant sous
@@ -69,17 +69,32 @@ export default function SoldePage() {
       </Suspense>
 
       {requestsState.active?.status === "APPROVED" && (
-        <ApprovedCreditRequestDeposit
-          request={requestsState.active}
-          onSuccess={async () => {
-            requestsState.refetch();
-            await triggerRefresh();
-          }}
-        />
+        // Simple mention, aucun sélecteur d'actif ici (cf. §6 CLAUDE.md entrée #45,
+        // retour client : "seule l'option dépôt propose de générer une adresse de
+        // dépôt") — la génération réelle de l'adresse se fait exclusivement depuis le
+        // bouton "Déposer" ci-dessous, qui détecte cette demande approuvée.
+        <Alert className="border-primary/30 bg-primary/5">
+          <Info className="size-4 text-primary" />
+          <AlertTitle>{t("creditRequestPendingBanner.title")}</AlertTitle>
+          <AlertDescription>
+            {t("creditRequestPendingBanner.description", {
+              amount: formatUsd(requestsState.active.collateralAmount),
+              currency: requestsState.active.currency,
+            })}
+          </AlertDescription>
+        </Alert>
       )}
 
       <BalanceCards summary={summary} />
-      <WalletActions summary={summary} userId={selectedUserId} onSuccess={triggerRefresh} />
+      <WalletActions
+        summary={summary}
+        userId={selectedUserId}
+        approvedCreditRequest={requestsState.active?.status === "APPROVED" ? requestsState.active : null}
+        onSuccess={() => {
+          requestsState.refetch();
+          triggerRefresh();
+        }}
+      />
     </div>
   );
 }

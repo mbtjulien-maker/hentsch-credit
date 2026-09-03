@@ -8,11 +8,13 @@ import {
   Copy,
   CreditCard,
   Loader2,
+  Lock,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import { useDashboard } from "@/components/dashboard/dashboard-context";
 import {
   Dialog,
   DialogContent,
@@ -33,6 +35,7 @@ import {
   type AccountCurrency,
   type BalanceSummary,
   type Chain,
+  type CreditRequest,
   type ManagedDepositAddress,
   type WithdrawalRequest,
 } from "@/lib/api";
@@ -40,18 +43,58 @@ import { CHAIN_LABELS, DEPOSIT_CURRENCY_GROUPS, formatUsd } from "@/lib/format";
 import { useCurrencyLabel } from "@/lib/use-currency-label";
 import { isSepaEligibleIban, isValidBic, isValidIban } from "@/lib/iban";
 
+// Bouton verrouillé — remplace le déclencheur réel tant que le KYC du compte n'est pas
+// VERIFIED (retour client : "les sections resteront verrouillées tant que le compte
+// n'aura pas été validé (dépôt et autres)"). L'API (KycVerifiedGuard) reste la garde qui
+// compte réellement ; ceci évite juste au client de découvrir le blocage après coup dans
+// un dialogue déjà ouvert.
+function LockedActionButton({ icon: Icon, label }: { icon: React.ComponentType<{ className?: string }>; label: string }) {
+  const t = useTranslations("Dashboard.walletActions");
+  return (
+    <Button variant="outline" size="sm" disabled title={t("kycLockedNote")}>
+      <Lock className="size-3.5" />
+      <Icon className="size-4" />
+      {label}
+    </Button>
+  );
+}
+
 export function WalletActions({
   summary,
   userId,
+  approvedCreditRequest,
   onSuccess,
 }: {
   summary: BalanceSummary;
   userId: string;
+  // Demande de crédit approuvée en attente de dépôt (cf. §6 CLAUDE.md entrée #45) — passée
+  // ici plutôt qu'affichée dans sa propre section pleine page (retour client : "seule
+  // l'option dépôt propose de générer une adresse de dépôt") : le dialogue "Déposer"
+  // devient le SEUL endroit qui génère une adresse, qu'il s'agisse d'un dépôt général ou
+  // du dépôt attendu pour cette demande précise.
+  approvedCreditRequest?: CreditRequest | null;
   onSuccess: () => void;
 }) {
+  const t = useTranslations("Dashboard.walletActions");
+  const { selectedUser } = useDashboard();
+  const isVerified = selectedUser?.kycStatus === "VERIFIED";
+
+  if (!isVerified) {
+    return (
+      <div className="flex flex-col gap-1.5">
+        <div className="flex flex-wrap gap-2">
+          <LockedActionButton icon={ArrowDownToLine} label={t("deposit.trigger")} />
+          <LockedActionButton icon={CreditCard} label={t("buyByCard.trigger")} />
+          <LockedActionButton icon={ArrowUpFromLine} label={t("withdraw.trigger")} />
+        </div>
+        <p className="text-xs text-muted-foreground">{t("kycLockedNote")}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="flex gap-2">
-      <DepositDialog userId={userId} onSuccess={onSuccess} />
+      <DepositDialog userId={userId} approvedCreditRequest={approvedCreditRequest} onSuccess={onSuccess} />
       <CardTopupDialog />
       <WithdrawDialog summary={summary} onSuccess={onSuccess} />
     </div>
@@ -151,13 +194,31 @@ function CardTopupDialog() {
 //   un admin le valide manuellement à réception réelle des fonds.
 // - "legacy" : une adresse individuelle générée à la demande (WalletService), créditée
 //   automatiquement dès confirmation on-chain (webhook blockchain existant).
-type DepositStep = "select" | "pool" | "legacy";
+// - "creditRequest" : même principe que "legacy" (une adresse individuelle), mais liée à
+//   une demande de crédit approuvée précise (cf. DepositMode ci-dessous) — le crédit est
+//   émis automatiquement dès réception, pas seulement le solde disponible crédité.
+type DepositStep = "select" | "pool" | "legacy" | "creditRequest";
 
-function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () => void }) {
+// Deux dépôts possibles depuis ce même dialogue (cf. §6 CLAUDE.md entrée #45) : un dépôt
+// général (solde disponible) ou, si une demande de crédit approuvée attend un dépôt, un
+// dépôt scopé à cette demande précise — "Déposer" reste le SEUL endroit du produit qui
+// génère une adresse, jamais une section séparée en pleine page.
+type DepositMode = "general" | "creditRequest";
+
+function DepositDialog({
+  userId,
+  approvedCreditRequest,
+  onSuccess,
+}: {
+  userId: string;
+  approvedCreditRequest?: CreditRequest | null;
+  onSuccess: () => void;
+}) {
   const t = useTranslations("Dashboard.walletActions");
   const currencyLabel = useCurrencyLabel();
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<DepositStep>("select");
+  const [mode, setMode] = useState<DepositMode>(approvedCreditRequest ? "creditRequest" : "general");
   const { currency, chain, setCurrency, setChain } = useAssetSelection();
   const [managedAddress, setManagedAddress] = useState<ManagedDepositAddress | null>(null);
   const [legacyAddress, setLegacyAddress] = useState<string | null>(null);
@@ -169,6 +230,7 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
 
   function reset() {
     setStep("select");
+    setMode(approvedCreditRequest ? "creditRequest" : "general");
     setManagedAddress(null);
     setLegacyAddress(null);
     setCopied(false);
@@ -177,13 +239,28 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
     setDeclared(false);
   }
 
-  // Détermine le flux : consulte d'abord l'adresse mutualisée (404 = actif non géré via
-  // ce flux) avant de retomber sur la génération classique — évite de dupliquer, côté
-  // frontend, la liste des actifs concernés.
+  // Demande de crédit : toujours une adresse individuelle générée à la demande, jamais le
+  // circuit d'adresse mutualisée ci-dessous (même comportement que l'ancien composant
+  // dédié qu'il remplace, ApprovedCreditRequestDeposit). Dépôt général : consulte d'abord
+  // l'adresse mutualisée (404 = actif non géré via ce flux) avant de retomber sur la
+  // génération classique — évite de dupliquer, côté frontend, la liste des actifs
+  // concernés.
   async function handleContinue() {
     setLoading(true);
     setError(null);
     try {
+      if (mode === "creditRequest" && approvedCreditRequest) {
+        const wallet = await api.generateRequestDepositAddress(
+          approvedCreditRequest.id,
+          chain as Chain,
+          currency as AcceptedCurrency,
+        );
+        setLegacyAddress(wallet.address);
+        setStep("creditRequest");
+        onSuccess();
+        return;
+      }
+
       const managed = await api.getManagedDepositAddress(
         currency as AcceptedCurrency,
         chain as Chain,
@@ -249,14 +326,44 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
         <DialogHeader>
           <DialogTitle>{t("deposit.dialogTitle")}</DialogTitle>
           <DialogDescription>
-            {step === "select" && t("deposit.descriptionSelect")}
+            {step === "select" &&
+              (mode === "creditRequest" ? t("deposit.descriptionCreditRequest") : t("deposit.descriptionSelect"))}
             {step === "pool" && t("deposit.descriptionPool")}
             {step === "legacy" && t("deposit.descriptionLegacy")}
+            {step === "creditRequest" && t("deposit.descriptionCreditRequest")}
           </DialogDescription>
         </DialogHeader>
 
         {step === "select" && (
           <div className="flex flex-col gap-4">
+            {approvedCreditRequest && (
+              <div className="flex gap-1.5 rounded-lg border border-border/60 bg-muted/30 p-1">
+                <button
+                  type="button"
+                  onClick={() => setMode("creditRequest")}
+                  className={`flex-1 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                    mode === "creditRequest"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {t("deposit.modeCreditRequest", {
+                    amount: formatUsd(approvedCreditRequest.collateralAmount),
+                  })}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMode("general")}
+                  className={`flex-1 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                    mode === "general"
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {t("deposit.modeGeneral")}
+                </button>
+              </div>
+            )}
             <div className="grid gap-2">
               <Label>{t("deposit.assetLabel")}</Label>
               <AssetList value={currency} onChange={setCurrency} groups={DEPOSIT_CURRENCY_GROUPS} />
@@ -364,6 +471,30 @@ function DepositDialog({ userId, onSuccess }: { userId: string; onSuccess: () =>
               {t("deposit.legacyNote", {
                 currency: currencyLabel(currency),
                 chain: CHAIN_LABELS[chain],
+              })}
+            </p>
+          </div>
+        )}
+
+        {step === "creditRequest" && legacyAddress && approvedCreditRequest && (
+          <div className="flex flex-col gap-2">
+            <Label>{t("deposit.legacyAddressLabel")}</Label>
+            <div className="flex items-center gap-2 rounded-lg border bg-muted/40 px-3 py-2">
+              <code className="flex-1 truncate text-xs">{legacyAddress}</code>
+              <Button
+                type="button"
+                size="icon-sm"
+                variant="ghost"
+                onClick={() => handleCopy(legacyAddress)}
+              >
+                {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              {t("deposit.creditRequestNote", {
+                currency: currencyLabel(currency),
+                chain: CHAIN_LABELS[chain],
+                amount: formatUsd(approvedCreditRequest.collateralAmount),
               })}
             </p>
           </div>

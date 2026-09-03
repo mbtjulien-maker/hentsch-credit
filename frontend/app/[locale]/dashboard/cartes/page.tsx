@@ -1,30 +1,7 @@
-"use client";
-
-import { AlertTriangle } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Skeleton } from "@/components/ui/skeleton";
 import { CardsSection } from "@/components/dashboard/cards-section";
-import { useSectionData } from "@/components/dashboard/use-section-data";
-import { api } from "@/lib/api";
 
+// Système de carte "à venir prochainement" (cf. §6 CLAUDE.md entrée #46) — plus de fetch
+// de cartes ici, CardsSection n'affiche plus qu'une mention d'indisponibilité.
 export default function CartesPage() {
-  const t = useTranslations("Dashboard.cardsPage");
-  const { data: cards, loading, error } = useSectionData((userId) => api.listCards(userId));
-
-  if (error) {
-    return (
-      <Alert variant="destructive">
-        <AlertTriangle className="size-4" />
-        <AlertTitle>{t("loadError")}</AlertTitle>
-        <AlertDescription>{error}</AlertDescription>
-      </Alert>
-    );
-  }
-
-  if (loading || !cards) {
-    return <Skeleton className="h-64 w-full" />;
-  }
-
-  return <CardsSection cards={cards} />;
+  return <CardsSection />;
 }

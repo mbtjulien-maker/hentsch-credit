@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CircleUserRound } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
@@ -131,10 +132,11 @@ export function SiteNav() {
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <Link
             href="/login"
-            className="shrink-0 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md sm:text-sm"
+            aria-label={t("connexionLong")}
+            title={t("connexionLong")}
+            className="flex shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 p-2 text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
           >
-            <span className="sm:hidden">{t("connexionShort")}</span>
-            <span className="hidden sm:inline">{t("connexionLong")}</span>
+            <CircleUserRound className="size-5" />
           </Link>
           <LanguageSwitcher />
           <ThemeToggle />

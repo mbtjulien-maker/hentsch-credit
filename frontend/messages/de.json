@@ -105,7 +105,7 @@
       "badge": "Direktanlage · Offen für verifizierte Konten",
       "titleLine1": "Ihr Kapital arbeitet,",
       "titleHighlight": "ohne je als Sicherheit zu dienen",
-      "subtitle": "Sechs Strategien zur Auswahl — von der RWA-Treasury bis zu Tech-Aktienkörben — mit einer echten täglichen Rendite, nie erfunden.",
+      "subtitle": "Sechs Strategien zur Auswahl, von der RWA-Treasury bis zu Tech-Aktienkörben, mit einer echten täglichen Rendite, nie erfunden.",
       "statValue": "8-14 %",
       "statCaption": "indikatives Jahresrenditeziel, RWA-Strategie",
       "statDisclaimer": "Indikatives Ziel, niemals eine Garantie",
@@ -715,7 +715,7 @@
       "profile": "Profil",
       "support": "Support"
     },
-    "clientAreaNote": "Das interne Back-Office ist oben nicht aufgeführt: Sein Inhalt hängt von Ihrer Rolle im Konto ab und ist nur autorisierten Konten zugänglich. Die oben aufgeführten Seiten des Kundenbereichs erfordern die Anmeldung mit einem verifizierten Konto — ihr tatsächlicher Inhalt (Guthaben, Kredit, Verlauf) ist für jeden Kunden individuell."
+    "clientAreaNote": "Das interne Back-Office ist oben nicht aufgeführt: Sein Inhalt hängt von Ihrer Rolle im Konto ab und ist nur autorisierten Konten zugänglich. Die oben aufgeführten Seiten des Kundenbereichs erfordern die Anmeldung mit einem verifizierten Konto: ihr tatsächlicher Inhalt (Guthaben, Kredit, Verlauf) ist für jeden Kunden individuell."
   },
   "Market": {
     "meta": {
@@ -1173,7 +1173,7 @@
         "credit": {
           "title": "Kredit",
           "description": "{available} verbleibend · {used} genutzt",
-          "descriptionNoCredit": "Noch keine aktive Linie — beantragen Sie einen Kredit im Bereich Kredit."
+          "descriptionNoCredit": "Noch keine aktive Linie, beantragen Sie einen Kredit im Bereich Kredit."
         },
         "investment": {
           "title": "Investition",
@@ -1187,7 +1187,7 @@
       },
       "initialDepositBanner": {
         "title": "Ersteinzahlung erforderlich",
-        "description": "Die Kontoeröffnung erfordert eine Ersteinzahlung von {required} — bisher {deposited} erhalten. Sobald erreicht, ist dieses Kapital vollständig nutzbar (Auszahlung, Sicherheit, Ausgabe) wie jede andere Einzahlung."
+        "description": "Die Kontoeröffnung erfordert eine Ersteinzahlung von {required} (bisher {deposited} erhalten). Sobald erreicht, ist dieses Kapital vollständig nutzbar (Auszahlung, Sicherheit, Ausgabe) wie jede andere Einzahlung."
       }
     },
     "balanceCards": {
@@ -1309,7 +1309,7 @@
       "title": "Virtuelle Karten",
       "description": "Ausgabe und Verwaltung Ihrer Bankkarten.",
       "comingSoonTitle": "Demnächst verfügbar",
-      "comingSoonDescription": "Die Ausgabe von Visa-/Mastercard-Karten ist für dieses Konto noch nicht verfügbar — schauen Sie bald wieder vorbei."
+      "comingSoonDescription": "Die Ausgabe von Visa-/Mastercard-Karten ist für dieses Konto noch nicht verfügbar. Schauen Sie bald wieder vorbei."
     },
     "labels": {
       "kycStatus": {
@@ -1422,13 +1422,13 @@
       "assistant": {
         "trigger": "Support-Assistent",
         "title": "Support-Assistent",
-        "disclaimer": "KI-Assistent (OpenAI) — eine echte konversationelle KI, die Fehler machen kann: wichtige Angaben bitte prüfen.",
-        "unavailable": "KI-Assistent vorübergehend nicht verfügbar (Schlüssel im Back-Office nicht konfiguriert) — schreiben Sie uns per E-Mail.",
+        "disclaimer": "KI-Assistent (OpenAI), eine echte konversationelle KI, die Fehler machen kann: wichtige Angaben bitte prüfen.",
+        "unavailable": "KI-Assistent vorübergehend nicht verfügbar (Schlüssel im Back-Office nicht konfiguriert). Schreiben Sie uns per E-Mail.",
         "intro": "Stellen Sie unten Ihre Frage oder wählen Sie ein häufiges Thema:",
         "thinking": "Der Assistent denkt nach…",
         "placeholder": "Nachricht eingeben…",
         "genericError": "Ein Fehler ist aufgetreten, bitte erneut versuchen.",
-        "footnote": "KI-generierte Antworten — für etwas Kontospezifisches schreiben Sie uns per E-Mail.",
+        "footnote": "KI-generierte Antworten: für etwas Kontospezifisches schreiben Sie uns per E-Mail.",
         "topics": {
           "credit": "Wie hoch ist der Zinssatz beim besicherten Kredit?",
           "kyc": "Wie verifiziere ich meine Identität?",
@@ -1567,7 +1567,7 @@
       "loadError": "Guthaben konnte nicht geladen werden",
       "creditRequestPendingBanner": {
         "title": "Genehmigter Kreditantrag, Einzahlung ausstehend",
-        "description": "{amount} ({currency}) einzuzahlen, damit der Kredit automatisch vergeben wird — nutzen Sie unten die Schaltfläche „Einzahlen“."
+        "description": "{amount} ({currency}) einzuzahlen, damit der Kredit automatisch vergeben wird. Nutzen Sie unten die Schaltfläche „Einzahlen“."
       }
     },
     "creditPage": {
@@ -1694,7 +1694,7 @@
       "advisor": {
         "trigger": "Meine Rendite simulieren",
         "title": "Anlagesimulator",
-        "description": "Ein Rechner und ein Fragebogen, die Ihnen bei der Entscheidung helfen — niemals eine persönliche Beratung oder eine konversationelle KI.",
+        "description": "Ein Rechner und ein Fragebogen, die Ihnen bei der Entscheidung helfen, niemals eine persönliche Beratung oder eine konversationelle KI.",
         "tabs": {
           "simulator": "Simulator",
           "quiz": "Mein Profil",
@@ -1766,7 +1766,7 @@
           },
           "allocationRwa": "RWA-Strategie: {pct}%",
           "allocationStock": "{basket}: {pct}%",
-          "disclaimer": "Ein indikativer Vorschlag auf Basis Ihrer Antworten, niemals eine persönliche Anlageberatung noch eine automatisch angewendete Aufteilung — die Entscheidung und die Anlage der gewählten Beträge liegen bei Ihnen."
+          "disclaimer": "Ein indikativer Vorschlag auf Basis Ihrer Antworten, niemals eine persönliche Anlageberatung noch eine automatisch angewendete Aufteilung: die Entscheidung und die Anlage der gewählten Beträge liegen bei Ihnen."
         },
         "faq": {
           "difference": {
@@ -1830,7 +1830,7 @@
       },
       "wallet": {
         "title": "Investment-Wallet",
-        "description": "Ein vom Hauptguthaben getrenntes Guthaben, das Ihren Anlagen gewidmet ist. Füllen Sie es per interner Überweisung aus Ihrem Hauptguthaben auf — dieselben Einzahlungsadressen und akzeptierten Vermögenswerte, unverändert.",
+        "description": "Ein vom Hauptguthaben getrenntes Guthaben, das Ihren Anlagen gewidmet ist. Füllen Sie es per interner Überweisung aus Ihrem Hauptguthaben auf (dieselben Einzahlungsadressen und akzeptierten Vermögenswerte, unverändert).",
         "mainBalance": "Hauptguthaben",
         "walletBalance": "Investment-Wallet",
         "directionIn": "Zum Wallet",
@@ -1857,19 +1857,19 @@
         "maturityDate": "Fälligkeit",
         "estimatedReturn": "Ziel bei Fälligkeit"
       },
-      "confirmDepositRecap": "{amount} werden im Korb „{basket}“ angelegt — jederzeit vollständig abhebbar, im Gegensatz zu einem Festlaufzeitplan.",
+      "confirmDepositRecap": "{amount} werden im Korb „{basket}“ angelegt (jederzeit vollständig abhebbar, im Gegensatz zu einem Festlaufzeitplan).",
       "confirmDeposit": "Anlage bestätigen"
     },
     "kycDossier": {
       "title": "KYC-Dossier",
-      "description": "Vervollständigen und übermitteln Sie Ihr Identifizierungsdossier zur Kontoeröffnung — angelehnt an das regulatorische AML/CFT-Formular.",
+      "description": "Vervollständigen und übermitteln Sie Ihr Identifizierungsdossier zur Kontoeröffnung, angelehnt an das regulatorische AML/CFT-Formular.",
       "genericError": "Ein Fehler ist aufgetreten.",
       "saveSuccess": "Dossier gespeichert.",
       "submitSuccess": "Dossier zur Prüfung eingereicht.",
-      "notSubmittedNote": "Dossier noch nicht eingereicht — füllen Sie die untenstehenden Abschnitte aus und bestätigen Sie die Erklärung.",
+      "notSubmittedNote": "Dossier noch nicht eingereicht: füllen Sie die untenstehenden Abschnitte aus und bestätigen Sie die Erklärung.",
       "pendingReviewNote": "Eingereicht am {date}, Prüfung durch einen Berater steht noch aus.",
       "reviewedValidNote": "Genehmigt am {date}.",
-      "reviewedRejectedNote": "Abgelehnt am {date} — bitte erneut vervollständigen.",
+      "reviewedRejectedNote": "Abgelehnt am {date}. Bitte erneut vervollständigen.",
       "decisionLabels": {
         "VALIDE": "Genehmigt",
         "REFUSE": "Abgelehnt"
@@ -2032,7 +2032,7 @@
     "termsAcceptance": {
       "readFull": "Vollständige AGB lesen →",
       "credit": {
-        "summary": "Mit dieser Anfrage verpfänden Sie den angegebenen Betrag als Sicherheit: Es wird Ihnen ein Kredit in Höhe von 350% dieses Betrags zu 13,5%/Jahr (USD) bzw. 12%/Jahr (EUR) gewährt, zuzüglich 2% Bearbeitungsgebühr bei Auszahlung. Die Sicherheit bleibt gesperrt, bis der genutzte Kredit vollständig zurückgezahlt ist, und kann automatisch liquidiert werden, wenn ihr Wert seit Einbuchung um 50% fällt (Warnung ab 30%) — bereits genutzter Kredit bliebe auch nach Liquidation der Sicherheit geschuldet.",
+        "summary": "Mit dieser Anfrage verpfänden Sie den angegebenen Betrag als Sicherheit: Es wird Ihnen ein Kredit in Höhe von 350% dieses Betrags zu 13,5%/Jahr (USD) bzw. 12%/Jahr (EUR) gewährt, zuzüglich 2% Bearbeitungsgebühr bei Auszahlung. Die Sicherheit bleibt gesperrt, bis der genutzte Kredit vollständig zurückgezahlt ist, und kann automatisch liquidiert werden, wenn ihr Wert seit Einbuchung um 50% fällt (Warnung ab 30%): bereits genutzter Kredit bliebe auch nach Liquidation der Sicherheit geschuldet.",
         "checkboxLabel": "Ich habe die AGB zum besicherten Kredit gelesen und stimme ihnen zu."
       },
       "investment": {
@@ -2140,7 +2140,7 @@
       },
       "fixedTermLock": {
         "question": "Kann ich einen Festlaufzeitplan vor Fälligkeit abheben?",
-        "answer": "Nein, nach Bestätigung der Einzahlung ist keine vorzeitige Abhebung möglich — die Mittel (Kapital + aufgelaufene Rendite) werden bei der gewählten Fälligkeit automatisch ausgezahlt, ohne dass Sie etwas tun müssen."
+        "answer": "Nein, nach Bestätigung der Einzahlung ist keine vorzeitige Abhebung möglich: die Mittel (Kapital + aufgelaufene Rendite) werden bei der gewählten Fälligkeit automatisch ausgezahlt, ohne dass Sie etwas tun müssen."
       },
       "howComputed": {
         "question": "Wie wird die angezeigte Rendite berechnet?",
@@ -2148,12 +2148,12 @@
       },
       "riskLevels": {
         "question": "Was bedeutet die angezeigte Risikostufe?",
-        "answer": "Eine indikative Einstufung auf einer Skala von 1 bis 5 (eine redaktionelle Annahme, nie ein live aus gemessener Volatilität berechneter Wert), vom vorsichtigsten bis zum dynamischsten — sie hilft Ihnen, Körbe und Pläne miteinander zu vergleichen."
+        "answer": "Eine indikative Einstufung auf einer Skala von 1 bis 5 (eine redaktionelle Annahme, nie ein live aus gemessener Volatilität berechneter Wert), vom vorsichtigsten bis zum dynamischsten, um Ihnen zu helfen, Körbe und Pläne miteinander zu vergleichen."
       }
     },
     "ctaLogin": "Zu meinem Konto",
     "ctaNoAccount": "Sie haben einen Einladungscode? Konto erstellen",
-    "basketsIntro": "Jeder Korb hat seine eigene Zusammensetzung, sein eigenes Risikoniveau und sein eigenes indikatives Renditeziel — keine Hierarchie zwischen ihnen, eine gewisse Überschneidung der Titel zwischen einigen Körben ist bewusst in Kauf genommen.",
+    "basketsIntro": "Jeder Korb hat seine eigene Zusammensetzung, sein eigenes Risikoniveau und sein eigenes indikatives Renditeziel, ohne Hierarchie zwischen ihnen: eine gewisse Überschneidung der Titel zwischen einigen Körben ist bewusst in Kauf genommen.",
     "compositionLabel": "Zusammensetzung:",
     "rwaLearnMore": "Die 3 Säulen der Strategie im Detail ansehen",
     "mechanism": {
@@ -2161,25 +2161,25 @@
       "intro": "Keine auf dieser Seite gezeigte Rendite ist ein erfundener Wert: Jeder Korb und jeder Plan stützt sich auf reale Kurse und explizite Dividendenannahmen, die täglich neu berechnet werden.",
       "accrual": {
         "title": "Täglich verzinste Rendite",
-        "body": "Jeden Tag kombiniert die angewandte Rendite ein für den Korb spezifisches indikatives Dividendenziel mit der realen Marktbewegung dieses Tages (echte Kurse, nie ein erfundener Wert). Sie wird dem Kapital des Vortages hinzugefügt, bevor die Berechnung des nächsten Tages erfolgt — und kann an einem ungünstigen Tag negativ sein."
+        "body": "Jeden Tag kombiniert die angewandte Rendite ein für den Korb spezifisches indikatives Dividendenziel mit der realen Marktbewegung dieses Tages (echte Kurse, nie ein erfundener Wert). Sie wird dem Kapital des Vortages hinzugefügt, bevor die Berechnung des nächsten Tages erfolgt, und kann an einem ungünstigen Tag negativ sein."
       },
       "wallet": {
         "title": "Ein eigenes Guthaben für Investments",
-        "body": "Angelegte Mittel stammen aus einem Investment-Wallet, das von Ihrem Hauptguthaben getrennt ist. Sie überweisen intern Geld dorthin, bevor Sie es anlegen können — niemals eine direkte On-Chain-Einzahlung in dieses Wallet."
+        "body": "Angelegte Mittel stammen aus einem Investment-Wallet, das von Ihrem Hauptguthaben getrennt ist. Sie überweisen intern Geld dorthin, bevor Sie es anlegen können: niemals eine direkte On-Chain-Einzahlung in dieses Wallet."
       },
       "twoModes": {
         "title": "Zwei Anlageformen",
-        "body": "Die sechs Körbe unten können jederzeit ohne Vorankündigung vollständig abgehoben werden. Die sechs Festlaufzeitpläne hingegen sperren die Mittel bis zu ihrer Fälligkeit (3, 6 oder 12 Monate) — keine vorzeitige Abhebung möglich, dafür eine vordefinierte Zusammensetzung."
+        "body": "Die sechs Körbe unten können jederzeit ohne Vorankündigung vollständig abgehoben werden. Die sechs Festlaufzeitpläne hingegen sperren die Mittel bis zu ihrer Fälligkeit (3, 6 oder 12 Monate), ohne vorzeitige Abhebung, dafür mit einer vordefinierten Zusammensetzung."
       }
     },
     "fixedTermTitle": "Sechs Festlaufzeitpläne",
     "fixedTermIntro": "Eine zweite Anlageform neben den obigen Körben: Jeder Plan kombiniert Titel, die bereits in unseren Körben enthalten sind (manchmal miteinander gemischt oder mit Engagement in der RWA-Strategie), gesperrt bis zur gewählten Fälligkeit.",
-    "fixedTermNote": "Nach Kontoeröffnung tatsächlich über Ihren Kundenbereich zeichenbar — nach Bestätigung der Einzahlung ist keine vorzeitige Abhebung möglich.",
+    "fixedTermNote": "Nach Kontoeröffnung tatsächlich über Ihren Kundenbereich zeichenbar. Nach Bestätigung der Einzahlung ist keine vorzeitige Abhebung möglich.",
     "indicativeSuffix": "indikativ"
   },
   "InviteSignup": {
     "meta": {
-      "title": "Konto erstellen — Einladungscode",
+      "title": "Konto mit Einladungscode erstellen",
       "description": "Geben Sie Ihren Einladungscode ein, um Ihr Hentsch-Credit-Konto zu erstellen und Ihre KYC-Unterlagen Schritt für Schritt zu vervollständigen."
     },
     "eyebrow": "Zugang nur auf Einladung",
@@ -2197,7 +2197,7 @@
     "code": {
       "label": "Einladungscode",
       "placeholder": "XXXX-XXXX-JJJJ",
-      "hint": "Von Ihrem Berater übermittelt — einmalig gültig, 24h nach Erstellung.",
+      "hint": "Von Ihrem Berater übermittelt: einmalig gültig, 24h nach Erstellung.",
       "cta": "Code bestätigen",
       "accountTypeNote": "Dieser Code eröffnet ein {type}-Konto",
       "accountTypeParticulier": "Privat",

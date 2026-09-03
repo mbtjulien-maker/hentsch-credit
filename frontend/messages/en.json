@@ -105,7 +105,7 @@
       "badge": "Direct investment · Open to verified accounts",
       "titleLine1": "Your capital, put to work,",
       "titleHighlight": "never used as collateral",
-      "subtitle": "Six strategies to choose from — from RWA treasury to tech-stock baskets — with a real daily return, never fabricated.",
+      "subtitle": "Six strategies to choose from, from RWA treasury to tech-stock baskets, with a real daily return, never fabricated.",
       "statValue": "8-14%",
       "statCaption": "indicative annual return target, RWA strategy",
       "statDisclaimer": "Indicative target, never a guarantee",
@@ -715,7 +715,7 @@
       "profile": "Profile",
       "support": "Support"
     },
-    "clientAreaNote": "The internal back-office is not listed above: its content depends on your role on the account and is only accessible to authorised accounts. The client-area pages listed above require signing in with a verified account — their actual content (balances, credit, history) is specific to each client."
+    "clientAreaNote": "The internal back-office is not listed above: its content depends on your role on the account and is only accessible to authorised accounts. The client-area pages listed above require signing in with a verified account: their actual content (balances, credit, history) is specific to each client."
   },
   "Market": {
     "meta": {
@@ -1173,7 +1173,7 @@
         "credit": {
           "title": "Credit",
           "description": "{available} remaining · {used} used",
-          "descriptionNoCredit": "No active line yet — request credit from the Credit tab."
+          "descriptionNoCredit": "No active line yet, request credit from the Credit tab."
         },
         "investment": {
           "title": "Investment",
@@ -1187,7 +1187,7 @@
       },
       "initialDepositBanner": {
         "title": "Initial deposit required",
-        "description": "Opening your account requires an initial deposit of {required} — {deposited} received so far. Once reached, this capital is fully usable (withdrawal, collateral, spending) like any other deposit."
+        "description": "Opening your account requires an initial deposit of {required} ({deposited} received so far). Once reached, this capital is fully usable (withdrawal, collateral, spending) like any other deposit."
       }
     },
     "balanceCards": {
@@ -1309,7 +1309,7 @@
       "title": "Virtual cards",
       "description": "Issuance and management of your bank cards.",
       "comingSoonTitle": "Coming soon",
-      "comingSoonDescription": "Visa/Mastercard issuance is not yet open on this account — check back soon."
+      "comingSoonDescription": "Visa/Mastercard issuance is not yet open on this account. Check back soon."
     },
     "labels": {
       "kycStatus": {
@@ -1422,13 +1422,13 @@
       "assistant": {
         "trigger": "Support assistant",
         "title": "Support assistant",
-        "disclaimer": "AI assistant (OpenAI) — a real conversational AI, which can make mistakes: double-check anything important.",
-        "unavailable": "AI assistant temporarily unavailable (key not configured on the back office) — please email us instead.",
+        "disclaimer": "AI assistant (OpenAI), a real conversational AI which can make mistakes: double-check anything important.",
+        "unavailable": "AI assistant temporarily unavailable (key not configured on the back office). Please email us instead.",
         "intro": "Ask your question below, or pick a common topic:",
         "thinking": "The assistant is thinking…",
         "placeholder": "Type your message…",
         "genericError": "Something went wrong, please try again.",
-        "footnote": "AI-generated answers — for anything specific to your account, email us instead.",
+        "footnote": "AI-generated answers: for anything specific to your account, email us instead.",
         "topics": {
           "credit": "What's the interest rate on collateralized credit?",
           "kyc": "How do I verify my identity?",
@@ -1567,7 +1567,7 @@
       "loadError": "Unable to load the balance",
       "creditRequestPendingBanner": {
         "title": "Approved credit request, deposit pending",
-        "description": "{amount} ({currency}) to deposit for the credit to be issued automatically — use the \"Deposit\" button below."
+        "description": "{amount} ({currency}) to deposit for the credit to be issued automatically. Use the \"Deposit\" button below."
       }
     },
     "creditPage": {
@@ -1694,7 +1694,7 @@
       "advisor": {
         "trigger": "Simulate my returns",
         "title": "Investment simulator",
-        "description": "A calculator and a questionnaire to help you decide — never personalized advice, nor a conversational AI.",
+        "description": "A calculator and a questionnaire to help you decide, never personalized advice, nor a conversational AI.",
         "tabs": {
           "simulator": "Simulator",
           "quiz": "My profile",
@@ -1766,7 +1766,7 @@
           },
           "allocationRwa": "RWA strategy: {pct}%",
           "allocationStock": "{basket}: {pct}%",
-          "disclaimer": "An indicative suggestion based on your answers, never personalized investment advice nor an allocation applied automatically — it's up to you to decide and invest the amounts you choose."
+          "disclaimer": "An indicative suggestion based on your answers, never personalized investment advice nor an allocation applied automatically: it's up to you to decide and invest the amounts you choose."
         },
         "faq": {
           "difference": {
@@ -1830,7 +1830,7 @@
       },
       "wallet": {
         "title": "Investment wallet",
-        "description": "A balance separate from your main balance, dedicated to your placements. Fund it via internal transfer from your main balance — same deposit addresses and accepted assets, unchanged.",
+        "description": "A balance separate from your main balance, dedicated to your placements. Fund it via internal transfer from your main balance (same deposit addresses and accepted assets, unchanged).",
         "mainBalance": "Main balance",
         "walletBalance": "Investment wallet",
         "directionIn": "To the wallet",
@@ -1857,19 +1857,19 @@
         "maturityDate": "Maturity",
         "estimatedReturn": "Target at maturity"
       },
-      "confirmDepositRecap": "{amount} will be placed in the \"{basket}\" basket — full withdrawal is possible at any time, unlike a fixed-term plan.",
+      "confirmDepositRecap": "{amount} will be placed in the \"{basket}\" basket (full withdrawal is possible at any time, unlike a fixed-term plan).",
       "confirmDeposit": "Confirm placement"
     },
     "kycDossier": {
       "title": "KYC file",
-      "description": "Complete and submit your identification file for account opening — inspired by the AML/CFT regulatory form.",
+      "description": "Complete and submit your identification file for account opening, inspired by the AML/CFT regulatory form.",
       "genericError": "Something went wrong.",
       "saveSuccess": "File saved.",
       "submitSuccess": "File submitted for review.",
-      "notSubmittedNote": "File not submitted yet — fill in the sections below, then confirm the attestation.",
+      "notSubmittedNote": "File not submitted yet: fill in the sections below, then confirm the attestation.",
       "pendingReviewNote": "Submitted on {date}, awaiting review by an advisor.",
       "reviewedValidNote": "Approved on {date}.",
-      "reviewedRejectedNote": "Rejected on {date} — please complete it again.",
+      "reviewedRejectedNote": "Rejected on {date}. Please complete it again.",
       "decisionLabels": {
         "VALIDE": "Approved",
         "REFUSE": "Rejected"
@@ -2032,7 +2032,7 @@
     "termsAcceptance": {
       "readFull": "Read the full Terms →",
       "credit": {
-        "summary": "By submitting this request, you pledge the stated amount as collateral: credit equal to 350% of that amount is granted at 13.5%/yr (USD) or 12%/yr (EUR), with a 2% origination fee charged at issuance. The collateral stays locked until used credit is repaid in full, and can be automatically liquidated if its value drops 50% from entry (warning from 30%) — credit already used would still be owed even after the collateral is liquidated.",
+        "summary": "By submitting this request, you pledge the stated amount as collateral: credit equal to 350% of that amount is granted at 13.5%/yr (USD) or 12%/yr (EUR), with a 2% origination fee charged at issuance. The collateral stays locked until used credit is repaid in full, and can be automatically liquidated if its value drops 50% from entry (warning from 30%): credit already used would still be owed even after the collateral is liquidated.",
         "checkboxLabel": "I have read and agree to the Terms of Service governing collateralized credit."
       },
       "investment": {
@@ -2140,7 +2140,7 @@
       },
       "fixedTermLock": {
         "question": "Can I withdraw a fixed-term plan before maturity?",
-        "answer": "No, no early withdrawal is possible once the deposit is confirmed — funds (principal + accrued return) are automatically paid out at the chosen maturity, with no action needed from you."
+        "answer": "No, no early withdrawal is possible once the deposit is confirmed: funds (principal + accrued return) are automatically paid out at the chosen maturity, with no action needed from you."
       },
       "howComputed": {
         "question": "How is the displayed return calculated?",
@@ -2148,12 +2148,12 @@
       },
       "riskLevels": {
         "question": "What does the displayed risk level mean?",
-        "answer": "An indicative classification on a scale of 1 to 5 (an editorial assumption, never a score calculated live from measured volatility), from the most conservative to the most dynamic — it helps you compare baskets and plans against each other."
+        "answer": "An indicative classification on a scale of 1 to 5 (an editorial assumption, never a score calculated live from measured volatility), from the most conservative to the most dynamic, to help you compare baskets and plans against each other."
       }
     },
     "ctaLogin": "Access my account",
     "ctaNoAccount": "Have an invitation code? Create my account",
-    "basketsIntro": "Each basket has its own composition, its own risk level and its own indicative return target — no hierarchy between them, some overlap in holdings between baskets is expected.",
+    "basketsIntro": "Each basket has its own composition, its own risk level and its own indicative return target, with no hierarchy between them: some overlap in holdings between baskets is expected.",
     "compositionLabel": "Composition:",
     "rwaLearnMore": "See the 3 pillars of the strategy in detail",
     "mechanism": {
@@ -2161,25 +2161,25 @@
       "intro": "No return shown on this page is a made-up figure: every basket and plan relies on real prices and explicit dividend assumptions, recalculated every day.",
       "accrual": {
         "title": "Daily compounded return",
-        "body": "Each day, the return applied combines an indicative dividend target specific to the basket and the real market move that day (real prices, never an invented figure). It's added to the previous day's capital before the next day's calculation — and can be negative on an unfavorable day."
+        "body": "Each day, the return applied combines an indicative dividend target specific to the basket and the real market move that day (real prices, never an invented figure). It's added to the previous day's capital before the next day's calculation, and can be negative on an unfavorable day."
       },
       "wallet": {
         "title": "A dedicated investment balance",
-        "body": "Invested funds come from an investment wallet separate from your main balance. You transfer money into it internally before you can invest it — never a direct on-chain deposit into this wallet."
+        "body": "Invested funds come from an investment wallet separate from your main balance. You transfer money into it internally before you can invest it: never a direct on-chain deposit into this wallet."
       },
       "twoModes": {
         "title": "Two ways to invest",
-        "body": "The six baskets below can be withdrawn in full at any time, with no notice. The six fixed-term plans, on the other hand, lock funds until their maturity (3, 6 or 12 months) — no early withdrawal possible, in exchange for a predefined composition."
+        "body": "The six baskets below can be withdrawn in full at any time, with no notice. The six fixed-term plans, on the other hand, lock funds until their maturity (3, 6 or 12 months), with no early withdrawal possible, in exchange for a predefined composition."
       }
     },
     "fixedTermTitle": "Six fixed-term plans",
     "fixedTermIntro": "A second way to invest, alongside the baskets above: each plan combines holdings already covered by our baskets (sometimes mixed together, or with exposure to the RWA strategy), locked until the chosen maturity.",
-    "fixedTermNote": "Actually available to subscribe from your client area, once your account is open — no early withdrawal is possible once the deposit is confirmed.",
+    "fixedTermNote": "Actually available to subscribe from your client area, once your account is open. No early withdrawal is possible once the deposit is confirmed.",
     "indicativeSuffix": "indicative"
   },
   "InviteSignup": {
     "meta": {
-      "title": "Create my account — invitation code",
+      "title": "Create my account with an invitation code",
       "description": "Enter your invitation code to create your Hentsch Credit account and complete your KYC file step by step."
     },
     "eyebrow": "Invitation-only access",
@@ -2197,7 +2197,7 @@
     "code": {
       "label": "Invitation code",
       "placeholder": "XXXX-XXXX-YYYY",
-      "hint": "Sent by your advisor — single use, valid for 24h after it is generated.",
+      "hint": "Sent by your advisor: single use, valid for 24h after it is generated.",
       "cta": "Validate code",
       "accountTypeNote": "This code opens a {type} account",
       "accountTypeParticulier": "personal",

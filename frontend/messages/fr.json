@@ -56,7 +56,7 @@
   "Home": {
     "meta": {
       "title": "Hentsch Credit · Crédit crypto-collatéralisé",
-      "description": "350% du montant mis en gage débloqué en pouvoir d'achat immédiat. Or, argent et ETH génèrent un rendement réel qui rembourse automatiquement une partie de votre crédit."
+      "description": "350 % du montant mis en gage débloqué en pouvoir d'achat immédiat. Or, argent et ETH génèrent un rendement réel qui rembourse automatiquement une partie de votre crédit."
     },
     "badge": "Gestion de fortune régulée · Accès réservé, sur invitation",
     "titleLine1": "Votre or et votre argent",
@@ -76,7 +76,7 @@
       },
       "yield": {
         "title": "Rendement du gage",
-        "description": "Or, argent et ETH remboursent jusqu'à 60% de votre crédit, automatiquement."
+        "description": "Or, argent et ETH remboursent jusqu'à 60 % de votre crédit, automatiquement."
       },
       "rwa": {
         "title": "Stratégie d'investissement RWA",
@@ -105,7 +105,7 @@
       "badge": "Investissement direct · Ouvert aux comptes vérifiés",
       "titleLine1": "Votre capital, mis au travail,",
       "titleHighlight": "sans jamais servir de gage",
-      "subtitle": "Six stratégies au choix — de la trésorerie RWA aux paniers d'actions technologiques — avec un rendement quotidien réel, jamais fabriqué.",
+      "subtitle": "Six stratégies au choix, de la trésorerie RWA aux paniers d'actions technologiques, avec un rendement quotidien réel, jamais fabriqué.",
       "statValue": "8-14 %",
       "statCaption": "objectif indicatif de rendement annuel, stratégie RWA",
       "statDisclaimer": "Objectif indicatif, jamais une garantie",
@@ -134,7 +134,7 @@
       },
       "credit": {
         "title": "3. Crédit accordé automatiquement",
-        "description": "350% du montant déposé, débloqué dès que votre demande est validée (moins 2% de frais d'origination, prélevés une fois)."
+        "description": "350 % du montant déposé, débloqué dès que votre demande est validée (moins 2 % de frais d'origination, prélevés une fois)."
       },
       "spend": {
         "title": "4. Dépensez sur votre carte",
@@ -142,7 +142,7 @@
       },
       "repay": {
         "title": "5. Remboursez pour libérer le gage",
-        "description": "Jusqu'à 60% remboursé automatiquement par le rendement du gage ; le reste par apport personnel. À l'inverse, une forte baisse du gage peut entraîner sa liquidation."
+        "description": "Jusqu'à 60 % remboursé automatiquement par le rendement du gage ; le reste par apport personnel. À l'inverse, une forte baisse du gage peut entraîner sa liquidation."
       }
     },
     "feesNote": "Le détail des taux et frais réels vit sur la page <pricing>Tarifs</pricing>, et le détail du remboursement automatique, y compris le risque de liquidation en cas de forte baisse du gage, sur la page <yield>Rendement</yield>.",
@@ -715,7 +715,7 @@
       "profile": "Profil",
       "support": "Support"
     },
-    "clientAreaNote": "Le back-office de gestion interne ne figure pas ci-dessus : son contenu dépend de votre rôle sur le compte et n'est accessible qu'aux comptes autorisés. Les pages de l'espace client listées ci-dessus nécessitent une connexion avec un compte vérifié — leur contenu réel (soldes, crédit, historique) est propre à chaque client."
+    "clientAreaNote": "Le back-office de gestion interne ne figure pas ci-dessus : son contenu dépend de votre rôle sur le compte et n'est accessible qu'aux comptes autorisés. Les pages de l'espace client listées ci-dessus nécessitent une connexion avec un compte vérifié : leur contenu réel (soldes, crédit, historique) est propre à chaque client."
   },
   "Market": {
     "meta": {
@@ -787,8 +787,8 @@
         "description": "Chaque hausse réelle constatée depuis le dépôt réduit automatiquement le crédit utilisé."
       },
       "repaid": {
-        "title": "3. Jusqu'à 60% du crédit remboursé sans y penser",
-        "description": "Le reste (40% minimum) se rembourse par apport personnel, comme pour tout autre actif."
+        "title": "3. Jusqu'à 60 % du crédit remboursé sans y penser",
+        "description": "Le reste (40 % minimum) se rembourse par apport personnel, comme pour tout autre actif."
       }
     },
     "stablecoinsReminder": "Les stablecoins (USDT, USDC, DAI…) restent 1:1 USD : leur crédit se rembourse entièrement par apport personnel, sans rendement automatique."
@@ -802,11 +802,11 @@
   "Yield": {
     "meta": {
       "title": "Rendement du gage · Hentsch Credit",
-      "description": "Comment l'or, l'argent et l'ETH déposés en garantie remboursent automatiquement jusqu'à 60% de votre crédit, et le risque de liquidation en cas de forte baisse."
+      "description": "Comment l'or, l'argent et l'ETH déposés en garantie remboursent automatiquement jusqu'à 60 % de votre crédit, et le risque de liquidation en cas de forte baisse."
     },
     "eyebrow": "Notre différence",
     "title": "Les seuls gages qui remboursent une partie de votre crédit à votre place",
-    "description": "Or, argent et ETH génèrent un rendement réel, réinjecté automatiquement dans votre crédit, jusqu'à 60% remboursé sans y penser.",
+    "description": "Or, argent et ETH génèrent un rendement réel, réinjecté automatiquement dans votre crédit, jusqu'à 60 % remboursé sans y penser.",
     "eligibleAssetsTitle": "Tous les actifs éligibles",
     "eligibleAssetsIntro": "Huit actifs bénéficient du même mécanisme réel de remboursement automatique par plus-value, pas seulement l'or, l'argent et l'ETH mis en avant plus haut.",
     "table": {
@@ -819,7 +819,7 @@
       "stablecoins": "Stablecoins",
       "none": "Aucun",
       "notEligible": "Non éligibles (valeur fixe ou trop volatile*)",
-      "rwaTarget": "8 à 14% APY (<link>détail sur Stratégie RWA</link>)"
+      "rwaTarget": "8 à 14 % APY (<link>détail sur Stratégie RWA</link>)"
     },
     "shibNote": "* SHIB n'est pas un stablecoin mais reste exclu du mécanisme : sa volatilité est jugée trop importante pour asseoir un remboursement récurrent fiable.",
     "dualMechanismNote": "Les métaux industriels et matières premières cumulent donc deux mécanismes distincts : le remboursement automatique réel décrit sur cette page (identique à l'or, l'argent et l'ETH), et un objectif de rendement indicatif propre à la stratégie de trésorerie de la banque sur ces actifs, présenté séparément et jamais garanti.",
@@ -893,23 +893,23 @@
     "title": "Notre stratégie d'investissement sur les métaux industriels",
     "intro": "Au-delà des métaux précieux, la banque accepte désormais en garantie des métaux industriels et matières premières tokenisés, et déploie sur ces actifs sa propre stratégie de trésorerie. Voici, en toute transparence, comment elle fonctionne et le plan d'action suivi.",
     "apyTargetLabel": "APY, objectif indicatif de la banque",
-    "apyTargetValue": "8 à 14%",
-    "apyTargetNote": "Objectif de la stratégie de trésorerie propre de la banque sur ces actifs, pas une garantie, et sans aucun effet sur le calcul de votre crédit. Le remboursement automatique de votre crédit reste celui décrit plus haut : la plus-value réelle de votre gage, plafonnée à 60%.",
+    "apyTargetValue": "8 à 14 %",
+    "apyTargetNote": "Objectif de la stratégie de trésorerie propre de la banque sur ces actifs, pas une garantie, et sans aucun effet sur le calcul de votre crédit. Le remboursement automatique de votre crédit reste celui décrit plus haut : la plus-value réelle de votre gage, plafonnée à 60 %.",
     "apyObjective": "APY objectif",
     "pillars": {
       "cashCarry": {
         "title": "Arbitrage Cash & Carry",
-        "range": "4 à 7%",
+        "range": "4 à 7 %",
         "description": "Achat du métal tokenisé sur le marché spot, vente simultanée d'un contrat à terme équivalent : la position est neutre au risque de prix et capture l'écart de financement (contango)."
       },
       "triangular": {
         "title": "Collatéralisation & prêt triangulaire",
-        "range": "6,5 à 10%",
-        "description": "Le métal tokenisé est déposé en collatéral (LTV prudent, 50% maximum) auprès d'un protocole institutionnel, pour emprunter des stablecoins réinvestis dans des fonds de trésorerie à faible risque."
+        "range": "6,5 à 10 %",
+        "description": "Le métal tokenisé est déposé en collatéral (LTV prudent, 50 % maximum) auprès d'un protocole institutionnel, pour emprunter des stablecoins réinvestis dans des fonds de trésorerie à faible risque."
       },
       "liquidity": {
         "title": "Apport de liquidité sélectionné",
-        "range": "9 à 15%",
+        "range": "9 à 15 %",
         "description": "Une part minoritaire du capital alimente des pools de liquidité ciblés, rémunérée par une fraction des frais de transaction des intervenants du marché."
       }
     },
@@ -922,27 +922,27 @@
       "impact": "Impact",
       "netTotal": "Rendement net total",
       "capital": "Capital de 10 M$",
-      "reallocationNote": "En réallouant une part de la trésorerie vers l'apport de liquidité (Pilier C), ce rendement net peut monter jusqu'à l'objectif de 10,2%, dans le haut de la fourchette indicative de 8 à 14% affichée plus haut, sans effet de levier supplémentaire ni garantie de résultat.",
+      "reallocationNote": "En réallouant une part de la trésorerie vers l'apport de liquidité (Pilier C), ce rendement net peut monter jusqu'à l'objectif de 10,2 %, dans le haut de la fourchette indicative de 8 à 14 % affichée plus haut, sans effet de levier supplémentaire ni garantie de résultat.",
       "rows": {
         "native": {
           "label": "Rendement natif du Platine (plus-value physique)",
-          "basis": "1,5% sur 10 M$"
+          "basis": "1,5 % sur 10 M$"
         },
         "basis": {
           "label": "Basis trade / contango sur futures",
-          "basis": "3,5% sur 10 M$"
+          "basis": "3,5 % sur 10 M$"
         },
         "stablecoinYield": {
           "label": "Rendement des stablecoins empruntés placés (BUIDL)",
-          "basis": "5,0% sur 5 M$"
+          "basis": "5,0 % sur 5 M$"
         },
         "borrowCost": {
           "label": "Coût de l'emprunt de stablecoins",
-          "basis": "-3,2% sur 5 M$"
+          "basis": "-3,2 % sur 5 M$"
         },
         "operational": {
           "label": "Coûts opérationnels, garde & assurance",
-          "basis": "0,4% sur 10 M$"
+          "basis": "0,4 % sur 10 M$"
         }
       }
     },
@@ -985,7 +985,7 @@
       },
       "liquidation": {
         "risk": "Liquidation du collatéral",
-        "mitigation": "Ratio de sur-collatéralisation strict (LTV ≤ 50%) avec rééquilibrage automatisé."
+        "mitigation": "Ratio de sur-collatéralisation strict (LTV ≤ 50 %) avec rééquilibrage automatisé."
       }
     },
     "governanceTitle": "Gouvernance & séparation des fonds",
@@ -1042,7 +1042,7 @@
       },
       "custodyFees": {
         "label": "Frais de garde du collatéral",
-        "value": "0,5% / an",
+        "value": "0,5 % / an",
         "detail": "Sur le montant du gage verrouillé, tant que la position reste active."
       },
       "positionDuration": {
@@ -1052,12 +1052,12 @@
       },
       "automaticRepayment": {
         "label": "Remboursement automatique",
-        "value": "jusqu'à 60%",
-        "detail": "Par la plus-value réelle du gage (or, argent, ETH, métaux industriels). Les 40% restants se remboursent par apport personnel."
+        "value": "jusqu'à 60 %",
+        "detail": "Par la plus-value réelle du gage (or, argent, ETH, métaux industriels). Les 40 % restants se remboursent par apport personnel."
       },
       "liquidationThresholds": {
         "label": "Seuils de liquidation du gage",
-        "detail": "Dépréciation depuis la valeur d'entrée : 30% déclenche une alerte, 50% liquide le gage (le crédit déjà utilisé reste dû). Détail sur la page Rendement."
+        "detail": "Dépréciation depuis la valeur d'entrée : 30 % déclenche une alerte, 50 % liquide le gage (le crédit déjà utilisé reste dû). Détail sur la page Rendement."
       }
     },
     "nonRetroactivityNote": "Un changement ultérieur de l'un de ces taux ne s'applique qu'aux nouveaux verrouillages : une position déjà ouverte conserve la structure de taux qui lui a été appliquée au moment de sa création, jusqu'à son remboursement ou son échéance.",
@@ -1187,7 +1187,7 @@
       },
       "initialDepositBanner": {
         "title": "Dépôt initial requis",
-        "description": "L'ouverture de votre compte requiert un dépôt initial de {required} — {deposited} déjà reçu à ce jour. Ce capital reste ensuite pleinement utilisable (retrait, gage, dépense) comme n'importe quel autre dépôt."
+        "description": "L'ouverture de votre compte requiert un dépôt initial de {required} ({deposited} déjà reçu à ce jour). Ce capital reste ensuite pleinement utilisable (retrait, gage, dépense) comme n'importe quel autre dépôt."
       }
     },
     "balanceCards": {
@@ -1287,7 +1287,7 @@
       },
       "acceptedSection": {
         "title": "Acceptés en garantie",
-        "yieldNote": "Rendement = plus-value du gage remboursant automatiquement jusqu'à 60% du crédit (métaux précieux, métaux industriels, ETH)"
+        "yieldNote": "Rendement = plus-value du gage remboursant automatiquement jusqu'à 60 % du crédit (métaux précieux, métaux industriels, ETH)"
       },
       "othersSection": {
         "title": "Autres cryptos (information seulement)"
@@ -1295,7 +1295,7 @@
       "badges": {
         "acceptedPegged": "Accepté · 1:1",
         "acceptedSpot": "Accepté · spot",
-        "yieldTitle": "Sa plus-value rembourse automatiquement jusqu'à 60% du crédit émis",
+        "yieldTitle": "Sa plus-value rembourse automatiquement jusqu'à 60 % du crédit émis",
         "yield": "Rendement",
         "targetApyTitle": "Objectif indicatif de la stratégie de trésorerie de la banque sur cet actif, pas une garantie, sans effet sur le calcul de votre crédit",
         "targetApy": "Objectif {min}-{max}% APY"
@@ -1309,7 +1309,7 @@
       "title": "Cartes virtuelles",
       "description": "Émission et gestion de vos cartes bancaires.",
       "comingSoonTitle": "Bientôt disponible",
-      "comingSoonDescription": "L'émission de cartes Visa/Mastercard n'est pas encore ouverte sur ce compte — revenez prochainement."
+      "comingSoonDescription": "L'émission de cartes Visa/Mastercard n'est pas encore ouverte sur ce compte. Revenez prochainement."
     },
     "labels": {
       "kycStatus": {
@@ -1422,13 +1422,13 @@
       "assistant": {
         "trigger": "Assistant support",
         "title": "Assistant support",
-        "disclaimer": "Assistant IA (OpenAI) — une vraie intelligence artificielle conversationnelle, qui peut se tromper : vérifiez les informations importantes.",
-        "unavailable": "Assistant IA momentanément indisponible (clé non configurée côté back-office) — écrivez-nous par e-mail.",
+        "disclaimer": "Assistant IA (OpenAI), une vraie intelligence artificielle conversationnelle qui peut se tromper : vérifiez les informations importantes.",
+        "unavailable": "Assistant IA momentanément indisponible (clé non configurée côté back-office). Écrivez-nous par e-mail.",
         "intro": "Posez votre question ci-dessous, ou choisissez un sujet fréquent :",
         "thinking": "L'assistant réfléchit…",
         "placeholder": "Écrivez votre message…",
         "genericError": "Une erreur est survenue, réessayez.",
-        "footnote": "Réponses générées par IA — pour un cas précis lié à votre compte, contactez-nous par e-mail.",
+        "footnote": "Réponses générées par IA : pour un cas précis lié à votre compte, contactez-nous par e-mail.",
         "topics": {
           "credit": "Quel est le taux d'intérêt du crédit gagé ?",
           "kyc": "Comment vérifier mon identité ?",
@@ -1567,7 +1567,7 @@
       "loadError": "Impossible de charger le solde",
       "creditRequestPendingBanner": {
         "title": "Demande de crédit approuvée, dépôt en attente",
-        "description": "{amount} ({currency}) à déposer pour que le crédit soit émis automatiquement — utilisez le bouton « Déposer » ci-dessous."
+        "description": "{amount} ({currency}) à déposer pour que le crédit soit émis automatiquement. Utilisez le bouton « Déposer » ci-dessous."
       }
     },
     "creditPage": {
@@ -1694,7 +1694,7 @@
       "advisor": {
         "trigger": "Simuler mes gains",
         "title": "Simulateur d'investissement",
-        "description": "Un calculateur et un questionnaire pour vous aider à choisir — jamais un conseil personnalisé, ni une intelligence artificielle conversationnelle.",
+        "description": "Un calculateur et un questionnaire pour vous aider à choisir, jamais un conseil personnalisé ni une intelligence artificielle conversationnelle.",
         "tabs": {
           "simulator": "Simulateur",
           "quiz": "Mon profil",
@@ -1731,7 +1731,7 @@
             }
           },
           "reaction": {
-            "question": "Votre placement perd 10% de sa valeur en une semaine. Vous...",
+            "question": "Votre placement perd 10 % de sa valeur en une semaine. Vous...",
             "options": {
               "sell": "Retirez immédiatement pour limiter la perte",
               "wait": "Attendez sans rien changer",
@@ -1766,7 +1766,7 @@
           },
           "allocationRwa": "Stratégie RWA : {pct}%",
           "allocationStock": "{basket} : {pct}%",
-          "disclaimer": "Une suggestion indicative basée sur vos réponses, jamais un conseil en investissement personnalisé ni une allocation appliquée automatiquement — à vous de décider et de placer vous-même les montants de votre choix."
+          "disclaimer": "Une suggestion indicative basée sur vos réponses, jamais un conseil en investissement personnalisé ni une allocation appliquée automatiquement : à vous de décider et de placer vous-même les montants de votre choix."
         },
         "faq": {
           "difference": {
@@ -1830,7 +1830,7 @@
       },
       "wallet": {
         "title": "Wallet investissement",
-        "description": "Un solde séparé du solde principal, dédié à vos placements. Alimentez-le par virement interne depuis votre solde principal — mêmes adresses de dépôt et actifs acceptés, inchangés.",
+        "description": "Un solde séparé du solde principal, dédié à vos placements. Alimentez-le par virement interne depuis votre solde principal (mêmes adresses de dépôt et actifs acceptés, inchangés).",
         "mainBalance": "Solde principal",
         "walletBalance": "Wallet investissement",
         "directionIn": "Vers le wallet",
@@ -1857,19 +1857,19 @@
         "maturityDate": "Échéance",
         "estimatedReturn": "Objectif à l'échéance"
       },
-      "confirmDepositRecap": "{amount} seront placés sur le panier « {basket} » — retrait intégral possible à tout moment, contrairement à un plan à échéance fixe.",
+      "confirmDepositRecap": "{amount} seront placés sur le panier « {basket} » (retrait intégral possible à tout moment, contrairement à un plan à échéance fixe).",
       "confirmDeposit": "Confirmer le placement"
     },
     "kycDossier": {
       "title": "Dossier KYC",
-      "description": "Complétez et soumettez votre dossier d'identification pour l'ouverture de compte — inspiré du formulaire réglementaire LCB-FT.",
+      "description": "Complétez et soumettez votre dossier d'identification pour l'ouverture de compte, inspiré du formulaire réglementaire LCB-FT.",
       "genericError": "Une erreur est survenue.",
       "saveSuccess": "Dossier enregistré.",
       "submitSuccess": "Dossier soumis pour vérification.",
-      "notSubmittedNote": "Dossier non soumis — complétez les sections ci-dessous puis validez l'attestation.",
+      "notSubmittedNote": "Dossier non soumis : complétez les sections ci-dessous puis validez l'attestation.",
       "pendingReviewNote": "Dossier soumis le {date}, en attente de vérification par un conseiller.",
       "reviewedValidNote": "Dossier validé le {date}.",
-      "reviewedRejectedNote": "Dossier refusé le {date} — merci de le compléter à nouveau.",
+      "reviewedRejectedNote": "Dossier refusé le {date}. Merci de le compléter à nouveau.",
       "decisionLabels": {
         "VALIDE": "Validé",
         "REFUSE": "Refusé"
@@ -2032,7 +2032,7 @@
     "termsAcceptance": {
       "readFull": "Lire les CGU complètes →",
       "credit": {
-        "summary": "En soumettant cette demande, vous mettez le montant indiqué en gage : un crédit de 350% de ce montant vous est accordé, au taux de 13,5%/an (USD) ou 12%/an (EUR), avec 2% de frais d'origination prélevés à l'émission. Le gage reste bloqué tant que le crédit utilisé n'est pas intégralement remboursé, et peut être liquidé automatiquement si sa valeur chute de 50% depuis son entrée (alerte dès 30%) — le crédit déjà utilisé resterait alors dû, même après liquidation du gage.",
+        "summary": "En soumettant cette demande, vous mettez le montant indiqué en gage : un crédit de 350 % de ce montant vous est accordé, au taux de 13,5 %/an (USD) ou 12 %/an (EUR), avec 2 % de frais d'origination prélevés à l'émission. Le gage reste bloqué tant que le crédit utilisé n'est pas intégralement remboursé, et peut être liquidé automatiquement si sa valeur chute de 50 % depuis son entrée (alerte dès 30 %) : le crédit déjà utilisé resterait alors dû, même après liquidation du gage.",
         "checkboxLabel": "J'ai lu et j'accepte les Conditions Générales d'Utilisation relatives au crédit gagé."
       },
       "investment": {
@@ -2140,7 +2140,7 @@
       },
       "fixedTermLock": {
         "question": "Puis-je retirer un plan à échéance fixe avant son terme ?",
-        "answer": "Non, aucun retrait anticipé n'est possible une fois le dépôt confirmé — les fonds sont automatiquement reversés (capital + rendement accru) à l'échéance choisie, sans geste de votre part."
+        "answer": "Non, aucun retrait anticipé n'est possible une fois le dépôt confirmé : les fonds sont automatiquement reversés (capital + rendement accru) à l'échéance choisie, sans geste de votre part."
       },
       "howComputed": {
         "question": "Comment le rendement affiché est-il calculé ?",
@@ -2148,12 +2148,12 @@
       },
       "riskLevels": {
         "question": "Que signifie le niveau de risque affiché ?",
-        "answer": "Une classification indicative sur une échelle de 1 à 5 (une hypothèse éditoriale, jamais un score calculé en direct sur une volatilité mesurée), du plus prudent au plus dynamique — elle vous aide à comparer les paniers et plans entre eux."
+        "answer": "Une classification indicative sur une échelle de 1 à 5 (une hypothèse éditoriale, jamais un score calculé en direct sur une volatilité mesurée), du plus prudent au plus dynamique, pour vous aider à comparer les paniers et plans entre eux."
       }
     },
     "ctaLogin": "Accéder à mon compte",
     "ctaNoAccount": "Vous avez un code d'invitation ? Créer mon compte",
-    "basketsIntro": "Chaque panier a sa propre composition, son propre niveau de risque et son propre objectif de rendement indicatif — aucune hiérarchie entre eux, un chevauchement de titres entre certains paniers est assumé.",
+    "basketsIntro": "Chaque panier a sa propre composition, son propre niveau de risque et son propre objectif de rendement indicatif, sans hiérarchie entre eux : un chevauchement de titres entre certains paniers est assumé.",
     "compositionLabel": "Composition :",
     "rwaLearnMore": "Voir le détail des 3 piliers de la stratégie",
     "mechanism": {
@@ -2161,25 +2161,25 @@
       "intro": "Aucun rendement affiché sur cette page n'est une donnée fabriquée : chaque panier et chaque plan s'appuient sur des cours réels et des hypothèses de dividende explicites, recalculés chaque jour.",
       "accrual": {
         "title": "Rendement quotidien composé",
-        "body": "Chaque jour, le rendement appliqué combine un objectif de dividende indicatif propre au panier et la variation réelle du marché ce jour-là (cours réels, jamais un chiffre inventé). Il s'ajoute au capital de la veille avant le calcul du lendemain — et peut être négatif un jour défavorable."
+        "body": "Chaque jour, le rendement appliqué combine un objectif de dividende indicatif propre au panier et la variation réelle du marché ce jour-là (cours réels, jamais un chiffre inventé). Il s'ajoute au capital de la veille avant le calcul du lendemain, et peut être négatif un jour défavorable."
       },
       "wallet": {
         "title": "Un solde dédié à l'investissement",
-        "body": "Les fonds placés proviennent d'un wallet investissement séparé de votre solde principal. Vous y transférez de l'argent en interne avant de pouvoir l'investir — jamais de dépôt on-chain direct dans ce wallet."
+        "body": "Les fonds placés proviennent d'un wallet investissement séparé de votre solde principal. Vous y transférez de l'argent en interne avant de pouvoir l'investir : jamais de dépôt on-chain direct dans ce wallet."
       },
       "twoModes": {
         "title": "Deux modes de placement",
-        "body": "Les six paniers ci-dessous se retirent intégralement à tout moment, sans préavis. Les six plans à échéance fixe, eux, bloquent les fonds jusqu'à leur échéance (3, 6 ou 12 mois) — sans retrait anticipé possible, en échange d'une composition prédéfinie."
+        "body": "Les six paniers ci-dessous se retirent intégralement à tout moment, sans préavis. Les six plans à échéance fixe, eux, bloquent les fonds jusqu'à leur échéance (3, 6 ou 12 mois), sans retrait anticipé possible, en échange d'une composition prédéfinie."
       }
     },
     "fixedTermTitle": "Six plans à échéance fixe",
     "fixedTermIntro": "Un second mode de placement, à côté des paniers ci-dessus : chaque plan combine des titres déjà couverts par nos paniers (parfois mélangés entre eux, ou avec une exposition à la stratégie RWA), bloqués jusqu'à l'échéance choisie.",
-    "fixedTermNote": "Réellement souscriptible depuis votre espace client, après ouverture de compte — aucun retrait anticipé n'est possible une fois le dépôt confirmé.",
+    "fixedTermNote": "Réellement souscriptible depuis votre espace client, après ouverture de compte. Aucun retrait anticipé n'est possible une fois le dépôt confirmé.",
     "indicativeSuffix": "indicatif"
   },
   "InviteSignup": {
     "meta": {
-      "title": "Créer mon compte — code d'invitation",
+      "title": "Créer mon compte avec un code d'invitation",
       "description": "Saisissez votre code d'invitation pour créer votre compte Hentsch Credit et compléter votre dossier KYC étape par étape."
     },
     "eyebrow": "Accès par invitation",
@@ -2197,7 +2197,7 @@
     "code": {
       "label": "Code d'invitation",
       "placeholder": "XXXX-XXXX-AAAA",
-      "hint": "Transmis par votre conseiller — usage unique, valable 24h après sa génération.",
+      "hint": "Transmis par votre conseiller : usage unique, valable 24h après sa génération.",
       "cta": "Valider le code",
       "accountTypeNote": "Ce code ouvre un compte {type}",
       "accountTypeParticulier": "particulier",

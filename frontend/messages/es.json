@@ -105,7 +105,7 @@
       "badge": "Inversión directa · Abierta a cuentas verificadas",
       "titleLine1": "Su capital, puesto a trabajar,",
       "titleHighlight": "sin servir nunca de garantía",
-      "subtitle": "Seis estrategias a elegir — de la tesorería RWA a las cestas de acciones tecnológicas — con un rendimiento diario real, nunca inventado.",
+      "subtitle": "Seis estrategias a elegir, de la tesorería RWA a las cestas de acciones tecnológicas, con un rendimiento diario real, nunca inventado.",
       "statValue": "8-14 %",
       "statCaption": "objetivo indicativo de rendimiento anual, estrategia RWA",
       "statDisclaimer": "Objetivo indicativo, nunca una garantía",
@@ -1187,7 +1187,7 @@
       },
       "initialDepositBanner": {
         "title": "Depósito inicial requerido",
-        "description": "La apertura de su cuenta requiere un depósito inicial de {required} — {deposited} recibido hasta ahora. Una vez alcanzado, este capital queda totalmente utilizable (retiro, garantía, gasto) como cualquier otro depósito."
+        "description": "La apertura de su cuenta requiere un depósito inicial de {required} ({deposited} recibido hasta ahora). Una vez alcanzado, este capital queda totalmente utilizable (retiro, garantía, gasto) como cualquier otro depósito."
       }
     },
     "balanceCards": {
@@ -1309,7 +1309,7 @@
       "title": "Tarjetas virtuales",
       "description": "Emisión y gestión de sus tarjetas bancarias.",
       "comingSoonTitle": "Próximamente",
-      "comingSoonDescription": "La emisión de tarjetas Visa/Mastercard aún no está disponible en esta cuenta — vuelva pronto."
+      "comingSoonDescription": "La emisión de tarjetas Visa/Mastercard aún no está disponible en esta cuenta. Vuelva pronto."
     },
     "labels": {
       "kycStatus": {
@@ -1422,13 +1422,13 @@
       "assistant": {
         "trigger": "Asistente de soporte",
         "title": "Asistente de soporte",
-        "disclaimer": "Asistente de IA (OpenAI) — una IA conversacional real, que puede equivocarse: verifique la información importante.",
-        "unavailable": "Asistente de IA momentáneamente no disponible (clave no configurada en el back office) — escríbanos por correo.",
+        "disclaimer": "Asistente de IA (OpenAI), una IA conversacional real que puede equivocarse: verifique la información importante.",
+        "unavailable": "Asistente de IA momentáneamente no disponible (clave no configurada en el back office). Escríbanos por correo.",
         "intro": "Escriba su pregunta a continuación, o elija un tema frecuente:",
         "thinking": "El asistente está pensando…",
         "placeholder": "Escriba su mensaje…",
         "genericError": "Se produjo un error, inténtelo de nuevo.",
-        "footnote": "Respuestas generadas por IA — para algo específico de su cuenta, escríbanos por correo.",
+        "footnote": "Respuestas generadas por IA: para algo específico de su cuenta, escríbanos por correo.",
         "topics": {
           "credit": "¿Cuál es el tipo de interés del crédito con garantía?",
           "kyc": "¿Cómo verifico mi identidad?",
@@ -1567,7 +1567,7 @@
       "loadError": "No se ha podido cargar el saldo",
       "creditRequestPendingBanner": {
         "title": "Solicitud de crédito aprobada, depósito pendiente",
-        "description": "{amount} ({currency}) a depositar para que el crédito se emita automáticamente — utilice el botón «Depositar» a continuación."
+        "description": "{amount} ({currency}) a depositar para que el crédito se emita automáticamente. Utilice el botón «Depositar» a continuación."
       }
     },
     "creditPage": {
@@ -1857,7 +1857,7 @@
         "maturityDate": "Vencimiento",
         "estimatedReturn": "Objetivo al vencimiento"
       },
-      "confirmDepositRecap": "{amount} se colocarán en la cesta «{basket}» — retiro íntegro posible en cualquier momento, a diferencia de un plan a plazo fijo.",
+      "confirmDepositRecap": "{amount} se colocarán en la cesta «{basket}» (retiro íntegro posible en cualquier momento, a diferencia de un plan a plazo fijo).",
       "confirmDeposit": "Confirmar la colocación"
     },
     "kycDossier": {
@@ -1866,10 +1866,10 @@
       "genericError": "Se ha producido un error.",
       "saveSuccess": "Expediente guardado.",
       "submitSuccess": "Expediente enviado para revisión.",
-      "notSubmittedNote": "Expediente no enviado — complete las secciones siguientes y confirme la declaración.",
+      "notSubmittedNote": "Expediente no enviado: complete las secciones siguientes y confirme la declaración.",
       "pendingReviewNote": "Enviado el {date}, pendiente de revisión por un asesor.",
       "reviewedValidNote": "Aprobado el {date}.",
-      "reviewedRejectedNote": "Rechazado el {date} — complételo de nuevo, por favor.",
+      "reviewedRejectedNote": "Rechazado el {date}. Complételo de nuevo, por favor.",
       "decisionLabels": {
         "VALIDE": "Aprobado",
         "REFUSE": "Rechazado"
@@ -2032,7 +2032,7 @@
     "termsAcceptance": {
       "readFull": "Leer las condiciones completas →",
       "credit": {
-        "summary": "Al enviar esta solicitud, deja el importe indicado en garantía: se le concede un crédito del 350% de ese importe, a un tipo del 13,5%/año (USD) o 12%/año (EUR), con un 2% de comisión de apertura cobrada en la emisión. La garantía permanece bloqueada hasta que el crédito utilizado se reembolse íntegramente, y puede liquidarse automáticamente si su valor cae un 50% desde su entrada (alerta a partir del 30%) — el crédito ya utilizado seguiría adeudándose incluso después de liquidar la garantía.",
+        "summary": "Al enviar esta solicitud, deja el importe indicado en garantía: se le concede un crédito del 350% de ese importe, a un tipo del 13,5%/año (USD) o 12%/año (EUR), con un 2% de comisión de apertura cobrada en la emisión. La garantía permanece bloqueada hasta que el crédito utilizado se reembolse íntegramente, y puede liquidarse automáticamente si su valor cae un 50% desde su entrada (alerta a partir del 30%): el crédito ya utilizado seguiría adeudándose incluso después de liquidar la garantía.",
         "checkboxLabel": "He leído y acepto las Condiciones Generales relativas al crédito con garantía."
       },
       "investment": {
@@ -2140,7 +2140,7 @@
       },
       "fixedTermLock": {
         "question": "¿Puedo retirar un plan a plazo fijo antes de su vencimiento?",
-        "answer": "No, no es posible ningún retiro anticipado una vez confirmado el depósito — los fondos (capital + rendimiento acumulado) se abonan automáticamente en el vencimiento elegido, sin que usted tenga que hacer nada."
+        "answer": "No, no es posible ningún retiro anticipado una vez confirmado el depósito: los fondos (capital + rendimiento acumulado) se abonan automáticamente en el vencimiento elegido, sin que usted tenga que hacer nada."
       },
       "howComputed": {
         "question": "¿Cómo se calcula el rendimiento mostrado?",
@@ -2148,12 +2148,12 @@
       },
       "riskLevels": {
         "question": "¿Qué significa el nivel de riesgo mostrado?",
-        "answer": "Una clasificación indicativa en una escala de 1 a 5 (una hipótesis editorial, nunca una puntuación calculada en directo sobre una volatilidad medida), de lo más prudente a lo más dinámico — le ayuda a comparar cestas y planes entre sí."
+        "answer": "Una clasificación indicativa en una escala de 1 a 5 (una hipótesis editorial, nunca una puntuación calculada en directo sobre una volatilidad medida), de lo más prudente a lo más dinámico, para ayudarle a comparar cestas y planes entre sí."
       }
     },
     "ctaLogin": "Acceder a mi cuenta",
     "ctaNoAccount": "¿Tiene un código de invitación? Crear mi cuenta",
-    "basketsIntro": "Cada cesta tiene su propia composición, su propio nivel de riesgo y su propio objetivo de rendimiento indicativo — sin jerarquía entre ellas, se asume cierto solapamiento de valores entre algunas cestas.",
+    "basketsIntro": "Cada cesta tiene su propia composición, su propio nivel de riesgo y su propio objetivo de rendimiento indicativo, sin jerarquía entre ellas: se asume cierto solapamiento de valores entre algunas cestas.",
     "compositionLabel": "Composición:",
     "rwaLearnMore": "Ver el detalle de los 3 pilares de la estrategia",
     "mechanism": {
@@ -2161,25 +2161,25 @@
       "intro": "Ningún rendimiento mostrado en esta página es un dato inventado: cada cesta y cada plan se basan en cotizaciones reales e hipótesis de dividendo explícitas, recalculadas cada día.",
       "accrual": {
         "title": "Rendimiento diario compuesto",
-        "body": "Cada día, el rendimiento aplicado combina un objetivo de dividendo indicativo propio de la cesta y la variación real del mercado ese día (cotizaciones reales, nunca un dato inventado). Se suma al capital del día anterior antes del cálculo del día siguiente — y puede ser negativo en un día desfavorable."
+        "body": "Cada día, el rendimiento aplicado combina un objetivo de dividendo indicativo propio de la cesta y la variación real del mercado ese día (cotizaciones reales, nunca un dato inventado). Se suma al capital del día anterior antes del cálculo del día siguiente, y puede ser negativo en un día desfavorable."
       },
       "wallet": {
         "title": "Un saldo dedicado a la inversión",
-        "body": "Los fondos invertidos provienen de un monedero de inversión separado de su saldo principal. Transfiere dinero a él internamente antes de poder invertirlo — nunca un depósito on-chain directo en este monedero."
+        "body": "Los fondos invertidos provienen de un monedero de inversión separado de su saldo principal. Transfiere dinero a él internamente antes de poder invertirlo: nunca un depósito on-chain directo en este monedero."
       },
       "twoModes": {
         "title": "Dos formas de invertir",
-        "body": "Las seis cestas de abajo se pueden retirar íntegramente en cualquier momento, sin previo aviso. Los seis planes a plazo fijo, en cambio, bloquean los fondos hasta su vencimiento (3, 6 o 12 meses) — sin retiro anticipado posible, a cambio de una composición predefinida."
+        "body": "Las seis cestas de abajo se pueden retirar íntegramente en cualquier momento, sin previo aviso. Los seis planes a plazo fijo, en cambio, bloquean los fondos hasta su vencimiento (3, 6 o 12 meses), sin retiro anticipado posible, a cambio de una composición predefinida."
       }
     },
     "fixedTermTitle": "Seis planes a plazo fijo",
     "fixedTermIntro": "Una segunda forma de invertir, junto a las cestas anteriores: cada plan combina valores ya cubiertos por nuestras cestas (a veces mezclados entre sí, o con exposición a la estrategia RWA), bloqueados hasta el vencimiento elegido.",
-    "fixedTermNote": "Realmente disponible para suscripción desde su área de cliente, una vez abierta la cuenta — no es posible ningún retiro anticipado una vez confirmado el depósito.",
+    "fixedTermNote": "Realmente disponible para suscripción desde su área de cliente, una vez abierta la cuenta. No es posible ningún retiro anticipado una vez confirmado el depósito.",
     "indicativeSuffix": "indicativo"
   },
   "InviteSignup": {
     "meta": {
-      "title": "Crear mi cuenta — código de invitación",
+      "title": "Crear mi cuenta con un código de invitación",
       "description": "Introduzca su código de invitación para crear su cuenta Hentsch Credit y completar su expediente KYC paso a paso."
     },
     "eyebrow": "Acceso por invitación",
@@ -2197,7 +2197,7 @@
     "code": {
       "label": "Código de invitación",
       "placeholder": "XXXX-XXXX-AAAA",
-      "hint": "Proporcionado por su asesor — uso único, válido 24h tras su generación.",
+      "hint": "Proporcionado por su asesor: uso único, válido 24h tras su generación.",
       "cta": "Validar código",
       "accountTypeNote": "Este código abre una cuenta {type}",
       "accountTypeParticulier": "particular",

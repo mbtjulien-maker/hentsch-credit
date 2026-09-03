@@ -105,7 +105,7 @@
       "badge": "Direktinvestering · Öppen för verifierade konton",
       "titleLine1": "Ditt kapital, i arbete,",
       "titleHighlight": "aldrig använt som säkerhet",
-      "subtitle": "Sex strategier att välja mellan — från RWA-treasury till korgar med teknikaktier — med en verklig daglig avkastning, aldrig hittad på.",
+      "subtitle": "Sex strategier att välja mellan, från RWA-treasury till korgar med teknikaktier, med en verklig daglig avkastning, aldrig hittad på.",
       "statValue": "8-14 %",
       "statCaption": "indikativt årligt avkastningsmål, RWA-strategi",
       "statDisclaimer": "Indikativt mål, aldrig en garanti",
@@ -715,7 +715,7 @@
       "profile": "Profil",
       "support": "Support"
     },
-    "clientAreaNote": "Det interna back office-systemet listas inte ovan: dess innehåll beror på din roll på kontot och är endast tillgängligt för behöriga konton. Sidorna i kundområdet som listas ovan kräver inloggning med ett verifierat konto — det faktiska innehållet (saldon, kredit, historik) är specifikt för varje kund."
+    "clientAreaNote": "Det interna back office-systemet listas inte ovan: dess innehåll beror på din roll på kontot och är endast tillgängligt för behöriga konton. Sidorna i kundområdet som listas ovan kräver inloggning med ett verifierat konto: det faktiska innehållet (saldon, kredit, historik) är specifikt för varje kund."
   },
   "Market": {
     "meta": {
@@ -1173,7 +1173,7 @@
         "credit": {
           "title": "Kredit",
           "description": "{available} kvar · {used} använt",
-          "descriptionNoCredit": "Ingen aktiv kreditlinje ännu — ansök om kredit under fliken Kredit."
+          "descriptionNoCredit": "Ingen aktiv kreditlinje ännu, ansök om kredit under fliken Kredit."
         },
         "investment": {
           "title": "Investering",
@@ -1187,7 +1187,7 @@
       },
       "initialDepositBanner": {
         "title": "Första insättning krävs",
-        "description": "Att öppna ditt konto kräver en första insättning på {required} — {deposited} mottaget hittills. När den nås är kapitalet fullt användbart (uttag, säkerhet, utgift) som vilken annan insättning som helst."
+        "description": "Att öppna ditt konto kräver en första insättning på {required} ({deposited} mottaget hittills). När den nås är kapitalet fullt användbart (uttag, säkerhet, utgift) som vilken annan insättning som helst."
       }
     },
     "balanceCards": {
@@ -1309,7 +1309,7 @@
       "title": "Virtuella kort",
       "description": "Utfärdande och hantering av dina bankkort.",
       "comingSoonTitle": "Kommer snart",
-      "comingSoonDescription": "Utfärdande av Visa/Mastercard-kort är ännu inte öppet för detta konto — kom tillbaka snart."
+      "comingSoonDescription": "Utfärdande av Visa/Mastercard-kort är ännu inte öppet för detta konto. Kom tillbaka snart."
     },
     "labels": {
       "kycStatus": {
@@ -1422,13 +1422,13 @@
       "assistant": {
         "trigger": "Supportassistent",
         "title": "Supportassistent",
-        "disclaimer": "AI-assistent (OpenAI) — en verklig konversations-AI, som kan göra fel: kontrollera viktig information.",
-        "unavailable": "AI-assistenten är tillfälligt otillgänglig (nyckel inte konfigurerad i back office) — mejla oss istället.",
+        "disclaimer": "AI-assistent (OpenAI), en verklig konversations-AI som kan göra fel: kontrollera viktig information.",
+        "unavailable": "AI-assistenten är tillfälligt otillgänglig (nyckel inte konfigurerad i back office). Mejla oss istället.",
         "intro": "Ställ din fråga nedan, eller välj ett vanligt ämne:",
         "thinking": "Assistenten tänker…",
         "placeholder": "Skriv ditt meddelande…",
         "genericError": "Något gick fel, försök igen.",
-        "footnote": "AI-genererade svar — för något kontospecifikt, mejla oss istället.",
+        "footnote": "AI-genererade svar: för något kontospecifikt, mejla oss istället.",
         "topics": {
           "credit": "Vad är räntan på säkerställd kredit?",
           "kyc": "Hur verifierar jag min identitet?",
@@ -1567,7 +1567,7 @@
       "loadError": "Det gick inte att läsa in saldot",
       "creditRequestPendingBanner": {
         "title": "Godkänd kreditansökan, insättning väntar",
-        "description": "{amount} ({currency}) att sätta in för att krediten ska utfärdas automatiskt — använd knappen \"Sätt in\" nedan."
+        "description": "{amount} ({currency}) att sätta in för att krediten ska utfärdas automatiskt. Använd knappen \"Sätt in\" nedan."
       }
     },
     "creditPage": {
@@ -1694,7 +1694,7 @@
       "advisor": {
         "trigger": "Simulera min avkastning",
         "title": "Investeringssimulator",
-        "description": "En kalkylator och ett frågeformulär som hjälper dig att bestämma dig — aldrig personlig rådgivning eller en konversations-AI.",
+        "description": "En kalkylator och ett frågeformulär som hjälper dig att bestämma dig, aldrig personlig rådgivning eller en konversations-AI.",
         "tabs": {
           "simulator": "Simulator",
           "quiz": "Min profil",
@@ -1766,7 +1766,7 @@
           },
           "allocationRwa": "RWA-strategi: {pct}%",
           "allocationStock": "{basket}: {pct}%",
-          "disclaimer": "Ett vägledande förslag baserat på dina svar, aldrig personlig investeringsrådgivning eller en automatiskt tillämpad fördelning — det är upp till dig att besluta och själv placera de belopp du väljer."
+          "disclaimer": "Ett vägledande förslag baserat på dina svar, aldrig personlig investeringsrådgivning eller en automatiskt tillämpad fördelning: det är upp till dig att besluta och själv placera de belopp du väljer."
         },
         "faq": {
           "difference": {
@@ -1830,7 +1830,7 @@
       },
       "wallet": {
         "title": "Investeringsplånbok",
-        "description": "Ett saldo skilt från ditt huvudsaldo, avsett för dina placeringar. Fyll på det via en intern överföring från ditt huvudsaldo — samma insättningsadresser och godkända tillgångar, oförändrat.",
+        "description": "Ett saldo skilt från ditt huvudsaldo, avsett för dina placeringar. Fyll på det via en intern överföring från ditt huvudsaldo (samma insättningsadresser och godkända tillgångar, oförändrat).",
         "mainBalance": "Huvudsaldo",
         "walletBalance": "Investeringsplånbok",
         "directionIn": "Till plånboken",
@@ -1857,19 +1857,19 @@
         "maturityDate": "Förfallodag",
         "estimatedReturn": "Mål vid förfall"
       },
-      "confirmDepositRecap": "{amount} kommer att placeras i korgen \"{basket}\" — fullständigt uttag möjligt när som helst, till skillnad från en plan med fast löptid.",
+      "confirmDepositRecap": "{amount} kommer att placeras i korgen \"{basket}\" (fullständigt uttag möjligt när som helst, till skillnad från en plan med fast löptid).",
       "confirmDeposit": "Bekräfta placeringen"
     },
     "kycDossier": {
       "title": "KYC-dossier",
-      "description": "Fyll i och skicka in din identifieringsdossier för kontoöppning — inspirerad av det regulatoriska AML/CFT-formuläret.",
+      "description": "Fyll i och skicka in din identifieringsdossier för kontoöppning, inspirerad av det regulatoriska AML/CFT-formuläret.",
       "genericError": "Ett fel uppstod.",
       "saveSuccess": "Dossiern sparad.",
       "submitSuccess": "Dossiern inskickad för granskning.",
-      "notSubmittedNote": "Dossiern har inte skickats in ännu — fyll i avsnitten nedan och bekräfta intyget.",
+      "notSubmittedNote": "Dossiern har inte skickats in ännu: fyll i avsnitten nedan och bekräfta intyget.",
       "pendingReviewNote": "Inskickad {date}, väntar på granskning av en rådgivare.",
       "reviewedValidNote": "Godkänd {date}.",
-      "reviewedRejectedNote": "Avvisad {date} — fyll i den igen.",
+      "reviewedRejectedNote": "Avvisad {date}. Fyll i den igen.",
       "decisionLabels": {
         "VALIDE": "Godkänd",
         "REFUSE": "Avvisad"
@@ -2032,7 +2032,7 @@
     "termsAcceptance": {
       "readFull": "Läs de fullständiga villkoren →",
       "credit": {
-        "summary": "Genom att skicka in denna ansökan ställer du det angivna beloppet som säkerhet: en kredit på 350% av det beloppet beviljas till 13,5%/år (USD) eller 12%/år (EUR), med en uppläggningsavgift på 2% som tas ut vid utbetalning. Säkerheten förblir låst tills använd kredit är helt återbetald, och kan likvideras automatiskt om dess värde faller 50% från ingångsvärdet (varning från 30%) — redan använd kredit skulle fortfarande vara skyldig även efter att säkerheten likviderats.",
+        "summary": "Genom att skicka in denna ansökan ställer du det angivna beloppet som säkerhet: en kredit på 350% av det beloppet beviljas till 13,5%/år (USD) eller 12%/år (EUR), med en uppläggningsavgift på 2% som tas ut vid utbetalning. Säkerheten förblir låst tills använd kredit är helt återbetald, och kan likvideras automatiskt om dess värde faller 50% från ingångsvärdet (varning från 30%): redan använd kredit skulle fortfarande vara skyldig även efter att säkerheten likviderats.",
         "checkboxLabel": "Jag har läst och godkänner villkoren för den säkerställda krediten."
       },
       "investment": {
@@ -2140,7 +2140,7 @@
       },
       "fixedTermLock": {
         "question": "Kan jag ta ut en plan med fast löptid före förfall?",
-        "answer": "Nej, inget förtida uttag är möjligt när insättningen väl har bekräftats — medlen (kapital + upplupen avkastning) betalas automatiskt ut vid vald förfallodag, utan att du behöver göra något."
+        "answer": "Nej, inget förtida uttag är möjligt när insättningen väl har bekräftats: medlen (kapital + upplupen avkastning) betalas automatiskt ut vid vald förfallodag, utan att du behöver göra något."
       },
       "howComputed": {
         "question": "Hur beräknas den visade avkastningen?",
@@ -2148,12 +2148,12 @@
       },
       "riskLevels": {
         "question": "Vad betyder den visade risknivån?",
-        "answer": "En vägledande klassificering på en skala från 1 till 5 (ett redaktionellt antagande, aldrig en poäng beräknad live utifrån uppmätt volatilitet), från den mest försiktiga till den mest dynamiska — den hjälper dig att jämföra korgar och planer med varandra."
+        "answer": "En vägledande klassificering på en skala från 1 till 5 (ett redaktionellt antagande, aldrig en poäng beräknad live utifrån uppmätt volatilitet), från den mest försiktiga till den mest dynamiska, för att hjälpa dig jämföra korgar och planer med varandra."
       }
     },
     "ctaLogin": "Till mitt konto",
     "ctaNoAccount": "Har du en inbjudningskod? Skapa mitt konto",
-    "basketsIntro": "Varje korg har sin egen sammansättning, sin egen risknivå och sitt eget vägledande avkastningsmål — ingen hierarki mellan dem, viss överlappning av innehav mellan vissa korgar är avsiktlig.",
+    "basketsIntro": "Varje korg har sin egen sammansättning, sin egen risknivå och sitt eget vägledande avkastningsmål, utan hierarki mellan dem: viss överlappning av innehav mellan vissa korgar är avsiktlig.",
     "compositionLabel": "Sammansättning:",
     "rwaLearnMore": "Se detaljerna för strategins 3 pelare",
     "mechanism": {
@@ -2161,25 +2161,25 @@
       "intro": "Ingen avkastning som visas på denna sida är ett påhittat värde: varje korg och plan bygger på verkliga kurser och uttryckliga utdelningsantaganden, omräknade varje dag.",
       "accrual": {
         "title": "Daglig sammansatt avkastning",
-        "body": "Varje dag kombinerar den tillämpade avkastningen ett vägledande utdelningsmål specifikt för korgen med den verkliga marknadsrörelsen den dagen (verkliga kurser, aldrig ett påhittat värde). Den läggs till föregående dags kapital innan nästa dags beräkning — och kan vara negativ en ogynnsam dag."
+        "body": "Varje dag kombinerar den tillämpade avkastningen ett vägledande utdelningsmål specifikt för korgen med den verkliga marknadsrörelsen den dagen (verkliga kurser, aldrig ett påhittat värde). Den läggs till föregående dags kapital innan nästa dags beräkning, och kan vara negativ en ogynnsam dag."
       },
       "wallet": {
         "title": "Ett eget saldo för investeringar",
-        "body": "Investerade medel kommer från en investeringsplånbok separerad från ditt huvudsaldo. Du överför pengar dit internt innan du kan investera dem — aldrig en direkt on-chain-insättning i denna plånbok."
+        "body": "Investerade medel kommer från en investeringsplånbok separerad från ditt huvudsaldo. Du överför pengar dit internt innan du kan investera dem: aldrig en direkt on-chain-insättning i denna plånbok."
       },
       "twoModes": {
         "title": "Två sätt att investera",
-        "body": "De sex korgarna nedan kan tas ut i sin helhet när som helst, utan uppsägningstid. De sex planerna med fast löptid låser däremot medlen fram till förfall (3, 6 eller 12 månader) — inget förtida uttag möjligt, i utbyte mot en fördefinierad sammansättning."
+        "body": "De sex korgarna nedan kan tas ut i sin helhet när som helst, utan uppsägningstid. De sex planerna med fast löptid låser däremot medlen fram till förfall (3, 6 eller 12 månader), utan möjlighet till förtida uttag, i utbyte mot en fördefinierad sammansättning."
       }
     },
     "fixedTermTitle": "Sex planer med fast löptid",
     "fixedTermIntro": "Ett andra sätt att investera, vid sidan av korgarna ovan: varje plan kombinerar innehav som redan täcks av våra korgar (ibland blandade med varandra, eller med exponering mot RWA-strategin), låsta fram till vald förfallodag.",
-    "fixedTermNote": "Verkligen möjlig att teckna från ditt kundområde, när ditt konto väl är öppnat — inget förtida uttag är möjligt när insättningen väl har bekräftats.",
+    "fixedTermNote": "Verkligen möjlig att teckna från ditt kundområde, när ditt konto väl är öppnat. Inget förtida uttag är möjligt när insättningen väl har bekräftats.",
     "indicativeSuffix": "vägledande"
   },
   "InviteSignup": {
     "meta": {
-      "title": "Skapa mitt konto — inbjudningskod",
+      "title": "Skapa mitt konto med en inbjudningskod",
       "description": "Ange din inbjudningskod för att skapa ditt Hentsch Credit-konto och fylla i din KYC-akt steg för steg."
     },
     "eyebrow": "Endast på inbjudan",
@@ -2197,7 +2197,7 @@
     "code": {
       "label": "Inbjudningskod",
       "placeholder": "XXXX-XXXX-ÅÅÅÅ",
-      "hint": "Skickad av din rådgivare — engångsbruk, giltig i 24 timmar efter att den skapats.",
+      "hint": "Skickad av din rådgivare: engångsbruk, giltig i 24 timmar efter att den skapats.",
       "cta": "Validera kod",
       "accountTypeNote": "Denna kod öppnar ett {type}-konto",
       "accountTypeParticulier": "privat",

@@ -105,7 +105,7 @@
       "badge": "Directe belegging · Open voor geverifieerde rekeningen",
       "titleLine1": "Uw kapitaal, aan het werk gezet,",
       "titleHighlight": "nooit als onderpand gebruikt",
-      "subtitle": "Zes strategieën om uit te kiezen — van RWA-treasury tot techaandelenmanden — met een echt dagelijks rendement, nooit verzonnen.",
+      "subtitle": "Zes strategieën om uit te kiezen, van RWA-treasury tot techaandelenmanden, met een echt dagelijks rendement, nooit verzonnen.",
       "statValue": "8-14%",
       "statCaption": "indicatieve jaarlijkse rendementsdoelstelling, RWA-strategie",
       "statDisclaimer": "Indicatieve doelstelling, nooit een garantie",
@@ -715,7 +715,7 @@
       "profile": "Profiel",
       "support": "Ondersteuning"
     },
-    "clientAreaNote": "De interne back-office staat hierboven niet vermeld: de inhoud ervan hangt af van uw rol op de rekening en is alleen toegankelijk voor geautoriseerde accounts. De hierboven vermelde pagina's van de klantomgeving vereisen aanmelding met een geverifieerd account — de werkelijke inhoud (saldi, krediet, geschiedenis) is voor elke klant specifiek."
+    "clientAreaNote": "De interne back-office staat hierboven niet vermeld: de inhoud ervan hangt af van uw rol op de rekening en is alleen toegankelijk voor geautoriseerde accounts. De hierboven vermelde pagina's van de klantomgeving vereisen aanmelding met een geverifieerd account: de werkelijke inhoud (saldi, krediet, geschiedenis) is voor elke klant specifiek."
   },
   "Market": {
     "meta": {
@@ -1173,7 +1173,7 @@
         "credit": {
           "title": "Krediet",
           "description": "{available} resterend · {used} gebruikt",
-          "descriptionNoCredit": "Nog geen actieve kredietlijn — vraag krediet aan via het tabblad Krediet."
+          "descriptionNoCredit": "Nog geen actieve kredietlijn, vraag krediet aan via het tabblad Krediet."
         },
         "investment": {
           "title": "Belegging",
@@ -1187,7 +1187,7 @@
       },
       "initialDepositBanner": {
         "title": "Eerste storting vereist",
-        "description": "Het openen van uw rekening vereist een eerste storting van {required} — tot nu toe {deposited} ontvangen. Eenmaal bereikt, is dit kapitaal volledig bruikbaar (opname, onderpand, uitgave) zoals elke andere storting."
+        "description": "Het openen van uw rekening vereist een eerste storting van {required} (tot nu toe {deposited} ontvangen). Eenmaal bereikt, is dit kapitaal volledig bruikbaar (opname, onderpand, uitgave) zoals elke andere storting."
       }
     },
     "balanceCards": {
@@ -1309,7 +1309,7 @@
       "title": "Virtuele kaarten",
       "description": "Uitgifte en beheer van uw bankkaarten.",
       "comingSoonTitle": "Binnenkort beschikbaar",
-      "comingSoonDescription": "De uitgifte van Visa/Mastercard-kaarten is nog niet geopend voor dit account — kom binnenkort terug."
+      "comingSoonDescription": "De uitgifte van Visa/Mastercard-kaarten is nog niet geopend voor dit account. Kom binnenkort terug."
     },
     "labels": {
       "kycStatus": {
@@ -1422,13 +1422,13 @@
       "assistant": {
         "trigger": "Support-assistent",
         "title": "Support-assistent",
-        "disclaimer": "AI-assistent (OpenAI) — een echte conversationele AI, die fouten kan maken: controleer belangrijke informatie.",
-        "unavailable": "AI-assistent tijdelijk niet beschikbaar (sleutel niet geconfigureerd bij de back office) — mail ons in plaats daarvan.",
+        "disclaimer": "AI-assistent (OpenAI), een echte conversationele AI die fouten kan maken: controleer belangrijke informatie.",
+        "unavailable": "AI-assistent tijdelijk niet beschikbaar (sleutel niet geconfigureerd bij de back office). Mail ons in plaats daarvan.",
         "intro": "Stel hieronder uw vraag, of kies een veelvoorkomend onderwerp:",
         "thinking": "De assistent denkt na…",
         "placeholder": "Typ uw bericht…",
         "genericError": "Er is een fout opgetreden, probeer het opnieuw.",
-        "footnote": "Door AI gegenereerde antwoorden — voor iets specifieks over uw account mailt u ons.",
+        "footnote": "Door AI gegenereerde antwoorden: voor iets specifieks over uw account mailt u ons.",
         "topics": {
           "credit": "Wat is de rente op gedekt krediet?",
           "kyc": "Hoe verifieer ik mijn identiteit?",
@@ -1567,7 +1567,7 @@
       "loadError": "Saldo kan niet worden geladen",
       "creditRequestPendingBanner": {
         "title": "Goedgekeurde kredietaanvraag, storting in behandeling",
-        "description": "{amount} ({currency}) te storten zodat het krediet automatisch wordt toegekend — gebruik hieronder de knop \"Storten\"."
+        "description": "{amount} ({currency}) te storten zodat het krediet automatisch wordt toegekend. Gebruik hieronder de knop \"Storten\"."
       }
     },
     "creditPage": {
@@ -1694,7 +1694,7 @@
       "advisor": {
         "trigger": "Mijn rendement simuleren",
         "title": "Beleggingssimulator",
-        "description": "Een rekenmachine en een vragenlijst om u te helpen kiezen — nooit persoonlijk advies, noch een conversationele AI.",
+        "description": "Een rekenmachine en een vragenlijst om u te helpen kiezen, nooit persoonlijk advies, noch een conversationele AI.",
         "tabs": {
           "simulator": "Simulator",
           "quiz": "Mijn profiel",
@@ -1766,7 +1766,7 @@
           },
           "allocationRwa": "RWA-strategie: {pct}%",
           "allocationStock": "{basket}: {pct}%",
-          "disclaimer": "Een indicatieve suggestie op basis van uw antwoorden, nooit persoonlijk beleggingsadvies noch een automatisch toegepaste verdeling — het is aan u om te beslissen en zelf de bedragen van uw keuze te beleggen."
+          "disclaimer": "Een indicatieve suggestie op basis van uw antwoorden, nooit persoonlijk beleggingsadvies noch een automatisch toegepaste verdeling: het is aan u om te beslissen en zelf de bedragen van uw keuze te beleggen."
         },
         "faq": {
           "difference": {
@@ -1830,7 +1830,7 @@
       },
       "wallet": {
         "title": "Investeringswallet",
-        "description": "Een saldo los van uw hoofdsaldo, gewijd aan uw beleggingen. Vul het aan via een interne overboeking vanuit uw hoofdsaldo — dezelfde stortingsadressen en geaccepteerde activa, ongewijzigd.",
+        "description": "Een saldo los van uw hoofdsaldo, gewijd aan uw beleggingen. Vul het aan via een interne overboeking vanuit uw hoofdsaldo (dezelfde stortingsadressen en geaccepteerde activa, ongewijzigd).",
         "mainBalance": "Hoofdsaldo",
         "walletBalance": "Investeringswallet",
         "directionIn": "Naar de wallet",
@@ -1857,19 +1857,19 @@
         "maturityDate": "Vervaldatum",
         "estimatedReturn": "Doel bij vervaldatum"
       },
-      "confirmDepositRecap": "{amount} wordt geplaatst in de mand \"{basket}\" — volledige opname mogelijk op elk moment, in tegenstelling tot een vastrentend plan.",
+      "confirmDepositRecap": "{amount} wordt geplaatst in de mand \"{basket}\" (volledige opname mogelijk op elk moment, in tegenstelling tot een vastrentend plan).",
       "confirmDeposit": "Belegging bevestigen"
     },
     "kycDossier": {
       "title": "KYC-dossier",
-      "description": "Vul uw identificatiedossier voor de rekeningopening in en dien het in — geïnspireerd op het reglementaire AML/CFT-formulier.",
+      "description": "Vul uw identificatiedossier voor de rekeningopening in en dien het in, geïnspireerd op het reglementaire AML/CFT-formulier.",
       "genericError": "Er is een fout opgetreden.",
       "saveSuccess": "Dossier opgeslagen.",
       "submitSuccess": "Dossier ingediend ter controle.",
-      "notSubmittedNote": "Dossier nog niet ingediend — vul de onderstaande secties in en bevestig de verklaring.",
+      "notSubmittedNote": "Dossier nog niet ingediend: vul de onderstaande secties in en bevestig de verklaring.",
       "pendingReviewNote": "Ingediend op {date}, wacht op beoordeling door een adviseur.",
       "reviewedValidNote": "Goedgekeurd op {date}.",
-      "reviewedRejectedNote": "Afgewezen op {date} — vul het dossier opnieuw in.",
+      "reviewedRejectedNote": "Afgewezen op {date}. Vul het dossier opnieuw in.",
       "decisionLabels": {
         "VALIDE": "Goedgekeurd",
         "REFUSE": "Afgewezen"
@@ -2032,7 +2032,7 @@
     "termsAcceptance": {
       "readFull": "Lees de volledige voorwaarden →",
       "credit": {
-        "summary": "Door deze aanvraag in te dienen, geeft u het vermelde bedrag in onderpand: er wordt u een krediet van 350% van dat bedrag toegekend, tegen 13,5%/jaar (USD) of 12%/jaar (EUR), met 2% afsluitkosten bij uitgifte. Het onderpand blijft geblokkeerd totdat het gebruikte krediet volledig is terugbetaald, en kan automatisch worden geliquideerd als de waarde ervan met 50% daalt ten opzichte van de instapwaarde (waarschuwing vanaf 30%) — reeds gebruikt krediet blijft ook na liquidatie van het onderpand verschuldigd.",
+        "summary": "Door deze aanvraag in te dienen, geeft u het vermelde bedrag in onderpand: er wordt u een krediet van 350% van dat bedrag toegekend, tegen 13,5%/jaar (USD) of 12%/jaar (EUR), met 2% afsluitkosten bij uitgifte. Het onderpand blijft geblokkeerd totdat het gebruikte krediet volledig is terugbetaald, en kan automatisch worden geliquideerd als de waarde ervan met 50% daalt ten opzichte van de instapwaarde (waarschuwing vanaf 30%): reeds gebruikt krediet blijft ook na liquidatie van het onderpand verschuldigd.",
         "checkboxLabel": "Ik heb de Algemene Voorwaarden voor het onderpandkrediet gelezen en ga ermee akkoord."
       },
       "investment": {
@@ -2140,7 +2140,7 @@
       },
       "fixedTermLock": {
         "question": "Kan ik een vastrentend plan vóór de looptijd opnemen?",
-        "answer": "Nee, zodra de storting is bevestigd is geen vervroegde opname mogelijk — de middelen (kapitaal + opgebouwd rendement) worden automatisch uitbetaald op de gekozen vervaldatum, zonder dat u iets hoeft te doen."
+        "answer": "Nee, zodra de storting is bevestigd is geen vervroegde opname mogelijk: de middelen (kapitaal + opgebouwd rendement) worden automatisch uitbetaald op de gekozen vervaldatum, zonder dat u iets hoeft te doen."
       },
       "howComputed": {
         "question": "Hoe wordt het getoonde rendement berekend?",
@@ -2148,12 +2148,12 @@
       },
       "riskLevels": {
         "question": "Wat betekent het getoonde risiconiveau?",
-        "answer": "Een indicatieve classificatie op een schaal van 1 tot 5 (een redactionele aanname, nooit een live berekende score op basis van gemeten volatiliteit), van het meest voorzichtige tot het meest dynamische — het helpt u manden en plannen met elkaar te vergelijken."
+        "answer": "Een indicatieve classificatie op een schaal van 1 tot 5 (een redactionele aanname, nooit een live berekende score op basis van gemeten volatiliteit), van het meest voorzichtige tot het meest dynamische, om u te helpen manden en plannen met elkaar te vergelijken."
       }
     },
     "ctaLogin": "Naar mijn account",
     "ctaNoAccount": "Heeft u een uitnodigingscode? Account aanmaken",
-    "basketsIntro": "Elke mand heeft zijn eigen samenstelling, zijn eigen risiconiveau en zijn eigen indicatieve rendementsdoel — geen hiërarchie ertussen, enige overlap in posities tussen manden is bewust aanvaard.",
+    "basketsIntro": "Elke mand heeft zijn eigen samenstelling, zijn eigen risiconiveau en zijn eigen indicatieve rendementsdoel, zonder hiërarchie ertussen: enige overlap in posities tussen manden is bewust aanvaard.",
     "compositionLabel": "Samenstelling:",
     "rwaLearnMore": "Bekijk de 3 pijlers van de strategie in detail",
     "mechanism": {
@@ -2161,25 +2161,25 @@
       "intro": "Geen enkel rendement op deze pagina is een verzonnen cijfer: elke mand en elk plan is gebaseerd op echte koersen en expliciete dividendveronderstellingen, elke dag opnieuw berekend.",
       "accrual": {
         "title": "Dagelijks samengesteld rendement",
-        "body": "Elke dag combineert het toegepaste rendement een indicatief dividenddoel specifiek voor de mand met de werkelijke marktbeweging die dag (echte koersen, nooit een verzonnen cijfer). Het wordt toegevoegd aan het kapitaal van de vorige dag vóór de berekening van de volgende dag — en kan negatief zijn op een ongunstige dag."
+        "body": "Elke dag combineert het toegepaste rendement een indicatief dividenddoel specifiek voor de mand met de werkelijke marktbeweging die dag (echte koersen, nooit een verzonnen cijfer). Het wordt toegevoegd aan het kapitaal van de vorige dag vóór de berekening van de volgende dag, en kan negatief zijn op een ongunstige dag."
       },
       "wallet": {
         "title": "Een apart saldo voor beleggen",
-        "body": "Belegde middelen komen uit een beleggingswallet die gescheiden is van uw hoofdsaldo. U maakt er intern geld naar over voordat u het kunt beleggen — nooit een directe on-chain storting in deze wallet."
+        "body": "Belegde middelen komen uit een beleggingswallet die gescheiden is van uw hoofdsaldo. U maakt er intern geld naar over voordat u het kunt beleggen: nooit een directe on-chain storting in deze wallet."
       },
       "twoModes": {
         "title": "Twee manieren om te beleggen",
-        "body": "De zes manden hieronder kunnen op elk moment volledig worden opgenomen, zonder opzegtermijn. De zes vastrentende plannen daarentegen vergrendelen de middelen tot hun looptijd (3, 6 of 12 maanden) — geen vervroegde opname mogelijk, in ruil voor een vooraf bepaalde samenstelling."
+        "body": "De zes manden hieronder kunnen op elk moment volledig worden opgenomen, zonder opzegtermijn. De zes vastrentende plannen daarentegen vergrendelen de middelen tot hun looptijd (3, 6 of 12 maanden), zonder vervroegde opname mogelijk, in ruil voor een vooraf bepaalde samenstelling."
       }
     },
     "fixedTermTitle": "Zes vastrentende plannen",
     "fixedTermIntro": "Een tweede manier om te beleggen, naast de manden hierboven: elk plan combineert posities die al door onze manden worden gedekt (soms onderling gemengd, of met blootstelling aan de RWA-strategie), vergrendeld tot de gekozen looptijd.",
-    "fixedTermNote": "Daadwerkelijk af te sluiten vanuit uw klantomgeving, zodra uw account is geopend — geen vervroegde opname mogelijk zodra de storting is bevestigd.",
+    "fixedTermNote": "Daadwerkelijk af te sluiten vanuit uw klantomgeving, zodra uw account is geopend. Geen vervroegde opname mogelijk zodra de storting is bevestigd.",
     "indicativeSuffix": "indicatief"
   },
   "InviteSignup": {
     "meta": {
-      "title": "Account aanmaken — uitnodigingscode",
+      "title": "Account aanmaken met een uitnodigingscode",
       "description": "Voer uw uitnodigingscode in om uw Hentsch Credit-account aan te maken en uw KYC-dossier stap voor stap aan te vullen."
     },
     "eyebrow": "Toegang alleen op uitnodiging",
@@ -2197,7 +2197,7 @@
     "code": {
       "label": "Uitnodigingscode",
       "placeholder": "XXXX-XXXX-JJJJ",
-      "hint": "Doorgegeven door uw adviseur — eenmalig te gebruiken, 24u geldig na aanmaak.",
+      "hint": "Doorgegeven door uw adviseur: eenmalig te gebruiken, 24u geldig na aanmaak.",
       "cta": "Code valideren",
       "accountTypeNote": "Deze code opent een {type} account",
       "accountTypeParticulier": "particulier",

@@ -105,7 +105,7 @@
       "badge": "Investimento direto · Aberto a contas verificadas",
       "titleLine1": "O seu capital, posto a trabalhar,",
       "titleHighlight": "nunca usado como garantia",
-      "subtitle": "Seis estratégias à escolha — da tesouraria RWA aos cabazes de ações tecnológicas — com um rendimento diário real, nunca inventado.",
+      "subtitle": "Seis estratégias à escolha, da tesouraria RWA aos cabazes de ações tecnológicas, com um rendimento diário real, nunca inventado.",
       "statValue": "8-14 %",
       "statCaption": "objetivo indicativo de rendimento anual, estratégia RWA",
       "statDisclaimer": "Objetivo indicativo, nunca uma garantia",
@@ -715,7 +715,7 @@
       "profile": "Perfil",
       "support": "Suporte"
     },
-    "clientAreaNote": "O back-office de gestão interna não consta acima: o seu conteúdo depende da sua função na conta e só é acessível a contas autorizadas. As páginas da área de cliente listadas acima exigem sessão iniciada com uma conta verificada — o seu conteúdo real (saldos, crédito, histórico) é específico de cada cliente."
+    "clientAreaNote": "O back-office de gestão interna não consta acima: o seu conteúdo depende da sua função na conta e só é acessível a contas autorizadas. As páginas da área de cliente listadas acima exigem sessão iniciada com uma conta verificada: o seu conteúdo real (saldos, crédito, histórico) é específico de cada cliente."
   },
   "Market": {
     "meta": {
@@ -1173,7 +1173,7 @@
         "credit": {
           "title": "Crédito",
           "description": "{available} restante · {used} utilizado",
-          "descriptionNoCredit": "Nenhuma linha ativa — solicite crédito no separador Crédito."
+          "descriptionNoCredit": "Nenhuma linha ativa, solicite crédito no separador Crédito."
         },
         "investment": {
           "title": "Investimento",
@@ -1187,7 +1187,7 @@
       },
       "initialDepositBanner": {
         "title": "Depósito inicial necessário",
-        "description": "A abertura da sua conta exige um depósito inicial de {required} — {deposited} recebido até agora. Uma vez atingido, este capital fica totalmente utilizável (levantamento, garantia, despesa) como qualquer outro depósito."
+        "description": "A abertura da sua conta exige um depósito inicial de {required} ({deposited} recebido até agora). Uma vez atingido, este capital fica totalmente utilizável (levantamento, garantia, despesa) como qualquer outro depósito."
       }
     },
     "balanceCards": {
@@ -1309,7 +1309,7 @@
       "title": "Cartões virtuais",
       "description": "Emissão e gestão dos seus cartões bancários.",
       "comingSoonTitle": "Brevemente disponível",
-      "comingSoonDescription": "A emissão de cartões Visa/Mastercard ainda não está disponível nesta conta — volte em breve."
+      "comingSoonDescription": "A emissão de cartões Visa/Mastercard ainda não está disponível nesta conta. Volte em breve."
     },
     "labels": {
       "kycStatus": {
@@ -1422,13 +1422,13 @@
       "assistant": {
         "trigger": "Assistente de suporte",
         "title": "Assistente de suporte",
-        "disclaimer": "Assistente de IA (OpenAI) — uma IA conversacional real, que pode cometer erros: verifique as informações importantes.",
-        "unavailable": "Assistente de IA momentaneamente indisponível (chave não configurada no back office) — escreva-nos por e-mail.",
+        "disclaimer": "Assistente de IA (OpenAI), uma IA conversacional real que pode cometer erros: verifique as informações importantes.",
+        "unavailable": "Assistente de IA momentaneamente indisponível (chave não configurada no back office). Escreva-nos por e-mail.",
         "intro": "Coloque a sua pergunta abaixo, ou escolha um tema frequente:",
         "thinking": "O assistente está a pensar…",
         "placeholder": "Escreva a sua mensagem…",
         "genericError": "Ocorreu um erro, tente novamente.",
-        "footnote": "Respostas geradas por IA — para algo específico da sua conta, escreva-nos por e-mail.",
+        "footnote": "Respostas geradas por IA: para algo específico da sua conta, escreva-nos por e-mail.",
         "topics": {
           "credit": "Qual é a taxa de juro do crédito com garantia?",
           "kyc": "Como verifico a minha identidade?",
@@ -1567,7 +1567,7 @@
       "loadError": "Não foi possível carregar o saldo",
       "creditRequestPendingBanner": {
         "title": "Pedido de crédito aprovado, depósito pendente",
-        "description": "{amount} ({currency}) a depositar para que o crédito seja emitido automaticamente — utilize o botão «Depositar» abaixo."
+        "description": "{amount} ({currency}) a depositar para que o crédito seja emitido automaticamente. Utilize o botão «Depositar» abaixo."
       }
     },
     "creditPage": {
@@ -1694,7 +1694,7 @@
       "advisor": {
         "trigger": "Simular os meus ganhos",
         "title": "Simulador de investimento",
-        "description": "Uma calculadora e um questionário para o ajudar a decidir — nunca um conselho personalizado, nem uma IA conversacional.",
+        "description": "Uma calculadora e um questionário para o ajudar a decidir, nunca um conselho personalizado, nem uma IA conversacional.",
         "tabs": {
           "simulator": "Simulador",
           "quiz": "O meu perfil",
@@ -1766,7 +1766,7 @@
           },
           "allocationRwa": "Estratégia RWA: {pct}%",
           "allocationStock": "{basket}: {pct}%",
-          "disclaimer": "Uma sugestão indicativa baseada nas suas respostas, nunca um conselho de investimento personalizado nem uma alocação aplicada automaticamente — cabe-lhe a si decidir e investir os montantes da sua escolha."
+          "disclaimer": "Uma sugestão indicativa baseada nas suas respostas, nunca um conselho de investimento personalizado nem uma alocação aplicada automaticamente: cabe-lhe a si decidir e investir os montantes da sua escolha."
         },
         "faq": {
           "difference": {
@@ -1830,7 +1830,7 @@
       },
       "wallet": {
         "title": "Wallet de investimento",
-        "description": "Um saldo separado do saldo principal, dedicado aos seus investimentos. Alimente-o por transferência interna a partir do seu saldo principal — mesmos endereços de depósito e ativos aceites, sem alterações.",
+        "description": "Um saldo separado do saldo principal, dedicado aos seus investimentos. Alimente-o por transferência interna a partir do seu saldo principal (mesmos endereços de depósito e ativos aceites, sem alterações).",
         "mainBalance": "Saldo principal",
         "walletBalance": "Wallet de investimento",
         "directionIn": "Para o wallet",
@@ -1857,19 +1857,19 @@
         "maturityDate": "Vencimento",
         "estimatedReturn": "Objetivo no vencimento"
       },
-      "confirmDepositRecap": "{amount} serão colocados no cabaz «{basket}» — levantamento integral possível a qualquer momento, ao contrário de um plano a prazo fixo.",
+      "confirmDepositRecap": "{amount} serão colocados no cabaz «{basket}» (levantamento integral possível a qualquer momento, ao contrário de um plano a prazo fixo).",
       "confirmDeposit": "Confirmar a colocação"
     },
     "kycDossier": {
       "title": "Processo KYC",
-      "description": "Preencha e envie o seu processo de identificação para a abertura de conta — inspirado no formulário regulamentar de PBC/FT.",
+      "description": "Preencha e envie o seu processo de identificação para a abertura de conta, inspirado no formulário regulamentar de PBC/FT.",
       "genericError": "Ocorreu um erro.",
       "saveSuccess": "Processo guardado.",
       "submitSuccess": "Processo enviado para análise.",
-      "notSubmittedNote": "Processo não enviado — preencha as secções abaixo e confirme a declaração.",
+      "notSubmittedNote": "Processo não enviado: preencha as secções abaixo e confirme a declaração.",
       "pendingReviewNote": "Enviado em {date}, a aguardar análise por um consultor.",
       "reviewedValidNote": "Aprovado em {date}.",
-      "reviewedRejectedNote": "Recusado em {date} — por favor preencha novamente.",
+      "reviewedRejectedNote": "Recusado em {date}. Por favor preencha novamente.",
       "decisionLabels": {
         "VALIDE": "Aprovado",
         "REFUSE": "Recusado"
@@ -2032,7 +2032,7 @@
     "termsAcceptance": {
       "readFull": "Ler os Termos completos →",
       "credit": {
-        "summary": "Ao submeter este pedido, dá o montante indicado em garantia: é-lhe concedido um crédito de 350% desse montante, à taxa de 13,5%/ano (USD) ou 12%/ano (EUR), com 2% de comissão de abertura cobrada na emissão. A garantia permanece bloqueada até o crédito utilizado ser totalmente reembolsado, podendo ser liquidada automaticamente se o seu valor cair 50% desde a entrada (alerta a partir de 30%) — o crédito já utilizado continuaria em dívida mesmo após a liquidação da garantia.",
+        "summary": "Ao submeter este pedido, dá o montante indicado em garantia: é-lhe concedido um crédito de 350% desse montante, à taxa de 13,5%/ano (USD) ou 12%/ano (EUR), com 2% de comissão de abertura cobrada na emissão. A garantia permanece bloqueada até o crédito utilizado ser totalmente reembolsado, podendo ser liquidada automaticamente se o seu valor cair 50% desde a entrada (alerta a partir de 30%): o crédito já utilizado continuaria em dívida mesmo após a liquidação da garantia.",
         "checkboxLabel": "Li e aceito os Termos e Condições relativos ao crédito com garantia."
       },
       "investment": {
@@ -2140,7 +2140,7 @@
       },
       "fixedTermLock": {
         "question": "Posso levantar um plano a prazo fixo antes do vencimento?",
-        "answer": "Não, não é possível qualquer levantamento antecipado assim que o depósito for confirmado — os fundos (capital + rendimento acumulado) são automaticamente devolvidos no vencimento escolhido, sem qualquer ação da sua parte."
+        "answer": "Não, não é possível qualquer levantamento antecipado assim que o depósito for confirmado: os fundos (capital + rendimento acumulado) são automaticamente devolvidos no vencimento escolhido, sem qualquer ação da sua parte."
       },
       "howComputed": {
         "question": "Como é calculado o rendimento apresentado?",
@@ -2148,12 +2148,12 @@
       },
       "riskLevels": {
         "question": "O que significa o nível de risco apresentado?",
-        "answer": "Uma classificação indicativa numa escala de 1 a 5 (uma hipótese editorial, nunca uma pontuação calculada em tempo real sobre uma volatilidade medida), do mais prudente ao mais dinâmico — ajuda-o a comparar cabazes e planos entre si."
+        "answer": "Uma classificação indicativa numa escala de 1 a 5 (uma hipótese editorial, nunca uma pontuação calculada em tempo real sobre uma volatilidade medida), do mais prudente ao mais dinâmico, para o ajudar a comparar cabazes e planos entre si."
       }
     },
     "ctaLogin": "Aceder à minha conta",
     "ctaNoAccount": "Tem um código de convite? Criar a minha conta",
-    "basketsIntro": "Cada cabaz tem a sua própria composição, o seu próprio nível de risco e o seu próprio objetivo de rendimento indicativo — sem hierarquia entre eles, alguma sobreposição de títulos entre cabazes é assumida.",
+    "basketsIntro": "Cada cabaz tem a sua própria composição, o seu próprio nível de risco e o seu próprio objetivo de rendimento indicativo, sem hierarquia entre eles: alguma sobreposição de títulos entre cabazes é assumida.",
     "compositionLabel": "Composição:",
     "rwaLearnMore": "Ver o detalhe dos 3 pilares da estratégia",
     "mechanism": {
@@ -2161,25 +2161,25 @@
       "intro": "Nenhum rendimento apresentado nesta página é um valor inventado: cada cabaz e cada plano assentam em cotações reais e em pressupostos de dividendo explícitos, recalculados todos os dias.",
       "accrual": {
         "title": "Rendimento diário composto",
-        "body": "Todos os dias, o rendimento aplicado combina um objetivo de dividendo indicativo próprio do cabaz com a variação real do mercado nesse dia (cotações reais, nunca um valor inventado). É somado ao capital do dia anterior antes do cálculo do dia seguinte — e pode ser negativo num dia desfavorável."
+        "body": "Todos os dias, o rendimento aplicado combina um objetivo de dividendo indicativo próprio do cabaz com a variação real do mercado nesse dia (cotações reais, nunca um valor inventado). É somado ao capital do dia anterior antes do cálculo do dia seguinte, e pode ser negativo num dia desfavorável."
       },
       "wallet": {
         "title": "Um saldo dedicado ao investimento",
-        "body": "Os fundos investidos provêm de uma carteira de investimento separada do seu saldo principal. Transfere dinheiro para lá internamente antes de o poder investir — nunca um depósito on-chain direto nesta carteira."
+        "body": "Os fundos investidos provêm de uma carteira de investimento separada do seu saldo principal. Transfere dinheiro para lá internamente antes de o poder investir: nunca um depósito on-chain direto nesta carteira."
       },
       "twoModes": {
         "title": "Duas formas de investir",
-        "body": "Os seis cabazes abaixo podem ser levantados na íntegra a qualquer momento, sem aviso prévio. Os seis planos a prazo fixo, por sua vez, bloqueiam os fundos até ao seu vencimento (3, 6 ou 12 meses) — sem possibilidade de levantamento antecipado, em troca de uma composição predefinida."
+        "body": "Os seis cabazes abaixo podem ser levantados na íntegra a qualquer momento, sem aviso prévio. Os seis planos a prazo fixo, por sua vez, bloqueiam os fundos até ao seu vencimento (3, 6 ou 12 meses), sem possibilidade de levantamento antecipado, em troca de uma composição predefinida."
       }
     },
     "fixedTermTitle": "Seis planos a prazo fixo",
     "fixedTermIntro": "Uma segunda forma de investir, a par dos cabazes acima: cada plano combina títulos já cobertos pelos nossos cabazes (por vezes misturados entre si, ou com exposição à estratégia RWA), bloqueados até ao vencimento escolhido.",
-    "fixedTermNote": "Efetivamente subscritível a partir da sua área de cliente, após a abertura da conta — não é possível qualquer levantamento antecipado assim que o depósito for confirmado.",
+    "fixedTermNote": "Efetivamente subscritível a partir da sua área de cliente, após a abertura da conta. Não é possível qualquer levantamento antecipado assim que o depósito for confirmado.",
     "indicativeSuffix": "indicativo"
   },
   "InviteSignup": {
     "meta": {
-      "title": "Criar a minha conta — código de convite",
+      "title": "Criar a minha conta com um código de convite",
       "description": "Introduza o seu código de convite para criar a sua conta Hentsch Credit e completar o seu dossiê KYC passo a passo."
     },
     "eyebrow": "Acesso apenas por convite",
@@ -2197,7 +2197,7 @@
     "code": {
       "label": "Código de convite",
       "placeholder": "XXXX-XXXX-AAAA",
-      "hint": "Fornecido pelo seu consultor — uso único, válido 24h após a geração.",
+      "hint": "Fornecido pelo seu consultor: uso único, válido 24h após a geração.",
       "cta": "Validar código",
       "accountTypeNote": "Este código abre uma conta {type}",
       "accountTypeParticulier": "particular",

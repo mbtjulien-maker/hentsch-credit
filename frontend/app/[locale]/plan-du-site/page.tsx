@@ -61,6 +61,7 @@ export default async function PlanDuSitePage({ params }: { params: Promise<{ loc
       icon: LifeBuoy,
       title: t("groups.help.title"),
       links: [
+        { href: "/a-propos", label: t("links.aboutUs") },
         { href: "/contact", label: t("links.contact") },
         { href: "/faq", label: t("links.faq") },
         { href: "/accessibilite", label: t("links.accessibility") },

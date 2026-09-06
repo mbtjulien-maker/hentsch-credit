@@ -17,6 +17,7 @@ const PUBLIC_ROUTES = [
   { path: "/tarifs", priority: 0.8, changeFrequency: "monthly" },
   { path: "/investissement-direct", priority: 0.8, changeFrequency: "monthly" },
   { path: "/demande-de-compte", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/a-propos", priority: 0.5, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
   { path: "/faq", priority: 0.6, changeFrequency: "monthly" },
   { path: "/plan-du-site", priority: 0.3, changeFrequency: "monthly" },

@@ -18,6 +18,7 @@ export async function SiteFooter() {
     {
       title: t("columns.help.title"),
       links: [
+        { href: "/a-propos", label: t("columns.help.aboutUs") },
         { href: "/contact", label: t("columns.help.contact") },
         { href: "/faq", label: t("columns.help.faq") },
         { href: "/plan-du-site", label: t("columns.help.sitemap") },

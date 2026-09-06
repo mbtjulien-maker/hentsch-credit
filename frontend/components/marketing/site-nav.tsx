@@ -96,7 +96,7 @@ export function SiteNav() {
         <nav
           ref={navRef}
           onMouseLeave={() => positionPill(pathname)}
-          className="relative hidden items-center gap-4 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-3 py-1.5 lg:flex"
+          className="relative hidden items-center gap-4 lg:flex"
         >
           {/* Fond coulissant — un seul élément partagé, jamais un par lien : c'est ce qui
               produit l'effet de glissement (transition sur left/width) plutôt qu'un

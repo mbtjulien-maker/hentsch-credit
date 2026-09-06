@@ -1,4 +1,4 @@
-import { ArrowRight, Landmark, LineChart, Lock, ShieldAlert, Sparkles, Wallet } from "lucide-react";
+import { ArrowRight, Building2, Landmark, LineChart, Lock, ShieldAlert, Sparkles, UserCheck, Wallet } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -99,7 +99,7 @@ export default async function InvestissementDirectPage({ params }: { params: Pro
   ] as const;
 
   const FAQ_ITEMS = (
-    ["guarantee", "withdraw", "difference", "wallet", "fixedTermLock", "howComputed", "riskLevels"] as const
+    ["eligibility", "guarantee", "withdraw", "difference", "wallet", "fixedTermLock", "howComputed", "riskLevels"] as const
   ).map((key) => ({
     key,
     question: t(`faq.${key}.question`),
@@ -126,6 +126,29 @@ export default async function InvestissementDirectPage({ params }: { params: Pro
             </div>
           ))}
         </div>
+
+        {/* Éligibilité — retour client explicite : "précise bien que ces investissements
+            sont disponibles pour les clients particuliers et les entreprises clientes".
+            Placée avant même le mécanisme : c'est la première question qu'un visiteur se
+            pose ("est-ce que ça me concerne ?"), avant le "comment ça marche". */}
+        <h2 className="mt-14 text-xl font-semibold text-foreground">{t("eligibility.title")}</h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <div className="flex items-start gap-3 rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
+            <UserCheck className="mt-0.5 size-5 shrink-0 text-primary" />
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">{t("eligibility.particulier.title")}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{t("eligibility.particulier.body")}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
+            <Building2 className="mt-0.5 size-5 shrink-0 text-primary" />
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">{t("eligibility.business.title")}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{t("eligibility.business.body")}</p>
+            </div>
+          </div>
+        </div>
+        <p className="mt-3 text-center text-xs text-muted-foreground/80">{t("eligibility.assetsNote")}</p>
 
         {/* Mécanisme — comment le rendement quotidien est réellement calculé et les deux
             modes de placement disponibles (retour client : "en dire le plus possible sur

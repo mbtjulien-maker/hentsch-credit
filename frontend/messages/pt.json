@@ -35,7 +35,8 @@
         "faq": "Perguntas frequentes",
         "sitemap": "Mapa do site",
         "accessibility": "Acessibilidade digital",
-        "archives": "Arquivo"
+        "archives": "Arquivo",
+        "aboutUs": "Sobre nós"
       },
       "contractual": {
         "title": "Documentação contratual",
@@ -88,7 +89,7 @@
       },
       "investment": {
         "title": "Investimento direto",
-        "description": "Um investimento, sem garantia nem crédito: estratégia RWA ou uma cesta de ações, à escolha."
+        "description": "Um investimento, sem garantia nem crédito, aberto a particulares e empresas: estratégia RWA ou cabaz de ações, à escolha."
       }
     },
     "stats": {
@@ -102,7 +103,7 @@
     "closingDescription": "Plataforma reservada a uma clientela restrita. A nossa equipa analisa cada processo antes de conceder o acesso.",
     "closingCta": "Solicitar a abertura de uma conta",
     "investmentHero": {
-      "badge": "Investimento direto · Aberto a contas verificadas",
+      "badge": "Investimento direto · Particulares e empresas",
       "titleLine1": "O seu capital, posto a trabalhar,",
       "titleHighlight": "nunca usado como garantia",
       "subtitle": "Seis estratégias à escolha, da tesouraria RWA aos cabazes de ações tecnológicas, com um rendimento diário real, nunca inventado.",
@@ -112,7 +113,8 @@
       "ctaDiscover": "Descobrir o investimento",
       "basketsBadge": "Seis estratégias",
       "basketsTitle": "Um gradiente de risco, não uma única opção",
-      "basketsSubtitle": "Do mais prudente ao mais dinâmico, cada cabaz tem o seu próprio objetivo indicativo."
+      "basketsSubtitle": "Do mais prudente ao mais dinâmico, cada cabaz tem o seu próprio objetivo indicativo.",
+      "basketsTodaySuffix": "hoje"
     }
   },
   "HowItWorks": {
@@ -702,7 +704,8 @@
       "regulation": "Regulamentação",
       "riskManagement": "Gestão de riscos e custódia de ativos",
       "privacyPolicy": "Política de privacidade",
-      "cookiePolicy": "Política de cookies"
+      "cookiePolicy": "Política de cookies",
+      "aboutUs": "Sobre nós"
     },
     "clientLinks": {
       "home": "Início",
@@ -1414,7 +1417,10 @@
         "ADMINISTRATION_PUBLIQUE": "Administração pública",
         "AUTRE": "Outro"
       },
-      "companyRegistrationNumber": "Número de registo (ex. NIPC)"
+      "companyRegistrationNumber": "Número de IVA intracomunitário (ex. FR12345678901)",
+      "companyName": "Nome da empresa",
+      "companySeniority": "Antiguidade da empresa",
+      "annualRevenue": "Faturamento anual"
     },
     "supportSection": {
       "title": "Contactar o suporte",
@@ -2027,7 +2033,20 @@
         "ADMINISTRATION_PUBLIQUE": "Administração pública",
         "AUTRE": "Outro"
       },
-      "companyRegistrationNumber": "Número de registo (ex. NIPC)"
+      "companyRegistrationNumber": "Número de IVA intracomunitário (ex. FR12345678901)",
+      "companyName": "Nome da empresa",
+      "companySeniority": "Antiguidade da empresa",
+      "annualRevenueBracket": "Faixa de faturamento anual",
+      "businessAssetsBracket": "Faixa de ativos da empresa",
+      "vatCheck": {
+        "action": "Verificar",
+        "formatError": "Coloque o código de país de 2 letras antes do número (ex. FR12345678901).",
+        "unavailable": "A verificação está temporariamente indisponível. Tente novamente mais tarde.",
+        "validResult": "Número de IVA válido: {name}, {address}.",
+        "validNoDetails": "Número de IVA válido (o Estado-Membro não fornece nome nem morada).",
+        "invalidResult": "Número de IVA não encontrado no VIES (Comissão Europeia).",
+        "noAddress": "sem morada indicada"
+      }
     },
     "termsAcceptance": {
       "readFull": "Ler os Termos completos →",
@@ -2149,6 +2168,10 @@
       "riskLevels": {
         "question": "O que significa o nível de risco apresentado?",
         "answer": "Uma classificação indicativa numa escala de 1 a 5 (uma hipótese editorial, nunca uma pontuação calculada em tempo real sobre uma volatilidade medida), do mais prudente ao mais dinâmico, para o ajudar a comparar cabazes e planos entre si."
+      },
+      "eligibility": {
+        "question": "Quem pode investir: particulares, empresas, ou ambos?",
+        "answer": "Ambos. Ao contrário do crédito direto, reservado às contas Business, o investimento direto está aberto a qualquer conta verificada (KYC), particular ou profissional, a partir de 10 $ por depósito."
       }
     },
     "ctaLogin": "Aceder à minha conta",
@@ -2175,7 +2198,19 @@
     "fixedTermTitle": "Seis planos a prazo fixo",
     "fixedTermIntro": "Uma segunda forma de investir, a par dos cabazes acima: cada plano combina títulos já cobertos pelos nossos cabazes (por vezes misturados entre si, ou com exposição à estratégia RWA), bloqueados até ao vencimento escolhido.",
     "fixedTermNote": "Efetivamente subscritível a partir da sua área de cliente, após a abertura da conta. Não é possível qualquer levantamento antecipado assim que o depósito for confirmado.",
-    "indicativeSuffix": "indicativo"
+    "indicativeSuffix": "indicativo",
+    "eligibility": {
+      "title": "Quem pode investir?",
+      "particulier": {
+        "title": "Contas particulares",
+        "body": "Aberto a qualquer cliente verificado (KYC), seja qual for o seu perfil, sem qualquer condição de estatuto profissional."
+      },
+      "business": {
+        "title": "Contas profissionais",
+        "body": "Também disponível para contas Business, além do crédito direto já reservado para elas: os dois produtos coexistem, nunca um em vez do outro."
+      },
+      "assetsNote": "As mesmas seis estratégias para ambos os perfis: metais industriais tokenizados (platina, paládio, cobre, petróleo sintético) e ações bolsistas reais (Apple, Microsoft, NVIDIA, Amazon, Coca-Cola, e outros títulos cotados)."
+    }
   },
   "InviteSignup": {
     "meta": {
@@ -2212,7 +2247,8 @@
       "passwordMismatch": "As palavras-passe não coincidem."
     },
     "employment": {
-      "annualIncome": "Rendimento anual declarado"
+      "annualIncome": "Rendimento anual declarado",
+      "annualRevenue": "Faturamento anual declarado"
     },
     "identity": {
       "fileUploadNote": "Estes campos são declarativos. Poderá carregar os seus ficheiros (documento de identidade, comprovativo de morada) assim que a sua conta for criada, em Verificação KYC."
@@ -2231,5 +2267,61 @@
       "successTitle": "Conta criada com sucesso",
       "successDescription": "Bem-vindo/a! A sua conta {email} foi criada, o seu dossiê KYC está em análise. A redirecionar para o seu painel…"
     }
+  },
+  "AboutUs": {
+    "meta": {
+      "title": "Sobre nós",
+      "description": "Hentsch Credit: a nossa missão, a nossa governação, a nossa supervisão regulatória e a custódia dos seus ativos junto de depositários terceiros autorizados."
+    },
+    "eyebrow": "Quem somos",
+    "title": "Sobre nós",
+    "description": "A Hentsch Credit é a oferta cripto-colateralizada da H. Hentsch Asset Management SA, gestora de património independente sediada em Nyon, na Suíça.",
+    "mission": {
+      "title": "A nossa missão",
+      "body": "Permitir aos nossos clientes, particulares e empresas, libertar poder de compra imediato a partir dos seus ativos digitais e metais preciosos tokenizados, sem nunca terem de os vender, dando-lhes ao mesmo tempo acesso direto a estratégias de rendimento real."
+    },
+    "governance": {
+      "title": "Governação",
+      "body": "A Hentsch Credit é explorada pela {legalName}, sociedade anónima de direito suíço sediada no cantão de {canton}, sob a direção de {founder}."
+    },
+    "regulation": {
+      "title": "Regulação e supervisão",
+      "body": "Enquanto gestora de património independente nos termos da LEFin, a nossa atividade é supervisionada pela {supervisionBodyName}, organismo de supervisão autorizado pela FINMA, incluindo o cumprimento da legislação contra o branqueamento de capitais.",
+      "learnMore": "Ver o nosso estatuto regulatório completo"
+    },
+    "custody": {
+      "title": "Custódia dos ativos",
+      "body": "Os seus ativos nunca são detidos pela Hentsch Credit em nome próprio. O numerário e os títulos permanecem depositados em bancos custodiantes terceiros autorizados; os ativos digitais dados em garantia são custodiados pela {custodian}, prestadora especializada em custódia de criptoativos.",
+      "learnMore": "Ver gestão de riscos e custódia"
+    },
+    "values": {
+      "title": "Os nossos valores",
+      "intro": "Quatro princípios que orientam cada decisão de produto, desde o cálculo de uma taxa até à custódia dos seus ativos.",
+      "transparency": {
+        "title": "Transparência",
+        "body": "Cada taxa, cada limiar e cada rendimento apresentado reflete um dado real ou um pressuposto claramente identificado como tal, nunca um número inventado."
+      },
+      "security": {
+        "title": "Segurança",
+        "body": "Os seus ativos permanecem custodiados por depositários terceiros autorizados, nunca em nome próprio."
+      },
+      "precision": {
+        "title": "Rigor suíço",
+        "body": "Uma governação e uma supervisão regulatória ancoradas no direito suíço, a partir da nossa sede no cantão de Vaud."
+      },
+      "innovation": {
+        "title": "Inovação controlada",
+        "body": "Uma ponte entre ativos digitais e finanças tradicionais, construída passo a passo, nunca à custa da transparência para com os nossos clientes."
+      }
+    },
+    "identity": {
+      "title": "Identidade legal",
+      "legalName": "Denominação social",
+      "legalForm": "Forma jurídica",
+      "registeredOffice": "Sede social",
+      "commercialRegister": "Registo comercial"
+    },
+    "ctaContact": "Contactar-nos",
+    "ctaNoAccount": "Ainda não tem conta? Solicitar abertura de conta"
   }
 }

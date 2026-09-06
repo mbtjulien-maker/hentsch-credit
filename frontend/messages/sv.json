@@ -35,7 +35,8 @@
         "faq": "Vanliga frågor",
         "sitemap": "Webbplatskarta",
         "accessibility": "Digital tillgänglighet",
-        "archives": "Arkiv"
+        "archives": "Arkiv",
+        "aboutUs": "Om oss"
       },
       "contractual": {
         "title": "Avtalsdokumentation",
@@ -88,7 +89,7 @@
       },
       "investment": {
         "title": "Direktinvestering",
-        "description": "En placering, utan säkerhet eller kredit: RWA-strategi eller en aktiekorg, valfritt."
+        "description": "En placering, utan säkerhet eller kredit, öppen för privatpersoner och företag: RWA-strategi eller aktiekorg, efter eget val."
       }
     },
     "stats": {
@@ -102,7 +103,7 @@
     "closingDescription": "Plattform förbehållen en begränsad kundkrets. Vårt team granskar varje ansökan innan tillgång beviljas.",
     "closingCta": "Ansök om ett konto",
     "investmentHero": {
-      "badge": "Direktinvestering · Öppen för verifierade konton",
+      "badge": "Direktinvestering · Privatpersoner & företag",
       "titleLine1": "Ditt kapital, i arbete,",
       "titleHighlight": "aldrig använt som säkerhet",
       "subtitle": "Sex strategier att välja mellan, från RWA-treasury till korgar med teknikaktier, med en verklig daglig avkastning, aldrig hittad på.",
@@ -112,7 +113,8 @@
       "ctaDiscover": "Upptäck investering",
       "basketsBadge": "Sex strategier",
       "basketsTitle": "En riskgradient, inte en enda ruta",
-      "basketsSubtitle": "Från den mest försiktiga till den mest dynamiska har varje korg sitt eget indikativa mål."
+      "basketsSubtitle": "Från den mest försiktiga till den mest dynamiska har varje korg sitt eget indikativa mål.",
+      "basketsTodaySuffix": "idag"
     }
   },
   "HowItWorks": {
@@ -702,7 +704,8 @@
       "regulation": "Reglering",
       "riskManagement": "Riskhantering och förvaring av tillgångar",
       "privacyPolicy": "Integritetspolicy",
-      "cookiePolicy": "Cookiepolicy"
+      "cookiePolicy": "Cookiepolicy",
+      "aboutUs": "Om oss"
     },
     "clientLinks": {
       "home": "Start",
@@ -1414,7 +1417,10 @@
         "ADMINISTRATION_PUBLIQUE": "Offentlig förvaltning",
         "AUTRE": "Övrigt"
       },
-      "companyRegistrationNumber": "Organisationsnummer"
+      "companyRegistrationNumber": "EU-momsregistreringsnummer (t.ex. FR12345678901)",
+      "companyName": "Företagsnamn",
+      "companySeniority": "Företagets ålder",
+      "annualRevenue": "Årsomsättning"
     },
     "supportSection": {
       "title": "Kontakta support",
@@ -2027,7 +2033,20 @@
         "ADMINISTRATION_PUBLIQUE": "Offentlig förvaltning",
         "AUTRE": "Övrigt"
       },
-      "companyRegistrationNumber": "Organisationsnummer"
+      "companyRegistrationNumber": "EU-momsregistreringsnummer (t.ex. FR12345678901)",
+      "companyName": "Företagsnamn",
+      "companySeniority": "Företagets ålder",
+      "annualRevenueBracket": "Årsomsättningsintervall",
+      "businessAssetsBracket": "Företagets tillgångsintervall",
+      "vatCheck": {
+        "action": "Kontrollera",
+        "formatError": "Lägg till den 2-bokstaviga landskoden före numret (t.ex. FR12345678901).",
+        "unavailable": "Kontrollen är tillfälligt otillgänglig. Försök igen senare.",
+        "validResult": "Giltigt momsregistreringsnummer: {name}, {address}.",
+        "validNoDetails": "Giltigt momsregistreringsnummer (medlemsstaten anger inget namn eller adress).",
+        "invalidResult": "Momsregistreringsnumret hittades inte i VIES (Europeiska kommissionen).",
+        "noAddress": "ingen adress angiven"
+      }
     },
     "termsAcceptance": {
       "readFull": "Läs de fullständiga villkoren →",
@@ -2149,6 +2168,10 @@
       "riskLevels": {
         "question": "Vad betyder den visade risknivån?",
         "answer": "En vägledande klassificering på en skala från 1 till 5 (ett redaktionellt antagande, aldrig en poäng beräknad live utifrån uppmätt volatilitet), från den mest försiktiga till den mest dynamiska, för att hjälpa dig jämföra korgar och planer med varandra."
+      },
+      "eligibility": {
+        "question": "Vem kan investera: privatpersoner, företag, eller båda?",
+        "answer": "Båda. Till skillnad från direktkredit, som är reserverad för Business-konton, är direktinvestering öppen för alla verifierade (KYC) konton, privata eller professionella, från 10 $ per insättning."
       }
     },
     "ctaLogin": "Till mitt konto",
@@ -2175,7 +2198,19 @@
     "fixedTermTitle": "Sex planer med fast löptid",
     "fixedTermIntro": "Ett andra sätt att investera, vid sidan av korgarna ovan: varje plan kombinerar innehav som redan täcks av våra korgar (ibland blandade med varandra, eller med exponering mot RWA-strategin), låsta fram till vald förfallodag.",
     "fixedTermNote": "Verkligen möjlig att teckna från ditt kundområde, när ditt konto väl är öppnat. Inget förtida uttag är möjligt när insättningen väl har bekräftats.",
-    "indicativeSuffix": "vägledande"
+    "indicativeSuffix": "vägledande",
+    "eligibility": {
+      "title": "Vem kan investera?",
+      "particulier": {
+        "title": "Privatkonton",
+        "body": "Öppet för alla verifierade (KYC) kunder, oavsett profil, utan något krav på yrkesstatus."
+      },
+      "business": {
+        "title": "Företagskonton",
+        "body": "Även tillgängligt för Business-konton, utöver den direktkredit som redan är reserverad för dem: de två produkterna existerar sida vid sida, aldrig den ena istället för den andra."
+      },
+      "assetsNote": "Samma sex strategier för båda profilerna: tokeniserade industrimetaller (platina, palladium, koppar, syntetisk olja) och riktiga börsaktier (Apple, Microsoft, NVIDIA, Amazon, Coca-Cola, och andra börsnoterade aktier)."
+    }
   },
   "InviteSignup": {
     "meta": {
@@ -2212,7 +2247,8 @@
       "passwordMismatch": "Lösenorden matchar inte."
     },
     "employment": {
-      "annualIncome": "Angiven årsinkomst"
+      "annualIncome": "Angiven årsinkomst",
+      "annualRevenue": "Uppgiven årsomsättning"
     },
     "identity": {
       "fileUploadNote": "Dessa fält är deklarativa. Du kan ladda upp dina filer (legitimation, adressbevis) när ditt konto har skapats, via KYC-verifiering."
@@ -2231,5 +2267,61 @@
       "successTitle": "Kontot har skapats",
       "successDescription": "Välkommen! Ditt konto {email} har skapats, din KYC-akt granskas. Omdirigerar till din instrumentpanel…"
     }
+  },
+  "AboutUs": {
+    "meta": {
+      "title": "Om oss",
+      "description": "Hentsch Credit: vårt uppdrag, vår bolagsstyrning, vår regulatoriska tillsyn och förvaringen av dina tillgångar hos auktoriserade externa förvaringsinstitut."
+    },
+    "eyebrow": "Vilka vi är",
+    "title": "Om oss",
+    "description": "Hentsch Credit är det kryptosäkrade erbjudandet från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon, Schweiz.",
+    "mission": {
+      "title": "Vårt uppdrag",
+      "body": "Att låta våra kunder, privatpersoner såväl som företag, frigöra omedelbar köpkraft från sina digitala tillgångar och tokeniserade ädelmetaller, utan att någonsin behöva sälja dem, samtidigt som de får direkt tillgång till strategier med verklig avkastning."
+    },
+    "governance": {
+      "title": "Bolagsstyrning",
+      "body": "Hentsch Credit drivs av {legalName}, ett schweiziskt aktiebolag baserat i kantonen {canton}, under ledning av {founder}."
+    },
+    "regulation": {
+      "title": "Reglering & tillsyn",
+      "body": "Som oberoende kapitalförvaltare enligt LEFin övervakas vår verksamhet av {supervisionBodyName}, en tillsynsorganisation godkänd av FINMA, inklusive efterlevnad av lagen mot penningtvätt.",
+      "learnMore": "Se vår fullständiga regulatoriska status"
+    },
+    "custody": {
+      "title": "Förvaring av tillgångar",
+      "body": "Dina tillgångar innehas aldrig av Hentsch Credit i eget namn. Kontanter och värdepapper förblir deponerade hos auktoriserade externa förvaringsbanker; digitala tillgångar som ställts som säkerhet förvaras av {custodian}, en specialiserad leverantör av förvaring av kryptotillgångar.",
+      "learnMore": "Se riskhantering och förvaring"
+    },
+    "values": {
+      "title": "Våra värderingar",
+      "intro": "Fyra principer som styr varje produktbeslut, från beräkningen av en ränta till förvaringen av dina tillgångar.",
+      "transparency": {
+        "title": "Transparens",
+        "body": "Varje ränta, tröskel och avkastning som visas återspeglar en verklig siffra eller ett antagande tydligt märkt som sådant, aldrig en påhittad siffra."
+      },
+      "security": {
+        "title": "Säkerhet",
+        "body": "Dina tillgångar förblir förvarade hos auktoriserade externa förvaringsinstitut, aldrig i eget namn."
+      },
+      "precision": {
+        "title": "Schweizisk precision",
+        "body": "Bolagsstyrning och regulatorisk tillsyn förankrad i schweizisk lag, från vårt kontor i kantonen Vaud."
+      },
+      "innovation": {
+        "title": "Kontrollerad innovation",
+        "body": "En bro mellan digitala tillgångar och traditionell finans, byggd steg för steg, aldrig på bekostnad av transparens gentemot våra kunder."
+      }
+    },
+    "identity": {
+      "title": "Juridisk identitet",
+      "legalName": "Firmanamn",
+      "legalForm": "Juridisk form",
+      "registeredOffice": "Säte",
+      "commercialRegister": "Handelsregister"
+    },
+    "ctaContact": "Kontakta oss",
+    "ctaNoAccount": "Inget konto än? Ansök om att öppna ett konto"
   }
 }

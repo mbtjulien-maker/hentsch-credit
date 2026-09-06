@@ -35,7 +35,8 @@
         "faq": "Veelgestelde vragen",
         "sitemap": "Sitemap",
         "accessibility": "Digitale toegankelijkheid",
-        "archives": "Archief"
+        "archives": "Archief",
+        "aboutUs": "Over ons"
       },
       "contractual": {
         "title": "Contractuele documentatie",
@@ -88,7 +89,7 @@
       },
       "investment": {
         "title": "Directe belegging",
-        "description": "Een belegging, zonder onderpand of krediet: RWA-strategie of een aandelenmand, naar keuze."
+        "description": "Een belegging, zonder onderpand of krediet, open voor particulieren en bedrijven: RWA-strategie of aandelenmand, naar keuze."
       }
     },
     "stats": {
@@ -102,7 +103,7 @@
     "closingDescription": "Platform voorbehouden aan een beperkte klantenkring. Ons team beoordeelt elke aanvraag voordat toegang wordt verleend.",
     "closingCta": "Een account aanvragen",
     "investmentHero": {
-      "badge": "Directe belegging · Open voor geverifieerde rekeningen",
+      "badge": "Directe belegging · Particulieren & bedrijven",
       "titleLine1": "Uw kapitaal, aan het werk gezet,",
       "titleHighlight": "nooit als onderpand gebruikt",
       "subtitle": "Zes strategieën om uit te kiezen, van RWA-treasury tot techaandelenmanden, met een echt dagelijks rendement, nooit verzonnen.",
@@ -112,7 +113,8 @@
       "ctaDiscover": "Ontdek beleggen",
       "basketsBadge": "Zes strategieën",
       "basketsTitle": "Een risicogradiënt, geen eenheidsworst",
-      "basketsSubtitle": "Van het meest voorzichtige tot het meest dynamische, elke mand heeft haar eigen indicatieve doelstelling."
+      "basketsSubtitle": "Van het meest voorzichtige tot het meest dynamische, elke mand heeft haar eigen indicatieve doelstelling.",
+      "basketsTodaySuffix": "vandaag"
     }
   },
   "HowItWorks": {
@@ -702,7 +704,8 @@
       "regulation": "Regelgeving",
       "riskManagement": "Risicobeheer en bewaring van activa",
       "privacyPolicy": "Privacybeleid",
-      "cookiePolicy": "Cookiebeleid"
+      "cookiePolicy": "Cookiebeleid",
+      "aboutUs": "Over ons"
     },
     "clientLinks": {
       "home": "Home",
@@ -1414,7 +1417,10 @@
         "ADMINISTRATION_PUBLIQUE": "Overheid",
         "AUTRE": "Overig"
       },
-      "companyRegistrationNumber": "Inschrijvingsnummer (bv. KvK)"
+      "companyRegistrationNumber": "Btw-nummer (bv. FR12345678901)",
+      "companyName": "Bedrijfsnaam",
+      "companySeniority": "Bedrijfsanciënniteit",
+      "annualRevenue": "Jaaromzet"
     },
     "supportSection": {
       "title": "Contact opnemen met support",
@@ -2027,7 +2033,20 @@
         "ADMINISTRATION_PUBLIQUE": "Overheid",
         "AUTRE": "Overig"
       },
-      "companyRegistrationNumber": "Inschrijvingsnummer (bv. KvK)"
+      "companyRegistrationNumber": "Btw-nummer (bv. FR12345678901)",
+      "companyName": "Bedrijfsnaam",
+      "companySeniority": "Bedrijfsanciënniteit",
+      "annualRevenueBracket": "Jaaromzetklasse",
+      "businessAssetsBracket": "Vermogensklasse van het bedrijf",
+      "vatCheck": {
+        "action": "Controleren",
+        "formatError": "Zet de landcode van 2 letters voor het nummer (bv. FR12345678901).",
+        "unavailable": "De controle is tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+        "validResult": "Geldig btw-nummer: {name}, {address}.",
+        "validNoDetails": "Geldig btw-nummer (de lidstaat geeft geen naam of adres op).",
+        "invalidResult": "Btw-nummer niet gevonden in VIES (Europese Commissie).",
+        "noAddress": "geen adres opgegeven"
+      }
     },
     "termsAcceptance": {
       "readFull": "Lees de volledige voorwaarden →",
@@ -2149,6 +2168,10 @@
       "riskLevels": {
         "question": "Wat betekent het getoonde risiconiveau?",
         "answer": "Een indicatieve classificatie op een schaal van 1 tot 5 (een redactionele aanname, nooit een live berekende score op basis van gemeten volatiliteit), van het meest voorzichtige tot het meest dynamische, om u te helpen manden en plannen met elkaar te vergelijken."
+      },
+      "eligibility": {
+        "question": "Wie kan beleggen: particulieren, bedrijven, of beide?",
+        "answer": "Beide. In tegenstelling tot rechtstreeks krediet, dat voorbehouden is aan Business-rekeningen, staat directe belegging open voor elke geverifieerde (KYC) rekening, particulier of zakelijk, vanaf 10 $ per storting."
       }
     },
     "ctaLogin": "Naar mijn account",
@@ -2175,7 +2198,19 @@
     "fixedTermTitle": "Zes vastrentende plannen",
     "fixedTermIntro": "Een tweede manier om te beleggen, naast de manden hierboven: elk plan combineert posities die al door onze manden worden gedekt (soms onderling gemengd, of met blootstelling aan de RWA-strategie), vergrendeld tot de gekozen looptijd.",
     "fixedTermNote": "Daadwerkelijk af te sluiten vanuit uw klantomgeving, zodra uw account is geopend. Geen vervroegde opname mogelijk zodra de storting is bevestigd.",
-    "indicativeSuffix": "indicatief"
+    "indicativeSuffix": "indicatief",
+    "eligibility": {
+      "title": "Wie kan beleggen?",
+      "particulier": {
+        "title": "Particuliere rekeningen",
+        "body": "Open voor elke geverifieerde (KYC) klant, ongeacht profiel, zonder enige voorwaarde qua professionele status."
+      },
+      "business": {
+        "title": "Zakelijke rekeningen",
+        "body": "Ook beschikbaar voor Business-rekeningen, naast het rechtstreekse krediet dat al voor hen gereserveerd is: beide producten bestaan naast elkaar, nooit het ene in plaats van het andere."
+      },
+      "assetsNote": "Dezelfde zes strategieën voor beide profielen: getokeniseerde industriële metalen (platina, palladium, koper, synthetische olie) en echte beursaandelen (Apple, Microsoft, NVIDIA, Amazon, Coca-Cola, en andere beursgenoteerde aandelen)."
+    }
   },
   "InviteSignup": {
     "meta": {
@@ -2212,7 +2247,8 @@
       "passwordMismatch": "Wachtwoorden komen niet overeen."
     },
     "employment": {
-      "annualIncome": "Opgegeven jaarinkomen"
+      "annualIncome": "Opgegeven jaarinkomen",
+      "annualRevenue": "Opgegeven jaaromzet"
     },
     "identity": {
       "fileUploadNote": "Deze velden zijn declaratief. U kunt uw bestanden (identiteitsbewijs, adresbewijs) uploaden zodra uw account is aangemaakt, via KYC-verificatie."
@@ -2231,5 +2267,61 @@
       "successTitle": "Account succesvol aangemaakt",
       "successDescription": "Welkom! Uw account {email} is aangemaakt, uw KYC-dossier wordt beoordeeld. Doorverwijzen naar uw dashboard…"
     }
+  },
+  "AboutUs": {
+    "meta": {
+      "title": "Over ons",
+      "description": "Hentsch Credit: onze missie, onze governance, ons toezicht op naleving van regelgeving en de bewaring van uw activa bij erkende externe bewaarders."
+    },
+    "eyebrow": "Wie wij zijn",
+    "title": "Over ons",
+    "description": "Hentsch Credit is het crypto-gedekte aanbod van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon, Zwitserland.",
+    "mission": {
+      "title": "Onze missie",
+      "body": "Onze klanten, particulieren en bedrijven, in staat stellen onmiddellijke koopkracht vrij te maken uit hun digitale activa en getokeniseerde edelmetalen, zonder deze ooit te hoeven verkopen, en hen tegelijk directe toegang geven tot strategieën met een reëel rendement."
+    },
+    "governance": {
+      "title": "Governance",
+      "body": "Hentsch Credit wordt geëxploiteerd door {legalName}, een Zwitserse naamloze vennootschap gevestigd in het kanton {canton}, onder leiding van {founder}."
+    },
+    "regulation": {
+      "title": "Regelgeving & toezicht",
+      "body": "Als onafhankelijke vermogensbeheerder in de zin van de LEFin staat onze activiteit onder toezicht van {supervisionBodyName}, een door de FINMA erkende toezichthoudende organisatie, ook voor de naleving van de anti-witwaswetgeving.",
+      "learnMore": "Bekijk onze volledige regelgevingsstatus"
+    },
+    "custody": {
+      "title": "Bewaring van activa",
+      "body": "Uw activa worden nooit door Hentsch Credit op eigen naam aangehouden. Liquide middelen en effecten blijven gedeponeerd bij erkende externe bewaarbanken; digitale activa die als onderpand zijn gegeven, worden bewaard door {custodian}, een gespecialiseerde bewaarder van crypto-activa.",
+      "learnMore": "Bekijk risicobeheer en bewaring"
+    },
+    "values": {
+      "title": "Onze waarden",
+      "intro": "Vier principes die elke productbeslissing sturen, van de berekening van een rente tot de bewaring van uw activa.",
+      "transparency": {
+        "title": "Transparantie",
+        "body": "Elke rente, elke drempel en elk getoond rendement weerspiegelt een reëel cijfer of een duidelijk als zodanig aangeduide aanname, nooit een verzonnen getal."
+      },
+      "security": {
+        "title": "Veiligheid",
+        "body": "Uw activa blijven bewaard bij erkende externe bewaarders, nooit op eigen naam."
+      },
+      "precision": {
+        "title": "Zwitserse precisie",
+        "body": "Governance en regelgevend toezicht verankerd in Zwitsers recht, vanuit onze vestiging in het kanton Vaud."
+      },
+      "innovation": {
+        "title": "Beheerste innovatie",
+        "body": "Een brug tussen digitale activa en traditionele financiën, stap voor stap opgebouwd, nooit ten koste van transparantie naar onze klanten."
+      }
+    },
+    "identity": {
+      "title": "Juridische identiteit",
+      "legalName": "Statutaire naam",
+      "legalForm": "Rechtsvorm",
+      "registeredOffice": "Statutaire zetel",
+      "commercialRegister": "Handelsregister"
+    },
+    "ctaContact": "Neem contact op",
+    "ctaNoAccount": "Nog geen account? Rekening aanvragen"
   }
 }

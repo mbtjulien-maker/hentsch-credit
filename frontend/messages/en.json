@@ -35,7 +35,8 @@
         "faq": "FAQ",
         "sitemap": "Sitemap",
         "accessibility": "Digital accessibility",
-        "archives": "Archives"
+        "archives": "Archives",
+        "aboutUs": "About Us"
       },
       "contractual": {
         "title": "Contractual documentation",
@@ -88,7 +89,7 @@
       },
       "investment": {
         "title": "Direct investment",
-        "description": "A placement, no collateral or credit: RWA strategy or a stock basket, your choice."
+        "description": "A placement, no collateral or credit, open to individuals and businesses: RWA strategy or a stock basket, your choice."
       }
     },
     "stats": {
@@ -102,7 +103,7 @@
     "closingDescription": "Platform reserved for a limited clientele. Our team reviews every application before granting access.",
     "closingCta": "Request an account",
     "investmentHero": {
-      "badge": "Direct investment · Open to verified accounts",
+      "badge": "Direct investment · Individuals & businesses",
       "titleLine1": "Your capital, put to work,",
       "titleHighlight": "never used as collateral",
       "subtitle": "Six strategies to choose from, from RWA treasury to tech-stock baskets, with a real daily return, never fabricated.",
@@ -112,7 +113,8 @@
       "ctaDiscover": "Discover investment",
       "basketsBadge": "Six strategies",
       "basketsTitle": "A risk gradient, not a single box",
-      "basketsSubtitle": "From the most conservative to the most dynamic, each basket has its own indicative target."
+      "basketsSubtitle": "From the most conservative to the most dynamic, each basket has its own indicative target.",
+      "basketsTodaySuffix": "today"
     }
   },
   "HowItWorks": {
@@ -702,7 +704,8 @@
       "regulation": "Regulation",
       "riskManagement": "Risk management & custody of assets",
       "privacyPolicy": "Privacy policy",
-      "cookiePolicy": "Cookie policy"
+      "cookiePolicy": "Cookie policy",
+      "aboutUs": "About Us"
     },
     "clientLinks": {
       "home": "Home",
@@ -1414,7 +1417,10 @@
         "ADMINISTRATION_PUBLIQUE": "Public Administration",
         "AUTRE": "Other"
       },
-      "companyRegistrationNumber": "Registration number (e.g. business ID)"
+      "companyRegistrationNumber": "EU VAT number (e.g. FR12345678901)",
+      "companyName": "Company name",
+      "companySeniority": "Company seniority",
+      "annualRevenue": "Annual revenue"
     },
     "supportSection": {
       "title": "Contact support",
@@ -2027,7 +2033,20 @@
         "ADMINISTRATION_PUBLIQUE": "Public Administration",
         "AUTRE": "Other"
       },
-      "companyRegistrationNumber": "Registration number (e.g. business ID)"
+      "companyRegistrationNumber": "EU VAT number (e.g. FR12345678901)",
+      "companyName": "Company name",
+      "companySeniority": "Company seniority",
+      "annualRevenueBracket": "Annual revenue bracket",
+      "businessAssetsBracket": "Business assets bracket",
+      "vatCheck": {
+        "action": "Verify",
+        "formatError": "Add the 2-letter country code before the number (e.g. FR12345678901).",
+        "unavailable": "Verification is temporarily unavailable. Try again later.",
+        "validResult": "Valid VAT number: {name}, {address}.",
+        "validNoDetails": "Valid VAT number (the member state does not provide a name or address).",
+        "invalidResult": "VAT number not found in VIES (European Commission).",
+        "noAddress": "no address provided"
+      }
     },
     "termsAcceptance": {
       "readFull": "Read the full Terms →",
@@ -2149,6 +2168,10 @@
       "riskLevels": {
         "question": "What does the displayed risk level mean?",
         "answer": "An indicative classification on a scale of 1 to 5 (an editorial assumption, never a score calculated live from measured volatility), from the most conservative to the most dynamic, to help you compare baskets and plans against each other."
+      },
+      "eligibility": {
+        "question": "Who can invest: individuals, businesses, or both?",
+        "answer": "Both. Unlike direct credit, which is reserved for Business accounts, direct investment is open to any verified (KYC) account, individual or professional, from $10 per deposit."
       }
     },
     "ctaLogin": "Access my account",
@@ -2175,7 +2198,19 @@
     "fixedTermTitle": "Six fixed-term plans",
     "fixedTermIntro": "A second way to invest, alongside the baskets above: each plan combines holdings already covered by our baskets (sometimes mixed together, or with exposure to the RWA strategy), locked until the chosen maturity.",
     "fixedTermNote": "Actually available to subscribe from your client area, once your account is open. No early withdrawal is possible once the deposit is confirmed.",
-    "indicativeSuffix": "indicative"
+    "indicativeSuffix": "indicative",
+    "eligibility": {
+      "title": "Who can invest?",
+      "particulier": {
+        "title": "Individual accounts",
+        "body": "Open to any verified (KYC) client, regardless of profile, with no professional-status requirement."
+      },
+      "business": {
+        "title": "Business accounts",
+        "body": "Also available to Business accounts, alongside the direct credit already reserved for them: the two products coexist, never one instead of the other."
+      },
+      "assetsNote": "The same six strategies for both profiles: tokenized industrial metals (platinum, palladium, copper, synthetic oil) and real stock market shares (Apple, Microsoft, NVIDIA, Amazon, Coca-Cola, and other listed stocks)."
+    }
   },
   "InviteSignup": {
     "meta": {
@@ -2212,7 +2247,8 @@
       "passwordMismatch": "Passwords don't match."
     },
     "employment": {
-      "annualIncome": "Declared annual income"
+      "annualIncome": "Declared annual income",
+      "annualRevenue": "Declared annual revenue"
     },
     "identity": {
       "fileUploadNote": "These fields are declarative. You'll be able to upload your files (ID, proof of address) once your account is created, from KYC Verification."
@@ -2231,5 +2267,61 @@
       "successTitle": "Account created successfully",
       "successDescription": "Welcome! Your account {email} has been created, your KYC file is under review. Redirecting to your dashboard…"
     }
+  },
+  "AboutUs": {
+    "meta": {
+      "title": "About Us",
+      "description": "Hentsch Credit: our mission, our governance, our regulatory supervision, and how your assets are held with licensed third-party custodians."
+    },
+    "eyebrow": "Who we are",
+    "title": "About Us",
+    "description": "Hentsch Credit is the crypto-collateralized offering of H. Hentsch Asset Management SA, an independent asset manager based in Nyon, Switzerland.",
+    "mission": {
+      "title": "Our mission",
+      "body": "To let our clients, individuals and businesses alike, unlock immediate purchasing power from their digital assets and tokenized precious metals without ever having to sell them, while giving them direct access to real-yield strategies."
+    },
+    "governance": {
+      "title": "Governance",
+      "body": "Hentsch Credit is operated by {legalName}, a Swiss public limited company based in the canton of {canton}, under the leadership of {founder}."
+    },
+    "regulation": {
+      "title": "Regulation & supervision",
+      "body": "As an independent asset manager under the Swiss Financial Institutions Act (FinIA), our activity is supervised by {supervisionBodyName}, a supervisory organization licensed by FINMA, including for anti-money-laundering compliance.",
+      "learnMore": "See our full regulatory status"
+    },
+    "custody": {
+      "title": "Asset custody",
+      "body": "Your assets are never held by Hentsch Credit in its own name. Cash and securities remain deposited with licensed third-party custodian banks; digital assets pledged as collateral are held by {custodian}, a specialized digital-asset custody provider.",
+      "learnMore": "See risk management and custody"
+    },
+    "values": {
+      "title": "Our values",
+      "intro": "Four principles that guide every product decision, from computing a rate to safekeeping your assets.",
+      "transparency": {
+        "title": "Transparency",
+        "body": "Every rate, threshold, and yield shown reflects a real figure or an assumption clearly labeled as such, never a fabricated number."
+      },
+      "security": {
+        "title": "Security",
+        "body": "Your assets stay held with licensed third-party custodians, never in our own name."
+      },
+      "precision": {
+        "title": "Swiss rigor",
+        "body": "Governance and regulatory supervision rooted in Swiss law, from our office in the canton of Vaud."
+      },
+      "innovation": {
+        "title": "Deliberate innovation",
+        "body": "A bridge between digital assets and traditional finance, built step by step, never at the expense of transparency toward our clients."
+      }
+    },
+    "identity": {
+      "title": "Legal identity",
+      "legalName": "Legal name",
+      "legalForm": "Legal form",
+      "registeredOffice": "Registered office",
+      "commercialRegister": "Commercial register"
+    },
+    "ctaContact": "Contact us",
+    "ctaNoAccount": "No account yet? Request account opening"
   }
 }

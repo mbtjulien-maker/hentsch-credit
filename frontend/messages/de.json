@@ -35,7 +35,8 @@
         "faq": "Häufige Fragen",
         "sitemap": "Sitemap",
         "accessibility": "Digitale Barrierefreiheit",
-        "archives": "Archiv"
+        "archives": "Archiv",
+        "aboutUs": "Über uns"
       },
       "contractual": {
         "title": "Vertragsunterlagen",
@@ -88,7 +89,7 @@
       },
       "investment": {
         "title": "Direktinvestition",
-        "description": "Eine Geldanlage, ohne Sicherheit oder Kredit: RWA-Strategie oder ein Aktienkorb, nach Wahl."
+        "description": "Eine Geldanlage, ohne Sicherheit oder Kredit, offen für Privatpersonen und Unternehmen: RWA-Strategie oder Aktienkorb, nach Wahl."
       }
     },
     "stats": {
@@ -102,7 +103,7 @@
     "closingDescription": "Plattform nur für einen eingeschränkten Kundenkreis. Unser Team prüft jeden Antrag, bevor der Zugang gewährt wird.",
     "closingCta": "Kontoeröffnung beantragen",
     "investmentHero": {
-      "badge": "Direktanlage · Offen für verifizierte Konten",
+      "badge": "Direktanlage · Privatpersonen & Unternehmen",
       "titleLine1": "Ihr Kapital arbeitet,",
       "titleHighlight": "ohne je als Sicherheit zu dienen",
       "subtitle": "Sechs Strategien zur Auswahl, von der RWA-Treasury bis zu Tech-Aktienkörben, mit einer echten täglichen Rendite, nie erfunden.",
@@ -112,7 +113,8 @@
       "ctaDiscover": "Investition entdecken",
       "basketsBadge": "Sechs Strategien",
       "basketsTitle": "Ein Risikogradient, keine Einheitslösung",
-      "basketsSubtitle": "Vom vorsichtigsten bis zum dynamischsten Korb hat jeder sein eigenes indikatives Ziel."
+      "basketsSubtitle": "Vom vorsichtigsten bis zum dynamischsten Korb hat jeder sein eigenes indikatives Ziel.",
+      "basketsTodaySuffix": "heute"
     }
   },
   "HowItWorks": {
@@ -702,7 +704,8 @@
       "regulation": "Regulierung",
       "riskManagement": "Risikomanagement und Verwahrung der Vermögenswerte",
       "privacyPolicy": "Datenschutzrichtlinie",
-      "cookiePolicy": "Cookie-Richtlinie"
+      "cookiePolicy": "Cookie-Richtlinie",
+      "aboutUs": "Über uns"
     },
     "clientLinks": {
       "home": "Start",
@@ -1414,7 +1417,10 @@
         "ADMINISTRATION_PUBLIQUE": "Öffentliche Verwaltung",
         "AUTRE": "Sonstiges"
       },
-      "companyRegistrationNumber": "Handelsregisternummer"
+      "companyRegistrationNumber": "USt-IdNr. (z. B. FR12345678901)",
+      "companyName": "Firmenname",
+      "companySeniority": "Unternehmensdauer",
+      "annualRevenue": "Jahresumsatz"
     },
     "supportSection": {
       "title": "Support kontaktieren",
@@ -2027,7 +2033,20 @@
         "ADMINISTRATION_PUBLIQUE": "Öffentliche Verwaltung",
         "AUTRE": "Sonstiges"
       },
-      "companyRegistrationNumber": "Handelsregisternummer"
+      "companyRegistrationNumber": "USt-IdNr. (z. B. FR12345678901)",
+      "companyName": "Firmenname",
+      "companySeniority": "Unternehmensdauer",
+      "annualRevenueBracket": "Jahresumsatzspanne",
+      "businessAssetsBracket": "Vermögensspanne des Unternehmens",
+      "vatCheck": {
+        "action": "Prüfen",
+        "formatError": "Stellen Sie dem Nummer den 2-stelligen Ländercode voran (z. B. FR12345678901).",
+        "unavailable": "Die Prüfung ist vorübergehend nicht verfügbar. Versuchen Sie es später erneut.",
+        "validResult": "Gültige USt-IdNr.: {name}, {address}.",
+        "validNoDetails": "Gültige USt-IdNr. (der Mitgliedstaat liefert keinen Namen oder keine Adresse).",
+        "invalidResult": "USt-IdNr. in VIES (Europäische Kommission) nicht gefunden.",
+        "noAddress": "keine Adresse angegeben"
+      }
     },
     "termsAcceptance": {
       "readFull": "Vollständige AGB lesen →",
@@ -2149,6 +2168,10 @@
       "riskLevels": {
         "question": "Was bedeutet die angezeigte Risikostufe?",
         "answer": "Eine indikative Einstufung auf einer Skala von 1 bis 5 (eine redaktionelle Annahme, nie ein live aus gemessener Volatilität berechneter Wert), vom vorsichtigsten bis zum dynamischsten, um Ihnen zu helfen, Körbe und Pläne miteinander zu vergleichen."
+      },
+      "eligibility": {
+        "question": "Wer kann investieren: Privatpersonen, Unternehmen oder beide?",
+        "answer": "Beide. Im Gegensatz zum Direktkredit, der Business-Konten vorbehalten ist, steht die Direktanlage jedem verifizierten (KYC) Konto offen, privat oder geschäftlich, ab 10 $ pro Einzahlung."
       }
     },
     "ctaLogin": "Zu meinem Konto",
@@ -2175,7 +2198,19 @@
     "fixedTermTitle": "Sechs Festlaufzeitpläne",
     "fixedTermIntro": "Eine zweite Anlageform neben den obigen Körben: Jeder Plan kombiniert Titel, die bereits in unseren Körben enthalten sind (manchmal miteinander gemischt oder mit Engagement in der RWA-Strategie), gesperrt bis zur gewählten Fälligkeit.",
     "fixedTermNote": "Nach Kontoeröffnung tatsächlich über Ihren Kundenbereich zeichenbar. Nach Bestätigung der Einzahlung ist keine vorzeitige Abhebung möglich.",
-    "indicativeSuffix": "indikativ"
+    "indicativeSuffix": "indikativ",
+    "eligibility": {
+      "title": "Wer kann investieren?",
+      "particulier": {
+        "title": "Privatkonten",
+        "body": "Offen für jeden verifizierten (KYC) Kunden, unabhängig vom Profil, ohne jede Bedingung zum beruflichen Status."
+      },
+      "business": {
+        "title": "Geschäftskonten",
+        "body": "Ebenfalls verfügbar für Business-Konten, zusätzlich zum bereits für sie reservierten Direktkredit: beide Produkte bestehen nebeneinander, nie das eine statt des anderen."
+      },
+      "assetsNote": "Dieselben sechs Strategien für beide Profile: tokenisierte Industriemetalle (Platin, Palladium, Kupfer, synthetisches Öl) und echte Börsenaktien (Apple, Microsoft, NVIDIA, Amazon, Coca-Cola und weitere börsennotierte Titel)."
+    }
   },
   "InviteSignup": {
     "meta": {
@@ -2212,7 +2247,8 @@
       "passwordMismatch": "Die Passwörter stimmen nicht überein."
     },
     "employment": {
-      "annualIncome": "Angegebenes Jahreseinkommen"
+      "annualIncome": "Angegebenes Jahreseinkommen",
+      "annualRevenue": "Angegebener Jahresumsatz"
     },
     "identity": {
       "fileUploadNote": "Diese Felder sind deklarativ. Sie können Ihre Dateien (Ausweis, Wohnsitznachweis) nach der Kontoerstellung unter KYC-Verifizierung hochladen."
@@ -2231,5 +2267,61 @@
       "successTitle": "Konto erfolgreich erstellt",
       "successDescription": "Willkommen! Ihr Konto {email} wurde erstellt, Ihre KYC-Unterlage wird geprüft. Weiterleitung zu Ihrem Dashboard…"
     }
+  },
+  "AboutUs": {
+    "meta": {
+      "title": "Über uns",
+      "description": "Hentsch Credit: unsere Mission, unsere Governance, unsere regulatorische Aufsicht und die Verwahrung Ihrer Vermögenswerte bei lizenzierten Drittverwahrern."
+    },
+    "eyebrow": "Wer wir sind",
+    "title": "Über uns",
+    "description": "Hentsch Credit ist das kryptobesicherte Angebot der H. Hentsch Asset Management SA, eines unabhängigen Vermögensverwalters mit Sitz in Nyon, Schweiz.",
+    "mission": {
+      "title": "Unsere Mission",
+      "body": "Unseren Kunden, Privatpersonen wie Unternehmen, ermöglichen, aus ihren digitalen Vermögenswerten und tokenisierten Edelmetallen sofortige Kaufkraft freizusetzen, ohne sie je verkaufen zu müssen, und ihnen gleichzeitig direkten Zugang zu Strategien mit echter Rendite zu geben."
+    },
+    "governance": {
+      "title": "Governance",
+      "body": "Hentsch Credit wird von {legalName} betrieben, einer Schweizer Aktiengesellschaft mit Sitz im Kanton {canton}, unter der Leitung von {founder}."
+    },
+    "regulation": {
+      "title": "Regulierung & Aufsicht",
+      "body": "Als unabhängiger Vermögensverwalter im Sinne des FINIG wird unsere Tätigkeit von {supervisionBodyName} beaufsichtigt, einer von der FINMA zugelassenen Aufsichtsorganisation, einschliesslich der Einhaltung der Geldwäschereigesetzgebung.",
+      "learnMore": "Unseren vollständigen Regulierungsstatus ansehen"
+    },
+    "custody": {
+      "title": "Verwahrung der Vermögenswerte",
+      "body": "Ihre Vermögenswerte werden nie von Hentsch Credit im eigenen Namen gehalten. Bargeld und Wertschriften bleiben bei lizenzierten Drittverwahrbanken hinterlegt; als Sicherheit hinterlegte digitale Vermögenswerte werden von {custodian} verwahrt, einem spezialisierten Anbieter für die Verwahrung von Krypto-Assets.",
+      "learnMore": "Risikomanagement und Verwahrung ansehen"
+    },
+    "values": {
+      "title": "Unsere Werte",
+      "intro": "Vier Grundsätze, die jede Produktentscheidung leiten, von der Berechnung eines Zinssatzes bis zur Verwahrung Ihrer Vermögenswerte.",
+      "transparency": {
+        "title": "Transparenz",
+        "body": "Jeder angezeigte Zinssatz, jede Schwelle und jede Rendite spiegelt eine reale Zahl oder eine klar als solche gekennzeichnete Annahme wider, nie eine erfundene Zahl."
+      },
+      "security": {
+        "title": "Sicherheit",
+        "body": "Ihre Vermögenswerte bleiben bei lizenzierten Drittverwahrern, nie im eigenen Namen."
+      },
+      "precision": {
+        "title": "Schweizer Präzision",
+        "body": "Governance und regulatorische Aufsicht verankert im Schweizer Recht, von unserem Sitz im Kanton Waadt aus."
+      },
+      "innovation": {
+        "title": "Kontrollierte Innovation",
+        "body": "Eine Brücke zwischen digitalen Vermögenswerten und traditioneller Finanzwelt, Schritt für Schritt aufgebaut, nie auf Kosten der Transparenz gegenüber unseren Kunden."
+      }
+    },
+    "identity": {
+      "title": "Rechtliche Identität",
+      "legalName": "Firmenname",
+      "legalForm": "Rechtsform",
+      "registeredOffice": "Sitz",
+      "commercialRegister": "Handelsregister"
+    },
+    "ctaContact": "Kontaktieren Sie uns",
+    "ctaNoAccount": "Noch kein Konto? Kontoeröffnung beantragen"
   }
 }

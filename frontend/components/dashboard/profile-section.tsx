@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
+import { VatVerificationCheck } from "@/components/dashboard/vat-verification-check";
 import { CHAIN_LABELS } from "@/lib/format";
 import { useCurrencyLabel } from "@/lib/use-currency-label";
 import {
@@ -172,9 +173,16 @@ function IdentityForm({ userId }: { userId: string }) {
           : Promise.resolve(null),
         api.updateUserEmployment(userId, {
           isIndependent,
-          employer: !isIndependent ? employer.trim() || undefined : undefined,
-          activity: isIndependent ? activity.trim() || undefined : undefined,
-          role: !isIndependent ? role.trim() || undefined : undefined,
+          // Pour un compte Business, `employer` porte le nom de l'entreprise déclarée
+          // (pas d'employeur/rôle/activité personnels distincts, cf. kyc-dossier-section.tsx
+          // pour le même traitement sur le dossier KYC).
+          employer: isBusiness
+            ? employer.trim() || undefined
+            : !isIndependent
+              ? employer.trim() || undefined
+              : undefined,
+          activity: !isBusiness && isIndependent ? activity.trim() || undefined : undefined,
+          role: !isBusiness && !isIndependent ? role.trim() || undefined : undefined,
           sector: sector || undefined,
           seniority: seniority.trim() || undefined,
           annualIncome: annualIncome.trim() !== "" ? Number(annualIncome) : undefined,
@@ -261,25 +269,34 @@ function IdentityForm({ userId }: { userId: string }) {
           <Briefcase className="size-3.5" />
           {t("employmentTitle")}
         </div>
-        <div className="mb-3 flex gap-1.5">
-          {([false, true] as const).map((value) => (
-            <button
-              key={String(value)}
-              type="button"
-              disabled={saving}
-              onClick={() => setIsIndependent(value)}
-              className={`rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
-                isIndependent === value
-                  ? "border-primary bg-primary/10 text-primary"
-                  : "border-border text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {value ? t("independent") : t("employed")}
-            </button>
-          ))}
-        </div>
+        {/* Le toggle salarié/indépendant n'a de sens que pour un particulier déclarant sa
+            propre situation — un compte Business déclare l'entreprise elle-même. */}
+        {!isBusiness && (
+          <div className="mb-3 flex gap-1.5">
+            {([false, true] as const).map((value) => (
+              <button
+                key={String(value)}
+                type="button"
+                disabled={saving}
+                onClick={() => setIsIndependent(value)}
+                className={`rounded-md border px-2.5 py-1 text-xs font-medium transition-colors ${
+                  isIndependent === value
+                    ? "border-primary bg-primary/10 text-primary"
+                    : "border-border text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {value ? t("independent") : t("employed")}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="grid grid-cols-2 gap-3">
-          {isIndependent ? (
+          {isBusiness ? (
+            <div className="col-span-2 flex flex-col gap-1">
+              <Label htmlFor={employerId} className="text-xs text-muted-foreground">{t("companyName")}</Label>
+              <Input id={employerId} value={employer} onChange={(e) => setEmployer(e.target.value)} disabled={saving} />
+            </div>
+          ) : isIndependent ? (
             <div className="col-span-2 flex flex-col gap-1">
               <Label htmlFor={activityId} className="text-xs text-muted-foreground">{t("activity")}</Label>
               <Input id={activityId} value={activity} onChange={(e) => setActivity(e.target.value)} disabled={saving} />
@@ -308,7 +325,9 @@ function IdentityForm({ userId }: { userId: string }) {
             </Select>
           </div>
           <div className="flex flex-col gap-1">
-            <Label htmlFor={seniorityId} className="text-xs text-muted-foreground">{t("seniority")}</Label>
+            <Label htmlFor={seniorityId} className="text-xs text-muted-foreground">
+              {isBusiness ? t("companySeniority") : t("seniority")}
+            </Label>
             <Input id={seniorityId} value={seniority} onChange={(e) => setSeniority(e.target.value)} disabled={saving} />
           </div>
           {isBusiness && (
@@ -322,10 +341,15 @@ function IdentityForm({ userId }: { userId: string }) {
                 onChange={(e) => setCompanyRegistrationNumber(e.target.value)}
                 disabled={saving}
               />
+              <div className="mt-1">
+                <VatVerificationCheck value={companyRegistrationNumber} />
+              </div>
             </div>
           )}
           <div className="col-span-2 flex flex-col gap-1">
-            <Label htmlFor={annualIncomeId} className="text-xs text-muted-foreground">{t("annualIncome")}</Label>
+            <Label htmlFor={annualIncomeId} className="text-xs text-muted-foreground">
+              {isBusiness ? t("annualRevenue") : t("annualIncome")}
+            </Label>
             <Input
               id={annualIncomeId}
               type="number"

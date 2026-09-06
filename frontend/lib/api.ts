@@ -158,6 +158,22 @@ export interface SupportChatStatus {
   available: boolean;
 }
 
+// Vérification réelle d'un numéro de TVA intracommunautaire via VIES (Commission
+// européenne, cf. §6 CLAUDE.md) — la seule vérification d'entreprise gratuite et sans
+// clé API qui couvre toute l'Europe, contrairement à un registre national comme le
+// SIRET français. `name`/`address` valent `null` quand l'État membre ne les fournit pas
+// (autorisé par VIES, pas une erreur) ou quand `valid` est faux.
+export type VatCountryCode =
+  | "AT" | "BE" | "BG" | "CY" | "CZ" | "DE" | "DK" | "EE" | "EL" | "ES"
+  | "FI" | "FR" | "HR" | "HU" | "IE" | "IT" | "LT" | "LU" | "LV" | "MT"
+  | "NL" | "PL" | "PT" | "RO" | "SE" | "SI" | "SK" | "XI";
+
+export interface VatCheckResult {
+  valid: boolean;
+  name: string | null;
+  address: string | null;
+}
+
 export interface RedeemInviteCodeInput {
   code: string;
   email: string;
@@ -1290,6 +1306,15 @@ export const api = {
     request<{ reply: string }>("/support-chat/message", {
       method: "POST",
       body: JSON.stringify({ history, message }),
+    }),
+  // Vérification en direct du numéro de TVA intracommunautaire d'un compte Business
+  // (cf. kyc-dossier-section.tsx/profile-section.tsx) — purement informatif, jamais
+  // persisté automatiquement comme "vérifié" (le conseiller reste seul juge, cf.
+  // §6 CLAUDE.md). Lève une ApiError 503 si VIES est momentanément indisponible.
+  checkVatNumber: (countryCode: VatCountryCode, vatNumber: string) =>
+    request<VatCheckResult>("/vat-verification/check", {
+      method: "POST",
+      body: JSON.stringify({ countryCode, vatNumber }),
     }),
   previewKycDossierPdf: async (data: PreviewKycDossierPdfInput): Promise<Blob> => {
     const res = await fetch(`${API_URL}/invite-codes/preview-pdf`, {

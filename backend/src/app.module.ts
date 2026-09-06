@@ -25,6 +25,7 @@ import { SupportChatModule } from './support-chat/support-chat.module';
 import { TransactionsModule } from './transactions/transactions.module';
 import { TreasuryBotModule } from './treasury-bot/treasury-bot.module';
 import { UsersModule } from './users/users.module';
+import { VatVerificationModule } from './vat-verification/vat-verification.module';
 import { WalletModule } from './wallet/wallet.module';
 import { WebhooksModule } from './webhooks/webhooks.module';
 import { WithdrawalModule } from './withdrawal/withdrawal.module';
@@ -61,6 +62,7 @@ import { WithdrawalModule } from './withdrawal/withdrawal.module';
     KycDocumentsModule,
     InviteCodesModule,
     SupportChatModule,
+    VatVerificationModule,
   ],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: ThrottlerGuard }],

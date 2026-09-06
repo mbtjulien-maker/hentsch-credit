@@ -559,22 +559,27 @@ export function InviteSignupWizard() {
 
         {step === "employment" && (
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <div className="col-span-full flex flex-col gap-1.5">
-              <Label className="text-xs text-muted-foreground">{tKyc("professionalStatus")}</Label>
-              <div className="flex flex-wrap gap-1.5">
-                {PROFESSIONAL_STATUSES.map((value) => (
-                  <ToggleChip
-                    key={value}
-                    active={data.employment.professionalStatus === value}
-                    onClick={() => setData((d) => ({ ...d, employment: { ...d.employment, professionalStatus: value } }))}
-                  >
-                    {tKyc(`professionalStatusLabels.${value}`)}
-                  </ToggleChip>
-                ))}
+            {/* Statut professionnel n'a de sens que pour un particulier déclarant sa
+                propre situation — un compte Business déclare l'entreprise elle-même
+                (même traitement que kyc-dossier-section.tsx/profile-section.tsx). */}
+            {!isBusiness && (
+              <div className="col-span-full flex flex-col gap-1.5">
+                <Label className="text-xs text-muted-foreground">{tKyc("professionalStatus")}</Label>
+                <div className="flex flex-wrap gap-1.5">
+                  {PROFESSIONAL_STATUSES.map((value) => (
+                    <ToggleChip
+                      key={value}
+                      active={data.employment.professionalStatus === value}
+                      onClick={() => setData((d) => ({ ...d, employment: { ...d.employment, professionalStatus: value } }))}
+                    >
+                      {tKyc(`professionalStatusLabels.${value}`)}
+                    </ToggleChip>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div className="flex flex-col gap-1">
-              <Label className="text-xs text-muted-foreground">{tKyc("employer")}</Label>
+              <Label className="text-xs text-muted-foreground">{isBusiness ? tKyc("companyName") : tKyc("employer")}</Label>
               <Input
                 value={data.employment.employer ?? ""}
                 onChange={(e) => setData((d) => ({ ...d, employment: { ...d.employment, employer: e.target.value } }))}
@@ -617,14 +622,18 @@ export function InviteSignupWizard() {
               </Select>
             </div>
             <div className="flex flex-col gap-1">
-              <Label className="text-xs text-muted-foreground">{tKyc("seniority")}</Label>
+              <Label className="text-xs text-muted-foreground">
+                {isBusiness ? tKyc("companySeniority") : tKyc("seniority")}
+              </Label>
               <Input
                 value={data.employment.seniority ?? ""}
                 onChange={(e) => setData((d) => ({ ...d, employment: { ...d.employment, seniority: e.target.value } }))}
               />
             </div>
             <div className="flex flex-col gap-1">
-              <Label className="text-xs text-muted-foreground">{t("employment.annualIncome")}</Label>
+              <Label className="text-xs text-muted-foreground">
+                {isBusiness ? t("employment.annualRevenue") : t("employment.annualIncome")}
+              </Label>
               <Input
                 type="number"
                 min="0"
@@ -638,7 +647,9 @@ export function InviteSignupWizard() {
               />
             </div>
             <div className="col-span-full flex flex-col gap-1.5">
-              <Label className="text-xs text-muted-foreground">{tKyc("annualIncomeBracket")}</Label>
+              <Label className="text-xs text-muted-foreground">
+                {isBusiness ? tKyc("annualRevenueBracket") : tKyc("annualIncomeBracket")}
+              </Label>
               <div className="flex flex-wrap gap-1.5">
                 {INCOME_BRACKETS.map((value) => (
                   <ToggleChip
@@ -652,7 +663,9 @@ export function InviteSignupWizard() {
               </div>
             </div>
             <div className="col-span-full flex flex-col gap-1.5">
-              <Label className="text-xs text-muted-foreground">{tKyc("netWorthBracket")}</Label>
+              <Label className="text-xs text-muted-foreground">
+                {isBusiness ? tKyc("businessAssetsBracket") : tKyc("netWorthBracket")}
+              </Label>
               <div className="flex flex-wrap gap-1.5">
                 {NET_WORTH_BRACKETS.map((value) => (
                   <ToggleChip

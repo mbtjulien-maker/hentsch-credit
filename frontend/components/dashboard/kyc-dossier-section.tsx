@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
+import { VatVerificationCheck } from "@/components/dashboard/vat-verification-check";
 import {
   api,
   ApiError,
@@ -503,10 +504,18 @@ export function KycDossierSection({ userId }: { userId: string }) {
             ])
           : Promise.resolve(null),
         api.updateUserEmployment(userId, {
-          professionalStatus: professionalStatus || undefined,
-          employer: !isIndependentStatus ? employer.trim() || undefined : undefined,
-          activity: isIndependentStatus ? activity.trim() || undefined : undefined,
-          role: !isIndependentStatus ? role.trim() || undefined : undefined,
+          // Pour un compte Business, ni statut professionnel ni distinction
+          // salarié/indépendant/rôle n'a de sens (c'est l'entreprise elle-même qui est
+          // déclarée, pas la situation professionnelle d'un particulier) — seul le nom
+          // de l'entreprise (réutilise le champ `employer`) est envoyé.
+          professionalStatus: isBusiness ? undefined : professionalStatus || undefined,
+          employer: isBusiness
+            ? employer.trim() || undefined
+            : !isIndependentStatus
+              ? employer.trim() || undefined
+              : undefined,
+          activity: !isBusiness && isIndependentStatus ? activity.trim() || undefined : undefined,
+          role: !isBusiness && !isIndependentStatus ? role.trim() || undefined : undefined,
           sector: sector || undefined,
           companyRegistrationNumber: isBusiness ? companyRegistrationNumber.trim() || undefined : undefined,
           seniority: seniority.trim() || undefined,
@@ -753,18 +762,28 @@ export function KycDossierSection({ userId }: { userId: string }) {
             </div>
           </CardHeader>
           <CardContent className="flex flex-col gap-3">
-            <div className="flex flex-col gap-1.5">
-              <Label className="text-xs text-muted-foreground">{t("professionalStatus")}</Label>
-              <div className="flex flex-wrap gap-1.5">
-                {PROFESSIONAL_STATUSES.map((value) => (
-                  <ToggleChip key={value} active={professionalStatus === value} disabled={savingCore} onClick={() => setProfessionalStatus(value)}>
-                    {t(`professionalStatusLabels.${value}`)}
-                  </ToggleChip>
-                ))}
+            {/* Statut professionnel (salarié/indépendant/...) n'a de sens que pour un
+                particulier déclarant sa propre situation — un compte Business déclare
+                l'entreprise elle-même, jamais un statut d'emploi personnel. */}
+            {!isBusiness && (
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs text-muted-foreground">{t("professionalStatus")}</Label>
+                <div className="flex flex-wrap gap-1.5">
+                  {PROFESSIONAL_STATUSES.map((value) => (
+                    <ToggleChip key={value} active={professionalStatus === value} disabled={savingCore} onClick={() => setProfessionalStatus(value)}>
+                      {t(`professionalStatusLabels.${value}`)}
+                    </ToggleChip>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             <div className="grid grid-cols-2 gap-3">
-              {isIndependentStatus ? (
+              {isBusiness ? (
+                <div className="col-span-2 flex flex-col gap-1">
+                  <Label htmlFor={employerId} className="text-xs text-muted-foreground">{t("companyName")}</Label>
+                  <Input id={employerId} value={employer} onChange={(e) => setEmployer(e.target.value)} disabled={savingCore} />
+                </div>
+              ) : isIndependentStatus ? (
                 <div className="col-span-2 flex flex-col gap-1">
                   <Label htmlFor={activityId} className="text-xs text-muted-foreground">{t("activity")}</Label>
                   <Input id={activityId} value={activity} onChange={(e) => setActivity(e.target.value)} disabled={savingCore} />
@@ -793,7 +812,9 @@ export function KycDossierSection({ userId }: { userId: string }) {
                 </Select>
               </div>
               <div className="flex flex-col gap-1">
-                <Label htmlFor={seniorityId} className="text-xs text-muted-foreground">{t("seniority")}</Label>
+                <Label htmlFor={seniorityId} className="text-xs text-muted-foreground">
+                  {isBusiness ? t("companySeniority") : t("seniority")}
+                </Label>
                 <Input id={seniorityId} value={seniority} onChange={(e) => setSeniority(e.target.value)} disabled={savingCore} />
               </div>
               {isBusiness && (
@@ -807,12 +828,17 @@ export function KycDossierSection({ userId }: { userId: string }) {
                     onChange={(e) => setCompanyRegistrationNumber(e.target.value)}
                     disabled={savingCore}
                   />
+                  <div className="mt-1">
+                    <VatVerificationCheck value={companyRegistrationNumber} />
+                  </div>
                 </div>
               )}
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="flex flex-col gap-1">
-                <Label className="text-xs text-muted-foreground">{t("annualIncomeBracket")}</Label>
+                <Label className="text-xs text-muted-foreground">
+                  {isBusiness ? t("annualRevenueBracket") : t("annualIncomeBracket")}
+                </Label>
                 <Select value={annualIncomeBracket || undefined} onValueChange={(v) => setAnnualIncomeBracket((v as IncomeBracket) ?? "")}>
                   <SelectTrigger className="w-full"><SelectValue placeholder={t("selectPlaceholder")} /></SelectTrigger>
                   <SelectContent>
@@ -823,7 +849,9 @@ export function KycDossierSection({ userId }: { userId: string }) {
                 </Select>
               </div>
               <div className="flex flex-col gap-1">
-                <Label className="text-xs text-muted-foreground">{t("netWorthBracket")}</Label>
+                <Label className="text-xs text-muted-foreground">
+                  {isBusiness ? t("businessAssetsBracket") : t("netWorthBracket")}
+                </Label>
                 <Select value={netWorthBracket || undefined} onValueChange={(v) => setNetWorthBracket((v as NetWorthBracket) ?? "")}>
                   <SelectTrigger className="w-full"><SelectValue placeholder={t("selectPlaceholder")} /></SelectTrigger>
                   <SelectContent>

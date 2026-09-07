@@ -125,7 +125,7 @@ jobs:
         working-directory: backend
         run: |
           npm run build
-          nohup node dist/main.js > backend.log 2>&1 &
+          nohup npm run start:prod > backend.log 2>&1 &
           npx wait-on http://localhost:3000/auth/me -t 30000
 
       - name: Installer les dépendances frontend

@@ -73,7 +73,8 @@ export class StockMarketDataService {
       // Finnhub renvoie 200 avec des champs à 0 pour un ticker inconnu/marché fermé sans
       // historique — pas une erreur HTTP, donc filtré ici explicitement plutôt que de
       // laisser passer un signal fabriqué à partir de zéros.
-      const quote = typeof payload.dp !== 'number' || payload.c === 0 ? null : payload;
+      const quote =
+        typeof payload.dp !== 'number' || payload.c === 0 ? null : payload;
       this.quoteCache.set(ticker, { quote, fetchedAt: Date.now() });
       return quote;
     } catch (error) {

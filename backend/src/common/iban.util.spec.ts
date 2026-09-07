@@ -1,4 +1,9 @@
-import { ibanCountryCode, isBIC, isIBAN, isSepaEligibleIban } from './iban.util';
+import {
+  ibanCountryCode,
+  isBIC,
+  isIBAN,
+  isSepaEligibleIban,
+} from './iban.util';
 
 describe('iban.util', () => {
   describe('isIBAN (re-exported from validator, sanity-checked here)', () => {

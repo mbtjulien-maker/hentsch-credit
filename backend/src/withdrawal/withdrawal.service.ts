@@ -112,7 +112,9 @@ export class WithdrawalService {
                     : WithdrawalMethod.SWIFT,
                 withdrawalCurrency: input.withdrawalCurrency,
                 bankAccountHolder: input.bankAccountHolder,
-                destinationAddress: input.destinationIban.replace(/\s+/g, '').toUpperCase(),
+                destinationAddress: input.destinationIban
+                  .replace(/\s+/g, '')
+                  .toUpperCase(),
                 bankBic: input.bankBic?.replace(/\s+/g, '').toUpperCase(),
               },
       });

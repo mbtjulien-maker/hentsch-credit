@@ -33,8 +33,14 @@ describe('LedgerService', () => {
   beforeEach(() => {
     prisma = {
       ledgerBalance: { findUnique: jest.fn(), updateMany: jest.fn() },
-      user: { findUniqueOrThrow: jest.fn().mockResolvedValue({ accountType: 'PARTICULIER' }) },
-      transaction: { aggregate: jest.fn().mockResolvedValue({ _sum: { amount: null } }) },
+      user: {
+        findUniqueOrThrow: jest
+          .fn()
+          .mockResolvedValue({ accountType: 'PARTICULIER' }),
+      },
+      transaction: {
+        aggregate: jest.fn().mockResolvedValue({ _sum: { amount: null } }),
+      },
       $queryRaw: jest.fn(),
     };
     service = new LedgerService(prisma as never);
@@ -269,8 +275,12 @@ describe('LedgerService', () => {
 
   describe('getInitialDepositStatus', () => {
     it('requires 500 USD for a PARTICULIER account and reports unmet below it', async () => {
-      prisma.user.findUniqueOrThrow.mockResolvedValue({ accountType: 'PARTICULIER' });
-      prisma.transaction.aggregate.mockResolvedValue({ _sum: { amount: new Prisma.Decimal('300') } });
+      prisma.user.findUniqueOrThrow.mockResolvedValue({
+        accountType: 'PARTICULIER',
+      });
+      prisma.transaction.aggregate.mockResolvedValue({
+        _sum: { amount: new Prisma.Decimal('300') },
+      });
 
       const status = await service.getInitialDepositStatus('user-1');
 
@@ -280,8 +290,12 @@ describe('LedgerService', () => {
     });
 
     it('requires 1000 USD for a BUSINESS account and reports met once reached', async () => {
-      prisma.user.findUniqueOrThrow.mockResolvedValue({ accountType: 'BUSINESS' });
-      prisma.transaction.aggregate.mockResolvedValue({ _sum: { amount: new Prisma.Decimal('1000') } });
+      prisma.user.findUniqueOrThrow.mockResolvedValue({
+        accountType: 'BUSINESS',
+      });
+      prisma.transaction.aggregate.mockResolvedValue({
+        _sum: { amount: new Prisma.Decimal('1000') },
+      });
 
       const status = await service.getInitialDepositStatus('user-1');
 
@@ -292,14 +306,19 @@ describe('LedgerService', () => {
     it('stays met even after spending/withdrawing below the threshold again (cumulative deposits, not current balance)', async () => {
       // Le cumul de dépôts réels ne redescend jamais (aucune transaction DEPOSIT/CARD_TOPUP
       // n'est jamais retirée du calcul) — seul le solde courant peut baisser ensuite.
-      prisma.user.findUniqueOrThrow.mockResolvedValue({ accountType: 'PARTICULIER' });
-      prisma.transaction.aggregate.mockResolvedValue({ _sum: { amount: new Prisma.Decimal('750') } });
+      prisma.user.findUniqueOrThrow.mockResolvedValue({
+        accountType: 'PARTICULIER',
+      });
+      prisma.transaction.aggregate.mockResolvedValue({
+        _sum: { amount: new Prisma.Decimal('750') },
+      });
 
       const status = await service.getInitialDepositStatus('user-1');
 
       expect(status.met).toBe(true);
       expect(prisma.transaction.aggregate).toHaveBeenCalledWith(
         expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- jest.fn() has no generic signature to narrow against
           where: expect.objectContaining({
             userId: 'user-1',
             status: 'COMPLETED',
@@ -310,8 +329,12 @@ describe('LedgerService', () => {
     });
 
     it('treats no deposit at all (null sum) as 0, never a fabricated or NaN value', async () => {
-      prisma.user.findUniqueOrThrow.mockResolvedValue({ accountType: 'PARTICULIER' });
-      prisma.transaction.aggregate.mockResolvedValue({ _sum: { amount: null } });
+      prisma.user.findUniqueOrThrow.mockResolvedValue({
+        accountType: 'PARTICULIER',
+      });
+      prisma.transaction.aggregate.mockResolvedValue({
+        _sum: { amount: null },
+      });
 
       const status = await service.getInitialDepositStatus('user-1');
 

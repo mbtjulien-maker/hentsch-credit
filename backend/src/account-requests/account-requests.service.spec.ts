@@ -136,6 +136,7 @@ describe('AccountRequestsService', () => {
 
       expect(prisma.accountOpeningRequest.create).toHaveBeenCalledWith(
         expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- jest.fn() has no generic signature to narrow against
           data: expect.objectContaining({ accountType: 'BUSINESS' }),
         }),
       );
@@ -246,6 +247,7 @@ describe('AccountRequestsService', () => {
 
       expect(tx.user.create).toHaveBeenCalledWith(
         expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- jest.fn() has no generic signature to narrow against
           data: expect.objectContaining({ accountType: 'BUSINESS' }),
         }),
       );

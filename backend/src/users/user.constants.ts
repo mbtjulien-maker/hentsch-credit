@@ -8,7 +8,10 @@ import { AccountType, Prisma } from '@prisma/client';
 // quel autre dépôt — rien ne le bloque après coup, contrairement à un gage verrouillé
 // (§2C). Montant différent par AccountType : un compte BUSINESS suppose un projet
 // professionnel à financer, d'où un apport initial plus consequent qu'un particulier.
-export const INITIAL_DEPOSIT_REQUIREMENT_USD: Record<AccountType, Prisma.Decimal> = {
+export const INITIAL_DEPOSIT_REQUIREMENT_USD: Record<
+  AccountType,
+  Prisma.Decimal
+> = {
   PARTICULIER: new Prisma.Decimal('500'),
   BUSINESS: new Prisma.Decimal('1000'),
 };

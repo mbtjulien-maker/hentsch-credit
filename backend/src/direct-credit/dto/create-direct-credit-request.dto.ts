@@ -1,5 +1,14 @@
 import { AccountCurrency } from '@prisma/client';
-import { IsEnum, IsInt, IsString, Matches, Max, MaxLength, Min, MinLength } from 'class-validator';
+import {
+  IsEnum,
+  IsInt,
+  IsString,
+  Matches,
+  Max,
+  MaxLength,
+  Min,
+  MinLength,
+} from 'class-validator';
 
 // userId dérivé du token authentifié (@CurrentUser(), cf. DirectCreditController) —
 // jamais du body. Tous les montants en chaîne décimale (même convention que
@@ -31,7 +40,8 @@ export class CreateDirectCreditRequestDto {
   projectDescription: string;
 
   @Matches(/^\d+(\.\d{1,6})?$/, {
-    message: "requestedAmount doit être un nombre décimal positif (jusqu'à 6 décimales)",
+    message:
+      "requestedAmount doit être un nombre décimal positif (jusqu'à 6 décimales)",
   })
   requestedAmount: string;
 
@@ -39,17 +49,20 @@ export class CreateDirectCreditRequestDto {
   currency: AccountCurrency;
 
   @Matches(/^\d+(\.\d{1,6})?$/, {
-    message: "declaredMonthlyRevenue doit être un nombre décimal positif (jusqu'à 6 décimales)",
+    message:
+      "declaredMonthlyRevenue doit être un nombre décimal positif (jusqu'à 6 décimales)",
   })
   declaredMonthlyRevenue: string;
 
   @Matches(/^\d+(\.\d{1,6})?$/, {
-    message: "declaredMonthlyExpenses doit être un nombre décimal positif ou nul (jusqu'à 6 décimales)",
+    message:
+      "declaredMonthlyExpenses doit être un nombre décimal positif ou nul (jusqu'à 6 décimales)",
   })
   declaredMonthlyExpenses: string;
 
   @Matches(/^\d+(\.\d{1,6})?$/, {
-    message: "guaranteeOffered doit être un nombre décimal positif ou nul (jusqu'à 6 décimales)",
+    message:
+      "guaranteeOffered doit être un nombre décimal positif ou nul (jusqu'à 6 décimales)",
   })
   guaranteeOffered: string;
 }

@@ -547,7 +547,7 @@ describe('MarketDataService', () => {
       expect(fetchSpy).toHaveBeenCalledTimes(2);
     });
 
-    it('does not let one caller with a different currency list overwrite another caller\'s cached entries (regression: shared batch cache)', async () => {
+    it("does not let one caller with a different currency list overwrite another caller's cached entries (regression: shared batch cache)", async () => {
       fetchSpy.mockImplementation((input) => {
         const url = urlOf(input);
         if (url.includes('/cryptocurrency/info')) {

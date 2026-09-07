@@ -151,7 +151,9 @@ describe('WithdrawalService', () => {
     });
 
     it('debits the ledger and journals a COMPLETED SEPA withdrawal (BIC optional)', async () => {
-      const balance = buildBalance({ availableBalance: new Prisma.Decimal('500') });
+      const balance = buildBalance({
+        availableBalance: new Prisma.Decimal('500'),
+      });
       const transaction = { id: 'tx-2' } as Transaction;
       ledgerService.debitAvailableBalance.mockResolvedValue(balance);
       tx.transaction.create.mockResolvedValue(transaction);
@@ -182,7 +184,7 @@ describe('WithdrawalService', () => {
 
     it('normalizes a provided BIC to uppercase without spaces', async () => {
       ledgerService.debitAvailableBalance.mockResolvedValue(buildBalance());
-      tx.transaction.create.mockResolvedValue({ id: 'tx-3' } as Transaction);
+      tx.transaction.create.mockResolvedValue({ id: 'tx-3' });
 
       await service.requestWithdrawal('user-1', {
         method: 'SEPA',
@@ -195,6 +197,7 @@ describe('WithdrawalService', () => {
 
       expect(tx.transaction.create).toHaveBeenCalledWith(
         expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- jest.fn() has no generic signature to narrow against
           data: expect.objectContaining({ bankBic: 'BNPAFRPP' }),
         }),
       );
@@ -216,7 +219,9 @@ describe('WithdrawalService', () => {
     });
 
     it('accepts a SWIFT withdrawal to a non-SEPA IBAN, in any currency, with a BIC', async () => {
-      const balance = buildBalance({ availableBalance: new Prisma.Decimal('500') });
+      const balance = buildBalance({
+        availableBalance: new Prisma.Decimal('500'),
+      });
       const transaction = { id: 'tx-4' } as Transaction;
       ledgerService.debitAvailableBalance.mockResolvedValue(balance);
       tx.transaction.create.mockResolvedValue(transaction);
@@ -248,7 +253,7 @@ describe('WithdrawalService', () => {
 
     it('allows a SWIFT withdrawal to a SEPA-zone IBAN too (SWIFT is a superset, unlike SEPA)', async () => {
       ledgerService.debitAvailableBalance.mockResolvedValue(buildBalance());
-      tx.transaction.create.mockResolvedValue({ id: 'tx-5' } as Transaction);
+      tx.transaction.create.mockResolvedValue({ id: 'tx-5' });
 
       await expect(
         service.requestWithdrawal('user-1', {

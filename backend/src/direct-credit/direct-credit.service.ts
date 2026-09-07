@@ -113,7 +113,8 @@ export class DirectCreditService {
         declaredMonthlyExpenses,
         guaranteeOffered,
         decision: result.decision,
-        eligibilityBreakdown: result.criteria as unknown as Prisma.InputJsonValue,
+        eligibilityBreakdown:
+          result.criteria as unknown as Prisma.InputJsonValue,
         estimatedRatePct: result.estimatedRatePct,
         estimatedMonthlyPayment: result.estimatedMonthlyPayment,
       },
@@ -197,7 +198,7 @@ export class DirectCreditService {
         label: 'Montant demandé vs revenu mensuel',
         passed: requestedAmount.lessThanOrEqualTo(maxRequestAllowed),
         observed: `${formatDecimal(requestedAmount)} ${currency}`,
-        threshold: `≤ ${formatDecimal(maxRequestAllowed)} ${currency} (${MAX_REQUEST_TO_MONTHLY_REVENUE_MULTIPLE}× le revenu mensuel)`,
+        threshold: `≤ ${formatDecimal(maxRequestAllowed)} ${currency} (${MAX_REQUEST_TO_MONTHLY_REVENUE_MULTIPLE.toString()}× le revenu mensuel)`,
       },
       {
         key: 'debtServiceRatio',

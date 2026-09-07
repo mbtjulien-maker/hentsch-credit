@@ -47,7 +47,9 @@ describe('DirectCreditService', () => {
       const seniority = result.criteria.find((c) => c.key === 'seniority')!;
       expect(seniority.passed).toBe(false);
       expect(
-        result.criteria.filter((c) => c.key !== 'seniority').every((c) => c.passed),
+        result.criteria
+          .filter((c) => c.key !== 'seniority')
+          .every((c) => c.passed),
       ).toBe(true);
     });
 

@@ -64,6 +64,14 @@ jobs:
 
       - run: npm run lint
 
+      # tsconfig.json inclut .next/types/**/*.ts (types générés par Next pour les routes/
+      # layouts typés, ex. LayoutProps<"/">) — absent sur un checkout propre puisque .next/
+      # est gitignored. `next typegen` les régénère sans lancer un build complet, requis
+      # avant tsc --noEmit (bug trouvé : la CI échouait sur "Cannot find name 'LayoutProps'"
+      # sur un checkout frais alors que ça passait toujours en local, où .next/ restait déjà
+      # présent d'un précédent `next dev`/`next build`).
+      - run: npx next typegen
+
       - run: npx tsc --noEmit
 
       - run: npm run build

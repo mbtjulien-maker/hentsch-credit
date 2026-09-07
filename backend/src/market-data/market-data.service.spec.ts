@@ -605,5 +605,40 @@ describe('MarketDataService', () => {
       // plutôt que de tout refetcher : 1 appel info + 3 historiques (XAUT, KAG, ETH).
       expect(fetchSpy).toHaveBeenCalledTimes(4);
     });
+
+    it('retries a failed currency after HISTORY_FAILURE_RETRY_MS instead of freezing it "unavailable" for the full 6h cache (regression: /marche cards stuck on a transient CMC hiccup)', async () => {
+      jest.useFakeTimers();
+      fetchSpy.mockImplementation((input) => {
+        const url = urlOf(input);
+        if (url.includes('/cryptocurrency/info')) {
+          return Promise.resolve(
+            infoResponse([info({ id: 101, slug: 'tether-gold' })]),
+          );
+        }
+        return Promise.resolve(historyResponse([], false, 503));
+      });
+
+      const [firstAttempt] = await service.getYieldAssetHistory(['XAUT']);
+      expect(firstAttempt.points).toEqual([]);
+
+      // Bien avant les 6h de HISTORY_CACHE_TTL_MS, mais après le court délai de nouvelle
+      // tentative : une panne transitoire ne doit pas rester figée aussi longtemps.
+      jest.advanceTimersByTime(2 * 60 * 1000 + 1_000);
+      fetchSpy.mockImplementation((input) => {
+        const url = urlOf(input);
+        if (url.includes('/cryptocurrency/info')) {
+          return Promise.resolve(
+            infoResponse([info({ id: 101, slug: 'tether-gold' })]),
+          );
+        }
+        return Promise.resolve(
+          historyResponse([
+            { timestamp: '2026-01-01T00:00:00.000Z', price: 2400 },
+          ]),
+        );
+      });
+      const [secondAttempt] = await service.getYieldAssetHistory(['XAUT']);
+      expect(secondAttempt.points.map((p) => p.usd)).toEqual([2400]);
+    });
   });
 });

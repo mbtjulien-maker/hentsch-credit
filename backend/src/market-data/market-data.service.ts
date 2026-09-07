@@ -8,6 +8,7 @@ import {
 import {
   COINMARKETCAP_SLUGS,
   HISTORY_CACHE_TTL_MS,
+  HISTORY_FAILURE_RETRY_MS,
   HISTORY_PERIOD_DAYS,
   INDICATIVE_TARGET_APY_PCT,
   INDUSTRIAL_RWA_CURRENCIES,
@@ -163,6 +164,13 @@ export class MarketDataService {
   private cache: MarketCache | null = null;
   private metadataCache: MetadataCache | null = null;
   private historyCache = new Map<AcceptedCurrency, HistoryCacheEntry>();
+  // Regroupe les appels concurrents pour le même actif (cf. commentaire dans
+  // getYieldAssetHistory) — sans ça, deux appelants qui ratent le cache au même instant
+  // déclenchent chacun leur propre appel CoinMarketCap pour le même actif.
+  private historyInFlight = new Map<
+    AcceptedCurrency,
+    Promise<AssetHistoryEntry>
+  >();
   private fxCache: FxCache | null = null;
 
   // configService optionnel uniquement pour permettre `new MarketDataService()` dans les
@@ -205,47 +213,85 @@ export class MarketDataService {
 
     for (const currency of currencies) {
       const cached = this.historyCache.get(currency);
-      if (cached && now - cached.fetchedAt < HISTORY_CACHE_TTL_MS) {
+      // Un échec (points vides) n'a droit qu'au court délai de nouvelle tentative
+      // (HISTORY_FAILURE_RETRY_MS) plutôt qu'au cache complet de 6h : sinon une panne
+      // transitoire (rate limit CoinMarketCap, timeout) reste figée "indisponible"
+      // pendant des heures alors qu'une nouvelle tentative aurait pu réussir presque
+      // aussitôt (cf. commentaire de HISTORY_FAILURE_RETRY_MS).
+      const ttl =
+        cached && cached.entry.points.length > 0
+          ? HISTORY_CACHE_TTL_MS
+          : HISTORY_FAILURE_RETRY_MS;
+      if (cached && now - cached.fetchedAt < ttl) {
         entries.push(cached.entry);
         continue;
       }
 
-      let entry: AssetHistoryEntry;
-      try {
-        const series = await this.fetchDailyHistory(currency, metadata);
-        const values = series.map((p) => p.usd);
-        const first = values[0];
-        const last = values[values.length - 1];
-        entry = {
-          currency,
-          periodDays: HISTORY_PERIOD_DAYS,
-          points: downsample(series, 60),
-          changePct:
-            typeof first === 'number' && first !== 0
-              ? ((last - first) / first) * 100
-              : null,
-          highUsd: values.length ? Math.max(...values) : null,
-          lowUsd: values.length ? Math.min(...values) : null,
-        };
-      } catch (error) {
-        this.logger.warn(
-          `Échec de récupération de l'historique pour ${currency} : ${(error as Error).message}`,
-        );
-        entry = {
-          currency,
-          periodDays: HISTORY_PERIOD_DAYS,
-          points: [],
-          changePct: null,
-          highUsd: null,
-          lowUsd: null,
-        };
+      // Bug trouvé en rendant l'historique bien plus visible sur /marche : sans
+      // regroupement, le double montage React StrictMode (dev) — ou simplement deux
+      // vrais clients chargeant /marche au même instant — déclenchait DEUX appels
+      // CoinMarketCap concurrents pour le même actif ; si l'un des deux se heurtait au
+      // rate limit du plan gratuit, son échec pouvait écraser dans le cache PARTAGÉ la
+      // réussite de l'autre, selon lequel des deux terminait en dernier — masquant un
+      // résultat pourtant disponible. Un seul appel en vol par actif, partagé entre tous
+      // les appelants concurrents, élimine cette course par construction.
+      let pending = this.historyInFlight.get(currency);
+      if (!pending) {
+        pending = this.resolveHistoryEntry(currency, metadata, now);
+        this.historyInFlight.set(currency, pending);
+        void pending.finally(() => {
+          if (this.historyInFlight.get(currency) === pending) {
+            this.historyInFlight.delete(currency);
+          }
+        });
       }
-
-      this.historyCache.set(currency, { entry, fetchedAt: now });
-      entries.push(entry);
+      entries.push(await pending);
     }
 
     return entries;
+  }
+
+  // Récupère (ou échoue proprement pour) l'historique d'UN actif et met à jour le cache
+  // — extrait de getYieldAssetHistory pour être partageable via historyInFlight
+  // ci-dessus entre plusieurs appelants concurrents.
+  private async resolveHistoryEntry(
+    currency: AcceptedCurrency,
+    metadata: Map<string, AssetMetadata>,
+    fetchedAt: number,
+  ): Promise<AssetHistoryEntry> {
+    let entry: AssetHistoryEntry;
+    try {
+      const series = await this.fetchDailyHistory(currency, metadata);
+      const values = series.map((p) => p.usd);
+      const first = values[0];
+      const last = values[values.length - 1];
+      entry = {
+        currency,
+        periodDays: HISTORY_PERIOD_DAYS,
+        points: downsample(series, 60),
+        changePct:
+          typeof first === 'number' && first !== 0
+            ? ((last - first) / first) * 100
+            : null,
+        highUsd: values.length ? Math.max(...values) : null,
+        lowUsd: values.length ? Math.min(...values) : null,
+      };
+    } catch (error) {
+      this.logger.warn(
+        `Échec de récupération de l'historique pour ${currency} : ${(error as Error).message}`,
+      );
+      entry = {
+        currency,
+        periodDays: HISTORY_PERIOD_DAYS,
+        points: [],
+        changePct: null,
+        highUsd: null,
+        lowUsd: null,
+      };
+    }
+
+    this.historyCache.set(currency, { entry, fetchedAt });
+    return entry;
   }
 
   // Série de variations journalières (%) sur 365 jours pour UN actif — utilisée

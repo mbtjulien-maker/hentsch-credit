@@ -131,6 +131,18 @@ export const METADATA_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 export const HISTORY_PERIOD_DAYS = 365;
 export const HISTORY_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 
+// Bug trouvé en rendant l'historique bien plus visible sur /marche (grande courbe par
+// carte plutôt qu'un sparkline discret de cellule de tableau) : un échec de récupération
+// (panne CMC transitoire, ou le rate limit du plan gratuit sur /quotes/historical
+// atteint, surtout en dev où le double montage React StrictMode double le nombre
+// d'appels concurrents) était mis en cache comme "indisponible" pour les 6 HEURES
+// pleines de HISTORY_CACHE_TTL_MS ci-dessus — un actif qui aurait répondu correctement
+// une minute plus tard restait donc figé "Historique indisponible" jusqu'à l'expiration
+// complète du cache. Même principe de dégradation gracieuse que
+// StockMarketDataService.getQuote (cf. §6 CLAUDE.md entrée #47) : un échec retente
+// bientôt, seul un succès obtient le long cache.
+export const HISTORY_FAILURE_RETRY_MS = 2 * 60 * 1000;
+
 // Cryptos majeures affichées à titre informatif dans la vue "marché" façon plateforme
 // d'échange (OKX, Binance…), en plus des actifs acceptés en garantie. Non liées au
 // moteur de crédit — purement pour donner au client une vue d'ensemble du marché.

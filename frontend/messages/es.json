@@ -1280,6 +1280,7 @@
       "title": "Mercado en tiempo real",
       "description": "Cotizaciones, variación 24h, volúmenes y capitalización de los activos aceptados como garantía.",
       "loading": "Cargando…",
+      "chartUnavailable": "Historial no disponible",
       "columns": {
         "asset": "Activo",
         "price": "Precio",
@@ -1287,6 +1288,11 @@
         "volume24h": "Volumen 24h",
         "marketCap": "Cap. de mercado",
         "trend12m": "Tendencia 12 meses"
+      },
+      "tabs": {
+        "accepted": "Aceptados como garantía",
+        "others": "Otros activos",
+        "stocks": "Acciones cotizadas"
       },
       "acceptedSection": {
         "title": "Aceptados como garantía",

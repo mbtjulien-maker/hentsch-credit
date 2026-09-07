@@ -1280,6 +1280,7 @@
       "title": "Marknad i realtid",
       "description": "Kurser, 24h-förändring, volym och marknadsvärde för de tillgångar som accepteras som säkerhet.",
       "loading": "Läser in…",
+      "chartUnavailable": "Historik ej tillgänglig",
       "columns": {
         "asset": "Tillgång",
         "price": "Pris",
@@ -1287,6 +1288,11 @@
         "volume24h": "Volym 24h",
         "marketCap": "Marknadsvärde",
         "trend12m": "Trend 12 mån"
+      },
+      "tabs": {
+        "accepted": "Godkända som säkerhet",
+        "others": "Övriga tillgångar",
+        "stocks": "Börsnoterade aktier"
       },
       "acceptedSection": {
         "title": "Accepteras som säkerhet",

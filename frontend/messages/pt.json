@@ -1280,6 +1280,7 @@
       "title": "Mercado em tempo real",
       "description": "Cotações, variação 24h, volumes e capitalização dos ativos aceites como garantia.",
       "loading": "A carregar…",
+      "chartUnavailable": "Histórico indisponível",
       "columns": {
         "asset": "Ativo",
         "price": "Preço",
@@ -1287,6 +1288,11 @@
         "volume24h": "Volume 24h",
         "marketCap": "Cap. de mercado",
         "trend12m": "Tendência 12 meses"
+      },
+      "tabs": {
+        "accepted": "Aceites como garantia",
+        "others": "Outros ativos",
+        "stocks": "Ações cotadas"
       },
       "acceptedSection": {
         "title": "Aceites como garantia",

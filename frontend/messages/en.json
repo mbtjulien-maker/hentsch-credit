@@ -1280,6 +1280,7 @@
       "title": "Live market",
       "description": "Prices, 24h change, volume and market cap of the assets accepted as collateral.",
       "loading": "Loading…",
+      "chartUnavailable": "History unavailable",
       "columns": {
         "asset": "Asset",
         "price": "Price",
@@ -1287,6 +1288,11 @@
         "volume24h": "24h volume",
         "marketCap": "Market cap",
         "trend12m": "12-month trend"
+      },
+      "tabs": {
+        "accepted": "Accepted as collateral",
+        "others": "Other assets",
+        "stocks": "Listed stocks"
       },
       "acceptedSection": {
         "title": "Accepted as collateral",

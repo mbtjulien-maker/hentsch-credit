@@ -1280,6 +1280,7 @@
       "title": "Markt in real time",
       "description": "Koersen, 24u-verandering, volumes en marktkapitalisatie van de als onderpand geaccepteerde activa.",
       "loading": "Bezig met laden…",
+      "chartUnavailable": "Geschiedenis niet beschikbaar",
       "columns": {
         "asset": "Activum",
         "price": "Prijs",
@@ -1287,6 +1288,11 @@
         "volume24h": "Volume 24u",
         "marketCap": "Marktkap.",
         "trend12m": "Trend 12 mnd"
+      },
+      "tabs": {
+        "accepted": "Aanvaard als onderpand",
+        "others": "Overige activa",
+        "stocks": "Beursgenoteerde aandelen"
       },
       "acceptedSection": {
         "title": "Geaccepteerd als onderpand",

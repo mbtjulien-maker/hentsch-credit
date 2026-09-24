@@ -67,10 +67,11 @@ const PROFILE: Record<string, { weight: number; sigma: number; stock: boolean }>
   CORE_BALANCED_12M: { weight: 0.9, sigma: 0.006, stock: true },
 };
 
-// Scénario (montants en EUR) : 63 870 EUR déposés en trois fois, intégralement placés (rien
-// n'est retiré : les rendements sont capitalisés chaque jour et le capital reste investi,
-// dont un plan à échéance fixe de 12 mois — le catalogue n'a pas de plan à 13 mois). Avec
-// +9,6 % de rendement, la valeur du portefeuille atteint ~70 000 EUR. Compte ouvert le 26
+// Scénario (montants en EUR) : 63 870 EUR déposés en trois fois et placés, dont deux plans
+// à échéance fixe toujours en cours (le catalogue n'a pas de plan à 13 mois : un plan à 12
+// mois est utilisé) ; les rendements sont capitalisés chaque jour. Un arbitrage en septembre
+// (vente du panier Momentum, réinvestissement sur la stratégie RWA). Avec +9,6 % de
+// rendement, la valeur du portefeuille atteint ~70 000 EUR. Compte ouvert le 26
 // juillet 2026, premier dépôt le 27.
 const DEPOSITS_EUR = [
   { at: at('2026-07-27T10:12:00'), amount: 45000, kind: 'CRYPTO' as const, currency: 'USDC' as const, ref: 'demo-marbot-dep-1' },
@@ -80,16 +81,23 @@ const DEPOSITS_EUR = [
 
 type Placement = { at: Date; target: BasketKey | PlanKey; fixed: boolean; amount: number; maturity?: Date };
 const PLACEMENTS_EUR: Placement[] = [
-  { at: at('2026-07-27T11:20:00'), target: 'RWA_STRATEGY', fixed: false, amount: 15000 },
-  { at: at('2026-07-27T11:22:00'), target: 'STOCKS_BALANCED', fixed: false, amount: 10000 },
-  { at: at('2026-07-27T11:25:00'), target: 'STOCKS_TECH_AI', fixed: false, amount: 8000 },
+  { at: at('2026-07-27T11:20:00'), target: 'RWA_STRATEGY', fixed: false, amount: 14000 },
+  { at: at('2026-07-27T11:22:00'), target: 'STOCKS_BALANCED', fixed: false, amount: 9000 },
+  { at: at('2026-07-27T11:25:00'), target: 'STOCKS_TECH_AI', fixed: false, amount: 7000 },
   { at: at('2026-07-27T11:28:00'), target: 'STOCKS_CONSERVATIVE', fixed: false, amount: 6000 },
+  { at: at('2026-07-27T11:30:00'), target: 'STOCKS_MOMENTUM', fixed: false, amount: 3000 },
   { at: at('2026-07-27T11:31:00'), target: 'SEMICONDUCTORS_6M', fixed: true, amount: 6000, maturity: at('2027-01-27T11:31:00') },
   { at: at('2026-08-18T15:05:00'), target: 'CORE_BALANCED_12M', fixed: true, amount: 12000, maturity: at('2027-08-18T15:05:00') },
   { at: at('2026-09-04T10:30:00'), target: 'RWA_STRATEGY', fixed: false, amount: 6870 },
+  // Arbitrage de septembre : la hausse du pétrole et des matières premières fait bouger les
+  // marchés — le panier Momentum est soldé (plus-value encaissée) et 3 000 EUR sont replacés
+  // sur la stratégie RWA, exposée aux métaux industriels et au pétrole.
+  { at: at('2026-09-08T10:12:00'), target: 'RWA_STRATEGY', fixed: false, amount: 3000 },
 ];
-// Aucun retrait dans ce scénario (le capital reste réinvesti).
-const WITHDRAWAL: { at: Date; target: BasketKey } | null = null;
+// Vente du panier Momentum (les paniers se retirent toujours en totalité, §2H) : le produit
+// de la vente revient sur le wallet, dont 3 000 EUR sont replacés sur la stratégie RWA
+// (placement du 8 septembre ci-dessus), le reliquat (la plus-value) reste disponible.
+const WITHDRAWAL: { at: Date; target: BasketKey } | null = { at: at('2026-09-08T10:05:00'), target: 'STOCKS_MOMENTUM' };
 
 // Montants du registre (USD), calculés après lecture du taux dans main().
 let DEPOSITS = DEPOSITS_EUR.map((d) => ({ ...d }));
@@ -187,12 +195,16 @@ function totalYield(sim: Sim) {
 }
 
 async function loadEurPerUsd(): Promise<number> {
-  try {
-    const res = await fetch('http://localhost:3000/market/eur-per-usd');
-    const body = (await res.json()) as { eurPerUsd?: number };
-    if (body.eurPerUsd && body.eurPerUsd > 0.3 && body.eurPerUsd < 2) return body.eurPerUsd;
-  } catch {
-    // API locale indisponible : repli sur le taux par défaut.
+  // Quelques tentatives : le serveur de dev peut être en train de recompiler.
+  for (let attempt = 0; attempt < 5; attempt++) {
+    try {
+      const res = await fetch('http://localhost:3000/market/eur-per-usd');
+      const body = (await res.json()) as { eurPerUsd?: number };
+      if (body.eurPerUsd && body.eurPerUsd > 0.3 && body.eurPerUsd < 2) return body.eurPerUsd;
+    } catch {
+      // API locale indisponible : nouvel essai, puis repli sur le taux par défaut.
+    }
+    await new Promise((r) => setTimeout(r, 2000));
   }
   return 0.86;
 }
@@ -206,6 +218,13 @@ async function main() {
   EUR_PER_USD = await loadEurPerUsd();
   DEPOSITS = DEPOSITS_EUR.map((d) => ({ ...d, amount: toUsd(d.amount) }));
   PLACEMENTS = PLACEMENTS_EUR.map((p) => ({ ...p, amount: toUsd(p.amount) }));
+  // Chaque dépôt finance exactement les placements du jour (mêmes montants convertis) : sans
+  // cela, l'arrondi séparé au centime laisserait quelques centimes orphelins dans le wallet.
+  const sumOn = (pred: (d: Date) => boolean) =>
+    Math.round(PLACEMENTS.filter((p) => pred(p.at)).reduce((acc, p) => acc + p.amount, 0) * 100) / 100;
+  DEPOSITS[0].amount = sumOn((d) => d < at('2026-08-01T00:00:00'));
+  DEPOSITS[1].amount = sumOn((d) => d >= at('2026-08-18T00:00:00') && d < at('2026-08-19T00:00:00'));
+  DEPOSITS[2].amount = sumOn((d) => d >= at('2026-09-04T00:00:00') && d < at('2026-09-05T00:00:00'));
   const placed = PLACEMENTS.reduce((s, p) => s + p.amount, 0);
   const targetYield = (placed * TARGET_RETURN_PCT) / 100;
 

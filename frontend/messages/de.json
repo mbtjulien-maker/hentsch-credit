@@ -1208,6 +1208,11 @@
       "terms": "AGB",
       "privacy": "Datenschutz",
       "regulation": "Regulierung"
+    },
+    "currencySwitcher": {
+      "label": "Kontowährung",
+      "hint": "Zeigen Sie Ihre Beträge in Euro oder Dollar an. Das Register bleibt in Dollar, umgerechnet zum Tageskurs.",
+      "error": "Die Kontowährung konnte nicht geändert werden."
     }
   },
   "Dashboard": {
@@ -1270,7 +1275,7 @@
         "trigger": "Per Karte kaufen",
         "dialogTitle": "Per Bankkarte aufladen",
         "dialogDescription": "Sichere Zahlung über Mollie. Das verfügbare Guthaben wird sofort nach Zahlungsbestätigung gutgeschrieben.",
-        "amountLabel": "Betrag (USD)",
+        "amountLabel": "Betrag ({currency})",
         "submit": "Weiter zur Zahlung",
         "dialogDescriptionInvestment": "Der Betrag wird nach Bestätigung der Zahlung direkt Ihrem Anlage-Wallet gutgeschrieben."
       },
@@ -1707,7 +1712,7 @@
       "principal": "Angelegtes Kapital",
       "accruedYield": "Aufgelaufene Rendite",
       "totalValue": "Gesamtwert",
-      "amountPlaceholder": "Betrag in US$",
+      "amountPlaceholder": "Betrag in {currency}",
       "deposit": "Anlegen",
       "withdrawAll": "Alles abheben",
       "depositSuccess": "Einzahlung erfolgt.",
@@ -1747,7 +1752,7 @@
       },
       "quickMax": "MAX",
       "insufficientBalance": "Verfügbares Guthaben nicht ausreichend.",
-      "belowMinimum": "Mindestbetrag: {min} US$.",
+      "belowMinimum": "Mindestbetrag: {min}.",
       "risk": {
         "low": "Vorsichtig",
         "medium": "Moderat",
@@ -1898,7 +1903,7 @@
         "walletBalance": "Investment-Wallet",
         "directionIn": "Zum Wallet",
         "directionOut": "Vom Wallet",
-        "amountPlaceholder": "Betrag in $US",
+        "amountPlaceholder": "Betrag in {currency}",
         "transfer": "Überweisen",
         "quickMax": "MAX",
         "insufficientBalance": "Unzureichendes Guthaben",

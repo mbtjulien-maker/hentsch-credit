@@ -18,6 +18,7 @@ function buildUser(overrides: Partial<User> = {}): User {
     kycStatus: 'VERIFIED',
     role: 'CLIENT',
     accountType: 'PARTICULIER',
+    displayCurrency: 'USD',
     createdAt: new Date(),
     updatedAt: new Date(),
     twoFactorSecret: null,

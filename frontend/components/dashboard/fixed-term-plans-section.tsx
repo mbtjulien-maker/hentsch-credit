@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { riskAccentClasses, RiskBadge } from "@/components/dashboard/investment-panel";
 import { TermsAcceptance } from "@/components/dashboard/terms-acceptance";
 import type { FixedTermPlan, FixedTermPosition } from "@/lib/api";
-import { formatDate, formatUsd } from "@/lib/format";
+import { formatDate, formatDisplayAmount, formatUsd, getActiveCurrency, toDisplay } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const QUICK_FRACTIONS = [0.25, 0.5, 0.75, 1] as const;
@@ -93,8 +93,12 @@ function PlanCard({
 
   const latestSignal = plan.latestSignalPct != null ? Number(plan.latestSignalPct) : null;
   const parsedAmount = Number(amount);
-  const exceedsBalance = availableBalance != null && parsedAmount > availableBalance;
-  const belowMinimum = amount.trim() !== "" && parsedAmount > 0 && parsedAmount < MIN_AMOUNT;
+  // Solde et minimum du registre (USD) exprimés dans la monnaie d'affichage : la saisie se fait
+  // dans la monnaie du compte, convertie vers le registre à l'envoi.
+  const balanceDisplay = availableBalance != null ? toDisplay(availableBalance) : null;
+  const minDisplay = Math.ceil(toDisplay(MIN_AMOUNT) * 100) / 100;
+  const exceedsBalance = balanceDisplay != null && parsedAmount > balanceDisplay;
+  const belowMinimum = amount.trim() !== "" && parsedAmount > 0 && parsedAmount < minDisplay;
   const isValidAmount = parsedAmount > 0 && !exceedsBalance && !belowMinimum;
   const maturityPreview = computeMaturityPreview(plan.horizonMonths);
 
@@ -164,7 +168,7 @@ function PlanCard({
                 type="number"
                 min="0"
                 step="0.01"
-                placeholder={t("amountPlaceholder")}
+                placeholder={t("amountPlaceholder", { currency: getActiveCurrency() })}
                 value={amount}
                 disabled={busy}
                 onChange={(e) => setAmount(e.target.value)}
@@ -174,14 +178,14 @@ function PlanCard({
               </Button>
             </div>
 
-            {availableBalance != null && availableBalance > 0 && (
+            {balanceDisplay != null && balanceDisplay > 0 && (
               <div className="flex gap-1.5">
                 {QUICK_FRACTIONS.map((fraction) => (
                   <button
                     key={fraction}
                     type="button"
                     disabled={busy}
-                    onClick={() => setAmount((availableBalance * fraction).toFixed(2))}
+                    onClick={() => setAmount((Math.floor(balanceDisplay * fraction * 100) / 100).toFixed(2))}
                     className="rounded-md border border-border/60 px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
                   >
                     {fraction === 1 ? t("quickMax") : `${fraction * 100}%`}
@@ -191,7 +195,7 @@ function PlanCard({
             )}
 
             {exceedsBalance && <p className="text-xs text-destructive">{t("insufficientBalance")}</p>}
-            {belowMinimum && <p className="text-xs text-destructive">{t("belowMinimum", { min: MIN_AMOUNT })}</p>}
+            {belowMinimum && <p className="text-xs text-destructive">{t("belowMinimum", { min: formatDisplayAmount(minDisplay) })}</p>}
           </div>
         ) : (
           <div className="flex flex-col gap-2 rounded-lg border border-amber-500/40 bg-amber-500/5 p-3">
@@ -199,7 +203,7 @@ function PlanCard({
               <Lock className="mt-0.5 size-3.5 shrink-0 text-amber-600 dark:text-amber-400" />
               <p className="text-xs leading-relaxed text-foreground">
                 {t("fixedTermPlans.lockWarning", {
-                  amount: formatUsd(parsedAmount),
+                  amount: formatDisplayAmount(parsedAmount),
                   date: formatDate(maturityPreview.toISOString(), locale),
                 })}
               </p>

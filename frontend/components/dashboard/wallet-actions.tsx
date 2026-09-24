@@ -40,7 +40,7 @@ import {
   type ManagedDepositAddress,
   type WithdrawalRequest,
 } from "@/lib/api";
-import { CHAIN_LABELS, DEPOSIT_CURRENCY_GROUPS, formatUsd } from "@/lib/format";
+import { CHAIN_LABELS, DEPOSIT_CURRENCY_GROUPS, formatUsd, fromDisplay, getActiveCurrency } from "@/lib/format";
 import { useCurrencyLabel } from "@/lib/use-currency-label";
 import { isSepaEligibleIban, isValidBic, isValidIban } from "@/lib/iban";
 
@@ -126,7 +126,7 @@ export function CardTopupDialog({ target = "AVAILABLE" }: { target?: CreditTarge
     setLoading(true);
     setError(null);
     try {
-      const { checkoutUrl } = await api.createCardTopup(parsedAmount.toFixed(2), target);
+      const { checkoutUrl } = await api.createCardTopup(fromDisplay(parsedAmount).toFixed(2), target);
       // Redirection pleine page vers le checkout Mollie hébergé (ou, en mode sandbox
       // sans clé API configurée, vers la page de paiement simulée interne) — même
       // comportement que le vrai flux Mollie, qui redirige toujours hors de l'app.
@@ -164,7 +164,7 @@ export function CardTopupDialog({ target = "AVAILABLE" }: { target?: CreditTarge
 
           <div className="flex flex-col gap-4 py-2">
             <div className="grid gap-2">
-              <Label htmlFor="topup-amount">{t("buyByCard.amountLabel")}</Label>
+              <Label htmlFor="topup-amount">{t("buyByCard.amountLabel", { currency: getActiveCurrency() })}</Label>
               <Input
                 id="topup-amount"
                 inputMode="decimal"

@@ -20,11 +20,11 @@ type Period = (typeof PERIODS)[number];
 export function InvestmentStatementCard({ className }: { className?: string }) {
   const t = useTranslations("Dashboard.investmentSpace.statement");
   const locale = useLocale();
-  const { selectedUserId } = useDashboard();
+  const { selectedUserId, displayCurrency } = useDashboard();
   const [period, setPeriod] = useState<Period>(12);
 
   if (!selectedUserId) return null;
-  const href = api.getInvestmentStatementUrl(selectedUserId, period, locale === "fr" ? "fr" : "en");
+  const href = api.getInvestmentStatementUrl(selectedUserId, period, locale === "fr" ? "fr" : "en", displayCurrency);
 
   return (
     <Card className={className}>

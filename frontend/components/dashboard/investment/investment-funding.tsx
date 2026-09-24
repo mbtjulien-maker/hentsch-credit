@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
 import { useInvestment } from "@/components/dashboard/investment/investment-context";
 import { CardTopupDialog, DepositDialog } from "@/components/dashboard/wallet-actions";
-import { formatUsd } from "@/lib/format";
+import { formatUsd, getActiveCurrency, toDisplay } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const QUICK_FRACTIONS = [0.25, 0.5, 0.75, 1] as const;
@@ -37,7 +37,10 @@ function InternalTransfer() {
   const [direction, setDirection] = useState<Direction>("in");
   const [amount, setAmount] = useState("");
 
-  const source = direction === "in" ? inv.mainBalance : inv.walletBalance;
+  // Soldes du registre (USD) exprimés dans la monnaie d'affichage : le client saisit dans la
+  // monnaie de son compte, la conversion vers le registre se fait à l'envoi.
+  const sourceUsd = direction === "in" ? inv.mainBalance : inv.walletBalance;
+  const source = sourceUsd != null ? toDisplay(sourceUsd) : null;
   const parsed = Number(amount);
   const exceeds = source != null && parsed > source;
   const valid = parsed > 0 && !exceeds;
@@ -83,10 +86,10 @@ function InternalTransfer() {
           <div className="flex flex-col gap-2">
             <Input
               inputMode="decimal"
-              placeholder={tWallet("amountPlaceholder")}
+              placeholder={tWallet("amountPlaceholder", { currency: getActiveCurrency() })}
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              aria-label={tWallet("amountPlaceholder")}
+              aria-label={tWallet("amountPlaceholder", { currency: getActiveCurrency() })}
               aria-invalid={exceeds}
             />
             {source != null && (
@@ -97,7 +100,7 @@ function InternalTransfer() {
                     type="button"
                     variant="outline"
                     size="xs"
-                    onClick={() => setAmount((source * f).toFixed(2))}
+                    onClick={() => setAmount((Math.floor(source * f * 100) / 100).toFixed(2))}
                   >
                     {f === 1 ? tWallet("quickMax") : `${f * 100}%`}
                   </Button>

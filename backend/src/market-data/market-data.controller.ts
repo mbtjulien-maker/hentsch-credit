@@ -53,6 +53,13 @@ export class MarketDataController {
   // bourse aussi") — union dédupliquée des tickers des 5 paniers d'actions du produit
   // "investissement direct" (§2H CLAUDE.md), jamais un flux de marché actions séparé :
   // mêmes cours réels Finnhub déjà utilisés pour l'accrual des paniers, une seule source.
+  // Taux de conversion USD → EUR (nombre d'euros pour 1 dollar) — sert à l'affichage des
+  // montants du registre dans la monnaie choisie par le client (cf. User.displayCurrency).
+  @Get('eur-per-usd')
+  async eurPerUsd() {
+    return { eurPerUsd: (await this.marketDataService.getEurPerUsd()).toNumber() };
+  }
+
   @Get('stocks')
   async getStocks() {
     const quotes =

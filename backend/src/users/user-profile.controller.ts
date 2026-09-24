@@ -12,6 +12,7 @@ import type { AuthenticatedUser } from '../auth/auth.service';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { assertSelfOrAdmin } from '../auth/ownership.util';
+import { UpdateDisplayCurrencyDto } from './dto/update-display-currency.dto';
 import { UpdateOwnAddressesDto } from './dto/update-own-addresses.dto';
 import { UpdateOwnEmploymentDto } from './dto/update-own-employment.dto';
 import { UpdateOwnIdentityDocumentDto } from './dto/update-own-identity-document.dto';
@@ -50,6 +51,18 @@ export class UserProfileController {
   ) {
     assertSelfOrAdmin(currentUser, userId);
     return this.usersService.updateProfile(userId, dto);
+  }
+
+  // Monnaie d'affichage du compte (USD ou EUR) — préférence du client, modifiable à tout
+  // moment ; le registre reste en USD (cf. User.displayCurrency).
+  @Patch('display-currency')
+  setDisplayCurrency(
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @Body() dto: UpdateDisplayCurrencyDto,
+    @CurrentUser() currentUser: AuthenticatedUser,
+  ) {
+    assertSelfOrAdmin(currentUser, userId);
+    return this.usersService.setDisplayCurrency(userId, dto.currency);
   }
 
   @Put('addresses')

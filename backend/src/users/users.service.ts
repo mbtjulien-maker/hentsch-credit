@@ -369,4 +369,12 @@ export class UsersService {
       reviewedAt: a.reviewedAt?.toISOString() ?? null,
     };
   }
+
+  async setDisplayCurrency(userId: string, currency: 'USD' | 'EUR') {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: { displayCurrency: currency },
+      select: { id: true, displayCurrency: true },
+    });
+  }
 }

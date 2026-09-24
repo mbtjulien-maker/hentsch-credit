@@ -3,7 +3,7 @@ import { UsersService } from './users.service';
 
 describe('UsersService', () => {
   let prisma: {
-    user: { findMany: jest.Mock; findUnique: jest.Mock };
+    user: { findMany: jest.Mock; findUnique: jest.Mock; update: jest.Mock };
     clientProfile: { upsert: jest.Mock };
     address: { upsert: jest.Mock };
     employment: { upsert: jest.Mock };
@@ -15,7 +15,7 @@ describe('UsersService', () => {
 
   beforeEach(() => {
     prisma = {
-      user: { findMany: jest.fn(), findUnique: jest.fn() },
+      user: { findMany: jest.fn(), findUnique: jest.fn(), update: jest.fn() },
       clientProfile: { upsert: jest.fn() },
       address: { upsert: jest.fn() },
       employment: { upsert: jest.fn() },
@@ -24,6 +24,21 @@ describe('UsersService', () => {
       $transaction: jest.fn((ops: unknown[]) => Promise.all(ops)),
     };
     service = new UsersService(prisma as never);
+  });
+
+  describe('setDisplayCurrency', () => {
+    it("enregistre la monnaie d'affichage choisie par le client", async () => {
+      prisma.user.update.mockResolvedValue({ id: 'user-1', displayCurrency: 'EUR' });
+
+      const result = await service.setDisplayCurrency('user-1', 'EUR');
+
+      expect(prisma.user.update).toHaveBeenCalledWith({
+        where: { id: 'user-1' },
+        data: { displayCurrency: 'EUR' },
+        select: { id: true, displayCurrency: true },
+      });
+      expect(result.displayCurrency).toBe('EUR');
+    });
   });
 
   describe('getProfile', () => {

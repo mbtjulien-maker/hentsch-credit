@@ -1,3 +1,4 @@
+import { getActiveCurrency, toDisplay } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const numberFormatter = new Intl.NumberFormat("fr-FR", {
@@ -21,16 +22,17 @@ const SIZE_CLASSES = {
 // une espace insécable ordinaire (Rajdhani n'a pas U+202F, cf. lib/format.ts).
 export function Money({
   value,
-  currency = "USD",
+  currency = getActiveCurrency(),
   size = "lg",
   className,
 }: {
+  // Toujours des USD du registre : converti dans la monnaie d'affichage du compte.
   value: string | number;
   currency?: string;
   size?: keyof typeof SIZE_CLASSES;
   className?: string;
 }) {
-  const parts = numberFormatter.formatToParts(Number(value));
+  const parts = numberFormatter.formatToParts(toDisplay(Number(value)));
   const sign = parts.find((p) => p.type === "minusSign")?.value ?? "";
   const integer = parts
     .filter((p) => p.type === "integer" || p.type === "group")

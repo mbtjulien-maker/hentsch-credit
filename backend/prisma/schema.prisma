@@ -223,6 +223,10 @@ model User {
   role         UserRole    @default(CLIENT)
   // cf. enum AccountType — fixé à l'ouverture du compte, jamais modifié ensuite.
   accountType  AccountType @default(PARTICULIER)
+  // Monnaie d'affichage choisie par le client pour son compte (USD ou EUR, modifiable à tout
+  // moment) — le registre reste tenu en USD (cf. CLAUDE.md §3/§4) ; cette préférence pilote
+  // uniquement l'affichage converti au cours du jour et la monnaie des relevés.
+  displayCurrency AccountCurrency @default(USD)
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
 

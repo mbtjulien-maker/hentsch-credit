@@ -25,7 +25,7 @@ import {
   type InvestmentPosition,
   type InvestmentRates,
 } from "@/lib/api";
-import { formatUsd } from "@/lib/format";
+import { formatUsd, fromDisplay } from "@/lib/format";
 
 type WalletDirection = "in" | "out";
 
@@ -166,7 +166,7 @@ export function InvestmentProvider({ children }: { children: ReactNode }) {
       setBusyBasket(basket);
       setError(null);
       try {
-        await api.depositInvestment(basket, Number(amount).toFixed(6));
+        await api.depositInvestment(basket, fromDisplay(Number(amount)).toFixed(6));
         toast.success(t("depositSuccess"));
         refresh();
         triggerRefresh();
@@ -184,7 +184,7 @@ export function InvestmentProvider({ children }: { children: ReactNode }) {
       setBusyPlan(plan);
       setError(null);
       try {
-        await api.depositFixedTerm(plan, Number(amount).toFixed(6));
+        await api.depositFixedTerm(plan, fromDisplay(Number(amount)).toFixed(6));
         toast.success(t("fixedTermPlans.depositSuccess"));
         refresh();
         triggerRefresh();
@@ -220,7 +220,7 @@ export function InvestmentProvider({ children }: { children: ReactNode }) {
       setBusyWallet(true);
       setError(null);
       try {
-        const value = Number(amount).toFixed(6);
+        const value = fromDisplay(Number(amount)).toFixed(6);
         if (direction === "in") {
           await api.transferToInvestmentWallet(value);
           toast.success(t("wallet.transferInSuccess"));

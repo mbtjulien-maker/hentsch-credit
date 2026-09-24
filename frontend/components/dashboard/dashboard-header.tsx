@@ -4,6 +4,7 @@ import { Landmark } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { AccountMenu } from "@/components/dashboard/account-menu";
+import { CurrencySwitcher } from "@/components/dashboard/currency-switcher";
 import { MobileNav } from "@/components/dashboard/sidebar";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
 import { LanguageSwitcher } from "@/components/marketing/language-switcher";
@@ -34,6 +35,7 @@ export function DashboardHeader() {
               dernier. */}
           <AccountMenu />
           <div className="flex items-center gap-2">
+            <CurrencySwitcher />
             <LanguageSwitcher />
             <ThemeToggle />
           </div>

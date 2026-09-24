@@ -144,6 +144,7 @@ export class AuthController {
         kycStatus: true,
         role: true,
         accountType: true,
+        displayCurrency: true,
         createdAt: true,
         twoFactorEnabled: true,
         // Nom complet auto-déclaré (cf. ClientProfile, §6 entrée #24) — affiché dans la

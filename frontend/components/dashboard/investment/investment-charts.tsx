@@ -5,7 +5,7 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import type { InvestmentPerformanceMonth } from "@/lib/api";
-import { formatUsd } from "@/lib/format";
+import { formatDisplayAmount, toDisplay } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 // Deux graphiques volontairement séparés (jamais un double axe) : la valeur du portefeuille
@@ -24,10 +24,12 @@ export type PerformancePoint = {
 export function toPoints(months: InvestmentPerformanceMonth[]): PerformancePoint[] {
   return months.map((m) => ({
     month: m.month,
-    value: Number(m.endValueUsd),
-    yieldUsd: Number(m.yieldUsd),
-    deposits: Number(m.depositsUsd),
-    withdrawals: Number(m.withdrawalsUsd),
+    // Valeurs converties dans la monnaie d'affichage du compte (le registre est en USD) :
+    // axes, info-bulles et tableau parlent tous la même monnaie que les cartes de solde.
+    value: toDisplay(Number(m.endValueUsd)),
+    yieldUsd: toDisplay(Number(m.yieldUsd)),
+    deposits: toDisplay(Number(m.depositsUsd)),
+    withdrawals: toDisplay(Number(m.withdrawalsUsd)),
   }));
 }
 
@@ -175,8 +177,8 @@ export function PortfolioValueChart({ points }: { points: PerformancePoint[] }) 
           leftPct={(coords[hover].x / W) * 100}
           title={fmt.longMonth(activePoint.month)}
           rows={[
-            { label: t("tooltip.value"), value: formatUsd(activePoint.value), emphasis: true },
-            { label: t("tooltip.yield"), value: formatUsd(activePoint.yieldUsd) },
+            { label: t("tooltip.value"), value: formatDisplayAmount(activePoint.value), emphasis: true },
+            { label: t("tooltip.yield"), value: formatDisplayAmount(activePoint.yieldUsd) },
           ]}
         />
       )}
@@ -270,9 +272,9 @@ export function MonthlyYieldChart({ points }: { points: PerformancePoint[] }) {
           leftPct={(slotX(hover, points.length) / W) * 100}
           title={fmt.longMonth(points[hover].month)}
           rows={[
-            { label: t("tooltip.yield"), value: `${points[hover].yieldUsd >= 0 ? "+" : ""}${formatUsd(points[hover].yieldUsd)}`, emphasis: true },
-            { label: t("tooltip.deposits"), value: formatUsd(points[hover].deposits) },
-            { label: t("tooltip.withdrawals"), value: formatUsd(points[hover].withdrawals) },
+            { label: t("tooltip.yield"), value: `${points[hover].yieldUsd >= 0 ? "+" : ""}${formatDisplayAmount(points[hover].yieldUsd)}`, emphasis: true },
+            { label: t("tooltip.deposits"), value: formatDisplayAmount(points[hover].deposits) },
+            { label: t("tooltip.withdrawals"), value: formatDisplayAmount(points[hover].withdrawals) },
           ]}
         />
       )}
@@ -370,9 +372,9 @@ export function PerformanceTable({ points }: { points: PerformancePoint[] }) {
           {points.map((p) => (
             <tr key={p.month} className="border-b border-border/40 last:border-0">
               <td className="px-3 py-2 capitalize">{fmt.longMonth(p.month)}</td>
-              <td className="px-3 py-2 text-right tabular-nums font-medium">{formatUsd(p.value)}</td>
-              <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">{formatUsd(p.deposits)}</td>
-              <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">{formatUsd(p.withdrawals)}</td>
+              <td className="px-3 py-2 text-right tabular-nums font-medium">{formatDisplayAmount(p.value)}</td>
+              <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">{formatDisplayAmount(p.deposits)}</td>
+              <td className="px-3 py-2 text-right tabular-nums text-muted-foreground">{formatDisplayAmount(p.withdrawals)}</td>
               <td className="px-3 py-2 text-right tabular-nums">
                 <span
                   className={cn(
@@ -383,7 +385,7 @@ export function PerformanceTable({ points }: { points: PerformancePoint[] }) {
                 >
                   {p.yieldUsd > 0 && <TrendingUp className="size-3" />}
                   {p.yieldUsd < 0 && <TrendingDown className="size-3" />}
-                  {`${p.yieldUsd > 0 ? "+" : ""}${formatUsd(p.yieldUsd)}`}
+                  {`${p.yieldUsd > 0 ? "+" : ""}${formatDisplayAmount(p.yieldUsd)}`}
                 </span>
               </td>
             </tr>

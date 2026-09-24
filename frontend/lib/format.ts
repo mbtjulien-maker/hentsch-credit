@@ -16,8 +16,37 @@ const currencyFormatter = new Intl.NumberFormat("fr-FR", {
   maximumFractionDigits: 2,
 });
 
+// Monnaie d'affichage du compte (USD ou EUR, choisie par le client, cf. User.displayCurrency).
+// Le registre reste tenu en USD : les montants venus de l'API sont toujours des USD, convertis
+// ici au taux du jour pour l'affichage. État de module (et non un contexte React) parce que
+// formatUsd est appelé partout comme une fonction pure ; DashboardProvider le renseigne
+// avant de rendre l'espace client et remonte l'arbre quand la monnaie change.
+export type DisplayCurrency = "USD" | "EUR";
+let activeCurrency: DisplayCurrency = "USD";
+let eurPerUsd = 1;
+
+export function setActiveCurrency(currency: DisplayCurrency, rate: number): void {
+  activeCurrency = currency;
+  eurPerUsd = currency === "EUR" && rate > 0 ? rate : 1;
+}
+export function getActiveCurrency(): DisplayCurrency {
+  return activeCurrency;
+}
+// USD du registre -> monnaie d'affichage, et inversement (pour les montants saisis).
+export function toDisplay(usd: number): number {
+  return activeCurrency === "EUR" ? usd * eurPerUsd : usd;
+}
+export function fromDisplay(amount: number): number {
+  return activeCurrency === "EUR" ? amount / eurPerUsd : amount;
+}
+// Montant déjà exprimé dans la monnaie d'affichage (saisie du client) : mise en forme sans
+// conversion.
+export function formatDisplayAmount(amount: number): string {
+  return nbsp((activeCurrency === "EUR" ? eurFormatter : currencyFormatter).format(amount));
+}
+
 export function formatUsd(value: string | number): string {
-  return nbsp(currencyFormatter.format(Number(value)));
+  return formatDisplayAmount(toDisplay(Number(value)));
 }
 
 const eurFormatter = new Intl.NumberFormat("fr-FR", {

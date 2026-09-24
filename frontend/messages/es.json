@@ -1208,6 +1208,11 @@
       "terms": "Condiciones",
       "privacy": "Privacidad",
       "regulation": "Regulación"
+    },
+    "currencySwitcher": {
+      "label": "Moneda de la cuenta",
+      "hint": "Muestre sus importes en euros o en dólares. El registro se mantiene en dólares, convertido al tipo del día.",
+      "error": "No se pudo cambiar la moneda de la cuenta."
     }
   },
   "Dashboard": {
@@ -1270,7 +1275,7 @@
         "trigger": "Comprar con tarjeta",
         "dialogTitle": "Recargar con tarjeta bancaria",
         "dialogDescription": "Pago seguro gestionado por Mollie. El saldo disponible se acredita en cuanto se confirma el pago.",
-        "amountLabel": "Importe (USD)",
+        "amountLabel": "Importe ({currency})",
         "submit": "Continuar al pago",
         "dialogDescriptionInvestment": "El importe se acreditará directamente en su wallet de inversión una vez confirmado el pago."
       },
@@ -1707,7 +1712,7 @@
       "principal": "Capital invertido",
       "accruedYield": "Rendimiento acumulado",
       "totalValue": "Valor total",
-      "amountPlaceholder": "Importe en $US",
+      "amountPlaceholder": "Importe en {currency}",
       "deposit": "Invertir",
       "withdrawAll": "Retirar todo",
       "depositSuccess": "Depósito realizado.",
@@ -1747,7 +1752,7 @@
       },
       "quickMax": "MÁX",
       "insufficientBalance": "Saldo disponible insuficiente.",
-      "belowMinimum": "Importe mínimo: {min} $US.",
+      "belowMinimum": "Importe mínimo: {min}.",
       "risk": {
         "low": "Prudente",
         "medium": "Moderado",
@@ -1898,7 +1903,7 @@
         "walletBalance": "Wallet de inversión",
         "directionIn": "Hacia el wallet",
         "directionOut": "Desde el wallet",
-        "amountPlaceholder": "Importe en $US",
+        "amountPlaceholder": "Importe en {currency}",
         "transfer": "Transferir",
         "quickMax": "MAX",
         "insufficientBalance": "Saldo insuficiente",

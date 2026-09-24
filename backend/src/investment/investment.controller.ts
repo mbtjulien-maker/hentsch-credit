@@ -292,6 +292,7 @@ export class UserInvestmentStatementController {
     @Res({ passthrough: true }) res: Response,
     @Query('months') monthsParam?: string,
     @Query('locale') localeParam?: string,
+    @Query('currency') currencyParam?: string,
   ) {
     assertSelfOrAdmin(currentUser, userId);
     const requested = Number(monthsParam);
@@ -299,7 +300,8 @@ export class UserInvestmentStatementController {
       ? (requested as StatementPeriod)
       : 12;
     const locale: StatementLocale = localeParam === 'en' ? 'en' : 'fr';
-    const { filename, pdf } = await this.statementService.generate(userId, months, locale);
+    const currency = currencyParam === 'EUR' || currencyParam === 'USD' ? currencyParam : undefined;
+    const { filename, pdf } = await this.statementService.generate(userId, months, locale, currency);
     res.set({
       'Content-Type': 'application/pdf',
       'Content-Disposition': `attachment; filename="${filename}"`,

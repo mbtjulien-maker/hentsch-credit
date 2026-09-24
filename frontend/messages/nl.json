@@ -1208,6 +1208,11 @@
       "terms": "Voorwaarden",
       "privacy": "Privacy",
       "regulation": "Regelgeving"
+    },
+    "currencySwitcher": {
+      "label": "Rekeningvaluta",
+      "hint": "Toon uw bedragen in euro of dollar. Het register blijft in dollar, omgerekend tegen de dagkoers.",
+      "error": "De rekeningvaluta kon niet worden gewijzigd."
     }
   },
   "Dashboard": {
@@ -1270,7 +1275,7 @@
         "trigger": "Kopen met kaart",
         "dialogTitle": "Opwaarderen met bankkaart",
         "dialogDescription": "Veilige betaling verwerkt door Mollie. Het beschikbare saldo wordt gecrediteerd zodra de betaling is bevestigd.",
-        "amountLabel": "Bedrag (USD)",
+        "amountLabel": "Bedrag ({currency})",
         "submit": "Doorgaan naar betaling",
         "dialogDescriptionInvestment": "Het bedrag wordt rechtstreeks op uw beleggingswallet bijgeschreven zodra de betaling is bevestigd."
       },
@@ -1707,7 +1712,7 @@
       "principal": "Belegd kapitaal",
       "accruedYield": "Opgebouwd rendement",
       "totalValue": "Totale waarde",
-      "amountPlaceholder": "Bedrag in US$",
+      "amountPlaceholder": "Bedrag in {currency}",
       "deposit": "Beleggen",
       "withdrawAll": "Alles opnemen",
       "depositSuccess": "Storting voltooid.",
@@ -1747,7 +1752,7 @@
       },
       "quickMax": "MAX",
       "insufficientBalance": "Onvoldoende beschikbaar saldo.",
-      "belowMinimum": "Minimumbedrag: {min} US$.",
+      "belowMinimum": "Minimumbedrag: {min}.",
       "risk": {
         "low": "Voorzichtig",
         "medium": "Gematigd",
@@ -1898,7 +1903,7 @@
         "walletBalance": "Investeringswallet",
         "directionIn": "Naar de wallet",
         "directionOut": "Vanuit de wallet",
-        "amountPlaceholder": "Bedrag in $US",
+        "amountPlaceholder": "Bedrag in {currency}",
         "transfer": "Overboeken",
         "quickMax": "MAX",
         "insufficientBalance": "Onvoldoende saldo",

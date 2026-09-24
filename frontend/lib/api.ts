@@ -69,6 +69,9 @@ export interface UserSummary {
   kycStatus: KycStatus;
   role: UserRole;
   accountType: AccountType;
+  // Monnaie d'affichage choisie par le client (le registre reste en USD) — présente sur
+  // GET /auth/me.
+  displayCurrency?: "USD" | "EUR";
   createdAt: string;
   // Présent uniquement sur la réponse de GET /auth/me (cf. AuthController) — absent sur
   // les réponses de login/challenge, qui n'ont pas besoin de le renvoyer.
@@ -1169,8 +1172,19 @@ export const api = {
     }),
   getKycDocumentDownloadUrl: (userId: string, documentId: string) =>
     `${API_URL}/users/${userId}/profile/documents/${documentId}/download`,
-  getInvestmentStatementUrl: (userId: string, months: 3 | 6 | 12, locale: "fr" | "en") =>
-    `${API_URL}/users/${userId}/investment-statement?months=${months}&locale=${locale}`,
+  getInvestmentStatementUrl: (
+    userId: string,
+    months: 3 | 6 | 12,
+    locale: "fr" | "en",
+    currency: "USD" | "EUR",
+  ) =>
+    `${API_URL}/users/${userId}/investment-statement?months=${months}&locale=${locale}&currency=${currency}`,
+  getEurPerUsd: () => request<{ eurPerUsd: number }>("/market/eur-per-usd"),
+  setDisplayCurrency: (userId: string, currency: "USD" | "EUR") =>
+    request<{ id: string; displayCurrency: "USD" | "EUR" }>(`/users/${userId}/profile/display-currency`, {
+      method: "PATCH",
+      body: JSON.stringify({ currency }),
+    }),
   getManagedWallet: (userId: string) =>
     request<ClientManagedWalletView>(`/users/${userId}/managed-wallet`),
   getMarketPrices: () => request<MarketOverviewEntry[]>("/market/prices"),

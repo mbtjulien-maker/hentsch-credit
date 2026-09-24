@@ -22,7 +22,7 @@ import {
   type RwaBasketAsset,
   type StockBasketAsset,
 } from "@/lib/api";
-import { formatUsd } from "@/lib/format";
+import { formatDisplayAmount, formatUsd, getActiveCurrency, toDisplay } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const QUICK_FRACTIONS = [0.25, 0.5, 0.75, 1] as const;
@@ -181,8 +181,11 @@ export function BasketCard({
   const totalValue = principal + accruedYield;
 
   const parsedAmount = Number(amount);
-  const minAmount = 10;
-  const exceedsBalance = availableBalance != null && parsedAmount > availableBalance;
+  // Solde et minimum du registre (USD) exprimés dans la monnaie d'affichage (saisie dans la
+  // monnaie du compte, convertie vers le registre à l'envoi).
+  const balanceDisplay = availableBalance != null ? toDisplay(availableBalance) : null;
+  const minAmount = Math.ceil(toDisplay(10) * 100) / 100;
+  const exceedsBalance = balanceDisplay != null && parsedAmount > balanceDisplay;
   const belowMinimum = amount.trim() !== "" && parsedAmount > 0 && parsedAmount < minAmount;
   const isValidAmount = parsedAmount > 0 && !exceedsBalance && !belowMinimum;
 
@@ -276,7 +279,7 @@ export function BasketCard({
                 type="number"
                 min="0"
                 step="0.01"
-                placeholder={t("amountPlaceholder")}
+                placeholder={t("amountPlaceholder", { currency: getActiveCurrency() })}
                 value={amount}
                 disabled={busy}
                 onChange={(e) => setAmount(e.target.value)}
@@ -288,14 +291,14 @@ export function BasketCard({
 
             {/* Raccourcis 25/50/75/MAX — calculés sur le vrai solde disponible du client
                 (cf. availableBalance, passé par InvestmentPanel), jamais une valeur devinée. */}
-            {availableBalance != null && availableBalance > 0 && (
+            {balanceDisplay != null && balanceDisplay > 0 && (
               <div className="flex gap-1.5">
                 {QUICK_FRACTIONS.map((fraction) => (
                   <button
                     key={fraction}
                     type="button"
                     disabled={busy}
-                    onClick={() => setAmount((availableBalance * fraction).toFixed(2))}
+                    onClick={() => setAmount((Math.floor(balanceDisplay * fraction * 100) / 100).toFixed(2))}
                     className="rounded-md border border-border/60 px-2 py-1 text-[11px] font-medium text-muted-foreground transition-colors hover:border-border hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
                   >
                     {fraction === 1 ? t("quickMax") : `${fraction * 100}%`}
@@ -308,7 +311,7 @@ export function BasketCard({
               <p className="text-xs text-destructive">{t("insufficientBalance")}</p>
             )}
             {belowMinimum && (
-              <p className="text-xs text-destructive">{t("belowMinimum", { min: minAmount })}</p>
+              <p className="text-xs text-destructive">{t("belowMinimum", { min: formatDisplayAmount(minAmount) })}</p>
             )}
           </div>
         ) : (
@@ -319,7 +322,7 @@ export function BasketCard({
           // retirable plutôt qu'à un blocage.
           <div className="flex flex-col gap-2 rounded-lg border border-primary/30 bg-primary/5 p-3">
             <p className="text-xs leading-relaxed text-foreground">
-              {t("confirmDepositRecap", { amount: formatUsd(parsedAmount), basket: t(`basket.${basket}.title`) })}
+              {t("confirmDepositRecap", { amount: formatDisplayAmount(parsedAmount), basket: t(`basket.${basket}.title`) })}
             </p>
             <TermsAcceptance variant="investment" accepted={acceptedTerms} onAcceptedChange={setAcceptedTerms} disabled={busy} />
             <div className="flex gap-2">

@@ -1208,6 +1208,11 @@
       "terms": "Terms",
       "privacy": "Privacy",
       "regulation": "Regulation"
+    },
+    "currencySwitcher": {
+      "label": "Account currency",
+      "hint": "Show your amounts in euros or dollars. The ledger stays in dollars, converted at the daily rate.",
+      "error": "Could not change the account currency."
     }
   },
   "Dashboard": {
@@ -1270,7 +1275,7 @@
         "trigger": "Buy by card",
         "dialogTitle": "Top up by bank card",
         "dialogDescription": "Secure payment handled by Mollie. Your available balance is credited as soon as the payment is confirmed.",
-        "amountLabel": "Amount (USD)",
+        "amountLabel": "Amount ({currency})",
         "submit": "Continue to payment",
         "dialogDescriptionInvestment": "The amount will be credited directly to your investment wallet once the payment is confirmed."
       },
@@ -1707,7 +1712,7 @@
       "principal": "Capital invested",
       "accruedYield": "Accrued return",
       "totalValue": "Total value",
-      "amountPlaceholder": "Amount in $US",
+      "amountPlaceholder": "Amount in {currency}",
       "deposit": "Invest",
       "withdrawAll": "Withdraw all",
       "depositSuccess": "Deposit completed.",
@@ -1747,7 +1752,7 @@
       },
       "quickMax": "MAX",
       "insufficientBalance": "Insufficient available balance.",
-      "belowMinimum": "Minimum amount: ${min}.",
+      "belowMinimum": "Minimum amount: {min}.",
       "risk": {
         "low": "Conservative",
         "medium": "Moderate",
@@ -1898,7 +1903,7 @@
         "walletBalance": "Investment wallet",
         "directionIn": "To the wallet",
         "directionOut": "From the wallet",
-        "amountPlaceholder": "Amount in $US",
+        "amountPlaceholder": "Amount in {currency}",
         "transfer": "Transfer",
         "quickMax": "MAX",
         "insufficientBalance": "Insufficient balance",

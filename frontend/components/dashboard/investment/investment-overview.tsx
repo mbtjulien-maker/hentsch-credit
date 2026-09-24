@@ -16,7 +16,7 @@ import {
   PortfolioValueChart,
   toPoints,
 } from "@/components/dashboard/investment/investment-charts";
-import { formatPercent, formatUsd } from "@/lib/format";
+import { formatPercent, formatUsd, fromDisplay } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 const PERIODS = [3, 6, 12] as const;
@@ -147,7 +147,7 @@ export function InvestmentOverview() {
         {summary && (
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
             <span className="text-muted-foreground">{t("periodYield")}</span>
-            <Delta value={summary.yieldSum} />
+            <Delta value={fromDisplay(summary.yieldSum)} />
             {summary.returnPct !== null && (
               <span className="text-xs text-muted-foreground tabular-nums">
                 {`${formatPercent(summary.returnPct)} · ${t("periodReturnHint")}`}

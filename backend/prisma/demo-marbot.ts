@@ -20,8 +20,12 @@ import { buildInvestmentPerformance } from '../src/investment/investment-perform
 //
 // Usage : cd backend && npx ts-node prisma/demo-marbot.ts
 // Suppression du compte de démo : npx ts-node prisma/demo-marbot.ts --remove
-// Options (variables d'environnement) : DEMO_RETURN_PCT (défaut 10, rendement cumulé visé,
+// Options (variables d'environnement) : DEMO_RETURN_PCT (défaut 9.6, rendement cumulé visé,
 // en % du capital placé), DEMO_TODAY (défaut : maintenant, format ISO).
+//
+// Montants définis EN EUROS (le compte est en EUR, monnaie d'affichage choisie par le client)
+// puis convertis en USD, monnaie de tenue du registre, au taux du jour de l'API locale
+// (GET /market/eur-per-usd, repli 0,86) : l'espace client affiche ainsi ~70 000 EUR.
 // ============================================================================================
 
 if (process.env.NODE_ENV === 'production') {
@@ -32,10 +36,13 @@ const prisma = new PrismaClient();
 
 const EMAIL = 'julien.marbot@example.com';
 const DEV_PASSWORD = 'ChangeMe123!';
-const TARGET_RETURN_PCT = Number(process.env.DEMO_RETURN_PCT ?? '10');
+const TARGET_RETURN_PCT = Number(process.env.DEMO_RETURN_PCT ?? '9.6');
 const NOW = process.env.DEMO_TODAY ? new Date(process.env.DEMO_TODAY) : new Date();
 
-const MAIN_WALLET_DEPOSIT = 2000;
+// Taux EUR par USD (renseigné dans main() avant toute utilisation des montants).
+let EUR_PER_USD = 0.86;
+const toUsd = (eur: number) => Math.round((eur / EUR_PER_USD) * 100) / 100;
+const MAIN_WALLET_DEPOSIT = 0;
 const at = (iso: string) => new Date(`${iso}Z`);
 const dayKey = (d: Date) => d.toISOString().slice(0, 10);
 
@@ -60,28 +67,33 @@ const PROFILE: Record<string, { weight: number; sigma: number; stock: boolean }>
   CORE_BALANCED_12M: { weight: 0.9, sigma: 0.006, stock: true },
 };
 
-// Scénario : 70 000 (unité du ledger, affichée en $US) au total — 2 000 sur le wallet
-// principal et 68 000 déposés en trois fois sur le wallet investissement, placés sur cinq
-// paniers et deux plans à échéance fixe. Le compte est ouvert le 26 juillet 2026, premier dépôt le 27.
-const DEPOSITS = [
-  { at: at('2026-07-27T10:12:00'), amount: 56000, kind: 'CRYPTO' as const, currency: 'USDC' as const, ref: 'demo-marbot-dep-1' },
-  { at: at('2026-08-18T14:03:00'), amount: 7000, kind: 'CRYPTO' as const, currency: 'USDT' as const, ref: 'demo-marbot-dep-2' },
-  { at: at('2026-09-03T09:41:00'), amount: 5000, kind: 'CARD' as const, currency: null, ref: 'demo-marbot-card-1' },
+// Scénario (montants en EUR) : 63 870 EUR déposés en trois fois, intégralement placés (rien
+// n'est retiré : les rendements sont capitalisés chaque jour et le capital reste investi,
+// dont un plan à échéance fixe de 12 mois — le catalogue n'a pas de plan à 13 mois). Avec
+// +9,6 % de rendement, la valeur du portefeuille atteint ~70 000 EUR. Compte ouvert le 26
+// juillet 2026, premier dépôt le 27.
+const DEPOSITS_EUR = [
+  { at: at('2026-07-27T10:12:00'), amount: 45000, kind: 'CRYPTO' as const, currency: 'USDC' as const, ref: 'demo-marbot-dep-1' },
+  { at: at('2026-08-18T14:03:00'), amount: 12000, kind: 'CRYPTO' as const, currency: 'USDT' as const, ref: 'demo-marbot-dep-2' },
+  { at: at('2026-09-03T09:41:00'), amount: 6870, kind: 'CARD' as const, currency: null, ref: 'demo-marbot-card-1' },
 ];
 
 type Placement = { at: Date; target: BasketKey | PlanKey; fixed: boolean; amount: number; maturity?: Date };
-const PLACEMENTS: Placement[] = [
-  { at: at('2026-07-27T11:20:00'), target: 'RWA_STRATEGY', fixed: false, amount: 18000 },
-  { at: at('2026-07-27T11:22:00'), target: 'STOCKS_BALANCED', fixed: false, amount: 12000 },
-  { at: at('2026-07-27T11:25:00'), target: 'STOCKS_TECH_AI', fixed: false, amount: 10000 },
-  { at: at('2026-07-27T11:31:00'), target: 'SEMICONDUCTORS_6M', fixed: true, amount: 8500, maturity: at('2027-01-27T11:31:00') },
-  { at: at('2026-08-05T09:15:00'), target: 'STOCKS_CONSERVATIVE', fixed: false, amount: 5000 },
-  { at: at('2026-08-05T09:18:00'), target: 'STOCKS_MOMENTUM', fixed: false, amount: 2500 },
-  { at: at('2026-08-20T10:05:00'), target: 'CORE_BALANCED_12M', fixed: true, amount: 7000, maturity: at('2027-08-20T10:05:00') },
-  { at: at('2026-09-04T10:30:00'), target: 'RWA_STRATEGY', fixed: false, amount: 3500 },
+const PLACEMENTS_EUR: Placement[] = [
+  { at: at('2026-07-27T11:20:00'), target: 'RWA_STRATEGY', fixed: false, amount: 15000 },
+  { at: at('2026-07-27T11:22:00'), target: 'STOCKS_BALANCED', fixed: false, amount: 10000 },
+  { at: at('2026-07-27T11:25:00'), target: 'STOCKS_TECH_AI', fixed: false, amount: 8000 },
+  { at: at('2026-07-27T11:28:00'), target: 'STOCKS_CONSERVATIVE', fixed: false, amount: 6000 },
+  { at: at('2026-07-27T11:31:00'), target: 'SEMICONDUCTORS_6M', fixed: true, amount: 6000, maturity: at('2027-01-27T11:31:00') },
+  { at: at('2026-08-18T15:05:00'), target: 'CORE_BALANCED_12M', fixed: true, amount: 12000, maturity: at('2027-08-18T15:05:00') },
+  { at: at('2026-09-04T10:30:00'), target: 'RWA_STRATEGY', fixed: false, amount: 6870 },
 ];
-// Retrait complet du panier Momentum (les paniers se retirent toujours en totalité, §2H).
-const WITHDRAWAL = { at: at('2026-09-15T10:12:00'), target: 'STOCKS_MOMENTUM' as BasketKey };
+// Aucun retrait dans ce scénario (le capital reste réinvesti).
+const WITHDRAWAL: { at: Date; target: BasketKey } | null = null;
+
+// Montants du registre (USD), calculés après lecture du taux dans main().
+let DEPOSITS = DEPOSITS_EUR.map((d) => ({ ...d }));
+let PLACEMENTS: Placement[] = PLACEMENTS_EUR.map((p) => ({ ...p }));
 
 // Générateur pseudo-aléatoire à graine fixe (mulberry32) + Box-Muller : mêmes rendements à
 // chaque exécution, donc des captures reproductibles.
@@ -136,7 +148,7 @@ function simulate(k: number): Sim {
 
   const events = [
     ...PLACEMENTS.map((p) => ({ at: p.at, type: 'place' as const, p })),
-    { at: WITHDRAWAL.at, type: 'withdraw' as const, p: null },
+    ...(WITHDRAWAL ? [{ at: WITHDRAWAL.at, type: 'withdraw' as const, p: null }] : []),
   ].sort((a, b) => a.at.getTime() - b.at.getTime());
   let ev = 0;
 
@@ -148,7 +160,7 @@ function simulate(k: number): Sim {
         accrued[e.p.target] = accrued[e.p.target] ?? 0;
         fixedFlag[e.p.target] = e.p.fixed;
       } else {
-        const key = WITHDRAWAL.target;
+        const key = WITHDRAWAL!.target;
         withdrawalAmount = (principal[key] ?? 0) + (accrued[key] ?? 0);
         closed.add(key);
       }
@@ -174,12 +186,26 @@ function totalYield(sim: Sim) {
   return sim.accruals.reduce((sum, a) => sum + a.amount, 0);
 }
 
+async function loadEurPerUsd(): Promise<number> {
+  try {
+    const res = await fetch('http://localhost:3000/market/eur-per-usd');
+    const body = (await res.json()) as { eurPerUsd?: number };
+    if (body.eurPerUsd && body.eurPerUsd > 0.3 && body.eurPerUsd < 2) return body.eurPerUsd;
+  } catch {
+    // API locale indisponible : repli sur le taux par défaut.
+  }
+  return 0.86;
+}
+
 async function main() {
   if (process.argv.includes('--remove')) {
     const { count } = await prisma.user.deleteMany({ where: { email: EMAIL } });
     console.log(count ? `Compte ${EMAIL} supprimé (transactions, positions et soldes en cascade).` : `Aucun compte ${EMAIL} à supprimer.`);
     return;
   }
+  EUR_PER_USD = await loadEurPerUsd();
+  DEPOSITS = DEPOSITS_EUR.map((d) => ({ ...d, amount: toUsd(d.amount) }));
+  PLACEMENTS = PLACEMENTS_EUR.map((p) => ({ ...p, amount: toUsd(p.amount) }));
   const placed = PLACEMENTS.reduce((s, p) => s + p.amount, 0);
   const targetYield = (placed * TARGET_RETURN_PCT) / 100;
 
@@ -197,13 +223,16 @@ async function main() {
   const cashEvents = [
     ...DEPOSITS.map((d) => ({ at: d.at, delta: d.amount })),
     ...PLACEMENTS.map((p) => ({ at: p.at, delta: -p.amount })),
-    { at: WITHDRAWAL.at, delta: sim.withdrawalAmount },
+    ...(WITHDRAWAL ? [{ at: WITHDRAWAL.at, delta: sim.withdrawalAmount }] : []),
   ].sort((a, b) => a.at.getTime() - b.at.getTime());
   let cash = 0;
   for (const e of cashEvents) {
     cash += e.delta;
-    if (cash < -1e-6) throw new Error(`Scénario incohérent : trésorerie négative au ${e.at.toISOString()}`);
+    // Tolérance de quelques centimes : chaque montant en EUR est converti puis arrondi séparément.
+    if (cash < -0.05) throw new Error(`Scénario incohérent : trésorerie négative au ${e.at.toISOString()}`);
   }
+
+  if (Math.abs(cash) < 0.05) cash = 0;
 
   await prisma.user.deleteMany({ where: { email: EMAIL } });
 
@@ -213,6 +242,7 @@ async function main() {
       passwordHash: await hashPassword(DEV_PASSWORD),
       kycStatus: 'VERIFIED',
       accountType: 'PARTICULIER',
+      displayCurrency: 'EUR',
       createdAt: at('2026-07-26T16:40:00'),
       clientProfile: {
         create: {
@@ -339,7 +369,7 @@ async function main() {
     });
   }
   for (const a of sim.accruals) {
-    if (a.key === WITHDRAWAL.target && a.at.getTime() > WITHDRAWAL.at.getTime()) continue;
+    if (WITHDRAWAL && a.key === WITHDRAWAL.target && a.at.getTime() > WITHDRAWAL.at.getTime()) continue;
     if (a.amount === 0) continue;
     txs.push({
       userId: user.id,
@@ -349,13 +379,15 @@ async function main() {
       createdAt: a.at,
     });
   }
-  txs.push({
-    userId: user.id,
-    type: 'INVESTMENT_WITHDRAWAL',
-    amount: dec(sim.withdrawalAmount),
-    status: 'COMPLETED',
-    createdAt: WITHDRAWAL.at,
-  });
+  if (WITHDRAWAL) {
+    txs.push({
+      userId: user.id,
+      type: 'INVESTMENT_WITHDRAWAL',
+      amount: dec(sim.withdrawalAmount),
+      status: 'COMPLETED',
+      createdAt: WITHDRAWAL.at,
+    });
+  }
   await prisma.transaction.createMany({ data: txs });
 
   // Positions : une ligne par panier (ACTIVE, ou CLOSED pour Momentum), une par plan.
@@ -379,7 +411,7 @@ async function main() {
         },
       });
     } else {
-      const isClosed = key === WITHDRAWAL.target;
+      const isClosed = !!WITHDRAWAL && key === WITHDRAWAL.target;
       await prisma.investmentPosition.create({
         data: {
           userId: user.id,
@@ -388,7 +420,7 @@ async function main() {
           accruedYield: dec(yieldAmount),
           status: isClosed ? 'CLOSED' : 'ACTIVE',
           createdAt: first.at,
-          closedAt: isClosed ? WITHDRAWAL.at : null,
+          closedAt: isClosed && WITHDRAWAL ? WITHDRAWAL.at : null,
         },
       });
     }
@@ -405,7 +437,7 @@ async function main() {
   const perf = buildInvestmentPerformance(rows, NOW);
   console.log(`\nCompte : ${EMAIL} / ${DEV_PASSWORD}  (Julien Marbot, KYC vérifié)`);
   console.log(`Dépôts : ${DEPOSITS.reduce((s, d) => s + d.amount, 0) + MAIN_WALLET_DEPOSIT} $ (dont ${MAIN_WALLET_DEPOSIT} sur le wallet principal) — placé : ${placed} $ — wallet libre : ${cash.toFixed(2)} $`);
-  console.log(`Valeur actuelle du portefeuille : ${perf.totals.currentValueUsd.toFixed(2)} $`);
+  console.log(`Taux : 1 USD = ${EUR_PER_USD.toFixed(4)} EUR — valeur du portefeuille : ${perf.totals.currentValueUsd.toFixed(2)} USD = ${(perf.totals.currentValueUsd.toNumber() * EUR_PER_USD).toFixed(2)} EUR`);
   console.log(`Rendement cumulé : ${perf.totals.yieldUsd.toFixed(2)} $ (${perf.totals.returnPct?.toFixed(2)} % du capital placé)`);
   for (const m of perf.months.filter((m) => !m.depositsUsd.isZero() || !m.yieldUsd.isZero() || !m.endValueUsd.isZero())) {
     console.log(

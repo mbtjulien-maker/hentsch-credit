@@ -1208,6 +1208,11 @@
       "terms": "Villkor",
       "privacy": "Integritet",
       "regulation": "Reglering"
+    },
+    "currencySwitcher": {
+      "label": "Kontovaluta",
+      "hint": "Visa dina belopp i euro eller dollar. Registret förs kvar i dollar, omräknat till dagskurs.",
+      "error": "Det gick inte att ändra kontovalutan."
     }
   },
   "Dashboard": {
@@ -1270,7 +1275,7 @@
         "trigger": "Köp med kort",
         "dialogTitle": "Fyll på med bankkort",
         "dialogDescription": "Säker betalning hanterad av Mollie. Det tillgängliga saldot krediteras så snart betalningen är bekräftad.",
-        "amountLabel": "Belopp (USD)",
+        "amountLabel": "Belopp ({currency})",
         "submit": "Fortsätt till betalning",
         "dialogDescriptionInvestment": "Beloppet krediteras direkt på din investeringsplånbok när betalningen är bekräftad."
       },
@@ -1707,7 +1712,7 @@
       "principal": "Investerat kapital",
       "accruedYield": "Upplupen avkastning",
       "totalValue": "Totalt värde",
-      "amountPlaceholder": "Belopp i US$",
+      "amountPlaceholder": "Belopp i {currency}",
       "deposit": "Investera",
       "withdrawAll": "Ta ut allt",
       "depositSuccess": "Insättning genomförd.",
@@ -1747,7 +1752,7 @@
       },
       "quickMax": "MAX",
       "insufficientBalance": "Otillräckligt tillgängligt saldo.",
-      "belowMinimum": "Minimibelopp: {min} US$.",
+      "belowMinimum": "Minimibelopp: {min}.",
       "risk": {
         "low": "Försiktig",
         "medium": "Måttlig",
@@ -1898,7 +1903,7 @@
         "walletBalance": "Investeringsplånbok",
         "directionIn": "Till plånboken",
         "directionOut": "Från plånboken",
-        "amountPlaceholder": "Belopp i $US",
+        "amountPlaceholder": "Belopp i {currency}",
         "transfer": "Överför",
         "quickMax": "MAX",
         "insufficientBalance": "Otillräckligt saldo",

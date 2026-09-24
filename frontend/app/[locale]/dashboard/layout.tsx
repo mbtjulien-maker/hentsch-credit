@@ -70,9 +70,9 @@ export default async function DashboardLayout({
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center opacity-45"
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-background/78" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/55 to-background/10" />
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col">

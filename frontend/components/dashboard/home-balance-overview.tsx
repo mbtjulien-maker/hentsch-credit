@@ -11,15 +11,7 @@ import type { BalanceSummary } from "@/lib/api";
 // (BalanceCards reste le détail complet de /dashboard/solde, celui-ci est la vue
 // volontairement réduite de l'accueil, cf. commentaire de HomeBalanceOverview).
 function KpiCardShell({ children }: { children: ReactNode }) {
-  return (
-    <div className="group relative rounded-2xl">
-      {children}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:radial-gradient(circle_at_35%_25%,rgba(96,165,250,0.16),transparent_55%),radial-gradient(circle_at_70%_60%,rgba(226,232,240,0.4),transparent_60%)] dark:[background:radial-gradient(circle_at_30%_20%,rgba(201,168,118,0.10),transparent_60%)]"
-      />
-    </div>
-  );
+  return <div className="relative rounded-2xl">{children}</div>;
 }
 
 // Vue d'ensemble des soldes sur l'accueil — décision produit explicite : n'afficher ici
@@ -47,7 +39,7 @@ export function HomeBalanceOverview({ summary }: { summary: BalanceSummary }) {
             <Wallet className="size-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-semibold tracking-tight tabular-nums">
+            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
               {formatUsd(balance.availableBalance)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">{t("mainWallet.description")}</p>
@@ -64,7 +56,7 @@ export function HomeBalanceOverview({ summary }: { summary: BalanceSummary }) {
             <HandCoins className="size-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-semibold tracking-tight tabular-nums">
+            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
               {formatUsd(balance.grantedCredit)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">
@@ -88,7 +80,7 @@ export function HomeBalanceOverview({ summary }: { summary: BalanceSummary }) {
             <LineChart className="size-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-semibold tracking-tight tabular-nums">
+            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
               {formatUsd(balance.investmentBalance)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">{t("investment.description")}</p>

@@ -354,7 +354,7 @@ function RepayPanel({
         </div>
         <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-background">
           <div
-            className="h-full rounded-full bg-[#eb6834] transition-all duration-500 ease-in-out dark:bg-primary"
+            className="h-full rounded-full bg-primary transition-all duration-500 ease-in-out"
             style={{ width: `${usedPct}%` }}
           />
         </div>

@@ -165,6 +165,101 @@
   }
 }
 
+/* Thème "fintech clair" de l'espace client connecté (concept B choisi par le client :
+   blanc aéré, vert émeraude, gros chiffres, cartes arrondies, boutons en pilule). Scopé —
+   posé sur le layout du dashboard ET sur <body> tant qu'il est monté (cf.
+   components/dashboard/client-typography-scope.tsx, pour les dialogues rendus en portail)
+   — donc la vitrine publique et /admin gardent leur identité or/obsidien. Tokens
+   uniquement : chaque composant existant (cartes, badges, graphiques, sidebar) suit sans
+   modification. Variante sombre : ardoise verte, émeraude plus clair. */
+.theme-fintech {
+  --background: #f6f8fa;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0e9f6e;
+  --primary-foreground: #ffffff;
+  --secondary: #eef2f5;
+  --secondary-foreground: #0f172a;
+  --muted: #f0f3f6;
+  --muted-foreground: #64748b;
+  --accent: #e7f6ef;
+  --accent-foreground: #065f46;
+  --destructive: #dc2626;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #34d399;
+  --chart-1: #0e9f6e;
+  --chart-2: #065f46;
+  --chart-3: #10b981;
+  --chart-4: #94a3b8;
+  --chart-5: #dc2626;
+  --radius: 0.7rem;
+  --spark-good: #0e9f6e;
+  --spark-critical: #dc2626;
+  --warning: #b45309;
+  --warning-foreground: #fff7ed;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f172a;
+  --sidebar-primary: #0e9f6e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e7f6ef;
+  --sidebar-accent-foreground: #065f46;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #34d399;
+}
+
+.dark .theme-fintech,
+.dark.theme-fintech {
+  --background: #0b100f;
+  --foreground: #e8f0ee;
+  --card: #121816;
+  --card-foreground: #e8f0ee;
+  --popover: #121816;
+  --popover-foreground: #e8f0ee;
+  --primary: #34d399;
+  --primary-foreground: #04130d;
+  --secondary: #18201d;
+  --secondary-foreground: #e8f0ee;
+  --muted: #151c1a;
+  --muted-foreground: #93a29e;
+  --accent: #15291f;
+  --accent-foreground: #6ee7b7;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.09);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: rgba(52, 211, 153, 0.5);
+  --chart-1: #34d399;
+  --chart-2: #10b981;
+  --chart-3: #6ee7b7;
+  --chart-4: #93a29e;
+  --chart-5: #ef4444;
+  --spark-good: #34d399;
+  --spark-critical: #ef4444;
+  --warning: #f5a623;
+  --warning-foreground: #14120c;
+  --sidebar: #0a0e0d;
+  --sidebar-foreground: #e8f0ee;
+  --sidebar-primary: #34d399;
+  --sidebar-primary-foreground: #04130d;
+  --sidebar-accent: #15291f;
+  --sidebar-accent-foreground: #6ee7b7;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: rgba(52, 211, 153, 0.45);
+}
+
+/* Cartes : aplat blanc + filet 1px (plus d'anneau en ombre), aucun effet de survol ;
+   boutons en pilule ; fond de page uni (plus de photo). */
+.theme-fintech [data-slot="card"] {
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+.theme-fintech [data-slot="button"] {
+  border-radius: 9999px;
+}
+
 /* Typographie de l'espace client connecté (retour client : "la même police que le modèle
    Bierbike") — Titillium Web pour le texte, Rajdhani pour les titres. Volontairement une
    classe portée par le layout du dashboard plutôt qu'un changement global : la vitrine

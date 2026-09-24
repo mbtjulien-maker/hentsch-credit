@@ -9,8 +9,11 @@ import { useEffect } from "react";
 // publique et le back-office gardent leur propre police.
 export function ClientTypographyScope() {
   useEffect(() => {
-    document.body.classList.add("client-typography");
-    return () => document.body.classList.remove("client-typography");
+    // .theme-fintech (palette "fintech clair", cf. app/globals.css) suit la même logique
+    // de portée que la police : posée avec elle sur <body> pour couvrir les portails.
+    const classes = ["client-typography", "theme-fintech"];
+    document.body.classList.add(...classes);
+    return () => document.body.classList.remove(...classes);
   }, []);
   return null;
 }

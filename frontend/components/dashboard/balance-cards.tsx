@@ -14,15 +14,7 @@ import type { BalanceSummary } from "@/lib/api";
 // GLASS_CARD_CLASS) ; ce wrapper n'ajoute que le halo superposé, dont l'opacité passe de
 // 0 à 1 via `group-hover`.
 function KpiCardShell({ children }: { children: ReactNode }) {
-  return (
-    <div className="group relative rounded-2xl">
-      {children}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 [background:radial-gradient(circle_at_35%_25%,rgba(96,165,250,0.16),transparent_55%),radial-gradient(circle_at_70%_60%,rgba(226,232,240,0.4),transparent_60%)] dark:[background:radial-gradient(circle_at_30%_20%,rgba(201,168,118,0.10),transparent_60%)]"
-      />
-    </div>
-  );
+  return <div className="relative rounded-2xl">{children}</div>;
 }
 
 // Tant qu'aucun crédit n'est accordé (aucune demande honorée), la carte "Gage verrouillé"
@@ -60,7 +52,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
               <Wallet className="size-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-semibold tracking-tight tabular-nums">
+              <div className="font-heading text-4xl leading-none font-medium tracking-tight">
                 {formatUsd(balance.availableBalance)}
               </div>
               <p className="mt-1.5 text-xs text-muted-foreground">
@@ -79,7 +71,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
               <TrendingUp className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-semibold tracking-tight tabular-nums">
+              <div className="font-heading text-4xl leading-none font-medium tracking-tight">
                 {formatUsd(totalPurchasingPower)}
               </div>
               <p className="mt-1.5 text-xs text-muted-foreground">
@@ -98,7 +90,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
               <HandCoins className="size-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-semibold tracking-tight tabular-nums">
+              <div className="font-heading text-4xl leading-none font-medium tracking-tight">
                 {formatUsd(0)}
               </div>
               <p className="mt-1.5 text-xs text-muted-foreground">
@@ -122,7 +114,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
             <Landmark className="size-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-semibold tracking-tight text-primary tabular-nums">
+            <div className="font-heading text-4xl leading-none font-medium tracking-tight text-primary">
               {formatUsd(totalPurchasingPower)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">
@@ -143,7 +135,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-semibold tracking-tight tabular-nums">
+            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
               {formatUsd(balance.lockedCollateral)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">
@@ -162,7 +154,7 @@ export function BalanceCards({ summary }: { summary: BalanceSummary }) {
             <CreditCard className="size-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-semibold tracking-tight tabular-nums">
+            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
               {formatUsd(balance.grantedCredit)}
             </div>
             <p className="mt-1.5 text-xs text-muted-foreground">

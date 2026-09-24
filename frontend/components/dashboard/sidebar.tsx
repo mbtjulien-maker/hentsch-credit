@@ -155,15 +155,12 @@ function SidebarNavLink({ href, label, icon: Icon, isActive, localized = true }:
       href={href}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "group relative flex items-center gap-3 rounded-lg py-2 pr-3 pl-3.5 text-sm font-medium transition-colors",
+        "group relative flex items-center gap-3 rounded-xl py-2 pr-3 pl-3.5 text-sm font-medium transition-colors",
         isActive
-          ? "bg-sidebar-accent text-sidebar-foreground"
+          ? "bg-sidebar-accent text-sidebar-accent-foreground"
           : "text-muted-foreground hover:bg-sidebar-accent/60 hover:text-sidebar-foreground",
       )}
     >
-      {isActive && (
-        <span className="absolute top-1/2 left-0 h-4 w-[2px] -translate-y-1/2 rounded-full bg-sidebar-primary" />
-      )}
       <Icon className={cn("size-4 shrink-0", isActive ? "text-sidebar-primary" : "text-muted-foreground/70 group-hover:text-sidebar-primary/80")} />
       {label}
     </LinkComponent>
@@ -233,7 +230,7 @@ export function Sidebar() {
             {group.label && (
               <span
                 className={cn(
-                  "px-3.5 pb-1 text-[10.5px] font-semibold tracking-[0.08em] uppercase",
+                  "px-3.5 pb-1 text-xs font-medium",
                   group.featured ? "text-sidebar-primary" : "text-muted-foreground",
                 )}
               >
@@ -256,7 +253,7 @@ export function Sidebar() {
             aria-label={t("backofficeNavAriaLabel")}
             className="flex flex-col gap-1 border-t border-sidebar-border pt-5 pb-1"
           >
-            <span className="px-3.5 pb-1 text-[10.5px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
+            <span className="px-3.5 pb-1 text-xs font-medium text-muted-foreground">
               {t("backoffice.label")}
             </span>
             {BACKOFFICE_SECTIONS.map((section) => (

@@ -1,3 +1,9 @@
+// Rajdhani (police de l'espace client) n'a pas de glyphe pour l'espace fine insécable
+// (U+202F) que le formatage français place entre les milliers et avant "$US" : le
+// navigateur retombe sur une police de secours et le groupe de chiffres paraît collé
+// ("1200,00"). L'espace insécable ordinaire (U+00A0), elle, existe partout.
+const nbsp = (formatted: string): string => formatted.replace(/\u202f/g, "\u00a0");
+
 import type { Chain } from "@/lib/api";
 
 const currencyFormatter = new Intl.NumberFormat("fr-FR", {
@@ -8,7 +14,7 @@ const currencyFormatter = new Intl.NumberFormat("fr-FR", {
 });
 
 export function formatUsd(value: string | number): string {
-  return currencyFormatter.format(Number(value));
+  return nbsp(currencyFormatter.format(Number(value)));
 }
 
 const eurFormatter = new Intl.NumberFormat("fr-FR", {
@@ -27,8 +33,8 @@ export function formatAccountCurrency(
   currency: "USD" | "EUR",
 ): string {
   return currency === "EUR"
-    ? eurFormatter.format(Number(value))
-    : currencyFormatter.format(Number(value));
+    ? nbsp(eurFormatter.format(Number(value)))
+    : nbsp(currencyFormatter.format(Number(value)));
 }
 
 const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
@@ -189,7 +195,7 @@ const priceFormatter = new Intl.NumberFormat("fr-FR", {
 });
 
 export function formatPrice(value: string | number): string {
-  return priceFormatter.format(Number(value));
+  return nbsp(priceFormatter.format(Number(value)));
 }
 
 const timeFormatter = new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit" });
@@ -209,7 +215,7 @@ const compactUsdFormatter = new Intl.NumberFormat("fr-FR", {
 // 69 948 254 539,00 $US.
 export function formatCompactUsd(value: string | number | null): string {
   if (value === null) return "—";
-  return compactUsdFormatter.format(Number(value));
+  return nbsp(compactUsdFormatter.format(Number(value)));
 }
 
 const percentFormatter = new Intl.NumberFormat("fr-FR", {
@@ -221,5 +227,5 @@ const percentFormatter = new Intl.NumberFormat("fr-FR", {
 
 export function formatPercent(value: number | null): string {
   if (value === null) return "—";
-  return percentFormatter.format(value / 100);
+  return nbsp(percentFormatter.format(value / 100));
 }

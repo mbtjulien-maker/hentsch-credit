@@ -143,7 +143,7 @@ export function InvestmentFunding() {
       <section aria-label={t("balancesAria")} className="grid gap-4 sm:grid-cols-2">
         <Card>
           <CardContent className="py-1">
-            <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">{t("mainBalance")}</p>
+            <p className="text-xs font-medium text-muted-foreground">{t("mainBalance")}</p>
             <p className="mt-2 font-heading text-3xl leading-none font-semibold">
               {inv.mainBalance != null ? formatUsd(inv.mainBalance) : "—"}
             </p>
@@ -153,7 +153,7 @@ export function InvestmentFunding() {
         <Card className="border-primary/40 bg-primary/5">
           <CardContent className="py-1">
             <div className="flex items-center justify-between">
-              <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">{t("walletBalance")}</p>
+              <p className="text-xs font-medium text-muted-foreground">{t("walletBalance")}</p>
               <Wallet className="size-4 text-primary" />
             </div>
             <p className="mt-2 font-heading text-3xl leading-none font-semibold text-primary">

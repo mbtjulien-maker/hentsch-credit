@@ -54,7 +54,7 @@ function StatTile({
     <Card>
       <CardContent className="flex h-full flex-col justify-between gap-3 py-1">
         <div className="flex items-center justify-between gap-2">
-          <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">{label}</p>
+          <p className="text-xs font-medium text-muted-foreground">{label}</p>
           <Icon className="size-4 text-muted-foreground/70" />
         </div>
         <div>
@@ -110,7 +110,7 @@ export function InvestmentOverview() {
       >
         <Card className="sm:col-span-2 lg:col-span-1">
           <CardContent className="flex h-full flex-col justify-between gap-4 py-1">
-            <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase">{t("heroLabel")}</p>
+            <p className="text-xs font-medium text-muted-foreground">{t("heroLabel")}</p>
             <div>
               {/* Chiffre phare : proportionnel (pas de tabular-nums), même famille que le reste. */}
               <p className="font-heading text-5xl leading-none font-semibold tracking-tight">
@@ -155,7 +155,7 @@ export function InvestmentOverview() {
       {/* Filtre de période : une seule rangée, au-dessus de ce qu'elle pilote */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          <span className="text-xs font-medium tracking-wide text-muted-foreground uppercase">{t("periodLabel")}</span>
+          <span className="text-xs font-medium text-muted-foreground">{t("periodLabel")}</span>
           <div role="group" aria-label={t("periodLabel")} className="inline-flex rounded-lg bg-muted p-[3px] text-sm font-medium">
             {PERIODS.map((p) => (
               <button

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { AuthGate } from "@/components/dashboard/auth-gate";
@@ -36,7 +35,8 @@ async function DashboardLegalFooter() {
   );
 }
 
-// Chrome de l'espace client connecté (sidebar + header + fond photo) — propre à
+// Chrome de l'espace client connecté (sidebar + header, fond uni — plus de photo depuis le
+// thème "fintech clair", cf. .theme-fintech dans app/globals.css) — propre à
 // "/[locale]/dashboard/*", pas à la vitrine publique ("/", cf. app/[locale]/page.tsx) qui a
 // sa propre mise en page. Direction artistique "Luxury Fintech" (Obsidian/Ivoire →
 // Champagne Gold), déclinée en clair ET en sombre : la classe .dark globale (posée sur
@@ -56,29 +56,7 @@ export default async function DashboardLayout({
   setRequestLocale(locale);
 
   return (
-    <div className="client-typography relative min-h-screen overflow-hidden bg-background text-foreground">
-      {/* Fond photo (même photo réelle de coffre-fort que le hero de la vitrine publique,
-          cf. app/[locale]/page.tsx), assombri par un voile uni (--background) pour que
-          cartes et texte restent parfaitement lisibles. `absolute` plutôt que `fixed` :
-          posé sur ce conteneur `min-h-screen` (pas sur le viewport), il ne "poursuit" donc
-          pas le défilement, mais évite un vrai bug de compositing Chromium constaté avec
-          `fixed` + cet ancêtre `overflow-hidden` combiné aux `sticky`/`backdrop-blur` de
-          la sidebar et du header : la classe .dark ne s'appliquait plus visuellement en
-          clair alors que le DOM/CSSOM était pourtant correct (vérifié via
-          getComputedStyle) — contenu plus grand que l'écran, le fond défile normalement
-          avec lui plutôt que de créer cette désynchronisation. */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <Image
-          src="/brand/homepage-vault-bg.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center opacity-45"
-        />
-        <div className="absolute inset-0 bg-background/78" />
-      </div>
-
+    <div className="client-typography theme-fintech relative min-h-screen bg-background text-foreground">
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col">
         <DashboardProvider>
           <ClientTypographyScope />

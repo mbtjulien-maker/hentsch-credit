@@ -8,6 +8,7 @@ import {
   AdminInvestmentPositionsController,
   InvestmentController,
   UserFixedTermPositionsController,
+  UserInvestmentPerformanceController,
   UserInvestmentPositionsController,
 } from './investment.controller';
 import { InvestmentService } from './investment.service';
@@ -23,6 +24,7 @@ import { FixedTermPlanService } from './fixed-term-plan.service';
   controllers: [
     InvestmentController,
     UserInvestmentPositionsController,
+    UserInvestmentPerformanceController,
     AdminInvestmentPositionsController,
     UserFixedTermPositionsController,
     AdminFixedTermPositionsController,

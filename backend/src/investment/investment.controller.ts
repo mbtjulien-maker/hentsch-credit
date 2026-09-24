@@ -252,6 +252,24 @@ export class UserInvestmentPositionsController {
   }
 }
 
+// Évolution du capital placé sur 12 mois (espace Investissement) — lecture seule, propre
+// au client (ou à un admin), sans KycVerifiedGuard : un client dont l'identité n'est pas
+// encore vérifiée n'a simplement aucun placement, la réponse reste alors à zéro.
+@UseGuards(JwtAuthGuard)
+@Controller('users/:userId/investment-performance')
+export class UserInvestmentPerformanceController {
+  constructor(private readonly investmentService: InvestmentService) {}
+
+  @Get()
+  get(
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @CurrentUser() currentUser: AuthenticatedUser,
+  ) {
+    assertSelfOrAdmin(currentUser, userId);
+    return this.investmentService.getPerformance(userId);
+  }
+}
+
 // Lecture seule back-office — pas de file à approuver (le placement est immédiat côté
 // client, comme le crédit direct), cet endpoint sert à l'audit/suivi des positions.
 @UseGuards(JwtAuthGuard, AdminGuard)

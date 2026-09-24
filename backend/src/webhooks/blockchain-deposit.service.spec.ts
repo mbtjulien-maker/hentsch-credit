@@ -47,6 +47,7 @@ function buildTransaction(overrides: Partial<Transaction> = {}): Transaction {
     withdrawalCurrency: null,
     bankAccountHolder: null,
     bankBic: null,
+    creditTarget: 'AVAILABLE',
     referenceTx: '0xhash',
     createdAt: new Date(),
     updatedAt: new Date(),

@@ -1,5 +1,5 @@
-import { AcceptedCurrency, Chain } from '@prisma/client';
-import { IsEnum, Matches } from 'class-validator';
+import { AcceptedCurrency, Chain, CreditTarget } from '@prisma/client';
+import { IsEnum, IsOptional, Matches } from 'class-validator';
 
 // userId dérivé du token authentifié (@CurrentUser(), cf. DepositIntentsController) —
 // jamais du body.
@@ -17,4 +17,11 @@ export class DeclareDepositDto {
       "tokenAmount doit être un nombre décimal positif (jusqu'à 8 décimales)",
   })
   tokenAmount: string;
+
+  // Solde à créditer une fois le dépôt confirmé — AVAILABLE (solde principal) par défaut,
+  // INVESTMENT pour alimenter directement le wallet investissement depuis l'espace
+  // Investissement (cf. §6 CLAUDE.md entrée #51).
+  @IsOptional()
+  @IsEnum(CreditTarget)
+  target?: CreditTarget;
 }

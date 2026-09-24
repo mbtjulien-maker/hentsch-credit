@@ -24,6 +24,7 @@ function buildTransaction(overrides: Partial<Transaction> = {}): Transaction {
     withdrawalCurrency: null,
     bankAccountHolder: null,
     bankBic: null,
+    creditTarget: 'AVAILABLE',
     referenceTx: 'sandbox_tr_abc',
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -62,6 +63,7 @@ describe('MollieService', () => {
   let ledgerService: {
     getBalance: jest.Mock;
     creditAvailableBalance: jest.Mock;
+    creditInvestmentBalance: jest.Mock;
   };
   let creditRequestsService: { tryAutoFulfill: jest.Mock };
   let configValues: Record<string, string>;
@@ -88,6 +90,7 @@ describe('MollieService', () => {
     ledgerService = {
       getBalance: jest.fn(),
       creditAvailableBalance: jest.fn(),
+      creditInvestmentBalance: jest.fn(),
     };
     creditRequestsService = { tryAutoFulfill: jest.fn() };
     configValues = {};
@@ -121,7 +124,23 @@ describe('MollieService', () => {
           amount: new Prisma.Decimal('100'),
           status: 'PENDING',
           referenceTx: result.paymentId,
+          creditTarget: 'AVAILABLE',
         },
+      });
+    });
+
+    it('records the investment wallet as the credit target for a top-up made from the Investment section', async () => {
+      const result = await service.createCardTopup(
+        'user-1',
+        '100',
+        'INVESTMENT',
+      );
+
+      expect(prisma.transaction.create).toHaveBeenCalledWith({
+        data: expect.objectContaining({
+          referenceTx: result.paymentId,
+          creditTarget: 'INVESTMENT',
+        }) as unknown,
       });
     });
 
@@ -197,6 +216,7 @@ describe('MollieService', () => {
           amount: new Prisma.Decimal('250'),
           status: 'PENDING',
           referenceTx: 'tr_realpayment',
+          creditTarget: 'AVAILABLE',
         },
       });
     });
@@ -276,6 +296,31 @@ describe('MollieService', () => {
       expect(creditRequestsService.tryAutoFulfill).toHaveBeenCalledWith(
         'user-1',
       );
+    });
+
+    it('credits the investment wallet (not the main balance) and skips credit-request auto-fulfilment for an INVESTMENT-targeted top-up', async () => {
+      prisma.transaction.findUnique.mockResolvedValue(
+        buildTransaction({ creditTarget: 'INVESTMENT' }),
+      );
+      tx.transaction.updateMany.mockResolvedValue({ count: 1 });
+      tx.transaction.findUniqueOrThrow.mockResolvedValue(
+        buildTransaction({ status: 'COMPLETED', creditTarget: 'INVESTMENT' }),
+      );
+      const credited = buildBalance({
+        investmentBalance: new Prisma.Decimal('100'),
+      });
+      ledgerService.creditInvestmentBalance.mockResolvedValue(credited);
+
+      const result = await service.confirmPayment('sandbox_tr_abc');
+
+      expect(ledgerService.creditInvestmentBalance).toHaveBeenCalledWith(
+        tx,
+        'user-1',
+        new Prisma.Decimal('100'),
+      );
+      expect(ledgerService.creditAvailableBalance).not.toHaveBeenCalled();
+      expect(creditRequestsService.tryAutoFulfill).not.toHaveBeenCalled();
+      expect(result.credited).toBe(true);
     });
 
     it('throws PaymentNotFoundException for an unknown payment id', async () => {

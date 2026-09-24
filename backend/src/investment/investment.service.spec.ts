@@ -78,7 +78,7 @@ describe('InvestmentService', () => {
   let prisma: {
     $transaction: jest.Mock;
     investmentPosition: { findMany: jest.Mock; update: jest.Mock };
-    transaction: { create: jest.Mock };
+    transaction: { create: jest.Mock; findMany: jest.Mock };
     stockBasketRun: { findUnique: jest.Mock; create: jest.Mock };
   };
   let tx: {
@@ -119,7 +119,7 @@ describe('InvestmentService', () => {
         callback(tx),
       ),
       investmentPosition: { findMany: jest.fn(), update: jest.fn() },
-      transaction: { create: jest.fn() },
+      transaction: { create: jest.fn(), findMany: jest.fn() },
       stockBasketRun: { findUnique: jest.fn(), create: jest.fn() },
     };
     ledgerService = {
@@ -506,6 +506,49 @@ describe('InvestmentService', () => {
 
       expect(results).toHaveLength(1);
       expect(results[0].positionId).toBe('ok');
+    });
+  });
+
+  describe('getPerformance', () => {
+    it("reads only the client's COMPLETED portfolio transactions and builds the 12-month series", async () => {
+      prisma.transaction.findMany.mockResolvedValue([
+        {
+          type: 'INVESTMENT_DEPOSIT',
+          amount: new Prisma.Decimal('1000'),
+          createdAt: new Date('2026-09-01T09:00:00Z'),
+        },
+        {
+          type: 'INVESTMENT_YIELD_ACCRUAL',
+          amount: new Prisma.Decimal('4'),
+          createdAt: new Date('2026-09-02T03:15:00Z'),
+        },
+      ]);
+
+      const result = await service.getPerformance(
+        'user-1',
+        new Date('2026-09-24T12:00:00Z'),
+      );
+
+      expect(prisma.transaction.findMany).toHaveBeenCalledWith({
+        where: {
+          userId: 'user-1',
+          status: 'COMPLETED',
+          type: {
+            in: expect.arrayContaining([
+              'INVESTMENT_DEPOSIT',
+              'INVESTMENT_WITHDRAWAL',
+              'INVESTMENT_YIELD_ACCRUAL',
+              'FIXED_TERM_DEPOSIT',
+              'FIXED_TERM_MATURITY_PAYOUT',
+              'FIXED_TERM_YIELD_ACCRUAL',
+            ]) as unknown,
+          },
+        },
+        select: { type: true, amount: true, createdAt: true },
+        orderBy: { createdAt: 'asc' },
+      });
+      expect(result.months).toHaveLength(12);
+      expect(result.totals.currentValueUsd.toString()).toBe('1004');
     });
   });
 });

@@ -99,6 +99,7 @@ export class DepositIntentsService {
         tokenAmount,
         chain: dto.chain,
         destinationAddress: managed.address,
+        creditTarget: dto.target ?? 'AVAILABLE',
       },
     });
   }
@@ -130,11 +131,21 @@ export class DepositIntentsService {
 
     const { balance, transaction } = await this.prisma.$transaction(
       async (tx) => {
-        const updatedBalance = await this.ledgerService.creditAvailableBalance(
-          tx,
-          existing.userId,
-          new Prisma.Decimal(existing.amount),
-        );
+        // Crédite le solde choisi par le client au moment de la déclaration (cf.
+        // CreditTarget) — jamais déduit à la confirmation.
+        const amount = new Prisma.Decimal(existing.amount);
+        const updatedBalance =
+          existing.creditTarget === 'INVESTMENT'
+            ? await this.ledgerService.creditInvestmentBalance(
+                tx,
+                existing.userId,
+                amount,
+              )
+            : await this.ledgerService.creditAvailableBalance(
+                tx,
+                existing.userId,
+                amount,
+              );
         const updatedTransaction = await tx.transaction.update({
           where: { id: existing.id },
           data: {
@@ -147,7 +158,11 @@ export class DepositIntentsService {
     );
 
     // Hors de la transaction déjà commitée — même geste que le webhook blockchain.
-    await this.creditRequestsService.tryAutoFulfill(existing.userId);
+    // Uniquement pour un dépôt sur le solde principal : un dépôt destiné au wallet
+    // investissement ne peut pas financer le gage d'une demande de crédit.
+    if (existing.creditTarget === 'AVAILABLE') {
+      await this.creditRequestsService.tryAutoFulfill(existing.userId);
+    }
 
     return { balance, transaction };
   }

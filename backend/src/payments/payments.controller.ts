@@ -26,7 +26,11 @@ export class PaymentsController {
     @Body() dto: CreateCardTopupDto,
     @CurrentUser() currentUser: AuthenticatedUser,
   ) {
-    return this.mollieService.createCardTopup(currentUser.id, dto.amount);
+    return this.mollieService.createCardTopup(
+      currentUser.id,
+      dto.amount,
+      dto.target,
+    );
   }
 
   @UseGuards(JwtAuthGuard)

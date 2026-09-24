@@ -18,6 +18,11 @@ import {
   StockSubBasket,
 } from '../stock-market-data/stock-market-data.constants';
 import { TreasuryBotService } from '../treasury-bot/treasury-bot.service';
+import {
+  buildInvestmentPerformance,
+  InvestmentPerformance,
+  PERFORMANCE_TRANSACTION_TYPES,
+} from './investment-performance';
 
 const DAYS_PER_YEAR = 365;
 
@@ -180,6 +185,27 @@ export class InvestmentService {
 
       return { balance, withdrawnAmount };
     });
+  }
+
+  // Évolution du portefeuille investi sur 12 mois glissants (espace Investissement, §6
+  // CLAUDE.md entrée #51) — reconstituée depuis le journal des transactions, jamais
+  // recalculée depuis un état courant : un client qui retire puis redépose voit toujours
+  // exactement ce qui s'est passé, mois par mois. Couvre paniers perpétuels ET plans à
+  // échéance fixe.
+  async getPerformance(
+    userId: string,
+    now: Date = new Date(),
+  ): Promise<InvestmentPerformance> {
+    const rows = await this.prisma.transaction.findMany({
+      where: {
+        userId,
+        status: 'COMPLETED',
+        type: { in: PERFORMANCE_TRANSACTION_TYPES },
+      },
+      select: { type: true, amount: true, createdAt: true },
+      orderBy: { createdAt: 'asc' },
+    });
+    return buildInvestmentPerformance(rows, now);
   }
 
   async getActivePositions(userId: string): Promise<InvestmentPosition[]> {

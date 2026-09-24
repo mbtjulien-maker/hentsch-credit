@@ -1,7 +1,12 @@
 import { randomUUID } from 'crypto';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { LedgerBalance, Prisma, Transaction } from '@prisma/client';
+import {
+  CreditTarget,
+  LedgerBalance,
+  Prisma,
+  Transaction,
+} from '@prisma/client';
 import { PaymentNotFoundException } from '../common/exceptions/payment.exceptions';
 import { toPositiveDecimal } from '../common/decimal.util';
 import { CreditRequestsService } from '../credit-requests/credit-requests.service';
@@ -78,6 +83,7 @@ export class MollieService {
   async createCardTopup(
     userId: string,
     amount: Prisma.Decimal.Value,
+    target: CreditTarget = 'AVAILABLE',
   ): Promise<CreateCardTopupResult> {
     const usdAmount = toPositiveDecimal(amount);
     const { paymentId, checkoutUrl } = this.apiKey
@@ -91,6 +97,7 @@ export class MollieService {
         amount: usdAmount,
         status: 'PENDING',
         referenceTx: paymentId,
+        creditTarget: target,
       },
     });
 
@@ -229,11 +236,19 @@ export class MollieService {
         return { balance, transaction: current, credited: false };
       }
 
-      const balance = await this.ledgerService.creditAvailableBalance(
-        tx,
-        pendingTransaction.userId,
-        new Prisma.Decimal(pendingTransaction.amount),
-      );
+      const topupAmount = new Prisma.Decimal(pendingTransaction.amount);
+      const balance =
+        pendingTransaction.creditTarget === 'INVESTMENT'
+          ? await this.ledgerService.creditInvestmentBalance(
+              tx,
+              pendingTransaction.userId,
+              topupAmount,
+            )
+          : await this.ledgerService.creditAvailableBalance(
+              tx,
+              pendingTransaction.userId,
+              topupAmount,
+            );
       const updated = await tx.transaction.findUniqueOrThrow({
         where: { referenceTx: paymentId },
       });
@@ -242,7 +257,7 @@ export class MollieService {
 
     // Hors de la transaction (déjà commitée) : émet automatiquement le crédit si cette
     // recharge porte le solde au niveau requis par une demande de crédit approuvée.
-    if (result.credited) {
+    if (result.credited && pendingTransaction.creditTarget === 'AVAILABLE') {
       await this.creditRequestsService.tryAutoFulfill(
         pendingTransaction.userId,
       );

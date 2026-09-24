@@ -59,6 +59,7 @@ function buildTransaction(overrides: Partial<Transaction> = {}): Transaction {
     withdrawalCurrency: null,
     bankAccountHolder: null,
     bankBic: null,
+    creditTarget: 'AVAILABLE',
     referenceTx: null,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -77,7 +78,10 @@ describe('DepositIntentsService', () => {
     };
     $transaction: jest.Mock;
   };
-  let ledgerService: { creditAvailableBalance: jest.Mock };
+  let ledgerService: {
+    creditAvailableBalance: jest.Mock;
+    creditInvestmentBalance: jest.Mock;
+  };
   let marketDataService: { getUsdValue: jest.Mock };
   let creditRequestsService: { tryAutoFulfill: jest.Mock };
   let clientWalletsService: { getOrCreate: jest.Mock };
@@ -98,7 +102,10 @@ describe('DepositIntentsService', () => {
         callback(tx),
       ),
     };
-    ledgerService = { creditAvailableBalance: jest.fn() };
+    ledgerService = {
+      creditAvailableBalance: jest.fn(),
+      creditInvestmentBalance: jest.fn(),
+    };
     marketDataService = {
       getUsdValue: jest.fn((_currency, amount) => Promise.resolve(amount)),
     };
@@ -165,11 +172,29 @@ describe('DepositIntentsService', () => {
           tokenAmount: new Prisma.Decimal('500'),
           chain: 'ETHEREUM',
           destinationAddress: '0x3b688A6285f44C95489A5464495eCe963E112C36',
+          creditTarget: 'AVAILABLE',
         },
       });
       expect(ledgerService.creditAvailableBalance).not.toHaveBeenCalled();
       expect(clientWalletsService.getOrCreate).toHaveBeenCalledWith('user-1');
       expect(result).toBe(created);
+    });
+
+    it('records the investment wallet as the credit target when the client deposits from the Investment section', async () => {
+      prisma.managedDepositAddress.findUnique.mockResolvedValue(
+        buildManagedAddress(),
+      );
+      prisma.transaction.create.mockResolvedValue(
+        buildTransaction({ creditTarget: 'INVESTMENT' }),
+      );
+
+      await service.declare('user-1', { ...dto, target: 'INVESTMENT' });
+
+      expect(prisma.transaction.create).toHaveBeenCalledWith({
+        data: expect.objectContaining({
+          creditTarget: 'INVESTMENT',
+        }) as unknown,
+      });
     });
 
     it('propagates ManagedDepositAddressNotFoundException without ever pricing the deposit or provisioning a wallet', async () => {
@@ -255,6 +280,30 @@ describe('DepositIntentsService', () => {
         'user-1',
       );
       expect(result).toEqual({ balance, transaction: completed });
+    });
+
+    it('credits the investment wallet (not the main balance) and skips credit-request auto-fulfilment for an INVESTMENT-targeted deposit', async () => {
+      const pending = buildTransaction({ creditTarget: 'INVESTMENT' });
+      const balance = buildBalance({
+        investmentBalance: new Prisma.Decimal(500),
+      });
+      prisma.transaction.findUnique.mockResolvedValue(pending);
+      ledgerService.creditInvestmentBalance.mockResolvedValue(balance);
+      tx.transaction.update.mockResolvedValue(
+        buildTransaction({ status: 'COMPLETED', creditTarget: 'INVESTMENT' }),
+      );
+
+      const result = await service.confirm('tx-1');
+
+      expect(ledgerService.creditInvestmentBalance).toHaveBeenCalledWith(
+        tx,
+        'user-1',
+        new Prisma.Decimal(pending.amount),
+      );
+      expect(ledgerService.creditAvailableBalance).not.toHaveBeenCalled();
+      // Un dépôt destiné au wallet investissement ne peut pas financer un gage de crédit.
+      expect(creditRequestsService.tryAutoFulfill).not.toHaveBeenCalled();
+      expect(result.balance).toBe(balance);
     });
 
     it('omits referenceTx from the update when none is provided', async () => {

@@ -173,6 +173,17 @@ enum TransactionStatus {
   FAILED
 }
 
+// Solde crédité par un dépôt (Transaction.type = DEPOSIT ou CARD_TOPUP) — AVAILABLE
+// (solde principal, comportement historique et défaut) ou INVESTMENT (wallet investissement
+// alimenté directement, cf. §6 CLAUDE.md entrée #51 : le client peut désormais déposer
+// depuis l'espace Investissement sans passer par un virement interne). Fixé à la création
+// de la demande de dépôt, jamais modifiable ensuite : la confirmation (admin ou webhook)
+// crédite exactement le solde choisi par le client au moment de la déclaration.
+enum CreditTarget {
+  AVAILABLE
+  INVESTMENT
+}
+
 // Méthode d'un retrait (Transaction.type = WITHDRAWAL uniquement) — CRYPTO existait déjà
 // (adresse on-chain, cf. Transaction.chain/destinationAddress) ; SEPA/SWIFT sont des
 // virements bancaires classiques. Comme pour CRYPTO (aucune custody réelle branchée,
@@ -637,6 +648,9 @@ model Transaction {
   // Idempotence des webhooks blockchain (Alchemy/QuickNode redélivrent parfois le même
   // événement) : un hash de tx on-chain ne doit créditer le solde qu'une seule fois.
   referenceTx        String?           @unique
+  // Uniquement pertinent pour un DEPOSIT / CARD_TOPUP (cf. enum CreditTarget) — AVAILABLE
+  // pour toute autre transaction, valeur sans effet.
+  creditTarget       CreditTarget      @default(AVAILABLE)
   createdAt          DateTime          @default(now())
   updatedAt          DateTime          @updatedAt
 

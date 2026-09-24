@@ -44,7 +44,7 @@ export function HeroCarousel({ slides }: { slides: ReactNode[] }) {
   // moment du switch. Avec ce fond posé derrière, plus aucun flash pendant la transition.
   return (
     <div
-      className="relative isolate bg-background"
+      className="relative isolate"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >

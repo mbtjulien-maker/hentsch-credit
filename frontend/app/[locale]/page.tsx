@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   ArrowRight,
   Layers,
@@ -74,7 +75,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
     "rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted";
 
   const creditHero = (
-    <section className="relative overflow-hidden bg-primary/[0.04]">
+    <section className="relative overflow-hidden">
       <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-28">
         <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
           <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
@@ -116,7 +117,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
   );
 
   const investmentHero = (
-    <section className="relative overflow-hidden bg-secondary/60">
+    <section className="relative overflow-hidden">
       <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-24">
         <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
           <span className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
@@ -160,7 +161,22 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
       {/* Retour client : alterner crédit gagé et investissement direct plutôt que les
           empiler l'un sous l'autre, façon bandeau publicitaire (3s par slide, pause au
           survol, cf. HeroCarousel). */}
-      <HeroCarousel slides={[investmentHero, creditHero]} />
+      <div className="relative isolate overflow-hidden">
+        {/* Photo du coffre-fort en arrière-plan des deux hero, sous un voile uni
+            (--background) pour garder le texte lisible sur le thème clair comme sombre. */}
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <Image
+            src="/brand/homepage-vault-bg.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center opacity-45"
+          />
+          <div className="absolute inset-0 bg-background/78" />
+        </div>
+        <HeroCarousel slides={[investmentHero, creditHero]} />
+      </div>
 
       <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
         <div className="mb-10 text-center">

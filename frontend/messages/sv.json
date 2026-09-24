@@ -6,7 +6,7 @@
     "learnMore": "Läs mer"
   },
   "Nav": {
-    "tagline": "Kryptosäkrad kredit",
+    "tagline": "Kapitalförvaltning & investering",
     "links": {
       "commentCaMarche": "Så fungerar det",
       "rendement": "Avkastning",
@@ -73,10 +73,10 @@
   },
   "Home": {
     "meta": {
-      "title": "Hentsch Credit · Kryptosäkrad kredit",
-      "description": "350% av det pantsatta beloppet frigjort som omedelbar köpkraft. Guld, silver och ETH genererar en verklig avkastning som automatiskt betalar av en del av din kredit."
+      "title": "Hentsch Credit · Kapitalförvaltning och investering",
+      "description": "Placera ditt kapital i sex verkliga strategier, med en uppmätt daglig avkastning som aldrig är garanterad. Kredit mot dina tillgångar erbjuds som kompletterande tjänst."
     },
-    "badge": "Reglerad kapitalförvaltning · Tillgång endast på inbjudan",
+    "badge": "Kompletterande tjänst · Kredit mot dina tillgångar",
     "titleLine1": "Ditt guld och ditt silver",
     "titleHighlight": "ligger inte längre stilla",
     "subtitle": "Sätt in dem som säkerhet, utan att någonsin sälja dem. Frigör omedelbar köpkraft, automatiskt återbetald tack vare deras utveckling.",
@@ -110,17 +110,17 @@
       }
     },
     "stats": {
-      "ratio": "Kreditkvot på den insatta säkerheten",
+      "ratio": "Kvot för den kompletterande krediten mot insatt säkerhet",
       "custodyValue": "Förvaring via auktoriserade förvaringsinstitut",
       "custodyLabel": "Tillgångar deponerade hos auktoriserade tredjepartsinstitut, aldrig i eget namn",
       "kycValue": "KYC verifierad",
-      "kycLabel": "Tillgång till kredit endast för verifierade kunder"
+      "kycLabel": "Tillgång till investering och kredit förbehållen verifierade kunder"
     },
-    "closingTitle": "Redo att frigöra din köpkraft?",
+    "closingTitle": "Redo att låta ditt kapital arbeta?",
     "closingDescription": "Plattform förbehållen en begränsad kundkrets. Vårt team granskar varje ansökan innan tillgång beviljas.",
     "closingCta": "Ansök om ett konto",
     "investmentHero": {
-      "badge": "Direktinvestering · Privatpersoner & företag",
+      "badge": "Reglerad kapitalförvaltning · Tillgång endast på inbjudan",
       "titleLine1": "Ditt kapital, i arbete,",
       "titleHighlight": "aldrig använt som säkerhet",
       "subtitle": "Sex strategier att välja mellan, från RWA-treasury till korgar med teknikaktier, med en verklig daglig avkastning, aldrig hittad på.",
@@ -148,7 +148,7 @@
   "HowItWorks": {
     "meta": {
       "title": "Så fungerar det · Hentsch Credit",
-      "description": "Från identitetskontroll till spendering: de fem stegen för att erhålla och använda kryptosäkrad kredit hos Hentsch Credit."
+      "description": "Från identitetskontroll till utgift: de fem stegen för att få och använda krediten mot dina tillgångar, en kompletterande tjänst från Hentsch Credit."
     },
     "eyebrow": "Kundresan",
     "title": "Så fungerar det",
@@ -524,7 +524,7 @@
   "AccountRequest": {
     "meta": {
       "title": "Ansök om ett konto · Hentsch Credit",
-      "description": "Ansök om ett konto hos Hentsch Credit, en kryptosäkrad kreditplattform förbehållen en begränsad kundkrets, på inbjudan."
+      "description": "Ansök om ett konto hos Hentsch Credit, en plattform för kapitalförvaltning och investering förbehållen en begränsad kundkrets, på inbjudan."
     },
     "eyebrow": "Tillgång på inbjudan",
     "title": "Ansök om ett konto",
@@ -609,7 +609,7 @@
     "intro": "H. Hentsch Asset Management SA utför inga börsorder för tredje parts räkning och publicerar därför varken någon utförandepolicy eller rapport om bästa urval enligt regelverket för finansiella marknader. Denna sida beskriver istället de verkliga riskhanteringsmetoder som tillämpas på plattformen Hentsch Credit.",
     "s1": {
       "title": "1. Verksamhetens natur",
-      "body": "{legalName} agerar som oberoende kapitalförvaltare (OKF): bolaget beviljar kryptosäkrad kredit till sina kunder, mot en säkerhet som de sätter in, och förvaltar en treasurystrategi för tokeniserade industrimetaller och råvaror med eget kapital. Bolaget utför inga börsorder för sina kunders räkning och förvaltar ingen diskretionär värdepappersportfölj i deras namn."
+      "body": "{legalName} agerar som oberoende kapitalförvaltare (OKF). Huvudverksamheten är att investera kundkapital i verkliga strategier. Som kompletterande tjänst beviljar bolaget också kryptosäkrad kredit mot en säkerhet som kunden sätter in, och förvaltar en treasurystrategi för tokeniserade industrimetaller och råvaror med eget kapital. Bolaget utför inga börsorder för sina kunders räkning och förvaltar ingen diskretionär värdepappersportfölj i deras namn."
     },
     "s2": {
       "title": "2. Förvaring och åtskillnad av tillgångarna",
@@ -2421,11 +2421,11 @@
   "AboutUs": {
     "meta": {
       "title": "Om oss",
-      "description": "Hentsch Credit är det kryptosäkrade erbjudandet från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon, Schweiz. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats."
+      "description": "Hentsch Credit är investerings- och kapitalförvaltningsplattformen från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon (Schweiz), som även erbjuder kredit mot dina tillgångar som kompletterande tjänst. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats."
     },
     "eyebrow": "Vilka vi är",
     "title": "Om oss",
-    "description": "Hentsch Credit är det kryptosäkrade erbjudandet från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon, Schweiz. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats.",
+    "description": "Hentsch Credit är investerings- och kapitalförvaltningsplattformen från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon (Schweiz), som även erbjuder kredit mot dina tillgångar som kompletterande tjänst. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats.",
     "identity": {
       "title": "Bolagsfakta",
       "legalName": "Firmanamn",
@@ -2506,7 +2506,7 @@
     },
     "product": {
       "title": "Hentsch Credit inom bolaget",
-      "body": "Hentsch Credit är det kryptosäkrade erbjudandet som drivs av {legalName}. Tjänsterna ovan är de som publiceras på bolagets officiella webbplats; de villkor och risker som är specifika för Hentsch Credit beskrivs i våra allmänna villkor och på vår sida om riskhantering."
+      "body": "Hentsch Credit är plattformen som drivs av {legalName}: investering är huvudprodukten, kryptosäkrad kredit en kompletterande tjänst. Tjänsterna ovan är de som publiceras på bolagets officiella webbplats; villkor och risker som är specifika för Hentsch Credit beskrivs i våra allmänna villkor och på vår sida om riskhantering."
     },
     "framework": {
       "title": "Regelverk och förvaring av tillgångar",

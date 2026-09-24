@@ -6,7 +6,7 @@
     "learnMore": "Mehr erfahren"
   },
   "Nav": {
-    "tagline": "Krypto-besicherter Kredit",
+    "tagline": "Vermögensverwaltung & Anlage",
     "links": {
       "commentCaMarche": "So funktioniert es",
       "rendement": "Rendite",
@@ -73,10 +73,10 @@
   },
   "Home": {
     "meta": {
-      "title": "Hentsch Credit · Krypto-besicherter Kredit",
-      "description": "350% des hinterlegten Betrags als sofortige Kaufkraft freigeschaltet. Gold, Silber und ETH erzielen eine reale Rendite, die automatisch einen Teil Ihres Kredits zurückzahlt."
+      "title": "Hentsch Credit · Vermögensverwaltung und Anlage",
+      "description": "Legen Sie Ihr Kapital in sechs realen Strategien an, mit einer gemessenen täglichen Rendite, die nie garantiert ist. Ein durch Ihre Vermögenswerte gedeckter Kredit wird als ergänzende Dienstleistung angeboten."
     },
-    "badge": "Regulierte Vermögensverwaltung · Zugang nur auf Einladung",
+    "badge": "Ergänzende Dienstleistung · Durch Ihre Vermögenswerte gedeckter Kredit",
     "titleLine1": "Ihr Gold und Ihr Silber",
     "titleHighlight": "schlummern nicht mehr",
     "subtitle": "Hinterlegen Sie sie als Sicherheit, ohne sie je zu verkaufen. Schalten Sie sofortige Kaufkraft frei, die automatisch durch deren Wertentwicklung zurückgezahlt wird.",
@@ -110,17 +110,17 @@
       }
     },
     "stats": {
-      "ratio": "Kreditquote auf die hinterlegte Sicherheit",
+      "ratio": "Verhältnis des ergänzenden Kredits zur hinterlegten Sicherheit",
       "custodyValue": "Verwahrung über zugelassene Verwahrstellen",
       "custodyLabel": "Vermögenswerte bei zugelassenen Drittinstituten hinterlegt, nie im eigenen Namen",
       "kycValue": "KYC verifiziert",
-      "kycLabel": "Kreditzugang nur für verifizierte Kunden"
+      "kycLabel": "Zugang zu Anlage und Kredit nur für verifizierte Kunden"
     },
-    "closingTitle": "Bereit, Ihre Kaufkraft freizuschalten?",
+    "closingTitle": "Bereit, Ihr Kapital arbeiten zu lassen?",
     "closingDescription": "Plattform nur für einen eingeschränkten Kundenkreis. Unser Team prüft jeden Antrag, bevor der Zugang gewährt wird.",
     "closingCta": "Kontoeröffnung beantragen",
     "investmentHero": {
-      "badge": "Direktanlage · Privatpersonen & Unternehmen",
+      "badge": "Regulierte Vermögensverwaltung · Zugang nur auf Einladung",
       "titleLine1": "Ihr Kapital arbeitet,",
       "titleHighlight": "ohne je als Sicherheit zu dienen",
       "subtitle": "Sechs Strategien zur Auswahl, von der RWA-Treasury bis zu Tech-Aktienkörben, mit einer echten täglichen Rendite, nie erfunden.",
@@ -148,7 +148,7 @@
   "HowItWorks": {
     "meta": {
       "title": "So funktioniert es · Hentsch Credit",
-      "description": "Von der Identitätsprüfung bis zur Ausgabe: die fünf Schritte, um einen krypto-besicherten Kredit bei Hentsch Credit zu erhalten und zu nutzen."
+      "description": "Von der Identitätsprüfung bis zur Ausgabe: die fünf Schritte, um den durch Ihre Vermögenswerte gedeckten Kredit, eine ergänzende Dienstleistung von Hentsch Credit, zu erhalten und zu nutzen."
     },
     "eyebrow": "Der Kundenweg",
     "title": "So funktioniert es",
@@ -524,7 +524,7 @@
   "AccountRequest": {
     "meta": {
       "title": "Kontoeröffnung beantragen · Hentsch Credit",
-      "description": "Beantragen Sie die Eröffnung eines Hentsch Credit-Kontos, einer krypto-besicherten Kreditplattform, die einem eingeschränkten Kundenkreis auf Einladung vorbehalten ist."
+      "description": "Beantragen Sie die Eröffnung eines Hentsch Credit-Kontos, einer Plattform für Vermögensverwaltung und Anlage, die einem eingeschränkten Kundenkreis auf Einladung vorbehalten ist."
     },
     "eyebrow": "Zugang auf Einladung",
     "title": "Kontoeröffnung beantragen",
@@ -609,7 +609,7 @@
     "intro": "H. Hentsch Asset Management SA führt keine Börsenaufträge für Rechnung Dritter aus und veröffentlicht daher weder eine Ausführungspolitik noch einen Bericht über die beste Auswahl im Sinne der Finanzmarktregulierung. Diese Seite beschreibt stattdessen die tatsächlichen Risikomanagementpraktiken, die auf die Plattform Hentsch Credit angewandt werden.",
     "s1": {
       "title": "1. Art der Tätigkeit",
-      "body": "{legalName} handelt als unabhängiger Vermögensverwalter (UVV): Er gewährt seinen Kunden krypto-besicherten Kredit gegen eine von ihnen hinterlegte Sicherheit und verwaltet mit eigenem Kapital eine Treasury-Strategie auf tokenisierte Industriemetalle und Rohstoffe. Er führt keinen Börsenauftrag für Rechnung seiner Kunden aus und verwaltet in ihrem Namen kein diskretionäres Wertschriftenportfolio."
+      "body": "{legalName} handelt als unabhängiger Vermögensverwalter (UVV). Seine Haupttätigkeit ist die Anlage von Kundenkapital in reale Strategien. Als ergänzende Dienstleistung gewährt er auch krypto-besicherten Kredit gegen eine vom Kunden hinterlegte Sicherheit und verwaltet mit eigenem Kapital eine Treasury-Strategie auf tokenisierte Industriemetalle und Rohstoffe. Er führt keinen Börsenauftrag für Rechnung seiner Kunden aus und verwaltet in ihrem Namen kein diskretionäres Wertschriftenportfolio."
     },
     "s2": {
       "title": "2. Verwahrung und Trennung der Vermögenswerte",
@@ -2421,11 +2421,11 @@
   "AboutUs": {
     "meta": {
       "title": "Über uns",
-      "description": "Hentsch Credit ist das durch Krypto-Assets besicherte Angebot der H. Hentsch Asset Management SA, eines unabhängigen Vermögensverwalters mit Sitz in Nyon, Schweiz. Geschichte, Geschäftsleitung, Philosophie, Dienstleistungen und regulatorischer Rahmen, überprüft auf der offiziellen Website der Gesellschaft."
+      "description": "Hentsch Credit ist die Anlage- und Vermögensverwaltungsplattform der H. Hentsch Asset Management SA, eines unabhängigen Vermögensverwalters mit Sitz in Nyon (Schweiz), der zusätzlich einen durch Ihre Vermögenswerte gedeckten Kredit als ergänzende Dienstleistung anbietet. Geschichte, Leitung, Philosophie, Dienstleistungen und regulatorischer Rahmen, geprüft auf der offiziellen Website des Unternehmens."
     },
     "eyebrow": "Wer wir sind",
     "title": "Über uns",
-    "description": "Hentsch Credit ist das durch Krypto-Assets besicherte Angebot der H. Hentsch Asset Management SA, eines unabhängigen Vermögensverwalters mit Sitz in Nyon, Schweiz. Geschichte, Geschäftsleitung, Philosophie, Dienstleistungen und regulatorischer Rahmen, überprüft auf der offiziellen Website der Gesellschaft.",
+    "description": "Hentsch Credit ist die Anlage- und Vermögensverwaltungsplattform der H. Hentsch Asset Management SA, eines unabhängigen Vermögensverwalters mit Sitz in Nyon (Schweiz), der zusätzlich einen durch Ihre Vermögenswerte gedeckten Kredit als ergänzende Dienstleistung anbietet. Geschichte, Leitung, Philosophie, Dienstleistungen und regulatorischer Rahmen, geprüft auf der offiziellen Website des Unternehmens.",
     "identity": {
       "title": "Unternehmensprofil",
       "legalName": "Firmenname",
@@ -2506,7 +2506,7 @@
     },
     "product": {
       "title": "Hentsch Credit innerhalb der Gesellschaft",
-      "body": "Hentsch Credit ist das durch Krypto-Assets besicherte Angebot der {legalName}. Die oben aufgeführten Dienstleistungen sind jene, die auf der offiziellen Website der Gesellschaft veröffentlicht sind; die für Hentsch Credit geltenden Bedingungen und Risiken sind in unseren Allgemeinen Geschäftsbedingungen und auf unserer Seite zum Risikomanagement beschrieben."
+      "body": "Hentsch Credit ist die von {legalName} betriebene Plattform: Die Anlage ist ihr Hauptprodukt, der krypto-besicherte Kredit eine ergänzende Dienstleistung. Die oben aufgeführten Dienstleistungen sind diejenigen, die auf der offiziellen Website des Unternehmens veröffentlicht sind; die Bedingungen und Risiken von Hentsch Credit sind in unseren Allgemeinen Bedingungen und auf unserer Seite zum Risikomanagement beschrieben."
     },
     "framework": {
       "title": "Regulatorischer Rahmen und Verwahrung der Vermögenswerte",

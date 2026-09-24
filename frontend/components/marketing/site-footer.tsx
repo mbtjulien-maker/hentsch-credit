@@ -25,19 +25,19 @@ export async function SiteFooter() {
 
   const FOOTER_COLUMNS = [
     {
-      title: tNav("groups.credit"),
-      links: (creditGroup.items ?? []).map((item) => ({
-        href: item.href,
-        label: tNav(`links.${item.itemKey}`),
-      })),
-    },
-    {
       title: t("columns.invest.title"),
       links: [
         { href: "/investissement-direct", label: t("columns.platform.directInvestment") },
         { href: "/marche", label: t("columns.platform.market") },
         { href: "/tarifs", label: t("columns.platform.pricing") },
       ],
+    },
+    {
+      title: tNav("groups.credit"),
+      links: (creditGroup.items ?? []).map((item) => ({
+        href: item.href,
+        label: tNav(`links.${item.itemKey}`),
+      })),
     },
     {
       title: t("columns.help.title"),

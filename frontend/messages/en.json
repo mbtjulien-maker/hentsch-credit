@@ -6,7 +6,7 @@
     "learnMore": "Learn more"
   },
   "Nav": {
-    "tagline": "Crypto-collateralized credit",
+    "tagline": "Wealth management & investment",
     "links": {
       "commentCaMarche": "How it works",
       "rendement": "Yield",
@@ -73,10 +73,10 @@
   },
   "Home": {
     "meta": {
-      "title": "Hentsch Credit · Crypto-collateralized credit",
-      "description": "350% of the amount pledged unlocked as immediate purchasing power. Gold, silver and ETH generate a real yield that automatically repays part of your credit."
+      "title": "Hentsch Credit · Wealth management and investment",
+      "description": "Place your capital in six real strategies, with a measured daily return that is never guaranteed. Credit backed by your assets is offered as a complementary service."
     },
-    "badge": "Regulated wealth management · Access by invitation only",
+    "badge": "Complementary service · Credit backed by your assets",
     "titleLine1": "Your gold and your silver",
     "titleHighlight": "no longer sit idle",
     "subtitle": "Deposit them as collateral, without ever selling them. Unlock immediate purchasing power, automatically repaid by their performance.",
@@ -110,17 +110,17 @@
       }
     },
     "stats": {
-      "ratio": "Credit ratio on the collateral deposited",
+      "ratio": "Ratio of the complementary credit on the collateral deposited",
       "custodyValue": "Custody via licensed custodians",
       "custodyLabel": "Assets held with licensed third-party institutions, never in the bank's own name",
       "kycValue": "KYC verified",
-      "kycLabel": "Access to credit reserved for verified clients"
+      "kycLabel": "Access to investment and credit reserved for verified clients"
     },
-    "closingTitle": "Ready to unlock your purchasing power?",
+    "closingTitle": "Ready to put your capital to work?",
     "closingDescription": "Platform reserved for a limited clientele. Our team reviews every application before granting access.",
     "closingCta": "Request an account",
     "investmentHero": {
-      "badge": "Direct investment · Individuals & businesses",
+      "badge": "Regulated wealth management · Access by invitation only",
       "titleLine1": "Your capital, put to work,",
       "titleHighlight": "never used as collateral",
       "subtitle": "Six strategies to choose from, from RWA treasury to tech-stock baskets, with a real daily return, never fabricated.",
@@ -148,7 +148,7 @@
   "HowItWorks": {
     "meta": {
       "title": "How it works · Hentsch Credit",
-      "description": "From identity verification to spending: the five steps to obtain and use crypto-collateralized credit on Hentsch Credit."
+      "description": "From identity verification to spending: the five steps to obtain and use credit backed by your assets, a complementary service of Hentsch Credit."
     },
     "eyebrow": "The client journey",
     "title": "How it works",
@@ -524,7 +524,7 @@
   "AccountRequest": {
     "meta": {
       "title": "Request an account · Hentsch Credit",
-      "description": "Request an account with Hentsch Credit, a crypto-collateralized credit platform reserved for a limited clientele, by invitation only."
+      "description": "Request an account with Hentsch Credit, a wealth management and investment platform reserved for a limited clientele, by invitation only."
     },
     "eyebrow": "Access by invitation",
     "title": "Request an account",
@@ -609,7 +609,7 @@
     "intro": "H. Hentsch Asset Management SA does not execute stock exchange orders on behalf of third parties and therefore does not publish an execution policy or a best-selection report within the meaning of financial market regulation. This page instead describes the real risk management practices applied to the Hentsch Credit platform.",
     "s1": {
       "title": "1. Nature of the activity",
-      "body": "{legalName} acts as an independent asset manager (IAM): it grants crypto-collateralized credit to its clients, against collateral deposited by them, and manages a treasury strategy on tokenized industrial metals and commodities with its own capital. It executes no stock exchange order on behalf of its clients and manages no discretionary securities portfolio on their behalf."
+      "body": "{legalName} acts as an independent asset manager (IAM). Its main activity is investing client capital in real strategies. As a complementary service, it also grants crypto-collateralized credit against collateral deposited by the client, and manages a treasury strategy on tokenized industrial metals and commodities with its own capital. It executes no stock exchange order on behalf of its clients and manages no discretionary securities portfolio on their behalf."
     },
     "s2": {
       "title": "2. Custody and separation of assets",
@@ -2421,11 +2421,11 @@
   "AboutUs": {
     "meta": {
       "title": "About Us",
-      "description": "Hentsch Credit is the crypto-collateralised offer of H. Hentsch Asset Management SA, an independent wealth manager based in Nyon, Switzerland. History, management, philosophy, services and regulatory framework, verified on the company's official website."
+      "description": "Hentsch Credit is the investment and wealth management platform of H. Hentsch Asset Management SA, an independent asset manager based in Nyon, Switzerland, which also offers credit backed by your assets as a complementary service. History, management, philosophy, services and regulatory framework, verified on the company's official website."
     },
     "eyebrow": "Who we are",
     "title": "About Us",
-    "description": "Hentsch Credit is the crypto-collateralised offer of H. Hentsch Asset Management SA, an independent wealth manager based in Nyon, Switzerland. History, management, philosophy, services and regulatory framework, verified on the company's official website.",
+    "description": "Hentsch Credit is the investment and wealth management platform of H. Hentsch Asset Management SA, an independent asset manager based in Nyon, Switzerland, which also offers credit backed by your assets as a complementary service. History, management, philosophy, services and regulatory framework, verified on the company's official website.",
     "identity": {
       "title": "Company profile",
       "legalName": "Legal name",
@@ -2506,7 +2506,7 @@
     },
     "product": {
       "title": "Hentsch Credit within the company",
-      "body": "Hentsch Credit is the crypto-collateralised offer operated by {legalName}. The services listed above are those published on the company's official website; the conditions and risks specific to Hentsch Credit are detailed in our terms and conditions and on our risk management page."
+      "body": "Hentsch Credit is the platform operated by {legalName}: investment is its main product, crypto-collateralized credit a complementary service. The services listed above are those published on the company's official website; the terms and risks specific to Hentsch Credit are detailed in our general terms and on our risk management page."
     },
     "framework": {
       "title": "Regulatory framework and custody of assets",

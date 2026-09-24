@@ -52,11 +52,11 @@ const BING_SITE_VERIFICATION = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Hentsch Credit · Crédit crypto-collatéralisé",
+    default: "Hentsch Credit · Gestion de fortune et investissement",
     template: "%s",
   },
   description:
-    "Déposez des stablecoins, de l'or ou de l'argent tokenisés en garantie pour débloquer une ligne de crédit, sans jamais vendre vos actifs.",
+    "Placez votre capital sur six stratégies réelles, avec un rendement quotidien mesuré et jamais garanti. Un crédit adossé à vos actifs est proposé en service complémentaire.",
   openGraph: {
     siteName: "Hentsch Credit",
     locale: "fr_CH",

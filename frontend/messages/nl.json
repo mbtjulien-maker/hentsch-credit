@@ -6,7 +6,7 @@
     "learnMore": "Meer weten"
   },
   "Nav": {
-    "tagline": "Krypto-gedekt krediet",
+    "tagline": "Vermogensbeheer & belegging",
     "links": {
       "commentCaMarche": "Hoe het werkt",
       "rendement": "Rendement",
@@ -73,10 +73,10 @@
   },
   "Home": {
     "meta": {
-      "title": "Hentsch Credit · Krypto-gedekt krediet",
-      "description": "350% van het verpande bedrag vrijgemaakt als onmiddellijke koopkracht. Goud, zilver en ETH genereren een reëel rendement dat automatisch een deel van uw krediet aflost."
+      "title": "Hentsch Credit · Vermogensbeheer en belegging",
+      "description": "Plaats uw kapitaal in zes echte strategieën, met een gemeten dagelijks rendement dat nooit gegarandeerd is. Krediet gedekt door uw activa wordt aangeboden als aanvullende dienst."
     },
-    "badge": "Gereguleerd vermogensbeheer · Toegang alleen op uitnodiging",
+    "badge": "Aanvullende dienst · Krediet gedekt door uw activa",
     "titleLine1": "Uw goud en uw zilver",
     "titleHighlight": "sluimeren niet meer",
     "subtitle": "Stort ze als onderpand, zonder ze ooit te verkopen. Maak onmiddellijk koopkracht vrij, automatisch afgelost dankzij hun waardeontwikkeling.",
@@ -110,17 +110,17 @@
       }
     },
     "stats": {
-      "ratio": "Kredietratio op het gestorte onderpand",
+      "ratio": "Verhouding van het aanvullende krediet tot het gestorte onderpand",
       "custodyValue": "Bewaring via erkende bewaarders",
       "custodyLabel": "Activa gedeponeerd bij erkende externe instellingen, nooit op eigen naam",
       "kycValue": "KYC geverifieerd",
-      "kycLabel": "Toegang tot krediet voorbehouden aan geverifieerde klanten"
+      "kycLabel": "Toegang tot beleggen en krediet voorbehouden aan geverifieerde klanten"
     },
-    "closingTitle": "Klaar om uw koopkracht vrij te maken?",
+    "closingTitle": "Klaar om uw kapitaal te laten werken?",
     "closingDescription": "Platform voorbehouden aan een beperkte klantenkring. Ons team beoordeelt elke aanvraag voordat toegang wordt verleend.",
     "closingCta": "Een account aanvragen",
     "investmentHero": {
-      "badge": "Directe belegging · Particulieren & bedrijven",
+      "badge": "Gereguleerd vermogensbeheer · Toegang alleen op uitnodiging",
       "titleLine1": "Uw kapitaal, aan het werk gezet,",
       "titleHighlight": "nooit als onderpand gebruikt",
       "subtitle": "Zes strategieën om uit te kiezen, van RWA-treasury tot techaandelenmanden, met een echt dagelijks rendement, nooit verzonnen.",
@@ -148,7 +148,7 @@
   "HowItWorks": {
     "meta": {
       "title": "Hoe het werkt · Hentsch Credit",
-      "description": "Van identiteitsverificatie tot uitgeven: de vijf stappen om krypto-gedekt krediet te verkrijgen en te gebruiken bij Hentsch Credit."
+      "description": "Van identiteitsverificatie tot uitgave: de vijf stappen om het krediet gedekt door uw activa, een aanvullende dienst van Hentsch Credit, te verkrijgen en te gebruiken."
     },
     "eyebrow": "Het klanttraject",
     "title": "Hoe het werkt",
@@ -524,7 +524,7 @@
   "AccountRequest": {
     "meta": {
       "title": "Een account aanvragen · Hentsch Credit",
-      "description": "Vraag een account aan bij Hentsch Credit, een krypto-gedekt kredietplatform voorbehouden aan een beperkte klantenkring, op uitnodiging."
+      "description": "Vraag een account aan bij Hentsch Credit, een platform voor vermogensbeheer en belegging voorbehouden aan een beperkte klantenkring, op uitnodiging."
     },
     "eyebrow": "Toegang op uitnodiging",
     "title": "Een account aanvragen",
@@ -609,7 +609,7 @@
     "intro": "H. Hentsch Asset Management SA voert geen beursorders uit voor rekening van derden en publiceert daarom geen uitvoeringsbeleid noch een rapport over de beste selectie in de zin van de financiëlemarktenregelgeving. Deze pagina beschrijft in plaats daarvan de werkelijke risicobeheerpraktijken die op het Hentsch Credit-platform worden toegepast.",
     "s1": {
       "title": "1. Aard van de activiteit",
-      "body": "{legalName} treedt op als onafhankelijke vermogensbeheerder (OVB): het verleent krypto-gedekt krediet aan zijn klanten, tegen een door hen gestort onderpand, en beheert met eigen kapitaal een treasurystrategie op getokeniseerde industriële metalen en grondstoffen. Het voert geen enkele beursorder uit voor rekening van zijn klanten en beheert namens hen geen enkele discretionaire effectenportefeuille."
+      "body": "{legalName} treedt op als onafhankelijke vermogensbeheerder (OVB). De hoofdactiviteit is het beleggen van klantenkapitaal in echte strategieën. Als aanvullende dienst verleent het ook krypto-gedekt krediet, tegen een door de klant gestort onderpand, en beheert het met eigen kapitaal een treasurystrategie op getokeniseerde industriële metalen en grondstoffen. Het voert geen enkele beursorder uit voor rekening van zijn klanten en beheert namens hen geen enkele discretionaire effectenportefeuille."
     },
     "s2": {
       "title": "2. Bewaring en scheiding van de activa",
@@ -2421,11 +2421,11 @@
   "AboutUs": {
     "meta": {
       "title": "Over ons",
-      "description": "Hentsch Credit is het door cryptoactiva gedekte aanbod van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon, Zwitserland. Geschiedenis, directie, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van de vennootschap."
+      "description": "Hentsch Credit is het beleggings- en vermogensbeheerplatform van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon (Zwitserland), die daarnaast krediet gedekt door uw activa aanbiedt als aanvullende dienst. Geschiedenis, leiding, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van het bedrijf."
     },
     "eyebrow": "Wie wij zijn",
     "title": "Over ons",
-    "description": "Hentsch Credit is het door cryptoactiva gedekte aanbod van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon, Zwitserland. Geschiedenis, directie, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van de vennootschap.",
+    "description": "Hentsch Credit is het beleggings- en vermogensbeheerplatform van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon (Zwitserland), die daarnaast krediet gedekt door uw activa aanbiedt als aanvullende dienst. Geschiedenis, leiding, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van het bedrijf.",
     "identity": {
       "title": "Identiteitskaart",
       "legalName": "Statutaire naam",
@@ -2506,7 +2506,7 @@
     },
     "product": {
       "title": "Hentsch Credit binnen de vennootschap",
-      "body": "Hentsch Credit is het door cryptoactiva gedekte aanbod van {legalName}. De hierboven vermelde diensten zijn die welke op de officiële website van de vennootschap zijn gepubliceerd; de voorwaarden en risico's die specifiek gelden voor Hentsch Credit staan in onze algemene voorwaarden en op onze pagina over risicobeheer."
+      "body": "Hentsch Credit is het platform van {legalName}: beleggen is het hoofdproduct, krypto-gedekt krediet een aanvullende dienst. De hierboven vermelde diensten zijn die welke op de officiële website van het bedrijf zijn gepubliceerd; de voorwaarden en risico's van Hentsch Credit staan in onze algemene voorwaarden en op onze pagina over risicobeheer."
     },
     "framework": {
       "title": "Regelgevend kader en bewaring van activa",

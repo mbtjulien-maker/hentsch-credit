@@ -31,7 +31,7 @@ export function HomeBalanceOverview({ summary }: { summary: BalanceSummary }) {
   return (
     <div className="grid gap-4 sm:grid-cols-3">
       <KpiCardShell>
-        <Card className={cn(GLASS_CARD_CLASS, "border-primary/20")}>
+        <Card className={GLASS_CARD_CLASS}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               {t("mainWallet.title")}
@@ -47,6 +47,22 @@ export function HomeBalanceOverview({ summary }: { summary: BalanceSummary }) {
         </Card>
       </KpiCardShell>
 
+      <KpiCardShell>
+        <Card className={cn(GLASS_CARD_CLASS, "border-primary/20")}>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              {t("investment.title")}
+            </CardTitle>
+            <LineChart className="size-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
+              {formatUsd(balance.investmentBalance)}
+            </div>
+            <p className="mt-1.5 text-xs text-muted-foreground">{t("investment.description")}</p>
+          </CardContent>
+        </Card>
+      </KpiCardShell>
       <KpiCardShell>
         <Card className={GLASS_CARD_CLASS}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -67,23 +83,6 @@ export function HomeBalanceOverview({ summary }: { summary: BalanceSummary }) {
                   })
                 : t("credit.descriptionNoCredit")}
             </p>
-          </CardContent>
-        </Card>
-      </KpiCardShell>
-
-      <KpiCardShell>
-        <Card className={GLASS_CARD_CLASS}>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              {t("investment.title")}
-            </CardTitle>
-            <LineChart className="size-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
-              {formatUsd(balance.investmentBalance)}
-            </div>
-            <p className="mt-1.5 text-xs text-muted-foreground">{t("investment.description")}</p>
           </CardContent>
         </Card>
       </KpiCardShell>

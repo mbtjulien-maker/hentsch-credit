@@ -12,7 +12,7 @@ test.describe("Vitrine publique", () => {
     await page.goto("/");
 
     const header = page.locator("header");
-    await expect(header.getByRole("link", { name: "Investissement" })).toBeVisible();
+    await expect(header.getByRole("link", { name: "Investissement", exact: true })).toBeVisible();
     await expect(header.getByRole("link", { name: "Accéder à mon compte" })).toBeVisible();
 
     // Les pages du groupe "Crédit" vivent dans son menu déroulant.

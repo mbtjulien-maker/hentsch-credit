@@ -70,6 +70,17 @@ function useClientNavGroups(isBusiness: boolean): NavGroup[] {
       ],
     },
     {
+      id: "investing",
+      label: t("groups.investing"),
+      featured: true,
+      // Ouvert à tous les comptes vérifiés (particulier ET business, cf. §2H CLAUDE.md).
+      items: INVESTMENT_NAV.map(({ key, href, icon }) => ({
+        href,
+        label: tInvest(`nav.${key}`),
+        icon,
+      })),
+    },
+    {
       id: "financing",
       label: t("groups.financing"),
       items: [
@@ -81,17 +92,6 @@ function useClientNavGroups(isBusiness: boolean): NavGroup[] {
           ? [{ href: "/dashboard/credit-direct", label: t("client.directCredit"), icon: Briefcase }]
           : []),
       ],
-    },
-    {
-      id: "investing",
-      label: t("groups.investing"),
-      featured: true,
-      // Ouvert à tous les comptes vérifiés (particulier ET business, cf. §2H CLAUDE.md).
-      items: INVESTMENT_NAV.map(({ key, href, icon }) => ({
-        href,
-        label: tInvest(`nav.${key}`),
-        icon,
-      })),
     },
     {
       id: "account",

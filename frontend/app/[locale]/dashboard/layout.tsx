@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { AuthGate } from "@/components/dashboard/auth-gate";
@@ -34,8 +35,8 @@ async function DashboardLegalFooter() {
   );
 }
 
-// Chrome de l'espace client connecté (sidebar + header, fond uni — plus de photo depuis le
-// thème "fintech clair", cf. .theme-fintech dans app/globals.css) — propre à
+// Chrome de l'espace client connecté (sidebar + header + fond photo du coffre-fort, gardé
+// sous le thème "fintech clair", cf. .theme-fintech dans app/globals.css) — propre à
 // "/[locale]/dashboard/*", pas à la vitrine publique ("/", cf. app/[locale]/page.tsx) qui a
 // sa propre mise en page. Direction artistique "Luxury Fintech" (Obsidian/Ivoire →
 // Champagne Gold), déclinée en clair ET en sombre : la classe .dark globale (posée sur
@@ -55,7 +56,25 @@ export default async function DashboardLayout({
   setRequestLocale(locale);
 
   return (
-    <div className="client-typography theme-fintech relative min-h-screen bg-background text-foreground">
+    <div className="client-typography theme-fintech relative min-h-screen overflow-hidden bg-background text-foreground">
+      {/* Fond photo (même coffre-fort que le hero de la vitrine), sous un voile uni
+          (--background) pour garder cartes et texte lisibles. `absolute` et non `fixed` :
+          `fixed` combiné à cet ancêtre `overflow-hidden` et aux `sticky`/`backdrop-blur`
+          de la sidebar/du header provoquait un bug de compositing Chromium (le thème
+          sombre/clair ne s'appliquait plus visuellement alors que le CSSOM était
+          correct). */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Image
+          src="/brand/homepage-vault-bg.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-45"
+        />
+        <div className="absolute inset-0 bg-background/78" />
+      </div>
+
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col">
         <DashboardProvider>
           <AuthLoadError />

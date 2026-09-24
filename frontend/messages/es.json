@@ -6,7 +6,7 @@
     "learnMore": "Saber más"
   },
   "Nav": {
-    "tagline": "Crédito cripto-colateralizado",
+    "tagline": "Gestión de fortuna e inversión",
     "links": {
       "commentCaMarche": "Cómo funciona",
       "rendement": "Rendimiento",
@@ -73,10 +73,10 @@
   },
   "Home": {
     "meta": {
-      "title": "Hentsch Credit · Crédito cripto-colateralizado",
-      "description": "350% del importe pignorado desbloqueado como poder adquisitivo inmediato. El oro, la plata y el ETH generan un rendimiento real que reembolsa automáticamente parte de su crédito."
+      "title": "Hentsch Credit · Gestión de fortuna e inversión",
+      "description": "Coloque su capital en seis estrategias reales, con una rentabilidad diaria medida y nunca garantizada. Un crédito respaldado por sus activos se ofrece como servicio complementario."
     },
-    "badge": "Gestión de fortuna regulada · Acceso reservado, por invitación",
+    "badge": "Servicio complementario · Crédito respaldado por sus activos",
     "titleLine1": "Su oro y su plata",
     "titleHighlight": "ya no duermen",
     "subtitle": "Deposítelos en garantía, sin venderlos nunca. Desbloquee poder adquisitivo inmediato, reembolsado automáticamente gracias a su rendimiento.",
@@ -110,17 +110,17 @@
       }
     },
     "stats": {
-      "ratio": "Ratio de crédito sobre la garantía depositada",
+      "ratio": "Ratio del crédito complementario sobre la garantía depositada",
       "custodyValue": "Custodia a través de depositarios autorizados",
       "custodyLabel": "Activos depositados en entidades terceras autorizadas, nunca a nombre propio",
       "kycValue": "KYC verificado",
-      "kycLabel": "Acceso al crédito reservado a clientes verificados"
+      "kycLabel": "Acceso a la inversión y al crédito reservado a clientes verificados"
     },
-    "closingTitle": "¿Listo para desbloquear su poder adquisitivo?",
+    "closingTitle": "¿Listo para poner su capital a trabajar?",
     "closingDescription": "Plataforma reservada a una clientela restringida. Nuestro equipo estudia cada expediente antes de conceder el acceso.",
     "closingCta": "Solicitar la apertura de una cuenta",
     "investmentHero": {
-      "badge": "Inversión directa · Particulares y empresas",
+      "badge": "Gestión de fortuna regulada · Acceso reservado, por invitación",
       "titleLine1": "Su capital, puesto a trabajar,",
       "titleHighlight": "sin servir nunca de garantía",
       "subtitle": "Seis estrategias a elegir, de la tesorería RWA a las cestas de acciones tecnológicas, con un rendimiento diario real, nunca inventado.",
@@ -148,7 +148,7 @@
   "HowItWorks": {
     "meta": {
       "title": "Cómo funciona · Hentsch Credit",
-      "description": "De la verificación de identidad al gasto: las cinco etapas para obtener y utilizar un crédito cripto-colateralizado en Hentsch Credit."
+      "description": "De la verificación de identidad al gasto: los cinco pasos para obtener y usar el crédito respaldado por sus activos, servicio complementario de Hentsch Credit."
     },
     "eyebrow": "El recorrido del cliente",
     "title": "Cómo funciona",
@@ -524,7 +524,7 @@
   "AccountRequest": {
     "meta": {
       "title": "Solicitar la apertura de una cuenta · Hentsch Credit",
-      "description": "Solicite la apertura de una cuenta de Hentsch Credit, plataforma de crédito cripto-colateralizado reservada a una clientela restringida, por invitación."
+      "description": "Solicite la apertura de una cuenta de Hentsch Credit, plataforma de gestión de fortuna e inversión reservada a una clientela restringida, por invitación."
     },
     "eyebrow": "Acceso por invitación",
     "title": "Solicitar la apertura de una cuenta",
@@ -609,7 +609,7 @@
     "intro": "H. Hentsch Asset Management SA no ejecuta órdenes bursátiles por cuenta de terceros y, por tanto, no publica ninguna política de ejecución ni informe de mejor selección en el sentido de la regulación sobre los mercados financieros. Esta página describe, en su lugar, las prácticas reales de gestión de riesgos aplicadas a la plataforma Hentsch Credit.",
     "s1": {
       "title": "1. Naturaleza de la actividad",
-      "body": "{legalName} actúa como gestor de fortuna independiente (GFI): concede crédito cripto-colateralizado a sus clientes, a cambio de una garantía depositada por ellos, y gestiona una estrategia de tesorería sobre metales y materias primas industriales tokenizados con su propio capital. No ejecuta ninguna orden bursátil por cuenta de sus clientes ni gestiona ninguna cartera de valores discrecional en su nombre."
+      "body": "{legalName} actúa como gestor de fortuna independiente (GFI). Su actividad principal es invertir el capital de sus clientes en estrategias reales. Como servicio complementario, también concede crédito cripto-colateralizado a cambio de una garantía depositada por el cliente, y gestiona una estrategia de tesorería sobre metales y materias primas industriales tokenizados con su propio capital. No ejecuta ninguna orden bursátil por cuenta de sus clientes ni gestiona ninguna cartera de valores discrecional en su nombre."
     },
     "s2": {
       "title": "2. Custodia y separación de los activos",
@@ -2421,11 +2421,11 @@
   "AboutUs": {
     "meta": {
       "title": "Sobre nosotros",
-      "description": "Hentsch Credit es la oferta con garantía en criptoactivos de H. Hentsch Asset Management SA, gestor de patrimonios independiente con sede en Nyon, Suiza. Historia, dirección, filosofía, servicios y marco regulatorio, verificados en el sitio web oficial de la sociedad."
+      "description": "Hentsch Credit es la plataforma de inversión y gestión de fortuna de H. Hentsch Asset Management SA, gestor de fortuna independiente con sede en Nyon (Suiza), que ofrece además un crédito respaldado por sus activos como servicio complementario. Historia, dirección, filosofía, servicios y marco regulatorio, verificados en el sitio oficial de la sociedad."
     },
     "eyebrow": "Quiénes somos",
     "title": "Sobre nosotros",
-    "description": "Hentsch Credit es la oferta con garantía en criptoactivos de H. Hentsch Asset Management SA, gestor de patrimonios independiente con sede en Nyon, Suiza. Historia, dirección, filosofía, servicios y marco regulatorio, verificados en el sitio web oficial de la sociedad.",
+    "description": "Hentsch Credit es la plataforma de inversión y gestión de fortuna de H. Hentsch Asset Management SA, gestor de fortuna independiente con sede en Nyon (Suiza), que ofrece además un crédito respaldado por sus activos como servicio complementario. Historia, dirección, filosofía, servicios y marco regulatorio, verificados en el sitio oficial de la sociedad.",
     "identity": {
       "title": "Ficha de identidad",
       "legalName": "Razón social",
@@ -2506,7 +2506,7 @@
     },
     "product": {
       "title": "Hentsch Credit dentro de la sociedad",
-      "body": "Hentsch Credit es la oferta con garantía en criptoactivos explotada por {legalName}. Los servicios enumerados arriba son los publicados en el sitio web oficial de la sociedad; las condiciones y los riesgos propios de Hentsch Credit se detallan en nuestras condiciones generales y en nuestra página de gestión de riesgos."
+      "body": "Hentsch Credit es la plataforma explotada por {legalName}: la inversión es su producto principal y el crédito cripto-colateralizado un servicio complementario. Los servicios enumerados arriba son los publicados en el sitio oficial de la sociedad; las condiciones y los riesgos propios de Hentsch Credit se detallan en nuestras condiciones generales y en nuestra página de gestión de riesgos."
     },
     "framework": {
       "title": "Marco regulatorio y custodia de los activos",

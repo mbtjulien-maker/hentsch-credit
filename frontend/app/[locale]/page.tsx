@@ -42,15 +42,15 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
   const t = await getTranslations("Home");
 
   const STATS = [
-    { icon: Percent, value: "350%", label: t("stats.ratio") },
     { icon: ShieldCheck, value: t("stats.custodyValue"), label: t("stats.custodyLabel") },
     { icon: UserCheck, value: t("stats.kycValue"), label: t("stats.kycLabel") },
+    { icon: Percent, value: "350%", label: t("stats.ratio") },
   ] as const;
 
   // Chaque carte renvoie vers une page dédiée (cf. SiteNav pour le menu, ces mêmes pages
   // pour le contenu complet) — l'accueil garde un aperçu court plutôt que de tout dérouler
-  // en une seule page. Regroupées comme l'en-tête (cf. lib/site-navigation.ts) : le crédit
-  // d'un côté, l'investissement et le suivi des marchés de l'autre, au lieu d'une seule
+  // en une seule page. Regroupées comme l'en-tête (cf. lib/site-navigation.ts) : investissement
+  // et marchés d'abord (produit phare), le crédit en service secondaire, au lieu d'une seule
   // rangée de cinq cartes de natures différentes (retour client : "trop mélangé").
   const CREDIT_TEASERS = [
     { icon: Wallet, title: t("teasers.howItWorks.title"), description: t("teasers.howItWorks.description"), href: "/comment-ca-marche" },
@@ -80,9 +80,9 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
           <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
             {t("badge")}
           </span>
-          <h1 className="font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
+          <h2 className="font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
             {t("titleLine1")} <span className="text-primary">{t("titleHighlight")}</span>.
-          </h1>
+          </h2>
           <p className="max-w-lg text-lg text-muted-foreground">{t("subtitle")}</p>
 
           <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card px-8 py-5 lg:items-start">
@@ -122,9 +122,9 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
           <span className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
             {t("investmentHero.badge")}
           </span>
-          <h2 className="font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
+          <h1 className="font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
             {t("investmentHero.titleLine1")} <span className="text-primary">{t("investmentHero.titleHighlight")}</span>.
-          </h2>
+          </h1>
           <p className="max-w-lg text-lg text-muted-foreground">{t("investmentHero.subtitle")}</p>
 
           <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card px-8 py-5 lg:items-start">
@@ -160,7 +160,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
       {/* Retour client : alterner crédit gagé et investissement direct plutôt que les
           empiler l'un sous l'autre, façon bandeau publicitaire (3s par slide, pause au
           survol, cf. HeroCarousel). */}
-      <HeroCarousel slides={[creditHero, investmentHero]} />
+      <HeroCarousel slides={[investmentHero, creditHero]} />
 
       <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
         <div className="mb-10 text-center">
@@ -169,6 +169,17 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
         </div>
 
         <div className="flex flex-col gap-12">
+          <div>
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold text-foreground">{t("groups.invest.title")}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{t("groups.invest.description")}</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {INVEST_TEASERS.map((teaser) => (
+                <SectionTeaserCard key={teaser.href} {...teaser} />
+              ))}
+            </div>
+          </div>
           <div>
             <div className="mb-4">
               <h3 className="text-lg font-semibold text-foreground">{t("groups.credit.title")}</h3>
@@ -181,17 +192,6 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
             </div>
           </div>
 
-          <div>
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold text-foreground">{t("groups.invest.title")}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{t("groups.invest.description")}</p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {INVEST_TEASERS.map((teaser) => (
-                <SectionTeaserCard key={teaser.href} {...teaser} />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

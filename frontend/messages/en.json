@@ -13,9 +13,20 @@
       "strategieRwa": "RWA strategy",
       "marche": "Market",
       "tarifs": "Pricing",
-      "investissementDirect": "Investment"
+      "investissementDirect": "Investment",
+      "aboutUs": "About us",
+      "contact": "Contact",
+      "faq": "FAQ"
     },
-    "connexionLong": "Access my account"
+    "connexionLong": "Access my account",
+    "groups": {
+      "credit": "Credit",
+      "investment": "Investment",
+      "market": "Markets & pricing",
+      "company": "Company"
+    },
+    "menu": "Menu",
+    "mainNavAria": "Main navigation"
   },
   "Footer": {
     "columns": {
@@ -49,6 +60,12 @@
         "title": "Personal data",
         "privacyPolicy": "Privacy policy",
         "cookiePolicy": "Cookie policy"
+      },
+      "invest": {
+        "title": "Investing & markets"
+      },
+      "legal": {
+        "title": "Legal information"
       }
     },
     "disclaimer": "{tradingName} is an offering of {legalName}, an independent asset manager under Swiss law, supervised by {supervisionBodyName}, a supervisory organisation licensed by the {supervisoryAuthority}. Access is restricted to a limited clientele, by invitation only. This platform is not open to the public.",
@@ -115,7 +132,18 @@
       "basketsTitle": "A risk gradient, not a single box",
       "basketsSubtitle": "From the most conservative to the most dynamic, each basket has its own indicative target.",
       "basketsTodaySuffix": "today"
-    }
+    },
+    "groups": {
+      "credit": {
+        "title": "Credit backed by your assets",
+        "description": "Pledge assets as collateral and unlock a credit line without selling them."
+      },
+      "invest": {
+        "title": "Invest and follow the markets",
+        "description": "Place your capital in real baskets and follow live prices."
+      }
+    },
+    "trustTitle": "A secure framework"
   },
   "HowItWorks": {
     "meta": {

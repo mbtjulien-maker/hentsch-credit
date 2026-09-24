@@ -50,15 +50,19 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
 
   // Chaque carte renvoie vers une page dédiée (cf. SiteNav pour le menu, ces mêmes pages
   // pour le contenu complet) — l'accueil garde un aperçu court plutôt que de tout dérouler
-  // en une seule page.
-  const SECTION_TEASERS = [
+  // en une seule page. Regroupées comme l'en-tête (cf. lib/site-navigation.ts) : le crédit
+  // d'un côté, l'investissement et le suivi des marchés de l'autre, au lieu d'une seule
+  // rangée de cinq cartes de natures différentes (retour client : "trop mélangé").
+  const CREDIT_TEASERS = [
     { icon: Wallet, title: t("teasers.howItWorks.title"), description: t("teasers.howItWorks.description"), href: "/comment-ca-marche" },
     { icon: Sparkles, title: t("teasers.yield.title"), description: t("teasers.yield.description"), href: "/rendement" },
     { icon: Layers, title: t("teasers.rwa.title"), description: t("teasers.rwa.description"), href: "/strategie-rwa" },
-    { icon: TrendingUp, title: t("teasers.market.title"), description: t("teasers.market.description"), href: "/marche" },
-    // Troisième produit de la plateforme (§2H CLAUDE.md) — même traitement que les
-    // autres cartes ci-dessus : un aperçu court renvoyant vers sa propre page dédiée.
+  ] as const;
+  const INVEST_TEASERS = [
+    // Troisième produit de la plateforme (§2H CLAUDE.md) — aperçu court renvoyant vers sa
+    // propre page dédiée.
     { icon: LineChart, title: t("teasers.investment.title"), description: t("teasers.investment.description"), href: "/investissement-direct" },
+    { icon: TrendingUp, title: t("teasers.market.title"), description: t("teasers.market.description"), href: "/marche" },
   ] as const;
 
   // Hero crédit gagé — inchangé dans son contenu, extrait en variable pour devenir une
@@ -198,18 +202,40 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
       <HeroCarousel slides={[creditHero, investmentHero]} />
 
       <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
-        <div className="mb-8 text-center">
+        <div className="mb-10 text-center">
           <h2 className="text-2xl font-semibold text-foreground">{t("discoverTitle")}</h2>
           <p className="mt-2 text-muted-foreground">{t("discoverDescription")}</p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {SECTION_TEASERS.map((teaser) => (
-            <SectionTeaserCard key={teaser.href} {...teaser} />
-          ))}
+
+        <div className="flex flex-col gap-12">
+          <div>
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold text-foreground">{t("groups.credit.title")}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{t("groups.credit.description")}</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-3">
+              {CREDIT_TEASERS.map((teaser) => (
+                <SectionTeaserCard key={teaser.href} {...teaser} />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold text-foreground">{t("groups.invest.title")}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">{t("groups.invest.description")}</p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {INVEST_TEASERS.map((teaser) => (
+                <SectionTeaserCard key={teaser.href} {...teaser} />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
+      <section className="mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6">
+        <h2 className="mb-6 text-center text-2xl font-semibold text-foreground">{t("trustTitle")}</h2>
         <div className="grid gap-4 sm:grid-cols-3">
           {STATS.map((stat) => (
             <div key={stat.label} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">

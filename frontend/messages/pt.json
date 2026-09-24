@@ -13,9 +13,20 @@
       "strategieRwa": "Estratégia RWA",
       "marche": "Mercado",
       "tarifs": "Tarifários",
-      "investissementDirect": "Investimento"
+      "investissementDirect": "Investimento",
+      "aboutUs": "Sobre nós",
+      "contact": "Contacto",
+      "faq": "Perguntas frequentes"
     },
-    "connexionLong": "Aceder à minha conta"
+    "connexionLong": "Aceder à minha conta",
+    "groups": {
+      "credit": "Crédito",
+      "investment": "Investimento",
+      "market": "Mercados e tarifas",
+      "company": "Empresa"
+    },
+    "menu": "Menu",
+    "mainNavAria": "Navegação principal"
   },
   "Footer": {
     "columns": {
@@ -49,6 +60,12 @@
         "title": "Dados pessoais",
         "privacyPolicy": "Política de privacidade",
         "cookiePolicy": "Política de cookies"
+      },
+      "invest": {
+        "title": "Investir e mercados"
+      },
+      "legal": {
+        "title": "Informação legal"
       }
     },
     "disclaimer": "{tradingName} é uma oferta de {legalName}, gestor de fortuna independente de direito suíço, supervisionado pela {supervisionBodyName}, organismo de supervisão autorizado pela {supervisoryAuthority}. Acesso reservado a uma clientela restrita, por convite. Esta plataforma não está aberta ao público.",
@@ -115,7 +132,18 @@
       "basketsTitle": "Um gradiente de risco, não uma única opção",
       "basketsSubtitle": "Do mais prudente ao mais dinâmico, cada cabaz tem o seu próprio objetivo indicativo.",
       "basketsTodaySuffix": "hoje"
-    }
+    },
+    "groups": {
+      "credit": {
+        "title": "Crédito garantido pelos seus ativos",
+        "description": "Dê ativos em garantia e desbloqueie uma linha de crédito sem os vender."
+      },
+      "invest": {
+        "title": "Investir e acompanhar os mercados",
+        "description": "Coloque o seu capital em cestos reais e acompanhe as cotações em direto."
+      }
+    },
+    "trustTitle": "Um quadro seguro"
   },
   "HowItWorks": {
     "meta": {

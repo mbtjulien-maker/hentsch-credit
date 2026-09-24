@@ -13,9 +13,20 @@
       "strategieRwa": "Stratégie RWA",
       "marche": "Marché",
       "tarifs": "Tarifs",
-      "investissementDirect": "Investissement"
+      "investissementDirect": "Investissement",
+      "aboutUs": "À propos",
+      "contact": "Contact",
+      "faq": "FAQ"
     },
-    "connexionLong": "Accéder à mon compte"
+    "connexionLong": "Accéder à mon compte",
+    "groups": {
+      "credit": "Crédit",
+      "investment": "Investissement",
+      "market": "Marché & tarifs",
+      "company": "Entreprise"
+    },
+    "menu": "Menu",
+    "mainNavAria": "Navigation principale"
   },
   "Footer": {
     "columns": {
@@ -49,6 +60,12 @@
         "title": "Données personnelles",
         "privacyPolicy": "Politique de confidentialité",
         "cookiePolicy": "Politique de cookies"
+      },
+      "invest": {
+        "title": "Investir et marchés"
+      },
+      "legal": {
+        "title": "Informations légales"
       }
     },
     "disclaimer": "{tradingName} est une offre de {legalName}, gestionnaire de fortune indépendant de droit suisse, supervisé par {supervisionBodyName}, organisme de surveillance agréé par l''{supervisoryAuthority}. Accès réservé à une clientèle restreinte, sur invitation. Cette plateforme n'est pas ouverte au public.",
@@ -115,7 +132,18 @@
       "basketsTitle": "Un gradient de risque, pas une case unique",
       "basketsSubtitle": "Du plus prudent au plus dynamique, chaque panier a son propre objectif indicatif.",
       "basketsTodaySuffix": "aujourd'hui"
-    }
+    },
+    "groups": {
+      "credit": {
+        "title": "Le crédit adossé à vos actifs",
+        "description": "Déposez des actifs en garantie et débloquez une ligne de crédit, sans les vendre."
+      },
+      "invest": {
+        "title": "Investir et suivre les marchés",
+        "description": "Placez votre capital sur des paniers réels et suivez les cours en direct."
+      }
+    },
+    "trustTitle": "Un cadre sécurisé"
   },
   "HowItWorks": {
     "meta": {

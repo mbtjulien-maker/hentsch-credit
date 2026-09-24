@@ -13,9 +13,20 @@
       "strategieRwa": "RWA-strategi",
       "marche": "Marknad",
       "tarifs": "Priser",
-      "investissementDirect": "Investering"
+      "investissementDirect": "Investering",
+      "aboutUs": "Om oss",
+      "contact": "Kontakt",
+      "faq": "Vanliga frågor"
     },
-    "connexionLong": "Till mitt konto"
+    "connexionLong": "Till mitt konto",
+    "groups": {
+      "credit": "Kredit",
+      "investment": "Investering",
+      "market": "Marknader & priser",
+      "company": "Företag"
+    },
+    "menu": "Meny",
+    "mainNavAria": "Huvudnavigering"
   },
   "Footer": {
     "columns": {
@@ -49,6 +60,12 @@
         "title": "Personuppgifter",
         "privacyPolicy": "Integritetspolicy",
         "cookiePolicy": "Cookiepolicy"
+      },
+      "invest": {
+        "title": "Investera och marknader"
+      },
+      "legal": {
+        "title": "Juridisk information"
       }
     },
     "disclaimer": "{tradingName} är ett erbjudande från {legalName}, en oberoende kapitalförvaltare enligt schweizisk rätt, under tillsyn av {supervisionBodyName}, ett tillsynsorgan godkänt av {supervisoryAuthority}. Tillgång endast för en begränsad kundkrets, på inbjudan. Denna plattform är inte öppen för allmänheten.",
@@ -115,7 +132,18 @@
       "basketsTitle": "En riskgradient, inte en enda ruta",
       "basketsSubtitle": "Från den mest försiktiga till den mest dynamiska har varje korg sitt eget indikativa mål.",
       "basketsTodaySuffix": "idag"
-    }
+    },
+    "groups": {
+      "credit": {
+        "title": "Kredit mot dina tillgångar",
+        "description": "Ställ tillgångar som säkerhet och lås upp en kreditlinje utan att sälja dem."
+      },
+      "invest": {
+        "title": "Investera och följ marknaderna",
+        "description": "Placera ditt kapital i verkliga korgar och följ kurserna live."
+      }
+    },
+    "trustTitle": "En trygg ram"
   },
   "HowItWorks": {
     "meta": {

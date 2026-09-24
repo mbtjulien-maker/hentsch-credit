@@ -13,9 +13,20 @@
       "strategieRwa": "RWA-Strategie",
       "marche": "Markt",
       "tarifs": "Preise",
-      "investissementDirect": "Investition"
+      "investissementDirect": "Investition",
+      "aboutUs": "Über uns",
+      "contact": "Kontakt",
+      "faq": "FAQ"
     },
-    "connexionLong": "Zu meinem Konto"
+    "connexionLong": "Zu meinem Konto",
+    "groups": {
+      "credit": "Kredit",
+      "investment": "Investition",
+      "market": "Märkte & Preise",
+      "company": "Unternehmen"
+    },
+    "menu": "Menü",
+    "mainNavAria": "Hauptnavigation"
   },
   "Footer": {
     "columns": {
@@ -49,6 +60,12 @@
         "title": "Personenbezogene Daten",
         "privacyPolicy": "Datenschutzrichtlinie",
         "cookiePolicy": "Cookie-Richtlinie"
+      },
+      "invest": {
+        "title": "Investieren & Märkte"
+      },
+      "legal": {
+        "title": "Rechtliche Informationen"
       }
     },
     "disclaimer": "{tradingName} ist ein Angebot von {legalName}, einem unabhängigen Vermögensverwalter schweizerischen Rechts, beaufsichtigt von {supervisionBodyName}, einer von der {supervisoryAuthority} zugelassenen Aufsichtsorganisation. Zugang ausschließlich für einen eingeschränkten Kundenkreis, auf Einladung. Diese Plattform ist nicht öffentlich zugänglich.",
@@ -115,7 +132,18 @@
       "basketsTitle": "Ein Risikogradient, keine Einheitslösung",
       "basketsSubtitle": "Vom vorsichtigsten bis zum dynamischsten Korb hat jeder sein eigenes indikatives Ziel.",
       "basketsTodaySuffix": "heute"
-    }
+    },
+    "groups": {
+      "credit": {
+        "title": "Kredit, gedeckt durch Ihre Vermögenswerte",
+        "description": "Hinterlegen Sie Vermögenswerte als Sicherheit und erhalten Sie eine Kreditlinie, ohne sie zu verkaufen."
+      },
+      "invest": {
+        "title": "Investieren und Märkte verfolgen",
+        "description": "Legen Sie Ihr Kapital in reale Körbe an und verfolgen Sie die Kurse live."
+      }
+    },
+    "trustTitle": "Ein sicherer Rahmen"
   },
   "HowItWorks": {
     "meta": {

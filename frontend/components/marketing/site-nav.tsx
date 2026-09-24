@@ -1,51 +1,44 @@
 "use client";
 
 import Image from "next/image";
-import { CircleUserRound } from "lucide-react";
+import { ChevronDown, CircleUserRound, Menu } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LanguageSwitcher } from "@/components/marketing/language-switcher";
-
-// href -> clé de traduction (Nav.links.*) — un objet plutôt qu'un tableau de tuples pour
-// que l'ordre d'affichage (celui des clés ci-dessous) reste trivial à relire/réordonner.
-const NAV_LINK_KEYS = {
-  "/comment-ca-marche": "commentCaMarche",
-  "/rendement": "rendement",
-  "/strategie-rwa": "strategieRwa",
-  "/investissement-direct": "investissementDirect",
-  "/marche": "marche",
-  "/tarifs": "tarifs",
-} as const;
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { isGroupActive, SITE_NAV } from "@/lib/site-navigation";
+import { cn } from "@/lib/utils";
 
 // Barre de navigation de la vitrine publique ("/") — distincte de la sidebar/header de
-// l'espace client connecté (cf. app/dashboard/layout.tsx). Menu masqué en dessous de lg
-// (repris dans le pied de page, cf. SiteFooter) : pas de menu mobile dédié pour l'instant,
-// périmètre volontairement restreint.
+// l'espace client connecté (cf. app/dashboard/layout.tsx). Quatre entrées regroupées par
+// intention (cf. lib/site-navigation.ts) : Crédit et Marché et Entreprise ouvrent un menu
+// déroulant, Investissement est un lien direct. Sous lg, un vrai menu (bouton hamburger)
+// remplace l'ancien repli sur le pied de page : toutes les pages y sont, par groupe.
 //
-// Composant client (pas un Server Component asynchrone comme avant) : le fond coulissant
-// a besoin de usePathname() (page active) et de mesurer les liens au survol/à chaque
-// changement de page — deux choses que seul le client sait faire. useTranslations
-// (variante client de next-intl) remplace getTranslations, alimenté par le
-// NextIntlClientProvider déjà posé plus haut dans l'arbre (cf. app/[locale]/layout.tsx).
-//
-// Le fond coulissant est repositionné en manipulant directement le style du DOM (pillRef)
-// plutôt que via un useState : ce n'est qu'un décor (aria-hidden), jamais une donnée dont
-// le reste du rendu dépend — passer par setState forcerait un re-render à chaque survol
-// pour ne bouger qu'un seul <span>, que React lui-même déconseille désormais de faire
-// depuis un effet (règle react-hooks/set-state-in-effect).
+// Composant client : le fond coulissant a besoin de usePathname() (page active) et de
+// mesurer les entrées au survol/à chaque changement de page — deux choses que seul le
+// client sait faire. Il est repositionné en manipulant directement le style du DOM
+// (pillRef) plutôt que via un useState : ce n'est qu'un décor (aria-hidden), jamais une
+// donnée dont le reste du rendu dépend (règle react-hooks/set-state-in-effect).
 export function SiteNav() {
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
-  const linkRefs = useRef(new Map<string, HTMLAnchorElement>());
+  // Une entrée par GROUPE (lien direct ou déclencheur de menu), clé = id du groupe.
+  const itemRefs = useRef(new Map<string, HTMLElement>());
 
-  const NAV_LINKS = Object.entries(NAV_LINK_KEYS).map(([href, key]) => ({
-    href,
-    label: t(`links.${key}`),
-  }));
+  const activeGroupId = SITE_NAV.find((group) => isGroupActive(group, pathname))?.id ?? null;
 
   // Le fond déborde légèrement de chaque côté du texte (PILL_PADDING_PX) pour ne pas le
   // toucher pile — un padding sur le lien lui-même ferait le même effet mais élargirait
@@ -55,11 +48,11 @@ export function SiteNav() {
   // entre les liens laisse largement la place.
   const PILL_PADDING_PX = 6;
 
-  function positionPill(href: string | null) {
+  function positionPill(groupId: string | null) {
     const container = navRef.current;
     const pill = pillRef.current;
     if (!container || !pill) return;
-    const el = href ? linkRefs.current.get(href) : undefined;
+    const el = groupId ? itemRefs.current.get(groupId) : undefined;
     if (!el) {
       pill.style.opacity = "0";
       pill.style.width = "0px";
@@ -78,8 +71,8 @@ export function SiteNav() {
   // useLayoutEffect (pas useEffect) : positionne le fond avant la peinture du navigateur,
   // pour qu'il apparaisse jamais dans le coin puis "saute" à sa place.
   useLayoutEffect(() => {
-    positionPill(pathname);
-  }, [pathname]);
+    positionPill(activeGroupId);
+  }, [activeGroupId]);
 
   return (
     <header className="sticky top-0 z-20 border-b border-border/80 bg-card/70 backdrop-blur-xl">
@@ -95,41 +88,117 @@ export function SiteNav() {
         </Link>
         <nav
           ref={navRef}
-          onMouseLeave={() => positionPill(pathname)}
-          className="relative hidden items-center gap-4 lg:flex"
+          aria-label={t("mainNavAria")}
+          onMouseLeave={() => positionPill(activeGroupId)}
+          className="relative hidden items-center gap-6 lg:flex"
         >
-          {/* Fond coulissant — un seul élément partagé, jamais un par lien : c'est ce qui
+          {/* Fond coulissant — un seul élément partagé, jamais un par entrée : c'est ce qui
               produit l'effet de glissement (transition sur left/width) plutôt qu'un
-              fondu discontinu d'un highlight à l'autre. Invisible tant qu'aucun lien n'est
-              actif ni survolé (ex. page d'accueil, hors de NAV_LINK_KEYS). Position de
-              départ (left/width à 0) neutralisée par la transition dès le premier
-              positionnement réel dans useLayoutEffect. Même teinte cyan que la piste
-              (cf. <nav> ci-dessus) mais nettement plus saturée pour rester visible
-              par-dessus — cyan-400 est déjà la couleur de marque du site (cf. le dégradé
-              cyan→fuchsia du CTA "Accéder à mon compte" et du hero), pas une couleur
-              ajoutée au hasard. */}
+              fondu discontinu d'un highlight à l'autre. Invisible tant qu'aucune entrée
+              n'est active ni survolée (ex. page d'accueil). */}
           <span
             ref={pillRef}
             aria-hidden
             className="pointer-events-none absolute inset-y-0 top-1/2 h-8 w-0 -translate-y-1/2 rounded-full bg-cyan-400/25 opacity-0 transition-[left,width,opacity] duration-300 ease-out"
           />
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              ref={(el) => {
-                if (el) linkRefs.current.set(link.href, el);
-                else linkRefs.current.delete(link.href);
-              }}
-              href={link.href}
-              onMouseEnter={() => positionPill(link.href)}
-              aria-current={pathname === link.href ? "page" : undefined}
-              className="relative whitespace-nowrap text-sm font-medium text-muted-foreground transition-colors hover:text-foreground aria-[current=page]:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {SITE_NAV.map((group) => {
+            const active = group.id === activeGroupId;
+            const triggerClass = cn(
+              "relative inline-flex items-center gap-1 whitespace-nowrap text-sm font-medium transition-colors hover:text-foreground",
+              active ? "text-foreground" : "text-muted-foreground",
+            );
+            const register = (el: HTMLElement | null) => {
+              if (el) itemRefs.current.set(group.id, el);
+              else itemRefs.current.delete(group.id);
+            };
+            if (!group.items) {
+              return (
+                <Link
+                  key={group.id}
+                  ref={register}
+                  href={group.href!}
+                  onMouseEnter={() => positionPill(group.id)}
+                  aria-current={active ? "page" : undefined}
+                  className={triggerClass}
+                >
+                  {t(`groups.${group.labelKey}`)}
+                </Link>
+              );
+            }
+            return (
+              <DropdownMenu key={group.id}>
+                <DropdownMenuTrigger
+                  openOnHover
+                  delay={60}
+                  closeDelay={140}
+                  onMouseEnter={() => positionPill(group.id)}
+                  render={
+                    <button ref={register} type="button" className={triggerClass}>
+                      {t(`groups.${group.labelKey}`)}
+                      <ChevronDown className="size-3.5 opacity-70" />
+                    </button>
+                  }
+                />
+                <DropdownMenuContent align="start" className="w-56">
+                  {group.items.map((item) => (
+                    <DropdownMenuItem
+                      key={item.href}
+                      render={<Link href={item.href} />}
+                      className={cn("px-2.5 py-2 text-sm", pathname === item.href && "font-semibold text-foreground")}
+                    >
+                      {t(`links.${item.itemKey}`)}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            );
+          })}
         </nav>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          {/* Menu mobile/tablette (< lg) — remplace l'ancien repli sur le seul pied de page :
+              toutes les pages y sont, regroupées comme dans l'en-tête desktop. */}
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <button
+                  type="button"
+                  aria-label={t("menu")}
+                  title={t("menu")}
+                  className="flex size-9 shrink-0 items-center justify-center rounded-full border border-border/80 bg-card text-foreground transition-colors hover:border-border hover:bg-muted lg:hidden"
+                >
+                  <Menu className="size-4" />
+                </button>
+              }
+            />
+            <DropdownMenuContent align="end" className="w-64">
+              {SITE_NAV.map((group, index) => (
+                <DropdownMenuGroup key={group.id}>
+                  {index > 0 && <DropdownMenuSeparator />}
+                  {group.items ? (
+                    <>
+                      <DropdownMenuLabel>{t(`groups.${group.labelKey}`)}</DropdownMenuLabel>
+                      {group.items.map((item) => (
+                        <DropdownMenuItem
+                          key={item.href}
+                          render={<Link href={item.href} />}
+                          className={cn("px-2.5 py-2", pathname === item.href && "font-semibold text-foreground")}
+                        >
+                          {t(`links.${item.itemKey}`)}
+                        </DropdownMenuItem>
+                      ))}
+                    </>
+                  ) : (
+                    <DropdownMenuItem
+                      render={<Link href={group.href!} />}
+                      className={cn("px-2.5 py-2 font-medium", pathname === group.href && "font-semibold text-foreground")}
+                    >
+                      {t(`groups.${group.labelKey}`)}
+                    </DropdownMenuItem>
+                  )}
+                </DropdownMenuGroup>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Link
             href="/login"
             aria-label={t("connexionLong")}

@@ -19,6 +19,24 @@ test.describe("Connexion", () => {
     // investissement), cf. HomeBalanceOverview ; "Solde global"/"Gage verrouillé"
     // restent affichés sur /dashboard/solde uniquement (cf. BalanceCards).
     await expect(page.getByText("Solde principal", { exact: true })).toBeVisible();
+
+    // Espace Investissement (section autonome, cf. §6 CLAUDE.md entrée #51) — vérifié
+    // dans la même session plutôt que dans un test dédié : /auth/login est limité à
+    // 5 requêtes/min, et la suite en consomme déjà autant, un login de plus la ferait
+    // échouer en 429 sans rapport avec un vrai bug.
+    await test.step("l'espace Investissement affiche ses sous-pages", async () => {
+      await page.goto("/dashboard/investissement");
+      await expect(page.getByRole("heading", { name: "Investissement", level: 1 })).toBeVisible();
+      await expect(page.getByText("Valeur du portefeuille")).toBeVisible();
+
+      const sectionNav = page.getByRole("navigation", { name: "Navigation de l'espace Investissement" });
+      await sectionNav.getByRole("link", { name: "Approvisionner" }).click();
+      await expect(page).toHaveURL(/\/dashboard\/investissement\/approvisionner/);
+      await expect(page.getByText("Virement interne")).toBeVisible();
+
+      await sectionNav.getByRole("link", { name: "Produits" }).click();
+      await expect(page.getByText("Stratégie RWA").first()).toBeVisible();
+    });
   });
 
   test("un mot de passe incorrect affiche une erreur générique, reste sur /login", async ({ page }) => {

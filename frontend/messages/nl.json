@@ -13,9 +13,20 @@
       "strategieRwa": "RWA-strategie",
       "marche": "Markt",
       "tarifs": "Tarieven",
-      "investissementDirect": "Beleggen"
+      "investissementDirect": "Beleggen",
+      "aboutUs": "Over ons",
+      "contact": "Contact",
+      "faq": "Veelgestelde vragen"
     },
-    "connexionLong": "Naar mijn account"
+    "connexionLong": "Naar mijn account",
+    "groups": {
+      "credit": "Krediet",
+      "investment": "Beleggen",
+      "market": "Markten & tarieven",
+      "company": "Bedrijf"
+    },
+    "menu": "Menu",
+    "mainNavAria": "Hoofdnavigatie"
   },
   "Footer": {
     "columns": {
@@ -49,6 +60,12 @@
         "title": "Persoonsgegevens",
         "privacyPolicy": "Privacybeleid",
         "cookiePolicy": "Cookiebeleid"
+      },
+      "invest": {
+        "title": "Beleggen & markten"
+      },
+      "legal": {
+        "title": "Juridische informatie"
       }
     },
     "disclaimer": "{tradingName} is een aanbod van {legalName}, een onafhankelijke vermogensbeheerder naar Zwitsers recht, onder toezicht van {supervisionBodyName}, een toezichtsorganisatie erkend door de {supervisoryAuthority}. Toegang uitsluitend voor een beperkte klantenkring, op uitnodiging. Dit platform staat niet open voor het publiek.",
@@ -115,7 +132,18 @@
       "basketsTitle": "Een risicogradiënt, geen eenheidsworst",
       "basketsSubtitle": "Van het meest voorzichtige tot het meest dynamische, elke mand heeft haar eigen indicatieve doelstelling.",
       "basketsTodaySuffix": "vandaag"
-    }
+    },
+    "groups": {
+      "credit": {
+        "title": "Krediet gedekt door uw activa",
+        "description": "Zet activa in onderpand en ontgrendel een kredietlijn zonder ze te verkopen."
+      },
+      "invest": {
+        "title": "Beleggen en de markten volgen",
+        "description": "Belegt uw kapitaal in echte mandjes en volg de koersen live."
+      }
+    },
+    "trustTitle": "Een veilig kader"
   },
   "HowItWorks": {
     "meta": {

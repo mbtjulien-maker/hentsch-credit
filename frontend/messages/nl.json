@@ -1155,6 +1155,12 @@
         "creditRequests": "Demandes de crédit",
         "accountRequests": "Demandes de compte",
         "adminArea": "Espace Admin"
+      },
+      "groups": {
+        "money": "Mijn geld",
+        "financing": "Financiering",
+        "investing": "Beleggen",
+        "account": "Mijn account"
       }
     },
     "legalFooter": {
@@ -1226,7 +1232,8 @@
         "dialogTitle": "Opwaarderen met bankkaart",
         "dialogDescription": "Veilige betaling verwerkt door Mollie. Het beschikbare saldo wordt gecrediteerd zodra de betaling is bevestigd.",
         "amountLabel": "Bedrag (USD)",
-        "submit": "Doorgaan naar betaling"
+        "submit": "Doorgaan naar betaling",
+        "dialogDescriptionInvestment": "Het bedrag wordt rechtstreeks op uw beleggingswallet bijgeschreven zodra de betaling is bevestigd."
       },
       "deposit": {
         "trigger": "Storten",
@@ -1248,7 +1255,9 @@
         "descriptionCreditRequest": "Kies het actief en het netwerk om het onderpand voor uw goedgekeurde kredietaanvraag te storten.",
         "modeCreditRequest": "Kredietaanvraag ({amount})",
         "modeGeneral": "Algemene storting",
-        "creditRequestNote": "Stuur alleen {currency} op {chain} naar dit adres. Stort minstens {amount}: het krediet wordt automatisch toegekend bij ontvangst."
+        "creditRequestNote": "Stuur alleen {currency} op {chain} naar dit adres. Stort minstens {amount}: het krediet wordt automatisch toegekend bij ontvangst.",
+        "investmentTargetNotice": "Deze storting wordt rechtstreeks op uw beleggingswallet bijgeschreven, niet op uw hoofdsaldo.",
+        "investmentUnavailable": "Dit activum is niet beschikbaar voor een directe storting naar beleggen. Kies een ander, of stort op uw hoofdsaldo en doe daarna een interne overschrijving."
       },
       "withdraw": {
         "trigger": "Opnemen",
@@ -1871,6 +1880,102 @@
       },
       "confirmDepositRecap": "{amount} wordt geplaatst in de mand \"{basket}\" (volledige opname mogelijk op elk moment, in tegenstelling tot een vastrentend plan).",
       "confirmDeposit": "Belegging bevestigen"
+    },
+    "investmentSpace": {
+      "title": "Beleggen",
+      "subtitle": "Belegt uw kapitaal, volg maand na maand wat het oplevert en houd elke belegging in handen.",
+      "navAriaLabel": "Navigatie van de beleggingsruimte",
+      "nav": {
+        "overview": "Overzicht",
+        "fund": "Storten",
+        "products": "Producten",
+        "placements": "Mijn beleggingen",
+        "journal": "Activiteit"
+      },
+      "overview": {
+        "kpiAria": "Kerncijfers van het beleggen",
+        "heroLabel": "Waarde van de portefeuille",
+        "cumulativeYield": "gecumuleerd rendement",
+        "ctaInvest": "Fondsen beleggen",
+        "ctaFund": "Storten",
+        "walletLabel": "Beschikbaar saldo",
+        "walletHint": "Beleggingswallet, klaar om te beleggen",
+        "investedLabel": "Belegd kapitaal",
+        "investedHint": "{count, plural, =0 {Geen actieve belegging} one {# actieve belegging} other {# actieve beleggingen}}",
+        "periodLabel": "Periode",
+        "period": {
+          "m3": "3 maanden",
+          "m6": "6 maanden",
+          "m12": "12 maanden"
+        },
+        "periodYield": "Rendement van de periode",
+        "periodReturnHint": "op het ingezette kapitaal",
+        "valueTitle": "Ontwikkeling van het kapitaal",
+        "valueDescription": "Waarde van uw belegde portefeuille aan het einde van elke maand (kapitaal en rendement).",
+        "yieldTitle": "Rendement per maand",
+        "yieldDescription": "Nettowinst of nettoverlies per maand. Het kan negatief zijn: een belegging is nooit gegarandeerd.",
+        "placementsTitle": "Lopende beleggingen",
+        "placementsAll": "Alles bekijken",
+        "placementsEmpty": "Geen actieve belegging. Bekijk de producten om uw kapitaal te beleggen.",
+        "disclaimer": "Resultaten uit het verleden bieden geen garantie voor de toekomst. Een belegging is nooit gegarandeerd: het rendement kan negatief zijn en het belegde kapitaal kan dalen. De getoonde bedragen komen uit het werkelijke journaal van uw verrichtingen en uit dagelijkse rendementen berekend op marktgegevens; geen enkele projectie wordt als resultaat gepresenteerd."
+      },
+      "charts": {
+        "viewChart": "Grafiek",
+        "viewTable": "Tabel",
+        "valueAria": "Lijn van de waarde van de belegde portefeuille, maand per maand",
+        "yieldAria": "Kolommen van het behaalde nettorendement, maand per maand",
+        "empty": "Geen belegging in deze periode. Uw lijn verschijnt bij uw eerste belegging.",
+        "emptyYield": "Geen rendement in deze periode.",
+        "tooltip": {
+          "value": "Waarde einde maand",
+          "deposits": "Belegd kapitaal",
+          "withdrawals": "Opgenomen kapitaal",
+          "yield": "Rendement van de maand"
+        },
+        "table": {
+          "month": "Maand",
+          "endValue": "Waarde einde maand",
+          "deposits": "Belegd",
+          "withdrawals": "Opgenomen",
+          "yield": "Rendement"
+        }
+      },
+      "funding": {
+        "balancesAria": "Saldo's",
+        "mainBalance": "Hoofdsaldo",
+        "mainBalanceHint": "Krediet, kaarten en opnames",
+        "walletBalance": "Beleggingswallet",
+        "walletBalanceHint": "Beschikbaar voor uw beleggingen",
+        "transfer": {
+          "title": "Interne overschrijving",
+          "description": "Direct en kosteloos tussen uw hoofdsaldo en uw beleggingswallet.",
+          "available": "Beschikbaar: {amount}"
+        },
+        "crypto": {
+          "title": "Storting in cryptoactiva",
+          "description": "Stuur een stablecoin, getokeniseerd goud of ETH naar het stortingsadres van de bank: het bedrag wordt rechtstreeks op uw beleggingswallet bijgeschreven.",
+          "delay": "Handmatig gevalideerd door de bank na ontvangst van de fondsen, daarna op de wallet bijgeschreven."
+        },
+        "card": {
+          "title": "Bankkaart",
+          "description": "Laad uw beleggingswallet rechtstreeks op met een kaart.",
+          "delay": "Bijgeschreven zodra de betaling is bevestigd."
+        }
+      },
+      "products": {
+        "availableLabel": "Beschikbaar om te beleggen",
+        "fund": "Storten"
+      },
+      "journal": {
+        "filterAria": "Het activiteitenjournaal filteren",
+        "filter": {
+          "funds": "Geldbewegingen",
+          "all": "Alles",
+          "yield": "Rendementen"
+        },
+        "empty": "Geen verrichtingen voor dit filter.",
+        "more": "Meer tonen ({count})"
+      }
     },
     "kycDossier": {
       "title": "KYC-dossier",

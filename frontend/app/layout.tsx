@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Rajdhani, Titillium_Web } from "next/font/google";
 import { ThemeProvider } from "@/lib/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
@@ -12,6 +12,24 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Police de l'espace client connecté (cf. .client-typography, app/globals.css) — mêmes
+// familles que le modèle Bierbike (Rajdhani pour les titres et chiffres clés, Titillium
+// Web pour le texte courant), sur demande du client. Auto-hébergées par next/font au
+// build : aucune requête vers Google au chargement, donc rien à ajouter à la CSP.
+const rajdhani = Rajdhani({
+  variable: "--font-rajdhani",
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600", "700"],
+  display: "swap",
+});
+
+const titilliumWeb = Titillium_Web({
+  variable: "--font-titillium",
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "600", "700"],
+  display: "swap",
 });
 
 // URL publique du site — utilisée pour résoudre les images Open Graph/Twitter et les URLs
@@ -77,7 +95,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${rajdhani.variable} ${titilliumWeb.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

@@ -1155,6 +1155,12 @@
         "creditRequests": "Demandes de crédit",
         "accountRequests": "Demandes de compte",
         "adminArea": "Espace Admin"
+      },
+      "groups": {
+        "money": "Mina pengar",
+        "financing": "Finansiering",
+        "investing": "Investering",
+        "account": "Mitt konto"
       }
     },
     "legalFooter": {
@@ -1226,7 +1232,8 @@
         "dialogTitle": "Fyll på med bankkort",
         "dialogDescription": "Säker betalning hanterad av Mollie. Det tillgängliga saldot krediteras så snart betalningen är bekräftad.",
         "amountLabel": "Belopp (USD)",
-        "submit": "Fortsätt till betalning"
+        "submit": "Fortsätt till betalning",
+        "dialogDescriptionInvestment": "Beloppet krediteras direkt på din investeringsplånbok när betalningen är bekräftad."
       },
       "deposit": {
         "trigger": "Sätt in",
@@ -1248,7 +1255,9 @@
         "descriptionCreditRequest": "Välj tillgång och nätverk för att sätta in säkerheten för din godkända kreditansökan.",
         "modeCreditRequest": "Kreditansökan ({amount})",
         "modeGeneral": "Allmän insättning",
-        "creditRequestNote": "Skicka endast {currency} på {chain} till denna adress. Sätt in minst {amount}: krediten utfärdas automatiskt vid mottagande."
+        "creditRequestNote": "Skicka endast {currency} på {chain} till denna adress. Sätt in minst {amount}: krediten utfärdas automatiskt vid mottagande.",
+        "investmentTargetNotice": "Denna insättning krediteras direkt på din investeringsplånbok, inte på ditt huvudsaldo.",
+        "investmentUnavailable": "Den här tillgången är inte tillgänglig för direkt insättning till investering. Välj en annan, eller sätt in på ditt huvudsaldo och gör sedan en intern överföring."
       },
       "withdraw": {
         "trigger": "Ta ut",
@@ -1871,6 +1880,102 @@
       },
       "confirmDepositRecap": "{amount} kommer att placeras i korgen \"{basket}\" (fullständigt uttag möjligt när som helst, till skillnad från en plan med fast löptid).",
       "confirmDeposit": "Bekräfta placeringen"
+    },
+    "investmentSpace": {
+      "title": "Investering",
+      "subtitle": "Placera ditt kapital, följ vad det genererar månad för månad och behåll kontrollen över varje placering.",
+      "navAriaLabel": "Navigering för investeringsdelen",
+      "nav": {
+        "overview": "Översikt",
+        "fund": "Fyll på",
+        "products": "Produkter",
+        "placements": "Mina placeringar",
+        "journal": "Aktivitet"
+      },
+      "overview": {
+        "kpiAria": "Nyckeltal för investeringen",
+        "heroLabel": "Portföljens värde",
+        "cumulativeYield": "ackumulerad avkastning",
+        "ctaInvest": "Placera medel",
+        "ctaFund": "Fyll på",
+        "walletLabel": "Tillgängligt saldo",
+        "walletHint": "Investeringsplånbok, redo att placeras",
+        "investedLabel": "Investerat kapital",
+        "investedHint": "{count, plural, =0 {Ingen aktiv placering} one {# aktiv placering} other {# aktiva placeringar}}",
+        "periodLabel": "Period",
+        "period": {
+          "m3": "3 månader",
+          "m6": "6 månader",
+          "m12": "12 månader"
+        },
+        "periodYield": "Periodens avkastning",
+        "periodReturnHint": "på det insatta kapitalet",
+        "valueTitle": "Kapitalets utveckling",
+        "valueDescription": "Värdet på din investerade portfölj vid slutet av varje månad (kapital och avkastning).",
+        "yieldTitle": "Avkastning per månad",
+        "yieldDescription": "Nettovinst eller nettoförlust per månad. Den kan vara negativ: en placering är aldrig garanterad.",
+        "placementsTitle": "Pågående placeringar",
+        "placementsAll": "Visa alla",
+        "placementsEmpty": "Ingen aktiv placering. Utforska produkterna för att placera ditt kapital.",
+        "disclaimer": "Historisk avkastning är ingen garanti för framtida resultat. En placering är aldrig garanterad: avkastningen kan vara negativ och det investerade kapitalet kan minska. Beloppen som visas kommer från den faktiska loggen över dina transaktioner och från dagliga avkastningar beräknade på marknadsdata; ingen prognos presenteras som ett resultat."
+      },
+      "charts": {
+        "viewChart": "Diagram",
+        "viewTable": "Tabell",
+        "valueAria": "Kurva över den investerade portföljens värde, månad för månad",
+        "yieldAria": "Kolumner över genererad nettoavkastning, månad för månad",
+        "empty": "Ingen placering under denna period. Din kurva visas när du gör din första placering.",
+        "emptyYield": "Ingen avkastning under denna period.",
+        "tooltip": {
+          "value": "Värde vid månadens slut",
+          "deposits": "Placerat kapital",
+          "withdrawals": "Uttaget kapital",
+          "yield": "Månadens avkastning"
+        },
+        "table": {
+          "month": "Månad",
+          "endValue": "Värde vid månadens slut",
+          "deposits": "Placerat",
+          "withdrawals": "Uttaget",
+          "yield": "Avkastning"
+        }
+      },
+      "funding": {
+        "balancesAria": "Saldon",
+        "mainBalance": "Huvudsaldo",
+        "mainBalanceHint": "Kredit, kort och uttag",
+        "walletBalance": "Investeringsplånbok",
+        "walletBalanceHint": "Tillgängligt för dina placeringar",
+        "transfer": {
+          "title": "Intern överföring",
+          "description": "Omedelbar och kostnadsfri mellan ditt huvudsaldo och din investeringsplånbok.",
+          "available": "Tillgängligt: {amount}"
+        },
+        "crypto": {
+          "title": "Insättning i kryptotillgångar",
+          "description": "Skicka en stablecoin, tokeniserat guld eller ETH till bankens insättningsadress: beloppet krediteras direkt på din investeringsplånbok.",
+          "delay": "Valideras manuellt av banken när medlen mottagits och krediteras sedan på plånboken."
+        },
+        "card": {
+          "title": "Bankkort",
+          "description": "Fyll på din investeringsplånbok direkt med kort.",
+          "delay": "Krediteras så snart betalningen är bekräftad."
+        }
+      },
+      "products": {
+        "availableLabel": "Tillgängligt att placera",
+        "fund": "Fyll på"
+      },
+      "journal": {
+        "filterAria": "Filtrera aktivitetsloggen",
+        "filter": {
+          "funds": "Medelsrörelser",
+          "all": "Alla",
+          "yield": "Avkastningar"
+        },
+        "empty": "Inga transaktioner för detta filter.",
+        "more": "Visa fler ({count})"
+      }
     },
     "kycDossier": {
       "title": "KYC-dossier",

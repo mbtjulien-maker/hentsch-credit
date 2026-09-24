@@ -1155,6 +1155,12 @@
         "creditRequests": "Demandes de crédit",
         "accountRequests": "Demandes de compte",
         "adminArea": "Espace Admin"
+      },
+      "groups": {
+        "money": "Mon argent",
+        "financing": "Financement",
+        "investing": "Investissement",
+        "account": "Mon compte"
       }
     },
     "legalFooter": {
@@ -1226,7 +1232,8 @@
         "dialogTitle": "Recharger par carte bancaire",
         "dialogDescription": "Paiement sécurisé géré par Mollie. Le solde disponible est crédité dès confirmation du paiement.",
         "amountLabel": "Montant (USD)",
-        "submit": "Continuer vers le paiement"
+        "submit": "Continuer vers le paiement",
+        "dialogDescriptionInvestment": "Le montant sera crédité directement sur votre wallet investissement une fois le paiement confirmé."
       },
       "deposit": {
         "trigger": "Déposer",
@@ -1248,7 +1255,9 @@
         "descriptionCreditRequest": "Choisissez l'actif et le réseau pour déposer la garantie de votre demande de crédit approuvée.",
         "modeCreditRequest": "Demande de crédit ({amount})",
         "modeGeneral": "Dépôt général",
-        "creditRequestNote": "N'envoyez que du {currency} sur {chain} à cette adresse. Déposez au moins {amount} : le crédit est émis automatiquement dès réception."
+        "creditRequestNote": "N'envoyez que du {currency} sur {chain} à cette adresse. Déposez au moins {amount} : le crédit est émis automatiquement dès réception.",
+        "investmentTargetNotice": "Ce dépôt sera crédité directement sur votre wallet investissement, pas sur votre solde principal.",
+        "investmentUnavailable": "Cet actif n'est pas disponible pour un dépôt direct vers l'investissement. Choisissez-en un autre, ou déposez sur votre solde principal puis faites un virement interne."
       },
       "withdraw": {
         "trigger": "Retirer",
@@ -1871,6 +1880,102 @@
       },
       "confirmDepositRecap": "{amount} seront placés sur le panier « {basket} » (retrait intégral possible à tout moment, contrairement à un plan à échéance fixe).",
       "confirmDeposit": "Confirmer le placement"
+    },
+    "investmentSpace": {
+      "title": "Investissement",
+      "subtitle": "Placez votre capital, suivez ce qu'il génère mois après mois et gardez la main sur chaque placement.",
+      "navAriaLabel": "Navigation de l'espace Investissement",
+      "nav": {
+        "overview": "Vue d'ensemble",
+        "fund": "Approvisionner",
+        "products": "Produits",
+        "placements": "Mes placements",
+        "journal": "Journal"
+      },
+      "overview": {
+        "kpiAria": "Chiffres clés de l'investissement",
+        "heroLabel": "Valeur du portefeuille",
+        "cumulativeYield": "de rendement cumulé",
+        "ctaInvest": "Placer des fonds",
+        "ctaFund": "Approvisionner",
+        "walletLabel": "Solde disponible",
+        "walletHint": "Wallet investissement, prêt à être placé",
+        "investedLabel": "Capital investi",
+        "investedHint": "{count, plural, =0 {Aucun placement actif} one {# placement actif} other {# placements actifs}}",
+        "periodLabel": "Période",
+        "period": {
+          "m3": "3 mois",
+          "m6": "6 mois",
+          "m12": "12 mois"
+        },
+        "periodYield": "Rendement de la période",
+        "periodReturnHint": "rapporté au capital engagé",
+        "valueTitle": "Évolution du capital",
+        "valueDescription": "Valeur de votre portefeuille investi en fin de mois (capital et rendement).",
+        "yieldTitle": "Rendement généré par mois",
+        "yieldDescription": "Gain ou perte net de chaque mois. Il peut être négatif : un placement n'est jamais garanti.",
+        "placementsTitle": "Placements en cours",
+        "placementsAll": "Tout voir",
+        "placementsEmpty": "Aucun placement actif. Explorez les produits pour placer votre capital.",
+        "disclaimer": "Les performances passées ne préjugent pas des performances futures. Un placement n'est jamais garanti : le rendement peut être négatif et le capital investi peut diminuer. Les montants affichés proviennent du journal réel de vos opérations et des rendements quotidiens calculés sur des données de marché ; aucune projection n'est présentée comme un résultat."
+      },
+      "charts": {
+        "viewChart": "Graphique",
+        "viewTable": "Tableau",
+        "valueAria": "Courbe de la valeur du portefeuille investi, mois par mois",
+        "yieldAria": "Colonnes du rendement net généré, mois par mois",
+        "empty": "Aucun placement sur cette période. Votre courbe apparaîtra dès votre premier placement.",
+        "emptyYield": "Aucun rendement sur cette période.",
+        "tooltip": {
+          "value": "Valeur en fin de mois",
+          "deposits": "Capital placé",
+          "withdrawals": "Capital retiré",
+          "yield": "Rendement du mois"
+        },
+        "table": {
+          "month": "Mois",
+          "endValue": "Valeur en fin de mois",
+          "deposits": "Placé",
+          "withdrawals": "Retiré",
+          "yield": "Rendement"
+        }
+      },
+      "funding": {
+        "balancesAria": "Soldes",
+        "mainBalance": "Solde principal",
+        "mainBalanceHint": "Crédit, cartes et retraits",
+        "walletBalance": "Wallet investissement",
+        "walletBalanceHint": "Disponible pour vos placements",
+        "transfer": {
+          "title": "Virement interne",
+          "description": "Instantané et sans frais entre votre solde principal et votre wallet investissement.",
+          "available": "Disponible : {amount}"
+        },
+        "crypto": {
+          "title": "Dépôt en crypto-actifs",
+          "description": "Envoyez un stablecoin, de l'or tokenisé ou de l'ETH vers l'adresse de dépôt de la banque : le montant est crédité directement sur votre wallet investissement.",
+          "delay": "Validé manuellement par la banque à réception des fonds, puis crédité sur le wallet."
+        },
+        "card": {
+          "title": "Carte bancaire",
+          "description": "Rechargez directement votre wallet investissement par carte.",
+          "delay": "Crédité dès la confirmation du paiement."
+        }
+      },
+      "products": {
+        "availableLabel": "Disponible à placer",
+        "fund": "Approvisionner"
+      },
+      "journal": {
+        "filterAria": "Filtrer le journal",
+        "filter": {
+          "funds": "Mouvements de fonds",
+          "all": "Tout",
+          "yield": "Rendements"
+        },
+        "empty": "Aucune opération pour ce filtre.",
+        "more": "Afficher plus ({count})"
+      }
     },
     "kycDossier": {
       "title": "Dossier KYC",

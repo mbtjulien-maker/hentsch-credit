@@ -38,7 +38,21 @@ export type TransactionType =
   | "ORIGINATION_FEE"
   | "INTEREST_PAYMENT"
   | "CARD_TOPUP"
-  | "YIELD_REPAYMENT";
+  | "YIELD_REPAYMENT"
+  | "LIQUIDATION"
+  | "INVESTMENT_DEPOSIT"
+  | "INVESTMENT_WITHDRAWAL"
+  | "INVESTMENT_YIELD_ACCRUAL"
+  | "FIXED_TERM_DEPOSIT"
+  | "FIXED_TERM_YIELD_ACCRUAL"
+  | "FIXED_TERM_MATURITY_PAYOUT"
+  | "INVESTMENT_WALLET_TRANSFER_IN"
+  | "INVESTMENT_WALLET_TRANSFER_OUT";
+
+// Solde crédité par un dépôt (cf. §6 CLAUDE.md entrée #51) : le solde principal
+// (comportement historique) ou directement le wallet investissement, depuis l'espace
+// Investissement.
+export type CreditTarget = "AVAILABLE" | "INVESTMENT";
 
 export type TransactionStatus = "PENDING" | "COMPLETED" | "FAILED";
 
@@ -340,6 +354,33 @@ export interface InvestmentPosition {
   closedAt: string | null;
 }
 
+// Évolution du portefeuille investi sur 12 mois glissants (GET
+// /users/:userId/investment-performance) — reconstituée côté backend depuis le journal
+// réel des transactions, jamais une projection. Montants en USD sérialisés en chaîne
+// (Prisma.Decimal), `month` au format "YYYY-MM" (UTC).
+export interface InvestmentPerformanceMonth {
+  month: string;
+  depositsUsd: string;
+  withdrawalsUsd: string;
+  yieldUsd: string;
+  endValueUsd: string;
+}
+
+export interface InvestmentPerformance {
+  periodDays: number;
+  from: string;
+  to: string;
+  months: InvestmentPerformanceMonth[];
+  totals: {
+    depositsUsd: string;
+    withdrawalsUsd: string;
+    yieldUsd: string;
+    currentValueUsd: string;
+    // null tant qu'aucun capital n'a été engagé — jamais un 0 % fabriqué.
+    returnPct: number | null;
+  };
+}
+
 export interface InvestmentBasketRate {
   indicativeAnnualPct: string;
   // RWA_STRATEGY seulement — dernier rendement quotidien réel appliqué (peut être
@@ -498,6 +539,7 @@ export interface TransactionRecord {
   withdrawalCurrency: AccountCurrency | null;
   bankAccountHolder: string | null;
   bankBic: string | null;
+  creditTarget: CreditTarget;
 }
 
 export interface WalletRecord {
@@ -1181,6 +1223,8 @@ export const api = {
     }),
   listInvestmentPositions: (userId: string) =>
     request<InvestmentPosition[]>(`/users/${userId}/investment-positions`),
+  getInvestmentPerformance: (userId: string) =>
+    request<InvestmentPerformance>(`/users/${userId}/investment-performance`),
   // Bloqué jusqu'à l'échéance dès la confirmation (§6 entrée #30) — aucun endpoint de
   // retrait n'existe pour ce mode, contrairement à withdrawInvestment ci-dessus.
   depositFixedTerm: (plan: FixedTermPlanId, amount: string) =>
@@ -1355,20 +1399,21 @@ export const api = {
     chain: Chain,
     currency: AcceptedCurrency,
     tokenAmount: string,
+    target: CreditTarget = "AVAILABLE",
   ) =>
     request<TransactionRecord>(`/users/${userId}/deposit-intents`, {
       method: "POST",
-      body: JSON.stringify({ chain, currency, tokenAmount }),
+      body: JSON.stringify({ chain, currency, tokenAmount, target }),
     }),
   requestWithdrawal: (payload: WithdrawalRequest) =>
     request<WithdrawalResult>("/withdrawals", {
       method: "POST",
       body: JSON.stringify(payload),
     }),
-  createCardTopup: (amount: string) =>
+  createCardTopup: (amount: string, target: CreditTarget = "AVAILABLE") =>
     request<CardTopupResult>("/payments/card-topup", {
       method: "POST",
-      body: JSON.stringify({ amount }),
+      body: JSON.stringify({ amount, target }),
     }),
   getCardTopupStatus: (paymentId: string) =>
     request<PaymentStatus>(`/payments/${paymentId}`),

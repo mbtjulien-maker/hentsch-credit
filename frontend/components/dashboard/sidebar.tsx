@@ -22,6 +22,7 @@ import {
   Wallet,
 } from "lucide-react";
 import { useDashboard } from "@/components/dashboard/dashboard-context";
+import { INVESTMENT_NAV } from "@/components/dashboard/investment/investment-nav";
 import { cn } from "@/lib/utils";
 
 type NavSection = {
@@ -33,6 +34,76 @@ type NavSection = {
   // (/en/admin n'existe pas). Toute autre section reste true (valeur par défaut).
   localized?: boolean;
 };
+
+// Groupes de navigation de l'espace client (retour client : "les choses sont un peu trop
+// mélangées") — au lieu d'une liste plate de 11 entrées, quatre familles lisibles : Mon
+// argent, Financement, Investissement (section autonome avec ses propres sous-pages) et
+// Mon compte. Source unique partagée par la sidebar (avec libellés de groupe et
+// sous-liens Investissement) et le repli mobile (à plat, Investissement en un seul lien —
+// la section porte sa propre navigation locale, cf. InvestmentSectionNav).
+type NavGroup = {
+  id: string;
+  label?: string;
+  // Groupe "Investissement" : mis en avant (liseré or) car c'est un espace à part entière.
+  featured?: boolean;
+  items: NavSection[];
+};
+
+function useClientNavGroups(isBusiness: boolean): NavGroup[] {
+  const t = useTranslations("DashboardShell.sidebar");
+  const tInvest = useTranslations("Dashboard.investmentSpace");
+  return [
+    {
+      id: "overview",
+      items: [
+        { href: "/dashboard", label: t("client.home"), icon: LayoutGrid },
+        { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
+      ],
+    },
+    {
+      id: "money",
+      label: t("groups.money"),
+      items: [
+        { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
+        { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
+        { href: "/dashboard/historique", label: t("client.history"), icon: History },
+      ],
+    },
+    {
+      id: "financing",
+      label: t("groups.financing"),
+      items: [
+        { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
+        // Réservé aux comptes BUSINESS (cf. AccountType) — masqué pour un compte
+        // particulier, qui n'a de toute façon pas accès au crédit direct (cf.
+        // BusinessAccountGuard côté API).
+        ...(isBusiness
+          ? [{ href: "/dashboard/credit-direct", label: t("client.directCredit"), icon: Briefcase }]
+          : []),
+      ],
+    },
+    {
+      id: "investing",
+      label: t("groups.investing"),
+      featured: true,
+      // Ouvert à tous les comptes vérifiés (particulier ET business, cf. §2H CLAUDE.md).
+      items: INVESTMENT_NAV.map(({ key, href, icon }) => ({
+        href,
+        label: tInvest(`nav.${key}`),
+        icon,
+      })),
+    },
+    {
+      id: "account",
+      label: t("groups.account"),
+      items: [
+        { href: "/dashboard/profil", label: t("client.profile"), icon: User },
+        { href: "/dashboard/kyc", label: t("client.kyc"), icon: FileCheck2 },
+        { href: "/dashboard/support", label: t("client.support"), icon: LifeBuoy },
+      ],
+    },
+  ];
+}
 
 // Version compacte — utilisée par MobileNav, affichée dans la zone de contenu (repli
 // horizontal < lg). Entièrement sur tokens sémantiques : suit déjà le thème actif sans
@@ -129,27 +200,7 @@ export function Sidebar() {
   const isAdmin = selectedUser?.role === "ADMIN";
   const isBusiness = selectedUser?.accountType === "BUSINESS";
 
-  // Pages client — usage courant du compte. Chaque entrée est une route dédiée
-  // (cf. app/[locale]/dashboard/*/page.tsx), pas une simple ancre : navigation réelle.
-  const CLIENT_SECTIONS: NavSection[] = [
-    { href: "/dashboard", label: t("client.home"), icon: LayoutGrid },
-    { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
-    { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
-    { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
-    // Ouvert à tous les comptes vérifiés (particulier ET business, cf. §2H CLAUDE.md) —
-    // contrairement au crédit direct ci-dessous, aucun masquage par accountType.
-    { href: "/dashboard/investissement", label: t("client.investment"), icon: LineChart },
-    // Réservé aux comptes BUSINESS (cf. AccountType) — masqué pour un compte particulier,
-    // qui n'a de toute façon pas accès au crédit direct (cf. BusinessAccountGuard côté API).
-    ...(isBusiness
-      ? [{ href: "/dashboard/credit-direct", label: t("client.directCredit"), icon: Briefcase }]
-      : []),
-    { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
-    { href: "/dashboard/historique", label: t("client.history"), icon: History },
-    { href: "/dashboard/profil", label: t("client.profile"), icon: User },
-    { href: "/dashboard/kyc", label: t("client.kyc"), icon: FileCheck2 },
-    { href: "/dashboard/support", label: t("client.support"), icon: LifeBuoy },
-  ];
+  const groups = useClientNavGroups(isBusiness);
 
   // Vue de validation des demandes de crédit — back-office, pas un usage client courant.
   // Masquée pour tout compte qui n'a pas le rôle ADMIN (cf. AdminGuard côté API — ce n'est
@@ -165,14 +216,34 @@ export function Sidebar() {
       <Link href="/dashboard" className="flex items-center gap-3">
         <Image src="/brand/hentsch-mark.png" alt="" width={500} height={500} className="size-10 rounded-lg" />
         <div>
-          <h1 className="text-[15px] leading-none font-semibold tracking-[-0.01em] text-sidebar-foreground">Hentsch Credit</h1>
+          <p className="font-heading text-[15px] leading-none font-semibold tracking-[-0.01em] text-sidebar-foreground">Hentsch Credit</p>
           <p className="mt-1.5 text-[11px] tracking-[0.04em] text-muted-foreground uppercase">{t("subtitle")}</p>
         </div>
       </Link>
 
-      <nav aria-label={t("clientNavAriaLabel")} className="flex flex-col gap-1">
-        {CLIENT_SECTIONS.map((section) => (
-          <SidebarNavLink key={section.href} {...section} isActive={pathname === section.href} />
+      <nav aria-label={t("clientNavAriaLabel")} className="flex flex-col gap-5">
+        {groups.map((group) => (
+          <div
+            key={group.id}
+            className={cn(
+              "flex flex-col gap-1",
+              group.featured && "rounded-xl border border-sidebar-primary/25 bg-sidebar-accent/30 p-1.5",
+            )}
+          >
+            {group.label && (
+              <span
+                className={cn(
+                  "px-3.5 pb-1 text-[10.5px] font-semibold tracking-[0.08em] uppercase",
+                  group.featured ? "text-sidebar-primary" : "text-muted-foreground",
+                )}
+              >
+                {group.label}
+              </span>
+            )}
+            {group.items.map((section) => (
+              <SidebarNavLink key={section.href} {...section} isActive={pathname === section.href} />
+            ))}
+          </div>
         ))}
       </nav>
 
@@ -211,21 +282,15 @@ export function MobileNav() {
   const isAdmin = selectedUser?.role === "ADMIN";
   const isBusiness = selectedUser?.accountType === "BUSINESS";
 
-  const CLIENT_SECTIONS: NavSection[] = [
-    { href: "/dashboard", label: t("client.home"), icon: LayoutGrid },
-    { href: "/dashboard/solde", label: t("client.balance"), icon: Wallet },
-    { href: "/dashboard/marche", label: t("client.market"), icon: TrendingUp },
-    { href: "/dashboard/credit", label: t("client.credit"), icon: HandCoins },
-    { href: "/dashboard/investissement", label: t("client.investment"), icon: LineChart },
-    ...(isBusiness
-      ? [{ href: "/dashboard/credit-direct", label: t("client.directCredit"), icon: Briefcase }]
-      : []),
-    { href: "/dashboard/cartes", label: t("client.cards"), icon: CreditCard },
-    { href: "/dashboard/historique", label: t("client.history"), icon: History },
-    { href: "/dashboard/profil", label: t("client.profile"), icon: User },
-    { href: "/dashboard/kyc", label: t("client.kyc"), icon: FileCheck2 },
-    { href: "/dashboard/support", label: t("client.support"), icon: LifeBuoy },
-  ];
+  // À plat sur mobile : Investissement en UN seul lien (la section a sa propre barre de
+  // navigation locale), tous les autres groupes dépliés dans l'ordre de la sidebar.
+  const groups = useClientNavGroups(isBusiness);
+  const tInvest = useTranslations("Dashboard.investmentSpace");
+  const CLIENT_SECTIONS: NavSection[] = groups.flatMap((group) =>
+    group.id === "investing"
+      ? [{ href: "/dashboard/investissement", label: tInvest("title"), icon: LineChart }]
+      : group.items,
+  );
   const BACKOFFICE_SECTIONS: NavSection[] = [
     { href: "/dashboard/demandes-credit", label: t("backoffice.creditRequests"), icon: ClipboardCheck },
     { href: "/dashboard/demandes-comptes", label: t("backoffice.accountRequests"), icon: UserPlus },
@@ -239,7 +304,15 @@ export function MobileNav() {
       className="-mx-1 flex gap-1 overflow-x-auto px-1 pb-1 lg:hidden"
     >
       {allSections.map((section) => (
-        <NavLink key={section.href} {...section} isActive={pathname === section.href} />
+        <NavLink
+          key={section.href}
+          {...section}
+          isActive={
+            section.href === "/dashboard/investissement"
+              ? pathname.startsWith("/dashboard/investissement")
+              : pathname === section.href
+          }
+        />
       ))}
       <MobileLogoutButton />
     </nav>

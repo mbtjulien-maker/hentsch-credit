@@ -1155,6 +1155,12 @@
         "creditRequests": "Demandes de crédit",
         "accountRequests": "Demandes de compte",
         "adminArea": "Espace Admin"
+      },
+      "groups": {
+        "money": "O meu dinheiro",
+        "financing": "Financiamento",
+        "investing": "Investimento",
+        "account": "A minha conta"
       }
     },
     "legalFooter": {
@@ -1226,7 +1232,8 @@
         "dialogTitle": "Recarregar com cartão bancário",
         "dialogDescription": "Pagamento seguro gerido pela Mollie. O saldo disponível é creditado assim que o pagamento for confirmado.",
         "amountLabel": "Montante (USD)",
-        "submit": "Continuar para o pagamento"
+        "submit": "Continuar para o pagamento",
+        "dialogDescriptionInvestment": "O montante será creditado diretamente na sua wallet de investimento assim que o pagamento for confirmado."
       },
       "deposit": {
         "trigger": "Depositar",
@@ -1248,7 +1255,9 @@
         "descriptionCreditRequest": "Escolha o ativo e a rede para depositar a garantia do seu pedido de crédito aprovado.",
         "modeCreditRequest": "Pedido de crédito ({amount})",
         "modeGeneral": "Depósito geral",
-        "creditRequestNote": "Envie apenas {currency} em {chain} para este endereço. Deposite pelo menos {amount}: o crédito é emitido automaticamente após a receção."
+        "creditRequestNote": "Envie apenas {currency} em {chain} para este endereço. Deposite pelo menos {amount}: o crédito é emitido automaticamente após a receção.",
+        "investmentTargetNotice": "Este depósito será creditado diretamente na sua wallet de investimento, e não no seu saldo principal.",
+        "investmentUnavailable": "Este ativo não está disponível para um depósito direto em investimento. Escolha outro, ou deposite no seu saldo principal e faça depois uma transferência interna."
       },
       "withdraw": {
         "trigger": "Levantar",
@@ -1871,6 +1880,102 @@
       },
       "confirmDepositRecap": "{amount} serão colocados no cabaz «{basket}» (levantamento integral possível a qualquer momento, ao contrário de um plano a prazo fixo).",
       "confirmDeposit": "Confirmar a colocação"
+    },
+    "investmentSpace": {
+      "title": "Investimento",
+      "subtitle": "Invista o seu capital, acompanhe o que ele gera mês após mês e mantenha o controlo de cada investimento.",
+      "navAriaLabel": "Navegação do espaço de investimento",
+      "nav": {
+        "overview": "Visão geral",
+        "fund": "Carregar",
+        "products": "Produtos",
+        "placements": "Os meus investimentos",
+        "journal": "Atividade"
+      },
+      "overview": {
+        "kpiAria": "Números-chave do investimento",
+        "heroLabel": "Valor da carteira",
+        "cumulativeYield": "de rendimento acumulado",
+        "ctaInvest": "Investir fundos",
+        "ctaFund": "Carregar",
+        "walletLabel": "Saldo disponível",
+        "walletHint": "Wallet de investimento, pronto a investir",
+        "investedLabel": "Capital investido",
+        "investedHint": "{count, plural, =0 {Nenhum investimento ativo} one {# investimento ativo} other {# investimentos ativos}}",
+        "periodLabel": "Período",
+        "period": {
+          "m3": "3 meses",
+          "m6": "6 meses",
+          "m12": "12 meses"
+        },
+        "periodYield": "Rendimento do período",
+        "periodReturnHint": "sobre o capital comprometido",
+        "valueTitle": "Evolução do capital",
+        "valueDescription": "Valor da sua carteira investida no fim de cada mês (capital e rendimento).",
+        "yieldTitle": "Rendimento gerado por mês",
+        "yieldDescription": "Ganho ou perda líquida de cada mês. Pode ser negativo: um investimento nunca é garantido.",
+        "placementsTitle": "Investimentos em curso",
+        "placementsAll": "Ver tudo",
+        "placementsEmpty": "Nenhum investimento ativo. Explore os produtos para investir o seu capital.",
+        "disclaimer": "O desempenho passado não garante resultados futuros. Um investimento nunca é garantido: o rendimento pode ser negativo e o capital investido pode diminuir. Os montantes apresentados provêm do registo real das suas operações e de rendimentos diários calculados com dados de mercado; nenhuma projeção é apresentada como resultado."
+      },
+      "charts": {
+        "viewChart": "Gráfico",
+        "viewTable": "Tabela",
+        "valueAria": "Curva do valor da carteira investida, mês a mês",
+        "yieldAria": "Colunas do rendimento líquido gerado, mês a mês",
+        "empty": "Nenhum investimento neste período. A sua curva aparecerá com o seu primeiro investimento.",
+        "emptyYield": "Nenhum rendimento neste período.",
+        "tooltip": {
+          "value": "Valor no fim do mês",
+          "deposits": "Capital investido",
+          "withdrawals": "Capital levantado",
+          "yield": "Rendimento do mês"
+        },
+        "table": {
+          "month": "Mês",
+          "endValue": "Valor no fim do mês",
+          "deposits": "Investido",
+          "withdrawals": "Levantado",
+          "yield": "Rendimento"
+        }
+      },
+      "funding": {
+        "balancesAria": "Saldos",
+        "mainBalance": "Saldo principal",
+        "mainBalanceHint": "Crédito, cartões e levantamentos",
+        "walletBalance": "Wallet de investimento",
+        "walletBalanceHint": "Disponível para os seus investimentos",
+        "transfer": {
+          "title": "Transferência interna",
+          "description": "Instantânea e sem custos entre o seu saldo principal e a sua wallet de investimento.",
+          "available": "Disponível: {amount}"
+        },
+        "crypto": {
+          "title": "Depósito em criptoativos",
+          "description": "Envie uma stablecoin, ouro tokenizado ou ETH para o endereço de depósito do banco: o montante é creditado diretamente na sua wallet de investimento.",
+          "delay": "Validado manualmente pelo banco após a receção dos fundos e depois creditado na wallet."
+        },
+        "card": {
+          "title": "Cartão bancário",
+          "description": "Carregue diretamente a sua wallet de investimento com cartão.",
+          "delay": "Creditado assim que o pagamento for confirmado."
+        }
+      },
+      "products": {
+        "availableLabel": "Disponível para investir",
+        "fund": "Carregar"
+      },
+      "journal": {
+        "filterAria": "Filtrar o registo de atividade",
+        "filter": {
+          "funds": "Movimentos de fundos",
+          "all": "Tudo",
+          "yield": "Rendimentos"
+        },
+        "empty": "Nenhuma operação para este filtro.",
+        "more": "Mostrar mais ({count})"
+      }
     },
     "kycDossier": {
       "title": "Processo KYC",

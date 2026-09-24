@@ -1,7 +1,8 @@
 "use client";
 
-import { Lock, Unlock } from "lucide-react";
+import { Loader2, Lock, Unlock } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { FixedTermPlan, FixedTermPosition, InvestmentBasket, InvestmentPosition } from "@/lib/api";
 import { formatDate, formatUsd } from "@/lib/format";
@@ -18,7 +19,19 @@ function daysRemaining(maturityDate: string): number {
 // jusqu'à sa date de maturité (§2H CLAUDE.md entrée #30). Le "rendement estimé" d'un plan
 // reprend l'objectif indicatif déjà affiché sur sa carte (periodPct, cf.
 // FixedTermPlanService.getFixedTermPlans) — jamais un nouveau chiffre inventé ici.
-function BasketPlacementRow({ basket, position }: { basket: InvestmentBasket; position: InvestmentPosition }) {
+function BasketPlacementRow({
+  basket,
+  position,
+  onWithdraw,
+  busy,
+}: {
+  basket: InvestmentBasket;
+  position: InvestmentPosition;
+  // Optionnel : la page "Mes placements" de l'espace Investissement permet de retirer
+  // depuis la ligne elle-même ; la vue en lecture seule n'en propose pas.
+  onWithdraw?: (basket: InvestmentBasket) => Promise<void>;
+  busy?: boolean;
+}) {
   const t = useTranslations("Dashboard.investment");
   const principal = Number(position.principalAmount);
   const accruedYield = Number(position.accruedYield);
@@ -33,12 +46,20 @@ function BasketPlacementRow({ basket, position }: { basket: InvestmentBasket; po
           <p className="text-xs text-muted-foreground">{t("myPlacements.freeWithdrawal")}</p>
         </div>
       </div>
-      <div className="text-right">
-        <p className="text-sm font-semibold tabular-nums">{formatUsd(totalValue)}</p>
-        <p className={`text-xs tabular-nums ${accruedYield < 0 ? "text-destructive" : "text-primary"}`}>
-          {accruedYield >= 0 ? "+" : ""}
-          {formatUsd(accruedYield)}
-        </p>
+      <div className="flex items-center gap-3">
+        <div className="text-right">
+          <p className="text-sm font-semibold tabular-nums">{formatUsd(totalValue)}</p>
+          <p className={`text-xs tabular-nums ${accruedYield < 0 ? "text-destructive" : "text-primary"}`}>
+            {accruedYield >= 0 ? "+" : ""}
+            {formatUsd(accruedYield)}
+          </p>
+        </div>
+        {onWithdraw && (
+          <Button type="button" variant="outline" size="sm" disabled={busy} onClick={() => void onWithdraw(basket)}>
+            {busy && <Loader2 className="size-3.5 animate-spin" />}
+            {t("withdrawAll")}
+          </Button>
+        )}
       </div>
     </div>
   );
@@ -100,10 +121,14 @@ export function MyPlacementsSection({
   basketPositions,
   fixedTermPositions,
   fixedTermPlans,
+  onWithdraw,
+  busyBasket,
 }: {
   basketPositions: Map<InvestmentBasket, InvestmentPosition>;
   fixedTermPositions: FixedTermPosition[];
   fixedTermPlans: FixedTermPlan[] | null;
+  onWithdraw?: (basket: InvestmentBasket) => Promise<void>;
+  busyBasket?: InvestmentBasket | null;
 }) {
   const t = useTranslations("Dashboard.investment");
 
@@ -131,7 +156,13 @@ export function MyPlacementsSection({
         </CardHeader>
         <CardContent className="flex flex-col gap-2.5">
           {[...basketPositions.entries()].map(([basket, position]) => (
-            <BasketPlacementRow key={basket} basket={basket} position={position} />
+            <BasketPlacementRow
+              key={basket}
+              basket={basket}
+              position={position}
+              onWithdraw={onWithdraw}
+              busy={busyBasket === basket}
+            />
           ))}
           {activeFixedTerm.map((position) => (
             <FixedTermPlacementRow key={position.id} plan={planById.get(position.plan)} position={position} />

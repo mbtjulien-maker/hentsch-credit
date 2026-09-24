@@ -165,6 +165,24 @@
   }
 }
 
+/* Typographie de l'espace client connecté (retour client : "la même police que le modèle
+   Bierbike") — Titillium Web pour le texte, Rajdhani pour les titres. Volontairement une
+   classe portée par le layout du dashboard plutôt qu'un changement global : la vitrine
+   publique et le back-office /admin gardent Geist. Les sélecteurs sont plus spécifiques
+   (.client-typography + classe) que les utilitaires `font-heading` / `font-sans` de
+   Tailwind, qui compilent vers var(--font-geist-sans) et ne suivent pas une simple
+   surcharge de --font-sans. */
+.client-typography {
+  font-family: var(--font-titillium), ui-sans-serif, system-ui, sans-serif;
+}
+.client-typography .font-sans {
+  font-family: var(--font-titillium), ui-sans-serif, system-ui, sans-serif;
+}
+.client-typography :is(h1, h2, h3, h4, .font-heading, [data-slot="card-title"], [data-slot="dialog-title"], .font-display) {
+  font-family: var(--font-rajdhani), var(--font-titillium), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.005em;
+}
+
 /* Animation de dessin des sparklines (Marché en temps réel) — CSS pur, aucune
    dépendance JS d'animation. Le composant fixe stroke-dasharray/dashoffset à la
    longueur réelle du tracé ; ce keyframe les ramène à 0 pour révéler la ligne. */

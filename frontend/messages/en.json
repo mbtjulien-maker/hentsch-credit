@@ -1155,6 +1155,12 @@
         "creditRequests": "Demandes de crédit",
         "accountRequests": "Demandes de compte",
         "adminArea": "Espace Admin"
+      },
+      "groups": {
+        "money": "My money",
+        "financing": "Financing",
+        "investing": "Investing",
+        "account": "My account"
       }
     },
     "legalFooter": {
@@ -1226,7 +1232,8 @@
         "dialogTitle": "Top up by bank card",
         "dialogDescription": "Secure payment handled by Mollie. Your available balance is credited as soon as the payment is confirmed.",
         "amountLabel": "Amount (USD)",
-        "submit": "Continue to payment"
+        "submit": "Continue to payment",
+        "dialogDescriptionInvestment": "The amount will be credited directly to your investment wallet once the payment is confirmed."
       },
       "deposit": {
         "trigger": "Deposit",
@@ -1248,7 +1255,9 @@
         "descriptionCreditRequest": "Choose the asset and network to deposit the collateral for your approved credit request.",
         "modeCreditRequest": "Credit request ({amount})",
         "modeGeneral": "General deposit",
-        "creditRequestNote": "Only send {currency} on {chain} to this address. Deposit at least {amount}: credit is issued automatically upon receipt."
+        "creditRequestNote": "Only send {currency} on {chain} to this address. Deposit at least {amount}: credit is issued automatically upon receipt.",
+        "investmentTargetNotice": "This deposit will be credited directly to your investment wallet, not to your main balance.",
+        "investmentUnavailable": "This asset is not available for a direct deposit to investment. Choose another one, or deposit to your main balance and then make an internal transfer."
       },
       "withdraw": {
         "trigger": "Withdraw",
@@ -1871,6 +1880,102 @@
       },
       "confirmDepositRecap": "{amount} will be placed in the \"{basket}\" basket (full withdrawal is possible at any time, unlike a fixed-term plan).",
       "confirmDeposit": "Confirm placement"
+    },
+    "investmentSpace": {
+      "title": "Investment",
+      "subtitle": "Invest your capital, follow what it earns month after month and stay in control of every investment.",
+      "navAriaLabel": "Investment section navigation",
+      "nav": {
+        "overview": "Overview",
+        "fund": "Fund wallet",
+        "products": "Products",
+        "placements": "My investments",
+        "journal": "Activity"
+      },
+      "overview": {
+        "kpiAria": "Key investment figures",
+        "heroLabel": "Portfolio value",
+        "cumulativeYield": "cumulative yield",
+        "ctaInvest": "Invest funds",
+        "ctaFund": "Fund wallet",
+        "walletLabel": "Available balance",
+        "walletHint": "Investment wallet, ready to be invested",
+        "investedLabel": "Invested capital",
+        "investedHint": "{count, plural, =0 {No active investment} one {# active investment} other {# active investments}}",
+        "periodLabel": "Period",
+        "period": {
+          "m3": "3 months",
+          "m6": "6 months",
+          "m12": "12 months"
+        },
+        "periodYield": "Yield for the period",
+        "periodReturnHint": "on committed capital",
+        "valueTitle": "Capital growth",
+        "valueDescription": "Value of your invested portfolio at the end of each month (capital and yield).",
+        "yieldTitle": "Yield generated per month",
+        "yieldDescription": "Net gain or loss for each month. It can be negative: an investment is never guaranteed.",
+        "placementsTitle": "Current investments",
+        "placementsAll": "View all",
+        "placementsEmpty": "No active investment. Browse the products to invest your capital.",
+        "disclaimer": "Past performance does not predict future results. An investment is never guaranteed: the yield can be negative and the invested capital can decrease. The amounts shown come from the actual log of your transactions and from daily yields computed on market data; no projection is presented as a result."
+      },
+      "charts": {
+        "viewChart": "Chart",
+        "viewTable": "Table",
+        "valueAria": "Line of the invested portfolio value, month by month",
+        "yieldAria": "Columns of the net yield generated, month by month",
+        "empty": "No investment over this period. Your curve will appear with your first investment.",
+        "emptyYield": "No yield over this period.",
+        "tooltip": {
+          "value": "Value at month end",
+          "deposits": "Capital invested",
+          "withdrawals": "Capital withdrawn",
+          "yield": "Yield for the month"
+        },
+        "table": {
+          "month": "Month",
+          "endValue": "Value at month end",
+          "deposits": "Invested",
+          "withdrawals": "Withdrawn",
+          "yield": "Yield"
+        }
+      },
+      "funding": {
+        "balancesAria": "Balances",
+        "mainBalance": "Main balance",
+        "mainBalanceHint": "Credit, cards and withdrawals",
+        "walletBalance": "Investment wallet",
+        "walletBalanceHint": "Available for your investments",
+        "transfer": {
+          "title": "Internal transfer",
+          "description": "Instant and free between your main balance and your investment wallet.",
+          "available": "Available: {amount}"
+        },
+        "crypto": {
+          "title": "Crypto-asset deposit",
+          "description": "Send a stablecoin, tokenized gold or ETH to the bank's deposit address: the amount is credited directly to your investment wallet.",
+          "delay": "Manually validated by the bank once the funds are received, then credited to the wallet."
+        },
+        "card": {
+          "title": "Bank card",
+          "description": "Top up your investment wallet directly by card.",
+          "delay": "Credited as soon as the payment is confirmed."
+        }
+      },
+      "products": {
+        "availableLabel": "Available to invest",
+        "fund": "Fund wallet"
+      },
+      "journal": {
+        "filterAria": "Filter the activity log",
+        "filter": {
+          "funds": "Fund movements",
+          "all": "All",
+          "yield": "Yields"
+        },
+        "empty": "No transactions for this filter.",
+        "more": "Show more ({count})"
+      }
     },
     "kycDossier": {
       "title": "KYC file",

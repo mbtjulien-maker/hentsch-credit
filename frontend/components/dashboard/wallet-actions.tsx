@@ -36,6 +36,7 @@ import {
   type BalanceSummary,
   type Chain,
   type CreditRequest,
+  type CreditTarget,
   type ManagedDepositAddress,
   type WithdrawalRequest,
 } from "@/lib/api";
@@ -101,7 +102,10 @@ export function WalletActions({
   );
 }
 
-function CardTopupDialog() {
+// `target` : solde crédité une fois le paiement confirmé — le solde principal par défaut,
+// ou le wallet investissement quand le dialogue est ouvert depuis l'espace Investissement
+// (cf. §6 CLAUDE.md entrée #51).
+export function CardTopupDialog({ target = "AVAILABLE" }: { target?: CreditTarget }) {
   const t = useTranslations("Dashboard.walletActions");
   const [open, setOpen] = useState(false);
   const [amount, setAmount] = useState("");
@@ -122,7 +126,7 @@ function CardTopupDialog() {
     setLoading(true);
     setError(null);
     try {
-      const { checkoutUrl } = await api.createCardTopup(parsedAmount.toFixed(2));
+      const { checkoutUrl } = await api.createCardTopup(parsedAmount.toFixed(2), target);
       // Redirection pleine page vers le checkout Mollie hébergé (ou, en mode sandbox
       // sans clé API configurée, vers la page de paiement simulée interne) — même
       // comportement que le vrai flux Mollie, qui redirige toujours hors de l'app.
@@ -153,7 +157,9 @@ function CardTopupDialog() {
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>{t("buyByCard.dialogTitle")}</DialogTitle>
-            <DialogDescription>{t("buyByCard.dialogDescription")}</DialogDescription>
+            <DialogDescription>
+              {target === "INVESTMENT" ? t("buyByCard.dialogDescriptionInvestment") : t("buyByCard.dialogDescription")}
+            </DialogDescription>
           </DialogHeader>
 
           <div className="flex flex-col gap-4 py-2">
@@ -205,14 +211,20 @@ type DepositStep = "select" | "pool" | "legacy" | "creditRequest";
 // génère une adresse, jamais une section séparée en pleine page.
 type DepositMode = "general" | "creditRequest";
 
-function DepositDialog({
+export function DepositDialog({
   userId,
   approvedCreditRequest,
   onSuccess,
+  target = "AVAILABLE",
 }: {
   userId: string;
   approvedCreditRequest?: CreditRequest | null;
   onSuccess: () => void;
+  // Solde crédité à la confirmation (cf. CreditTarget) — INVESTMENT depuis l'espace
+  // Investissement : seul le circuit d'adresse mutualisée est alors proposé, car
+  // l'adresse individuelle "legacy" est créditée automatiquement par le webhook
+  // blockchain sur le solde principal, sans notion de destination.
+  target?: CreditTarget;
 }) {
   const t = useTranslations("Dashboard.walletActions");
   const currencyLabel = useCurrencyLabel();
@@ -268,7 +280,10 @@ function DepositDialog({
       setManagedAddress(managed);
       setStep("pool");
     } catch (err) {
-      if (err instanceof ApiError && err.status === 404) {
+      if (err instanceof ApiError && err.status === 404 && target === "INVESTMENT") {
+        // Pas de repli sur l'adresse individuelle : elle créditerait le solde principal.
+        setError(t("deposit.investmentUnavailable"));
+      } else if (err instanceof ApiError && err.status === 404) {
         try {
           const wallet = await api.createDepositAddress(chain as Chain, currency as AcceptedCurrency);
           setLegacyAddress(wallet.address);
@@ -289,7 +304,7 @@ function DepositDialog({
     setLoading(true);
     setError(null);
     try {
-      await api.declareDeposit(userId, chain as Chain, currency as AcceptedCurrency, tokenAmount);
+      await api.declareDeposit(userId, chain as Chain, currency as AcceptedCurrency, tokenAmount, target);
       setDeclared(true);
       onSuccess();
     } catch (err) {
@@ -336,6 +351,11 @@ function DepositDialog({
 
         {step === "select" && (
           <div className="flex flex-col gap-4">
+            {target === "INVESTMENT" && (
+              <p className="rounded-lg border border-primary/30 bg-primary/5 px-3 py-2 text-xs text-foreground">
+                {t("deposit.investmentTargetNotice")}
+              </p>
+            )}
             {approvedCreditRequest && (
               <div className="flex gap-1.5 rounded-lg border border-border/60 bg-muted/30 p-1">
                 <button

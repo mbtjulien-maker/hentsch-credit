@@ -1155,6 +1155,12 @@
         "creditRequests": "Demandes de crédit",
         "accountRequests": "Demandes de compte",
         "adminArea": "Espace Admin"
+      },
+      "groups": {
+        "money": "Mein Geld",
+        "financing": "Finanzierung",
+        "investing": "Investition",
+        "account": "Mein Konto"
       }
     },
     "legalFooter": {
@@ -1226,7 +1232,8 @@
         "dialogTitle": "Per Bankkarte aufladen",
         "dialogDescription": "Sichere Zahlung über Mollie. Das verfügbare Guthaben wird sofort nach Zahlungsbestätigung gutgeschrieben.",
         "amountLabel": "Betrag (USD)",
-        "submit": "Weiter zur Zahlung"
+        "submit": "Weiter zur Zahlung",
+        "dialogDescriptionInvestment": "Der Betrag wird nach Bestätigung der Zahlung direkt Ihrem Anlage-Wallet gutgeschrieben."
       },
       "deposit": {
         "trigger": "Einzahlen",
@@ -1248,7 +1255,9 @@
         "descriptionCreditRequest": "Wählen Sie den Vermögenswert und das Netzwerk, um die Sicherheit für Ihren genehmigten Kreditantrag einzuzahlen.",
         "modeCreditRequest": "Kreditantrag ({amount})",
         "modeGeneral": "Allgemeine Einzahlung",
-        "creditRequestNote": "Senden Sie nur {currency} auf {chain} an diese Adresse. Zahlen Sie mindestens {amount} ein: der Kredit wird bei Eingang automatisch vergeben."
+        "creditRequestNote": "Senden Sie nur {currency} auf {chain} an diese Adresse. Zahlen Sie mindestens {amount} ein: der Kredit wird bei Eingang automatisch vergeben.",
+        "investmentTargetNotice": "Diese Einzahlung wird direkt Ihrem Anlage-Wallet gutgeschrieben, nicht Ihrem Hauptguthaben.",
+        "investmentUnavailable": "Dieser Vermögenswert ist für eine direkte Einzahlung in die Anlage nicht verfügbar. Wählen Sie einen anderen oder zahlen Sie auf Ihr Hauptguthaben ein und überweisen Sie anschließend intern."
       },
       "withdraw": {
         "trigger": "Abheben",
@@ -1871,6 +1880,102 @@
       },
       "confirmDepositRecap": "{amount} werden im Korb „{basket}“ angelegt (jederzeit vollständig abhebbar, im Gegensatz zu einem Festlaufzeitplan).",
       "confirmDeposit": "Anlage bestätigen"
+    },
+    "investmentSpace": {
+      "title": "Investition",
+      "subtitle": "Legen Sie Ihr Kapital an, verfolgen Sie Monat für Monat, was es erwirtschaftet, und behalten Sie jede Anlage im Griff.",
+      "navAriaLabel": "Navigation des Anlagebereichs",
+      "nav": {
+        "overview": "Übersicht",
+        "fund": "Aufladen",
+        "products": "Produkte",
+        "placements": "Meine Anlagen",
+        "journal": "Aktivität"
+      },
+      "overview": {
+        "kpiAria": "Wichtige Anlagekennzahlen",
+        "heroLabel": "Portfoliowert",
+        "cumulativeYield": "kumulierte Rendite",
+        "ctaInvest": "Geld anlegen",
+        "ctaFund": "Aufladen",
+        "walletLabel": "Verfügbares Guthaben",
+        "walletHint": "Anlage-Wallet, bereit zur Anlage",
+        "investedLabel": "Angelegtes Kapital",
+        "investedHint": "{count, plural, =0 {Keine aktive Anlage} one {# aktive Anlage} other {# aktive Anlagen}}",
+        "periodLabel": "Zeitraum",
+        "period": {
+          "m3": "3 Monate",
+          "m6": "6 Monate",
+          "m12": "12 Monate"
+        },
+        "periodYield": "Rendite im Zeitraum",
+        "periodReturnHint": "bezogen auf das eingesetzte Kapital",
+        "valueTitle": "Kapitalentwicklung",
+        "valueDescription": "Wert Ihres angelegten Portfolios am Monatsende (Kapital und Rendite).",
+        "yieldTitle": "Monatlich erzielte Rendite",
+        "yieldDescription": "Nettogewinn oder -verlust je Monat. Er kann negativ sein: Eine Anlage ist nie garantiert.",
+        "placementsTitle": "Laufende Anlagen",
+        "placementsAll": "Alle anzeigen",
+        "placementsEmpty": "Keine aktive Anlage. Entdecken Sie die Produkte, um Ihr Kapital anzulegen.",
+        "disclaimer": "Die frühere Wertentwicklung ist kein verlässlicher Indikator für künftige Ergebnisse. Eine Anlage ist nie garantiert: Die Rendite kann negativ sein und das angelegte Kapital kann sinken. Die angezeigten Beträge stammen aus dem tatsächlichen Protokoll Ihrer Vorgänge und aus täglichen, auf Marktdaten berechneten Renditen; keine Prognose wird als Ergebnis dargestellt."
+      },
+      "charts": {
+        "viewChart": "Diagramm",
+        "viewTable": "Tabelle",
+        "valueAria": "Verlauf des Werts des angelegten Portfolios, Monat für Monat",
+        "yieldAria": "Säulen der erzielten Nettorendite, Monat für Monat",
+        "empty": "Keine Anlage in diesem Zeitraum. Ihre Kurve erscheint mit Ihrer ersten Anlage.",
+        "emptyYield": "Keine Rendite in diesem Zeitraum.",
+        "tooltip": {
+          "value": "Wert am Monatsende",
+          "deposits": "Angelegtes Kapital",
+          "withdrawals": "Entnommenes Kapital",
+          "yield": "Rendite des Monats"
+        },
+        "table": {
+          "month": "Monat",
+          "endValue": "Wert am Monatsende",
+          "deposits": "Angelegt",
+          "withdrawals": "Entnommen",
+          "yield": "Rendite"
+        }
+      },
+      "funding": {
+        "balancesAria": "Guthaben",
+        "mainBalance": "Hauptguthaben",
+        "mainBalanceHint": "Kredit, Karten und Auszahlungen",
+        "walletBalance": "Anlage-Wallet",
+        "walletBalanceHint": "Verfügbar für Ihre Anlagen",
+        "transfer": {
+          "title": "Interne Überweisung",
+          "description": "Sofort und kostenlos zwischen Ihrem Hauptguthaben und Ihrem Anlage-Wallet.",
+          "available": "Verfügbar: {amount}"
+        },
+        "crypto": {
+          "title": "Einzahlung in Krypto-Assets",
+          "description": "Senden Sie einen Stablecoin, tokenisiertes Gold oder ETH an die Einzahlungsadresse der Bank: Der Betrag wird direkt Ihrem Anlage-Wallet gutgeschrieben.",
+          "delay": "Von der Bank nach Eingang der Mittel manuell geprüft, dann dem Wallet gutgeschrieben."
+        },
+        "card": {
+          "title": "Bankkarte",
+          "description": "Laden Sie Ihr Anlage-Wallet direkt per Karte auf.",
+          "delay": "Gutgeschrieben, sobald die Zahlung bestätigt ist."
+        }
+      },
+      "products": {
+        "availableLabel": "Zur Anlage verfügbar",
+        "fund": "Aufladen"
+      },
+      "journal": {
+        "filterAria": "Aktivitätsprotokoll filtern",
+        "filter": {
+          "funds": "Geldbewegungen",
+          "all": "Alle",
+          "yield": "Renditen"
+        },
+        "empty": "Keine Vorgänge für diesen Filter.",
+        "more": "Mehr anzeigen ({count})"
+      }
     },
     "kycDossier": {
       "title": "KYC-Dossier",

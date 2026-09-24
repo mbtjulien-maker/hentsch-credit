@@ -2017,6 +2017,17 @@
         },
         "empty": "No transactions for this filter.",
         "more": "Show more ({count})"
+      },
+      "statement": {
+        "title": "Account statement",
+        "description": "A PDF summarising your investments, your month-by-month returns and the detail of your operations over the period.",
+        "periodLabel": "Statement period",
+        "period": {
+          "m3": "3 months",
+          "m6": "6 months",
+          "m12": "12 months"
+        },
+        "download": "Download PDF"
       }
     },
     "kycDossier": {

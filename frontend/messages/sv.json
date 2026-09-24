@@ -2017,6 +2017,17 @@
         },
         "empty": "Inga transaktioner för detta filter.",
         "more": "Visa fler ({count})"
+      },
+      "statement": {
+        "title": "Kontoutdrag",
+        "description": "En pdf som sammanfattar dina placeringar, din avkastning månad för månad och detaljerna i dina transaktioner under perioden (pdf:en skapas på engelska).",
+        "periodLabel": "Period för utdraget",
+        "period": {
+          "m3": "3 månader",
+          "m6": "6 månader",
+          "m12": "12 månader"
+        },
+        "download": "Ladda ner pdf"
       }
     },
     "kycDossier": {

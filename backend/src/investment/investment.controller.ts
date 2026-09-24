@@ -5,8 +5,12 @@ import {
   Param,
   ParseUUIDPipe,
   Post,
+  Query,
+  Res,
+  StreamableFile,
   UseGuards,
 } from '@nestjs/common';
+import type { Response } from 'express';
 import type { AuthenticatedUser } from '../auth/auth.service';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
@@ -23,6 +27,8 @@ import { DepositFixedTermDto } from './dto/deposit-fixed-term.dto';
 import { TransferInvestmentWalletDto } from './dto/transfer-investment-wallet.dto';
 import { WithdrawInvestmentDto } from './dto/withdraw-investment.dto';
 import { InvestmentService } from './investment.service';
+import { InvestmentStatementService } from './investment-statement.service';
+import { STATEMENT_PERIODS, type StatementLocale, type StatementPeriod } from './investment-statement';
 import { FixedTermPlanService } from './fixed-term-plan.service';
 import { MarketDataService } from '../market-data/market-data.service';
 import {
@@ -267,6 +273,39 @@ export class UserInvestmentPerformanceController {
   ) {
     assertSelfOrAdmin(currentUser, userId);
     return this.investmentService.getPerformance(userId);
+  }
+}
+
+// Relevé d'opérations d'investissement en PDF (cf. InvestmentStatementService) — ouvert au
+// titulaire du compte (ou à un admin), sans KycVerifiedGuard : c'est une lecture, comme
+// le graphique de performance. Téléchargé par un vrai lien (navigation), jamais un fetch :
+// le cookie de session est SameSite=Lax (cf. §6 entrée #36).
+@UseGuards(JwtAuthGuard)
+@Controller('users/:userId/investment-statement')
+export class UserInvestmentStatementController {
+  constructor(private readonly statementService: InvestmentStatementService) {}
+
+  @Get()
+  async get(
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @CurrentUser() currentUser: AuthenticatedUser,
+    @Res({ passthrough: true }) res: Response,
+    @Query('months') monthsParam?: string,
+    @Query('locale') localeParam?: string,
+  ) {
+    assertSelfOrAdmin(currentUser, userId);
+    const requested = Number(monthsParam);
+    const months = (STATEMENT_PERIODS as readonly number[]).includes(requested)
+      ? (requested as StatementPeriod)
+      : 12;
+    const locale: StatementLocale = localeParam === 'en' ? 'en' : 'fr';
+    const { filename, pdf } = await this.statementService.generate(userId, months, locale);
+    res.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `attachment; filename="${filename}"`,
+      'Cache-Control': 'no-store',
+    });
+    return new StreamableFile(pdf);
   }
 }
 

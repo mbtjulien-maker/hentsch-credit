@@ -2017,6 +2017,17 @@
         },
         "empty": "Aucune opération pour ce filtre.",
         "more": "Afficher plus ({count})"
+      },
+      "statement": {
+        "title": "Relevé d'opérations",
+        "description": "Un PDF qui résume vos placements, vos rendements mois par mois et le détail de vos opérations sur la période.",
+        "periodLabel": "Période du relevé",
+        "period": {
+          "m3": "3 mois",
+          "m6": "6 mois",
+          "m12": "12 mois"
+        },
+        "download": "Télécharger le PDF"
       }
     },
     "kycDossier": {

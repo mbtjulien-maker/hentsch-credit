@@ -9,6 +9,9 @@ import type { Chain } from "@/lib/api";
 const currencyFormatter = new Intl.NumberFormat("fr-FR", {
   style: "currency",
   currency: "USD",
+  // Code ISO ("1 234,56 USD") plutôt que "$US" : même écriture que le composant Money des
+  // cartes de solde, sans le symbole ambigu.
+  currencyDisplay: "code",
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
@@ -20,6 +23,7 @@ export function formatUsd(value: string | number): string {
 const eurFormatter = new Intl.NumberFormat("fr-FR", {
   style: "currency",
   currency: "EUR",
+  currencyDisplay: "code",
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });

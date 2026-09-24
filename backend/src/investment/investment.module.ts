@@ -10,8 +10,10 @@ import {
   UserFixedTermPositionsController,
   UserInvestmentPerformanceController,
   UserInvestmentPositionsController,
+  UserInvestmentStatementController,
 } from './investment.controller';
 import { InvestmentService } from './investment.service';
+import { InvestmentStatementService } from './investment-statement.service';
 import { FixedTermPlanService } from './fixed-term-plan.service';
 
 @Module({
@@ -25,11 +27,12 @@ import { FixedTermPlanService } from './fixed-term-plan.service';
     InvestmentController,
     UserInvestmentPositionsController,
     UserInvestmentPerformanceController,
+    UserInvestmentStatementController,
     AdminInvestmentPositionsController,
     UserFixedTermPositionsController,
     AdminFixedTermPositionsController,
   ],
-  providers: [InvestmentService, FixedTermPlanService],
+  providers: [InvestmentService, FixedTermPlanService, InvestmentStatementService],
   exports: [InvestmentService, FixedTermPlanService],
 })
 export class InvestmentModule {}

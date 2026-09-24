@@ -1169,6 +1169,8 @@ export const api = {
     }),
   getKycDocumentDownloadUrl: (userId: string, documentId: string) =>
     `${API_URL}/users/${userId}/profile/documents/${documentId}/download`,
+  getInvestmentStatementUrl: (userId: string, months: 3 | 6 | 12, locale: "fr" | "en") =>
+    `${API_URL}/users/${userId}/investment-statement?months=${months}&locale=${locale}`,
   getManagedWallet: (userId: string) =>
     request<ClientManagedWalletView>(`/users/${userId}/managed-wallet`),
   getMarketPrices: () => request<MarketOverviewEntry[]>("/market/prices"),

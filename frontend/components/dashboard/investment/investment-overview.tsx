@@ -1,12 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowDownToLine, ArrowRight, Layers, Lock, TrendingDown, TrendingUp, Unlock, Wallet } from "lucide-react";
+import { ArrowDownToLine, ArrowRight, Layers, LineChart, Lock, TrendingDown, TrendingUp, Unlock, Wallet } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
+import { BalanceTile } from "@/components/dashboard/balance-tile";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { InvestmentStatementCard } from "@/components/dashboard/investment/investment-statement";
 import { useInvestment } from "@/components/dashboard/investment/investment-context";
 import {
   ChartCard,
@@ -34,36 +36,6 @@ function Delta({ value, suffix }: { value: number; suffix?: string }) {
       {`${up ? "+" : ""}${formatUsd(value)}`}
       {suffix && <span className="font-normal text-muted-foreground">{suffix}</span>}
     </span>
-  );
-}
-
-function StatTile({
-  label,
-  value,
-  hint,
-  icon: Icon,
-  action,
-}: {
-  label: string;
-  value: string;
-  hint?: React.ReactNode;
-  icon: React.ComponentType<{ className?: string }>;
-  action?: React.ReactNode;
-}) {
-  return (
-    <Card>
-      <CardContent className="flex h-full flex-col justify-between gap-3 py-1">
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-xs font-medium text-muted-foreground">{label}</p>
-          <Icon className="size-4 text-muted-foreground/70" />
-        </div>
-        <div>
-          <p className="font-heading text-2xl leading-none font-semibold xl:text-3xl">{value}</p>
-          {hint && <p className="mt-2 text-xs text-muted-foreground">{hint}</p>}
-        </div>
-        {action}
-      </CardContent>
-    </Card>
   );
 }
 
@@ -108,24 +80,23 @@ export function InvestmentOverview() {
         aria-label={t("kpiAria")}
         className="grid gap-4 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)]"
       >
-        <Card className="sm:col-span-2 lg:col-span-1">
-          <CardContent className="flex h-full flex-col justify-between gap-4 py-1">
-            <p className="text-xs font-medium text-muted-foreground">{t("heroLabel")}</p>
-            <div>
-              {/* Chiffre phare : proportionnel (pas de tabular-nums), même famille que le reste. */}
-              <p className="font-heading text-5xl leading-none font-semibold tracking-tight">
-                {formatUsd(inv.portfolioValue)}
-              </p>
-              <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-                <Delta value={inv.accruedYield} suffix={t("cumulativeYield")} />
-                {cumulativePct !== null && (
-                  <span className="text-xs text-muted-foreground tabular-nums">
-                    {formatPercent(cumulativePct)}
-                  </span>
-                )}
-              </div>
+        <BalanceTile
+          accent
+          size="hero"
+          className="sm:col-span-2 lg:col-span-1"
+          label={t("heroLabel")}
+          icon={<LineChart />}
+          value={inv.portfolioValue}
+          extra={
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <Delta value={inv.accruedYield} suffix={t("cumulativeYield")} />
+              {cumulativePct !== null && (
+                <span className="text-xs text-muted-foreground tabular-nums">{formatPercent(cumulativePct)}</span>
+              )}
             </div>
-            <div className="flex flex-wrap gap-2">
+          }
+          action={
+            <div className="mt-2 flex flex-wrap gap-2">
               <Button nativeButton={false} render={<Link href="/dashboard/investissement/produits" />} size="sm">
                 <Layers className="size-4" />
                 {t("ctaInvest")}
@@ -135,20 +106,20 @@ export function InvestmentOverview() {
                 {t("ctaFund")}
               </Button>
             </div>
-          </CardContent>
-        </Card>
-
-        <StatTile
-          label={t("walletLabel")}
-          value={inv.walletBalance != null ? formatUsd(inv.walletBalance) : "—"}
-          hint={t("walletHint")}
-          icon={Wallet}
+          }
         />
-        <StatTile
+
+        <BalanceTile
+          label={t("walletLabel")}
+          icon={<Wallet />}
+          value={inv.walletBalance ?? null}
+          note={t("walletHint")}
+        />
+        <BalanceTile
           label={t("investedLabel")}
-          value={formatUsd(inv.investedCapital)}
-          hint={t("investedHint", { count: activeCount })}
-          icon={Layers}
+          icon={<Layers />}
+          value={inv.investedCapital}
+          note={t("investedHint", { count: activeCount })}
         />
       </section>
 
@@ -247,6 +218,8 @@ export function InvestmentOverview() {
           )}
         </CardContent>
       </Card>
+
+      <InvestmentStatementCard />
 
       <p className="text-xs leading-relaxed text-muted-foreground">{t("disclaimer")}</p>
     </div>

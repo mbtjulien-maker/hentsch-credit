@@ -2017,6 +2017,17 @@
         },
         "empty": "Ninguna operación para este filtro.",
         "more": "Mostrar más ({count})"
+      },
+      "statement": {
+        "title": "Extracto de operaciones",
+        "description": "Un PDF que resume sus inversiones, su rentabilidad mes a mes y el detalle de sus operaciones en el período (el PDF se genera en inglés).",
+        "periodLabel": "Período del extracto",
+        "period": {
+          "m3": "3 meses",
+          "m6": "6 meses",
+          "m12": "12 meses"
+        },
+        "download": "Descargar PDF"
       }
     },
     "kycDossier": {

@@ -2017,6 +2017,17 @@
         },
         "empty": "Geen verrichtingen voor dit filter.",
         "more": "Meer tonen ({count})"
+      },
+      "statement": {
+        "title": "Rekeningoverzicht",
+        "description": "Een pdf met uw beleggingen, uw rendement per maand en de details van uw transacties in de periode (de pdf wordt in het Engels opgesteld).",
+        "periodLabel": "Periode van het overzicht",
+        "period": {
+          "m3": "3 maanden",
+          "m6": "6 maanden",
+          "m12": "12 maanden"
+        },
+        "download": "Pdf downloaden"
       }
     },
     "kycDossier": {

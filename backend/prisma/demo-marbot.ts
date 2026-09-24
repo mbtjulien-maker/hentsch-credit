@@ -60,24 +60,25 @@ const PROFILE: Record<string, { weight: number; sigma: number; stock: boolean }>
   CORE_BALANCED_12M: { weight: 0.9, sigma: 0.006, stock: true },
 };
 
-// Scénario : 58 000 $ déposés en trois fois, placés sur cinq paniers et deux plans à
-// échéance fixe. Le compte est ouvert le 26 juillet 2026, premier dépôt le 27.
+// Scénario : 70 000 (unité du ledger, affichée en $US) au total — 2 000 sur le wallet
+// principal et 68 000 déposés en trois fois sur le wallet investissement, placés sur cinq
+// paniers et deux plans à échéance fixe. Le compte est ouvert le 26 juillet 2026, premier dépôt le 27.
 const DEPOSITS = [
-  { at: at('2026-07-27T10:12:00'), amount: 48000, kind: 'CRYPTO' as const, currency: 'USDC' as const, ref: 'demo-marbot-dep-1' },
-  { at: at('2026-08-18T14:03:00'), amount: 6000, kind: 'CRYPTO' as const, currency: 'USDT' as const, ref: 'demo-marbot-dep-2' },
-  { at: at('2026-09-03T09:41:00'), amount: 4000, kind: 'CARD' as const, currency: null, ref: 'demo-marbot-card-1' },
+  { at: at('2026-07-27T10:12:00'), amount: 56000, kind: 'CRYPTO' as const, currency: 'USDC' as const, ref: 'demo-marbot-dep-1' },
+  { at: at('2026-08-18T14:03:00'), amount: 7000, kind: 'CRYPTO' as const, currency: 'USDT' as const, ref: 'demo-marbot-dep-2' },
+  { at: at('2026-09-03T09:41:00'), amount: 5000, kind: 'CARD' as const, currency: null, ref: 'demo-marbot-card-1' },
 ];
 
 type Placement = { at: Date; target: BasketKey | PlanKey; fixed: boolean; amount: number; maturity?: Date };
 const PLACEMENTS: Placement[] = [
-  { at: at('2026-07-27T11:20:00'), target: 'RWA_STRATEGY', fixed: false, amount: 15000 },
-  { at: at('2026-07-27T11:22:00'), target: 'STOCKS_BALANCED', fixed: false, amount: 10000 },
-  { at: at('2026-07-27T11:25:00'), target: 'STOCKS_TECH_AI', fixed: false, amount: 8000 },
-  { at: at('2026-07-27T11:31:00'), target: 'SEMICONDUCTORS_6M', fixed: true, amount: 7000, maturity: at('2027-01-27T11:31:00') },
+  { at: at('2026-07-27T11:20:00'), target: 'RWA_STRATEGY', fixed: false, amount: 18000 },
+  { at: at('2026-07-27T11:22:00'), target: 'STOCKS_BALANCED', fixed: false, amount: 12000 },
+  { at: at('2026-07-27T11:25:00'), target: 'STOCKS_TECH_AI', fixed: false, amount: 10000 },
+  { at: at('2026-07-27T11:31:00'), target: 'SEMICONDUCTORS_6M', fixed: true, amount: 8500, maturity: at('2027-01-27T11:31:00') },
   { at: at('2026-08-05T09:15:00'), target: 'STOCKS_CONSERVATIVE', fixed: false, amount: 5000 },
-  { at: at('2026-08-05T09:18:00'), target: 'STOCKS_MOMENTUM', fixed: false, amount: 3000 },
-  { at: at('2026-08-20T10:05:00'), target: 'CORE_BALANCED_12M', fixed: true, amount: 6000, maturity: at('2027-08-20T10:05:00') },
-  { at: at('2026-09-04T10:30:00'), target: 'RWA_STRATEGY', fixed: false, amount: 2800 },
+  { at: at('2026-08-05T09:18:00'), target: 'STOCKS_MOMENTUM', fixed: false, amount: 2500 },
+  { at: at('2026-08-20T10:05:00'), target: 'CORE_BALANCED_12M', fixed: true, amount: 7000, maturity: at('2027-08-20T10:05:00') },
+  { at: at('2026-09-04T10:30:00'), target: 'RWA_STRATEGY', fixed: false, amount: 3500 },
 ];
 // Retrait complet du panier Momentum (les paniers se retirent toujours en totalité, §2H).
 const WITHDRAWAL = { at: at('2026-09-15T10:12:00'), target: 'STOCKS_MOMENTUM' as BasketKey };
@@ -403,7 +404,7 @@ async function main() {
   const rows = await prisma.transaction.findMany({ where: { userId: user.id } });
   const perf = buildInvestmentPerformance(rows, NOW);
   console.log(`\nCompte : ${EMAIL} / ${DEV_PASSWORD}  (Julien Marbot, KYC vérifié)`);
-  console.log(`Dépôts : ${DEPOSITS.reduce((s, d) => s + d.amount, 0)} $ — placé : ${placed} $ — wallet libre : ${cash.toFixed(2)} $`);
+  console.log(`Dépôts : ${DEPOSITS.reduce((s, d) => s + d.amount, 0) + MAIN_WALLET_DEPOSIT} $ (dont ${MAIN_WALLET_DEPOSIT} sur le wallet principal) — placé : ${placed} $ — wallet libre : ${cash.toFixed(2)} $`);
   console.log(`Valeur actuelle du portefeuille : ${perf.totals.currentValueUsd.toFixed(2)} $`);
   console.log(`Rendement cumulé : ${perf.totals.yieldUsd.toFixed(2)} $ (${perf.totals.returnPct?.toFixed(2)} % du capital placé)`);
   for (const m of perf.months.filter((m) => !m.depositsUsd.isZero() || !m.yieldUsd.isZero() || !m.endValueUsd.isZero())) {

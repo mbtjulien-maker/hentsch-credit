@@ -2017,6 +2017,17 @@
         },
         "empty": "Keine Vorgänge für diesen Filter.",
         "more": "Mehr anzeigen ({count})"
+      },
+      "statement": {
+        "title": "Kontoauszug",
+        "description": "Ein PDF mit Ihren Anlagen, den Monatsrenditen und den Einzelheiten Ihrer Transaktionen im Zeitraum (das PDF wird auf Englisch erstellt).",
+        "periodLabel": "Zeitraum des Auszugs",
+        "period": {
+          "m3": "3 Monate",
+          "m6": "6 Monate",
+          "m12": "12 Monate"
+        },
+        "download": "PDF herunterladen"
       }
     },
     "kycDossier": {

@@ -1,27 +1,18 @@
-import type { ReactNode } from "react";
 import { HandCoins, LineChart, Wallet } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { GLASS_CARD_CLASS, cn } from "@/lib/utils";
+import { BalanceTile } from "@/components/dashboard/balance-tile";
 import { formatUsd } from "@/lib/format";
 import type { BalanceSummary } from "@/lib/api";
 
-// Même halo au survol que BalanceCards (cf. KpiCardShell) — dupliqué ici plutôt
-// qu'exporté/partagé : les deux composants n'ont plus vocation à rester synchronisés
-// (BalanceCards reste le détail complet de /dashboard/solde, celui-ci est la vue
-// volontairement réduite de l'accueil, cf. commentaire de HomeBalanceOverview).
-function KpiCardShell({ children }: { children: ReactNode }) {
-  return <div className="relative rounded-2xl">{children}</div>;
-}
-
 // Vue d'ensemble des soldes sur l'accueil — décision produit explicite : n'afficher ici
-// QUE les trois soldes réels du compte (wallet principal, crédit, investissement), jamais
+// QUE les trois soldes réels du compte (wallet principal, investissement, crédit), jamais
 // le "Pouvoir d'achat total" ni le "Gage verrouillé" composites (cf. BalanceCards,
 // toujours affiché tel quel sur /dashboard/solde, la page dédiée au détail du gage). Les
 // trois soldes ici sont directement lus sur LedgerBalance, sans recomposition : le wallet
 // investissement (§2H CLAUDE.md entrée #31) reste hors formule du Pouvoir d'Achat Total,
 // exactement comme documenté côté backend — le montrer à plat, séparément, est cohérent
-// avec ça plutôt que de le fondre dans un total qui l'exclut déjà.
+// avec ça plutôt que de le fondre dans un total qui l'exclut déjà. L'investissement passe
+// en deuxième position et en carte mise en avant (produit phare, cf. entrée #54).
 export function HomeBalanceOverview({ summary }: { summary: BalanceSummary }) {
   const t = useTranslations("Dashboard.home.overview");
   const { balance } = summary;
@@ -29,63 +20,33 @@ export function HomeBalanceOverview({ summary }: { summary: BalanceSummary }) {
   const creditAvailable = Number(balance.grantedCredit) - Number(balance.usedCredit);
 
   return (
-    <div className="grid gap-4 sm:grid-cols-3">
-      <KpiCardShell>
-        <Card className={GLASS_CARD_CLASS}>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              {t("mainWallet.title")}
-            </CardTitle>
-            <Wallet className="size-4 text-primary" />
-          </CardHeader>
-          <CardContent>
-            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
-              {formatUsd(balance.availableBalance)}
-            </div>
-            <p className="mt-1.5 text-xs text-muted-foreground">{t("mainWallet.description")}</p>
-          </CardContent>
-        </Card>
-      </KpiCardShell>
-
-      <KpiCardShell>
-        <Card className={cn(GLASS_CARD_CLASS, "border-primary/20")}>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              {t("investment.title")}
-            </CardTitle>
-            <LineChart className="size-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
-              {formatUsd(balance.investmentBalance)}
-            </div>
-            <p className="mt-1.5 text-xs text-muted-foreground">{t("investment.description")}</p>
-          </CardContent>
-        </Card>
-      </KpiCardShell>
-      <KpiCardShell>
-        <Card className={GLASS_CARD_CLASS}>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              {t("credit.title")}
-            </CardTitle>
-            <HandCoins className="size-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="font-heading text-4xl leading-none font-medium tracking-tight">
-              {formatUsd(balance.grantedCredit)}
-            </div>
-            <p className="mt-1.5 text-xs text-muted-foreground">
-              {hasCredit
-                ? t("credit.description", {
-                    available: formatUsd(creditAvailable),
-                    used: formatUsd(balance.usedCredit),
-                  })
-                : t("credit.descriptionNoCredit")}
-            </p>
-          </CardContent>
-        </Card>
-      </KpiCardShell>
+    <div className="grid items-stretch gap-4 sm:grid-cols-3">
+      <BalanceTile
+        label={t("mainWallet.title")}
+        icon={<Wallet />}
+        value={balance.availableBalance}
+        note={t("mainWallet.description")}
+      />
+      <BalanceTile
+        accent
+        label={t("investment.title")}
+        icon={<LineChart />}
+        value={balance.investmentBalance}
+        note={t("investment.description")}
+      />
+      <BalanceTile
+        label={t("credit.title")}
+        icon={<HandCoins />}
+        value={balance.grantedCredit}
+        note={
+          hasCredit
+            ? t("credit.description", {
+                available: formatUsd(creditAvailable),
+                used: formatUsd(balance.usedCredit),
+              })
+            : t("credit.descriptionNoCredit")
+        }
+      />
     </div>
   );
 }

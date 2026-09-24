@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { InvestmentStatementCard } from "@/components/dashboard/investment/investment-statement";
 import { useSectionData } from "@/components/dashboard/use-section-data";
 import { api, type TransactionRecord, type TransactionStatus } from "@/lib/api";
 import { formatDate, formatUsd } from "@/lib/format";
@@ -76,6 +77,7 @@ export function InvestmentJournal() {
 
   return (
     <div className="flex flex-col gap-4">
+      <InvestmentStatementCard />
       <div role="group" aria-label={t("filterAria")} className="inline-flex w-fit rounded-lg bg-muted p-[3px] text-sm font-medium">
         {(["funds", "yield", "all"] as const).map((f) => (
           <button

@@ -18,6 +18,7 @@ import { buildInvestmentPerformance } from '../src/investment/investment-perform
 // - Refuse de tourner en production.
 //
 // Usage : cd backend && npx ts-node prisma/demo-marbot.ts
+// Suppression du compte de démo : npx ts-node prisma/demo-marbot.ts --remove
 // Options (variables d'environnement) : DEMO_RETURN_PCT (défaut 10, rendement cumulé visé,
 // en % du capital placé), DEMO_TODAY (défaut : maintenant, format ISO).
 // ============================================================================================
@@ -171,6 +172,11 @@ function totalYield(sim: Sim) {
 }
 
 async function main() {
+  if (process.argv.includes('--remove')) {
+    const { count } = await prisma.user.deleteMany({ where: { email: EMAIL } });
+    console.log(count ? `Compte ${EMAIL} supprimé (transactions, positions et soldes en cascade).` : `Aucun compte ${EMAIL} à supprimer.`);
+    return;
+  }
   const placed = PLACEMENTS.reduce((s, p) => s + p.amount, 0);
   const targetYield = (placed * TARGET_RETURN_PCT) / 100;
 

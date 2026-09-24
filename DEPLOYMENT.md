@@ -1,4 +1,4 @@
-# Guide de mise en production — Hentsch Credit
+# Guide de mise en production — Hentsch Vault
 
 Document à transmettre à l'équipe technique/infra qui prendra en charge le déploiement sur ses propres serveurs et son propre hébergeur. Il couvre : l'infrastructure requise, les variables d'environnement, la procédure de build/démarrage, et — le plus important — la liste de ce qui est **réellement fonctionnel** vs **simulé/à brancher** avant toute utilisation par de vrais clients avec de vrais fonds.
 
@@ -80,7 +80,7 @@ Ce produit a été construit par étapes, et plusieurs briques **affichent un co
 | **Retraits crypto** | Idem : aucune custody réelle (Circle/Fireblocks/DFNS) branchée. Le débit est réel en base, le virement on-chain ne l'est pas. |
 | **Dépôts crypto** | Les adresses de dépôt affichées existent réellement pour les actifs listés (cf. `ManagedDepositAddress`), mais leur confirmation se fait par déclaration/webhook — vérifier avec le client que les vraies adresses de garde lui appartiennent bien. |
 | **Vérification KYC** | Purement déclarative + téléversement de fichier stocké en base. **Aucun prestataire tiers réel (Sumsub/Onfido) ne vérifie l'authenticité des documents.** La validation finale est un humain (conseiller) qui approuve manuellement. |
-| **Cartes bancaires** | Le rechargement de solde par carte (Mollie) est réellement fonctionnel si une clé API est fournie. **L'émission/autorisation de dépense d'une carte Hentsch Credit n'est pas implémentée** (pas d'intégration Stripe Issuing/Marqeta). |
+| **Cartes bancaires** | Le rechargement de solde par carte (Mollie) est réellement fonctionnel si une clé API est fournie. **L'émission/autorisation de dépense d'une carte Hentsch Vault n'est pas implémentée** (pas d'intégration Stripe Issuing/Marqeta). |
 | **Bot de trésorerie RWA** | Simulation (paper trading) à 100 % — aucun ordre réel, aucun fonds réel, capital notionnel fictif. |
 | **Rendement/liquidation du gage** | Le calcul est réel et testé (voir suite de tests), basé sur des cours de marché réels, mais n'a **pas été audité par un actuaire/risk manager externe**. |
 | **Assistant support IA** | Vraie IA (OpenAI) si une clé est fournie — répond avec un contexte produit, peut se tromper, aucune garantie contractuelle. |

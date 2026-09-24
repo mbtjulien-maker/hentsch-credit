@@ -27,7 +27,7 @@ describe('TwoFactorService', () => {
       );
 
       expect(url).toMatch(/^otpauth:\/\/totp\//);
-      expect(url).toContain('Hentsch%20Credit');
+      expect(url).toContain('Hentsch%20Vault');
       expect(url).toContain('admin%40hhentsch.com');
       expect(url).toContain('secret=ABCDEFGHIJKLMNOP');
     });

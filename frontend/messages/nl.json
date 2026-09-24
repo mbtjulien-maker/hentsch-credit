@@ -73,7 +73,7 @@
   },
   "Home": {
     "meta": {
-      "title": "Hentsch Credit · Vermogensbeheer en belegging",
+      "title": "Hentsch Vault · Vermogensbeheer en belegging",
       "description": "Plaats uw kapitaal in zes echte strategieën, met een gemeten dagelijks rendement dat nooit gegarandeerd is. Krediet gedekt door uw activa wordt aangeboden als aanvullende dienst."
     },
     "badge": "Aanvullende dienst · Krediet gedekt door uw activa",
@@ -147,8 +147,8 @@
   },
   "HowItWorks": {
     "meta": {
-      "title": "Hoe het werkt · Hentsch Credit",
-      "description": "Van identiteitsverificatie tot uitgave: de vijf stappen om het krediet gedekt door uw activa, een aanvullende dienst van Hentsch Credit, te verkrijgen en te gebruiken."
+      "title": "Hoe het werkt · Hentsch Vault",
+      "description": "Van identiteitsverificatie tot uitgave: de vijf stappen om het krediet gedekt door uw activa, een aanvullende dienst van Hentsch Vault, te verkrijgen en te gebruiken."
     },
     "eyebrow": "Het klanttraject",
     "title": "Hoe het werkt",
@@ -219,11 +219,11 @@
   },
   "Accessibility": {
     "meta": {
-      "title": "Digitale toegankelijkheid · Hentsch Credit",
-      "description": "De werkelijke stand van zaken van de digitale toegankelijkheid van het Hentsch Credit-platform, zonder een niet-geverifieerd conformiteitsniveau te claimen."
+      "title": "Digitale toegankelijkheid · Hentsch Vault",
+      "description": "De werkelijke stand van zaken van de digitale toegankelijkheid van het Hentsch Vault-platform, zonder een niet-geverifieerd conformiteitsniveau te claimen."
     },
     "title": "Toegankelijkheidsverklaring",
-    "intro": "H. Hentsch Asset Management SA streeft ernaar het Hentsch Credit-platform bruikbaar te maken voor zo veel mogelijk mensen. Deze verklaring beschrijft de werkelijke stand van zaken, zonder een conformiteitsniveau te claimen dat niet door een formele audit is geverifieerd.",
+    "intro": "H. Hentsch Asset Management SA streeft ernaar het Hentsch Vault-platform bruikbaar te maken voor zo veel mogelijk mensen. Deze verklaring beschrijft de werkelijke stand van zaken, zonder een conformiteitsniveau te claimen dat niet door een formele audit is geverifieerd.",
     "s1": {
       "title": "1. Conformiteitsstatus",
       "body": "De site is nog niet onderworpen aan een formele toegankelijkheidsaudit (van het type RGAA of WCAG). Ze kan daarom niet conform een precies niveau worden verklaard. Er worden echter al inspanningen geleverd in het ontwerp: semantische paginastructuur, hiërarchie van titels, kleurcontrasten ontworpen voor leesbaarheid, en toetsenbordnavigatie mogelijk op de belangrijkste trajecten (inloggen, accountaanvraag, raadpleging van de rekening)."
@@ -247,8 +247,8 @@
   },
   "Archives": {
     "meta": {
-      "title": "Archief · Hentsch Credit",
-      "description": "De evolutie van de kredietratio, de geaccepteerde activa en de mechanismen van het Hentsch Credit-platform sinds de lancering."
+      "title": "Archief · Hentsch Vault",
+      "description": "De evolutie van de kredietratio, de geaccepteerde activa en de mechanismen van het Hentsch Vault-platform sinds de lancering."
     },
     "eyebrow": "Geschiedenis",
     "title": "Archief",
@@ -315,8 +315,8 @@
   },
   "Contact": {
     "meta": {
-      "title": "Contact · Hentsch Credit",
-      "description": "De contactgegevens van H. Hentsch Asset Management SA voor elke vraag over uw account of het Hentsch Credit-platform."
+      "title": "Contact · Hentsch Vault",
+      "description": "De contactgegevens van H. Hentsch Asset Management SA voor elke vraag over uw account of het Hentsch Vault-platform."
     },
     "eyebrow": "Neem contact op",
     "title": "Neem contact op",
@@ -333,11 +333,11 @@
   },
   "Cookies": {
     "meta": {
-      "title": "Cookiebeleid · Hentsch Credit",
-      "description": "Waarom Hentsch Credit slechts één enkele strikt noodzakelijke cookie plaatst, en verder niets."
+      "title": "Cookiebeleid · Hentsch Vault",
+      "description": "Waarom Hentsch Vault slechts één enkele strikt noodzakelijke cookie plaatst, en verder niets."
     },
     "title": "Cookiebeleid",
-    "intro": "Deze pagina beschrijft de cookies die daadwerkelijk door het Hentsch Credit-platform worden geplaatst en waarom geen voorkeurscentrum wordt aangeboden.",
+    "intro": "Deze pagina beschrijft de cookies die daadwerkelijk door het Hentsch Vault-platform worden geplaatst en waarom geen voorkeurscentrum wordt aangeboden.",
     "s1": {
       "title": "1. Wat het platform plaatst",
       "body": "Er wordt slechts één cookie gebruikt, een sessiecookie, strikt noodzakelijk voor de werking van de dienst: deze houdt uw geauthenticeerde verbinding in stand tijdens uw navigatie in de klantomgeving. Ze wordt verwijderd bij het sluiten van uw sessie of uw browser."
@@ -364,11 +364,11 @@
   },
   "Terms": {
     "meta": {
-      "title": "Algemene voorwaarden · Hentsch Credit",
-      "description": "De algemene gebruiksvoorwaarden van het Hentsch Credit-platform: krediet, onderpand, aflossing, liquidatie en kosten."
+      "title": "Algemene voorwaarden · Hentsch Vault",
+      "description": "De algemene gebruiksvoorwaarden van het Hentsch Vault-platform: krediet, onderpand, aflossing, liquidatie en kosten."
     },
     "title": "Algemene voorwaarden",
-    "intro": "Deze algemene voorwaarden regelen de toegang tot en het gebruik van het Hentsch Credit-platform, een door digitale activa gedekte kredietdienst, aangeboden aan een beperkt aantal klanten van het bedrijf op uitnodiging. Door een rekening te openen, verklaart de klant deze te hebben gelezen en aanvaard.",
+    "intro": "Deze algemene voorwaarden regelen de toegang tot en het gebruik van het Hentsch Vault-platform, een door digitale activa gedekte kredietdienst, aangeboden aan een beperkt aantal klanten van het bedrijf op uitnodiging. Door een rekening te openen, verklaart de klant deze te hebben gelezen en aanvaard.",
     "s1": {
       "title": "1. Doel",
       "body": "{tradingName} stelt een geverifieerde en vooraf uitgenodigde klant in staat stablecoins of getokeniseerd goud als onderpand („pand”) te storten, en daarvoor in ruil een kredietlijn te verkrijgen, intern bruikbaar en met een bijbehorende bankkaart. De dienst wordt verleend door {legalName}, een onafhankelijke vermogensbeheerder (OVB) in de zin van de FinIA, in samenwerking met erkende externe bewaarinstellingen en bewaardienstverleners (zie sectie 5)."
@@ -450,11 +450,11 @@
   },
   "Privacy": {
     "meta": {
-      "title": "Privacy · Hentsch Credit",
+      "title": "Privacy · Hentsch Vault",
       "description": "Hoe H. Hentsch Asset Management SA uw persoonsgegevens verzamelt, gebruikt en beschermt, in overeenstemming met de Zwitserse federale wet op gegevensbescherming."
     },
     "title": "Privacybeleid",
-    "intro": "Dit beleid beschrijft hoe H. Hentsch Asset Management SA de persoonsgegevens van de klanten van Hentsch Credit verzamelt, gebruikt en beschermt, een platform voorbehouden aan een beperkte klantenkring, in overeenstemming met de Zwitserse federale wet op gegevensbescherming (nDSG) en, in voorkomend geval, de Algemene Verordening Gegevensbescherming (AVG).",
+    "intro": "Dit beleid beschrijft hoe H. Hentsch Asset Management SA de persoonsgegevens van de klanten van Hentsch Vault verzamelt, gebruikt en beschermt, een platform voorbehouden aan een beperkte klantenkring, in overeenstemming met de Zwitserse federale wet op gegevensbescherming (nDSG) en, in voorkomend geval, de Algemene Verordening Gegevensbescherming (AVG).",
     "s1": {
       "title": "1. Verwerkingsverantwoordelijke",
       "controller": "Verantwoordelijke",
@@ -523,8 +523,8 @@
   },
   "AccountRequest": {
     "meta": {
-      "title": "Een account aanvragen · Hentsch Credit",
-      "description": "Vraag een account aan bij Hentsch Credit, een platform voor vermogensbeheer en belegging voorbehouden aan een beperkte klantenkring, op uitnodiging."
+      "title": "Een account aanvragen · Hentsch Vault",
+      "description": "Vraag een account aan bij Hentsch Vault, een platform voor vermogensbeheer en belegging voorbehouden aan een beperkte klantenkring, op uitnodiging."
     },
     "eyebrow": "Toegang op uitnodiging",
     "title": "Een account aanvragen",
@@ -538,15 +538,15 @@
   },
   "Faq": {
     "meta": {
-      "title": "Veelgestelde vragen · Hentsch Credit",
-      "description": "De antwoorden op de meest gestelde vragen over de account, de veiligheid en de werking van het Hentsch Credit-platform."
+      "title": "Veelgestelde vragen · Hentsch Vault",
+      "description": "De antwoorden op de meest gestelde vragen over de account, de veiligheid en de werking van het Hentsch Vault-platform."
     },
     "eyebrow": "Veelgestelde vragen",
     "title": "Veelgestelde vragen",
     "description": "De antwoorden op algemene vragen over de account, de veiligheid en de werking van het platform.",
     "items": {
       "openAccount": {
-        "question": "Hoe open ik een Hentsch Credit-account?",
+        "question": "Hoe open ik een Hentsch Vault-account?",
         "answer": "Het platform is voorbehouden aan een beperkte klantenkring, op uitnodiging, in het kader van een bestaande vermogensbeheerrelatie met H. Hentsch Asset Management SA. U kunt via de pagina Account aanvragen een accountaanvraag indienen; deze wordt door onze teams onderzocht voordat een daadwerkelijke opening plaatsvindt."
       },
       "forgotPassword": {
@@ -583,8 +583,8 @@
   },
   "Login": {
     "meta": {
-      "title": "Inloggen · Hentsch Credit",
-      "description": "Log in op uw Hentsch Credit-account."
+      "title": "Inloggen · Hentsch Vault",
+      "description": "Log in op uw Hentsch Vault-account."
     }
   },
   "LoginForm": {
@@ -602,11 +602,11 @@
   },
   "RiskManagement": {
     "meta": {
-      "title": "Risicobeheer en bewaring van activa · Hentsch Credit",
-      "description": "Hoe Hentsch Credit de bewaring van de activa, de waardering van het onderpand en het liquidatiemechanisme beheert."
+      "title": "Risicobeheer en bewaring van activa · Hentsch Vault",
+      "description": "Hoe Hentsch Vault de bewaring van de activa, de waardering van het onderpand en het liquidatiemechanisme beheert."
     },
     "title": "Risicobeheer en bewaring van activa",
-    "intro": "H. Hentsch Asset Management SA voert geen beursorders uit voor rekening van derden en publiceert daarom geen uitvoeringsbeleid noch een rapport over de beste selectie in de zin van de financiëlemarktenregelgeving. Deze pagina beschrijft in plaats daarvan de werkelijke risicobeheerpraktijken die op het Hentsch Credit-platform worden toegepast.",
+    "intro": "H. Hentsch Asset Management SA voert geen beursorders uit voor rekening van derden en publiceert daarom geen uitvoeringsbeleid noch een rapport over de beste selectie in de zin van de financiëlemarktenregelgeving. Deze pagina beschrijft in plaats daarvan de werkelijke risicobeheerpraktijken die op het Hentsch Vault-platform worden toegepast.",
     "s1": {
       "title": "1. Aard van de activiteit",
       "body": "{legalName} treedt op als onafhankelijke vermogensbeheerder (OVB). De hoofdactiviteit is het beleggen van klantenkapitaal in echte strategieën. Als aanvullende dienst verleent het ook krypto-gedekt krediet, tegen een door de klant gestort onderpand, en beheert het met eigen kapitaal een treasurystrategie op getokeniseerde industriële metalen en grondstoffen. Het voert geen enkele beursorder uit voor rekening van zijn klanten en beheert namens hen geen enkele discretionaire effectenportefeuille."
@@ -634,11 +634,11 @@
   },
   "LegalNotice": {
     "meta": {
-      "title": "Juridische kennisgeving · Hentsch Credit",
-      "description": "Juridische informatie over de uitgever en de exploitant van het Hentsch Credit-platform."
+      "title": "Juridische kennisgeving · Hentsch Vault",
+      "description": "Juridische informatie over de uitgever en de exploitant van het Hentsch Vault-platform."
     },
     "title": "Juridische kennisgeving",
-    "intro": "Juridische informatie over de uitgever en de exploitant van de site en het platform Hentsch Credit, in overeenstemming met de toepasselijke Zwitserse wetgeving. Platform voorbehouden aan een beperkte klantenkring, op uitnodiging: het staat niet open voor het publiek en vormt geen openbaar aanbod.",
+    "intro": "Juridische informatie over de uitgever en de exploitant van de site en het platform Hentsch Vault, in overeenstemming met de toepasselijke Zwitserse wetgeving. Platform voorbehouden aan een beperkte klantenkring, op uitnodiging: het staat niet open voor het publiek en vormt geen openbaar aanbod.",
     "s1": {
       "title": "1. Uitgever van de site",
       "companyName": "Bedrijfsnaam",
@@ -697,8 +697,8 @@
   },
   "Sitemap": {
     "meta": {
-      "title": "Sitemap · Hentsch Credit",
-      "description": "Alle pagina's van Hentsch Credit, zowel aan bezoekerszijde als in de klantomgeving."
+      "title": "Sitemap · Hentsch Vault",
+      "description": "Alle pagina's van Hentsch Vault, zowel aan bezoekerszijde als in de klantomgeving."
     },
     "eyebrow": "Navigatie",
     "title": "Sitemap",
@@ -761,8 +761,8 @@
   },
   "Market": {
     "meta": {
-      "title": "Markt live · Hentsch Credit",
-      "description": "De real-time koersen van de als onderpand geaccepteerde activa bij Hentsch Credit: stablecoins, goud, zilver, ETH en getokeniseerde industriële metalen."
+      "title": "Markt live · Hentsch Vault",
+      "description": "De real-time koersen van de als onderpand geaccepteerde activa bij Hentsch Vault: stablecoins, goud, zilver, ETH en getokeniseerde industriële metalen."
     },
     "eyebrow": "Live gegevens",
     "title": "De markt live",
@@ -770,11 +770,11 @@
   },
   "Regulation": {
     "meta": {
-      "title": "Regelgeving · Hentsch Credit",
-      "description": "Het Zwitserse juridische en regelgevende kader dat van toepassing is op Hentsch Credit: FinIA, FinSA, AMLA, bewaring van de activa en toezicht."
+      "title": "Regelgeving · Hentsch Vault",
+      "description": "Het Zwitserse juridische en regelgevende kader dat van toepassing is op Hentsch Vault: FinIA, FinSA, AMLA, bewaring van de activa en toezicht."
     },
     "title": "Regelgevend kader",
-    "intro": "Deze pagina beschrijft het Zwitserse juridische en regelgevende kader dat van toepassing is op Hentsch Credit, als aanvulling op de juridische kennisgeving.",
+    "intro": "Deze pagina beschrijft het Zwitserse juridische en regelgevende kader dat van toepassing is op Hentsch Vault, als aanvulling op de juridische kennisgeving.",
     "s1": {
       "title": "1. Toepasselijk juridisch kader",
       "intro": "De activiteit van {legalName} wordt met name geregeld door:",
@@ -843,7 +843,7 @@
   },
   "Yield": {
     "meta": {
-      "title": "Rendement op onderpand · Hentsch Credit",
+      "title": "Rendement op onderpand · Hentsch Vault",
       "description": "Hoe als onderpand gestort goud, zilver en ETH automatisch tot 60% van uw krediet aflossen, en het liquidatierisico bij een sterke daling."
     },
     "eyebrow": "Ons verschil",
@@ -928,8 +928,8 @@
   },
   "RwaStrategy": {
     "meta": {
-      "title": "RWA-beleggingsstrategie · Hentsch Credit",
-      "description": "De treasurystrategie van Hentsch Credit op getokeniseerde industriële metalen: cash-and-carry-arbitrage, driehoeksverstrekking en liquiditeitsverstrekking."
+      "title": "RWA-beleggingsstrategie · Hentsch Vault",
+      "description": "De treasurystrategie van Hentsch Vault op getokeniseerde industriële metalen: cash-and-carry-arbitrage, driehoeksverstrekking en liquiditeitsverstrekking."
     },
     "eyebrow": "Transparantie · Treasurystrategie",
     "title": "Onze beleggingsstrategie in industriële metalen",
@@ -1063,8 +1063,8 @@
   },
   "Pricing": {
     "meta": {
-      "title": "Tarieven · Hentsch Credit",
-      "description": "De werkelijke tarieven en kosten die door Hentsch Credit worden toegepast: kredietratio, rente, afsluitkosten en liquidatiedrempels, zonder verrassingen."
+      "title": "Tarieven · Hentsch Vault",
+      "description": "De werkelijke tarieven en kosten die door Hentsch Vault worden toegepast: kredietratio, rente, afsluitkosten en liquidatiedrempels, zonder verrassingen."
     },
     "eyebrow": "Tariefstransparantie",
     "title": "Onze tarieven, zonder verrassingen",
@@ -2365,11 +2365,11 @@
   "InviteSignup": {
     "meta": {
       "title": "Account aanmaken met een uitnodigingscode",
-      "description": "Voer uw uitnodigingscode in om uw Hentsch Credit-account aan te maken en uw KYC-dossier stap voor stap aan te vullen."
+      "description": "Voer uw uitnodigingscode in om uw Hentsch Vault-account aan te maken en uw KYC-dossier stap voor stap aan te vullen."
     },
     "eyebrow": "Toegang alleen op uitnodiging",
     "title": "Account aanmaken",
-    "description": "Hentsch Credit werkt uitsluitend op uitnodiging. Voer de code in die u van uw adviseur heeft ontvangen om uw account aan te maken en uw dossier stap voor stap aan te vullen.",
+    "description": "Hentsch Vault werkt uitsluitend op uitnodiging. Voer de code in die u van uw adviseur heeft ontvangen om uw account aan te maken en uw dossier stap voor stap aan te vullen.",
     "progress": "Stap {step} van {total}",
     "alreadyHaveAccount": "Heeft u al een account? <link>Inloggen</link>",
     "genericError": "Er is een fout opgetreden, probeer het opnieuw.",
@@ -2421,11 +2421,11 @@
   "AboutUs": {
     "meta": {
       "title": "Over ons",
-      "description": "Hentsch Credit is het beleggings- en vermogensbeheerplatform van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon (Zwitserland), die daarnaast krediet gedekt door uw activa aanbiedt als aanvullende dienst. Geschiedenis, leiding, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van het bedrijf."
+      "description": "Hentsch Vault is het beleggings- en vermogensbeheerplatform van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon (Zwitserland), die daarnaast krediet gedekt door uw activa aanbiedt als aanvullende dienst. Geschiedenis, leiding, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van het bedrijf."
     },
     "eyebrow": "Wie wij zijn",
     "title": "Over ons",
-    "description": "Hentsch Credit is het beleggings- en vermogensbeheerplatform van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon (Zwitserland), die daarnaast krediet gedekt door uw activa aanbiedt als aanvullende dienst. Geschiedenis, leiding, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van het bedrijf.",
+    "description": "Hentsch Vault is het beleggings- en vermogensbeheerplatform van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon (Zwitserland), die daarnaast krediet gedekt door uw activa aanbiedt als aanvullende dienst. Geschiedenis, leiding, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van het bedrijf.",
     "identity": {
       "title": "Identiteitskaart",
       "legalName": "Statutaire naam",
@@ -2505,8 +2505,8 @@
       }
     },
     "product": {
-      "title": "Hentsch Credit binnen de vennootschap",
-      "body": "Hentsch Credit is het platform van {legalName}: beleggen is het hoofdproduct, krypto-gedekt krediet een aanvullende dienst. De hierboven vermelde diensten zijn die welke op de officiële website van het bedrijf zijn gepubliceerd; de voorwaarden en risico's van Hentsch Credit staan in onze algemene voorwaarden en op onze pagina over risicobeheer."
+      "title": "Hentsch Vault binnen de vennootschap",
+      "body": "Hentsch Vault is het platform van {legalName}: beleggen is het hoofdproduct, krypto-gedekt krediet een aanvullende dienst. De hierboven vermelde diensten zijn die welke op de officiële website van het bedrijf zijn gepubliceerd; de voorwaarden en risico's van Hentsch Vault staan in onze algemene voorwaarden en op onze pagina over risicobeheer."
     },
     "framework": {
       "title": "Regelgevend kader en bewaring van activa",
@@ -2523,7 +2523,7 @@
       },
       "custody": {
         "title": "Bewaring van activa",
-        "body": "Klanten hebben toegang tot meerdere depotbanken waarmee de vennootschap samenwerkingsovereenkomsten heeft gesloten (banken niet publiek genoemd). Een oplossing voor portefeuilleconsolidatie wordt geleverd door {pms}. Digitale activa die bij Hentsch Credit als onderpand worden gegeven, worden bewaard door {custodian}."
+        "body": "Klanten hebben toegang tot meerdere depotbanken waarmee de vennootschap samenwerkingsovereenkomsten heeft gesloten (banken niet publiek genoemd). Een oplossing voor portefeuilleconsolidatie wordt geleverd door {pms}. Digitale activa die bij Hentsch Vault als onderpand worden gegeven, worden bewaard door {custodian}."
       },
       "regulationLink": "Onze volledige regelgevende status bekijken",
       "custodyLink": "Risicobeheer en bewaring bekijken"

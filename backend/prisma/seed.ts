@@ -187,7 +187,7 @@ async function main() {
     pendingUser: pendingUser.email,
     adminUser: adminUser.email,
     adminTotpOtpauthUrl: generateURI({
-      issuer: 'Hentsch Credit',
+      issuer: 'Hentsch Vault',
       label: adminUser.email,
       secret: DEV_ADMIN_TOTP_SECRET,
     }),

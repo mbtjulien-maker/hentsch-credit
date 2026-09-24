@@ -80,7 +80,7 @@ export function AdminSidebar() {
       <Link href="/admin" className={cn("flex items-center gap-2.5 rounded-md px-2 py-1", ADMIN_FOCUS_RING)}>
         <Image src="/brand/hentsch-mark.png" alt="" width={500} height={500} className="size-8 rounded-md" />
         <div>
-          <h1 className="text-[13px] leading-none font-semibold tracking-[-0.01em] text-foreground">Hentsch Credit</h1>
+          <h1 className="text-[13px] leading-none font-semibold tracking-[-0.01em] text-foreground">Hentsch Vault</h1>
           <p className="mt-1 text-[10.5px] tracking-[0.02em] text-muted-foreground uppercase">Back-office</p>
         </div>
       </Link>

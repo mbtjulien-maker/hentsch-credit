@@ -73,7 +73,7 @@
   },
   "Home": {
     "meta": {
-      "title": "Hentsch Credit · Kapitalförvaltning och investering",
+      "title": "Hentsch Vault · Kapitalförvaltning och investering",
       "description": "Placera ditt kapital i sex verkliga strategier, med en uppmätt daglig avkastning som aldrig är garanterad. Kredit mot dina tillgångar erbjuds som kompletterande tjänst."
     },
     "badge": "Kompletterande tjänst · Kredit mot dina tillgångar",
@@ -147,8 +147,8 @@
   },
   "HowItWorks": {
     "meta": {
-      "title": "Så fungerar det · Hentsch Credit",
-      "description": "Från identitetskontroll till utgift: de fem stegen för att få och använda krediten mot dina tillgångar, en kompletterande tjänst från Hentsch Credit."
+      "title": "Så fungerar det · Hentsch Vault",
+      "description": "Från identitetskontroll till utgift: de fem stegen för att få och använda krediten mot dina tillgångar, en kompletterande tjänst från Hentsch Vault."
     },
     "eyebrow": "Kundresan",
     "title": "Så fungerar det",
@@ -219,11 +219,11 @@
   },
   "Accessibility": {
     "meta": {
-      "title": "Digital tillgänglighet · Hentsch Credit",
-      "description": "Det verkliga läget för plattformen Hentsch Credits digitala tillgänglighet, utan att hävda en overifierad efterlevnadsnivå."
+      "title": "Digital tillgänglighet · Hentsch Vault",
+      "description": "Det verkliga läget för plattformen Hentsch Vaults digitala tillgänglighet, utan att hävda en overifierad efterlevnadsnivå."
     },
     "title": "Tillgänglighetsredogörelse",
-    "intro": "H. Hentsch Asset Management SA strävar efter att göra plattformen Hentsch Credit användbar för så många som möjligt. Denna redogörelse beskriver det verkliga läget, utan att hävda en efterlevnadsnivå som inte har verifierats genom en formell granskning.",
+    "intro": "H. Hentsch Asset Management SA strävar efter att göra plattformen Hentsch Vault användbar för så många som möjligt. Denna redogörelse beskriver det verkliga läget, utan att hävda en efterlevnadsnivå som inte har verifierats genom en formell granskning.",
     "s1": {
       "title": "1. Efterlevnadsstatus",
       "body": "Webbplatsen har ännu inte genomgått en formell tillgänglighetsgranskning (av typen RGAA eller WCAG). Den kan därför inte förklaras uppfylla en exakt nivå. Ansträngningar görs dock redan i utformningen: semantisk sidstruktur, rubrikhierarki, färgkontraster utformade för läsbarhet, och tangentbordsnavigering möjlig på de viktigaste flödena (inloggning, kontoansökan, kontogranskning)."
@@ -247,8 +247,8 @@
   },
   "Archives": {
     "meta": {
-      "title": "Arkiv · Hentsch Credit",
-      "description": "Utvecklingen av kreditkvoten, de accepterade tillgångarna och mekanismerna hos plattformen Hentsch Credit sedan lanseringen."
+      "title": "Arkiv · Hentsch Vault",
+      "description": "Utvecklingen av kreditkvoten, de accepterade tillgångarna och mekanismerna hos plattformen Hentsch Vault sedan lanseringen."
     },
     "eyebrow": "Historik",
     "title": "Arkiv",
@@ -315,8 +315,8 @@
   },
   "Contact": {
     "meta": {
-      "title": "Kontakt · Hentsch Credit",
-      "description": "Kontaktuppgifterna till H. Hentsch Asset Management SA för alla frågor om ditt konto eller plattformen Hentsch Credit."
+      "title": "Kontakt · Hentsch Vault",
+      "description": "Kontaktuppgifterna till H. Hentsch Asset Management SA för alla frågor om ditt konto eller plattformen Hentsch Vault."
     },
     "eyebrow": "Kontakta oss",
     "title": "Kontakta oss",
@@ -333,11 +333,11 @@
   },
   "Cookies": {
     "meta": {
-      "title": "Cookiepolicy · Hentsch Credit",
-      "description": "Varför Hentsch Credit endast placerar en enda absolut nödvändig cookie, och inget annat."
+      "title": "Cookiepolicy · Hentsch Vault",
+      "description": "Varför Hentsch Vault endast placerar en enda absolut nödvändig cookie, och inget annat."
     },
     "title": "Cookiepolicy",
-    "intro": "Denna sida beskriver de cookies som plattformen Hentsch Credit faktiskt placerar och varför inget preferenscenter erbjuds.",
+    "intro": "Denna sida beskriver de cookies som plattformen Hentsch Vault faktiskt placerar och varför inget preferenscenter erbjuds.",
     "s1": {
       "title": "1. Vad plattformen placerar",
       "body": "Endast en cookie används, en sessionscookie, absolut nödvändig för tjänstens funktion: den håller din autentiserade anslutning under din navigering i kundområdet. Den raderas när du stänger din session eller din webbläsare."
@@ -364,11 +364,11 @@
   },
   "Terms": {
     "meta": {
-      "title": "Allmänna villkor · Hentsch Credit",
-      "description": "De allmänna användarvillkoren för plattformen Hentsch Credit: kredit, säkerhet, återbetalning, likvidation och avgifter."
+      "title": "Allmänna villkor · Hentsch Vault",
+      "description": "De allmänna användarvillkoren för plattformen Hentsch Vault: kredit, säkerhet, återbetalning, likvidation och avgifter."
     },
     "title": "Allmänna villkor",
-    "intro": "Dessa allmänna villkor reglerar tillgång till och användning av plattformen Hentsch Credit, en kredittjänst säkrad med digitala tillgångar, som erbjuds ett begränsat antal av bolagets kunder på inbjudan. Genom att öppna ett konto förklarar kunden sig ha läst och godkänt dem.",
+    "intro": "Dessa allmänna villkor reglerar tillgång till och användning av plattformen Hentsch Vault, en kredittjänst säkrad med digitala tillgångar, som erbjuds ett begränsat antal av bolagets kunder på inbjudan. Genom att öppna ett konto förklarar kunden sig ha läst och godkänt dem.",
     "s1": {
       "title": "1. Syfte",
       "body": "{tradingName} gör det möjligt för en verifierad och tidigare inbjuden kund att sätta in stablecoins eller tokeniserat guld som säkerhet („pant”), och i gengäld erhålla en kreditlinje, som kan användas internt och med ett tillhörande bankkort. Tjänsten tillhandahålls av {legalName}, en oberoende kapitalförvaltare (OKF) enligt FinIA, i samarbete med auktoriserade tredjeparts förvaringsinstitut och förvaringsleverantörer (se avsnitt 5)."
@@ -450,11 +450,11 @@
   },
   "Privacy": {
     "meta": {
-      "title": "Integritet · Hentsch Credit",
+      "title": "Integritet · Hentsch Vault",
       "description": "Hur H. Hentsch Asset Management SA samlar in, använder och skyddar dina personuppgifter, i enlighet med den schweiziska federala dataskyddslagen."
     },
     "title": "Integritetspolicy",
-    "intro": "Denna policy beskriver hur H. Hentsch Asset Management SA samlar in, använder och skyddar personuppgifterna för Hentsch Credits kunder, en plattform förbehållen en begränsad kundkrets, i enlighet med den schweiziska federala dataskyddslagen (nDSG) och, i förekommande fall, den allmänna dataskyddsförordningen (GDPR).",
+    "intro": "Denna policy beskriver hur H. Hentsch Asset Management SA samlar in, använder och skyddar personuppgifterna för Hentsch Vaults kunder, en plattform förbehållen en begränsad kundkrets, i enlighet med den schweiziska federala dataskyddslagen (nDSG) och, i förekommande fall, den allmänna dataskyddsförordningen (GDPR).",
     "s1": {
       "title": "1. Personuppgiftsansvarig",
       "controller": "Ansvarig",
@@ -523,8 +523,8 @@
   },
   "AccountRequest": {
     "meta": {
-      "title": "Ansök om ett konto · Hentsch Credit",
-      "description": "Ansök om ett konto hos Hentsch Credit, en plattform för kapitalförvaltning och investering förbehållen en begränsad kundkrets, på inbjudan."
+      "title": "Ansök om ett konto · Hentsch Vault",
+      "description": "Ansök om ett konto hos Hentsch Vault, en plattform för kapitalförvaltning och investering förbehållen en begränsad kundkrets, på inbjudan."
     },
     "eyebrow": "Tillgång på inbjudan",
     "title": "Ansök om ett konto",
@@ -538,15 +538,15 @@
   },
   "Faq": {
     "meta": {
-      "title": "Vanliga frågor · Hentsch Credit",
-      "description": "Svaren på de vanligaste frågorna om kontot, säkerheten och hur plattformen Hentsch Credit fungerar."
+      "title": "Vanliga frågor · Hentsch Vault",
+      "description": "Svaren på de vanligaste frågorna om kontot, säkerheten och hur plattformen Hentsch Vault fungerar."
     },
     "eyebrow": "Vanliga frågor",
     "title": "Vanliga frågor",
     "description": "Svaren på allmänna frågor om kontot, säkerheten och hur plattformen fungerar.",
     "items": {
       "openAccount": {
-        "question": "Hur öppnar man ett Hentsch Credit-konto?",
+        "question": "Hur öppnar man ett Hentsch Vault-konto?",
         "answer": "Plattformen är förbehållen en begränsad kundkrets, på inbjudan, inom ramen för en befintlig kapitalförvaltningsrelation med H. Hentsch Asset Management SA. Du kan lämna en kontoansökan från sidan Ansök om konto; den granskas av våra team innan ett faktiskt konto öppnas."
       },
       "forgotPassword": {
@@ -583,8 +583,8 @@
   },
   "Login": {
     "meta": {
-      "title": "Logga in · Hentsch Credit",
-      "description": "Logga in på ditt Hentsch Credit-konto."
+      "title": "Logga in · Hentsch Vault",
+      "description": "Logga in på ditt Hentsch Vault-konto."
     }
   },
   "LoginForm": {
@@ -602,11 +602,11 @@
   },
   "RiskManagement": {
     "meta": {
-      "title": "Riskhantering och förvaring av tillgångar · Hentsch Credit",
-      "description": "Hur Hentsch Credit hanterar förvaringen av tillgångarna, värderingen av säkerheten och likvidationsmekanismen."
+      "title": "Riskhantering och förvaring av tillgångar · Hentsch Vault",
+      "description": "Hur Hentsch Vault hanterar förvaringen av tillgångarna, värderingen av säkerheten och likvidationsmekanismen."
     },
     "title": "Riskhantering och förvaring av tillgångar",
-    "intro": "H. Hentsch Asset Management SA utför inga börsorder för tredje parts räkning och publicerar därför varken någon utförandepolicy eller rapport om bästa urval enligt regelverket för finansiella marknader. Denna sida beskriver istället de verkliga riskhanteringsmetoder som tillämpas på plattformen Hentsch Credit.",
+    "intro": "H. Hentsch Asset Management SA utför inga börsorder för tredje parts räkning och publicerar därför varken någon utförandepolicy eller rapport om bästa urval enligt regelverket för finansiella marknader. Denna sida beskriver istället de verkliga riskhanteringsmetoder som tillämpas på plattformen Hentsch Vault.",
     "s1": {
       "title": "1. Verksamhetens natur",
       "body": "{legalName} agerar som oberoende kapitalförvaltare (OKF). Huvudverksamheten är att investera kundkapital i verkliga strategier. Som kompletterande tjänst beviljar bolaget också kryptosäkrad kredit mot en säkerhet som kunden sätter in, och förvaltar en treasurystrategi för tokeniserade industrimetaller och råvaror med eget kapital. Bolaget utför inga börsorder för sina kunders räkning och förvaltar ingen diskretionär värdepappersportfölj i deras namn."
@@ -634,11 +634,11 @@
   },
   "LegalNotice": {
     "meta": {
-      "title": "Juridisk information · Hentsch Credit",
-      "description": "Juridisk information om utgivaren och operatören av plattformen Hentsch Credit."
+      "title": "Juridisk information · Hentsch Vault",
+      "description": "Juridisk information om utgivaren och operatören av plattformen Hentsch Vault."
     },
     "title": "Juridisk information",
-    "intro": "Juridisk information om utgivaren och operatören av webbplatsen och plattformen Hentsch Credit, i enlighet med tillämplig schweizisk lagstiftning. Plattform förbehållen en begränsad kundkrets, på inbjudan: den är inte öppen för allmänheten och utgör inget offentligt erbjudande.",
+    "intro": "Juridisk information om utgivaren och operatören av webbplatsen och plattformen Hentsch Vault, i enlighet med tillämplig schweizisk lagstiftning. Plattform förbehållen en begränsad kundkrets, på inbjudan: den är inte öppen för allmänheten och utgör inget offentligt erbjudande.",
     "s1": {
       "title": "1. Utgivare av webbplatsen",
       "companyName": "Firmanamn",
@@ -697,8 +697,8 @@
   },
   "Sitemap": {
     "meta": {
-      "title": "Webbplatskarta · Hentsch Credit",
-      "description": "Samtliga sidor på Hentsch Credit, både på besökarsidan och i kundområdet."
+      "title": "Webbplatskarta · Hentsch Vault",
+      "description": "Samtliga sidor på Hentsch Vault, både på besökarsidan och i kundområdet."
     },
     "eyebrow": "Navigering",
     "title": "Webbplatskarta",
@@ -761,8 +761,8 @@
   },
   "Market": {
     "meta": {
-      "title": "Marknaden i realtid · Hentsch Credit",
-      "description": "Realtidskurserna för de tillgångar som accepteras som säkerhet hos Hentsch Credit: stablecoins, guld, silver, ETH och tokeniserade industrimetaller."
+      "title": "Marknaden i realtid · Hentsch Vault",
+      "description": "Realtidskurserna för de tillgångar som accepteras som säkerhet hos Hentsch Vault: stablecoins, guld, silver, ETH och tokeniserade industrimetaller."
     },
     "eyebrow": "Realtidsdata",
     "title": "Marknaden i realtid",
@@ -770,11 +770,11 @@
   },
   "Regulation": {
     "meta": {
-      "title": "Reglering · Hentsch Credit",
-      "description": "Det schweiziska rättsliga och regulatoriska ramverk som gäller för Hentsch Credit: FinIA, FinSA, penningtvättslagen, förvaring av tillgångarna och tillsyn."
+      "title": "Reglering · Hentsch Vault",
+      "description": "Det schweiziska rättsliga och regulatoriska ramverk som gäller för Hentsch Vault: FinIA, FinSA, penningtvättslagen, förvaring av tillgångarna och tillsyn."
     },
     "title": "Regulatoriskt ramverk",
-    "intro": "Denna sida beskriver det schweiziska rättsliga och regulatoriska ramverk som gäller för Hentsch Credit, som ett komplement till den juridiska informationen.",
+    "intro": "Denna sida beskriver det schweiziska rättsliga och regulatoriska ramverk som gäller för Hentsch Vault, som ett komplement till den juridiska informationen.",
     "s1": {
       "title": "1. Tillämpligt rättsligt ramverk",
       "intro": "Verksamheten hos {legalName} regleras särskilt av:",
@@ -843,7 +843,7 @@
   },
   "Yield": {
     "meta": {
-      "title": "Avkastning på säkerheten · Hentsch Credit",
+      "title": "Avkastning på säkerheten · Hentsch Vault",
       "description": "Hur guld, silver och ETH som satts in som säkerhet automatiskt betalar av upp till 60% av din kredit, och likvidationsrisken vid ett kraftigt fall."
     },
     "eyebrow": "Vår skillnad",
@@ -928,8 +928,8 @@
   },
   "RwaStrategy": {
     "meta": {
-      "title": "RWA-investeringsstrategi · Hentsch Credit",
-      "description": "Hentsch Credits treasurystrategi för tokeniserade industrimetaller: cash and carry-arbitrage, triangulär utlåning och likviditetstillförsel."
+      "title": "RWA-investeringsstrategi · Hentsch Vault",
+      "description": "Hentsch Vaults treasurystrategi för tokeniserade industrimetaller: cash and carry-arbitrage, triangulär utlåning och likviditetstillförsel."
     },
     "eyebrow": "Transparens · Treasurystrategi",
     "title": "Vår investeringsstrategi för industrimetaller",
@@ -1063,8 +1063,8 @@
   },
   "Pricing": {
     "meta": {
-      "title": "Priser · Hentsch Credit",
-      "description": "De verkliga räntor och avgifter som tillämpas av Hentsch Credit: kreditkvot, ränta, uppläggningsavgift och likvidationströsklar, utan överraskningar."
+      "title": "Priser · Hentsch Vault",
+      "description": "De verkliga räntor och avgifter som tillämpas av Hentsch Vault: kreditkvot, ränta, uppläggningsavgift och likvidationströsklar, utan överraskningar."
     },
     "eyebrow": "Pristransparens",
     "title": "Våra priser, utan överraskningar",
@@ -2365,11 +2365,11 @@
   "InviteSignup": {
     "meta": {
       "title": "Skapa mitt konto med en inbjudningskod",
-      "description": "Ange din inbjudningskod för att skapa ditt Hentsch Credit-konto och fylla i din KYC-akt steg för steg."
+      "description": "Ange din inbjudningskod för att skapa ditt Hentsch Vault-konto och fylla i din KYC-akt steg för steg."
     },
     "eyebrow": "Endast på inbjudan",
     "title": "Skapa mitt konto",
-    "description": "Hentsch Credit fungerar endast på inbjudan. Ange koden som din rådgivare har skickat för att skapa ditt konto och fylla i din akt, steg för steg.",
+    "description": "Hentsch Vault fungerar endast på inbjudan. Ange koden som din rådgivare har skickat för att skapa ditt konto och fylla i din akt, steg för steg.",
     "progress": "Steg {step} av {total}",
     "alreadyHaveAccount": "Har du redan ett konto? <link>Logga in</link>",
     "genericError": "Något gick fel, försök igen.",
@@ -2421,11 +2421,11 @@
   "AboutUs": {
     "meta": {
       "title": "Om oss",
-      "description": "Hentsch Credit är investerings- och kapitalförvaltningsplattformen från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon (Schweiz), som även erbjuder kredit mot dina tillgångar som kompletterande tjänst. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats."
+      "description": "Hentsch Vault är investerings- och kapitalförvaltningsplattformen från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon (Schweiz), som även erbjuder kredit mot dina tillgångar som kompletterande tjänst. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats."
     },
     "eyebrow": "Vilka vi är",
     "title": "Om oss",
-    "description": "Hentsch Credit är investerings- och kapitalförvaltningsplattformen från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon (Schweiz), som även erbjuder kredit mot dina tillgångar som kompletterande tjänst. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats.",
+    "description": "Hentsch Vault är investerings- och kapitalförvaltningsplattformen från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon (Schweiz), som även erbjuder kredit mot dina tillgångar som kompletterande tjänst. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats.",
     "identity": {
       "title": "Bolagsfakta",
       "legalName": "Firmanamn",
@@ -2505,8 +2505,8 @@
       }
     },
     "product": {
-      "title": "Hentsch Credit inom bolaget",
-      "body": "Hentsch Credit är plattformen som drivs av {legalName}: investering är huvudprodukten, kryptosäkrad kredit en kompletterande tjänst. Tjänsterna ovan är de som publiceras på bolagets officiella webbplats; villkor och risker som är specifika för Hentsch Credit beskrivs i våra allmänna villkor och på vår sida om riskhantering."
+      "title": "Hentsch Vault inom bolaget",
+      "body": "Hentsch Vault är plattformen som drivs av {legalName}: investering är huvudprodukten, kryptosäkrad kredit en kompletterande tjänst. Tjänsterna ovan är de som publiceras på bolagets officiella webbplats; villkor och risker som är specifika för Hentsch Vault beskrivs i våra allmänna villkor och på vår sida om riskhantering."
     },
     "framework": {
       "title": "Regelverk och förvaring av tillgångar",
@@ -2523,7 +2523,7 @@
       },
       "custody": {
         "title": "Förvaring av tillgångar",
-        "body": "Kunderna har tillgång till flera depåbanker med vilka bolaget har ingått samarbetsavtal (banker som inte nämns offentligt). En lösning för portföljkonsolidering tillhandahålls av {pms}. Digitala tillgångar som ställs som säkerhet hos Hentsch Credit förvaras av {custodian}."
+        "body": "Kunderna har tillgång till flera depåbanker med vilka bolaget har ingått samarbetsavtal (banker som inte nämns offentligt). En lösning för portföljkonsolidering tillhandahålls av {pms}. Digitala tillgångar som ställs som säkerhet hos Hentsch Vault förvaras av {custodian}."
       },
       "regulationLink": "Se vår fullständiga regulatoriska status",
       "custodyLink": "Se riskhantering och förvaring"

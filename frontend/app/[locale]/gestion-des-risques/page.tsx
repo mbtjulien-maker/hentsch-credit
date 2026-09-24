@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 // meilleure sélection" d'un modèle de référence tiers (footer d'un courtier/gérant
 // exécutant des ordres) : ces documents supposent une activité d'exécution d'ordres pour
 // compte de tiers (MiFID / best execution) que H. Hentsch Asset Management SA n'exerce pas
-// en tant que GFI opérant Hentsch Credit. Cette page décrit ce que la société fait
+// en tant que GFI opérant Hentsch Vault. Cette page décrit ce que la société fait
 // réellement : garde des avoirs, valorisation du gage, mécanisme de liquidation, séparation
 // du capital propre engagé dans la stratégie RWA. Aucune activité d'exécution d'ordres pour
 // compte de tiers n'est revendiquée nulle part sur cette page.

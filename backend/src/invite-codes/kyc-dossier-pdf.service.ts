@@ -109,7 +109,7 @@ export class KycDossierPdfService {
     };
 
     drawTitle(
-      'Hentsch Credit — Dossier d’identification et de vérification client',
+      'Hentsch Vault — Dossier d’identification et de vérification client',
     );
     ensureSpace(LINE_HEIGHT);
     page.drawText(

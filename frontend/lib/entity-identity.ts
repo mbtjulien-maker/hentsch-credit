@@ -15,7 +15,7 @@
 // Source : Fiche_Identite_H_Hentsch_Asset_Management.pdf fournie par l'utilisateur (dev
 // du projet, pour le compte de son employeur).
 export const ENTITY_IDENTITY = {
-  tradingName: "Hentsch Credit",
+  tradingName: "Hentsch Vault",
 
   legalName: "H. Hentsch Asset Management SA",
   legalForm: "Société Anonyme (SA)",

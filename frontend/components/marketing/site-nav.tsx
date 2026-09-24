@@ -43,7 +43,7 @@ export function SiteNav() {
   // Le fond déborde légèrement de chaque côté du texte (PILL_PADDING_PX) pour ne pas le
   // toucher pile — un padding sur le lien lui-même ferait le même effet mais élargirait
   // chaque lien dans le flux normal (6 liens × 2 × padding), ce qui suffit à faire
-  // retomber "Hentsch Credit" dans la troncature à 1280px (largeur d'écran courante déjà
+  // retomber "Hentsch Vault" dans la troncature à 1280px (largeur d'écran courante déjà
   // tendue, cf. langBtn compacté). Un débordement purement visuel n'a pas ce coût : gap-4
   // entre les liens laisse largement la place.
   const PILL_PADDING_PX = 6;
@@ -81,7 +81,7 @@ export function SiteNav() {
           <Image src="/brand/hentsch-mark.png" alt="" width={500} height={500} className="size-10 shrink-0 rounded-lg" />
           <div className="min-w-0">
             <span className="block truncate text-base font-semibold leading-none text-foreground">
-              Hentsch Credit
+              Hentsch Vault
             </span>
             <span className="hidden truncate text-xs text-muted-foreground sm:block">{t("tagline")}</span>
           </div>

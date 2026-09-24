@@ -73,7 +73,7 @@
   },
   "Home": {
     "meta": {
-      "title": "Hentsch Credit · Gestão de fortuna e investimento",
+      "title": "Hentsch Vault · Gestão de fortuna e investimento",
       "description": "Coloque o seu capital em seis estratégias reais, com uma rentabilidade diária medida e nunca garantida. Um crédito assente nos seus ativos é oferecido como serviço complementar."
     },
     "badge": "Serviço complementar · Crédito assente nos seus ativos",
@@ -147,8 +147,8 @@
   },
   "HowItWorks": {
     "meta": {
-      "title": "Como funciona · Hentsch Credit",
-      "description": "Da verificação de identidade à despesa: os cinco passos para obter e utilizar o crédito assente nos seus ativos, serviço complementar da Hentsch Credit."
+      "title": "Como funciona · Hentsch Vault",
+      "description": "Da verificação de identidade à despesa: os cinco passos para obter e utilizar o crédito assente nos seus ativos, serviço complementar da Hentsch Vault."
     },
     "eyebrow": "O percurso do cliente",
     "title": "Como funciona",
@@ -219,11 +219,11 @@
   },
   "Accessibility": {
     "meta": {
-      "title": "Acessibilidade digital · Hentsch Credit",
-      "description": "Estado real de avanço da acessibilidade digital da plataforma Hentsch Credit, sem reivindicar um nível de conformidade não verificado."
+      "title": "Acessibilidade digital · Hentsch Vault",
+      "description": "Estado real de avanço da acessibilidade digital da plataforma Hentsch Vault, sem reivindicar um nível de conformidade não verificado."
     },
     "title": "Declaração de acessibilidade",
-    "intro": "A H. Hentsch Asset Management SA esforça-se por tornar a plataforma Hentsch Credit utilizável pelo maior número possível de pessoas. Esta declaração descreve o estado real de avanço, sem reivindicar um nível de conformidade que não foi verificado por uma auditoria formal.",
+    "intro": "A H. Hentsch Asset Management SA esforça-se por tornar a plataforma Hentsch Vault utilizável pelo maior número possível de pessoas. Esta declaração descreve o estado real de avanço, sem reivindicar um nível de conformidade que não foi verificado por uma auditoria formal.",
     "s1": {
       "title": "1. Estado de conformidade",
       "body": "O site ainda não foi objeto de uma auditoria de acessibilidade formal (do tipo RGAA ou WCAG). Não pode, portanto, ser declarado conforme a um nível preciso. No entanto, já são aplicados esforços na conceção: estrutura semântica das páginas, hierarquia de títulos, contrastes de cor pensados para a legibilidade, e navegação possível pelo teclado nos principais percursos (início de sessão, pedido de conta, consulta da conta)."
@@ -247,8 +247,8 @@
   },
   "Archives": {
     "meta": {
-      "title": "Arquivo · Hentsch Credit",
-      "description": "A evolução do rácio de crédito, dos ativos aceites e dos mecanismos da plataforma Hentsch Credit desde o seu lançamento."
+      "title": "Arquivo · Hentsch Vault",
+      "description": "A evolução do rácio de crédito, dos ativos aceites e dos mecanismos da plataforma Hentsch Vault desde o seu lançamento."
     },
     "eyebrow": "Histórico",
     "title": "Arquivo",
@@ -315,8 +315,8 @@
   },
   "Contact": {
     "meta": {
-      "title": "Contacto · Hentsch Credit",
-      "description": "Os dados de contacto da H. Hentsch Asset Management SA para qualquer questão relativa à sua conta ou à plataforma Hentsch Credit."
+      "title": "Contacto · Hentsch Vault",
+      "description": "Os dados de contacto da H. Hentsch Asset Management SA para qualquer questão relativa à sua conta ou à plataforma Hentsch Vault."
     },
     "eyebrow": "Contacte-nos",
     "title": "Contacte-nos",
@@ -333,11 +333,11 @@
   },
   "Cookies": {
     "meta": {
-      "title": "Política de cookies · Hentsch Credit",
-      "description": "Por que a Hentsch Credit apenas instala um único cookie estritamente necessário, e nada mais."
+      "title": "Política de cookies · Hentsch Vault",
+      "description": "Por que a Hentsch Vault apenas instala um único cookie estritamente necessário, e nada mais."
     },
     "title": "Política de cookies",
-    "intro": "Esta página descreve os cookies realmente instalados pela plataforma Hentsch Credit e por que não é proposto nenhum centro de preferências.",
+    "intro": "Esta página descreve os cookies realmente instalados pela plataforma Hentsch Vault e por que não é proposto nenhum centro de preferências.",
     "s1": {
       "title": "1. O que a plataforma instala",
       "body": "É utilizado um único cookie, de sessão, estritamente necessário ao funcionamento do serviço: mantém a sua ligação autenticada durante a sua navegação na área de cliente. É eliminado ao fechar a sua sessão ou o seu navegador."
@@ -364,11 +364,11 @@
   },
   "Terms": {
     "meta": {
-      "title": "Condições gerais · Hentsch Credit",
-      "description": "As condições gerais de utilização da plataforma Hentsch Credit: crédito, garantia, reembolso, liquidação e comissões."
+      "title": "Condições gerais · Hentsch Vault",
+      "description": "As condições gerais de utilização da plataforma Hentsch Vault: crédito, garantia, reembolso, liquidação e comissões."
     },
     "title": "Condições gerais",
-    "intro": "As presentes condições gerais regem o acesso e a utilização da plataforma Hentsch Credit, serviço de crédito garantido por ativos digitais, proposto a um número restrito de clientes da sociedade por convite. Ao abrir uma conta, o cliente declara tê-las lido e aceitado.",
+    "intro": "As presentes condições gerais regem o acesso e a utilização da plataforma Hentsch Vault, serviço de crédito garantido por ativos digitais, proposto a um número restrito de clientes da sociedade por convite. Ao abrir uma conta, o cliente declara tê-las lido e aceitado.",
     "s1": {
       "title": "1. Objeto",
       "body": "A {tradingName} permite a um cliente verificado e previamente convidado depositar, em garantia («penhor»), stablecoins ou ouro tokenizado, e obter em contrapartida uma linha de crédito, utilizável internamente e num cartão bancário associado. O serviço é prestado pela {legalName}, gestor de fortuna independente (GFI) na aceção da LEFin, em colaboração com instituições depositárias e prestadores de custódia terceiros autorizados (ver secção 5)."
@@ -450,11 +450,11 @@
   },
   "Privacy": {
     "meta": {
-      "title": "Privacidade · Hentsch Credit",
+      "title": "Privacidade · Hentsch Vault",
       "description": "Como a H. Hentsch Asset Management SA recolhe, utiliza e protege os seus dados pessoais, em conformidade com a lei federal suíça de proteção de dados."
     },
     "title": "Política de privacidade",
-    "intro": "A presente política descreve como a H. Hentsch Asset Management SA recolhe, utiliza e protege os dados pessoais dos clientes da Hentsch Credit, plataforma reservada a uma clientela restrita, em conformidade com a lei federal suíça de proteção de dados (nLPD) e, se aplicável, com o regulamento geral de proteção de dados (RGPD).",
+    "intro": "A presente política descreve como a H. Hentsch Asset Management SA recolhe, utiliza e protege os dados pessoais dos clientes da Hentsch Vault, plataforma reservada a uma clientela restrita, em conformidade com a lei federal suíça de proteção de dados (nLPD) e, se aplicável, com o regulamento geral de proteção de dados (RGPD).",
     "s1": {
       "title": "1. Responsável pelo tratamento",
       "controller": "Responsável",
@@ -523,8 +523,8 @@
   },
   "AccountRequest": {
     "meta": {
-      "title": "Solicitar a abertura de uma conta · Hentsch Credit",
-      "description": "Solicite a abertura de uma conta Hentsch Credit, plataforma de gestão de fortuna e investimento reservada a uma clientela restrita, por convite."
+      "title": "Solicitar a abertura de uma conta · Hentsch Vault",
+      "description": "Solicite a abertura de uma conta Hentsch Vault, plataforma de gestão de fortuna e investimento reservada a uma clientela restrita, por convite."
     },
     "eyebrow": "Acesso por convite",
     "title": "Solicitar a abertura de uma conta",
@@ -538,15 +538,15 @@
   },
   "Faq": {
     "meta": {
-      "title": "Perguntas frequentes · Hentsch Credit",
-      "description": "As respostas às perguntas mais frequentes sobre a conta, a segurança e o funcionamento da plataforma Hentsch Credit."
+      "title": "Perguntas frequentes · Hentsch Vault",
+      "description": "As respostas às perguntas mais frequentes sobre a conta, a segurança e o funcionamento da plataforma Hentsch Vault."
     },
     "eyebrow": "Perguntas frequentes",
     "title": "Perguntas frequentes",
     "description": "As respostas às perguntas gerais sobre a conta, a segurança e o funcionamento da plataforma.",
     "items": {
       "openAccount": {
-        "question": "Como abrir uma conta Hentsch Credit?",
+        "question": "Como abrir uma conta Hentsch Vault?",
         "answer": "A plataforma está reservada a uma clientela restrita, por convite, no âmbito de uma relação de gestão de fortuna existente com a H. Hentsch Asset Management SA. Pode apresentar um pedido de abertura de conta a partir da página Solicitar uma conta; será examinado pelas nossas equipas antes de qualquer abertura efetiva."
       },
       "forgotPassword": {
@@ -583,8 +583,8 @@
   },
   "Login": {
     "meta": {
-      "title": "Iniciar sessão · Hentsch Credit",
-      "description": "Inicie sessão na sua conta Hentsch Credit."
+      "title": "Iniciar sessão · Hentsch Vault",
+      "description": "Inicie sessão na sua conta Hentsch Vault."
     }
   },
   "LoginForm": {
@@ -602,11 +602,11 @@
   },
   "RiskManagement": {
     "meta": {
-      "title": "Gestão de riscos e custódia de ativos · Hentsch Credit",
-      "description": "Como a Hentsch Credit gere a custódia dos ativos, a valorização da garantia e o mecanismo de liquidação."
+      "title": "Gestão de riscos e custódia de ativos · Hentsch Vault",
+      "description": "Como a Hentsch Vault gere a custódia dos ativos, a valorização da garantia e o mecanismo de liquidação."
     },
     "title": "Gestão de riscos e custódia de ativos",
-    "intro": "A H. Hentsch Asset Management SA não executa ordens bolsistas por conta de terceiros e, portanto, não publica nenhuma política de execução nem relatório de melhor seleção na aceção da regulamentação sobre os mercados financeiros. Esta página descreve, em vez disso, as práticas reais de gestão de riscos aplicadas à plataforma Hentsch Credit.",
+    "intro": "A H. Hentsch Asset Management SA não executa ordens bolsistas por conta de terceiros e, portanto, não publica nenhuma política de execução nem relatório de melhor seleção na aceção da regulamentação sobre os mercados financeiros. Esta página descreve, em vez disso, as práticas reais de gestão de riscos aplicadas à plataforma Hentsch Vault.",
     "s1": {
       "title": "1. Natureza da atividade",
       "body": "A {legalName} atua como gestor de fortuna independente (GFI). A sua atividade principal é investir o capital dos clientes em estratégias reais. Como serviço complementar, concede também crédito cripto-colateralizado em troca de uma garantia depositada pelo cliente, e gere uma estratégia de tesouraria sobre metais e matérias-primas industriais tokenizados com o seu próprio capital. Não executa nenhuma ordem bolsista por conta dos seus clientes nem gere nenhuma carteira de valores mobiliários discricionária em seu nome."
@@ -634,11 +634,11 @@
   },
   "LegalNotice": {
     "meta": {
-      "title": "Aviso legal · Hentsch Credit",
-      "description": "Informações legais relativas ao editor e ao operador da plataforma Hentsch Credit."
+      "title": "Aviso legal · Hentsch Vault",
+      "description": "Informações legais relativas ao editor e ao operador da plataforma Hentsch Vault."
     },
     "title": "Aviso legal",
-    "intro": "Informações legais relativas ao editor e ao operador do site e da plataforma Hentsch Credit, em conformidade com a legislação suíça aplicável. Plataforma reservada a uma clientela restrita, por convite: não está aberta ao público e não constitui uma oferta pública.",
+    "intro": "Informações legais relativas ao editor e ao operador do site e da plataforma Hentsch Vault, em conformidade com a legislação suíça aplicável. Plataforma reservada a uma clientela restrita, por convite: não está aberta ao público e não constitui uma oferta pública.",
     "s1": {
       "title": "1. Editor do site",
       "companyName": "Razão social",
@@ -697,8 +697,8 @@
   },
   "Sitemap": {
     "meta": {
-      "title": "Mapa do site · Hentsch Credit",
-      "description": "Todas as páginas da Hentsch Credit, tanto do lado do visitante como da área de cliente."
+      "title": "Mapa do site · Hentsch Vault",
+      "description": "Todas as páginas da Hentsch Vault, tanto do lado do visitante como da área de cliente."
     },
     "eyebrow": "Navegação",
     "title": "Mapa do site",
@@ -761,8 +761,8 @@
   },
   "Market": {
     "meta": {
-      "title": "Mercado em direto · Hentsch Credit",
-      "description": "As cotações em tempo real dos ativos aceites como garantia na Hentsch Credit: stablecoins, ouro, prata, ETH e metais industriais tokenizados."
+      "title": "Mercado em direto · Hentsch Vault",
+      "description": "As cotações em tempo real dos ativos aceites como garantia na Hentsch Vault: stablecoins, ouro, prata, ETH e metais industriais tokenizados."
     },
     "eyebrow": "Dados em direto",
     "title": "O mercado em direto",
@@ -770,11 +770,11 @@
   },
   "Regulation": {
     "meta": {
-      "title": "Regulamentação · Hentsch Credit",
-      "description": "O quadro legal e regulamentar suíço aplicável à Hentsch Credit: LEFin, LSFin, LBA, custódia dos ativos e supervisão."
+      "title": "Regulamentação · Hentsch Vault",
+      "description": "O quadro legal e regulamentar suíço aplicável à Hentsch Vault: LEFin, LSFin, LBA, custódia dos ativos e supervisão."
     },
     "title": "Quadro regulamentar",
-    "intro": "Esta página detalha o quadro legal e regulamentar suíço aplicável à Hentsch Credit, em complemento do aviso legal.",
+    "intro": "Esta página detalha o quadro legal e regulamentar suíço aplicável à Hentsch Vault, em complemento do aviso legal.",
     "s1": {
       "title": "1. Quadro legal aplicável",
       "intro": "A atividade da {legalName} rege-se, nomeadamente, por:",
@@ -843,7 +843,7 @@
   },
   "Yield": {
     "meta": {
-      "title": "Rendimento da garantia · Hentsch Credit",
+      "title": "Rendimento da garantia · Hentsch Vault",
       "description": "Como o ouro, a prata e o ETH depositados em garantia reembolsam automaticamente até 60% do seu crédito, e o risco de liquidação em caso de forte queda."
     },
     "eyebrow": "A nossa diferença",
@@ -928,8 +928,8 @@
   },
   "RwaStrategy": {
     "meta": {
-      "title": "Estratégia de investimento RWA · Hentsch Credit",
-      "description": "A estratégia de tesouraria da Hentsch Credit sobre os metais industriais tokenizados: arbitragem cash and carry, empréstimo triangular e fornecimento de liquidez."
+      "title": "Estratégia de investimento RWA · Hentsch Vault",
+      "description": "A estratégia de tesouraria da Hentsch Vault sobre os metais industriais tokenizados: arbitragem cash and carry, empréstimo triangular e fornecimento de liquidez."
     },
     "eyebrow": "Transparência · Estratégia de tesouraria",
     "title": "A nossa estratégia de investimento em metais industriais",
@@ -1063,8 +1063,8 @@
   },
   "Pricing": {
     "meta": {
-      "title": "Tarifários · Hentsch Credit",
-      "description": "As taxas e comissões reais aplicadas pela Hentsch Credit: rácio de crédito, juros, comissão de abertura e limiares de liquidação, sem surpresas."
+      "title": "Tarifários · Hentsch Vault",
+      "description": "As taxas e comissões reais aplicadas pela Hentsch Vault: rácio de crédito, juros, comissão de abertura e limiares de liquidação, sem surpresas."
     },
     "eyebrow": "Transparência tarifária",
     "title": "Os nossos tarifários, sem surpresas",
@@ -2365,11 +2365,11 @@
   "InviteSignup": {
     "meta": {
       "title": "Criar a minha conta com um código de convite",
-      "description": "Introduza o seu código de convite para criar a sua conta Hentsch Credit e completar o seu dossiê KYC passo a passo."
+      "description": "Introduza o seu código de convite para criar a sua conta Hentsch Vault e completar o seu dossiê KYC passo a passo."
     },
     "eyebrow": "Acesso apenas por convite",
     "title": "Criar a minha conta",
-    "description": "A Hentsch Credit funciona apenas por convite. Introduza o código fornecido pelo seu consultor para criar a sua conta e completar o seu dossiê, passo a passo.",
+    "description": "A Hentsch Vault funciona apenas por convite. Introduza o código fornecido pelo seu consultor para criar a sua conta e completar o seu dossiê, passo a passo.",
     "progress": "Passo {step} de {total}",
     "alreadyHaveAccount": "Já tem uma conta? <link>Iniciar sessão</link>",
     "genericError": "Ocorreu um erro, tente novamente.",
@@ -2421,11 +2421,11 @@
   "AboutUs": {
     "meta": {
       "title": "Sobre nós",
-      "description": "A Hentsch Credit é a plataforma de investimento e gestão de fortuna da H. Hentsch Asset Management SA, gestor de fortuna independente com sede em Nyon (Suíça), que oferece também um crédito assente nos seus ativos como serviço complementar. História, direção, filosofia, serviços e enquadramento regulamentar, verificados no site oficial da sociedade."
+      "description": "A Hentsch Vault é a plataforma de investimento e gestão de fortuna da H. Hentsch Asset Management SA, gestor de fortuna independente com sede em Nyon (Suíça), que oferece também um crédito assente nos seus ativos como serviço complementar. História, direção, filosofia, serviços e enquadramento regulamentar, verificados no site oficial da sociedade."
     },
     "eyebrow": "Quem somos",
     "title": "Sobre nós",
-    "description": "A Hentsch Credit é a plataforma de investimento e gestão de fortuna da H. Hentsch Asset Management SA, gestor de fortuna independente com sede em Nyon (Suíça), que oferece também um crédito assente nos seus ativos como serviço complementar. História, direção, filosofia, serviços e enquadramento regulamentar, verificados no site oficial da sociedade.",
+    "description": "A Hentsch Vault é a plataforma de investimento e gestão de fortuna da H. Hentsch Asset Management SA, gestor de fortuna independente com sede em Nyon (Suíça), que oferece também um crédito assente nos seus ativos como serviço complementar. História, direção, filosofia, serviços e enquadramento regulamentar, verificados no site oficial da sociedade.",
     "identity": {
       "title": "Ficha de identidade",
       "legalName": "Denominação social",
@@ -2505,8 +2505,8 @@
       }
     },
     "product": {
-      "title": "A Hentsch Credit no seio da sociedade",
-      "body": "A Hentsch Credit é a plataforma explorada pela {legalName}: o investimento é o seu produto principal, o crédito cripto-colateralizado um serviço complementar. Os serviços listados acima são os publicados no site oficial da sociedade; as condições e os riscos próprios da Hentsch Credit estão detalhados nas nossas condições gerais e na nossa página de gestão de riscos."
+      "title": "A Hentsch Vault no seio da sociedade",
+      "body": "A Hentsch Vault é a plataforma explorada pela {legalName}: o investimento é o seu produto principal, o crédito cripto-colateralizado um serviço complementar. Os serviços listados acima são os publicados no site oficial da sociedade; as condições e os riscos próprios da Hentsch Vault estão detalhados nas nossas condições gerais e na nossa página de gestão de riscos."
     },
     "framework": {
       "title": "Enquadramento regulamentar e custódia dos ativos",
@@ -2523,7 +2523,7 @@
       },
       "custody": {
         "title": "Custódia dos ativos",
-        "body": "Os clientes têm acesso a vários bancos depositários com os quais a sociedade celebrou acordos de cooperação (bancos não nomeados publicamente). Uma solução de consolidação de carteiras é fornecida pela {pms}. Os ativos digitais dados em garantia na Hentsch Credit são conservados pela {custodian}."
+        "body": "Os clientes têm acesso a vários bancos depositários com os quais a sociedade celebrou acordos de cooperação (bancos não nomeados publicamente). Uma solução de consolidação de carteiras é fornecida pela {pms}. Os ativos digitais dados em garantia na Hentsch Vault são conservados pela {custodian}."
       },
       "regulationLink": "Ver o nosso estatuto regulamentar completo",
       "custodyLink": "Ver a gestão de riscos e a custódia"

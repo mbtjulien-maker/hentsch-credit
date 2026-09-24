@@ -6,7 +6,7 @@ import * as QRCode from 'qrcode';
 // pas la classe `authenticator` des versions antérieures d'otplib, dépréciée dans celle-ci)
 // — compatible avec n'importe quelle app d'authentification standard (Google
 // Authenticator, Authy, 1Password...).
-const ISSUER = 'Hentsch Credit';
+const ISSUER = 'Hentsch Vault';
 
 @Injectable()
 export class TwoFactorService {

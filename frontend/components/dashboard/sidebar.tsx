@@ -213,7 +213,7 @@ export function Sidebar() {
       <Link href="/dashboard" className="flex items-center gap-3">
         <Image src="/brand/hentsch-mark.png" alt="" width={500} height={500} className="size-10 rounded-lg" />
         <div>
-          <p className="font-heading text-[15px] leading-none font-semibold tracking-[-0.01em] text-sidebar-foreground">Hentsch Credit</p>
+          <p className="font-heading text-[15px] leading-none font-semibold tracking-[-0.01em] text-sidebar-foreground">Hentsch Vault</p>
           <p className="mt-1.5 text-[11px] tracking-[0.04em] text-muted-foreground uppercase">{t("subtitle")}</p>
         </div>
       </Link>

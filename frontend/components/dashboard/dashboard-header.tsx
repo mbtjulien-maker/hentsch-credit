@@ -24,7 +24,7 @@ export function DashboardHeader() {
             <Landmark className="size-5" />
           </div>
           <div>
-            <h1 className="text-lg font-semibold leading-none">Hentsch Credit</h1>
+            <h1 className="text-lg font-semibold leading-none">Hentsch Vault</h1>
             <p className="text-sm text-muted-foreground">{t("subtitle")}</p>
           </div>
         </Link>

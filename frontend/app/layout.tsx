@@ -48,20 +48,20 @@ const BING_SITE_VERIFICATION = process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION;
 // Métadonnées par défaut, héritées par toute page qui ne les redéfinit pas explicitement
 // (cf. app/page.tsx et les autres pages publiques pour des title/description spécifiques).
 // `template` préfixe automatiquement le nom du site à chaque titre de page enfant qui
-// suit la convention "X · Hentsch Credit" — évite la répétition à chaque export.
+// suit la convention "X · Hentsch Vault" — évite la répétition à chaque export.
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Hentsch Credit · Gestion de fortune et investissement",
+    default: "Hentsch Vault · Gestion de fortune et investissement",
     template: "%s",
   },
   description:
     "Placez votre capital sur six stratégies réelles, avec un rendement quotidien mesuré et jamais garanti. Un crédit adossé à vos actifs est proposé en service complémentaire.",
   openGraph: {
-    siteName: "Hentsch Credit",
+    siteName: "Hentsch Vault",
     locale: "fr_CH",
     type: "website",
-    images: [{ url: "/brand/hentsch-logo-full.png", width: 1200, height: 630, alt: "Hentsch Credit" }],
+    images: [{ url: "/brand/hentsch-logo-full.png", width: 1200, height: 630, alt: "Hentsch Vault" }],
   },
   twitter: {
     card: "summary_large_image",

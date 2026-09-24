@@ -151,7 +151,7 @@ export function LoginForm() {
                 height={500}
                 className="mb-2 size-12 rounded-xl"
               />
-              <CardTitle className="text-lg">Hentsch Credit</CardTitle>
+              <CardTitle className="text-lg">Hentsch Vault</CardTitle>
               <CardDescription>{t("restrictedAccess")}</CardDescription>
             </CardHeader>
             <CardContent>

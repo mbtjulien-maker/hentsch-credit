@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return buildPageMetadata({ locale, path: "/plan-du-site", title: t("title"), description: t("description") });
 }
 
-// Plan du site PUBLIC — distinct de l'artefact interne "Plan du Site Hentsch Credit" (qui
+// Plan du site PUBLIC — distinct de l'artefact interne "Plan du Site Hentsch Vault" (qui
 // couvre en plus le back-office admin, à usage interne/audit). Celui-ci liste les pages
 // visiteur (accessibles sans connexion) et les pages de l'espace client (cf.
 // CLIENT_SECTIONS dans components/dashboard/sidebar.tsx), mais jamais le back-office

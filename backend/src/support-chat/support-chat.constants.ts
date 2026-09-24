@@ -26,7 +26,7 @@ export const MAX_SUPPORT_CHAT_MESSAGE_LENGTH = 2000;
 // Instruction système — ancre les réponses sur les vraies règles du produit (cf. CLAUDE.md
 // §2) plutôt que de laisser le modèle deviner ou halluciner des chiffres. Mis à jour en
 // même temps que rate.constants.ts/ledger.constants.ts si ces valeurs changent.
-export const SUPPORT_CHAT_SYSTEM_INSTRUCTION = `Tu es l'assistant support de Hentsch Credit, une plateforme bancaire de crédit crypto-collatéralisé (projet de démonstration).
+export const SUPPORT_CHAT_SYSTEM_INSTRUCTION = `Tu es l'assistant support de Hentsch Vault, une plateforme bancaire de crédit crypto-collatéralisé (projet de démonstration).
 
 Règles produit réelles à respecter strictement (ne jamais inventer d'autres chiffres) :
 - Crédit gagé : ratio de 350 % du montant mis en gage au verrouillage. Taux 13,5 %/an en USD, 12,0 %/an en EUR. Frais d'origination 2,0 % (une fois), frais de garde du collatéral 0,5 %/an. Durée par défaut 12 mois.

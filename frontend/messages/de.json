@@ -650,14 +650,22 @@
       "country": "Land",
       "registerNumber": "UID / Handelsregisternummer",
       "vatNumber": "MwSt.-Nr.",
-      "publicationDirector": "Verantwortlicher für die Veröffentlichung"
+      "publicationDirector": "Verantwortlicher für die Veröffentlichung",
+      "finmaAuthorisation": "FINMA-Bewilligung (Vermögensverwalter, FINIG)",
+      "founded": "Beginn der Vermögensverwaltungstätigkeit"
     },
     "s2": {
       "title": "2. Regulatorischer Status und Aufsicht",
       "body": "{legalName} ist ein <b>unabhängiger Vermögensverwalter (UVV)</b> im Sinne des Finanzinstitutsgesetzes (FINIG), <b>und kein Bankinstitut</b>. Als solches verfügt es über keine direkt von der FINMA erteilte Bankbewilligung, unterliegt aber der Aufsicht einer von der {supervisoryAuthority} zugelassenen Aufsichtsorganisation (AO).",
       "supervisionBody": "Aufsichtsorganisation (AO)",
       "amlBody": "GwG-Selbstregulierungsorganisation",
-      "footer": "Die Details des anwendbaren rechtlichen Rahmens (FINIG, FIDLEG, GwG) werden auf der Seite <link>Regulierung</link> dargestellt."
+      "footer": "Die Details des anwendbaren rechtlichen Rahmens (FINIG, FIDLEG, GwG) werden auf der Seite <link>Regulierung</link> dargestellt.",
+      "supervisionBodyFullName": "Vollständige Bezeichnung der Aufsichtsorganisation",
+      "supervisionBodyAddress": "Adresse der Aufsichtsorganisation",
+      "mediationBody": "Ombudsstelle",
+      "mediationAddress": "Adresse der Ombudsstelle",
+      "statutoryAuditor": "Revisionsstelle",
+      "prudentialAuditor": "Aufsichtsrechtliche Prüfung"
     },
     "s3": {
       "title": "3. Verwahrung der Vermögenswerte"
@@ -669,7 +677,9 @@
     "s5": {
       "title": "5. Kontakt",
       "email": "E-Mail",
-      "phone": "Telefon"
+      "phone": "Telefon",
+      "fax": "Fax",
+      "website": "Offizielle Website"
     },
     "s6": {
       "title": "6. Hosting",
@@ -682,7 +692,8 @@
     "s8": {
       "title": "8. Technische Partner",
       "body": "Die Plattform stützt sich für bestimmte technische Funktionen auf Drittanbieter (Verwahrung digitaler Vermögenswerte und Schlüsselverwaltung, Ausgabe von Bankkarten, Identitätsprüfung, Marktdaten). Die Liste dieser Anbieter und ihre Rolle sind in der <link>Datenschutzrichtlinie</link> detailliert."
-    }
+    },
+    "logoAlt": "Logo der H. Hentsch Asset Management SA"
   },
   "Sitemap": {
     "meta": {
@@ -2410,57 +2421,117 @@
   "AboutUs": {
     "meta": {
       "title": "Über uns",
-      "description": "Hentsch Credit: unsere Mission, unsere Governance, unsere regulatorische Aufsicht und die Verwahrung Ihrer Vermögenswerte bei lizenzierten Drittverwahrern."
+      "description": "Hentsch Credit ist das durch Krypto-Assets besicherte Angebot der H. Hentsch Asset Management SA, eines unabhängigen Vermögensverwalters mit Sitz in Nyon, Schweiz. Geschichte, Geschäftsleitung, Philosophie, Dienstleistungen und regulatorischer Rahmen, überprüft auf der offiziellen Website der Gesellschaft."
     },
     "eyebrow": "Wer wir sind",
     "title": "Über uns",
-    "description": "Hentsch Credit ist das kryptobesicherte Angebot der H. Hentsch Asset Management SA, eines unabhängigen Vermögensverwalters mit Sitz in Nyon, Schweiz.",
-    "mission": {
-      "title": "Unsere Mission",
-      "body": "Unseren Kunden, Privatpersonen wie Unternehmen, ermöglichen, aus ihren digitalen Vermögenswerten und tokenisierten Edelmetallen sofortige Kaufkraft freizusetzen, ohne sie je verkaufen zu müssen, und ihnen gleichzeitig direkten Zugang zu Strategien mit echter Rendite zu geben."
-    },
-    "governance": {
-      "title": "Governance",
-      "body": "Hentsch Credit wird von {legalName} betrieben, einer Schweizer Aktiengesellschaft mit Sitz im Kanton {canton}, unter der Leitung von {founder}."
-    },
-    "regulation": {
-      "title": "Regulierung & Aufsicht",
-      "body": "Als unabhängiger Vermögensverwalter im Sinne des FINIG wird unsere Tätigkeit von {supervisionBodyName} beaufsichtigt, einer von der FINMA zugelassenen Aufsichtsorganisation, einschliesslich der Einhaltung der Geldwäschereigesetzgebung.",
-      "learnMore": "Unseren vollständigen Regulierungsstatus ansehen"
-    },
-    "custody": {
-      "title": "Verwahrung der Vermögenswerte",
-      "body": "Ihre Vermögenswerte werden nie von Hentsch Credit im eigenen Namen gehalten. Bargeld und Wertschriften bleiben bei lizenzierten Drittverwahrbanken hinterlegt; als Sicherheit hinterlegte digitale Vermögenswerte werden von {custodian} verwahrt, einem spezialisierten Anbieter für die Verwahrung von Krypto-Assets.",
-      "learnMore": "Risikomanagement und Verwahrung ansehen"
-    },
-    "values": {
-      "title": "Unsere Werte",
-      "intro": "Vier Grundsätze, die jede Produktentscheidung leiten, von der Berechnung eines Zinssatzes bis zur Verwahrung Ihrer Vermögenswerte.",
-      "transparency": {
-        "title": "Transparenz",
-        "body": "Jeder angezeigte Zinssatz, jede Schwelle und jede Rendite spiegelt eine reale Zahl oder eine klar als solche gekennzeichnete Annahme wider, nie eine erfundene Zahl."
-      },
-      "security": {
-        "title": "Sicherheit",
-        "body": "Ihre Vermögenswerte bleiben bei lizenzierten Drittverwahrern, nie im eigenen Namen."
-      },
-      "precision": {
-        "title": "Schweizer Präzision",
-        "body": "Governance und regulatorische Aufsicht verankert im Schweizer Recht, von unserem Sitz im Kanton Waadt aus."
-      },
-      "innovation": {
-        "title": "Kontrollierte Innovation",
-        "body": "Eine Brücke zwischen digitalen Vermögenswerten und traditioneller Finanzwelt, Schritt für Schritt aufgebaut, nie auf Kosten der Transparenz gegenüber unseren Kunden."
-      }
-    },
+    "description": "Hentsch Credit ist das durch Krypto-Assets besicherte Angebot der H. Hentsch Asset Management SA, eines unabhängigen Vermögensverwalters mit Sitz in Nyon, Schweiz. Geschichte, Geschäftsleitung, Philosophie, Dienstleistungen und regulatorischer Rahmen, überprüft auf der offiziellen Website der Gesellschaft.",
     "identity": {
-      "title": "Rechtliche Identität",
+      "title": "Unternehmensprofil",
       "legalName": "Firmenname",
       "legalForm": "Rechtsform",
       "registeredOffice": "Sitz",
-      "commercialRegister": "Handelsregister"
+      "commercialRegister": "Handelsregister",
+      "postalAddress": "Postadresse",
+      "canton": "Kanton",
+      "vat": "MWST",
+      "phone": "Telefon",
+      "fax": "Fax",
+      "email": "E-Mail",
+      "website": "Offizielle Website",
+      "languages": "Servicesprachen",
+      "founded": "Tätigkeit seit"
     },
     "ctaContact": "Kontaktieren Sie uns",
-    "ctaNoAccount": "Noch kein Konto? Kontoeröffnung beantragen"
+    "ctaNoAccount": "Noch kein Konto? Kontoeröffnung beantragen",
+    "logoAlt": "Logo der H. Hentsch Asset Management SA",
+    "tagline": "Aus Familientradition verteidigen und schützen wir Ihre Interessen.",
+    "facts": {
+      "founded": "Vermögensverwaltung seit",
+      "finma": "FINMA-Bewilligung als Vermögensverwalter (FINIG)",
+      "team": "Mitarbeitende, mehr als hundert Jahre gemeinsame Erfahrung",
+      "ownership": "des Kapitals in Schweizer Privatbesitz, über {holding}"
+    },
+    "timeline": {
+      "title": "Unsere Geschichte",
+      "founding": "Beginn der Vermögensverwaltungstätigkeit.",
+      "equity": "Gründung der HH Equity Partners SA und Aufnahme der Private-Equity-Tätigkeit.",
+      "equity2": "Gründung der HH Equity Partners II SA.",
+      "finmaApplication": "Einreichung des Bewilligungsgesuchs bei der FINMA.",
+      "finmaAuthorisation": "Bewilligung der FINMA zur Tätigkeit als Vermögensverwalter nach dem FINIG."
+    },
+    "management": {
+      "title": "Geschäftsleitung",
+      "intro": "Drei Delegierte des Verwaltungsrats in einem Team von vier Mitarbeitenden.",
+      "role": "Delegierter des Verwaltungsrats",
+      "hentsch": "Nachkomme einer Schweizer Privatbankiersfamilie seit mehr als acht Generationen.",
+      "dubois": "Mehr als 30 Jahre Erfahrung im Bank- und Finanzwesen.",
+      "mentha": "Mehr als 30 Jahre Erfahrung im Private Banking."
+    },
+    "philosophy": {
+      "title": "Unsere Philosophie",
+      "intro": "Werte aus der Familientradition: Kenntnis und Achtung des Kunden, Treue, Loyalität und Kapitalerhalt.",
+      "independence": {
+        "title": "Unabhängigkeit",
+        "body": "Eine offene Architektur: Wir wählen die besten Anlageprodukte aus, frei von Interessenkonflikten."
+      },
+      "personalization": {
+        "title": "Individualität",
+        "body": "Jeder Kunde ist einzigartig, mit eigenen Bedürfnissen, Prioritäten und Erwartungen: Unsere Lösungen sind massgeschneidert."
+      },
+      "professionalism": {
+        "title": "Professionalität und Engagement",
+        "body": "Eine überschaubare Struktur, flexibel und schnell in der Entscheidung, mit einem persönlichen Service, bei dem jede Anfrage ohne Verzögerung bearbeitet wird."
+      }
+    },
+    "services": {
+      "title": "Unsere Dienstleistungen",
+      "intro": "Die Tätigkeiten der Gesellschaft, wie auf ihrer offiziellen Website dargestellt.",
+      "discretionary": {
+        "title": "Diskretionäre Portfolioverwaltung",
+        "body": "Verwaltung individueller Portfolios für private und professionelle Kunden nach strategischen oder thematischen Ansätzen der Vermögensallokation, abgestimmt auf das Risikoprofil des Kunden."
+      },
+      "privateEquity": {
+        "title": "Finanzinstrumente (Private Equity)",
+        "body": "Angebot von Finanzinstrumenten in Form von Vorschlägen zum Erwerb von Wertpapieren (Aktien) im Bereich Private Equity."
+      },
+      "consolidation": {
+        "title": "Portfolio-Konsolidierung",
+        "body": "Konsolidierung von Portfolios, die bei mehreren Depotbanken gehalten werden, mithilfe eines Portfolio-Management-Systems (PMS)."
+      },
+      "advice": {
+        "title": "Erweiterte Beratung",
+        "body": "Beratung in den Bereichen Immobilien, Finanzierung, Versicherungen, Steuern, Altersvorsorge und Nachlassplanung."
+      }
+    },
+    "product": {
+      "title": "Hentsch Credit innerhalb der Gesellschaft",
+      "body": "Hentsch Credit ist das durch Krypto-Assets besicherte Angebot der {legalName}. Die oben aufgeführten Dienstleistungen sind jene, die auf der offiziellen Website der Gesellschaft veröffentlicht sind; die für Hentsch Credit geltenden Bedingungen und Risiken sind in unseren Allgemeinen Geschäftsbedingungen und auf unserer Seite zum Risikomanagement beschrieben."
+    },
+    "framework": {
+      "title": "Regulatorischer Rahmen und Verwahrung der Vermögenswerte",
+      "authorisation": {
+        "title": "Bewilligung und Aufsicht",
+        "body": "Die {legalName} ist von der FINMA als Vermögensverwalter nach dem FINIG bewilligt (Bewilligung vom {date}). Sie untersteht der Aufsicht von {body}, mit jährlichen aufsichtsrechtlichen Prüfungen zu FINIG, FIDLEG und GwG.",
+        "bodyLabel": "Aufsichtsorganisation",
+        "auditorLabel": "Revisionsstelle",
+        "prudentialLabel": "Aufsichtsrechtliche Prüfung"
+      },
+      "mediation": {
+        "title": "Ombudsstelle",
+        "body": "Gemäss Artikel 16 FINIG können Streitigkeiten, die nicht einvernehmlich beigelegt werden konnten, der Ombudsstelle der Gesellschaft vorgelegt werden."
+      },
+      "custody": {
+        "title": "Verwahrung der Vermögenswerte",
+        "body": "Die Kunden haben Zugang zu mehreren Depotbanken, mit denen die Gesellschaft Kooperationsvereinbarungen geschlossen hat (Banken nicht öffentlich genannt). Eine Lösung zur Portfolio-Konsolidierung wird von {pms} bereitgestellt. Die bei Hentsch Credit als Sicherheit hinterlegten digitalen Vermögenswerte werden von {custodian} verwahrt."
+      },
+      "regulationLink": "Unseren vollständigen regulatorischen Status ansehen",
+      "custodyLink": "Risikomanagement und Verwahrung ansehen"
+    },
+    "sources": {
+      "title": "Quellen und Transparenz",
+      "body": "Die Angaben zur Gesellschaft wurden am {date} auf ihrer offiziellen Website ({site}) überprüft. Die Registernummer, die MWST-Nummer und der Anbieter der Verwahrung digitaler Vermögenswerte stammen aus der internen Dokumentation der Gesellschaft und erscheinen nicht auf ihrer öffentlichen Website.",
+      "link": "Quellseite ansehen"
+    }
   }
 }

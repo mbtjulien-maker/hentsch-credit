@@ -67,7 +67,7 @@ export default async function CommentCaMarchePage({ params }: { params: Promise<
               key={step.title}
               className="flex flex-col rounded-2xl border border-border/80 bg-card p-4 shadow-sm transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-blue-300/40 hover:shadow-xl"
             >
-              <div className="mb-2.5 flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-600 text-white">
+              <div className="mb-2.5 flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <step.icon className="size-4.5" />
               </div>
               <h3 className="text-sm font-semibold text-foreground">{step.title}</h3>
@@ -115,7 +115,7 @@ export default async function CommentCaMarchePage({ params }: { params: Promise<
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/login"
-            className="group flex items-center gap-2 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+            className="group flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
           >
             {t("ctaLogin")}
             <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   ArrowRight,
   Layers,
@@ -65,70 +64,48 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
     { icon: TrendingUp, title: t("teasers.market.title"), description: t("teasers.market.description"), href: "/marche" },
   ] as const;
 
-  // Hero crédit gagé — inchangé dans son contenu, extrait en variable pour devenir une
-  // slide de HeroCarousel (cf. plus bas) plutôt qu'une <section> empilée.
+  // Deux slides du carrousel d'accueil (cf. HeroCarousel) — thème "fintech clair" partagé
+  // avec l'espace client : fond clair, gros chiffre en émeraude, boutons en pilule. Même
+  // structure pour les deux ; seule la pastille et le panneau de droite changent, pour ne
+  // jamais laisser croire que crédit et investissement sont le même produit (cf. §2H).
+  const primaryCta =
+    "group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90";
+  const secondaryCta =
+    "rounded-full border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-muted";
+
   const creditHero = (
-    <section className="relative overflow-hidden bg-slate-950">
-      <Image
-        src="/brand/homepage-vault-bg.webp"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
-      <div className="absolute inset-0 z-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/50" />
-      <div className="absolute inset-0 z-0 bg-gradient-to-t from-slate-950/70 via-transparent to-slate-950/30" />
+    <section className="relative overflow-hidden bg-primary/[0.04]">
       <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-28">
-        {/* Gauche : accroche + CTA, sur le fond photo réel du coffre-fort. Droite :
-            preuve en direct (axe clé de la plateforme, cf. YieldAssetGrid), toujours en
-            carte claire — côte à côte dès le premier écran, plutôt qu'en dessous, pour
-            une visibilité maximale. */}
         <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
-          <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium text-slate-200 backdrop-blur-sm">
+          <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
             {t("badge")}
           </span>
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            {t("titleLine1")}{" "}
-            <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-fuchsia-500 bg-clip-text text-transparent">
-              {t("titleHighlight")}
-            </span>
-            .
+          <h1 className="font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
+            {t("titleLine1")} <span className="text-primary">{t("titleHighlight")}</span>.
           </h1>
-          <p className="max-w-lg text-lg text-slate-300">{t("subtitle")}</p>
+          <p className="max-w-lg text-lg text-muted-foreground">{t("subtitle")}</p>
 
-          <div className="relative flex flex-col items-center gap-3 rounded-2xl border border-amber-200/60 bg-gradient-to-br from-white via-amber-50/60 to-orange-50/60 px-8 py-5 shadow-2xl shadow-black/40 lg:items-start">
-            <div className="flex items-baseline gap-2">
-              <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-fuchsia-600 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent">
-                350%
-              </span>
-              <span className="text-sm font-medium text-slate-600">{t("statCardCaption")}</span>
+          <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-card px-8 py-5 lg:items-start">
+            <div className="flex items-baseline gap-3">
+              <span className="font-heading text-6xl leading-none font-medium tracking-tight text-primary">350%</span>
+              <span className="text-sm font-medium text-muted-foreground">{t("statCardCaption")}</span>
             </div>
             <div className="flex items-center gap-2">
               <AssetLogoRow currencies={["XAUT", "PAXG", "KAG"]} variant="bare" />
-              <span className="text-xs font-medium text-slate-500">{t("statCardAssets")}</span>
+              <span className="text-xs font-medium text-muted-foreground">{t("statCardAssets")}</span>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-            <Link
-              href="/login"
-              className="group flex items-center gap-2 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-            >
+            <Link href="/login" className={primaryCta}>
               {t("ctaLogin")}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>
-            <Link
-              href="/comment-ca-marche"
-              className="rounded-lg border border-white/15 bg-white/10 px-5 py-3 text-sm font-medium text-white shadow-sm backdrop-blur-sm transition-colors hover:bg-white/15"
-            >
+            <Link href="/comment-ca-marche" className={secondaryCta}>
               {t("ctaHowItWorks")}
             </Link>
           </div>
-          <Link
-            href="/inscription"
-            className="text-sm text-slate-300 underline underline-offset-2 hover:text-white"
-          >
+          <Link href="/inscription" className="text-sm text-muted-foreground underline underline-offset-2 hover:text-foreground">
             {t("ctaNoAccount")}
           </Link>
         </div>
@@ -138,50 +115,34 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
     </section>
   );
 
-  // Hero investissement direct — même poids visuel que celui du crédit gagé ci-dessus
-  // (demande explicite du client : mettre l'investissement en avant comme le crédit) —
-  // identité de couleur distincte (émeraude plutôt qu'ambre/coffre-fort) pour ne jamais
-  // laisser croire qu'il s'agit du même produit, cf. §2H CLAUDE.md pour le détail du
-  // produit lui-même. Également extrait en variable pour devenir la seconde slide.
   const investmentHero = (
-    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-slate-950 to-slate-950">
-      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(circle_at_15%_20%,rgba(16,185,129,0.16),transparent_55%),radial-gradient(circle_at_85%_70%,rgba(45,212,191,0.12),transparent_55%)]" />
+    <section className="relative overflow-hidden bg-secondary/60">
       <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-24">
         <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
-          <span className="rounded-full border border-emerald-300/25 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-200 backdrop-blur-sm">
+          <span className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
             {t("investmentHero.badge")}
           </span>
-          <h2 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            {t("investmentHero.titleLine1")}{" "}
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-              {t("investmentHero.titleHighlight")}
-            </span>
-            .
+          <h2 className="font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
+            {t("investmentHero.titleLine1")} <span className="text-primary">{t("investmentHero.titleHighlight")}</span>.
           </h2>
-          <p className="max-w-lg text-lg text-slate-300">{t("investmentHero.subtitle")}</p>
+          <p className="max-w-lg text-lg text-muted-foreground">{t("investmentHero.subtitle")}</p>
 
-          <div className="relative flex flex-col items-center gap-2 rounded-2xl border border-emerald-200/30 bg-gradient-to-br from-white via-emerald-50/60 to-teal-50/60 px-8 py-5 shadow-2xl shadow-black/40 lg:items-start">
-            <div className="flex items-baseline gap-2">
-              <span className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent">
+          <div className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card px-8 py-5 lg:items-start">
+            <div className="flex items-baseline gap-3">
+              <span className="font-heading text-6xl leading-none font-medium tracking-tight text-primary">
                 {t("investmentHero.statValue")}
               </span>
-              <span className="text-sm font-medium text-slate-600">{t("investmentHero.statCaption")}</span>
+              <span className="text-sm font-medium text-muted-foreground">{t("investmentHero.statCaption")}</span>
             </div>
-            <span className="text-xs font-medium text-slate-500">{t("investmentHero.statDisclaimer")}</span>
+            <span className="text-xs font-medium text-muted-foreground">{t("investmentHero.statDisclaimer")}</span>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-            <Link
-              href="/login"
-              className="group flex items-center gap-2 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
-            >
+            <Link href="/login" className={primaryCta}>
               {t("ctaLogin")}
               <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>
-            <Link
-              href="/investissement-direct"
-              className="rounded-lg border border-white/15 bg-white/10 px-5 py-3 text-sm font-medium text-white shadow-sm backdrop-blur-sm transition-colors hover:bg-white/15"
-            >
+            <Link href="/investissement-direct" className={secondaryCta}>
               {t("investmentHero.ctaDiscover")}
             </Link>
           </div>
@@ -252,7 +213,7 @@ export default async function LandingPage({ params }: { params: Promise<{ locale
         <p className="mt-2 text-muted-foreground">{t("closingDescription")}</p>
         <Link
           href="/inscription"
-          className="group mt-5 inline-flex items-center gap-2 rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 px-5 py-3 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+          className="group mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
         >
           {t("closingCta")}
           <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />

@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { LocaleHtmlLangSync } from "@/components/locale-html-lang-sync";
+import { LocaleThemeScope } from "@/components/locale-theme-scope";
 import { JsonLd, organizationJsonLd } from "@/lib/seo";
 
 // Layout imbriqué (pas de <html>/<body> ici — hérités de app/layout.tsx, partagé avec
@@ -38,7 +39,8 @@ export default async function LocaleLayout({
           décrit l'exploitant réel, jamais dupliqué par page. */}
       <JsonLd id="organization-jsonld" data={organizationJsonLd()} />
       <LocaleHtmlLangSync locale={locale} />
-      {children}
+      <LocaleThemeScope />
+      <div className="client-typography theme-fintech bg-background text-foreground">{children}</div>
     </NextIntlClientProvider>
   );
 }

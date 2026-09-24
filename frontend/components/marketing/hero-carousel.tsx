@@ -44,7 +44,7 @@ export function HeroCarousel({ slides }: { slides: ReactNode[] }) {
   // moment du switch. Avec ce fond posé derrière, plus aucun flash pendant la transition.
   return (
     <div
-      className="relative isolate bg-slate-950"
+      className="relative isolate bg-background"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -52,8 +52,12 @@ export function HeroCarousel({ slides }: { slides: ReactNode[] }) {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`col-start-1 row-start-1 transition-opacity duration-700 ease-in-out ${
-              index === active ? "opacity-100" : "opacity-0"
+            // Fondu ENCHAÎNÉ (sortant d'abord, entrant après un court délai) plutôt que croisé :
+            // sur les fonds clairs du thème "fintech clair", deux slides semi-transparentes
+            // en même temps se superposaient (textes fantômes pendant ~700 ms), ce que le
+            // fond sombre masquait avant.
+            className={`col-start-1 row-start-1 transition-opacity ease-in-out ${
+              index === active ? "opacity-100 delay-300 duration-500" : "opacity-0 duration-300"
             }`}
             aria-hidden={index !== active}
             inert={index !== active ? true : undefined}
@@ -71,7 +75,7 @@ export function HeroCarousel({ slides }: { slides: ReactNode[] }) {
             aria-label={`${index + 1}/${slides.length}`}
             aria-current={index === active}
             className={`pointer-events-auto h-2 rounded-full transition-all duration-300 ${
-              index === active ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
+              index === active ? "w-6 bg-primary" : "w-2 bg-foreground/20 hover:bg-foreground/40"
             }`}
           />
         ))}

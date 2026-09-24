@@ -14,7 +14,7 @@ import { JsonLd, faqPageJsonLd } from "@/lib/seo";
 // "Taux indicatif affiché au client"). D'où l'insistance du texte sur "objectif" /
 // "indicatif" à chaque occurrence du chiffre, plutôt qu'un simple badge isolé.
 //
-// Toujours en thème sombre fixe (bg-slate-900, text-white…), quel que soit le thème
+// Toujours en thème sombre fixe (bg-slate-900, text-foreground…), quel que soit le thème
 // choisi par le visiteur — identité visuelle "terminal" volontairement invariante. Server
 // Component traduit via getTranslations() (pas de useTranslations() : ce composant ne
 // fait aucune interaction client).
@@ -58,53 +58,53 @@ export async function RwaStrategySection() {
   }));
 
   return (
-    <section id="strategie-rwa" className="bg-slate-900 py-16 text-white">
+    <section id="strategie-rwa" className="bg-muted/40 py-16 text-foreground">
       {/* Balisage FAQPage — construit à partir des MÊMES questions/réponses affichées
           plus bas (cf. FAQ_ITEMS), jamais un contenu parallèle (cf. lib/seo.ts). */}
       <JsonLd id="faq-jsonld" data={faqPageJsonLd(FAQ_ITEMS)} />
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
             <Layers className="size-3.5" />
             {t("eyebrow")}
           </span>
-          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-white sm:text-3xl">{t("title")}</h2>
-          <p className="mt-3 text-sm text-slate-300 sm:text-base">{t("intro")}</p>
+          <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{t("title")}</h2>
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">{t("intro")}</p>
         </div>
 
-        <div className="mx-auto mt-6 flex w-fit flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-4">
+        <div className="mx-auto mt-6 flex w-fit flex-col items-center gap-2 rounded-2xl border border-border bg-card px-6 py-4">
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-bold tabular-nums text-white">{t("apyTargetValue")}</span>
-            <span className="text-sm font-medium text-slate-300">{t("apyTargetLabel")}</span>
+            <span className="text-3xl font-bold tabular-nums text-foreground">{t("apyTargetValue")}</span>
+            <span className="text-sm font-medium text-muted-foreground">{t("apyTargetLabel")}</span>
           </div>
           <AssetLogoRow currencies={NEW_RWA_ASSETS} className="justify-center" />
-          <p className="max-w-md text-center text-xs leading-relaxed text-slate-400">{t("apyTargetNote")}</p>
+          <p className="max-w-md text-center text-xs leading-relaxed text-muted-foreground">{t("apyTargetNote")}</p>
         </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-3">
           {PILLARS.map((pillar) => (
-            <div key={pillar.title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-              <div className="flex size-9 items-center justify-center rounded-xl bg-white/10 text-cyan-300">
+            <div key={pillar.title} className="rounded-2xl border border-border bg-card p-5">
+              <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <pillar.icon className="size-4.5" />
               </div>
-              <div className="mt-3 text-lg font-semibold tabular-nums text-white">
-                {pillar.range} <span className="text-xs font-normal text-slate-400">{t("apyObjective")}</span>
+              <div className="mt-3 text-lg font-semibold tabular-nums text-foreground">
+                {pillar.range} <span className="text-xs font-normal text-muted-foreground">{t("apyObjective")}</span>
               </div>
-              <h3 className="mt-1 text-sm font-semibold text-white">{pillar.title}</h3>
-              <p className="mt-1.5 text-xs leading-relaxed text-slate-400">{pillar.description}</p>
+              <h3 className="mt-1 text-sm font-semibold text-foreground">{pillar.title}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{pillar.description}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-10">
-          <h3 className="mb-1 text-center text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <h3 className="mb-1 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             {t("caseStudy.title")}
           </h3>
           <p className="mx-auto mb-4 max-w-2xl text-center text-xs text-slate-500">{t("caseStudy.intro")}</p>
           <div className="overflow-x-auto rounded-2xl border border-white/10">
             <table className="w-full min-w-[560px] text-left text-xs">
               <thead>
-                <tr className="border-b border-white/10 bg-white/[0.03] text-slate-400">
+                <tr className="border-b border-border bg-card text-muted-foreground">
                   <th className="px-4 py-2.5 font-medium">{t("caseStudy.flow")}</th>
                   <th className="px-4 py-2.5 font-medium">{t("caseStudy.basis")}</th>
                   <th className="px-4 py-2.5 text-right font-medium">{t("caseStudy.annualAmount")}</th>
@@ -113,18 +113,18 @@ export async function RwaStrategySection() {
               </thead>
               <tbody>
                 {CASE_STUDY_ROWS.map((row) => (
-                  <tr key={row.key} className="border-b border-white/5 text-slate-300 last:border-0">
+                  <tr key={row.key} className="border-b border-white/5 text-muted-foreground last:border-0">
                     <td className="px-4 py-2.5">{row.label}</td>
-                    <td className="px-4 py-2.5 tabular-nums text-slate-400">{row.basis}</td>
+                    <td className="px-4 py-2.5 tabular-nums text-muted-foreground">{row.basis}</td>
                     <td className="px-4 py-2.5 text-right tabular-nums">{row.amount}</td>
                     <td className="px-4 py-2.5 text-right tabular-nums">{row.impact}</td>
                   </tr>
                 ))}
-                <tr className="bg-white/[0.04] font-semibold text-white">
+                <tr className="bg-muted font-semibold text-foreground">
                   <td className="px-4 py-2.5">{t("caseStudy.netTotal")}</td>
-                  <td className="px-4 py-2.5 tabular-nums text-slate-300">{t("caseStudy.capital")}</td>
+                  <td className="px-4 py-2.5 tabular-nums text-muted-foreground">{t("caseStudy.capital")}</td>
                   <td className="px-4 py-2.5 text-right tabular-nums">+550 000 $</td>
-                  <td className="px-4 py-2.5 text-right tabular-nums text-cyan-300">+5,50%</td>
+                  <td className="px-4 py-2.5 text-right tabular-nums text-primary">+5,50%</td>
                 </tr>
               </tbody>
             </table>
@@ -133,37 +133,37 @@ export async function RwaStrategySection() {
         </div>
 
         <div className="mt-10">
-          <h3 className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <h3 className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             {t("roadmapTitle")}
           </h3>
           <div className="grid gap-3 sm:grid-cols-4">
             {ROADMAP_PHASES.map((step, i) => (
-              <div key={step.window} className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <div className="flex items-center gap-2 text-xs font-medium text-cyan-300">
-                  <span className="flex size-5 items-center justify-center rounded-full bg-cyan-300/15 text-[10px]">
+              <div key={step.window} className="relative rounded-2xl border border-border bg-card p-4">
+                <div className="flex items-center gap-2 text-xs font-medium text-primary">
+                  <span className="flex size-5 items-center justify-center rounded-full bg-primary/10 text-[10px]">
                     {i + 1}
                   </span>
                   {step.window}
                 </div>
-                <h4 className="mt-2 text-sm font-semibold text-white">{step.title}</h4>
-                <p className="mt-1 text-xs leading-relaxed text-slate-400">{step.detail}</p>
+                <h4 className="mt-2 text-sm font-semibold text-foreground">{step.title}</h4>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{step.detail}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="mt-10">
-          <h3 className="mb-4 flex items-center justify-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <h3 className="mb-4 flex items-center justify-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             <ShieldCheck className="size-4" />
             {t("risksTitle")}
           </h3>
           <div className="grid gap-3 sm:grid-cols-2">
             {RISKS.map((item) => (
-              <div key={item.risk} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <item.icon className="mt-0.5 size-4 shrink-0 text-amber-300" />
+              <div key={item.risk} className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4">
+                <item.icon className="mt-0.5 size-4 shrink-0 text-amber-600" />
                 <div>
-                  <div className="text-sm font-semibold text-white">{item.risk}</div>
-                  <p className="mt-0.5 text-xs leading-relaxed text-slate-400">{item.mitigation}</p>
+                  <div className="text-sm font-semibold text-foreground">{item.risk}</div>
+                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{item.mitigation}</p>
                 </div>
               </div>
             ))}
@@ -171,30 +171,30 @@ export async function RwaStrategySection() {
         </div>
 
         <div className="mt-10">
-          <h3 className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <h3 className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             {t("governanceTitle")}
           </h3>
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h4 className="text-sm font-semibold text-white">{t("governance.capital.title")}</h4>
-              <p className="mt-1 text-xs leading-relaxed text-slate-400">{t("governance.capital.body")}</p>
+            <div className="rounded-2xl border border-border bg-card p-4">
+              <h4 className="text-sm font-semibold text-foreground">{t("governance.capital.title")}</h4>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("governance.capital.body")}</p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h4 className="text-sm font-semibold text-white">{t("governance.supervision.title")}</h4>
-              <p className="mt-1 text-xs leading-relaxed text-slate-400">{t("governance.supervision.body")}</p>
+            <div className="rounded-2xl border border-border bg-card p-4">
+              <h4 className="text-sm font-semibold text-foreground">{t("governance.supervision.title")}</h4>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("governance.supervision.body")}</p>
             </div>
           </div>
         </div>
 
         <div className="mt-10">
-          <h3 className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-slate-400">
+          <h3 className="mb-4 text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             {t("faqTitle")}
           </h3>
           <div className="grid gap-3 sm:grid-cols-2">
             {FAQ_ITEMS.map((item) => (
-              <div key={item.key} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <h4 className="text-sm font-semibold text-white">{item.question}</h4>
-                <p className="mt-1 text-xs leading-relaxed text-slate-400">{item.answer}</p>
+              <div key={item.key} className="rounded-2xl border border-border bg-card p-4">
+                <h4 className="text-sm font-semibold text-foreground">{item.question}</h4>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.answer}</p>
               </div>
             ))}
           </div>

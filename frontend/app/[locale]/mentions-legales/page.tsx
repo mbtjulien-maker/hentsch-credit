@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { LegalField, LegalPageShell, LegalSection } from "@/components/marketing/legal-page-shell";
+import { COMPANY_PROFILE } from "@/lib/company-profile";
 import { ENTITY_IDENTITY } from "@/lib/entity-identity";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -22,10 +24,16 @@ export default async function MentionsLegalesPage({ params }: { params: Promise<
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("LegalNotice");
+  const dateLong = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  const P = COMPANY_PROFILE;
 
   return (
     <LegalPageShell title={t("title")} intro={t("intro")}>
       <LegalSection title={t("s1.title")}>
+        {/* Logo officiel (fond blanc → cadre blanc quel que soit le thème). */}
+        <div className="mb-4 flex w-fit items-center justify-center rounded-xl border border-border bg-white p-3">
+          <Image src={P.logo.src} alt={t("logoAlt")} width={P.logo.width} height={P.logo.height} className="h-auto w-[220px]" />
+        </div>
         <dl className="space-y-2">
           <LegalField label={t("s1.companyName")} value={ENTITY_IDENTITY.legalName} />
           <LegalField label={t("s1.legalForm")} value={ENTITY_IDENTITY.legalForm} />
@@ -37,6 +45,8 @@ export default async function MentionsLegalesPage({ params }: { params: Promise<
           <LegalField label={t("s1.registerNumber")} value={ENTITY_IDENTITY.commercialRegisterNumber} />
           <LegalField label={t("s1.vatNumber")} value={ENTITY_IDENTITY.vatNumber} />
           <LegalField label={t("s1.publicationDirector")} value={ENTITY_IDENTITY.publicationDirector} />
+          <LegalField label={t("s1.founded")} value={String(P.foundedYear)} />
+          <LegalField label={t("s1.finmaAuthorisation")} value={dateLong.format(new Date(`${P.finma.authorisationDate}T00:00:00Z`))} />
         </dl>
       </LegalSection>
 
@@ -51,6 +61,12 @@ export default async function MentionsLegalesPage({ params }: { params: Promise<
         <dl className="space-y-2">
           <LegalField label={t("s2.supervisionBody")} value={ENTITY_IDENTITY.supervisionBodyName} />
           <LegalField label={t("s2.amlBody")} value={ENTITY_IDENTITY.amlBodyName} />
+          <LegalField label={t("s2.supervisionBodyFullName")} value={P.supervision.fullName} />
+          <LegalField label={t("s2.supervisionBodyAddress")} value={P.supervision.address} />
+          <LegalField label={t("s2.mediationBody")} value={P.mediation.name} />
+          <LegalField label={t("s2.mediationAddress")} value={P.mediation.address} />
+          <LegalField label={t("s2.statutoryAuditor")} value={P.auditors.statutory} />
+          <LegalField label={t("s2.prudentialAuditor")} value={P.auditors.prudential} />
         </dl>
         <p>{ENTITY_IDENTITY.supervisionBodyDescription}.</p>
         <p>
@@ -78,6 +94,8 @@ export default async function MentionsLegalesPage({ params }: { params: Promise<
         <dl className="space-y-2">
           <LegalField label={t("s5.email")} value={ENTITY_IDENTITY.generalContactEmail} />
           <LegalField label={t("s5.phone")} value={ENTITY_IDENTITY.generalContactPhone} />
+          <LegalField label={t("s5.fax")} value={P.fax} />
+          <LegalField label={t("s5.website")} value={P.officialSite.replace("https://", "")} />
         </dl>
       </LegalSection>
 

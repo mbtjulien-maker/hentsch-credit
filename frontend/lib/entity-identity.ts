@@ -28,18 +28,22 @@ export const ENTITY_IDENTITY = {
   commercialRegisterNumber: "CHE-115.630.564 (registre du commerce du canton de Vaud)",
   vatNumber: "CHE-115.630.564 TVA",
 
-  publicationDirector: "Henri Hentsch (Président du Conseil d'administration / Fondateur)",
+  // Fonction telle que publiée par la société sur son site officiel (cf. lib/company-profile.ts,
+  // vérifiée le 24 septembre 2026) : administrateur délégué, pas "président du conseil".
+  publicationDirector: "Henri Hentsch (Administrateur délégué)",
 
   // Supervision — GFI au sens de la LEFin, pas de licence bancaire directe.
   supervisoryAuthority: "Autorité fédérale de surveillance des marchés financiers (FINMA)",
   supervisionBodyName: "SO-FIT",
   supervisionBodyDescription:
-    "SO-FIT (Association Suisse des Organismes de Surveillance), organisme de surveillance agréé par la FINMA, compétent pour la gestion de fortune et le respect de la loi sur le blanchiment d'argent (LBA)",
+    "SO-FIT (Supervisory Organisation for Financial Intermediaries & Trustees), organisme de surveillance dont relève la société, compétent pour la gestion de fortune et le respect de la loi sur le blanchiment d'argent (LBA)",
   amlBodyName: "SO-FIT",
 
   dataProtectionContact: "dpo@hhentsch.com",
   generalContactEmail: "office@hhentsch.com",
-  generalContactPhone: "+41 22 365 22 22",
+  // Numéro publié sur le site officiel de la société (cf. lib/company-profile.ts) — remplace
+  // un numéro erroné saisi à l'origine.
+  generalContactPhone: "+41 22 809 57 00",
 
   jurisdiction: "Nyon (Canton de Vaud, Suisse), Tribunal d'arrondissement de La Côte",
 
@@ -49,7 +53,7 @@ export const ENTITY_IDENTITY = {
   // distincts : actifs traditionnels (banques dépositaires tierces) vs actifs numériques
   // (prestataires de garde crypto spécialisés, nommément désignés par l'utilisateur).
   depositaryNote:
-    "Les liquidités et titres des clients restent déposés sous mandat auprès de banques dépositaires tierces agréées (ex. UBS, Lombard Odier, Pictet). Ce sont ces établissements qui assurent la protection légale des avoirs déposés.",
+    "Les liquidités et titres des clients restent déposés sous mandat auprès de banques dépositaires tierces, avec lesquelles la société a conclu des accords de coopération (banques non nommées publiquement). Ce sont ces établissements qui assurent la protection légale des avoirs déposés.",
   digitalAssetCustodians: ["Taurus SA"],
   digitalAssetCustodyNote:
     "Les actifs numériques déposés en garantie (stablecoins, or tokenisé) sont conservés par un prestataire de garde d'actifs numériques agréé, Taurus SA, spécialisé dans la conservation sécurisée de crypto-actifs pour le compte d'établissements financiers suisses.",
@@ -64,5 +68,5 @@ export const ENTITY_IDENTITY = {
   // garde ci-dessus.
   mediationBody: "Terraxis SA",
 
-  lastUpdated: "25 août 2026",
+  lastUpdated: "24 septembre 2026",
 } as const;

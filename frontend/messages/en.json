@@ -650,14 +650,22 @@
       "country": "Country",
       "registerNumber": "Business ID / commercial register no.",
       "vatNumber": "VAT no.",
-      "publicationDirector": "Publication director"
+      "publicationDirector": "Publication director",
+      "finmaAuthorisation": "FINMA authorisation (wealth manager, FinIA)",
+      "founded": "Start of the wealth management activity"
     },
     "s2": {
       "title": "2. Regulatory status and supervision",
       "body": "{legalName} is an <b>independent asset manager (IAM)</b> within the meaning of the Federal Act on Financial Institutions (FinIA), <b>and not a banking institution</b>. As such, it does not hold a banking licence issued directly by FINMA, but is subject to supervision by a supervisory organisation (SO) licensed by the {supervisoryAuthority}.",
       "supervisionBody": "Supervisory organisation (SO)",
       "amlBody": "AMLA self-regulatory organisation",
-      "footer": "The detail of the applicable legal framework (FinIA, FinSA, AMLA) is presented on the <link>Regulation</link> page."
+      "footer": "The detail of the applicable legal framework (FinIA, FinSA, AMLA) is presented on the <link>Regulation</link> page.",
+      "supervisionBodyFullName": "Full name of the supervisory organisation",
+      "supervisionBodyAddress": "Address of the supervisory organisation",
+      "mediationBody": "Ombudsman",
+      "mediationAddress": "Address of the ombudsman",
+      "statutoryAuditor": "Statutory auditor",
+      "prudentialAuditor": "Prudential audit"
     },
     "s3": {
       "title": "3. Custody of assets"
@@ -669,7 +677,9 @@
     "s5": {
       "title": "5. Contact",
       "email": "Email",
-      "phone": "Phone"
+      "phone": "Phone",
+      "fax": "Fax",
+      "website": "Official website"
     },
     "s6": {
       "title": "6. Hosting",
@@ -682,7 +692,8 @@
     "s8": {
       "title": "8. Technical partners",
       "body": "The platform relies on third-party providers for certain technical functions (digital asset custody and key management, bank card issuance, identity verification, market data). The list of these providers and their role are detailed in the <link>privacy policy</link>."
-    }
+    },
+    "logoAlt": "H. Hentsch Asset Management SA logo"
   },
   "Sitemap": {
     "meta": {
@@ -2410,57 +2421,117 @@
   "AboutUs": {
     "meta": {
       "title": "About Us",
-      "description": "Hentsch Credit: our mission, our governance, our regulatory supervision, and how your assets are held with licensed third-party custodians."
+      "description": "Hentsch Credit is the crypto-collateralised offer of H. Hentsch Asset Management SA, an independent wealth manager based in Nyon, Switzerland. History, management, philosophy, services and regulatory framework, verified on the company's official website."
     },
     "eyebrow": "Who we are",
     "title": "About Us",
-    "description": "Hentsch Credit is the crypto-collateralized offering of H. Hentsch Asset Management SA, an independent asset manager based in Nyon, Switzerland.",
-    "mission": {
-      "title": "Our mission",
-      "body": "To let our clients, individuals and businesses alike, unlock immediate purchasing power from their digital assets and tokenized precious metals without ever having to sell them, while giving them direct access to real-yield strategies."
-    },
-    "governance": {
-      "title": "Governance",
-      "body": "Hentsch Credit is operated by {legalName}, a Swiss public limited company based in the canton of {canton}, under the leadership of {founder}."
-    },
-    "regulation": {
-      "title": "Regulation & supervision",
-      "body": "As an independent asset manager under the Swiss Financial Institutions Act (FinIA), our activity is supervised by {supervisionBodyName}, a supervisory organization licensed by FINMA, including for anti-money-laundering compliance.",
-      "learnMore": "See our full regulatory status"
-    },
-    "custody": {
-      "title": "Asset custody",
-      "body": "Your assets are never held by Hentsch Credit in its own name. Cash and securities remain deposited with licensed third-party custodian banks; digital assets pledged as collateral are held by {custodian}, a specialized digital-asset custody provider.",
-      "learnMore": "See risk management and custody"
-    },
-    "values": {
-      "title": "Our values",
-      "intro": "Four principles that guide every product decision, from computing a rate to safekeeping your assets.",
-      "transparency": {
-        "title": "Transparency",
-        "body": "Every rate, threshold, and yield shown reflects a real figure or an assumption clearly labeled as such, never a fabricated number."
-      },
-      "security": {
-        "title": "Security",
-        "body": "Your assets stay held with licensed third-party custodians, never in our own name."
-      },
-      "precision": {
-        "title": "Swiss rigor",
-        "body": "Governance and regulatory supervision rooted in Swiss law, from our office in the canton of Vaud."
-      },
-      "innovation": {
-        "title": "Deliberate innovation",
-        "body": "A bridge between digital assets and traditional finance, built step by step, never at the expense of transparency toward our clients."
-      }
-    },
+    "description": "Hentsch Credit is the crypto-collateralised offer of H. Hentsch Asset Management SA, an independent wealth manager based in Nyon, Switzerland. History, management, philosophy, services and regulatory framework, verified on the company's official website.",
     "identity": {
-      "title": "Legal identity",
+      "title": "Company profile",
       "legalName": "Legal name",
       "legalForm": "Legal form",
       "registeredOffice": "Registered office",
-      "commercialRegister": "Commercial register"
+      "commercialRegister": "Commercial register",
+      "postalAddress": "Postal address",
+      "canton": "Canton",
+      "vat": "VAT",
+      "phone": "Phone",
+      "fax": "Fax",
+      "email": "Email",
+      "website": "Official website",
+      "languages": "Service languages",
+      "founded": "Activity started"
     },
     "ctaContact": "Contact us",
-    "ctaNoAccount": "No account yet? Request account opening"
+    "ctaNoAccount": "No account yet? Request account opening",
+    "logoAlt": "H. Hentsch Asset Management SA logo",
+    "tagline": "As a family tradition, we defend and protect your interests.",
+    "facts": {
+      "founded": "Wealth management activity since",
+      "finma": "FINMA authorisation as a wealth manager (FinIA)",
+      "team": "Employees, over a hundred years of combined experience",
+      "ownership": "of the capital in Swiss private hands, through {holding}"
+    },
+    "timeline": {
+      "title": "Our history",
+      "founding": "Start of the wealth management activity.",
+      "equity": "Creation of HH Equity Partners SA and launch of the private equity activity.",
+      "equity2": "Creation of HH Equity Partners II SA.",
+      "finmaApplication": "Application for authorisation filed with FINMA.",
+      "finmaAuthorisation": "FINMA authorisation to operate as a wealth manager under the FinIA."
+    },
+    "management": {
+      "title": "Management",
+      "intro": "Three managing directors within a team of four employees.",
+      "role": "Managing director",
+      "hentsch": "Descendant of a family of Swiss private bankers for more than eight generations.",
+      "dubois": "More than 30 years of banking and financial experience.",
+      "mentha": "More than 30 years of experience in private banking."
+    },
+    "philosophy": {
+      "title": "Our philosophy",
+      "intro": "Values inherited from family tradition: knowing and respecting the client, loyalty, faithfulness and preservation of capital.",
+      "independence": {
+        "title": "Independence",
+        "body": "An open architecture: we select the best investment products, free of conflicts of interest."
+      },
+      "personalization": {
+        "title": "Personalisation",
+        "body": "Every client is unique, with their own needs, priorities and expectations: our solutions are tailor-made."
+      },
+      "professionalism": {
+        "title": "Professionalism and dedication",
+        "body": "A human-sized structure, flexible and quick to decide, with a dedicated service where every request is handled without delay."
+      }
+    },
+    "services": {
+      "title": "Our services",
+      "intro": "The company's activities, as presented on its official website.",
+      "discretionary": {
+        "title": "Discretionary portfolio management",
+        "body": "Management of individual portfolios for private and professional clients, using strategic asset allocation or thematic approaches aligned with the client's risk profile."
+      },
+      "privateEquity": {
+        "title": "Financial instruments (private equity)",
+        "body": "Offer of financial instruments, in the form of proposals to acquire securities (shares) in the private equity field."
+      },
+      "consolidation": {
+        "title": "Portfolio consolidation",
+        "body": "Consolidation of portfolios held with several custodian banks, using a portfolio management system (PMS)."
+      },
+      "advice": {
+        "title": "Extended advice",
+        "body": "Advice on real estate, financing, insurance, taxation, retirement and estate planning."
+      }
+    },
+    "product": {
+      "title": "Hentsch Credit within the company",
+      "body": "Hentsch Credit is the crypto-collateralised offer operated by {legalName}. The services listed above are those published on the company's official website; the conditions and risks specific to Hentsch Credit are detailed in our terms and conditions and on our risk management page."
+    },
+    "framework": {
+      "title": "Regulatory framework and custody of assets",
+      "authorisation": {
+        "title": "Authorisation and supervision",
+        "body": "{legalName} is authorised by FINMA to operate as a wealth manager under the FinIA (authorisation of {date}). It is supervised by {body}, with annual prudential audits covering the FinIA, the FinSA and the AMLA.",
+        "bodyLabel": "Supervisory organisation",
+        "auditorLabel": "Statutory auditor",
+        "prudentialLabel": "Prudential audit"
+      },
+      "mediation": {
+        "title": "Ombudsman",
+        "body": "In accordance with Article 16 of the FinIA, disputes that could not be settled amicably may be submitted to the company's ombudsman."
+      },
+      "custody": {
+        "title": "Custody of assets",
+        "body": "Clients have access to several custodian banks with which the company has entered into cooperation agreements (banks not publicly named). A portfolio consolidation solution is provided by {pms}. Digital assets pledged with Hentsch Credit are held by {custodian}."
+      },
+      "regulationLink": "See our full regulatory status",
+      "custodyLink": "See risk management and custody"
+    },
+    "sources": {
+      "title": "Sources and transparency",
+      "body": "The information about the company was verified on {date} on its official website ({site}). The registration number, the VAT number and the digital asset custody provider come from the company's internal documentation and do not appear on its public website.",
+      "link": "See the source page"
+    }
   }
 }

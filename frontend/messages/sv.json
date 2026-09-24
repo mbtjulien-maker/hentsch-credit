@@ -650,14 +650,22 @@
       "country": "Land",
       "registerNumber": "Org.nr / handelsregisternummer",
       "vatNumber": "Momsregistreringsnummer",
-      "publicationDirector": "Ansvarig utgivare"
+      "publicationDirector": "Ansvarig utgivare",
+      "finmaAuthorisation": "FINMA-tillstånd (kapitalförvaltare, FinIA)",
+      "founded": "Start för kapitalförvaltningsverksamheten"
     },
     "s2": {
       "title": "2. Regulatorisk status och tillsyn",
       "body": "{legalName} är en <b>oberoende kapitalförvaltare (OKF)</b> enligt den federala lagen om finansinstitut (FinIA), <b>och inte ett bankinstitut</b>. Som sådan innehar bolaget inget banktillstånd utfärdat direkt av FINMA, men står under tillsyn av ett tillsynsorgan (TO) godkänt av {supervisoryAuthority}.",
       "supervisionBody": "Tillsynsorgan (TO)",
       "amlBody": "Självregleringsorgan för penningtvätt",
-      "footer": "Detaljerna om det tillämpliga rättsliga ramverket (FinIA, FinSA, penningtvättslagen) presenteras på sidan <link>Reglering</link>."
+      "footer": "Detaljerna om det tillämpliga rättsliga ramverket (FinIA, FinSA, penningtvättslagen) presenteras på sidan <link>Reglering</link>.",
+      "supervisionBodyFullName": "Tillsynsorganisationens fullständiga namn",
+      "supervisionBodyAddress": "Tillsynsorganisationens adress",
+      "mediationBody": "Ombudsorgan",
+      "mediationAddress": "Ombudsorganets adress",
+      "statutoryAuditor": "Lagstadgad revisor",
+      "prudentialAuditor": "Tillsynsrevision"
     },
     "s3": {
       "title": "3. Förvaring av tillgångarna"
@@ -669,7 +677,9 @@
     "s5": {
       "title": "5. Kontakt",
       "email": "E-post",
-      "phone": "Telefon"
+      "phone": "Telefon",
+      "fax": "Fax",
+      "website": "Officiell webbplats"
     },
     "s6": {
       "title": "6. Webbhotell",
@@ -682,7 +692,8 @@
     "s8": {
       "title": "8. Tekniska partners",
       "body": "Plattformen förlitar sig på tredjepartsleverantörer för vissa tekniska funktioner (förvaring av digitala tillgångar och nyckelhantering, utfärdande av bankkort, identitetskontroll, marknadsdata). Listan över dessa leverantörer och deras roll beskrivs i <link>integritetspolicyn</link>."
-    }
+    },
+    "logoAlt": "Logotyp för H. Hentsch Asset Management SA"
   },
   "Sitemap": {
     "meta": {
@@ -2410,57 +2421,117 @@
   "AboutUs": {
     "meta": {
       "title": "Om oss",
-      "description": "Hentsch Credit: vårt uppdrag, vår bolagsstyrning, vår regulatoriska tillsyn och förvaringen av dina tillgångar hos auktoriserade externa förvaringsinstitut."
+      "description": "Hentsch Credit är det kryptosäkrade erbjudandet från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon, Schweiz. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats."
     },
     "eyebrow": "Vilka vi är",
     "title": "Om oss",
-    "description": "Hentsch Credit är det kryptosäkrade erbjudandet från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon, Schweiz.",
-    "mission": {
-      "title": "Vårt uppdrag",
-      "body": "Att låta våra kunder, privatpersoner såväl som företag, frigöra omedelbar köpkraft från sina digitala tillgångar och tokeniserade ädelmetaller, utan att någonsin behöva sälja dem, samtidigt som de får direkt tillgång till strategier med verklig avkastning."
-    },
-    "governance": {
-      "title": "Bolagsstyrning",
-      "body": "Hentsch Credit drivs av {legalName}, ett schweiziskt aktiebolag baserat i kantonen {canton}, under ledning av {founder}."
-    },
-    "regulation": {
-      "title": "Reglering & tillsyn",
-      "body": "Som oberoende kapitalförvaltare enligt LEFin övervakas vår verksamhet av {supervisionBodyName}, en tillsynsorganisation godkänd av FINMA, inklusive efterlevnad av lagen mot penningtvätt.",
-      "learnMore": "Se vår fullständiga regulatoriska status"
-    },
-    "custody": {
-      "title": "Förvaring av tillgångar",
-      "body": "Dina tillgångar innehas aldrig av Hentsch Credit i eget namn. Kontanter och värdepapper förblir deponerade hos auktoriserade externa förvaringsbanker; digitala tillgångar som ställts som säkerhet förvaras av {custodian}, en specialiserad leverantör av förvaring av kryptotillgångar.",
-      "learnMore": "Se riskhantering och förvaring"
-    },
-    "values": {
-      "title": "Våra värderingar",
-      "intro": "Fyra principer som styr varje produktbeslut, från beräkningen av en ränta till förvaringen av dina tillgångar.",
-      "transparency": {
-        "title": "Transparens",
-        "body": "Varje ränta, tröskel och avkastning som visas återspeglar en verklig siffra eller ett antagande tydligt märkt som sådant, aldrig en påhittad siffra."
-      },
-      "security": {
-        "title": "Säkerhet",
-        "body": "Dina tillgångar förblir förvarade hos auktoriserade externa förvaringsinstitut, aldrig i eget namn."
-      },
-      "precision": {
-        "title": "Schweizisk precision",
-        "body": "Bolagsstyrning och regulatorisk tillsyn förankrad i schweizisk lag, från vårt kontor i kantonen Vaud."
-      },
-      "innovation": {
-        "title": "Kontrollerad innovation",
-        "body": "En bro mellan digitala tillgångar och traditionell finans, byggd steg för steg, aldrig på bekostnad av transparens gentemot våra kunder."
-      }
-    },
+    "description": "Hentsch Credit är det kryptosäkrade erbjudandet från H. Hentsch Asset Management SA, en oberoende kapitalförvaltare baserad i Nyon, Schweiz. Historia, ledning, filosofi, tjänster och regelverk, verifierade på bolagets officiella webbplats.",
     "identity": {
-      "title": "Juridisk identitet",
+      "title": "Bolagsfakta",
       "legalName": "Firmanamn",
       "legalForm": "Juridisk form",
       "registeredOffice": "Säte",
-      "commercialRegister": "Handelsregister"
+      "commercialRegister": "Handelsregister",
+      "postalAddress": "Postadress",
+      "canton": "Kanton",
+      "vat": "Moms",
+      "phone": "Telefon",
+      "fax": "Fax",
+      "email": "E-post",
+      "website": "Officiell webbplats",
+      "languages": "Servicespråk",
+      "founded": "Verksamhet sedan"
     },
     "ctaContact": "Kontakta oss",
-    "ctaNoAccount": "Inget konto än? Ansök om att öppna ett konto"
+    "ctaNoAccount": "Inget konto än? Ansök om att öppna ett konto",
+    "logoAlt": "Logotyp för H. Hentsch Asset Management SA",
+    "tagline": "Av familjetradition försvarar och skyddar vi dina intressen.",
+    "facts": {
+      "founded": "Kapitalförvaltning sedan",
+      "finma": "FINMA-tillstånd som kapitalförvaltare (FinIA)",
+      "team": "Medarbetare, över hundra års samlad erfarenhet",
+      "ownership": "av kapitalet i schweiziskt privat ägande, via {holding}"
+    },
+    "timeline": {
+      "title": "Vår historia",
+      "founding": "Start för kapitalförvaltningsverksamheten.",
+      "equity": "Bildande av HH Equity Partners SA och start för private equity-verksamheten.",
+      "equity2": "Bildande av HH Equity Partners II SA.",
+      "finmaApplication": "Ansökan om tillstånd lämnades in till FINMA.",
+      "finmaAuthorisation": "FINMA:s tillstånd att bedriva verksamhet som kapitalförvaltare enligt FinIA."
+    },
+    "management": {
+      "title": "Ledning",
+      "intro": "Tre verkställande direktörer i ett team på fyra medarbetare.",
+      "role": "Verkställande direktör",
+      "hentsch": "Ättling till en schweizisk familj av privatbankirer sedan mer än åtta generationer.",
+      "dubois": "Mer än 30 års bank- och finanserfarenhet.",
+      "mentha": "Mer än 30 års erfarenhet av private banking."
+    },
+    "philosophy": {
+      "title": "Vår filosofi",
+      "intro": "Värderingar från familjetraditionen: kännedom om och respekt för kunden, trohet, lojalitet och bevarande av kapital.",
+      "independence": {
+        "title": "Oberoende",
+        "body": "En öppen arkitektur: vi väljer de bästa investeringsprodukterna, utan intressekonflikter."
+      },
+      "personalization": {
+        "title": "Personlig anpassning",
+        "body": "Varje kund är unik, med egna behov, prioriteringar och förväntningar: våra lösningar är skräddarsydda."
+      },
+      "professionalism": {
+        "title": "Professionalism och engagemang",
+        "body": "En överblickbar struktur, flexibel och snabb i sina beslut, med en dedikerad service där varje förfrågan hanteras utan dröjsmål."
+      }
+    },
+    "services": {
+      "title": "Våra tjänster",
+      "intro": "Bolagets verksamheter, såsom de presenteras på dess officiella webbplats.",
+      "discretionary": {
+        "title": "Diskretionär portföljförvaltning",
+        "body": "Förvaltning av individuella portföljer för privata och professionella kunder, med strategiska eller tematiska angreppssätt för tillgångsallokering, anpassade efter kundens riskprofil."
+      },
+      "privateEquity": {
+        "title": "Finansiella instrument (private equity)",
+        "body": "Erbjudande av finansiella instrument, i form av förslag om förvärv av värdepapper (aktier) inom private equity."
+      },
+      "consolidation": {
+        "title": "Portföljkonsolidering",
+        "body": "Konsolidering av portföljer som innehas hos flera depåbanker, med hjälp av ett portföljhanteringssystem (PMS)."
+      },
+      "advice": {
+        "title": "Utökad rådgivning",
+        "body": "Rådgivning inom fastigheter, finansiering, försäkring, skatt, pension och successionsplanering."
+      }
+    },
+    "product": {
+      "title": "Hentsch Credit inom bolaget",
+      "body": "Hentsch Credit är det kryptosäkrade erbjudandet som drivs av {legalName}. Tjänsterna ovan är de som publiceras på bolagets officiella webbplats; de villkor och risker som är specifika för Hentsch Credit beskrivs i våra allmänna villkor och på vår sida om riskhantering."
+    },
+    "framework": {
+      "title": "Regelverk och förvaring av tillgångar",
+      "authorisation": {
+        "title": "Tillstånd och tillsyn",
+        "body": "{legalName} har tillstånd av FINMA att bedriva verksamhet som kapitalförvaltare enligt FinIA (tillstånd från {date}). Bolaget står under tillsyn av {body}, med årliga tillsynsrevisioner som omfattar FinIA, FinSA och penningtvättslagen.",
+        "bodyLabel": "Tillsynsorganisation",
+        "auditorLabel": "Lagstadgad revisor",
+        "prudentialLabel": "Tillsynsrevision"
+      },
+      "mediation": {
+        "title": "Ombudsorgan",
+        "body": "I enlighet med artikel 16 i FinIA kan tvister som inte har kunnat lösas i godo hänskjutas till bolagets ombudsorgan."
+      },
+      "custody": {
+        "title": "Förvaring av tillgångar",
+        "body": "Kunderna har tillgång till flera depåbanker med vilka bolaget har ingått samarbetsavtal (banker som inte nämns offentligt). En lösning för portföljkonsolidering tillhandahålls av {pms}. Digitala tillgångar som ställs som säkerhet hos Hentsch Credit förvaras av {custodian}."
+      },
+      "regulationLink": "Se vår fullständiga regulatoriska status",
+      "custodyLink": "Se riskhantering och förvaring"
+    },
+    "sources": {
+      "title": "Källor och transparens",
+      "body": "Uppgifterna om bolaget verifierades den {date} på dess officiella webbplats ({site}). Registreringsnumret, momsnumret och leverantören av förvaring av digitala tillgångar kommer från bolagets interna dokumentation och finns inte på dess offentliga webbplats.",
+      "link": "Se källsidan"
+    }
   }
 }

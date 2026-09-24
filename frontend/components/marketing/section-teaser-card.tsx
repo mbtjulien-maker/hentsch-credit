@@ -23,7 +23,7 @@ export async function SectionTeaserCard({
       href={href}
       className="group flex flex-col rounded-2xl border border-border/80 bg-card p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-blue-300/40 hover:shadow-xl"
     >
-      <div className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-600 text-white">
+      <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
         <Icon className="size-4.5" />
       </div>
       <h3 className="mt-3 text-sm font-semibold text-foreground">{title}</h3>

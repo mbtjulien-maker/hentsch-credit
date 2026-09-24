@@ -99,7 +99,7 @@ export function SiteNav() {
           <span
             ref={pillRef}
             aria-hidden
-            className="pointer-events-none absolute inset-y-0 top-1/2 h-8 w-0 -translate-y-1/2 rounded-full bg-cyan-400/25 opacity-0 transition-[left,width,opacity] duration-300 ease-out"
+            className="pointer-events-none absolute inset-y-0 top-1/2 h-8 w-0 -translate-y-1/2 rounded-full bg-primary/10 opacity-0 transition-[left,width,opacity] duration-300 ease-out"
           />
           {SITE_NAV.map((group) => {
             const active = group.id === activeGroupId;
@@ -203,7 +203,7 @@ export function SiteNav() {
             href="/login"
             aria-label={t("connexionLong")}
             title={t("connexionLong")}
-            className="flex shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 p-2 text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+            className="flex shrink-0 items-center justify-center rounded-full bg-primary p-2 text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
           >
             <CircleUserRound className="size-5" />
           </Link>

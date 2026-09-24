@@ -650,14 +650,22 @@
       "country": "Pays",
       "registerNumber": "N° IDE / registre du commerce",
       "vatNumber": "N° TVA",
-      "publicationDirector": "Responsable de la publication"
+      "publicationDirector": "Responsable de la publication",
+      "finmaAuthorisation": "Autorisation FINMA (gestionnaire de fortune, LEFin)",
+      "founded": "Début de l'activité de gestion de fortune"
     },
     "s2": {
       "title": "2. Statut réglementaire et supervision",
       "body": "{legalName} est un <b>gestionnaire de fortune indépendant (GFI)</b> au sens de la loi fédérale sur les établissements financiers (LEFin), <b>et non un établissement bancaire</b>. À ce titre, elle n'est pas titulaire d'une autorisation bancaire délivrée directement par la FINMA, mais est soumise à la surveillance d'un organisme de surveillance (OS) agréé par l''{supervisoryAuthority}.",
       "supervisionBody": "Organisme de surveillance (OS)",
       "amlBody": "Organisme d'autorégulation LBA",
-      "footer": "Le détail du cadre légal applicable (LEFin, LSFin, LBA) est présenté sur la page <link>Réglementation</link>."
+      "footer": "Le détail du cadre légal applicable (LEFin, LSFin, LBA) est présenté sur la page <link>Réglementation</link>.",
+      "supervisionBodyFullName": "Dénomination complète de l'organisme de surveillance",
+      "supervisionBodyAddress": "Adresse de l'organisme de surveillance",
+      "mediationBody": "Organe de médiation",
+      "mediationAddress": "Adresse de l'organe de médiation",
+      "statutoryAuditor": "Réviseur",
+      "prudentialAuditor": "Audit prudentiel"
     },
     "s3": {
       "title": "3. Garde des avoirs"
@@ -669,7 +677,9 @@
     "s5": {
       "title": "5. Contact",
       "email": "E-mail",
-      "phone": "Téléphone"
+      "phone": "Téléphone",
+      "fax": "Fax",
+      "website": "Site officiel"
     },
     "s6": {
       "title": "6. Hébergement",
@@ -682,7 +692,8 @@
     "s8": {
       "title": "8. Partenaires techniques",
       "body": "La plateforme s'appuie sur des prestataires tiers pour certaines fonctions techniques (garde des actifs numériques et gestion des clés, émission de cartes bancaires, vérification d'identité, données de marché). La liste de ces prestataires et leur rôle sont détaillés dans la <link>politique de confidentialité</link>."
-    }
+    },
+    "logoAlt": "Logo de H. Hentsch Asset Management SA"
   },
   "Sitemap": {
     "meta": {
@@ -2410,57 +2421,117 @@
   "AboutUs": {
     "meta": {
       "title": "À propos de nous",
-      "description": "Hentsch Credit : notre mission, notre gouvernance, notre supervision réglementaire et la garde de vos avoirs auprès d'établissements tiers agréés."
+      "description": "Hentsch Credit est l'offre crypto-collatéralisée de H. Hentsch Asset Management SA, gestionnaire de fortune indépendant basé à Nyon, en Suisse. Histoire, direction, philosophie, services et cadre réglementaire, vérifiés sur le site officiel de la société."
     },
     "eyebrow": "Qui sommes-nous",
     "title": "À propos de nous",
-    "description": "Hentsch Credit est l'offre crypto-collatéralisée de H. Hentsch Asset Management SA, gestionnaire de fortune indépendant basé à Nyon, en Suisse.",
-    "mission": {
-      "title": "Notre mission",
-      "body": "Permettre à nos clients, particuliers comme entreprises, de débloquer un pouvoir d'achat immédiat à partir de leurs actifs numériques et de leurs métaux précieux tokenisés, sans jamais avoir à les vendre, tout en leur donnant un accès direct à des stratégies de rendement réel."
-    },
-    "governance": {
-      "title": "Gouvernance",
-      "body": "Hentsch Credit est exploité par {legalName}, société anonyme de droit suisse basée dans le canton de {canton}, sous la direction de {founder}."
-    },
-    "regulation": {
-      "title": "Régulation & supervision",
-      "body": "En tant que gestionnaire de fortune indépendant au sens de la LEFin, notre activité est supervisée par {supervisionBodyName}, organisme de surveillance agréé par la FINMA, y compris pour le respect de la loi sur le blanchiment d'argent.",
-      "learnMore": "Voir notre statut réglementaire complet"
-    },
-    "custody": {
-      "title": "Garde des avoirs",
-      "body": "Vos avoirs ne sont jamais détenus par Hentsch Credit en son nom propre. Les liquidités et titres restent déposés auprès de banques dépositaires tierces agréées ; les actifs numériques mis en garantie sont conservés par {custodian}, prestataire de garde de crypto-actifs spécialisé.",
-      "learnMore": "Voir la gestion des risques et de la garde"
-    },
-    "values": {
-      "title": "Nos valeurs",
-      "intro": "Quatre principes qui guident chaque décision produit, du calcul d'un taux à la conservation de vos actifs.",
-      "transparency": {
-        "title": "Transparence",
-        "body": "Chaque taux, chaque seuil et chaque rendement affiché reflète une donnée réelle ou une hypothèse clairement identifiée comme telle, jamais un chiffre fabriqué."
-      },
-      "security": {
-        "title": "Sécurité",
-        "body": "Vos avoirs restent conservés auprès d'établissements dépositaires tiers agréés, jamais en nom propre."
-      },
-      "precision": {
-        "title": "Rigueur suisse",
-        "body": "Une gouvernance et une supervision réglementaire ancrées dans le droit suisse, depuis notre siège du canton de Vaud."
-      },
-      "innovation": {
-        "title": "Innovation maîtrisée",
-        "body": "Une passerelle entre actifs numériques et finance traditionnelle, construite étape par étape, jamais au détriment de la transparence envers nos clients."
-      }
-    },
+    "description": "Hentsch Credit est l'offre crypto-collatéralisée de H. Hentsch Asset Management SA, gestionnaire de fortune indépendant basé à Nyon, en Suisse. Histoire, direction, philosophie, services et cadre réglementaire, vérifiés sur le site officiel de la société.",
     "identity": {
-      "title": "Identité légale",
+      "title": "Fiche d'identité",
       "legalName": "Raison sociale",
       "legalForm": "Forme juridique",
       "registeredOffice": "Siège social",
-      "commercialRegister": "Registre du commerce"
+      "commercialRegister": "Registre du commerce",
+      "postalAddress": "Adresse postale",
+      "canton": "Canton",
+      "vat": "TVA",
+      "phone": "Téléphone",
+      "fax": "Fax",
+      "email": "E-mail",
+      "website": "Site officiel",
+      "languages": "Langues de service",
+      "founded": "Fondation de l'activité"
     },
     "ctaContact": "Nous contacter",
-    "ctaNoAccount": "Pas encore de compte ? Demander l'ouverture d'un compte"
+    "ctaNoAccount": "Pas encore de compte ? Demander l'ouverture d'un compte",
+    "logoAlt": "Logo de H. Hentsch Asset Management SA",
+    "tagline": "Par tradition familiale, nous défendons et protégeons vos intérêts.",
+    "facts": {
+      "founded": "Activité de gestion de fortune depuis",
+      "finma": "Autorisation FINMA de gestionnaire de fortune (LEFin)",
+      "team": "Collaborateurs, plus d'une centaine d'années d'expérience combinée",
+      "ownership": "du capital en mains privées suisses, via {holding}"
+    },
+    "timeline": {
+      "title": "Notre histoire",
+      "founding": "Début de l'activité de gestion de fortune.",
+      "equity": "Création de HH Equity Partners SA et lancement de l'activité de private equity.",
+      "equity2": "Création de HH Equity Partners II SA.",
+      "finmaApplication": "Dépôt de la demande d'autorisation auprès de la FINMA.",
+      "finmaAuthorisation": "Autorisation de la FINMA d'exercer l'activité de gestionnaire de fortune au sens de la LEFin."
+    },
+    "management": {
+      "title": "Direction",
+      "intro": "Trois administrateurs délégués au sein d'une équipe de quatre collaborateurs.",
+      "role": "Administrateur délégué",
+      "hentsch": "Descendant d'une famille de banquiers privés suisses depuis plus de huit générations.",
+      "dubois": "Plus de 30 ans d'expérience bancaire et financière.",
+      "mentha": "Plus de 30 ans d'expérience en banque privée."
+    },
+    "philosophy": {
+      "title": "Notre philosophie",
+      "intro": "Des valeurs héritées de la tradition familiale : connaissance et respect du client, fidélité, loyauté et préservation du capital.",
+      "independence": {
+        "title": "Indépendance",
+        "body": "Une architecture ouverte : nous sélectionnons les meilleurs produits d'investissement, sans conflit d'intérêts."
+      },
+      "personalization": {
+        "title": "Personnalisation",
+        "body": "Chaque client est unique, avec ses propres besoins, priorités et attentes : nos solutions sont conçues sur mesure."
+      },
+      "professionalism": {
+        "title": "Professionnalisme et dévouement",
+        "body": "Une structure à taille humaine, flexible et rapide dans ses décisions, avec un service dédié où chaque demande est traitée sans délai."
+      }
+    },
+    "services": {
+      "title": "Nos services",
+      "intro": "Les activités de la société, telles que présentées sur son site officiel.",
+      "discretionary": {
+        "title": "Gestion discrétionnaire de portefeuilles",
+        "body": "Gestion de portefeuilles individuels pour une clientèle privée et professionnelle, selon des approches stratégiques d'allocation d'actifs ou thématiques, alignées sur le profil de risque du client."
+      },
+      "privateEquity": {
+        "title": "Instruments financiers (private equity)",
+        "body": "Offre d'instruments financiers, sous la forme de propositions d'acquérir des valeurs mobilières (actions) dans le domaine du private equity."
+      },
+      "consolidation": {
+        "title": "Consolidation de portefeuilles",
+        "body": "Consolidation des portefeuilles détenus auprès de plusieurs banques dépositaires, grâce à un logiciel de gestion de portefeuilles (PMS)."
+      },
+      "advice": {
+        "title": "Conseils élargis",
+        "body": "Conseils en matière immobilière, de financement, d'assurances, de fiscalité, de retraite et de planification successorale."
+      }
+    },
+    "product": {
+      "title": "Hentsch Credit au sein de la société",
+      "body": "Hentsch Credit est l'offre crypto-collatéralisée exploitée par {legalName}. Les services listés ci-dessus sont ceux publiés sur le site officiel de la société ; les conditions et les risques propres à Hentsch Credit sont détaillés dans nos conditions générales et dans notre page de gestion des risques."
+    },
+    "framework": {
+      "title": "Cadre réglementaire et garde des avoirs",
+      "authorisation": {
+        "title": "Autorisation et surveillance",
+        "body": "{legalName} est autorisée par la FINMA à exercer l'activité de gestionnaire de fortune au sens de la LEFin (autorisation du {date}). Elle est soumise à la surveillance de {body}, avec des audits prudentiels annuels couvrant la LEFin, la LSFin et la LBA.",
+        "bodyLabel": "Organisme de surveillance",
+        "auditorLabel": "Réviseur",
+        "prudentialLabel": "Audit prudentiel"
+      },
+      "mediation": {
+        "title": "Organe de médiation",
+        "body": "Conformément à l'article 16 de la LEFin, les litiges qui n'ont pas pu être réglés à l'amiable peuvent être soumis à l'organe de médiation de la société."
+      },
+      "custody": {
+        "title": "Garde des avoirs",
+        "body": "Les clients ont accès à plusieurs banques dépositaires, avec lesquelles la société a conclu des accords de coopération (banques non nommées publiquement). Une solution de consolidation de portefeuilles est fournie par {pms}. Les actifs numériques mis en garantie chez Hentsch Credit sont conservés par {custodian}."
+      },
+      "regulationLink": "Voir notre statut réglementaire complet",
+      "custodyLink": "Voir la gestion des risques et de la garde"
+    },
+    "sources": {
+      "title": "Sources et transparence",
+      "body": "Les informations sur la société ont été vérifiées le {date} sur son site officiel ({site}). Le numéro d'immatriculation, le numéro de TVA et le prestataire de garde des actifs numériques proviennent de la documentation interne de la société et ne figurent pas sur son site public.",
+      "link": "Voir la page source"
+    }
   }
 }

@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { AuthGate } from "@/components/dashboard/auth-gate";
 import { AuthLoadError } from "@/components/dashboard/auth-load-error";
-import { ClientTypographyScope } from "@/components/dashboard/client-typography-scope";
 import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 import { DashboardProvider } from "@/components/dashboard/dashboard-context";
 import { Sidebar } from "@/components/dashboard/sidebar";
@@ -59,7 +58,6 @@ export default async function DashboardLayout({
     <div className="client-typography theme-fintech relative min-h-screen bg-background text-foreground">
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col">
         <DashboardProvider>
-          <ClientTypographyScope />
           <AuthLoadError />
           <div className="flex w-full flex-1">
             <AuthGate>

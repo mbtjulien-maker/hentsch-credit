@@ -168,7 +168,7 @@
 /* Thème "fintech clair" de l'espace client connecté (concept B choisi par le client :
    blanc aéré, vert émeraude, gros chiffres, cartes arrondies, boutons en pilule). Scopé —
    posé sur le layout du dashboard ET sur <body> tant qu'il est monté (cf.
-   components/dashboard/client-typography-scope.tsx, pour les dialogues rendus en portail)
+   components/locale-theme-scope.tsx, pour les dialogues rendus en portail)
    — donc la vitrine publique et /admin gardent leur identité or/obsidien. Tokens
    uniquement : chaque composant existant (cartes, badges, graphiques, sidebar) suit sans
    modification. Variante sombre : ardoise verte, émeraude plus clair. */

@@ -650,14 +650,22 @@
       "country": "Land",
       "registerNumber": "UID-nr. / handelsregisternummer",
       "vatNumber": "Btw-nr.",
-      "publicationDirector": "Verantwoordelijke voor de publicatie"
+      "publicationDirector": "Verantwoordelijke voor de publicatie",
+      "finmaAuthorisation": "FINMA-vergunning (vermogensbeheerder, FinIG)",
+      "founded": "Start van de vermogensbeheeractiviteit"
     },
     "s2": {
       "title": "2. Regelgevende status en toezicht",
       "body": "{legalName} is een <b>onafhankelijke vermogensbeheerder (OVB)</b> in de zin van de federale wet op de financiële instellingen (FinIA), <b>en geen bankinstelling</b>. Als zodanig heeft het geen rechtstreeks door de FINMA verleende bankvergunning, maar staat het onder toezicht van een toezichtsorganisatie (TO) erkend door de {supervisoryAuthority}.",
       "supervisionBody": "Toezichtsorganisatie (TO)",
       "amlBody": "Zelfregulerende organisatie AMLA",
-      "footer": "De details van het toepasselijke rechtskader (FinIA, FinSA, AMLA) worden gepresenteerd op de pagina <link>Regelgeving</link>."
+      "footer": "De details van het toepasselijke rechtskader (FinIA, FinSA, AMLA) worden gepresenteerd op de pagina <link>Regelgeving</link>.",
+      "supervisionBodyFullName": "Volledige naam van de toezichthoudende organisatie",
+      "supervisionBodyAddress": "Adres van de toezichthoudende organisatie",
+      "mediationBody": "Ombudsinstantie",
+      "mediationAddress": "Adres van de ombudsinstantie",
+      "statutoryAuditor": "Wettelijk revisor",
+      "prudentialAuditor": "Prudentiële audit"
     },
     "s3": {
       "title": "3. Bewaring van de activa"
@@ -669,7 +677,9 @@
     "s5": {
       "title": "5. Contact",
       "email": "E-mail",
-      "phone": "Telefoon"
+      "phone": "Telefoon",
+      "fax": "Fax",
+      "website": "Officiële website"
     },
     "s6": {
       "title": "6. Hosting",
@@ -682,7 +692,8 @@
     "s8": {
       "title": "8. Technische partners",
       "body": "Het platform steunt op externe dienstverleners voor bepaalde technische functies (bewaring van digitale activa en sleutelbeheer, uitgifte van bankkaarten, identiteitsverificatie, marktgegevens). De lijst van deze dienstverleners en hun rol worden gedetailleerd in het <link>privacybeleid</link>."
-    }
+    },
+    "logoAlt": "Logo van H. Hentsch Asset Management SA"
   },
   "Sitemap": {
     "meta": {
@@ -2410,57 +2421,117 @@
   "AboutUs": {
     "meta": {
       "title": "Over ons",
-      "description": "Hentsch Credit: onze missie, onze governance, ons toezicht op naleving van regelgeving en de bewaring van uw activa bij erkende externe bewaarders."
+      "description": "Hentsch Credit is het door cryptoactiva gedekte aanbod van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon, Zwitserland. Geschiedenis, directie, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van de vennootschap."
     },
     "eyebrow": "Wie wij zijn",
     "title": "Over ons",
-    "description": "Hentsch Credit is het crypto-gedekte aanbod van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon, Zwitserland.",
-    "mission": {
-      "title": "Onze missie",
-      "body": "Onze klanten, particulieren en bedrijven, in staat stellen onmiddellijke koopkracht vrij te maken uit hun digitale activa en getokeniseerde edelmetalen, zonder deze ooit te hoeven verkopen, en hen tegelijk directe toegang geven tot strategieën met een reëel rendement."
-    },
-    "governance": {
-      "title": "Governance",
-      "body": "Hentsch Credit wordt geëxploiteerd door {legalName}, een Zwitserse naamloze vennootschap gevestigd in het kanton {canton}, onder leiding van {founder}."
-    },
-    "regulation": {
-      "title": "Regelgeving & toezicht",
-      "body": "Als onafhankelijke vermogensbeheerder in de zin van de LEFin staat onze activiteit onder toezicht van {supervisionBodyName}, een door de FINMA erkende toezichthoudende organisatie, ook voor de naleving van de anti-witwaswetgeving.",
-      "learnMore": "Bekijk onze volledige regelgevingsstatus"
-    },
-    "custody": {
-      "title": "Bewaring van activa",
-      "body": "Uw activa worden nooit door Hentsch Credit op eigen naam aangehouden. Liquide middelen en effecten blijven gedeponeerd bij erkende externe bewaarbanken; digitale activa die als onderpand zijn gegeven, worden bewaard door {custodian}, een gespecialiseerde bewaarder van crypto-activa.",
-      "learnMore": "Bekijk risicobeheer en bewaring"
-    },
-    "values": {
-      "title": "Onze waarden",
-      "intro": "Vier principes die elke productbeslissing sturen, van de berekening van een rente tot de bewaring van uw activa.",
-      "transparency": {
-        "title": "Transparantie",
-        "body": "Elke rente, elke drempel en elk getoond rendement weerspiegelt een reëel cijfer of een duidelijk als zodanig aangeduide aanname, nooit een verzonnen getal."
-      },
-      "security": {
-        "title": "Veiligheid",
-        "body": "Uw activa blijven bewaard bij erkende externe bewaarders, nooit op eigen naam."
-      },
-      "precision": {
-        "title": "Zwitserse precisie",
-        "body": "Governance en regelgevend toezicht verankerd in Zwitsers recht, vanuit onze vestiging in het kanton Vaud."
-      },
-      "innovation": {
-        "title": "Beheerste innovatie",
-        "body": "Een brug tussen digitale activa en traditionele financiën, stap voor stap opgebouwd, nooit ten koste van transparantie naar onze klanten."
-      }
-    },
+    "description": "Hentsch Credit is het door cryptoactiva gedekte aanbod van H. Hentsch Asset Management SA, een onafhankelijke vermogensbeheerder gevestigd in Nyon, Zwitserland. Geschiedenis, directie, filosofie, diensten en regelgevend kader, geverifieerd op de officiële website van de vennootschap.",
     "identity": {
-      "title": "Juridische identiteit",
+      "title": "Identiteitskaart",
       "legalName": "Statutaire naam",
       "legalForm": "Rechtsvorm",
       "registeredOffice": "Statutaire zetel",
-      "commercialRegister": "Handelsregister"
+      "commercialRegister": "Handelsregister",
+      "postalAddress": "Postadres",
+      "canton": "Kanton",
+      "vat": "Btw",
+      "phone": "Telefoon",
+      "fax": "Fax",
+      "email": "E-mail",
+      "website": "Officiële website",
+      "languages": "Servicetalen",
+      "founded": "Activiteit sinds"
     },
     "ctaContact": "Neem contact op",
-    "ctaNoAccount": "Nog geen account? Rekening aanvragen"
+    "ctaNoAccount": "Nog geen account? Rekening aanvragen",
+    "logoAlt": "Logo van H. Hentsch Asset Management SA",
+    "tagline": "Uit familietraditie verdedigen en beschermen wij uw belangen.",
+    "facts": {
+      "founded": "Vermogensbeheeractiviteit sinds",
+      "finma": "FINMA-vergunning als vermogensbeheerder (FinIG)",
+      "team": "Medewerkers, meer dan honderd jaar gecombineerde ervaring",
+      "ownership": "van het kapitaal in Zwitserse particuliere handen, via {holding}"
+    },
+    "timeline": {
+      "title": "Onze geschiedenis",
+      "founding": "Start van de vermogensbeheeractiviteit.",
+      "equity": "Oprichting van HH Equity Partners SA en start van de private-equityactiviteit.",
+      "equity2": "Oprichting van HH Equity Partners II SA.",
+      "finmaApplication": "Indiening van de vergunningsaanvraag bij de FINMA.",
+      "finmaAuthorisation": "Vergunning van de FINMA om als vermogensbeheerder te opereren onder de FinIG."
+    },
+    "management": {
+      "title": "Directie",
+      "intro": "Drie gedelegeerd bestuurders binnen een team van vier medewerkers.",
+      "role": "Gedelegeerd bestuurder",
+      "hentsch": "Afstammeling van een Zwitserse familie van privébankiers sinds meer dan acht generaties.",
+      "dubois": "Meer dan 30 jaar ervaring in bank- en financiewezen.",
+      "mentha": "Meer dan 30 jaar ervaring in private banking."
+    },
+    "philosophy": {
+      "title": "Onze filosofie",
+      "intro": "Waarden uit de familietraditie: kennis van en respect voor de klant, trouw, loyaliteit en kapitaalbehoud.",
+      "independence": {
+        "title": "Onafhankelijkheid",
+        "body": "Een open architectuur: wij selecteren de beste beleggingsproducten, zonder belangenconflicten."
+      },
+      "personalization": {
+        "title": "Personalisering",
+        "body": "Elke klant is uniek, met eigen behoeften, prioriteiten en verwachtingen: onze oplossingen zijn op maat gemaakt."
+      },
+      "professionalism": {
+        "title": "Professionaliteit en toewijding",
+        "body": "Een structuur op mensenmaat, flexibel en snel in besluitvorming, met een persoonlijke service waarin elk verzoek zonder uitstel wordt behandeld."
+      }
+    },
+    "services": {
+      "title": "Onze diensten",
+      "intro": "De activiteiten van de vennootschap, zoals gepresenteerd op haar officiële website.",
+      "discretionary": {
+        "title": "Discretionair portefeuillebeheer",
+        "body": "Beheer van individuele portefeuilles voor particuliere en professionele klanten, via strategische of thematische benaderingen van vermogensallocatie, afgestemd op het risicoprofiel van de klant."
+      },
+      "privateEquity": {
+        "title": "Financiële instrumenten (private equity)",
+        "body": "Aanbod van financiële instrumenten, in de vorm van voorstellen om effecten (aandelen) te verwerven op het gebied van private equity."
+      },
+      "consolidation": {
+        "title": "Portefeuilleconsolidatie",
+        "body": "Consolidatie van portefeuilles bij meerdere depotbanken, met behulp van een portefeuillebeheersysteem (PMS)."
+      },
+      "advice": {
+        "title": "Uitgebreid advies",
+        "body": "Advies over vastgoed, financiering, verzekeringen, fiscaliteit, pensioen en successieplanning."
+      }
+    },
+    "product": {
+      "title": "Hentsch Credit binnen de vennootschap",
+      "body": "Hentsch Credit is het door cryptoactiva gedekte aanbod van {legalName}. De hierboven vermelde diensten zijn die welke op de officiële website van de vennootschap zijn gepubliceerd; de voorwaarden en risico's die specifiek gelden voor Hentsch Credit staan in onze algemene voorwaarden en op onze pagina over risicobeheer."
+    },
+    "framework": {
+      "title": "Regelgevend kader en bewaring van activa",
+      "authorisation": {
+        "title": "Vergunning en toezicht",
+        "body": "{legalName} is door de FINMA gemachtigd om als vermogensbeheerder te opereren onder de FinIG (vergunning van {date}). Zij staat onder toezicht van {body}, met jaarlijkse prudentiële audits over de FinIG, de FinDG en de WWG.",
+        "bodyLabel": "Toezichthoudende organisatie",
+        "auditorLabel": "Wettelijk revisor",
+        "prudentialLabel": "Prudentiële audit"
+      },
+      "mediation": {
+        "title": "Ombudsinstantie",
+        "body": "Overeenkomstig artikel 16 van de FinIG kunnen geschillen die niet in der minne konden worden geregeld, worden voorgelegd aan de ombudsinstantie van de vennootschap."
+      },
+      "custody": {
+        "title": "Bewaring van activa",
+        "body": "Klanten hebben toegang tot meerdere depotbanken waarmee de vennootschap samenwerkingsovereenkomsten heeft gesloten (banken niet publiek genoemd). Een oplossing voor portefeuilleconsolidatie wordt geleverd door {pms}. Digitale activa die bij Hentsch Credit als onderpand worden gegeven, worden bewaard door {custodian}."
+      },
+      "regulationLink": "Onze volledige regelgevende status bekijken",
+      "custodyLink": "Risicobeheer en bewaring bekijken"
+    },
+    "sources": {
+      "title": "Bronnen en transparantie",
+      "body": "De informatie over de vennootschap is op {date} geverifieerd op haar officiële website ({site}). Het registratienummer, het btw-nummer en de aanbieder van de bewaring van digitale activa komen uit de interne documentatie van de vennootschap en staan niet op haar openbare website.",
+      "link": "Bronpagina bekijken"
+    }
   }
 }

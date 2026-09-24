@@ -650,14 +650,22 @@
       "country": "País",
       "registerNumber": "N.º IDE / registo comercial",
       "vatNumber": "N.º IVA",
-      "publicationDirector": "Responsável pela publicação"
+      "publicationDirector": "Responsável pela publicação",
+      "finmaAuthorisation": "Autorização da FINMA (gestor de património, LSFin)",
+      "founded": "Início da atividade de gestão de património"
     },
     "s2": {
       "title": "2. Estatuto regulamentar e supervisão",
       "body": "A {legalName} é um <b>gestor de fortuna independente (GFI)</b> na aceção da lei federal sobre as instituições financeiras (LEFin), <b>e não uma instituição bancária</b>. Como tal, não é titular de uma autorização bancária emitida diretamente pela FINMA, mas está sujeita à supervisão de um organismo de supervisão (OS) autorizado pela {supervisoryAuthority}.",
       "supervisionBody": "Organismo de supervisão (OS)",
       "amlBody": "Organismo de autorregulação LBA",
-      "footer": "O detalhe do quadro legal aplicável (LEFin, LSFin, LBA) é apresentado na página <link>Regulamentação</link>."
+      "footer": "O detalhe do quadro legal aplicável (LEFin, LSFin, LBA) é apresentado na página <link>Regulamentação</link>.",
+      "supervisionBodyFullName": "Denominação completa do organismo de supervisão",
+      "supervisionBodyAddress": "Morada do organismo de supervisão",
+      "mediationBody": "Órgão de mediação",
+      "mediationAddress": "Morada do órgão de mediação",
+      "statutoryAuditor": "Revisor oficial",
+      "prudentialAuditor": "Auditoria prudencial"
     },
     "s3": {
       "title": "3. Custódia dos ativos"
@@ -669,7 +677,9 @@
     "s5": {
       "title": "5. Contacto",
       "email": "E-mail",
-      "phone": "Telefone"
+      "phone": "Telefone",
+      "fax": "Fax",
+      "website": "Sítio oficial"
     },
     "s6": {
       "title": "6. Alojamento",
@@ -682,7 +692,8 @@
     "s8": {
       "title": "8. Parceiros técnicos",
       "body": "A plataforma apoia-se em prestadores terceiros para certas funções técnicas (custódia de ativos digitais e gestão de chaves, emissão de cartões bancários, verificação de identidade, dados de mercado). A lista destes prestadores e a sua função estão detalhadas na <link>política de privacidade</link>."
-    }
+    },
+    "logoAlt": "Logótipo da H. Hentsch Asset Management SA"
   },
   "Sitemap": {
     "meta": {
@@ -2410,57 +2421,117 @@
   "AboutUs": {
     "meta": {
       "title": "Sobre nós",
-      "description": "Hentsch Credit: a nossa missão, a nossa governação, a nossa supervisão regulatória e a custódia dos seus ativos junto de depositários terceiros autorizados."
+      "description": "A Hentsch Credit é a oferta com garantia em criptoativos da H. Hentsch Asset Management SA, gestor de património independente sediado em Nyon, na Suíça. História, direção, filosofia, serviços e enquadramento regulamentar, verificados no sítio oficial da sociedade."
     },
     "eyebrow": "Quem somos",
     "title": "Sobre nós",
-    "description": "A Hentsch Credit é a oferta cripto-colateralizada da H. Hentsch Asset Management SA, gestora de património independente sediada em Nyon, na Suíça.",
-    "mission": {
-      "title": "A nossa missão",
-      "body": "Permitir aos nossos clientes, particulares e empresas, libertar poder de compra imediato a partir dos seus ativos digitais e metais preciosos tokenizados, sem nunca terem de os vender, dando-lhes ao mesmo tempo acesso direto a estratégias de rendimento real."
-    },
-    "governance": {
-      "title": "Governação",
-      "body": "A Hentsch Credit é explorada pela {legalName}, sociedade anónima de direito suíço sediada no cantão de {canton}, sob a direção de {founder}."
-    },
-    "regulation": {
-      "title": "Regulação e supervisão",
-      "body": "Enquanto gestora de património independente nos termos da LEFin, a nossa atividade é supervisionada pela {supervisionBodyName}, organismo de supervisão autorizado pela FINMA, incluindo o cumprimento da legislação contra o branqueamento de capitais.",
-      "learnMore": "Ver o nosso estatuto regulatório completo"
-    },
-    "custody": {
-      "title": "Custódia dos ativos",
-      "body": "Os seus ativos nunca são detidos pela Hentsch Credit em nome próprio. O numerário e os títulos permanecem depositados em bancos custodiantes terceiros autorizados; os ativos digitais dados em garantia são custodiados pela {custodian}, prestadora especializada em custódia de criptoativos.",
-      "learnMore": "Ver gestão de riscos e custódia"
-    },
-    "values": {
-      "title": "Os nossos valores",
-      "intro": "Quatro princípios que orientam cada decisão de produto, desde o cálculo de uma taxa até à custódia dos seus ativos.",
-      "transparency": {
-        "title": "Transparência",
-        "body": "Cada taxa, cada limiar e cada rendimento apresentado reflete um dado real ou um pressuposto claramente identificado como tal, nunca um número inventado."
-      },
-      "security": {
-        "title": "Segurança",
-        "body": "Os seus ativos permanecem custodiados por depositários terceiros autorizados, nunca em nome próprio."
-      },
-      "precision": {
-        "title": "Rigor suíço",
-        "body": "Uma governação e uma supervisão regulatória ancoradas no direito suíço, a partir da nossa sede no cantão de Vaud."
-      },
-      "innovation": {
-        "title": "Inovação controlada",
-        "body": "Uma ponte entre ativos digitais e finanças tradicionais, construída passo a passo, nunca à custa da transparência para com os nossos clientes."
-      }
-    },
+    "description": "A Hentsch Credit é a oferta com garantia em criptoativos da H. Hentsch Asset Management SA, gestor de património independente sediado em Nyon, na Suíça. História, direção, filosofia, serviços e enquadramento regulamentar, verificados no sítio oficial da sociedade.",
     "identity": {
-      "title": "Identidade legal",
+      "title": "Ficha de identidade",
       "legalName": "Denominação social",
       "legalForm": "Forma jurídica",
       "registeredOffice": "Sede social",
-      "commercialRegister": "Registo comercial"
+      "commercialRegister": "Registo comercial",
+      "postalAddress": "Morada postal",
+      "canton": "Cantão",
+      "vat": "IVA",
+      "phone": "Telefone",
+      "fax": "Fax",
+      "email": "E-mail",
+      "website": "Sítio oficial",
+      "languages": "Línguas de atendimento",
+      "founded": "Atividade iniciada em"
     },
     "ctaContact": "Contactar-nos",
-    "ctaNoAccount": "Ainda não tem conta? Solicitar abertura de conta"
+    "ctaNoAccount": "Ainda não tem conta? Solicitar abertura de conta",
+    "logoAlt": "Logótipo da H. Hentsch Asset Management SA",
+    "tagline": "Por tradição familiar, defendemos e protegemos os seus interesses.",
+    "facts": {
+      "founded": "Atividade de gestão de património desde",
+      "finma": "Autorização da FINMA como gestor de património (LSFin)",
+      "team": "Colaboradores, mais de cem anos de experiência combinada",
+      "ownership": "do capital em mãos privadas suíças, através de {holding}"
+    },
+    "timeline": {
+      "title": "A nossa história",
+      "founding": "Início da atividade de gestão de património.",
+      "equity": "Criação da HH Equity Partners SA e início da atividade de private equity.",
+      "equity2": "Criação da HH Equity Partners II SA.",
+      "finmaApplication": "Apresentação do pedido de autorização junto da FINMA.",
+      "finmaAuthorisation": "Autorização da FINMA para exercer a atividade de gestor de património nos termos da LSFin."
+    },
+    "management": {
+      "title": "Direção",
+      "intro": "Três administradores delegados numa equipa de quatro colaboradores.",
+      "role": "Administrador delegado",
+      "hentsch": "Descendente de uma família de banqueiros privados suíços há mais de oito gerações.",
+      "dubois": "Mais de 30 anos de experiência bancária e financeira.",
+      "mentha": "Mais de 30 anos de experiência em banca privada."
+    },
+    "philosophy": {
+      "title": "A nossa filosofia",
+      "intro": "Valores herdados da tradição familiar: conhecimento e respeito pelo cliente, fidelidade, lealdade e preservação do capital.",
+      "independence": {
+        "title": "Independência",
+        "body": "Uma arquitetura aberta: selecionamos os melhores produtos de investimento, sem conflitos de interesses."
+      },
+      "personalization": {
+        "title": "Personalização",
+        "body": "Cada cliente é único, com as suas próprias necessidades, prioridades e expectativas: as nossas soluções são feitas por medida."
+      },
+      "professionalism": {
+        "title": "Profissionalismo e dedicação",
+        "body": "Uma estrutura à escala humana, flexível e rápida nas decisões, com um serviço dedicado em que cada pedido é tratado sem demora."
+      }
+    },
+    "services": {
+      "title": "Os nossos serviços",
+      "intro": "As atividades da sociedade, tal como apresentadas no seu sítio oficial.",
+      "discretionary": {
+        "title": "Gestão discricionária de carteiras",
+        "body": "Gestão de carteiras individuais para uma clientela privada e profissional, segundo abordagens estratégicas de alocação de ativos ou temáticas, alinhadas com o perfil de risco do cliente."
+      },
+      "privateEquity": {
+        "title": "Instrumentos financeiros (private equity)",
+        "body": "Oferta de instrumentos financeiros, sob a forma de propostas de aquisição de valores mobiliários (ações) na área do private equity."
+      },
+      "consolidation": {
+        "title": "Consolidação de carteiras",
+        "body": "Consolidação das carteiras detidas em vários bancos depositários, através de um sistema de gestão de carteiras (PMS)."
+      },
+      "advice": {
+        "title": "Aconselhamento alargado",
+        "body": "Aconselhamento em matéria imobiliária, de financiamento, de seguros, fiscal, de reforma e de planeamento sucessório."
+      }
+    },
+    "product": {
+      "title": "A Hentsch Credit no seio da sociedade",
+      "body": "A Hentsch Credit é a oferta com garantia em criptoativos explorada pela {legalName}. Os serviços acima enumerados são os publicados no sítio oficial da sociedade; as condições e os riscos próprios da Hentsch Credit estão detalhados nas nossas condições gerais e na nossa página de gestão de riscos."
+    },
+    "framework": {
+      "title": "Enquadramento regulamentar e custódia dos ativos",
+      "authorisation": {
+        "title": "Autorização e supervisão",
+        "body": "A {legalName} está autorizada pela FINMA a exercer a atividade de gestor de património nos termos da LSFin (autorização de {date}). Está sujeita à supervisão de {body}, com auditorias prudenciais anuais que abrangem a LSFin, a LSFi e a LBC.",
+        "bodyLabel": "Organismo de supervisão",
+        "auditorLabel": "Revisor oficial",
+        "prudentialLabel": "Auditoria prudencial"
+      },
+      "mediation": {
+        "title": "Órgão de mediação",
+        "body": "Nos termos do artigo 16.º da LSFin, os litígios que não tenham podido ser resolvidos amigavelmente podem ser submetidos ao órgão de mediação da sociedade."
+      },
+      "custody": {
+        "title": "Custódia dos ativos",
+        "body": "Os clientes têm acesso a vários bancos depositários com os quais a sociedade celebrou acordos de cooperação (bancos não nomeados publicamente). Uma solução de consolidação de carteiras é fornecida pela {pms}. Os ativos digitais dados em garantia na Hentsch Credit são conservados pela {custodian}."
+      },
+      "regulationLink": "Ver o nosso estatuto regulamentar completo",
+      "custodyLink": "Ver a gestão de riscos e a custódia"
+    },
+    "sources": {
+      "title": "Fontes e transparência",
+      "body": "As informações sobre a sociedade foram verificadas em {date} no seu sítio oficial ({site}). O número de registo, o número de IVA e o prestador de custódia de ativos digitais provêm da documentação interna da sociedade e não constam do seu sítio público.",
+      "link": "Ver a página de origem"
+    }
   }
 }

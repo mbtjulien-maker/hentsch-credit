@@ -58,7 +58,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         <div className="grid gap-4 sm:grid-cols-2">
           {CHANNELS.map((channel) => (
             <div key={channel.label} className="flex items-start gap-3 rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
-              <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-fuchsia-600 text-white">
+              <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <channel.icon className="size-4.5" />
               </div>
               <div className="min-w-0">

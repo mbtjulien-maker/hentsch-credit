@@ -115,7 +115,7 @@ export default async function PlanDuSitePage({ params }: { params: Promise<{ loc
           {GROUPS.map((group) => (
             <div key={group.title} className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
               <div className="flex items-center gap-2.5">
-                <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-fuchsia-600 text-white">
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <group.icon className="size-4" />
                 </div>
                 <h3 className="text-sm font-semibold text-foreground">{group.title}</h3>

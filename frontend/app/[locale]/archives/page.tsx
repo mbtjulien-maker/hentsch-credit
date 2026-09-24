@@ -51,7 +51,7 @@ export default async function ArchivesPage({ params }: { params: Promise<{ local
         <ol className="space-y-4 border-l border-border pl-6">
           {ENTRIES.map((entry) => (
             <li key={entry.key} className="relative">
-              <span className="absolute -left-[1.65rem] top-1.5 size-2.5 rounded-full bg-gradient-to-br from-cyan-400 to-fuchsia-600" />
+              <span className="absolute -left-[1.65rem] top-1.5 size-2.5 rounded-full bg-primary" />
               <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground/60">{entry.period}</span>
               <h3 className="mt-0.5 text-sm font-semibold text-foreground">{entry.title}</h3>
               <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{entry.detail}</p>

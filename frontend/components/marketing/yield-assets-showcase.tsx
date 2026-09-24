@@ -48,7 +48,7 @@ function AssetYieldCard({ entry, compact = false }: { entry: MarketOverviewEntry
   const isUp = (entry.change24hPct ?? 0) >= 0;
   return (
     <div
-      className={`flex flex-col gap-2.5 rounded-2xl border border-amber-200/70 bg-white shadow-sm transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg ${
+      className={`flex flex-col gap-2.5 rounded-2xl border border-emerald-200/70 bg-white shadow-sm transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-lg ${
         compact ? "p-3.5" : "gap-3 p-5"
       }`}
     >
@@ -66,7 +66,7 @@ function AssetYieldCard({ entry, compact = false }: { entry: MarketOverviewEntry
           </div>
         </div>
         {!compact && (
-          <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-100 px-2 py-1 text-[10px] font-medium text-amber-800">
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-medium text-emerald-800">
             <Sparkles className="size-2.5" />
             {t("yieldBadge")}
           </span>
@@ -107,8 +107,8 @@ export function YieldAssetGrid() {
   const { entries, yieldEntries, error } = useYieldAssets();
 
   return (
-    <div className="flex h-full flex-col rounded-3xl bg-gradient-to-br from-amber-50/90 via-orange-50/50 to-white p-6 shadow-[0_8px_30px_-12px_rgba(217,119,6,0.25)] sm:p-7">
-      <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-amber-200 bg-white px-3 py-1 text-xs font-medium text-amber-800">
+    <div className="flex h-full flex-col rounded-3xl bg-gradient-to-br from-emerald-50/90 via-teal-50/50 to-white p-6 shadow-[0_8px_30px_-12px_rgba(217,119,6,0.25)] sm:p-7">
+      <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-200 bg-white px-3 py-1 text-xs font-medium text-emerald-800">
         <Sparkles className="size-3.5" />
         {t("badge")}
       </span>
@@ -120,7 +120,7 @@ export function YieldAssetGrid() {
       {!error && !entries && (
         <div className="mt-5 grid grid-cols-2 gap-3">
           {YIELD_CURRENCIES.map((currency) => (
-            <div key={currency} className="h-[84px] animate-pulse rounded-2xl border border-amber-200/50 bg-white/60" />
+            <div key={currency} className="h-[84px] animate-pulse rounded-2xl border border-emerald-200/50 bg-white/60" />
           ))}
         </div>
       )}
@@ -150,12 +150,12 @@ export function YieldMechanismStrip() {
   ] as const;
 
   return (
-    <section className="bg-gradient-to-b from-amber-50/60 to-transparent py-12">
+    <section className="bg-gradient-to-b from-emerald-50/60 to-transparent py-12">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div className="grid gap-5 rounded-2xl bg-white/70 p-5 sm:grid-cols-3 sm:gap-5 sm:p-6">
           {MECHANISM_STEPS.map((step) => (
             <div key={step.title} className="flex items-start gap-3">
-              <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-700">
+              <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
                 <step.icon className="size-4" />
               </div>
               <div>

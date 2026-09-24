@@ -116,7 +116,7 @@ export default function HomePage() {
         <SupportSection />
       </div>
 
-      <TransactionHistory transactions={transactions.data} />
+      <TransactionHistory transactions={transactions.data} limit={10} />
     </div>
   );
 }

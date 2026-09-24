@@ -315,7 +315,12 @@ function IdentityForm({ userId }: { userId: string }) {
           )}
           <div className="flex flex-col gap-1">
             <Label className="text-xs text-muted-foreground">{t("sector")}</Label>
-            <Select value={sector || undefined} onValueChange={(v) => setSector((v as BusinessSector) ?? "")} disabled={saving}>
+            <Select
+              items={BUSINESS_SECTORS.map((value) => ({ value, label: t(`sectorLabels.${value}`) }))}
+              value={sector || undefined}
+              onValueChange={(v) => setSector((v as BusinessSector) ?? "")}
+              disabled={saving}
+            >
               <SelectTrigger className="w-full"><SelectValue placeholder={t("selectPlaceholder")} /></SelectTrigger>
               <SelectContent>
                 {BUSINESS_SECTORS.map((value) => (

@@ -113,7 +113,7 @@ export function InviteCodesSection() {
         <div className="flex flex-wrap items-end gap-2">
           <div className="flex flex-col gap-1">
             <label className="text-xs font-medium text-muted-foreground">Type de compte</label>
-            <Select value={accountType} onValueChange={(v) => v && setAccountType(v as AccountType)}>
+            <Select items={{ PARTICULIER: "Particulier", BUSINESS: "Business" }} value={accountType} onValueChange={(v) => v && setAccountType(v as AccountType)}>
               <SelectTrigger className="w-40">
                 <SelectValue />
               </SelectTrigger>

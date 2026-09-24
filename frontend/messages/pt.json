@@ -1507,7 +1507,10 @@
         "status": "Estado",
         "onChainReference": "Referência on-chain",
         "date": "Data"
-      }
+      },
+      "shownCount": "{shown} de {total} transações apresentadas",
+      "viewAll": "Ver todo o histórico",
+      "showMore": "Mostrar mais"
     },
     "accountMenu": {
       "business": "Empresa",

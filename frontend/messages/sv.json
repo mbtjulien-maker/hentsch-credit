@@ -1507,7 +1507,10 @@
         "status": "Status",
         "onChainReference": "On-chain-referens",
         "date": "Datum"
-      }
+      },
+      "shownCount": "{shown} av {total} transaktioner visas",
+      "viewAll": "Visa hela historiken",
+      "showMore": "Visa fler"
     },
     "accountMenu": {
       "business": "Företag",

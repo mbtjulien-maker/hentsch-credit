@@ -802,7 +802,12 @@ export function KycDossierSection({ userId }: { userId: string }) {
               )}
               <div className="flex flex-col gap-1">
                 <Label className="text-xs text-muted-foreground">{t("sector")}</Label>
-                <Select value={sector || undefined} onValueChange={(v) => setSector((v as BusinessSector) ?? "")} disabled={savingCore}>
+                <Select
+                  items={BUSINESS_SECTORS.map((value) => ({ value, label: t(`sectorLabels.${value}`) }))}
+                  value={sector || undefined}
+                  onValueChange={(v) => setSector((v as BusinessSector) ?? "")}
+                  disabled={savingCore}
+                >
                   <SelectTrigger className="w-full"><SelectValue placeholder={t("selectPlaceholder")} /></SelectTrigger>
                   <SelectContent>
                     {BUSINESS_SECTORS.map((value) => (
@@ -839,7 +844,7 @@ export function KycDossierSection({ userId }: { userId: string }) {
                 <Label className="text-xs text-muted-foreground">
                   {isBusiness ? t("annualRevenueBracket") : t("annualIncomeBracket")}
                 </Label>
-                <Select value={annualIncomeBracket || undefined} onValueChange={(v) => setAnnualIncomeBracket((v as IncomeBracket) ?? "")}>
+                <Select items={INCOME_BRACKETS.map((value) => ({ value, label: t(`incomeBracketLabels.${value}`) }))} value={annualIncomeBracket || undefined} onValueChange={(v) => setAnnualIncomeBracket((v as IncomeBracket) ?? "")}>
                   <SelectTrigger className="w-full"><SelectValue placeholder={t("selectPlaceholder")} /></SelectTrigger>
                   <SelectContent>
                     {INCOME_BRACKETS.map((value) => (
@@ -852,7 +857,7 @@ export function KycDossierSection({ userId }: { userId: string }) {
                 <Label className="text-xs text-muted-foreground">
                   {isBusiness ? t("businessAssetsBracket") : t("netWorthBracket")}
                 </Label>
-                <Select value={netWorthBracket || undefined} onValueChange={(v) => setNetWorthBracket((v as NetWorthBracket) ?? "")}>
+                <Select items={NET_WORTH_BRACKETS.map((value) => ({ value, label: t(`netWorthBracketLabels.${value}`) }))} value={netWorthBracket || undefined} onValueChange={(v) => setNetWorthBracket((v as NetWorthBracket) ?? "")}>
                   <SelectTrigger className="w-full"><SelectValue placeholder={t("selectPlaceholder")} /></SelectTrigger>
                   <SelectContent>
                     {NET_WORTH_BRACKETS.map((value) => (

@@ -610,6 +610,7 @@ export function InviteSignupWizard() {
             <div className="flex flex-col gap-1">
               <Label className="text-xs text-muted-foreground">{tKyc("sector")}</Label>
               <Select
+                items={BUSINESS_SECTORS.map((value) => ({ value, label: tKyc(`sectorLabels.${value}`) }))}
                 value={data.employment.sector || undefined}
                 onValueChange={(v) => setData((d) => ({ ...d, employment: { ...d.employment, sector: v as BusinessSector } }))}
               >

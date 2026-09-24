@@ -1507,7 +1507,10 @@
         "status": "Status",
         "onChainReference": "On-chain referentie",
         "date": "Datum"
-      }
+      },
+      "shownCount": "{shown} van {total} transacties getoond",
+      "viewAll": "Volledige geschiedenis bekijken",
+      "showMore": "Meer tonen"
     },
     "accountMenu": {
       "business": "Zakelijk",

@@ -5,7 +5,8 @@ import { buildInvestmentPerformance } from '../src/investment/investment-perform
 // ============================================================================================
 // DONNÉES DE DÉMONSTRATION — SIMULATION, JAMAIS UNE PERFORMANCE RÉELLE.
 //
-// Crée (ou recrée) un compte client fictif "Julien Marbot" avec un historique d'investissement
+// Crée (ou recrée) un compte client fictif "Julien Marbot" (profil, adresse, situation
+// professionnelle et dossier KYC complets et validés, données inventées) avec un historique d'investissement
 // rétro-daté (dépôts, placements, rendements quotidiens composés, un retrait) pour tester
 // l'espace Investissement et produire des captures de démonstration.
 //
@@ -34,6 +35,7 @@ const DEV_PASSWORD = 'ChangeMe123!';
 const TARGET_RETURN_PCT = Number(process.env.DEMO_RETURN_PCT ?? '10');
 const NOW = process.env.DEMO_TODAY ? new Date(process.env.DEMO_TODAY) : new Date();
 
+const MAIN_WALLET_DEPOSIT = 2000;
 const at = (iso: string) => new Date(`${iso}Z`);
 const dayKey = (d: Date) => d.toISOString().slice(0, 10);
 
@@ -211,7 +213,75 @@ async function main() {
       kycStatus: 'VERIFIED',
       accountType: 'PARTICULIER',
       createdAt: at('2026-07-26T16:40:00'),
-      clientProfile: { create: { firstName: 'Julien', lastName: 'Marbot' } },
+      clientProfile: {
+        create: {
+          firstName: 'Julien',
+          lastName: 'Marbot',
+          dateOfBirth: at('1984-03-12T00:00:00'),
+          placeOfBirth: 'Lyon',
+          birthCountry: 'France',
+          gender: 'M',
+          nationality: 'Française',
+          maritalStatus: 'MARIE',
+          dependents: 2,
+          phone: '+41 79 000 00 00',
+        },
+      },
+      addresses: {
+        create: {
+          label: 'DOMICILE',
+          street: '14 chemin des Vignes',
+          city: 'Nyon',
+          postalCode: '1260',
+          country: 'Suisse',
+          residenceType: 'PROPRIETAIRE',
+          since: '2019',
+          verified: true,
+          verifiedAt: at('2026-07-27T09:00:00'),
+        },
+      },
+      employment: {
+        create: {
+          isIndependent: false,
+          professionalStatus: 'DIRIGEANT',
+          employer: 'Marbot Conseil SA',
+          sector: 'FINANCE_ASSURANCE',
+          role: 'Directeur associé',
+          seniority: '8 ans',
+          annualIncome: new Prisma.Decimal(185000),
+          annualIncomeBracket: 'B100K_250K',
+          netWorthBracket: 'B500K_1M',
+          verified: true,
+        },
+      },
+      identityDocument: {
+        create: {
+          documentType: 'PASSEPORT',
+          documentNumber: 'DEMO000000',
+          issuingAuthority: 'Préfecture (démo)',
+          issuePlace: 'Lyon',
+          issueDate: at('2022-05-10T00:00:00'),
+          expiryDate: at('2032-05-09T00:00:00'),
+          identityCheckMethod: 'PVID',
+          proofOfAddressType: 'FACTURE',
+          proofOfAddressIssuer: 'Services industriels (démo)',
+          proofOfAddressDate: at('2026-07-01T00:00:00'),
+          verified: true,
+          verifiedAt: at('2026-07-27T09:00:00'),
+        },
+      },
+      amlProfile: {
+        create: {
+          isPoliticallyExposed: false,
+          fundsOrigin: ['REVENUS_PROFESSIONNELS', 'EPARGNE'],
+          relationshipPurpose: ['PLACEMENT', 'COMPTE_COURANT'],
+          attestedAt: at('2026-07-26T17:05:00'),
+          attestationCity: 'Nyon',
+          riskLevel: 'FAIBLE',
+          reviewDecision: 'VALIDE',
+          reviewedAt: at('2026-07-27T09:00:00'),
+        },
+      },
     },
   });
 
@@ -244,6 +314,20 @@ async function main() {
           },
     );
   }
+  // Petit solde sur le wallet principal (dépôt classique, hors wallet investissement) pour
+  // que l'accueil montre trois soldes distincts.
+  txs.push({
+    userId: user.id,
+    type: 'DEPOSIT',
+    amount: dec(MAIN_WALLET_DEPOSIT),
+    status: 'COMPLETED',
+    currency: 'USDT',
+    tokenAmount: dec(MAIN_WALLET_DEPOSIT),
+    chain: 'ETHEREUM',
+    referenceTx: 'demo-marbot-main-1',
+    creditTarget: 'AVAILABLE',
+    createdAt: at('2026-07-26T18:30:00'),
+  });
   for (const p of PLACEMENTS) {
     txs.push({
       userId: user.id,
@@ -311,8 +395,8 @@ async function main() {
 
   await prisma.ledgerBalance.upsert({
     where: { userId: user.id },
-    create: { userId: user.id, investmentBalance: dec(cash) },
-    update: { investmentBalance: dec(cash) },
+    create: { userId: user.id, availableBalance: dec(MAIN_WALLET_DEPOSIT), investmentBalance: dec(cash) },
+    update: { availableBalance: dec(MAIN_WALLET_DEPOSIT), investmentBalance: dec(cash) },
   });
 
   // Contrôle : ce que l'espace Investissement affichera (même fonction que l'API).

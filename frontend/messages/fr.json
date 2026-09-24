@@ -1507,7 +1507,10 @@
         "status": "Statut",
         "onChainReference": "Référence on-chain",
         "date": "Date"
-      }
+      },
+      "shownCount": "{shown} sur {total} transactions affichées",
+      "viewAll": "Voir tout l'historique",
+      "showMore": "Afficher plus"
     },
     "accountMenu": {
       "business": "Business",

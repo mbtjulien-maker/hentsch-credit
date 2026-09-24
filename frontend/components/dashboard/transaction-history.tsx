@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/badge";
 import {
   Table,
@@ -27,7 +32,22 @@ function statusVariant(status: TransactionStatus): "default" | "secondary" | "de
   return "destructive";
 }
 
-export function TransactionHistory({ transactions }: { transactions: TransactionRecord[] }) {
+// Un compte actif journalise des centaines de lignes (un rendement par placement et par
+// jour) : on n'affiche que les plus récentes, par tranches, plutôt que toute la liste.
+// `limit` (accueil) fige l'affichage aux N dernières avec un lien vers l'historique complet ;
+// sans `limit` (page Historique), l'utilisateur déplie par tranches de PAGE_SIZE.
+const PAGE_SIZE = 25;
+
+export function TransactionHistory({
+  transactions,
+  limit,
+}: {
+  transactions: TransactionRecord[];
+  limit?: number;
+}) {
+  const [visible, setVisible] = useState(limit ?? PAGE_SIZE);
+  const shown = transactions.slice(0, visible);
+  const hasMore = transactions.length > shown.length;
   const t = useTranslations("Dashboard.transactionHistory");
   const tLabels = useTranslations("Dashboard.labels");
   const locale = useLocale();
@@ -53,7 +73,7 @@ export function TransactionHistory({ transactions }: { transactions: Transaction
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {transactions.map((tx) => (
+                {shown.map((tx) => (
                   <TableRow key={tx.id}>
                     <TableCell className="font-medium">
                       {tLabels(`transactionType.${tx.type}`)}
@@ -77,6 +97,20 @@ export function TransactionHistory({ transactions }: { transactions: Transaction
                 ))}
               </TableBody>
             </Table>
+          </div>
+        )}
+        {hasMore && (
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
+            <span>{t("shownCount", { shown: shown.length, total: transactions.length })}</span>
+            {limit !== undefined ? (
+              <Button nativeButton={false} variant="outline" size="sm" render={<Link href="/dashboard/historique" />}>
+                {t("viewAll")}
+              </Button>
+            ) : (
+              <Button variant="outline" size="sm" onClick={() => setVisible((n) => n + PAGE_SIZE)}>
+                {t("showMore")}
+              </Button>
+            )}
           </div>
         )}
       </CardContent>

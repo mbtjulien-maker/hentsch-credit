@@ -34,15 +34,37 @@ export class InvestmentStatementService {
         email: true,
         displayCurrency: true,
         clientProfile: { select: { firstName: true, lastName: true } },
-        addresses: { where: { label: 'DOMICILE' }, select: { street: true, addressLine2: true, postalCode: true, city: true, country: true }, take: 1 },
+        addresses: {
+          where: { label: 'DOMICILE' },
+          select: {
+            street: true,
+            addressLine2: true,
+            postalCode: true,
+            city: true,
+            country: true,
+          },
+          take: 1,
+        },
       },
     });
     if (!user) throw new NotFoundException('Utilisateur introuvable.');
 
     const [txs, baskets, plans] = await Promise.all([
       this.prisma.transaction.findMany({
-        where: { userId, status: 'COMPLETED', type: { in: STATEMENT_TRANSACTION_TYPES } },
-        select: { id: true, type: true, amount: true, createdAt: true, currency: true, creditTarget: true, referenceTx: true },
+        where: {
+          userId,
+          status: 'COMPLETED',
+          type: { in: STATEMENT_TRANSACTION_TYPES },
+        },
+        select: {
+          id: true,
+          type: true,
+          amount: true,
+          createdAt: true,
+          currency: true,
+          creditTarget: true,
+          referenceTx: true,
+        },
         orderBy: { createdAt: 'asc' },
       }),
       this.prisma.investmentPosition.findMany({ where: { userId } }),
@@ -75,15 +97,26 @@ export class InvestmentStatementService {
     ];
 
     const data = buildStatementData(txs, positions, periodMonths, now);
-    const fullName = [user.clientProfile?.firstName, user.clientProfile?.lastName]
+    const fullName = [
+      user.clientProfile?.firstName,
+      user.clientProfile?.lastName,
+    ]
       .filter(Boolean)
       .join(' ');
     // Monnaie du relevé : celle demandée, sinon celle choisie par le client pour son compte.
     const currency = currencyOverride ?? user.displayCurrency;
-    const eurPerUsd = currency === 'EUR' ? (await this.marketDataService.getEurPerUsd()).toNumber() : 1;
+    const eurPerUsd =
+      currency === 'EUR'
+        ? (await this.marketDataService.getEurPerUsd()).toNumber()
+        : 1;
     const addr = user.addresses[0];
     const clientAddressLines = addr
-      ? [addr.street, addr.addressLine2, `${addr.postalCode} ${addr.city}`.trim(), addr.country].filter((l): l is string => !!l)
+      ? [
+          addr.street,
+          addr.addressLine2,
+          `${addr.postalCode} ${addr.city}`.trim(),
+          addr.country,
+        ].filter((l): l is string => !!l)
       : [];
     const pdf = await renderStatementPdf({
       data,

@@ -1,4 +1,11 @@
-import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFImage, type PDFPage } from 'pdf-lib';
+import {
+  PDFDocument,
+  StandardFonts,
+  rgb,
+  type PDFFont,
+  type PDFImage,
+  type PDFPage,
+} from 'pdf-lib';
 import {
   statementFingerprint,
   type StatementData,
@@ -27,7 +34,14 @@ interface Labels {
   legalFooter: string[];
   title: string;
   subtitle: (from: string, to: string) => string;
-  refBox: { statementNo: string; period: string; issued: string; account: string; currency: string; page: string };
+  refBox: {
+    statementNo: string;
+    period: string;
+    issued: string;
+    account: string;
+    currency: string;
+    page: string;
+  };
   currencyValue: Record<'USD' | 'EUR', string>;
   fxNote: (rate: string, date: string) => string;
   clientBlock: string;
@@ -111,7 +125,7 @@ const LABELS: Record<StatementLocale, Labels> = {
       'Tél. +41 22 809 57 00 · office@hhentsch.com',
     ],
     legalFooter: [
-      "H. Hentsch Asset Management SA · Gestionnaire de fortune indépendant · Rue de Rive 23, 1260 Nyon (Suisse) · IDE CHE-115.630.564",
+      'H. Hentsch Asset Management SA · Gestionnaire de fortune indépendant · Rue de Rive 23, 1260 Nyon (Suisse) · IDE CHE-115.630.564',
       "Société affiliée à l'organisme de surveillance SO-FIT, agréé par l'Autorité fédérale de surveillance des marchés financiers (FINMA).",
     ],
     title: "RELEVÉ D'OPÉRATIONS ET DE PLACEMENTS",
@@ -146,7 +160,8 @@ const LABELS: Record<StatementLocale, Labels> = {
     walletClosing: (d) => `Solde du wallet au ${d}`,
     totalAssets: (d) => `Total des avoirs d'investissement au ${d}`,
     returnPct: 'Rendement du capital engagé sur la période',
-    returnMethod: "Résultat net ÷ (valeur d'ouverture + capital placé). Indicatif : ce n'est pas un rendement annualisé.",
+    returnMethod:
+      "Résultat net ÷ (valeur d'ouverture + capital placé). Indicatif : ce n'est pas un rendement annualisé.",
     s2: '2. Évolution mois par mois',
     colMonth: 'Mois',
     colPlaced: 'Capital placé',
@@ -191,7 +206,7 @@ const LABELS: Record<StatementLocale, Labels> = {
       },
       {
         title: 'Rendements',
-        body: "Les rendements sont crédités chaque jour à 03h15 (UTC), pour chaque placement actif, et capitalisés. Ils ne sont jamais garantis : un jour de marché défavorable, le rendement crédité est négatif et le capital placé peut diminuer. Pour lisibilité, ce relevé les regroupe par mois (section 5).",
+        body: 'Les rendements sont crédités chaque jour à 03h15 (UTC), pour chaque placement actif, et capitalisés. Ils ne sont jamais garantis : un jour de marché défavorable, le rendement crédité est négatif et le capital placé peut diminuer. Pour lisibilité, ce relevé les regroupe par mois (section 5).',
       },
       {
         title: 'Paniers et plans à échéance fixe',
@@ -276,14 +291,16 @@ const LABELS: Record<StatementLocale, Labels> = {
     valueYield: '± Net result of the investments',
     valueClosing: (d) => `Portfolio value on ${d}`,
     walletOpening: (d) => `Wallet balance on ${d}`,
-    walletContrib: '+ Contributions (deposits, card top-ups, transfers received)',
+    walletContrib:
+      '+ Contributions (deposits, card top-ups, transfers received)',
     walletProceeds: '+ Basket withdrawals and maturity payouts',
     walletPlacements: '− Capital invested',
     walletTransfers: '− Transfers to the main balance',
     walletClosing: (d) => `Wallet balance on ${d}`,
     totalAssets: (d) => `Total investment assets on ${d}`,
     returnPct: 'Return on committed capital over the period',
-    returnMethod: 'Net result ÷ (opening value + capital invested). Indicative: not an annualised return.',
+    returnMethod:
+      'Net result ÷ (opening value + capital invested). Indicative: not an annualised return.',
     s2: '2. Month by month',
     colMonth: 'Month',
     colPlaced: 'Capital invested',
@@ -411,7 +428,9 @@ interface Col {
 // compte » : papier à en-tête, bloc de références, sections numérotées, tableaux à soldes
 // courants, notes explicatives, bloc d'édition (référence + empreinte + emplacement de
 // signature).
-export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint8Array> {
+export async function renderStatementPdf(
+  input: StatementPdfInput,
+): Promise<Uint8Array> {
   const { data, locale } = input;
   const L = LABELS[locale];
   const doc = await PDFDocument.create();
@@ -424,16 +443,21 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
   const font = await doc.embedFont(StandardFonts.Helvetica);
   const bold = await doc.embedFont(StandardFonts.HelveticaBold);
   const italic = await doc.embedFont(StandardFonts.HelveticaOblique);
-  const logo: PDFImage = await doc.embedJpg(Buffer.from(STATEMENT_LOGO_JPG_BASE64, 'base64'));
+  const logo: PDFImage = await doc.embedJpg(
+    Buffer.from(STATEMENT_LOGO_JPG_BASE64, 'base64'),
+  );
   const supported = new Set(font.getCharacterSet());
 
   const safe = (text: string): string =>
-    Array.from(text.replace(/ /g, ' ').replace(/−/g, '-'))
+    Array.from(text.replace(/\u202f/g, '\u00a0').replace(/−/g, '-'))
       .map((ch) => (supported.has(ch.codePointAt(0)!) ? ch : '?'))
       .join('');
 
   const localeTag = locale === 'fr' ? 'fr-FR' : 'en-US';
-  const numberFmt = new Intl.NumberFormat(localeTag, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const numberFmt = new Intl.NumberFormat(localeTag, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
   const factor = input.currency === 'EUR' ? input.eurPerUsd : 1;
   const money = (v: { toNumber(): number }, signed = false): string => {
     const n = Math.round(v.toNumber() * factor * 100) / 100;
@@ -441,18 +465,27 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
     return safe(`${n < 0 ? '-' : signed && n > 0 ? '+' : ''}${body}`);
   };
   const pct = (n: number | null): string =>
-    n === null ? '—' : safe(`${n >= 0 ? '+' : '-'}${Math.abs(n).toFixed(2).replace('.', locale === 'fr' ? ',' : '.')} %`);
+    n === null
+      ? '—'
+      : safe(
+          `${n >= 0 ? '+' : '-'}${Math.abs(n)
+            .toFixed(2)
+            .replace('.', locale === 'fr' ? ',' : '.')} %`,
+        );
   const dateFmt = new Intl.DateTimeFormat(locale === 'fr' ? 'fr-FR' : 'en-GB', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
     timeZone: 'UTC',
   });
-  const monthFmt = new Intl.DateTimeFormat(locale === 'fr' ? 'fr-FR' : 'en-GB', {
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  });
+  const monthFmt = new Intl.DateTimeFormat(
+    locale === 'fr' ? 'fr-FR' : 'en-GB',
+    {
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    },
+  );
   const fmtDate = (d: Date) => safe(dateFmt.format(d));
   const fmtMonth = (key: string) => {
     const s = monthFmt.format(new Date(`${key}-01T00:00:00Z`));
@@ -467,21 +500,40 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
     s: string,
     x: number,
     yy: number,
-    opts: { size?: number; font?: PDFFont; color?: Color; align?: 'left' | 'right' | 'center'; maxWidth?: number } = {},
+    opts: {
+      size?: number;
+      font?: PDFFont;
+      color?: Color;
+      align?: 'left' | 'right' | 'center';
+      maxWidth?: number;
+    } = {},
   ) => {
     const f = opts.font ?? font;
     const size = opts.size ?? 9;
     let out = safe(s);
     if (opts.maxWidth) {
-      while (out.length > 1 && f.widthOfTextAtSize(out, size) > opts.maxWidth) out = out.slice(0, -2) + '…';
+      while (out.length > 1 && f.widthOfTextAtSize(out, size) > opts.maxWidth)
+        out = out.slice(0, -2) + '…';
       out = safe(out);
     }
     const w = f.widthOfTextAtSize(out, size);
-    const px = opts.align === 'right' ? x - w : opts.align === 'center' ? x - w / 2 : x;
-    page.drawText(out, { x: px, y: yy, size, font: f, color: opts.color ?? INK });
+    const px =
+      opts.align === 'right' ? x - w : opts.align === 'center' ? x - w / 2 : x;
+    page.drawText(out, {
+      x: px,
+      y: yy,
+      size,
+      font: f,
+      color: opts.color ?? INK,
+    });
   };
 
-  const wrap = (s: string, width: number, size: number, f: PDFFont = font): string[] => {
+  const wrap = (
+    s: string,
+    width: number,
+    size: number,
+    f: PDFFont = font,
+  ): string[] => {
     const lines: string[] = [];
     let cur = '';
     for (const word of safe(s).split(' ')) {
@@ -505,7 +557,11 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
     page = doc.addPage([A4_W, A4_H]);
     pages.push(page);
     drawLogo(MARGIN, A4_H - 30, 84);
-    text(`${L.title} · ${input.accountRef}`, A4_W - MARGIN, A4_H - 44, { size: 7.5, color: MUTED, align: 'right' });
+    text(`${L.title} · ${input.accountRef}`, A4_W - MARGIN, A4_H - 44, {
+      size: 7.5,
+      color: MUTED,
+      align: 'right',
+    });
     page.drawLine({
       start: { x: MARGIN, y: A4_H - 30 - HEADER_H_CONT + 8 },
       end: { x: A4_W - MARGIN, y: A4_H - 30 - HEADER_H_CONT + 8 },
@@ -524,7 +580,12 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
     y -= 12;
     text(label, MARGIN, y, { size: 11, font: bold });
     y -= 5;
-    page.drawLine({ start: { x: MARGIN, y }, end: { x: A4_W - MARGIN, y }, thickness: 0.8, color: RULE_DARK });
+    page.drawLine({
+      start: { x: MARGIN, y },
+      end: { x: A4_W - MARGIN, y },
+      thickness: 0.8,
+      color: RULE_DARK,
+    });
     y -= 14;
   };
   const subheading = (label: string) => {
@@ -534,7 +595,11 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
   };
 
   // Tableau à colonnes : en-tête redessiné après un saut de page.
-  const drawTable = (cols: Col[], rows: Cell[][], opts: { firstBold?: boolean } = {}) => {
+  const drawTable = (
+    cols: Col[],
+    rows: Cell[][],
+    opts: { firstBold?: boolean } = {},
+  ) => {
     const xs: number[] = [];
     let acc = MARGIN;
     for (const c of cols) {
@@ -542,12 +607,26 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
       acc += c.w;
     }
     const cellPos = (i: number) =>
-      cols[i].align === 'right' ? { x: xs[i] + cols[i].w - 4, align: 'right' as const } : { x: xs[i] + 4, align: 'left' as const };
+      cols[i].align === 'right'
+        ? { x: xs[i] + cols[i].w - 4, align: 'right' as const }
+        : { x: xs[i] + 4, align: 'left' as const };
     const header = () => {
-      page.drawRectangle({ x: MARGIN, y: y - 5, width: CONTENT_W, height: 15, color: PANEL });
+      page.drawRectangle({
+        x: MARGIN,
+        y: y - 5,
+        width: CONTENT_W,
+        height: 15,
+        color: PANEL,
+      });
       cols.forEach((c, i) => {
         const pos = cellPos(i);
-        text(c.label, pos.x, y, { size: 7.5, font: bold, color: MUTED, align: pos.align, maxWidth: c.w - 8 });
+        text(c.label, pos.x, y, {
+          size: 7.5,
+          font: bold,
+          color: MUTED,
+          align: pos.align,
+          maxWidth: c.w - 8,
+        });
       });
       y -= 16;
     };
@@ -568,21 +647,41 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
           maxWidth: cols[i].w - 8,
         });
       });
-      page.drawLine({ start: { x: MARGIN, y: y - 5 }, end: { x: A4_W - MARGIN, y: y - 5 }, thickness: 0.3, color: RULE });
+      page.drawLine({
+        start: { x: MARGIN, y: y - 5 },
+        end: { x: A4_W - MARGIN, y: y - 5 },
+        thickness: 0.3,
+        color: RULE,
+      });
       y -= 15;
     });
     y -= 4;
   };
 
   // Tableau de rapprochement (libellé / montant), avec une ligne de total soulignée.
-  const drawReconciliation = (lines: { label: string; value: string; total?: boolean; color?: Color }[]) => {
+  const drawReconciliation = (
+    lines: { label: string; value: string; total?: boolean; color?: Color }[],
+  ) => {
     for (const line of lines) {
       ensure(18);
       if (line.total) {
-        page.drawLine({ start: { x: MARGIN + 240, y: y + 11 }, end: { x: A4_W - MARGIN, y: y + 11 }, thickness: 0.7, color: RULE_DARK });
+        page.drawLine({
+          start: { x: MARGIN + 240, y: y + 11 },
+          end: { x: A4_W - MARGIN, y: y + 11 },
+          thickness: 0.7,
+          color: RULE_DARK,
+        });
       }
-      text(line.label, MARGIN + 4, y, { size: 8.6, font: line.total ? bold : font });
-      text(line.value, A4_W - MARGIN - 4, y, { size: 8.6, font: line.total ? bold : font, color: line.color, align: 'right' });
+      text(line.label, MARGIN + 4, y, {
+        size: 8.6,
+        font: line.total ? bold : font,
+      });
+      text(line.value, A4_W - MARGIN - 4, y, {
+        size: 8.6,
+        font: line.total ? bold : font,
+        color: line.color,
+        align: 'right',
+      });
       y -= 15;
     }
     y -= 4;
@@ -593,14 +692,28 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
   pages.push(page);
   const logoH = drawLogo(MARGIN, A4_H - 36, 158);
   L.entityLines.forEach((line, i) => {
-    text(line, A4_W - MARGIN, A4_H - 42 - i * 11, { size: 7.8, color: i === 0 ? INK : MUTED, font: i === 0 ? bold : font, align: 'right' });
+    text(line, A4_W - MARGIN, A4_H - 42 - i * 11, {
+      size: 7.8,
+      color: i === 0 ? INK : MUTED,
+      font: i === 0 ? bold : font,
+      align: 'right',
+    });
   });
   const headBottom = A4_H - 36 - logoH - 12;
-  page.drawLine({ start: { x: MARGIN, y: headBottom }, end: { x: A4_W - MARGIN, y: headBottom }, thickness: 1, color: RULE_DARK });
+  page.drawLine({
+    start: { x: MARGIN, y: headBottom },
+    end: { x: A4_W - MARGIN, y: headBottom },
+    thickness: 1,
+    color: RULE_DARK,
+  });
 
   // Bloc titulaire (gauche) et bloc références (droite)
   let by = headBottom - 24;
-  text(L.clientBlock.toUpperCase(), MARGIN, by, { size: 6.8, font: bold, color: MUTED });
+  text(L.clientBlock.toUpperCase(), MARGIN, by, {
+    size: 6.8,
+    font: bold,
+    color: MUTED,
+  });
   by -= 14;
   text(input.clientName, MARGIN, by, { size: 11, font: bold, maxWidth: 240 });
   for (const line of input.clientAddressLines) {
@@ -621,26 +734,65 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
   const boxX = MARGIN + CONTENT_W - 236;
   const boxTop = headBottom - 16;
   const boxH = refRows.length * 15 + 12;
-  page.drawRectangle({ x: boxX, y: boxTop - boxH, width: 236, height: boxH, color: PANEL });
+  page.drawRectangle({
+    x: boxX,
+    y: boxTop - boxH,
+    width: 236,
+    height: boxH,
+    color: PANEL,
+  });
   refRows.forEach(([k, v], i) => {
     const ry = boxTop - 16 - i * 15;
     text(k, boxX + 10, ry, { size: 7.6, color: MUTED });
-    text(v, boxX + 226, ry, { size: 8.4, font: bold, align: 'right', maxWidth: 140 });
+    text(v, boxX + 226, ry, {
+      size: 8.4,
+      font: bold,
+      align: 'right',
+      maxWidth: 140,
+    });
   });
   y = Math.min(by, boxTop - boxH) - 20;
 
   // Titre du document
-  page.drawRectangle({ x: MARGIN, y: y - 30, width: CONTENT_W, height: 36, color: RULE_DARK });
-  text(L.title, MARGIN + 12, y - 10, { size: 12, font: bold, color: rgb(1, 1, 1) });
-  text(L.subtitle(fmtDate(data.from), fmtDate(data.to)), MARGIN + 12, y - 23, { size: 8.2, color: rgb(0.88, 0.9, 0.93) });
+  page.drawRectangle({
+    x: MARGIN,
+    y: y - 30,
+    width: CONTENT_W,
+    height: 36,
+    color: RULE_DARK,
+  });
+  text(L.title, MARGIN + 12, y - 10, {
+    size: 12,
+    font: bold,
+    color: rgb(1, 1, 1),
+  });
+  text(L.subtitle(fmtDate(data.from), fmtDate(data.to)), MARGIN + 12, y - 23, {
+    size: 8.2,
+    color: rgb(0.88, 0.9, 0.93),
+  });
   y -= 50;
 
-  for (const line of wrap(L.intro(fmtDate(data.from), fmtDate(data.to)), CONTENT_W, 8.6)) {
+  for (const line of wrap(
+    L.intro(fmtDate(data.from), fmtDate(data.to)),
+    CONTENT_W,
+    8.6,
+  )) {
     text(line, MARGIN, y, { size: 8.6, color: INK });
     y -= 12;
   }
   if (input.currency === 'EUR') {
-    for (const line of wrap(L.fxNote(new Intl.NumberFormat(localeTag, { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(input.eurPerUsd), fmtDate(input.issuedAt)), CONTENT_W, 7.6, italic)) {
+    for (const line of wrap(
+      L.fxNote(
+        new Intl.NumberFormat(localeTag, {
+          minimumFractionDigits: 4,
+          maximumFractionDigits: 4,
+        }).format(input.eurPerUsd),
+        fmtDate(input.issuedAt),
+      ),
+      CONTENT_W,
+      7.6,
+      italic,
+    )) {
       text(line, MARGIN, y, { size: 7.6, font: italic, color: MUTED });
       y -= 10;
     }
@@ -656,8 +808,16 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
     { label: L.valueOpening(fmtDate(data.from)), value: money(s.openingValue) },
     { label: L.valueDeposits, value: money(s.deposits) },
     { label: L.valueWithdrawals, value: money(s.withdrawals.negated()) },
-    { label: L.valueYield, value: money(s.yieldNet, true), color: s.yieldNet.lt(0) ? RED : GREEN },
-    { label: L.valueClosing(fmtDate(data.to)), value: money(s.closingValue), total: true },
+    {
+      label: L.valueYield,
+      value: money(s.yieldNet, true),
+      color: s.yieldNet.lt(0) ? RED : GREEN,
+    },
+    {
+      label: L.valueClosing(fmtDate(data.to)),
+      value: money(s.closingValue),
+      total: true,
+    },
   ]);
   subheading(L.s1b);
   drawReconciliation([
@@ -665,20 +825,45 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
     { label: L.walletContrib, value: money(w.contributions) },
     { label: L.walletProceeds, value: money(w.proceeds) },
     { label: L.walletPlacements, value: money(w.placements.negated()) },
-    ...(w.transfersOut.isZero() ? [] : [{ label: L.walletTransfers, value: money(w.transfersOut.negated()) }]),
-    { label: L.walletClosing(fmtDate(data.to)), value: money(w.closing), total: true },
+    ...(w.transfersOut.isZero()
+      ? []
+      : [{ label: L.walletTransfers, value: money(w.transfersOut.negated()) }]),
+    {
+      label: L.walletClosing(fmtDate(data.to)),
+      value: money(w.closing),
+      total: true,
+    },
   ]);
   // Total des avoirs + rendement
   ensure(64);
-  page.drawRectangle({ x: MARGIN, y: y - 42, width: CONTENT_W, height: 50, color: PANEL });
-  text(L.totalAssets(fmtDate(data.to)), MARGIN + 10, y - 6, { size: 9, font: bold });
-  text(`${money(s.closingValue.plus(w.closing))} ${input.currency}`, A4_W - MARGIN - 10, y - 6, { size: 11, font: bold, align: 'right' });
+  page.drawRectangle({
+    x: MARGIN,
+    y: y - 42,
+    width: CONTENT_W,
+    height: 50,
+    color: PANEL,
+  });
+  text(L.totalAssets(fmtDate(data.to)), MARGIN + 10, y - 6, {
+    size: 9,
+    font: bold,
+  });
+  text(
+    `${money(s.closingValue.plus(w.closing))} ${input.currency}`,
+    A4_W - MARGIN - 10,
+    y - 6,
+    { size: 11, font: bold, align: 'right' },
+  );
   text(`${L.returnPct} : ${pct(s.returnPct)}`, MARGIN + 10, y - 22, {
     size: 8.2,
     font: bold,
     color: (s.returnPct ?? 0) < 0 ? RED : GREEN,
   });
-  text(L.returnMethod, MARGIN + 10, y - 35, { size: 7, font: italic, color: MUTED, maxWidth: CONTENT_W - 20 });
+  text(L.returnMethod, MARGIN + 10, y - 35, {
+    size: 7,
+    font: italic,
+    color: MUTED,
+    maxWidth: CONTENT_W - 20,
+  });
   y -= 62;
 
   // ---- 2. Évolution mensuelle ---------------------------------------------------------
@@ -695,7 +880,10 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
       { t: fmtMonth(m.month) },
       { t: money(m.depositsUsd) },
       { t: money(m.withdrawalsUsd) },
-      { t: money(m.yieldUsd, true), color: m.yieldUsd.lt(0) ? RED : m.yieldUsd.gt(0) ? GREEN : INK },
+      {
+        t: money(m.yieldUsd, true),
+        color: m.yieldUsd.lt(0) ? RED : m.yieldUsd.gt(0) ? GREEN : INK,
+      },
       { t: money(m.endValueUsd), bold: true },
     ]),
   );
@@ -706,7 +894,11 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
     text(L.noPositions, MARGIN + 4, y, { size: 8.6, color: MUTED });
     y -= 18;
   } else {
-    const sorted = [...data.positions].sort((a, b) => b.principal.plus(b.accruedYield).comparedTo(a.principal.plus(a.accruedYield)));
+    const sorted = [...data.positions].sort((a, b) =>
+      b.principal
+        .plus(b.accruedYield)
+        .comparedTo(a.principal.plus(a.accruedYield)),
+    );
     drawTable(
       [
         { label: L.colRef, w: 62 },
@@ -718,17 +910,34 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
         { label: L.colStatus, w: CONTENT_W - 400, align: 'right' },
       ],
       sorted.map((p) => {
-        const name = p.kind === 'BASKET' ? L.basket[p.key] ?? p.key : `${L.planPrefix} ${L.plan[p.key] ?? p.key}`;
-        const statusLabel = p.status === 'ACTIVE' ? L.active : p.status === 'MATURED' ? L.matured : L.closed;
+        const name =
+          p.kind === 'BASKET'
+            ? (L.basket[p.key] ?? p.key)
+            : `${L.planPrefix} ${L.plan[p.key] ?? p.key}`;
+        const statusLabel =
+          p.status === 'ACTIVE'
+            ? L.active
+            : p.status === 'MATURED'
+              ? L.matured
+              : L.closed;
         return [
-          { t: `POS-${p.id.replace(/-/g, '').slice(0, 6).toUpperCase()}`, color: MUTED },
+          {
+            t: `POS-${p.id.replace(/-/g, '').slice(0, 6).toUpperCase()}`,
+            color: MUTED,
+          },
           { t: name },
           { t: fmtDate(p.openedAt) },
           { t: money(p.principal) },
-          { t: money(p.accruedYield, true), color: p.accruedYield.lt(0) ? RED : GREEN },
+          {
+            t: money(p.accruedYield, true),
+            color: p.accruedYield.lt(0) ? RED : GREEN,
+          },
           { t: money(p.principal.plus(p.accruedYield)), bold: true },
           {
-            t: p.maturityDate && p.status === 'ACTIVE' ? `${statusLabel} · ${L.due} ${fmtDate(p.maturityDate)}` : statusLabel,
+            t:
+              p.maturityDate && p.status === 'ACTIVE'
+                ? `${statusLabel} · ${L.due} ${fmtDate(p.maturityDate)}`
+                : statusLabel,
             color: MUTED,
           },
         ];
@@ -758,7 +967,8 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
     ...data.operations.map((op): Cell[] => {
       let label = L.ops[op.kind];
       if (op.kind === 'DEPOSIT' && op.currency) label += ` (${op.currency})`;
-      if (op.referenceTx && !op.referenceTx.startsWith('demo-')) label += ` · ${L.txRef} ${op.referenceTx.slice(0, 12)}…`;
+      if (op.referenceTx && !op.referenceTx.startsWith('demo-'))
+        label += ` · ${L.txRef} ${op.referenceTx.slice(0, 12)}…`;
       const isCredit = op.amount.gt(0);
       return [
         { t: fmtDate(op.at) },
@@ -804,7 +1014,11 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
         { t: y2.ref, color: MUTED },
         { t: L.yieldNature },
         { t: String(y2.count) },
-        { t: money(y2.amount, true), bold: true, color: y2.amount.lt(0) ? RED : GREEN },
+        {
+          t: money(y2.amount, true),
+          bold: true,
+          color: y2.amount.lt(0) ? RED : GREEN,
+        },
       ]),
     );
   }
@@ -830,7 +1044,13 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
   ensure(96);
   const blockTop = y;
   const leftW = CONTENT_W - 190;
-  page.drawRectangle({ x: MARGIN, y: blockTop - 74, width: leftW, height: 80, color: PANEL });
+  page.drawRectangle({
+    x: MARGIN,
+    y: blockTop - 74,
+    width: leftW,
+    height: 80,
+    color: PANEL,
+  });
   text(L.docRef, MARGIN + 10, blockTop - 8, { size: 7.4, color: MUTED });
   text(statementNo, MARGIN + 10, blockTop - 20, { size: 9, font: bold });
   text(L.fingerprint, MARGIN + 10, blockTop - 36, { size: 7.4, color: MUTED });
@@ -842,22 +1062,56 @@ export async function renderStatementPdf(input: StatementPdfInput): Promise<Uint
   }
   // Emplacement de signature (laissé vide : signature électronique apposée à part)
   const sx = MARGIN + leftW + 12;
-  page.drawRectangle({ x: sx, y: blockTop - 74, width: 178, height: 80, borderColor: RULE_DARK, borderWidth: 0.7 });
+  page.drawRectangle({
+    x: sx,
+    y: blockTop - 74,
+    width: 178,
+    height: 80,
+    borderColor: RULE_DARK,
+    borderWidth: 0.7,
+  });
   text(L.signatureTitle, sx + 8, blockTop - 8, { size: 7.4, color: MUTED });
-  text(L.signatureHint, sx + 89, blockTop - 44, { size: 7.4, font: italic, color: RULE, align: 'center' });
-  page.drawLine({ start: { x: sx + 12, y: blockTop - 62 }, end: { x: sx + 166, y: blockTop - 62 }, thickness: 0.5, color: RULE });
+  text(L.signatureHint, sx + 89, blockTop - 44, {
+    size: 7.4,
+    font: italic,
+    color: RULE,
+    align: 'center',
+  });
+  page.drawLine({
+    start: { x: sx + 12, y: blockTop - 62 },
+    end: { x: sx + 166, y: blockTop - 62 },
+    thickness: 0.5,
+    color: RULE,
+  });
   y = blockTop - 90;
 
   // ---- Pieds de page (toutes pages) ---------------------------------------------------------------
   pages.forEach((pg, i) => {
     page = pg;
     const fy0 = MARGIN + FOOTER_H - 14;
-    page.drawLine({ start: { x: MARGIN, y: fy0 }, end: { x: A4_W - MARGIN, y: fy0 }, thickness: 0.5, color: RULE });
-    L.legalFooter.forEach((line, k) => {
-      text(line, MARGIN, fy0 - 11 - k * 9, { size: 6.6, color: MUTED, maxWidth: CONTENT_W - 60 });
+    page.drawLine({
+      start: { x: MARGIN, y: fy0 },
+      end: { x: A4_W - MARGIN, y: fy0 },
+      thickness: 0.5,
+      color: RULE,
     });
-    text(`${statementNo}`, MARGIN, fy0 - 11 - 2 * 9 - 3, { size: 6.6, color: MUTED });
-    text(`${L.page} ${i + 1} ${L.of} ${pages.length}`, A4_W - MARGIN, fy0 - 11 - 2 * 9 - 3, { size: 7.2, font: bold, color: MUTED, align: 'right' });
+    L.legalFooter.forEach((line, k) => {
+      text(line, MARGIN, fy0 - 11 - k * 9, {
+        size: 6.6,
+        color: MUTED,
+        maxWidth: CONTENT_W - 60,
+      });
+    });
+    text(`${statementNo}`, MARGIN, fy0 - 11 - 2 * 9 - 3, {
+      size: 6.6,
+      color: MUTED,
+    });
+    text(
+      `${L.page} ${i + 1} ${L.of} ${pages.length}`,
+      A4_W - MARGIN,
+      fy0 - 11 - 2 * 9 - 3,
+      { size: 7.2, font: bold, color: MUTED, align: 'right' },
+    );
   });
 
   return doc.save();

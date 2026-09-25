@@ -57,7 +57,9 @@ export class MarketDataController {
   // montants du registre dans la monnaie choisie par le client (cf. User.displayCurrency).
   @Get('eur-per-usd')
   async eurPerUsd() {
-    return { eurPerUsd: (await this.marketDataService.getEurPerUsd()).toNumber() };
+    return {
+      eurPerUsd: (await this.marketDataService.getEurPerUsd()).toNumber(),
+    };
   }
 
   @Get('stocks')

@@ -121,9 +121,13 @@ function walletEffect(
   const amount = new Prisma.Decimal(row.amount);
   switch (row.type) {
     case 'DEPOSIT':
-      return row.creditTarget === 'INVESTMENT' ? { kind: 'DEPOSIT', delta: amount } : null;
+      return row.creditTarget === 'INVESTMENT'
+        ? { kind: 'DEPOSIT', delta: amount }
+        : null;
     case 'CARD_TOPUP':
-      return row.creditTarget === 'INVESTMENT' ? { kind: 'CARD_TOPUP', delta: amount } : null;
+      return row.creditTarget === 'INVESTMENT'
+        ? { kind: 'CARD_TOPUP', delta: amount }
+        : null;
     case 'INVESTMENT_WALLET_TRANSFER_IN':
       return { kind: 'TRANSFER_IN', delta: amount };
     case 'INVESTMENT_WALLET_TRANSFER_OUT':
@@ -162,22 +166,32 @@ export function buildStatementData(
       !m.yieldUsd.isZero() ||
       !m.endValueUsd.isZero(),
   );
-  const months = firstActive === -1 ? window.slice(-1) : window.slice(firstActive);
+  const months =
+    firstActive === -1 ? window.slice(-1) : window.slice(firstActive);
   const from = new Date(`${months[0].month}-01T00:00:00.000Z`);
 
   const deposits = months.reduce((s, m) => s.plus(m.depositsUsd), zero());
   const withdrawals = months.reduce((s, m) => s.plus(m.withdrawalsUsd), zero());
   const yieldNet = months.reduce((s, m) => s.plus(m.yieldUsd), zero());
   const closingValue = perf.totals.currentValueUsd;
-  const openingValue = closingValue.minus(deposits).plus(withdrawals).minus(yieldNet);
+  const openingValue = closingValue
+    .minus(deposits)
+    .plus(withdrawals)
+    .minus(yieldNet);
   const committed = openingValue.plus(deposits);
-  const returnPct = committed.gt(0) ? yieldNet.div(committed).mul(100).toNumber() : null;
+  const returnPct = committed.gt(0)
+    ? yieldNet.div(committed).mul(100).toNumber()
+    : null;
 
   // Wallet : solde courant recalculé sur tout le journal (le solde d'ouverture de la période
   // est celui juste avant `from`), jamais lu ailleurs — un relevé doit se recouper.
   const sorted = rows
     .map((row, index) => ({ row, index }))
-    .sort((a, b) => a.row.createdAt.getTime() - b.row.createdAt.getTime() || a.index - b.index)
+    .sort(
+      (a, b) =>
+        a.row.createdAt.getTime() - b.row.createdAt.getTime() ||
+        a.index - b.index,
+    )
     .map((x) => x.row);
 
   let running = zero();
@@ -235,7 +249,8 @@ export function buildStatementData(
     }
     if (
       inPeriod &&
-      (row.type === 'INVESTMENT_YIELD_ACCRUAL' || row.type === 'FIXED_TERM_YIELD_ACCRUAL')
+      (row.type === 'INVESTMENT_YIELD_ACCRUAL' ||
+        row.type === 'FIXED_TERM_YIELD_ACCRUAL')
     ) {
       const key = monthKeyOf(row.createdAt);
       const cur = yieldByMonth.get(key) ?? {
@@ -258,10 +273,19 @@ export function buildStatementData(
     from,
     to: now,
     months,
-    summary: { openingValue, deposits, withdrawals, yieldNet, closingValue, returnPct },
+    summary: {
+      openingValue,
+      deposits,
+      withdrawals,
+      yieldNet,
+      closingValue,
+      returnPct,
+    },
     wallet: { opening: walletOpening, closing: running, ...wallet },
     operations,
-    yields: [...yieldByMonth.values()].sort((a, b) => a.month.localeCompare(b.month)),
+    yields: [...yieldByMonth.values()].sort((a, b) =>
+      a.month.localeCompare(b.month),
+    ),
     // Positions ouvertes pendant la période ou encore actives.
     positions: positions.filter(
       (p) => p.status === 'ACTIVE' || (p.closedAt ?? p.openedAt) >= from,
@@ -272,7 +296,10 @@ export function buildStatementData(
 // Empreinte d'intégrité du contenu chiffré du relevé (SHA-256 sur une sérialisation
 // canonique des données, pas du PDF lui-même) : deux éditions du même relevé portent la
 // même empreinte, toute modification d'un chiffre en change la valeur.
-export function statementFingerprint(data: StatementData, accountRef: string): string {
+export function statementFingerprint(
+  data: StatementData,
+  accountRef: string,
+): string {
   const canonical = JSON.stringify({
     accountRef,
     from: data.from.toISOString(),
@@ -285,9 +312,17 @@ export function statementFingerprint(data: StatementData, accountRef: string): s
       c: data.summary.closingValue.toFixed(6),
     },
     wallet: [data.wallet.opening.toFixed(6), data.wallet.closing.toFixed(6)],
-    operations: data.operations.map((o) => [o.ref, o.at.toISOString(), o.amount.toFixed(6)]),
+    operations: data.operations.map((o) => [
+      o.ref,
+      o.at.toISOString(),
+      o.amount.toFixed(6),
+    ]),
     yields: data.yields.map((y) => [y.ref, y.count, y.amount.toFixed(6)]),
-    positions: data.positions.map((p) => [p.id, p.principal.toFixed(6), p.accruedYield.toFixed(6)]),
+    positions: data.positions.map((p) => [
+      p.id,
+      p.principal.toFixed(6),
+      p.accruedYield.toFixed(6),
+    ]),
   });
   return createHash('sha256').update(canonical).digest('hex').toUpperCase();
 }

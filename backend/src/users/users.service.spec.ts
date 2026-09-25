@@ -28,7 +28,10 @@ describe('UsersService', () => {
 
   describe('setDisplayCurrency', () => {
     it("enregistre la monnaie d'affichage choisie par le client", async () => {
-      prisma.user.update.mockResolvedValue({ id: 'user-1', displayCurrency: 'EUR' });
+      prisma.user.update.mockResolvedValue({
+        id: 'user-1',
+        displayCurrency: 'EUR',
+      });
 
       const result = await service.setDisplayCurrency('user-1', 'EUR');
 

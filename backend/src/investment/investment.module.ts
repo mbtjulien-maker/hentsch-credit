@@ -32,7 +32,11 @@ import { FixedTermPlanService } from './fixed-term-plan.service';
     UserFixedTermPositionsController,
     AdminFixedTermPositionsController,
   ],
-  providers: [InvestmentService, FixedTermPlanService, InvestmentStatementService],
+  providers: [
+    InvestmentService,
+    FixedTermPlanService,
+    InvestmentStatementService,
+  ],
   exports: [InvestmentService, FixedTermPlanService],
 })
 export class InvestmentModule {}

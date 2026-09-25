@@ -28,7 +28,11 @@ import { TransferInvestmentWalletDto } from './dto/transfer-investment-wallet.dt
 import { WithdrawInvestmentDto } from './dto/withdraw-investment.dto';
 import { InvestmentService } from './investment.service';
 import { InvestmentStatementService } from './investment-statement.service';
-import { STATEMENT_PERIODS, type StatementLocale, type StatementPeriod } from './investment-statement';
+import {
+  STATEMENT_PERIODS,
+  type StatementLocale,
+  type StatementPeriod,
+} from './investment-statement';
 import { FixedTermPlanService } from './fixed-term-plan.service';
 import { MarketDataService } from '../market-data/market-data.service';
 import {
@@ -300,8 +304,16 @@ export class UserInvestmentStatementController {
       ? (requested as StatementPeriod)
       : 12;
     const locale: StatementLocale = localeParam === 'en' ? 'en' : 'fr';
-    const currency = currencyParam === 'EUR' || currencyParam === 'USD' ? currencyParam : undefined;
-    const { filename, pdf } = await this.statementService.generate(userId, months, locale, currency);
+    const currency =
+      currencyParam === 'EUR' || currencyParam === 'USD'
+        ? currencyParam
+        : undefined;
+    const { filename, pdf } = await this.statementService.generate(
+      userId,
+      months,
+      locale,
+      currency,
+    );
     res.set({
       'Content-Type': 'application/pdf',
       'Content-Disposition': `attachment; filename="${filename}"`,
